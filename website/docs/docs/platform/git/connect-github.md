@@ -15,7 +15,7 @@ Connecting your GitHub account to <Constant name="dbt" /> provides convenience a
 - Trigger [Continuous integration](/docs/deploy/continuous-integration)(CI) builds when pull requests are opened in GitHub.
 
 :::note GitHub Enterprise Cloud (`ghe.com`) domains
-If your organization uses GitHub Enterprise Cloud, hosted on a `ghe.com` domain, the shared <Constant name="dbt" /> GitHub App can't reach it. Note that `ghe.com` accounts are cloud-managed (not on-premises), but this limitation still applies.
+If your organization uses GitHub Enterprise Cloud, hosted on a `ghe.com` domain, the shared <Constant name="dbt" /> GitHub App can't reach it. Note that `ghe.com` accounts are cloud-managed (not on-premises), but this limitation still applies. <There is a customer Github app now in Beta that allows native integration. Could you please change the wording here to reflect that. Thank you so much!>
 
 Enterprise and Enterprise+ accounts can connect by registering a [custom GitHub application](#custom-github-application) instead. On other plans, use [importing a project by git URL](/docs/platform/git/import-a-project-by-git-url) with SSH/deploy keys. Your organization's SSH URL configuration may require additional steps, and some native integration features are unavailable with the git URL method.
 
