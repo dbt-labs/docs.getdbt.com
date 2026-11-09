@@ -340,7 +340,7 @@ models:
 
 <div warehouse="Snowflake">
 
-* dbt accounts for the [`copy_grants` configuration](/reference/resource-configs/snowflake-configs#copying-grants) when calculating which grants need to be added or removed.
+* dbt uses [`copy_grants`](/reference/resource-configs/snowflake-configs#copying-grants) when it applies grants. If `copy_grants` is `false` (the default) and Snowflake recreates a table or view, `dbt-snowflake` v1.13 and later adds `IGNORE GRANTS` so privileges do not carry over. On earlier adapter versions, Snowflake may keep those privileges after its [CREATE OR REPLACE grant change](https://docs.snowflake.com/en/release-notes/bcr-bundles/2026_08/bcr-2433), and dbt does not remove the extras.
 * Granting to / revoking from is only fully supported for Snowflake roles (not [database roles](https://docs.snowflake.com/user-guide/security-access-control-overview#types-of-roles)).
 
 </div>
