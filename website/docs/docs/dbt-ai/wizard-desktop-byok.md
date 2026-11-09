@@ -34,6 +34,8 @@ Each provider shows whether it's set up and how many models are available. You c
 
 You can pick the model and reasoning effort for each chat from the chat composer.
 
+<Lightbox src="/img/wizard/desktop/wizard-desktop-byok-configure-provider.png" width="60%" title="Configure a provider, using Amazon Bedrock as an example" />
+
 ## Supported providers
 
 <WizardSupportedProviders defaultSurface="local" />
@@ -50,6 +52,8 @@ Under **Managed by dbt Labs**, select **Configure** on the `dbt` provider to:
 
 - Choose which dbt account <Constant name="wizard" /> uses for hosted models and billing. This doesn't change which accounts <Constant name="wizard" /> can import projects from.
 - Turn individual dbt-managed models on or off.
+
+<Lightbox src="/img/wizard/desktop/wizard-desktop-byok-dbt-managed.png" width="60%" title="Configure dbt-managed models and the dbt account" />
 
 ## Related docs
 
