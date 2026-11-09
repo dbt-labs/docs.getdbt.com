@@ -28,6 +28,8 @@ Using the CLI or <Constant name="dbt_platform" /> instead? Refer to [Configure B
 4. Fill in the fields shown for your provider. The app explains each one as you go.
 5. Select **Save**.
 
+<Lightbox src="/img/wizard/desktop/wizard-desktop-byok-ai-providers.png" width="90%" title="AI providers settings in Wizard Desktop" />
+
 Each provider shows whether it's set up and how many models are available. You can click **Refresh** if a provider or model you expect isn't listed.
 
 You can pick the model and reasoning effort for each chat from the chat composer.
