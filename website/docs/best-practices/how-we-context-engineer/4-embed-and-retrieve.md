@@ -99,7 +99,7 @@ An index is optional and in beta. It's a separate service that bills even when n
 
 To scope a search to one customer, filter before you rank, as the `filter` argument above does. Rows from other accounts don't rank low. They never enter the search.
 
-<Lightbox src="/img/best-practices/context-engineering/meme-i-dont-know-her.jpg" width="60%" title="A search filtered on account_key never sees other accounts' rows." />
+<Lightbox src="/img/best-practices/context-engineering/meme-i-dont-know-her.jpg" width="60%" title="Search doesn't know her...." />
 
 ## Search alone isn't enough
 
