@@ -1005,6 +1005,7 @@ const sidebarSettings = {
     },
     "docs/lake-compute/lake-compute",
     "docs/lake-compute/compute-onboarding",
+    "docs/lake-compute/lake-compute-migration",
     "docs/lake-compute/compute-faq",
     {
       type: 'html',
