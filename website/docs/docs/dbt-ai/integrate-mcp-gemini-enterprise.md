@@ -17,8 +17,8 @@ The connection uses OAuth. You register an app integration in the <Constant name
 ## Prerequisites
 
 - A <Constant name="dbt_platform" /> account with an active deployed production environment. Remote MCP reads your production metadata, so with no models or jobs, you get very little back. Refer to [Set up the remote MCP server](/docs/dbt-ai/setup-remote-mcp).
-- A <Constant name="dbt_platform" /> account. The remote MCP server works on all [plans](https://www.getdbt.com/pricing), but its tools rely on [dbt APIs](/docs/dbt-apis/overview) (like the Discovery API and Semantic Layer APIs) that vary by plan.
-- Permission to manage app integrations, such as the Account Admin or Security Admin permission set. Refer to [About user access](/docs/platform/manage-access/about-user-access) for permissions, and [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth) for the integration itself.
+- A <Constant name="dbt_platform" /> plan that includes the tools you need. The remote MCP server works on all [plans](https://www.getdbt.com/pricing), but its tools rely on [dbt APIs](/docs/dbt-apis/overview) (like the Discovery API and Semantic Layer APIs) that vary by plan. An Enterprise or Enterprise+ plan gives you every tool.
+- Permission to manage app integrations. You have it with the Account Admin, Security Admin, or Project creator permission set, or an IT license. Refer to [Enterprise permissions](/docs/platform/manage-access/enterprise-permissions) and [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth).
 - A Google Cloud account with access to Gemini Enterprise, where you can create data stores and apps. You can get started by contacting Google Cloud sales, or try [Gemini Enterprise Plus edition at no cost for 30 days](https://console.cloud.google.com/freetrial?redirectPath=gemini-enterprise) without sales assistance.
 
 ## Register the app in dbt platform
@@ -81,7 +81,7 @@ Your Gemini connectors actions remain disabled until you manually enable them:
 
 <Lightbox src="/img/mcp/gemini-enterprise/gemini-enable-actions.png" width="80%" title="Selecting dbt MCP actions and enabling them" />
 
-Google Enterprise calls MCP tools [actions](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/custom-mcp-server/set-up-custom-mcp-server#enable-actions). For what each tool does, refer to [Available MCP tools](/docs/dbt-ai/mcp-available-tools).
+Gemini Enterprise calls MCP tools *actions*. Refer to [Google's docs on enabling actions](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/custom-mcp-server/set-up-custom-mcp-server#enable-actions). For what each tool does, refer to [Available MCP tools](/docs/dbt-ai/mcp-available-tools).
 
 ## Create a Gemini Enterprise app
 
@@ -114,7 +114,7 @@ Gemini calls the dbt MCP tools and returns your projects and environments, with 
 
 <Lightbox src="/img/mcp/gemini-enterprise/gemini-list-projects-result.png" width="90%" title="Gemini Enterprise listing dbt projects and environments through the dbt MCP connector" />
 
-You can now use [42+ different tools](/docs/dbt-ai/about-mcp#supported-tools-by-mcp-server-type) supported by dbt through this Gemini app. The tools you see depend on your [plan](https://www.getdbt.com/pricing).
+You can now use [42+ different tools](/docs/dbt-ai/about-mcp#supported-tools-by-mcp-server-type) supported by dbt through this Gemini app, depending on your plan.
 
 ## Related docs
 
