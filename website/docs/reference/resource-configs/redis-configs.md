@@ -8,9 +8,11 @@ availability:
   engine: v1
 ---
 
-The community-maintained `dbt-redis-adbc` adapter uses the Redis ADBC driver to execute SQL against Redis. Refer to [Redis setup](/docs/local/connect-data-platform/redis-setup) for installation and connection options.
+This page describes how dbt models behave with the community-maintained `dbt-redis-adbc` adapter. The adapter's Redis ADBC driver presents Redis data as SQL relations named `schema.table`, in a single catalog named `redis`. For the general configuration syntax, refer to [materializations](/docs/build/materializations) and [incremental models](/docs/build/incremental-models). For installation and connection settings, refer to [Redis setup](/docs/local/connect-data-platform/redis-setup).
 
 ## Materializations
+
+Set `materialized` in a model's `config()` block or in `dbt_project.yml`. For the syntax, refer to [materializations](/docs/build/materializations). The adapter supports these materializations:
 
 | Materialization | Support |
 | --- | --- |
@@ -19,8 +21,6 @@ The community-maintained `dbt-redis-adbc` adapter uses the Redis ADBC driver to 
 | `ephemeral` | SQL models |
 | `incremental` | SQL models, using the strategies below |
 | `materialized_view` | Not supported |
-
-Seeds use Arrow bulk ingestion. Snapshots support the `timestamp` and `check` strategies. `dbt clone` creates views; zero-copy cloning is not supported.
 
 ## Incremental models
 
@@ -46,7 +46,7 @@ where updated_at >= (select max(updated_at) from {{ this }})
 
 </File>
 
-The adapter also supports `on_schema_change` and `incremental_predicates`. For microbatch models, configure `event_time`, `begin`, and `batch_size` using the standard [microbatch configuration](/docs/build/incremental-microbatch). Each batch replaces its event-time window; batches can run in parallel.
+The adapter also supports [`on_schema_change`](/docs/build/incremental-models#what-if-the-columns-of-my-incremental-model-change) and [`incremental_predicates`](/docs/build/incremental-strategy#about-incremental_predicates). For microbatch models, configure `event_time`, `begin`, and `batch_size` using the standard [microbatch configuration](/docs/build/incremental-microbatch). Each batch replaces its event-time window; batches can run in parallel.
 
 ## Model contracts and constraints
 
@@ -78,7 +78,7 @@ Incremental Python models are not supported.
 
 ## Relation names and access control
 
-The driver exposes one catalog named `redis`. SQL relations render as `schema.table`, without the catalog. By default, the adapter doesn't quote schema or table names, and the driver folds unquoted identifiers to lowercase, as PostgreSQL does. Double-quoted names keep their exact case. To keep a name's case, enable dbt's `quoting` configuration for it.
+SQL relations render as `schema.table`, without the `redis` catalog. By default, the adapter doesn't quote schema or table names, and the driver folds unquoted identifiers to lowercase, as PostgreSQL does. Double-quoted names keep their exact case. To keep a name's case, enable dbt's `quoting` configuration for it.
 
 Relations that driver releases earlier than 0.0.16 created with mixed-case names keep those names. Quote their exact names when you reference them, or rename them.
 
