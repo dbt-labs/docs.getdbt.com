@@ -43,9 +43,6 @@ As a security best practice, rotate your PATs regularly. To rotate a PAT, create
 <TokenExpiration
   pageName="Personal tokens"
   newToken="a new token"
-  whereToUpdate="scripts"
-  optionsImage="/img/docs/dbt-platform/api-tokens/pat-expiry-options.png"
-  optionsImageTitle="Choose an expiry when you create a personal access token"
 />
 
 ## Delete a personal access token

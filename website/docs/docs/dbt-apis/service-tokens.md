@@ -40,9 +40,6 @@ You can generate service tokens if you have a Developer [license](/docs/platform
 <TokenExpiration
   pageName="Service tokens"
   newToken="a new token with the same permissions"
-  whereToUpdate="systems"
-  optionsImage="/img/docs/dbt-platform/api-tokens/service-token-expiry-options.png"
-  optionsImageTitle="Choose an expiry when you create a service token"
 />
 
 ## Permissions for service account tokens
