@@ -213,6 +213,19 @@ The possible values for `on_schema_change` are:
 - `append_new_columns`: Append new columns to the existing table. Note that this setting does *not* remove columns from the existing table that are not present in the new data.
 - `sync_all_columns`: Adds any new columns to the existing table, and removes any columns that are now missing. Note that this is *inclusive* of data type changes. On BigQuery, changing column types requires a full <Term id="table" /> scan; be mindful of the trade-offs when implementing.
 
+The following table summarizes what each value does when you add a column, remove a column, or change a column's data type:
+
+| `on_schema_change` | Column added to the model | Column removed from the model | Column data type changed |
+|--------------------|---------------------------|-------------------------------|--------------------------|
+| `ignore` (default) | The column isn't added to the target table and isn't populated. | The run fails, because the insert statement still references the removed column. | Not detected. The target table keeps its original data type, and your data platform decides whether the incoming values can be cast into it. |
+| `fail` | The run fails. | The run fails. | The run fails. |
+| `append_new_columns` | The column is added to the target table. Existing rows hold `null` for it. | The column stays in the target table and new rows hold `null` for it. Existing values are kept with the `merge` strategy (the default on Snowflake and BigQuery) and lost with `delete+insert` (the default on Postgres and Redshift). | Detected, but not applied. The target table keeps its original data type. |
+| `sync_all_columns` | The column is added to the target table. Existing rows hold `null` for it. | The column is dropped from the target table, along with the data it held. | An `ALTER` is attempted. It succeeds or fails depending on whether your data platform allows that type conversion. |
+
+The table describes the behavior when rows are matched on a `unique_key`, which is the default on Snowflake and BigQuery. Adapters that don't match rows by default behave differently: Databricks defaults to `append` unless you set `incremental_strategy: merge`, and Athena defaults to `insert_overwrite`.
+
+Widening a string column's length is a special case. Some data platforms widen it automatically before `on_schema_change` is evaluated, so it happens under any value, including `ignore` and `fail`. Other type changes only apply under `sync_all_columns`.
+
 **Note**: None of the `on_schema_change` behaviors backfill values in old records for newly added columns. If you need to populate those values, we recommend running manual updates, or triggering a `--full-refresh`.
 
 :::caution `on_schema_change` tracks top-level changes
