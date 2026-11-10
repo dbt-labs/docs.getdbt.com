@@ -25,6 +25,7 @@ Key:
 | Account-level permission | Account Admin | Billing admin | Cost Insights Admin | Cost Insights Viewer | Manage marketplace apps | Notification Manager | Project creator | Security admin | Account Viewer |
 |:-------------------------|:-------------:|:-------------:|:-------------------:|:--------------------:|:-----------------------:|:--------------------:|:---------------:|:--------------:|:------:|
 | Account settings<sup>*</sup>        | W             | -             | -                   | -                    | -                       | -                    | R               | R              | R      |
+| App integrations (OAuth) | W             | -             | -                   | -                    | -                       | -                    | W               | W              | R      |
 | Audit logs               | R             | -             | -                   | -                    | -                       | -                    | -               | R              | R      |
 | Auth provider            | W             | -             | -                   | -                    | -                       | -                    | -               | W              | R      |
 | Billing                  | W             | W             | -                   | -                    | -                       | -                    | -               | -              | R      |
