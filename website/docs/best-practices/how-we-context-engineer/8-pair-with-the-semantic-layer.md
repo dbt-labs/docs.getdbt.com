@@ -82,6 +82,6 @@ Metrics tell you what moved. Context tells you why.
 
 <ConfettiTrigger>
 At the start of this guide, we said that for a decade we've modeled data for one reader: the dashboard. Now there's a second reader, the agent. It’s only as trustworthy as the context you give it, and you’re well placed to build that.
-</ConfettieTrigger>
+</ConfettiTrigger>
 
 New terms? The [Glossary](/best-practices/how-we-context-engineer/9-glossary) lists them, plus every macro and var in the package.
