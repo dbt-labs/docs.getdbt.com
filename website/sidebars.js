@@ -500,6 +500,7 @@ const sidebarSettings = {
             "docs/dbt-ai/integrate-mcp-cursor",
             "docs/dbt-ai/integrate-mcp-vscode",
             "docs/dbt-ai/integrate-mcp-snowflake-cortex",
+            "docs/dbt-ai/integrate-mcp-databricks",
           ],
         },
         "docs/dbt-ai/mcp-troubleshooting",
