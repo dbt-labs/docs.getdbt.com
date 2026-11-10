@@ -24,6 +24,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 <!--
 Release note areas. Add your bullet under the matching #### heading in the current month.
 If the month doesn't have that heading yet, add it in the order below with an anchor like {#catalog-november-2026}.
+Inside an area, notes go in this order: New (and Beta or Preview), Enhancement, Fix, Behavior change.
 Not sure which area? Add the bullet directly under the month heading. A check on your pull request files it for you, or asks you to pick.
 
 - dbt AI and agents: Wizard, Wizard Desktop, Copilot, the dbt MCP server, AI models and providers, and AI billing.
@@ -48,18 +49,18 @@ The full list lives in website/release-note-areas.json.
 #### dbt AI and agents {#dbt-ai-and-agents-november-2026}
 
 - **New:** The remote dbt MCP server is now available on [Databricks Marketplace](https://marketplace.databricks.com/details/6d83d4e0-5279-47b7-831c-3cb90a82ecb3/dbt-Labs_dbt-MCP). Install it in a few steps to use your dbt project from Databricks. Refer to [Integrate Databricks with dbt MCP](/docs/dbt-ai/integrate-mcp-databricks).
-- **Fix:** When dbt AI providers need an account, chat and the model picker now tell you what's missing and open the account picker, instead of showing a generic provider error.
-- **Enhancement:** [Remote MCP](/docs/dbt-ai/setup-remote-mcp#permissions) now checks permissions for each tool call against the project, environment, job, or run it targets. This applies to OAuth, personal access tokens (PATs), and service tokens. You no longer need the `Developer` permission set just to connect. Service tokens can also use `text_to_sql` to generate SQL, but running SQL with `execute_sql` still requires OAuth or a PAT.
-- **Behavior change:** Remote MCP calls without the required permissions can now fail earlier, and invalid arguments or conflicting project and environment selections return clearer errors. If a call fails, check the permissions on the resource and your configured IDs. For help, refer to [remote MCP troubleshooting](/docs/dbt-ai/mcp-troubleshooting#troubleshooting).
 - **New**: Read-only users can query metrics through [remote MCP](/docs/dbt-ai/setup-remote-mcp#read-only-users-and-warehouse-credentials) using the shared [analytics credential](/docs/platform/wizard-read-only-users#set-up-analytics-credentials), which needs to be set up by an admin. 
+- **Enhancement:** [Remote MCP](/docs/dbt-ai/setup-remote-mcp#permissions) now checks permissions for each tool call against the project, environment, job, or run it targets. This applies to OAuth, personal access tokens (PATs), and service tokens. You no longer need the `Developer` permission set just to connect. Service tokens can also use `text_to_sql` to generate SQL, but running SQL with `execute_sql` still requires OAuth or a PAT.
+- **Fix:** When dbt AI providers need an account, chat and the model picker now tell you what's missing and open the account picker, instead of showing a generic provider error.
+- **Behavior change:** Remote MCP calls without the required permissions can now fail earlier, and invalid arguments or conflicting project and environment selections return clearer errors. If a call fails, check the permissions on the resource and your configured IDs. For help, refer to [remote MCP troubleshooting](/docs/dbt-ai/mcp-troubleshooting#troubleshooting).
 
 ##### Wizard
 
 - **New:** Use Claude Haiku 5.5 and Claude Sonnet 5.5 through Databricks in <Constant name="wizard" />.
+- **New:** <Constant name="wizard" /> now automatically switches to AWS Bedrock if an AI model provider (OpenAI, Anthropic, or Fireworks) has an outage, so you can keep working. Available for <Constant name="dbt_platform" /> accounts hosted on AWS that use dbt <Term id="managed" /> models. Learn more about [automatic backup during outages](/docs/dbt-ai/pricing-billing/overview#automatic-backup-during-outages).
 - **Fix:** <Constant name="wizard" /> validation now works with Azure, Snowflake, Gemini, and Databricks models.
 - **Fix:** <Constant name="wizard" /> no longer adds a stray file to new environments or your commits. Creating and restoring environments also works in repositories that already track that file.
 - **Fix:** When <Constant name="wizard" /> prepares validation, fatal <Constant name="platform_cli" /> errors now show as readable messages instead of raw JSON.
-- **New:** <Constant name="wizard" /> now automatically switches to AWS Bedrock if an AI model provider (OpenAI, Anthropic, or Fireworks) has an outage, so you can keep working. Available for <Constant name="dbt_platform" /> accounts hosted on AWS that use dbt <Term id="managed" /> models. Learn more about [automatic backup during outages](/docs/dbt-ai/pricing-billing/overview#automatic-backup-during-outages).
 
 ##### Wizard Desktop
 
@@ -92,21 +93,21 @@ The full list lives in website/release-note-areas.json.
 
 #### dbt AI and agents {#dbt-ai-and-agents-october-2026}
 
-- **Behavior change:** dbt v2 renamed the variable that selects an AI provider, and the two variables that write the [information schema](/docs/build/dbt-information-schema#generating-the-information-schema) (a local copy of project metadata you can query). If you set `DBT_AI_PROVIDER`, change it to [`DBT_ENGINE_AI_PROVIDER`](/docs/dbt-ai/package-skills#set-the-ai_provider-flag). If you set `DBT_GENERATE_INFO_SCHEMA` or `DBT_INFO_SCHEMA_DIR`, change them to `DBT_ENGINE_GENERATE_INFO_SCHEMA` and `DBT_ENGINE_INFO_SCHEMA_DIR`. The command-line flags for these options are unchanged. Update the variables anywhere you set them, including continuous integration (CI).
 - **Enhancement:** Workspace @-mention queries now use server-side fuzzy matching instead of filtering a local list, returning better-ranked results for large repositories. The context file picker also prevents selecting stale results while a search is still in flight.
 - **Enhancement:** You can now add a `table` block type to `compose_report` reports to render query results as formatted, scrollable tables. Columns can be narrowed and reordered using the `columns` field, and the display caps at 50 rows on screen with a truncation notice for clipped results.
 - **Fix:** Charts with decimal data values (for example, 25.43 minutes) no longer push the y-axis name outside the visible canvas area. The axis gap is now calculated from rounded tick values.
 - **Fix:** The x-axis name, grid bottom margin, and legend centering on horizontal bar charts are now computed correctly so the axis label no longer overlaps the legend.
+- **Behavior change:** dbt v2 renamed the variable that selects an AI provider, and the two variables that write the [information schema](/docs/build/dbt-information-schema#generating-the-information-schema) (a local copy of project metadata you can query). If you set `DBT_AI_PROVIDER`, change it to [`DBT_ENGINE_AI_PROVIDER`](/docs/dbt-ai/package-skills#set-the-ai_provider-flag). If you set `DBT_GENERATE_INFO_SCHEMA` or `DBT_INFO_SCHEMA_DIR`, change them to `DBT_ENGINE_GENERATE_INFO_SCHEMA` and `DBT_ENGINE_INFO_SCHEMA_DIR`. The command-line flags for these options are unchanged. Update the variables anywhere you set them, including continuous integration (CI).
 
 ##### Wizard
 
 - **New:** In the <Constant name="wizard" /> [home tab](/docs/platform/wizard-home), the conversation you have open appears in the browser URL. You can bookmark that conversation and open it again from the URL.
-- **Fix:** <Constant name="wizard" /> validation now skips runs when no changed dbt models are in scope and explains why.
 - **Enhancement:** <Constant name="wizard" /> now displays how long each turn took at the bottom of every completed turn. For previously loaded conversations, the completion timestamp is also shown.
 - **Enhancement:** <Constant name="wizard" /> follows updated dbt best practices, including better use of the <Constant name="semantic_layer" />.
-- **Behavior change:** Pull requests that <Constant name="wizard" /> creates now say in their description that <Constant name="wizard" /> made them.
+- **Fix:** <Constant name="wizard" /> validation now skips runs when no changed dbt models are in scope and explains why.
 - **Fix:** <Constant name="wizard" /> now detects when deferral isn't working because the upstream model doesn't exist in production, and recommends turning off deferral for the session.
 - **Fix:** When the Wizard receives a malformed diff patch, it now displays a "Couldn't parse diff" error badge instead of crashing.
+- **Behavior change:** Pull requests that <Constant name="wizard" /> creates now say in their description that <Constant name="wizard" /> made them.
 
 ##### Wizard Desktop
 
@@ -115,20 +116,20 @@ The full list lives in website/release-note-areas.json.
 - **New:** In <Constant name="wizard" /> Desktop, use `/new`, `/clear`, and `/rename` to manage conversations. `/new` accepts an optional starting prompt and works while another response is running.
 - **New:** In <Constant name="wizard" /> Desktop, you can discard all uncommitted changes and remove new files in one confirmed action. Conflicted files are left alone.
 - **New:** In <Constant name="wizard" /> Desktop, you can opt into automatic background updates, choose the Stable or Unstable channel in **General** settings, and relaunch when an update is ready. Refer to [Update the app](/docs/dbt-ai/wizard-desktop#update-the-app).
-- **Enhancement:** Question cards in <Constant name="wizard" /> Desktop now let you answer multiple questions, write your own response, or skip a question. You can also reply in the composer while questions are waiting, with masked inputs for sensitive answers.
-- **Enhancement:** In <Constant name="wizard" /> Desktop, **Changes** and the target branch now follow the base branch of your open pull request.
-- **Enhancement:** In <Constant name="wizard" /> Desktop, expand **Show error details** to see why a response failed, including provider errors and spending limits.
-- **Fix:** <Constant name="wizard" /> Desktop now uses browser sign-in by default for OpenAI subscriptions, including for workspaces that disable device-code login. Expired or revoked credentials no longer block startup, and you get clearer reconnect guidance.
-- **Fix:** <Constant name="wizard" /> Desktop keeps model, lineage, and metric lookups current after you edit files or run dbt outside <Constant name="wizard" />.
-- **Fix:** <Constant name="wizard" /> Desktop now shows clearer ownership and trust prompts for shared repositories. You can also start chats and terminals in trusted repositories owned by another user, including on Windows subsystems for Linux (WSL).
-- **Fix:** Subagent approval requests in <Constant name="wizard" /> Desktop now appear in the chat that owns them and name the requesting agent.
 - **New:** In <Constant name="wizard" /> Desktop, you can attach files and images to a chat. Drag them in, paste them, or copy them from Finder into the composer, then preview them before you send. Sent files show up as readable cards.
 - **New:** In <Constant name="wizard" /> Desktop, projects connected to <Constant name="dbt_platform" /> now connect to the remote dbt MCP server by default, using OAuth sign-in. This adds platform tools like job management, run status, and run errors. Go to **Settings** → **Connectors** to turn it on or off for each dbt account.
 - **New:** In <Constant name="wizard" /> Desktop, you can pin chats and environments to a section at the top of the sidebar and reorder them.
 - **New:** In <Constant name="wizard" /> Desktop, you can open SQL from a chat in the **Queries** pane.
 - **New:** In <Constant name="wizard" /> Desktop, you can pick the Jaffle Shop sample project during onboarding.
+- **Enhancement:** Question cards in <Constant name="wizard" /> Desktop now let you answer multiple questions, write your own response, or skip a question. You can also reply in the composer while questions are waiting, with masked inputs for sensitive answers.
+- **Enhancement:** In <Constant name="wizard" /> Desktop, **Changes** and the target branch now follow the base branch of your open pull request.
+- **Enhancement:** In <Constant name="wizard" /> Desktop, expand **Show error details** to see why a response failed, including provider errors and spending limits.
 - **Enhancement:** <Constant name="wizard" /> Desktop now installs and manages `uv` itself when a project's Python requirement blocks setup.
 - **Enhancement:** <Constant name="wizard" /> Desktop chats in the sidebar now show PR status, unread, and running indicators.
+- **Fix:** <Constant name="wizard" /> Desktop now uses browser sign-in by default for OpenAI subscriptions, including for workspaces that disable device-code login. Expired or revoked credentials no longer block startup, and you get clearer reconnect guidance.
+- **Fix:** <Constant name="wizard" /> Desktop keeps model, lineage, and metric lookups current after you edit files or run dbt outside <Constant name="wizard" />.
+- **Fix:** <Constant name="wizard" /> Desktop now shows clearer ownership and trust prompts for shared repositories. You can also start chats and terminals in trusted repositories owned by another user, including on Windows subsystems for Linux (WSL).
+- **Fix:** Subagent approval requests in <Constant name="wizard" /> Desktop now appear in the chat that owns them and name the requesting agent.
 - **Fix:** <Constant name="wizard" /> Desktop now handles <Constant name="dbt_platform" /> sign-in errors better, fixes issues with the **Changes** and **Summary** panes (including generating a new summary when non-agent changes are detected), and fixes edge cases when creating environments with a missing adapter.
 
 #### Studio IDE {#studio-ide-october-2026}
@@ -139,11 +140,11 @@ The full list lives in website/release-note-areas.json.
 #### dbt State {#dbt-state-october-2026}
 
 - **New:** Billing admins now receive proactive email notifications about dbt State usage, including a warning at 80% of the monthly allowance (with a projected run-out date), a notification when the allowance is fully used and State is paused, and a reminder 7 days before a trial expires. All emails include plan-specific messaging and calls to action.
-- **Enhancement:** The dbt State usage graph now includes a dropdown to select the reporting period: this month, previous month, last 30 days, last 60 days, or last 90 days. The chart x-axis also shows month abbreviations when the selected range spans multiple months.
 - **New:** dbt State trial and DATT allowance updates:
   - **New:** Self-hosted dbt users using dbt State now get a free plan after their trial ends, with 1,000 daily active target tables (DATT) per month at no cost. Developer and paid <Constant name="dbt_platform" /> accounts also receive a monthly DATT allowance, with amounts and availability varying by plan. For more information, refer to [dbt State usage](/docs/platform/billing/dbt-state-usage).
   - **New:** When your dbt State trial ends, you’ll receive an email confirming your plan, monthly DATT allowance, and allowance end date if your plan has one.
   - **New:** If your dbt State trial has ended, dbt State is now active again on your account with your plan’s free monthly DATT allowance. No action is required.
+- **Enhancement:** The dbt State usage graph now includes a dropdown to select the reporting period: this month, previous month, last 30 days, last 60 days, or last 90 days. The chart x-axis also shows month abbreviations when the selected range spans multiple months.
 - **Enhancement:** The dbt State navigation option no longer carries a "Preview" badge. Incomplete projects (those without a repository or skipped setup) are also excluded from automatic project selection on the dbt State home page.
 
 #### Catalog {#catalog-october-2026}
@@ -154,9 +155,9 @@ The full list lives in website/release-note-areas.json.
 
 - **New:** **Filter the Model timing table:** On the Model timing tab, you can now filter [Resource details](/docs/deploy/run-visibility#resource-details) to find what's slowing a run down. Use the **Est. critical path** filter to show only the resources on the longest chain of dependent resources, which sets the minimum run time (Yes), or everything else (No). Use the resource type filter to narrow the list to **Model**, **Test**, **Snapshot**, or **Exposure**. You can still search by name.
 - **Enhancement:** If a [usage chart](/docs/platform/billing/how-pricing-works#viewing-usage-in-the-product) fails to load or refresh, you see a message and a **Retry** button. This applies to the monthly models built chart on **Project home** and the top jobs chart on an **Environment** page. A chart that loaded earlier keeps its last numbers and shows when they were updated while the retry runs.
+- **Enhancement:** The webhook subscription job picker now searches and paginates server-side. You see a search box with debounced filtering and scroll-to-load pagination instead of a slow or frozen dropdown when your account has many jobs.
 - **Fix:** Open a job run, select a step, and open **System logs**. That tab now includes the logs from your models, so you can troubleshoot a failed run in one place.
 - **Behavior change:** The **System logs** tab on a run step used to show only system messages. It now shows every log for that step, including logs from your models. If you used this tab for system messages only, you will see more lines there.
-- **Enhancement:** The webhook subscription job picker now searches and paginates server-side. You see a search box with debounced filtering and scroll-to-load pagination instead of a slow or frozen dropdown when your account has many jobs.
 
 #### Semantic Layer {#semantic-layer-october-2026}
 
@@ -164,18 +165,18 @@ The full list lives in website/release-note-areas.json.
 
 #### APIs, Identity, and Administration {#apis-identity-and-administration-october-2026}
 
+- **New:** Admins can now set the [default license](/docs/platform/manage-access/seats-and-users#default-license-for-new-users) for new users who aren't assigned a license through SSO, SCIM, or license mapping. Choose Developer, Read-Only, or Analyst. 
+Admins can check their settings and update the default as needed. This is available for all multi-tenant and single-tenant accounts.
+- **New:** The jobs list API endpoint (`GET /api/v2/accounts/{account_id}/jobs/`) now accepts a `pk__in` query parameter, letting you retrieve up to 500 specific jobs by ID in a single request.
+- **New:** You can now specify `clickhouse_v0` as the adapter_version when creating connections and credentials, filtering connections, and retrieving adapter schemas in the Administrative API v3. Contact your account representative to enable.
 - **Enhancement:** **Longer email verification window**: Email verification short codes now expire after 10 minutes instead of 5, giving you more time to complete account verification.
+- **Enhancement:** You can now sort columns, search by connection name, and filter by connection type, credentials, and connection method (private link or OAuth).
+- **Enhancement:** The GET, POST, and PATCH endpoints for Microsoft Entra applications now return `client_id` and `tenant_id` in their responses, giving you visibility into your Azure DevOps (ADO) integration configuration.
 - **Fix:** If a signup uses an email address that already has an account, including when two signups use that email at the same time, dbt shows a page that says the email is already taken. You no longer get a generic error page.
 - **Fix:** A request with a bad value now returns a clear error instead of a server error. An unsupported `order_by` value on version 3 list endpoints, and a negative or too-large `limit` or `offset` on version 2 list endpoints, return a 400 error (the request was invalid). Creating a project with `POST /api/v2/accounts/{id}/projects/` also returns a 400 error when `type` is not text. Getting run timing with `GET /api/v3/accounts/:id/projects/:id/runs/:id/timing/` returns a 404 (not found) when that run is not in the account or project in the URL.
 - **Fix:** If you manage access through SCIM (your identity provider, like Okta or Microsoft Entra ID), you can change the user's license type before they even log in. Previously this only worked for active users, but now it works for pending and not-yet-fully-signed-in users too. dbt still checks that you have an available seat of that license type before applying any change.
 - **Fix:** API requests with an invalid permission value or a malformed body now return a descriptive error instead of a server error.
-- **New:** Admins can now set the [default license](/docs/platform/manage-access/seats-and-users#default-license-for-new-users) for new users who aren't assigned a license through SSO, SCIM, or license mapping. Choose Developer, Read-Only, or Analyst. 
-Admins can check their settings and update the default as needed. This is available for all multi-tenant and single-tenant accounts.
-- **Enhancement:** You can now sort columns, search by connection name, and filter by connection type, credentials, and connection method (private link or OAuth).
 - **Behavior change:** You can no longer create a System for Cross-domain Identity Management (SCIM) token with a personal access token or a service token. Sign in to dbt and [create a SCIM token](/docs/platform/manage-access/scim#set-up-dbt).
-- **New:** The jobs list API endpoint (`GET /api/v2/accounts/{account_id}/jobs/`) now accepts a `pk__in` query parameter, letting you retrieve up to 500 specific jobs by ID in a single request.
-- **New:** You can now specify `clickhouse_v0` as the adapter_version when creating connections and credentials, filtering connections, and retrieving adapter schemas in the Administrative API v3. Contact your account representative to enable.
-- **Enhancement:** The GET, POST, and PATCH endpoints for Microsoft Entra applications now return `client_id` and `tenant_id` in their responses, giving you visibility into your Azure DevOps (ADO) integration configuration.
 
 #### Insights {#insights-october-2026}
 
@@ -190,10 +191,10 @@ Admins can check their settings and update the default as needed. This is availa
 #### dbt platform {#dbt-platform-october-2026}
 
 - **New:** Set [`allow_jinja_file_extensions`](/reference/global-configs/behavior-flags/allow_jinja_file_extensions) in your project config so dbt reads files with an extra Jinja ending, such as `model.sql.j2` or `doc.md.j2`. Jinja is the templating language dbt already uses inside SQL and Markdown files.
+- **New:** You can now [route cross-project `ref()`](/docs/mesh/govern/project-dependencies#route-environments-across-projects) to a specific upstream environment, such as Staging, instead of only the default Production or Staging environment.
 - **Enhancement:** If a project can use dbt v2 but you do not have permission to select it, the dbt v2 choices stay visible and disabled in the environment, job, and development version menus. The tooltip says that an Account Admin or a [v2 Migration Admin](/docs/platform/manage-access/enterprise-permissions#v2-migration-admin) has to select dbt v2.
 - **Enhancement:** In the dbt VS Code extension, drag the edge of a column header in the query results panel to make that column wider or narrower.
 - **Fix:** [`dbt fmt`](/reference/commands/lint#dbt-format) no longer shifts a Jinja tag to the left when that same line ends with a SQL comment. It also settles on one indentation for Jinja tags inside a `for` loop, and for an `{% if %}...{%- else -%}` block whose condition looks up warehouse information, such as the columns on a table. Running `dbt fmt` again does not keep changing those lines.
-- **New:** You can now [route cross-project `ref()`](/docs/mesh/govern/project-dependencies#route-environments-across-projects) to a specific upstream environment, such as Staging, instead of only the default Production or Staging environment.
 
 ## September 2026
 
@@ -216,16 +217,16 @@ Admins can check their settings and update the default as needed. This is availa
 
 #### Catalog {#catalog-september-2026}
 
-- **Enhancement:** The [column lineage](/docs/explore/column-level-lineage#column-lens) panel now shows SQL transformation expressions for all users. You can see how columns are derived across your lineage without any additional configuration.
 - **New:** The models table in Catalog navigation now shows a column count for each model.
+- **Enhancement:** The [column lineage](/docs/explore/column-level-lineage#column-lens) panel now shows SQL transformation expressions for all users. You can see how columns are derived across your lineage without any additional configuration.
 - **Enhancement:** The **Upstream Sources** table on the model detail pages now sorts by freshness severity by default (Error first, Pass last). Click **Name** or **Status** to change the sort order. The **Status** column also no longer overflows on wide screens.
 
 #### Orchestration and run status {#orchestration-and-run-status-september-2026}
 
 - **Enhancement:** If a CI job can't find the commit for its deferral baseline, [SQL linting](/docs/deploy/continuous-integration#sql-linting) no longer fails the run. Instead, dbt shows a warning with the commit SHA it couldn't resolve and lints the entire project. To refresh the baseline, rerun the job you defer to.
 - **Enhancement:** Job settings now always show a dbt State mode dropdown with inherit, on, or off. This replaces the previous per-job checkbox. You can also set dbt State as the default for a deployment environment.
-- **Fix:** Models with a "Warned" status now appear correctly in the [Execution timeline](/docs/deploy/run-visibility#execution-timeline) Gantt chart. The [critical path, peak concurrency, average active, and longest model](/docs/deploy/run-visibility#metric-tiles) summary tiles now include warned models in their calculations.
 - **Enhancement:** The model timing Gantt chart no longer limits groups to 2,000 rows. You can now see all models in the timing view for large runs.
+- **Fix:** Models with a "Warned" status now appear correctly in the [Execution timeline](/docs/deploy/run-visibility#execution-timeline) Gantt chart. The [critical path, peak concurrency, average active, and longest model](/docs/deploy/run-visibility#metric-tiles) summary tiles now include warned models in their calculations.
 
 #### Semantic Layer {#semantic-layer-september-2026}
 
@@ -234,8 +235,8 @@ Admins can check their settings and update the default as needed. This is availa
 
 #### APIs, Identity, and Administration {#apis-identity-and-administration-september-2026}
 
-- **Enhancement:** The external metadata ingestion checkbox in connection settings is now hidden unless it is already enabled for that connection. The toggle has also been removed from the account-level settings page.
 - **Private beta:** Enterprise and Enterprise+ accounts can now [bring their own GitHub application](/docs/platform/git/connect-github#custom-github-application) to natively connect GitHub Enterprise Server (self-hosted) and GitHub Enterprise Cloud with data residency (hosted on `ghe.com`), instead of using a git URL and SSH. Reach out to your account manager to join the private beta.
+- **Enhancement:** The external metadata ingestion checkbox in connection settings is now hidden unless it is already enabled for that connection. The toggle has also been removed from the account-level settings page.
 - **Enhancement:** Read-only users can now see their assigned analytics connection in project settings instead of **Not configured**.
 - **Enhancement:** When a GitLab host is unreachable, affected API endpoints now return HTTP 503 with the message "GitLab is unavailable, please try again." instead of an unclear failure. This applies when you create a repository or list GitLab groups.
 - **Fix:** Cross-account write attempts now return HTTP 403 Forbidden instead of a generic 500 Internal Server Error, so you get a clear rejection when the account doesn't match.
@@ -360,14 +361,14 @@ Two other things moved:
 #### dbt State {#dbt-state-august-2026}
 
 - **New:** A new **Explain** tab on the run details page shows dbt State's decision for each model in a run (rebuilt, reused, or cloned), with expandable details, search, and Comma-Separated Values (CSV) download. You can use this tab to investigate why each model was rebuilt or reused. Contact your account manager to enable.
+- **New:** The [`allow_clones`](/reference/resource-configs/allow-clones) profile-level setting lets you control whether dbt State can clone tables into a target environment. Previously, there was no way to disable cloning &mdash; dbt State always cloned into any environment when a matching table was found.
+- **New**: [`compare_unrendered_code`](/reference/resource-configs/compare-unrendered-code) is a new dbt State config that checks the Jinja template for unrendered code changes. If dbt detects unrendered code changes, it then compares the rendered SQL. A rebuild only occurs when _both_ have changed. This prevents unnecessary rebuilds for nodes that use non-deterministic macros or environment variables.
+- **New:** When dbt State is enabled, you can run `dbt state explain` (<Constant name="core_v2" />) or `dbt-state explain` (<Constant name="core" /> plugin) in the CLI after a job finishes to see why dbt State made each decision and whether each node was built, reused, or cloned. For a detailed breakdown, run the command with `--verbose -s my_node_name` to see the table analysis, query analysis, and data freshness analysis for a specific node. For more information, refer to [`dbt state explain`](/reference/commands/state-explain).
 - **Enhancement:** Non-admin users now see an "Ask an admin to enable" message on the <Constant name="wizard" /> and dbt State cards in Billing & Usage when a trial is available but they lack permission to start it, instead of a blank space. The same message appears if a non-admin tries to start a trial from a dbt State or <Constant name="wizard" /> link.
 - **Enhancement:** dbt State is now available for jobs running on the Compatible, <Constant name="fusion" /> Extended, and <Constant name="fusion" /> Fallback release tracks, in addition to previously supported tracks.
 - **Enhancement:** [dbt State](/docs/deploy/dbt-state-about) now reuses views that only use `select *` on CTEs. Previously, any `select *` anywhere in a view caused a rebuild. Views that use `select *` directly on a `ref()` or `source()` still force a rebuild, because dbt cannot safely determine the output columns at parse time. For more information, refer to [Views with `select *`](/faqs/State/views-rebuilt#views-with-select).
 - **Enhancement:** dbt State now fetches table metadata in the background at the start of each run, so execution doesn't stall. Any node that is ready to skip or clone proceeds immediately, without waiting for the fetch to complete. Previously, dbt waited for the entire metadata fetch to complete before any node could execute. For more details, refer to [About dbt State](/docs/deploy/dbt-state-about).
 - **Enhancement:** On Snowflake, when [`metadata_warehouse`](/reference/resource-configs/metadata-warehouse) is configured, dbt State now issues multiple, individual queries (one per schema) in parallel on the dedicated warehouse &mdash; faster than the single, consolidated query dbt runs by default. Without a dedicated warehouse, dbt now emits a warning if the metadata fetch takes longer than 15 seconds.
-- **New:** The [`allow_clones`](/reference/resource-configs/allow-clones) profile-level setting lets you control whether dbt State can clone tables into a target environment. Previously, there was no way to disable cloning &mdash; dbt State always cloned into any environment when a matching table was found.
-- **New**: [`compare_unrendered_code`](/reference/resource-configs/compare-unrendered-code) is a new dbt State config that checks the Jinja template for unrendered code changes. If dbt detects unrendered code changes, it then compares the rendered SQL. A rebuild only occurs when _both_ have changed. This prevents unnecessary rebuilds for nodes that use non-deterministic macros or environment variables.
-- **New:** When dbt State is enabled, you can run `dbt state explain` (<Constant name="core_v2" />) or `dbt-state explain` (<Constant name="core" /> plugin) in the CLI after a job finishes to see why dbt State made each decision and whether each node was built, reused, or cloned. For a detailed breakdown, run the command with `--verbose -s my_node_name` to see the table analysis, query analysis, and data freshness analysis for a specific node. For more information, refer to [`dbt state explain`](/reference/commands/state-explain).
 
 #### Catalog {#catalog-august-2026}
 
@@ -375,8 +376,8 @@ Two other things moved:
 
 #### Orchestration and run status {#orchestration-and-run-status-august-2026}
 
-- **Enhancement:** When compare results are larger than 50 MB, pull request comments now show a "too large to summarize" notice with a link to the full compare report, instead of failing with no message.
 - **New:** The [Model timing tab](/docs/deploy/run-visibility#model-timing-tab) in job run details has been redesigned with a richer, scalable view that includes metric tiles, an execution timeline with grouping and highlight controls, a concurrency-over-time chart, and a searchable resource details table.
+- **Enhancement:** When compare results are larger than 50 MB, pull request comments now show a "too large to summarize" notice with a link to the full compare report, instead of failing with no message.
 
 #### Semantic Layer {#semantic-layer-august-2026}
 
@@ -408,8 +409,8 @@ Two other things moved:
 - **Enhancement:** The agent now automatically retries transient LLM provider failures (network timeouts, rate limits, and server errors) with exponential backoff, so brief provider blips are less likely to surface as errors during your session.
 - **Enhancement:** Client tool loops now run until the agent finishes rather than stopping after 50 iterations, eliminating premature termination of long-running agentic workflows.
 - **Enhancement:** When a Bring-Your-Own-Key (BYOK) OpenAI model is configured with a deployment that does not support embeddings (for example, a `gpt-4o` Azure deployment), the similar models feature now returns an actionable error message prompting you to use a text-embedding model instead of a generic internal error.
-- **Fix:** Claude-backed agents can return longer answers and handle some previously broken interactions more reliably.
 - **Enhancement:** When the agent compresses conversation context in the background, a spinner labeled **Optimizing conversation context…** now appears in the chat area. Submitting new messages and stopping the agent are disabled while compaction is in progress to prevent conflicts.
+- **Fix:** Claude-backed agents can return longer answers and handle some previously broken interactions more reliably.
 
 ##### Wizard
 
@@ -424,9 +425,9 @@ Two other things moved:
 
 #### dbt State {#dbt-state-july-2026}
 
+- **New:** You can now access dbt State settings from **Account settings** > **Billing & Usage**, previously found under **State**. You can manage your trial, enable dbt State on environments and jobs, and set spend alerts &mdash; all in one place. For details, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
 - **Enhancement:** The [dbt State usage page](/docs/deploy/dbt-state-interface) now shows daily active target tables (DATTs) split into **Billable** and **Free**. During a trial, all DATTs are counted as free.
 - **Enhancement:** The "Committed spend" card is now labeled "Consumption pool" with copy explaining that usage-based features like dbt State draw from it. The card now appears between the current plan metric tiles and the product-specific sections on billing Overview and usage tab pages.
-- **New:** You can now access dbt State settings from **Account settings** > **Billing & Usage**, previously found under **State**. You can manage your trial, enable dbt State on environments and jobs, and set spend alerts &mdash; all in one place. For details, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
 
 #### Catalog {#catalog-july-2026}
 
@@ -441,8 +442,8 @@ Two other things moved:
 #### Orchestration and run status {#orchestration-and-run-status-july-2026}
 
 - **New:** When a job is deactivated, the banner now shows a specific reason (repeated run failures, account inactivity, or a generic fallback) with tailored reactivation instructions for each case.
-- **Enhancement:** Memory-tuning optimizations are now applied automatically to all <Constant name="fusion" /> runs, reducing out-of-memory kill rates and improving overall uptime.
 - **New:** You can now create hybrid jobs to track runs triggered by an external orchestrator. Hybrid jobs have a simplified setup that omits execution steps, triggers, advanced settings, and cost-optimization controls. They display **Externally triggered** as their next-run schedule and are available only for projects configured as [Hybrid projects](/docs/deploy/hybrid-projects).
+- **Enhancement:** Memory-tuning optimizations are now applied automatically to all <Constant name="fusion" /> runs, reducing out-of-memory kill rates and improving overall uptime.
 - **Enhancement:** Runs using a <Constant name="fusion" /> dbt version now invoke the built-in [`dbt lint`](/reference/commands/lint?version=2.0) command instead of SQLFluff. <Constant name="fusion" /> virtual environments do not include SQLFluff, so linting now works for all Fusion-version runs and runs faster.
 - **Fix:** When a run pod is Out of Memory (OOM)-killed and restarted, the platform now passes the correct status code and message to the config API so the run transitions to a failed state in the <Constant name="dbt_platform" /> UI instead of remaining **running** indefinitely.
 
@@ -457,13 +458,13 @@ Two other things moved:
 
 #### APIs, Identity, and Administration {#apis-identity-and-administration-july-2026}
 
+- **New:** Redshift development connections now support [external OAuth](/docs/platform/manage-access/redshift-external-oauth) (Okta or Entra ID) through AWS IAM Identity Center.
 - **Enhancement:** When saving a <Constant name="fusion" /> upgrade fails, the platform now displays the top-level user message from the API instead of internal field-level error details.
 - **Enhancement:** The Daily Active Target Tables (DATTs) chart now stacks billable and free series, so trial users whose usage is entirely free see real bars instead of an empty chart.
 - **Enhancement:** Users with `user_credential_write` access can now view and manage their credentials without needing `credentials_read` privileges. This update reduces the need for additional, broader permissions when performing credential updates.
 - **Enhancement:** The users table, group member lists, and user edit drawer now search, filter, sort, and paginate server-side. On large accounts, all users are findable by name, email, or license type, group member search no longer misses results beyond the first page, and users beyond the first page can be opened and edited in the user edit drawer.
 - **Enhancement:** The **Enable global account discovery** setting on the **Account settings** page is now visible to all entitled accounts without requiring a feature flag. You can allow or restrict account discovery from [Account settings](/docs/platform/account-settings#enable-global-account-discovery).
 - **Behavior change:** You can no longer create a [service token](/docs/dbt-apis/service-tokens) using an account-scoped [personal access token](/docs/dbt-apis/user-tokens) (PAT). Requests to the service tokens endpoint authenticated with a PAT now return a `400` error. Use a service token to create new ones instead.
-- **New:** Redshift development connections now support [external OAuth](/docs/platform/manage-access/redshift-external-oauth) (Okta or Entra ID) through AWS IAM Identity Center.
 
 #### Insights {#insights-july-2026}
 
@@ -530,13 +531,13 @@ To simplify the docs experience, clarify availability, and make it easier to fin
     - `license_type`: Filters by license, for example `developer` or `read_only`. 
     
     You can combine them with `limit` and `offset`, and `total_count` reflects the filtered results.
-- **Fix:** If you use the Administrator API to manage [SCIM](/docs/platform/manage-access/scim) to sync users from your identity provider, the `/api/v3/accounts/{account_id}/scim/v2/Users` response now returns `value` and `display` on each embedded group reference. `id` and `displayName` are retained so existing integrations keep working — this is a non-breaking change.
 - **Enhancement**: The [Administrative API v3](/dbt-cloud/api-v3) now supports private endpoint operations &mdash; [`list`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0#/operations/List%20Private%20Endpoints), [`create`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0#/operations/Create%20Private%20Endpoint), [`retrieve`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0#/operations/Retrieve%20Private%20Endpoint), [`update`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0#/operations/Update%20Private%20Endpoint), and [`delete`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0#/operations/Delete%20Private%20Endpoint). Use these endpoints to manage private connectivity programmatically.
+- **Fix:** If you use the Administrator API to manage [SCIM](/docs/platform/manage-access/scim) to sync users from your identity provider, the `/api/v3/accounts/{account_id}/scim/v2/Users` response now returns `value` and `display` on each embedded group reference. `id` and `displayName` are retained so existing integrations keep working — this is a non-breaking change.
 
 #### Insights {#insights-june-2026}
 
-- **Enhancement**: The [Cost Insights](/docs/explore/cost-insights) table view now includes **All** and **Jobs** buttons to switch between an aggregated cost view and a per-job cost breakdown. Available in the project dashboard and the **Model performance** section in <Constant name="catalog" />. When **Jobs** is selected, the CSV export includes job-level data. For more information, refer to [Explore cost data](/docs/explore/explore-cost-data).
 - **Beta**: [Cost Insights](/docs/explore/cost-insights) now supports Amazon Redshift Serverless and provisioned clusters. Configure your platform metadata credentials with the `sys:monitor` role or `SYSLOG ACCESS UNRESTRICTED` permission to allow dbt to read cross-user query history, then set your pricing in Cost Insights settings. For more information, refer to [Set up Cost Insights](/docs/explore/set-up-cost-insights).
+- **Enhancement**: The [Cost Insights](/docs/explore/cost-insights) table view now includes **All** and **Jobs** buttons to switch between an aggregated cost view and a per-job cost breakdown. Available in the project dashboard and the **Model performance** section in <Constant name="catalog" />. When **Jobs** is selected, the CSV export includes job-level data. For more information, refer to [Explore cost data](/docs/explore/explore-cost-data).
 
 #### Integrations {#integrations-june-2026}
 
@@ -577,9 +578,9 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 
 #### dbt AI and agents {#dbt-ai-and-agents-may-2026}
 
+- **Preview**: The [Developer agent](/docs/dbt-ai/wizard-ide) is now in preview. Use natural language prompts to build or refactor models, and generate SQL, tests, documentation, and semantic models from scratch. For more information, refer to the [Developer agent](/docs/dbt-ai/wizard-ide).
 - **Enhancement:** The admin API toolset (job management and run operations) is now always available in the <Constant name="dbt" /> <Constant name="copilot" /> [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) and no longer requires a feature flag. You no longer need to contact your account manager to enable these tools.
 - **Enhancement:** Commands run by <Constant name="copilot" /> and the [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) now appear in the <Constant name="studio_ide" /> **Commands** tab with a <Constant name="copilot" /> icon and **Run by Copilot** tooltip, so you can tell agent-run commands apart from manually run ones.
-- **Preview**: The [Developer agent](/docs/dbt-ai/wizard-ide) is now in preview. Use natural language prompts to build or refactor models, and generate SQL, tests, documentation, and semantic models from scratch. For more information, refer to the [Developer agent](/docs/dbt-ai/wizard-ide).
 - **Enhancement:** The [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) input bar now supports arrow key history navigation. Press the up arrow at the start of the input to cycle through previous inputs, and the down arrow at the end to return to more recent ones. dbt stores up to 5 previous inputs per session.
 - **Enhancement:** Tool approval and file edit dialogs in the [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) now support number key shortcuts (1, 2, 3) to select options. The first option is auto-focused when a dialog appears, so you can act immediately without clicking.
 
@@ -590,17 +591,17 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 #### Orchestration and run status {#orchestration-and-run-status-may-2026}
 
 - **New:** The [Job creator permission set](/docs/platform/manage-access/enterprise-permissions#job-creator) is now available for Enterprise accounts. Assign it to users who need to create, edit, and run jobs within assigned projects and environments without access to edit environments or environment variables.
-- **Fix:** When a job cannot clone its repository because no remote URL is configured, the error message now explains the most likely causes (an invalid Git remote URL, a Git provider outage, or a deprecated HTTPS connection) and directs you to verify the URL, confirm your provider is operational, and ensure the repository uses SSH with deploy keys before retrying.
 - **New:** The **Notification Manager** [permission set](/docs/platform/manage-access/enterprise-permissions) is now available for Enterprise accounts. Assign it to users who need to manage Slack, Microsoft Teams, and email job notifications across all projects without requiring full Account Admin access.
 - **Enhanced** <Constant name="fusion" /> eligibility job prompts now use a **Debug on <Constant name="fusion" />** dropdown instead of a standalone **Run once on <Constant name="fusion" />** button. For more information, refer to [Update your jobs](/guides/prepare-v2-upgrade?step=7).
+- **Fix:** When a job cannot clone its repository because no remote URL is configured, the error message now explains the most likely causes (an invalid Git remote URL, a Git provider outage, or a deprecated HTTPS connection) and directs you to verify the URL, confirm your provider is operational, and ensure the repository uses SSH with deploy keys before retrying.
 
 #### APIs, Identity, and Administration {#apis-identity-and-administration-may-2026}
 
-- **Enhancement:** Users granted `user_credential_write` can access **Your profile** > **Credentials** without `develop_access` (including read-only users). Environment variable overrides and dbt version overrides still require `develop_access`. Refer to [Enterprise permissions](/docs/platform/manage-access/enterprise-permissions) for more information.
 - **New:** Fusion release tracks are now being rolled out across accounts in phases. Refer to [Fusion release tracks](/docs/dbt-versions/dbt-release-tracks?version=2.0#dbt-v2-release-tracks) for more information.
-- **Behavior change:** When you set up single sign-on (SSO) in the <Constant name="dbt_platform" />, the SSO slug is now system-generated and read-only. Existing SSO configurations remain valid, but you can’t change the slug. If you delete and recreate your SSO configuration, the new configuration uses a new, system-generated slug. Refer to [Single sign-on overview](/docs/platform/manage-access/sso-overview) for more information.
+- **Enhancement:** Users granted `user_credential_write` can access **Your profile** > **Credentials** without `develop_access` (including read-only users). Environment variable overrides and dbt version overrides still require `develop_access`. Refer to [Enterprise permissions](/docs/platform/manage-access/enterprise-permissions) for more information.
 - **Enhancement:** The [dbt VS Code extension](/docs/install-dbt-extension?version=2.0) now supports account creation. If you sign in with an existing dbt user that doesn't have an associated <Constant name="dbt_platform"/> account, the registration flow prompts you to create one instead of requiring a separate workflow.
 - **Enhancement:** In the Discovery API [Tests object schema](/docs/dbt-apis/discovery-schema-environment-applied-tests), you can now filter `environment.applied.tests` by multiple test result statuses in a single query using the new `lastKnownResults: [TestStatus]` filter field on `TestAppliedFilter`. The single-value `lastKnownResult` filter field is still supported but deprecated. Update your queries to use `lastKnownResults` going forward.
+- **Behavior change:** When you set up single sign-on (SSO) in the <Constant name="dbt_platform" />, the SSO slug is now system-generated and read-only. Existing SSO configurations remain valid, but you can’t change the slug. If you delete and recreate your SSO configuration, the new configuration uses a new, system-generated slug. Refer to [Single sign-on overview](/docs/platform/manage-access/sso-overview) for more information.
 
 #### Insights {#insights-may-2026}
 
@@ -608,23 +609,23 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 
 #### Integrations {#integrations-may-2026}
 
+- **New:** The Fusion + Snowflake connection experience is now generally available on the dbt platform. See our [Fusion upgrade guides](/guides/prepare-v2-upgrade?step=1) for information on enabling the upgrade workflows for your environments today!
 - **Enhancement:** Repository clone failures now surface a more actionable diagnostic message to help you resolve common issues faster. For guidance, refer to [Troubleshooting clone errors](/docs/platform/git/import-a-project-by-git-url#troubleshooting-clone-errors).
 - **Fix:** The connection test failure message now prompts you to verify your connection details and confirm that your credentials have access to the data warehouse, rather than showing a generic failure message.
-- **New:** The Fusion + Snowflake connection experience is now generally available on the dbt platform. See our [Fusion upgrade guides](/guides/prepare-v2-upgrade?step=1) for information on enabling the upgrade workflows for your environments today!
 
 #### dbt platform {#dbt-platform-may-2026}
 
-- **Fix:** [`state:modified`](/reference/node-selection/methods#state) now detects changes to [UDF](/docs/build/udfs) properties (such as `arguments` and `returns`) defined in `.yml` files. Previously, only changes to the SQL or Python function body were detected.
 - **New:** [Native private packages](/docs/build/packages#native-private-packages) are now generally available (GA).
+- **Fix:** [`state:modified`](/reference/node-selection/methods#state) now detects changes to [UDF](/docs/build/udfs) properties (such as `arguments` and `returns`) defined in `.yml` files. Previously, only changes to the SQL or Python function body were detected.
 
 ## April 2026
 
 #### dbt AI and agents {#dbt-ai-and-agents-april-2026}
 
-- **Enhancement:** When a dbt command run by the [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) times out, the agent now automatically attempts to cancel the stuck invocation on the server and returns a retry-friendly message, letting you decide whether to retry. Previously, timeouts resulted in an unhandled error. This applies to both model invocations and autofix runs.
-- **Enhancement:** The dbt VS Code extension's **Get started** panel has been redesigned and surfaces the exact next setup step you need to install the extension and <Constant name="fusion"/>. The new panel also supports a new **agentic migration** option that helps you upgrade your project to <Constant name="fusion"/>  automatically in Copilot or Cursor. For more info, see [Getting started](/docs/install-dbt-extension#getting-started).
 - **New**: The [dbt Remote dbt MCP server](/docs/dbt-ai/about-mcp?version=2.0) now supports Admin API calls! This allows users to troubleshoot job-related errors in agents like Claude and Cursor.
 - **New**: The [Developer agent](/docs/dbt-ai/wizard-ide) is now in beta. Use the Developer agent to write or refactor dbt models from natural language, generate documentation, tests, semantic models, and SQL code from scratch, giving you the flexibility to modify or fix generated code. For more information, refer to the [Developer agent](/docs/dbt-ai/wizard-ide).
+- **Enhancement:** When a dbt command run by the [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) times out, the agent now automatically attempts to cancel the stuck invocation on the server and returns a retry-friendly message, letting you decide whether to retry. Previously, timeouts resulted in an unhandled error. This applies to both model invocations and autofix runs.
+- **Enhancement:** The dbt VS Code extension's **Get started** panel has been redesigned and surfaces the exact next setup step you need to install the extension and <Constant name="fusion"/>. The new panel also supports a new **agentic migration** option that helps you upgrade your project to <Constant name="fusion"/>  automatically in Copilot or Cursor. For more info, see [Getting started](/docs/install-dbt-extension#getting-started).
 
 ##### Wizard
 
@@ -639,9 +640,9 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 
 #### Orchestration and run status {#orchestration-and-run-status-april-2026}
 
+- **Beta**: DuckDB is now supported in the <Constant name="fusion_engine" /> CLI, which lets you run local dbt projects without a warehouse account. For more information, refer to [Connect DuckDB](/docs/local/connect-data-platform/duckdb-setup).
 - **Enhancement:** In <Constant name="dbt_platform" /> run logs, `dbt ls` and `dbt list` now display node results as **No-op** instead of **Unknown** when using <Constant name="fusion_engine" />. Refer to [dbt ls (list)](/reference/commands/list) for more information.
 - **Enhancement:** [Slack notifications (account-level)](/docs/deploy/job-notifications#slack-notifications-account) and [Microsoft Teams notifications](/docs/deploy/job-notifications#microsoft-teams-notifications) are now generally available, enabling you to send job notifications directly to Slack channels configured at the account level, and to Teams channels.
-- **Beta**: DuckDB is now supported in the <Constant name="fusion_engine" /> CLI, which lets you run local dbt projects without a warehouse account. For more information, refer to [Connect DuckDB](/docs/local/connect-data-platform/duckdb-setup).
 
 #### APIs, Identity, and Administration {#apis-identity-and-administration-april-2026}
 
@@ -665,9 +666,9 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 #### Orchestration and run status {#orchestration-and-run-status-march-2026}
 
 - **Enhancement:** [Deferral](/reference/node-selection/defer) now supports [user-defined functions (UDFs)](/docs/build/udfs). When you run a dbt command with `--defer` and `--state`, dbt resolves `function()` calls from the state manifest. This lets you run models that depend on UDFs without first building those UDFs in your current target.
+- **Enhancement**: The Model Timing tab displays an informative banner for <Constant name="fusion_engine" /> runs instead of the timing chart. The banner explains "Model timing is not yet available for Fusion runs" and provides context about threading differences. Non-Fusion runs continue to show the timing chart normally.
 - **Fix**: Status messages that exceed the 1024 character limit are now automatically truncated to prevent validation errors and run timeouts. Previously, long status messages could cause runs to fail with unhandled exceptions or result in lost status information. The system now logs when truncation occurs to help identify and optimize verbose status messages.
 - **Fix:** Resolved an issue where [retrying failed runs](/docs/deploy/retry-jobs) that were triggered from Git tags would use the wrong commit. Previously, when runs were triggered from Git tags instead of branches, the system would enter a detached HEAD state, causing retries to use the latest commit on HEAD rather than the original tagged commit. The fix now correctly preserves and uses the original Git tag reference when retrying runs, ensuring consistency between the initial run and any retries.
-- **Enhancement**: The Model Timing tab displays an informative banner for <Constant name="fusion_engine" /> runs instead of the timing chart. The banner explains "Model timing is not yet available for Fusion runs" and provides context about threading differences. Non-Fusion runs continue to show the timing chart normally.
 - **Behavior change**: [Snowflake plans to increase](https://docs.snowflake.com/en/release-notes/bcr-bundles/un-bundled/bcr-2118) the default column size for string and binary data types in September 2026. `dbt-snowflake` versions below v1.10.6 may fail to build certain incremental models when this change is deployed. [Assess impact and take any required actions](/reference/resource-configs/snowflake-configs#assess-impact-and-required-actions).
 
 #### Semantic Layer {#semantic-layer-march-2026}

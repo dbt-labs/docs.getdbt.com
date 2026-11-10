@@ -174,6 +174,7 @@ dbt platform release notes live in one file: `website/docs/docs/dbt-versions/rel
 - If you can't tell which area fits, add the bullet directly under the month heading. The `File release notes by area` workflow (`.github/scripts/file_release_notes.py`) moves it under an area when the note has a docs link or product name, and otherwise asks in a pull request comment.
 - Under **dbt AI and agents**, Wizard notes go under a `##### Wizard` or `##### Wizard Desktop` sub-heading.
 - Start each bullet with `**New:**`, `**Enhancement:**`, `**Fix:**`, or `**Behavior change:**`.
+- Inside an area, keep notes in that order: New (including lifecycle labels such as Beta and Preview), Enhancement, Fix, then Behavior change. Put a new note first among the notes of its type.
 - Don't use `###` for areas. The RSS feed creates an item for every `##` and `###` heading in this file, so a new `###` heading notifies subscribers. `###` is only for event sections, such as summit announcements.
 - Don't rename or re-level existing `##` or `###` headings, for the same reason.
 

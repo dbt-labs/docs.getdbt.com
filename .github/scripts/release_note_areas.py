@@ -31,6 +31,19 @@ DOCS_LINK_RE = re.compile(
     r"\]\((?:https?://(?:www\.)?docs\.getdbt\.com)?(/[^)#?\s]+)"
 )
 WIZARD_RE = re.compile(r'<Constant name="wizard"|\bWizard\b')
+NOTE_TYPE_RE = re.compile(r"^-\s+\*\*([A-Za-z ]+?):?\*\*")
+
+# Order of notes inside an area. Lifecycle labels (Beta, Preview, and so on)
+# announce something new, so they sort with New.
+TYPE_ORDER = {
+    "enhancement": 1,
+    "enhancements": 1,
+    "enhanced": 1,
+    "fix": 2,
+    "fixes": 2,
+    "behavior change": 3,
+    "behavior changes": 3,
+}
 
 
 @dataclass(frozen=True)
@@ -214,10 +227,24 @@ def insert_notes(
 ) -> None:
     """Insert notes under `#### <area>` in a month, creating headings as needed.
 
-    Each note is a list of lines (a bullet and any lines nested under it). New
-    notes go at the top of the area, or at the top of the sub-group. Mutates
-    `lines`.
+    Each note is a list of lines (a bullet and any lines nested under it). A
+    new note goes first among the notes of its type in the area or sub-group
+    (see `type_rank`). Mutates `lines`.
     """
+    _insert_notes(lines, month_heading, area, notes, areas, subgroup)
+    start, end = month_range(lines, month_heading)
+    sort_notes(lines, areas, start, end)
+
+
+def _insert_notes(
+    lines: list[str],
+    month_heading: str,
+    area: str,
+    notes: list[list[str]],
+    areas: Areas,
+    subgroup: str | None = None,
+) -> None:
+    """Insert notes at the top of the area or sub-group."""
     flat = [line for note in notes for line in note]
     start, month_end = month_range(lines, month_heading)
     end = _areas_end(lines, start, month_end)
@@ -316,3 +343,56 @@ def unfiled_range(lines: list[str], month_heading: str) -> tuple[int, int]:
         month_end,
     )
     return start + 1, end
+
+
+def type_rank(note: list[str]) -> int:
+    """New (and lifecycle labels) first, then Enhancement, Fix, Behavior change."""
+    match = NOTE_TYPE_RE.match(note[0])
+    return TYPE_ORDER.get(match.group(1).strip().lower(), 0) if match else 0
+
+
+def sort_notes(
+    lines: list[str], areas: Areas, start: int = 0, end: int | None = None
+) -> bool:
+    """Sort the notes under each area heading by type, keeping their order
+    within a type. Only touches lists under a known `####` area heading (and
+    its `#####` sub-groups). Mutates `lines`; returns True if anything moved.
+    """
+    end = len(lines) if end is None else end
+    known = set(areas.heading_names)
+    result: list[str] = []
+    segment: list[str] = []
+    in_area = False
+
+    def flush() -> None:
+        if in_area:
+            before, notes = split_notes(segment)
+            if notes:
+                trailing = 0
+                while trailing < len(segment) and not segment[-1 - trailing].strip():
+                    trailing += 1
+                ordered = sorted(notes, key=type_rank)
+                result.extend(before)
+                result.extend(line for note in ordered for line in note)
+                result.extend([""] * trailing)
+                segment.clear()
+                return
+        result.extend(segment)
+        segment.clear()
+
+    for line in lines[start:end]:
+        if line.startswith("#"):
+            flush()
+            if line.startswith(("## ", "### ")):
+                in_area = False
+            elif line.startswith("#### "):
+                match = AREA_HEADING_RE.match(line)
+                in_area = bool(match and match.group(1).strip() in known)
+            result.append(line)
+        else:
+            segment.append(line)
+    flush()
+
+    changed = result != lines[start:end]
+    lines[start:end] = result
+    return changed

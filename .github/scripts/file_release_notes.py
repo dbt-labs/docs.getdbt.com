@@ -23,6 +23,7 @@ from release_note_areas import (
     area_anchor,
     insert_notes,
     load_areas,
+    sort_notes,
     split_notes,
     subgroup_for,
     unfiled_range,
@@ -77,7 +78,7 @@ def fix_headings(lines, month_headings, areas):
         if name in known:
             if "{#" not in line:
                 lines[index] = f"#### {name} {{#{area_anchor(name, month)}}}"
-                fixed.append(f"`#### {name}` in {month}")
+                fixed.append(f"Added the missing anchor to `#### {name}` in {month}")
         else:
             suggestion = areas.closest(name)
             if suggestion:
@@ -160,7 +161,7 @@ def build_report(filed, unclear, fixed, typos, areas, dry_run) -> str:
                 out.append(f"- **{area.name}**: {area.definition}")
         out.append("")
     if fixed:
-        out += ["### Added missing anchors", ""] + [f"- {item}" for item in fixed] + [""]
+        out += ["### Tidied up", ""] + [f"- {item}" for item in fixed] + [""]
     if typos:
         out += ["### Check these headings", ""] + [f"- {item}" for item in typos] + [""]
     return "\n".join(out)
@@ -182,6 +183,11 @@ def main() -> int:
 
     filed, unclear, months = file_notes(lines, areas)
     fixed, typos = fix_headings(lines, set(months), areas)
+    # Keep each area in type order: New, Enhancement, Fix, Behavior change.
+    before_sort = list(lines)
+    if sort_notes(lines, areas):
+        moved = sum(1 for old, new in zip(before_sort, lines) if old != new)
+        fixed.append(f"Put notes in type order inside their area ({moved} lines moved)")
     report = build_report(filed, unclear, fixed, typos, areas, args.dry_run)
     print(report)
     if args.report_file:

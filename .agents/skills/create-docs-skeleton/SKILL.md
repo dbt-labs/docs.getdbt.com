@@ -154,7 +154,9 @@ Don't use `###` for an area. The RSS feed creates an item for every `##` and
 `###` heading in that file, so a new `###` heading notifies subscribers.
 
 Use **Enhancement:**, **Fix:**, or **Behavior change:** instead of **New:**
-as appropriate — see the categories defined at the top of that file.
+as appropriate — see the categories defined at the top of that file. Inside an
+area, notes stay in that order (New, Enhancement, Fix, Behavior change), so put
+a new note first among the notes of its type.
 
 ## Sidebar wiring
 

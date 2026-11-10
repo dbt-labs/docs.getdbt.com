@@ -13,6 +13,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from file_release_notes import file_notes, fix_headings  # noqa: E402
 from release_note_areas import (  # noqa: E402
     insert_notes,
+    sort_notes,
     load_areas,
     subgroup_for,
     uses_area_layout,
@@ -122,6 +123,53 @@ class InsertTest(unittest.TestCase):
             lines.index("##### Wizard"), lines.index("##### Wizard Desktop")
         )
         self.assertEqual(lines[lines.index("##### Wizard") + 2], "- **New:** Wizard note.")
+
+    def test_note_goes_first_among_its_type(self):
+        lines = list(PAGE)
+        at = lines.index("- **Fix:** Existing Catalog note.")
+        lines[at:at] = ["- **New:** Older new note."]
+        insert_notes(lines, "November 2026", "Catalog", [["- **Fix:** Added fix."]], AREAS)
+        insert_notes(lines, "November 2026", "Catalog", [["- **Beta:** Added beta."]], AREAS)
+        self.assertEqual(
+            lines[at : at + 4],
+            [
+                "- **Beta:** Added beta.",
+                "- **New:** Older new note.",
+                "- **Fix:** Added fix.",
+                "- **Fix:** Existing Catalog note.",
+            ],
+        )
+
+    def test_sort_keeps_nested_lines_and_skips_event_sections(self):
+        lines = [
+            "## November 2026",
+            "",
+            "- **Fix:** Unfiled stays first.",
+            "- **New:** Unfiled stays second.",
+            "",
+            "#### Catalog {#catalog-november-2026}",
+            "",
+            "- **Behavior change**: Last.",
+            "- **Fix:** Third.",
+            "  - Nested under third.",
+            "- **Enhancement:** Second.",
+            "- **Preview:** First.",
+            "",
+            "### Summit 2026 announcements",
+            "",
+            "- **Fix:** Event stays first.",
+            "- **New:** Event stays second.",
+        ]
+        expected = lines[:7] + [
+            "- **Preview:** First.",
+            "- **Enhancement:** Second.",
+            "- **Fix:** Third.",
+            "  - Nested under third.",
+            "- **Behavior change**: Last.",
+        ] + lines[12:]
+        self.assertTrue(sort_notes(lines, AREAS))
+        self.assertEqual(lines, expected)
+        self.assertFalse(sort_notes(lines, AREAS))
 
     def test_other_months_are_untouched(self):
         lines = list(PAGE)
