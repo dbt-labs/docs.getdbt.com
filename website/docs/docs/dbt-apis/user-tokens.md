@@ -49,7 +49,7 @@ Set an expiration so a token stops working on its own, even if you forget about 
 
 <Lightbox src="/img/docs/dbt-platform/api-tokens/pat-expiry-options.png" width="80%" title="Choose an expiry when you create a personal access token" />
 
-The **Expires** column on the **Personal tokens** page shows the date and time each token stops working, in GMT. Tokens you created before expiry was available don't expire.
+The **Expires** column on the **Personal tokens** page shows the date and time each token stops working, in GMT. Existing tokens without an expiration don’t expire. You can’t add an expiration to an existing token, so to set one, create a new token and replace the old one in your system.
 
 <Lightbox src="/img/docs/dbt-platform/api-tokens/token-list-expires-column.png" width="95%" title="The Expires column shows when each token stops working" />
 
