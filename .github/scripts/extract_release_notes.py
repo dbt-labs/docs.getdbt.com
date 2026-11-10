@@ -11,6 +11,8 @@ from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 
+from release_note_areas import insert_notes, load_areas, subgroup_for, uses_area_layout
+
 WEEK_HEADING_RE = re.compile(r"^##\s+([A-Za-z]+\s+\d{1,2},\s+\d{4})\s*$")
 MONTH_HEADING_RE = re.compile(r"^##\s+([A-Za-z]+\s+\d{4})\s*$")
 
@@ -56,6 +58,10 @@ def parse_args() -> argparse.Namespace:
         help="Print preview only; do not write files.",
     )
     parser.add_argument(
+        "--areas-file",
+        help="Path to release-note-areas.json (defaults to website/release-note-areas.json).",
+    )
+    parser.add_argument(
         "--report-file",
         help="Write a Markdown sync report (skips, reasons, adds) to this path.",
     )
@@ -70,6 +76,7 @@ def build_sync_report(
     formatted_count: int,
     to_insert: list[str],
     skipped: list[tuple[str, str]],
+    filed: dict[str, tuple[str, str]] | None = None,
 ) -> str:
     """Build Markdown for the Actions job summary and draft PR body."""
     lines = [
@@ -104,6 +111,9 @@ def build_sync_report(
         lines.append("")
         for bullet in to_insert:
             lines.append(bullet)
+            if filed and bullet in filed:
+                area, reason = filed[bullet]
+                lines.append(f"  - Area: **{area}** ({reason})")
         lines.append("")
     else:
         lines.append("### Adding to MT file")
@@ -161,19 +171,23 @@ def extract_week_section(lines: list[str], week: str) -> tuple[int, int]:
     return start, end
 
 
-def extract_bullets(week_lines: list[str]) -> list[tuple[str, str]]:
+def extract_bullets(week_lines: list[str]) -> list[tuple[str, str, str | None]]:
+    """Return (category, bullet text, single-tenant area heading) for a week."""
     category = None
-    bullets: list[tuple[str, str]] = []
+    st_area: str | None = None
+    bullets: list[tuple[str, str, str | None]] = []
 
     for line in week_lines:
         stripped = line.strip()
         if stripped.startswith("## ") and not WEEK_HEADING_RE.match(stripped):
             category = normalize_category(stripped[3:])
+            st_area = None
             continue
         if stripped.startswith("### "):
+            st_area = stripped[4:].strip()
             continue
         if stripped.startswith("- ") and category:
-            bullets.append((category, stripped[2:].strip()))
+            bullets.append((category, stripped[2:].strip(), st_area))
 
     if not bullets:
         raise ValueError(f'No bullets found under week "{week_lines[0].strip()[3:]}"')
@@ -556,8 +570,31 @@ def main() -> int:
     month_heading = week_to_month_heading(args.week)
     insert_at, created_month = ensure_month_heading(mt_lines, month_heading)
 
-    formatted = [format_mt_bullet(category, body) for category, body in bullets]
+    formatted = [format_mt_bullet(category, body) for category, body, _ in bullets]
+    st_area_for = {
+        bullet: st_area for bullet, (_, _, st_area) in zip(formatted, bullets)
+    }
     to_insert, skipped = filter_duplicates(formatted, mt_lines)
+
+    # Once the MT file groups notes by product area, file each new note under
+    # its area. The single-tenant heading says which area; if that heading is
+    # not a known area, fall back to a docs link or product name in the note.
+    by_area = uses_area_layout(mt_lines)
+    filed: dict[str, tuple[str, str]] = {}
+    if by_area:
+        areas = load_areas(args.areas_file)
+        for bullet in to_insert:
+            st_area = st_area_for.get(bullet)
+            area = areas.from_st_heading(st_area)
+            if area:
+                reason = f"single-tenant area `{st_area}`"
+            else:
+                area, reason = areas.classify(bullet)
+                if st_area:
+                    reason = f"single-tenant area `{st_area}` is not in the area list; {reason}"
+                if not area:
+                    area = areas.fallback
+            filed[bullet] = (area, reason)
 
     print(f"Week: {args.week}")
     print(f"Target month section: ## {month_heading}")
@@ -584,6 +621,7 @@ def main() -> int:
         formatted_count=len(formatted),
         to_insert=to_insert,
         skipped=skipped,
+        filed=filed,
     )
     write_sync_report(report, args.report_file)
 
@@ -597,7 +635,10 @@ def main() -> int:
     if created_month:
         print(f"## {month_heading}")
     for bullet in to_insert:
-        print(bullet)
+        if bullet in filed:
+            print(f"[{filed[bullet][0]}] {bullet}")
+        else:
+            print(bullet)
     print("--- End preview ---")
 
     if args.dry_run:
@@ -605,8 +646,22 @@ def main() -> int:
         print("Dry run only — no files were changed.")
         return 0
 
-    new_mt_lines = mt_lines[:insert_at] + to_insert + [""] + mt_lines[insert_at:]
-    mt_path.write_text("\n".join(new_mt_lines) + "\n", encoding="utf-8")
+    if by_area:
+        # Insert in reverse so notes keep their single-tenant order in each area.
+        for bullet in reversed(to_insert):
+            area = filed[bullet][0]
+            insert_notes(
+                mt_lines,
+                month_heading,
+                area,
+                [[bullet]],
+                areas,
+                subgroup=subgroup_for(area, bullet),
+            )
+        new_mt_lines = mt_lines
+    else:
+        new_mt_lines = mt_lines[:insert_at] + to_insert + [""] + mt_lines[insert_at:]
+    mt_path.write_text("\n".join(new_mt_lines).rstrip("\n") + "\n", encoding="utf-8")
     print(f"Updated {mt_path}")
     return 0
 

@@ -1,0 +1,79 @@
+name: File release notes by area
+
+# When a pull request adds a bullet directly under a month heading in the dbt
+# platform release notes, move it under the matching product area heading and
+# comment with what was filed. Notes with no clear area are listed in the
+# comment for a person to place.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - website/docs/docs/dbt-versions/release-notes.md
+
+concurrency:
+  group: file-release-notes-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  file:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      MT_FILE: website/docs/docs/dbt-versions/release-notes.md
+      REPORT_FILE: ${{ runner.temp }}/release-note-areas.md
+      SAME_REPO: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+    steps:
+      - name: Check out the pull request branch
+        if: env.SAME_REPO == 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      # Pull requests from forks can't be pushed to, so only report on them.
+      - name: Check out the pull request (fork)
+        if: env.SAME_REPO != 'true'
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: File release notes under their area
+        run: |
+          if [ "$SAME_REPO" = "true" ]; then
+            python3 .github/scripts/file_release_notes.py \
+              --mt-file "$MT_FILE" --report-file "$REPORT_FILE"
+          else
+            python3 .github/scripts/file_release_notes.py \
+              --mt-file "$MT_FILE" --report-file "$REPORT_FILE" --dry-run
+          fi
+          if [ -f "$REPORT_FILE" ]; then cat "$REPORT_FILE" >> "$GITHUB_STEP_SUMMARY"; fi
+
+      - name: Commit the filed notes
+        id: commit
+        if: env.SAME_REPO == 'true'
+        run: |
+          if git diff --quiet -- "$MT_FILE"; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$MT_FILE"
+          git commit -m "File release notes under their product area"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Comment with what was filed
+        if: env.SAME_REPO == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          if [ ! -f "$REPORT_FILE" ] || grep -q "Nothing to do" "$REPORT_FILE"; then
+            exit 0
+          fi
+          gh pr comment "$PR_NUMBER" --body-file "$REPORT_FILE" --edit-last --create-if-none

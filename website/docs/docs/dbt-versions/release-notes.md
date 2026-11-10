@@ -24,6 +24,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 <!--
 Release note areas. Add your bullet under the matching #### heading in the current month.
 If the month doesn't have that heading yet, add it in the order below with an anchor like {#catalog-november-2026}.
+Not sure which area? Add the bullet directly under the month heading. A check on your pull request files it for you, or asks you to pick.
 
 - dbt AI and agents: Wizard, Wizard Desktop, Copilot, the dbt MCP server, AI models and providers, and AI billing.
 - Studio IDE: The browser-based editor: file explorer, command panel, editor features, and development settings.

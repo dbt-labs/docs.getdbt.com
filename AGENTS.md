@@ -171,6 +171,7 @@ dbt platform release notes live in one file: `website/docs/docs/dbt-versions/rel
 - Inside a month, notes are grouped by product area. Each area is a `####` heading with a month-qualified anchor, for example `#### Catalog {#catalog-november-2026}`.
 - Add the bullet under the matching area heading in the current month. If the month doesn't have that area yet, add the heading, keeping areas in the order they appear in `website/release-note-areas.json`.
 - Pick the area from `website/release-note-areas.json`. It lists every area with a one-line definition, plus the docs paths and product names that point to it. If nothing fits, use **dbt platform**.
+- If you can't tell which area fits, add the bullet directly under the month heading. The `File release notes by area` workflow (`.github/scripts/file_release_notes.py`) moves it under an area when the note has a docs link or product name, and otherwise asks in a pull request comment.
 - Under **dbt AI and agents**, Wizard notes go under a `##### Wizard` or `##### Wizard Desktop` sub-heading.
 - Start each bullet with `**New:**`, `**Enhancement:**`, `**Fix:**`, or `**Behavior change:**`.
 - Don't use `###` for areas. The RSS feed creates an item for every `##` and `###` heading in this file, so a new `###` heading notifies subscribers. `###` is only for event sections, such as summit announcements.
