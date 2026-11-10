@@ -63,12 +63,6 @@ import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
     link="/docs/dbt-ai/copilot-overview"
     icon="dbt-copilot"/>
 
-<Card
-    title="dbt Copilot in Insights"
-    body="Chat with your data using dbt Copilot in Insights, powered by the Semantic Layer."
-    link="/docs/dbt-ai/analyst-agent"
-    icon="dbt-copilot"/>
-
 </div>
 
 ## Explore the dbt MCP server
