@@ -40,11 +40,12 @@ Every check is exact string, set, or arithmetic logic: no model, no spend, no ra
 
 ## Three tests we recommend
 
-The `dbt_context_engineering` package ships with three of the following tests:
-- Groundedness
-- Conformance
-- Evaluation
-- Chunk size
+The `dbt_context_engineering` package ships with four tests:
+
+- [Groundedness](https://github.com/dbt-labs/dbt-context-engineering/blob/main/macros/evaluation/grounded.sql): Checks that every evidence quote appears in its source text.
+- [Conformance](https://github.com/dbt-labs/dbt-context-engineering/blob/main/macros/evaluation/conforms_to_schema.sql): Checks that every label is one of the schema's allowed values.
+- [Evaluation](https://github.com/dbt-labs/dbt-context-engineering/blob/main/macros/evaluation/eval.sql): Scores predictions against a hand-labeled answer key, so you can fail the build when accuracy drops.
+- [Chunk size](https://github.com/dbt-labs/dbt-context-engineering/blob/main/macros/chunking/no_oversized_chunks.sql): Flags any chunk over your size target.
 
 ### Groundedness
 
