@@ -6,6 +6,10 @@ displayText: Get started
 hoverSnippet: Chunk, embed, and search your text in three steps.
 ---
 
+import ContextEngineeringEvolving from '/snippets/_context-engineering-evolving.md';
+
+<ContextEngineeringEvolving />
+
 To get started with context engineering in practice, make sure you check out the following steps to go from raw text to a working search:
 
 <SimpleTable>
