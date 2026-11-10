@@ -119,19 +119,18 @@ You already have most of the instincts:
 
 ## Prerequisites
 
-You need <Constant name="core" /> 1.11 or later, or the <Constant name="fusion_engine" />, and one of the warehouses below. Each warehouse runs the AI calls with its own built-in AI.
+You need:
 
-<SimpleTable>
+- <Constant name="core" /> 1.11 or later, or the <Constant name="fusion_engine" />
+- The [`dbt_context_engineering` package](https://github.com/dbt-labs/dbt-context-engineering), version 0.2.0 or later. You add it to your `packages.yml` and run `dbt deps`. [Get started](/best-practices/how-we-context-engineer/2-get-started#use-it-in-your-own-project) shows how.
+- A warehouse the package supports, which runs the AI calls with its own built-in AI:
+  - Snowflake, using Cortex AI functions
+  - Databricks, on Databricks Runtime 15.4 LTS or above (not Databricks SQL Classic)
+  - BigQuery, with no extra setup. A BigQuery connection is optional.
+  - Redshift, using Amazon Bedrock. You create the Bedrock functions once with the package's `create_bedrock_function` operation, which needs permission to create models, an IAM role that can call Bedrock, and Bedrock model access.
+- Optionally, DuckDB, to run the parts that don't call AI without any credentials
 
-| Warehouse | AI it uses | What you need | Good to know |
-|-----------|------------|---------------|--------------|
-| Snowflake | Snowflake Cortex AI functions | Access to those functions in your account | |
-| Databricks | Databricks AI functions | Databricks Runtime 15.4 LTS or above, not Databricks SQL Classic | No native aggregate function, so the package builds `ai_agg()` from `ai_query` |
-| BigQuery | BigQuery AI functions | Nothing extra. A BigQuery connection is optional. | The engine doesn't enforce allowed-value lists |
-| Redshift | Amazon Bedrock | Permission to create models, an IAM role that can call Bedrock, and Bedrock model access. You create the Bedrock functions once with the package's `create_bedrock_function` operation. | Structured output is best-effort. No managed vector index and no drift canary. |
-| DuckDB | None | Nothing | Runs the parts that don't call AI, such as chunking, the cost guard, and tests, without credentials |
-
-</SimpleTable>
+On Redshift, structured output is best-effort, and there's no managed vector index or drift canary.
 
 :::info New to some dbt basics? 
 If you're new to dbt, we recommend you skim [SQL models](/docs/build/sql-models), [materializations](/docs/build/materializations), [incremental models](/docs/build/incremental-models), [data tests](/docs/build/data-tests), [hooks](/docs/build/hooks-operations), [project variables](/docs/build/project-variables), and [packages](/docs/build/packages) first. You don't need to be an expert.
