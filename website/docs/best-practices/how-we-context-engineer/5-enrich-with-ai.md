@@ -319,7 +319,7 @@ Calling the model is only half of portability. Each warehouse returns structured
 
 ## Adapter notes
 
-The operations are the same everywhere, but the warehouses behave differently in ways that matter. Check these before you ship.
+The operations are the same everywhere, but the warehouses behave differently in ways that matter so we recommend you check them before you ship. For example:
 
 <SimpleTable>
 
