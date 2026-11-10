@@ -86,7 +86,7 @@ Google Enterprise calls MCP tools [actions](https://docs.cloud.google.com/gemini
 ## Create a Gemini Enterprise app
 
 1. In Gemini Enterprise, go to **Apps** and select **Create app**.
-2. Enter an app name, choose a location (**global** works if you have no preference), and enter your company name. Select **Create**.
+2. Enter an app name, choose a location (**global** works if you have no preference), and enter your company's external name (optional). Select **Create**.
 
    <Lightbox src="/img/mcp/gemini-enterprise/gemini-create-app.png" width="90%" title="The 'Create app' form with the app name, location, and company name" />
 
