@@ -33,7 +33,7 @@ Metrics come first, then context. The order matters because metrics are the ques
 2. Add [semantic models](/docs/build/semantic-models) and [metrics](/docs/build/metrics-overview) on top of them.
 3. Prepare your text, build context models, and combine them into a knowledge base, as the rest of this guide shows.
 
-If you already have a semantic layer, you're starting at step 3.
+If you already have a semantic layer, great! You can go ahead and prepare your text, build context models, and more! If you don't have a semantic layer yet, we recommend checking out our [How to build your metrics](/best-practices/how-we-build-our-metrics/semantic-layer-1-intro?version=2) guide or [quickstart](https://docs.getdbt.com/guides/sl-qs?step=1)
 
 ## How an agent answers
 
