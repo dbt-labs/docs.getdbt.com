@@ -114,6 +114,8 @@ A _knowledge base_ is one table that holds all of them. You create it with the p
 
 Think of it as a union model that writes itself. Because every source ends up with the same columns, one search covers all of them.
 
+<Lightbox src="/img/best-practices/context-engineering/knowledge-base.svg" width="100%" title="Each source has its own source models that chunk, embed, and optionally classify its text. One knowledge base model calls the knowledge_base() macro, which renames and stacks the sources into one table. An agent or app searches that table, filtered by account, and every hit says which system and row it came from." />
+
 ### Where this fits in your workflow
 
 You build the knowledge base last, after every source is ready. Two kinds of model are involved:
