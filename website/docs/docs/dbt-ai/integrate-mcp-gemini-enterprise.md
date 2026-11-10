@@ -17,7 +17,8 @@ The connection uses OAuth. You register an app integration in the <Constant name
 ## Prerequisites
 
 - A <Constant name="dbt_platform" /> account with an active deployed production environment. Remote MCP reads your production metadata, so with no models or jobs, you get very little back. Refer to [Set up the remote MCP server](/docs/dbt-ai/setup-remote-mcp).
-- Admin access to **App integrations** in <Constant name="dbt_platform" />. Refer to [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth).
+- A <Constant name="dbt_platform" /> account. The remote MCP server works on all [plans](https://www.getdbt.com/pricing), but its tools rely on [dbt APIs](/docs/dbt-apis/overview) (like the Discovery API and Semantic Layer APIs) that vary by plan.
+- Permission to manage app integrations, such as the Account Admin or Security Admin permission set. Refer to [About user access](/docs/platform/manage-access/about-user-access) for permissions, and [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth) for the integration itself.
 - A Google Cloud account with access to Gemini Enterprise, where you can create data stores and apps. You can get started by contacting Google Cloud sales, or try [Gemini Enterprise Plus edition at no cost for 30 days](https://console.cloud.google.com/freetrial?redirectPath=gemini-enterprise) without sales assistance.
 
 ## Register the app in dbt platform
@@ -41,7 +42,7 @@ In Gemini Enterprise, the MCP server lives in a data store.
 
    <Lightbox src="/img/mcp/gemini-enterprise/gemini-add-custom-mcp-server.png" width="90%" title="The Custom MCP Server card on the 'Create data store' page" />
 
-3. Select **OAuth 2.0**, then fill in the fields. Replace `YOUR_DBT_HOST_URL` with your host, without the `https://`. For example, if your host url is `abc123.us1.dbt.com`, you'd enter `https://abc123.us1.dbt.com/oauth/authorize` for Authorization URL.
+3. Select **OAuth 2.0**, then fill in the fields. Replace `YOUR_DBT_HOST_URL` with your host, for example `abc123.us1.dbt.com`. The table already adds `https://`.
 
    <SimpleTable>
    | Field | Value |
@@ -80,7 +81,7 @@ Your Gemini connectors actions remain disabled until you manually enable them:
 
 <Lightbox src="/img/mcp/gemini-enterprise/gemini-enable-actions.png" width="80%" title="Selecting dbt MCP actions and enabling them" />
 
-For what each tool does, refer to [Available MCP tools](/docs/dbt-ai/mcp-available-tools).
+Google Enterprise calls MCP tools [actions](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/custom-mcp-server/set-up-custom-mcp-server#enable-actions). For what each tool does, refer to [Available MCP tools](/docs/dbt-ai/mcp-available-tools).
 
 ## Create a Gemini Enterprise app
 
