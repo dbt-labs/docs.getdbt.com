@@ -71,20 +71,21 @@ function applyFilter(root, areas, selected) {
     return { el, month, section, group };
   });
 
+  const all = selected.length === 0;
   entries.forEach(({ el, month: m, section: s, group: g, container }) => {
     if (container) return;
-    const show = selected === ALL || g === selected;
+    const show = all || selected.includes(g);
     el.style.display = show ? '' : 'none';
-    if (show && selected !== ALL) {
+    if (show && !all) {
       if (m) m.visible = true;
       if (s) s.visible = true;
     }
   });
   containers.forEach((c) => {
-    c.heading.style.display = selected === ALL || c.visible ? '' : 'none';
+    c.heading.style.display = all || c.visible ? '' : 'none';
   });
 
-  syncToc(getSiblings(root));
+  syncToc(getSiblings(root), selected.length === 1 ? 'H4' : null);
 }
 
 // Weekly layout, used by the single-tenant page. Weeks are dated `##` headings,
@@ -123,19 +124,20 @@ function scanWeekly(root) {
 
 function applyWeeklyFilter(root, selected) {
   const { entries, containers } = scanWeekly(root);
+  const all = selected.length === 0;
   entries.forEach(({ el, week, type, group, container }) => {
     if (container) return;
-    const show = selected === ALL || !week || group === selected;
+    const show = all || !week || selected.includes(group);
     el.style.display = show ? '' : 'none';
-    if (show && selected !== ALL) {
+    if (show && !all) {
       if (week) week.visible = true;
       if (type) type.visible = true;
     }
   });
   containers.forEach((c) => {
-    c.heading.style.display = selected === ALL || c.visible ? '' : 'none';
+    c.heading.style.display = all || c.visible ? '' : 'none';
   });
-  syncToc(getSiblings(root));
+  syncToc(getSiblings(root), selected.length === 1 ? 'H3' : null);
 }
 
 const findPresentWeeklyAreas = (root, areas) => {
@@ -149,8 +151,10 @@ const findPresentWeeklyAreas = (root, areas) => {
 };
 
 // Mirrors heading visibility in the right-hand table of contents, so the
-// sidebar only lists the sections that are currently on screen.
-function syncToc(siblings) {
+// sidebar only lists the sections that are currently on screen. When a single
+// area is selected, its heading would repeat under every month, so the area
+// level (`areaTag`) is left out and the list shows the months that have it.
+function syncToc(siblings, areaTag) {
   siblings
     .filter((el) => /^H[234]$/.test(el.tagName) && el.id)
     .forEach((el) => {
@@ -158,7 +162,8 @@ function syncToc(siblings) {
         `.table-of-contents a[href="#${CSS.escape(el.id)}"]`
       );
       const item = link && link.closest('li');
-      if (item) item.style.display = el.style.display === 'none' ? 'none' : '';
+      const hide = el.style.display === 'none' || el.tagName === areaTag;
+      if (item) item.style.display = hide ? 'none' : '';
     });
 }
 
@@ -174,9 +179,29 @@ export default function ReleaseNotesFilter({ areas = DEFAULT_AREAS, inline = 7, 
   const apply = (root, selection) =>
     weekly ? applyWeeklyFilter(root, selection) : applyFilter(root, areas, selection);
   const rootRef = useRef(null);
-  const [selected, setSelected] = useState(ALL);
+  // Selected areas. Empty means "All".
+  const [selected, setSelected] = useState([]);
   const [present, setPresent] = useState([]);
   const [moreOpen, setMoreOpen] = useState(false);
+  const moreRef = useRef(null);
+
+  // The More menu stays open while you tick areas; close it on an outside
+  // click or Escape.
+  useEffect(() => {
+    if (!moreOpen) return undefined;
+    const onDown = (event) => {
+      if (moreRef.current && !moreRef.current.contains(event.target)) setMoreOpen(false);
+    };
+    const onKey = (event) => {
+      if (event.key === 'Escape') setMoreOpen(false);
+    };
+    document.addEventListener('mousedown', onDown);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('mousedown', onDown);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [moreOpen]);
 
   // Marks the page body so the CSS module can style the area headings.
   useEffect(() => {
@@ -201,24 +226,31 @@ export default function ReleaseNotesFilter({ areas = DEFAULT_AREAS, inline = 7, 
 
   useEffect(() => {
     const root = rootRef.current;
-    return () => root && apply(root, ALL);
+    return () => root && apply(root, []);
   }, [areas, weekly]);
 
+  // Pills toggle, so more than one area can be on at a time. "All" clears them.
   const pick = (name) => {
-    setSelected(name);
-    setMoreOpen(false);
+    setSelected((current) => {
+      if (name === ALL) return [];
+      return current.includes(name)
+        ? current.filter((area) => area !== name)
+        : [...current, name];
+    });
   };
+  const isOn = (name) => (name === ALL ? selected.length === 0 : selected.includes(name));
 
   const inlineAreas = present.slice(0, inline);
   const moreAreas = present.slice(inline);
-  const moreActive = moreAreas.includes(selected);
+  const moreSelected = moreAreas.filter((area) => selected.includes(area));
+  const moreActive = moreSelected.length > 0;
 
   const pill = (name) => (
     <button
       key={name}
       type="button"
-      className={`${styles.pill} ${selected === name ? styles.active : ''}`}
-      aria-pressed={selected === name}
+      className={`${styles.pill} ${isOn(name) ? styles.active : ''}`}
+      aria-pressed={isOn(name)}
       onClick={() => pick(name)}
     >
       {name}
@@ -237,7 +269,7 @@ export default function ReleaseNotesFilter({ areas = DEFAULT_AREAS, inline = 7, 
     >
       {[ALL, ...inlineAreas].map(pill)}
       {moreAreas.length > 0 && (
-        <div className={styles.more}>
+        <div className={styles.more} ref={moreRef}>
           <button
             type="button"
             className={`${styles.pill} ${moreActive ? styles.active : ''}`}
@@ -245,7 +277,7 @@ export default function ReleaseNotesFilter({ areas = DEFAULT_AREAS, inline = 7, 
             aria-expanded={moreOpen}
             onClick={() => setMoreOpen(!moreOpen)}
           >
-            {moreActive ? selected : 'More'} ▾
+            {moreActive ? `More (${moreSelected.length})` : 'More'} ▾
           </button>
           {moreOpen && (
             <div className={styles.menu} role="menu">
@@ -253,10 +285,12 @@ export default function ReleaseNotesFilter({ areas = DEFAULT_AREAS, inline = 7, 
                 <button
                   key={name}
                   type="button"
-                  role="menuitem"
-                  className={`${styles.menuItem} ${selected === name ? styles.menuItemActive : ''}`}
+                  role="menuitemcheckbox"
+                  aria-checked={isOn(name)}
+                  className={`${styles.menuItem} ${isOn(name) ? styles.menuItemActive : ''}`}
                   onClick={() => pick(name)}
                 >
+                  {isOn(name) ? '✓ ' : ''}
                   {name}
                 </button>
               ))}
