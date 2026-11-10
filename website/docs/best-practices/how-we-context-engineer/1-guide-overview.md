@@ -117,14 +117,21 @@ You already have most of the instincts:
 
 </SimpleTable>
 
-## What you need
+## Prerequisites
 
-- <Constant name="core" /> version 1.11 or later, or the <Constant name="fusion_engine" />
-- A warehouse: Snowflake, Databricks, BigQuery, or Redshift
-- Optionally, DuckDB for credential-free local runs of the parts that don't call AI
+You need <Constant name="core" /> 1.11 or later, or the <Constant name="fusion_engine" />, and one of the warehouses below. Each warehouse runs the AI calls with its own built-in AI.
 
-On Redshift, AI runs through Amazon Bedrock. Structured output is best-effort, there's no managed vector index, and the drift canary isn't supported.
+<SimpleTable>
 
+| Warehouse | AI it uses | What you need | Good to know |
+|-----------|------------|---------------|--------------|
+| Snowflake | Snowflake Cortex AI functions | Access to those functions in your account | |
+| Databricks | Databricks AI functions | Databricks Runtime 15.4 LTS or above, not Databricks SQL Classic | No native aggregate function, so the package builds `ai_agg()` from `ai_query` |
+| BigQuery | BigQuery AI functions | Nothing extra. A BigQuery connection is optional. | The engine doesn't enforce allowed-value lists |
+| Redshift | Amazon Bedrock | Permission to create models, an IAM role that can call Bedrock, and Bedrock model access. You create the Bedrock functions once with the package's `create_bedrock_function` operation. | Structured output is best-effort. No managed vector index and no drift canary. |
+| DuckDB | None | Nothing | Runs the parts that don't call AI, such as chunking, the cost guard, and tests, without credentials |
+
+</SimpleTable>
 
 :::info New to some dbt basics? 
 If you're new to dbt, we recommend you skim [SQL models](/docs/build/sql-models), [materializations](/docs/build/materializations), [incremental models](/docs/build/incremental-models), [data tests](/docs/build/data-tests), [hooks](/docs/build/hooks-operations), [project variables](/docs/build/project-variables), and [packages](/docs/build/packages) first. You don't need to be an expert.

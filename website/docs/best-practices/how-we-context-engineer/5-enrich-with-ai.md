@@ -47,17 +47,30 @@ Every major warehouse exposes these as SQL functions, but each names them differ
 
 <SimpleTable>
 
-| Operation | Snowflake | Databricks | BigQuery |
-|-----------|-----------|------------|----------|
-| Generate | [`AI_COMPLETE`](https://docs.snowflake.com/en/sql-reference/functions/ai_complete) | [`ai_query`](https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_query) | [`AI.GENERATE`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-ai-generate) |
-| Classify | [`AI_CLASSIFY`](https://docs.snowflake.com/en/sql-reference/functions/ai_classify) | [`ai_classify`](https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_classify) | [`AI.GENERATE`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-ai-generate) |
-| Extract | [`AI_COMPLETE`](https://docs.snowflake.com/en/sql-reference/functions/ai_complete) | [`ai_query`](https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_query) | [`AI.GENERATE`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-ai-generate) |
-| Embed | [`AI_EMBED`](https://docs.snowflake.com/en/sql-reference/functions/ai_embed) | [Serving endpoint](https://docs.databricks.com/aws/en/machine-learning/model-serving/query-embedding-models) | [`AI.EMBED`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-ai-embed) |
-| Aggregate | [`AI_AGG`](https://docs.snowflake.com/en/sql-reference/functions/ai_agg) | No native function. The package builds it with [`ai_query`](https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_query). | [`AI.AGG`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-ai-agg) |
+| Operation | Snowflake | Databricks | BigQuery | Redshift |
+|-----------|-----------|------------|----------|----------|
+| Generate | [`AI_COMPLETE`](https://docs.snowflake.com/en/sql-reference/functions/ai_complete) | [`ai_query`](https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_query) | [`AI.GENERATE`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-ai-generate) | A Bedrock function you create, such as `ce_text` ([how](https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_EXTERNAL_MODEL.html)) |
+| Classify | [`AI_CLASSIFY`](https://docs.snowflake.com/en/sql-reference/functions/ai_classify) | [`ai_classify`](https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_classify) | [`AI.GENERATE`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-ai-generate) | The same Bedrock text function |
+| Extract | [`AI_COMPLETE`](https://docs.snowflake.com/en/sql-reference/functions/ai_complete) | [`ai_query`](https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_query) | [`AI.GENERATE`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-ai-generate) | The same Bedrock text function |
+| Embed | [`AI_EMBED`](https://docs.snowflake.com/en/sql-reference/functions/ai_embed) | [Serving endpoint](https://docs.databricks.com/aws/en/machine-learning/model-serving/query-embedding-models) | [`AI.EMBED`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-ai-embed) | A Bedrock embedding function you create, such as `ce_embed` |
+| Aggregate | [`AI_AGG`](https://docs.snowflake.com/en/sql-reference/functions/ai_agg) | No native function. The package builds it with [`ai_query`](https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_query). | [`AI.AGG`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-ai-agg) | No native function. The package builds it with [`LISTAGG`](https://docs.aws.amazon.com/redshift/latest/dg/r_LISTAGG.html) and one call to your Bedrock text function. |
 
 </SimpleTable>
 
-You don't need to write these by hand. You can call the packages in your context models from the first table and it writes your warehouse's function for you. The examples on this page use Snowflake. On Databricks or BigQuery, the same macro call works. Only the function it writes changes.
+You don't need to write these by hand. You can call the packages in your context models from the first table and it writes your warehouse's function for you. The examples on this page use Snowflake. On Databricks, BigQuery, or Redshift, the same macro call works. Only the function it writes changes.
+
+### How they link together
+
+Here's what happens when dbt builds a context model that calls an LLM, using `classify()` as the example:
+
+<Lightbox src="/img/best-practices/context-engineering/ai-function-flow.svg" width="100%" title="A context model has a classify call in it. When dbt builds it, the macro writes a call to the warehouse's AI function, one call per chunk. The LLM behind the function reads each chunk and answers with a label. The context model saves the answers as a new column in a table." />
+
+1. Your context model `call_transcripts_classify.sql` has a `classify()` call in it.
+2. When dbt builds it, that call goes to the warehouse's function, `AI_CLASSIFY` on Snowflake.
+3. The LLM behind the function reads each chunk and answers with a label.
+4. Your context model saves the answers as a new column in a table.
+
+The other operations work the same way. `embed()` calls an embedding model, and `extract()`, `generate()`, and `ai_agg()` call an LLM.
 
 ### Classify
 
@@ -301,19 +314,21 @@ The operations are the same everywhere, but the warehouses behave differently in
 
 <SimpleTable>
 
-| Topic | Snowflake | Databricks | BigQuery |
-|-------|-----------|------------|----------|
-| Structured result type | `VARIANT` object | `JSON` string | `STRUCT` |
-| Enforces the allowed values in the schema | Yes | Yes | No. Enums are silently dropped. |
-| Group-level aggregation | Native | No native function | Native |
+| Topic | Snowflake | Databricks | BigQuery | Redshift |
+|-------|-----------|------------|----------|----------|
+| Structured result type | `VARIANT` object | `JSON` string | `STRUCT` | `JSON` string |
+| Enforces the allowed values in the schema | Yes | Yes | No. Enums are silently dropped. | No. Best-effort, through the prompt. |
+| Group-level aggregation | Native | No native function | Native | No native function |
 
 </SimpleTable>
 
 **BigQuery drops enum constraints:** BigQuery's output schema can't express an allowed-value list, so it quietly turns the field into a plain string. The call succeeds, but the LLM never saw your labels and invents its own, like `PROBLEM` or `Discovery Question` instead of `pain_point`. Nothing errors, so nothing turns red. On BigQuery, put the labels in the prompt too, generated from the schema's list so they still live in one place. You don't need this on Snowflake and Databricks, where the schema already enforces them.
 
-**Aggregation differs the most** <Lifecycle status="beta" />: Databricks has no native aggregate function, and Snowflake and BigQuery differ on model choice and row order. Check your warehouse's documentation before you rely on it.
+**Redshift structured output is best-effort:** Redshift can't enforce an output schema, so the package adds your schema and labels to the prompt and reads the reply back as text. It usually works, but nothing guarantees it. The tests in [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy) are what catch an off-schema answer.
 
-**Name your LLMs and embedding model explicitly:** Set the LLM or embedding model for each operation in configuration rather than relying on defaults. In the package, those are the `model_generate`, `model_classify`, and `model_extract` vars.
+**Aggregation differs the most** <Lifecycle status="beta" />: Databricks and Redshift have no native aggregate function, and Snowflake and BigQuery differ on LLM choice and row order. On Redshift, a group's text can't pass 64 KB or the call errors, so pair it with `guard_agg_batch`. Check your warehouse's documentation before you rely on it.
+
+**Name your LLMs and embedding model explicitly:** Set the LLM or embedding model for each operation in configuration rather than relying on defaults. In the package, those are the `model_generate`, `model_classify`, and `model_extract` vars. On Redshift, they name the Bedrock function you created, not a model.
 
 ## What's next
 

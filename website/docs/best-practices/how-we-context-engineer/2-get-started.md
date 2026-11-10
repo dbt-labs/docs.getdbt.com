@@ -36,7 +36,7 @@ The fastest way to see the pipeline is the `jaffle-logistics` project on DuckDB.
 4. Then open `analyses/the_pattern/` in the project. It walks the whole pipeline in seven numbered queries: raw transcript, chunk, embed, knowledge base, raw search, classify, and search with classify.
 
 :::caution About setting `ai_functions_enabled` to `true`
-To see real embeddings and search results, point the project at Snowflake, Databricks, or BigQuery and set `ai_functions_enabled` to `true`. Those are real AI calls, and they bill. The [Control cost](/best-practices/how-we-context-engineer/7-control-cost) page shows how to keep that safe.
+To see real embeddings and search results, point the project at Snowflake, Databricks, BigQuery, or Redshift and set `ai_functions_enabled` to `true`. Those are real AI calls, and they bill. On Redshift, create the Bedrock functions first (refer to [Prerequisites](/best-practices/how-we-context-engineer/1-guide-overview#prerequisites)). The [Control cost](/best-practices/how-we-context-engineer/7-control-cost) page shows how to keep that safe.
 :::
 
 ## Use it in your own project
@@ -62,7 +62,7 @@ Set the variables the package reads in `dbt_project.yml`. AI functions are off b
 ```yaml
 vars:
   ai_functions_enabled: false # set to true only for the target where you want to spend
-  embedding_model: "snowflake-arctic-embed-m-v1.5" # example for Snowflake. Name your own model.
+  embedding_model: "snowflake-arctic-embed-m-v1.5" # example for Snowflake. Name your own model. On Redshift, name your Bedrock function.
 ```
 
 </File>

@@ -52,7 +52,7 @@ The following table lists most of the macros in the the [`dbt_context_engineerin
 | `embed` | Turns text into a vector | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
 | `vector_search` | Finds the chunks closest in meaning to a question | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
 | `knowledge_base` | Puts every source into one common shape | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
-| `create_vector_index` | Creates a managed vector index. Run it with `dbt run-operation`. | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
+| `create_vector_index` | Creates a managed vector index. Run it with `dbt run-operation`. Not supported on Redshift. | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
 | `version_guard` | Says whether the stored embedding version differs from the pinned one | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
 | `incremental_delta_predicate` | Builds the `where` clause that picks which rows to embed | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
 | `content_hash` | Fingerprints the text you embedded | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
@@ -86,10 +86,10 @@ Set these in `dbt_project.yml` under `vars:`. The package's [var reference](http
 
 | Var | Default | What it controls | Learn more |
 |-----|---------|------------------|------------|
-| `embedding_model` | None | The embedding model `embed()` uses. Pin it. | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
-| `model_generate` | None | The LLM `generate()` uses | [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) |
-| `model_classify` | None | The LLM `classify()` uses | [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) |
-| `model_extract` | None | The LLM `extract()` uses. Falls back to `model_generate`. | [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) |
+| `embedding_model` | None | The embedding model `embed()` uses. Pin it. On Redshift, the name of your Bedrock function. | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
+| `model_generate` | None | The LLM `generate()` uses. On Redshift, the name of your Bedrock function. | [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) |
+| `model_classify` | None | The LLM `classify()` uses. On Redshift, the name of your Bedrock function. | [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) |
+| `model_extract` | None | The LLM `extract()` uses. Falls back to `model_generate`. On Redshift, the name of your Bedrock function. | [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) |
 | `chunk_target_tokens` | `512` | Target chunk size | [Prepare your text](/best-practices/how-we-context-engineer/3-prepare-your-text) |
 | `chunk_overlap_tokens` | `0` | How much text adjacent chunks share | [Prepare your text](/best-practices/how-we-context-engineer/3-prepare-your-text) |
 | `ai_functions_enabled` | `false` | The master switch. AI calls raise an error unless it's `true`. | [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |

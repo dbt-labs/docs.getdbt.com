@@ -93,6 +93,7 @@ An index is optional and in beta. It's a separate service that bills even when n
 - Create it with `dbt run-operation` (the package's `create_vector_index` macro), not as a model.
 - Drop it yourself when you're done.
 - On Databricks, you create it through its Vector Search API.
+- On Redshift, it isn't supported. Search stays brute force.
 
 To scope a search to one customer, filter before you rank, as the `filter` argument above does.
 
@@ -297,6 +298,7 @@ When you change the embedding function on purpose, re-review the baseline. Run `
 
 - **Vectors aren't bit-for-bit repeatable on Snowflake and Databricks:** Re-embedding the same text gives cosine similarity above 0.999999 between runs. Never compare vectors for exact equality. BigQuery showed no variation in our tests.
 - **On Snowflake, check the canary's vector size:** The `embedding_canary_vector_dimension` var defaults to 768, the size of `snowflake-arctic-embed-m-v1.5`. Set it if your embedding model's vectors are a different size. Databricks and BigQuery need nothing.
+- **The canary isn't supported on Redshift:** It raises an error with guidance, so leave it off there.
 - **Databricks needs a recent runtime for AI functions:** It requires DBR 15.4 LTS or above, and not Databricks SQL Classic. If you don't meet this, you'll see an opaque SQL error, so check it first when troubleshooting.
 
 ## What's next

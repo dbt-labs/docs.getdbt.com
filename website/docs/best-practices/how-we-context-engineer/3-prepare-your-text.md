@@ -107,6 +107,7 @@ Chunking is plain SQL, so it behaves the same across engines, with a few things 
 - `chunk_id` isn't a stable identity: Edit one unit and every later chunk boundary in that partition can move, so a chunk id can disappear.
 - Incremental chunking replaces a whole partition (one call or document) at a time. Set `unique_key='partition_key'`, never `chunk_id`. A single edit can change how many chunks a call has, so replacing them together keeps old chunks from lingering.
 - BigQuery has no incremental chunking: You rebuild the full table each run. That costs warehouse compute only, because chunking makes no AI calls and unchanged text isn't re-embedded.
+- On Redshift, `source_rows` is an array of ids stored as text, not the original id type.
 
 ## Attach source metadata
 

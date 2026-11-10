@@ -172,8 +172,8 @@ Design lineage in on day one, because it can't be rebuilt later. Once a chunk fo
 
 | Topic | What to know |
 |-------|--------------|
-| Structured result type | Snowflake returns a `VARIANT`, Databricks a `JSON` string, and BigQuery a `STRUCT`. Flatten to a scalar before testing. |
-| Allowed values | BigQuery drops enum constraints from its output schema, so conformance tests matter most there. |
+| Structured result type | Snowflake returns a `VARIANT`, Databricks and Redshift a `JSON` string, and BigQuery a `STRUCT`. Flatten to a scalar before testing. |
+| Allowed values | BigQuery drops enum constraints from its output schema, so conformance tests matter most there. Redshift output is best-effort, so they matter there too. |
 | Warehouse access | These checks are deterministic, so you can run them without warehouse credentials against sample data, for example on DuckDB. |
 
 </SimpleTable>
