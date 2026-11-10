@@ -34,7 +34,7 @@ Creating an account-scoped PAT requires only a few steps.
 5. Click **Save**.
 6. Copy the token before closing the window. _It will not be available after, and you will have to create a new token if you lose it._ 
 
-To maintain best security practices, it's recommended that you regularly rotate your PATs. To do so, create a new token and delete the old one once it's in place.
+As a security best practice, rotate your PATs regularly. To rotate a PAT, create a new token, replace the old one wherever it's used, and then delete the old token.
 
 ## Set a token expiration
 
@@ -53,7 +53,7 @@ The **Expires** column on the **Personal tokens** page shows the date and time e
 
 <Lightbox src="/img/docs/dbt-platform/api-tokens/token-list-expires-column.png" width="95%" title="The Expires column shows when each token stops working" />
 
-After the expiration date, requests that use the token will fail. Create a new token and date your scripts before then. 
+After the expiration date, requests that use the token will fail. Create a new token and update your scripts before then. 
 
 
 ## Delete a personal access token

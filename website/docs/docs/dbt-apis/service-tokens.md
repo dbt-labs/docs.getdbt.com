@@ -30,7 +30,8 @@ You can generate service tokens if you have a Developer [license](/docs/platform
     1. Enter a name for your token. 
     2. Choose an **Expiry**. The default is **No expiry**. Refer to [Set a token expiration](#set-a-token-expiration).
     3. Add the necessary [permissions](/docs/dbt-apis/service-tokens#permissions-for-service-account-tokens).
-4. Once the token is generated, you won't be able to view this token again so make sure to save it somewhere safe.
+4. Click **Save**.
+5. Once the token is generated, you won't be able to view this token again so make sure to save it somewhere safe.
 
 ## Set a token expiration
 
