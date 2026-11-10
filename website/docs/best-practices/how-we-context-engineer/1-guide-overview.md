@@ -30,13 +30,13 @@ The following diagram explains the entire concept: text is split into chunks, ea
 
 This guide covers the following:
 
-1. **Get started:** Chunk, embed, and search your text in three steps.
-2. **Prepare your text:** Break raw text into pieces an agent can retrieve, and attach source details so every piece can cite where it came from.
-3. **Embed and retrieve:** Make text searchable by meaning, search across sources, and keep vectors fresh.
-4. **Enrich with AI:** Label each piece so search gets precise, with prompts managed as versioned code.
-5. **Keep context trustworthy:** Test AI output the way you test any other model, and keep lineage and citations intact.
-6. **Control cost:** Build in limits and a record of what each run spent.
-7. **Glossary:** Glossary of new terms to help you understand context engineering a bit more.
+1. [Get started](/best-practices/how-we-context-engineer/2-get-started): Chunk, embed, and search your text in three steps.
+2. [Prepare your text](/best-practices/how-we-context-engineer/3-prepare-your-text): Break raw text into pieces an agent can retrieve, and attach source details so every piece can cite where it came from.
+3. [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve): Make text searchable by meaning, search across sources, and keep vectors fresh.
+4. [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai): Label each piece so search gets precise, with prompts managed as versioned code.
+5. [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy): Test AI output the way you test any other model, and keep lineage and citations intact.
+6. [Control cost](/best-practices/how-we-context-engineer/7-control-cost): Build in limits and a record of what each run spent.
+7. [Glossary](/best-practices/how-we-context-engineer/8-glossary): Look up new terms, macros, and vars in one place.
 
 ## What is context?
 
