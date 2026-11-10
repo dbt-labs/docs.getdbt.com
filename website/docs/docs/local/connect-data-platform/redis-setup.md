@@ -1,14 +1,36 @@
 ---
 title: "Connect Redis to dbt v1"
 sidebar_label: "Redis"
-description: "Install dbt-redis-adbc and configure a Redis connection for dbt v1."
+description: "Read this guide to learn about the Redis setup in dbt."
 id: "redis-setup"
+meta:
+  maintained_by: Community
+  authors: 'Albert T. Wong'
+  github_repo: 'redis/redis-dbt-adapter'
+  pypi_package: 'dbt-redis-adbc'
+  min_core_version: 'v1.10.0'
+  cloud_support: Not Supported
+  min_supported_version: 'Redis 8.x'
+  slack_channel_name: 'n/a'
+  slack_channel_link: 'https://www.getdbt.com/community'
+  platform_name: 'Redis'
+  config_page: '/reference/resource-configs/redis-configs'
 availability:
   surface: local
   engine: v1
 ---
 
-The community-maintained [`dbt-redis-adbc` adapter](https://github.com/redis/redis-dbt-adapter) connects <Constant name="core" /> to Redis through the [Redis Arrow Database Connectivity (ADBC) driver](https://github.com/redis/redis-adbc-driver). Albert T. Wong maintains the adapter. It supports Python-based dbt v1; it does not support v2 or the dbt platform.
+:::info Community plugin
+
+Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
+
+:::
+
+import SetUpPages from '/snippets/_setup-pages-intro.md';
+
+<SetUpPages meta={frontMatter.meta} />
+
+The [`dbt-redis-adbc` adapter](https://github.com/redis/redis-dbt-adapter) connects <Constant name="core" /> to Redis through the [Redis Arrow Database Connectivity (ADBC) driver](https://github.com/redis/redis-adbc-driver). It supports Python-based dbt v1. It does not support v2 or the <Constant name="dbt_platform" />.
 
 This page describes `dbt-redis-adbc` 0.2.0, which is tested with Redis ADBC driver 0.0.18 and Python 3.13.
 
@@ -22,19 +44,13 @@ This page describes `dbt-redis-adbc` 0.2.0, which is tested with Redis ADBC driv
 
 The driver requires Redis Search commands, including `FT._LIST` and `FT.CREATE`. Refer to the driver's [server requirements](https://github.com/redis/redis-adbc-driver/blob/main/docs/driver-reference.md#server-requirements) for deployment compatibility. Valkey and Redis 7.2 derivatives, including Amazon ElastiCache and Google Cloud Memorystore, are not supported because they lack commands and functions that the driver requires. Redis Flex databases are also not supported.
 
-## Install the adapter and driver
+## Install the driver
 
-Install the adapter from [PyPI](https://pypi.org/project/dbt-redis-adbc/):
-
-```shell
-python -m pip install dbt-redis-adbc
-```
+The `pip` command above installs the adapter. It does not install the Redis ADBC shared library.
 
 Run `dbt --version` to confirm the installation. The output lists `redis_adbc` under plugins.
 
 Download and extract the shared-library archive for your platform from the [Redis ADBC driver releases](https://github.com/redis/redis-adbc-driver/releases). Adapter version 0.2.0 is tested with driver release [v0.0.18](https://github.com/redis/redis-adbc-driver/releases/tag/v0.0.18). Each archive has a matching `.sha256` file that you can use to verify the download. Prebuilt libraries are available for macOS Apple Silicon, Linux x86-64, and Linux arm64. Other platforms require a [source build](https://github.com/redis/redis-adbc-driver#quick-start).
-
-Installing the adapter installs its Python dependencies, but does not install the shared library.
 
 ## Configure your connection
 
