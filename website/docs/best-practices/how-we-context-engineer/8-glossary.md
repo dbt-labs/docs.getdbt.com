@@ -42,8 +42,6 @@ The terms are in alphabetical order.
 
 The following table lists most of the macros in the the [`dbt_context_engineering` package](https://github.com/dbt-labs/dbt-context-engineering/tree/main/macros), but refer to the repo for the official list. You call them as `dbt_context_engineering.MACRO_NAME` (replacing `MACRO_NAME` with the macro name). 
 
-<SimpleTable>
-
 | Macro | What it does | Learn more |
 |-------|--------------|------------|
 | `chunk` | Splits text into chunks without cutting a unit in half | [Prepare your text](/best-practices/how-we-context-engineer/3-prepare-your-text) |
@@ -78,13 +76,10 @@ The following table lists most of the macros in the the [`dbt_context_engineerin
 | `require_safe_materialization` | Raises an error if an AI function runs in a view | [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |
 | `require_full_refresh_gate` | Raises an error if an incremental AI model sets no `full_refresh` | [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |
 
-</SimpleTable>
 
 ## Vars
 
 Set these in `dbt_project.yml` under `vars:`. The package's [var reference](https://github.com/dbt-labs/dbt-context-engineering/blob/main/skills/dbt-ce-setup/references/vars-reference.md) officially lists the vars.
-
-<SimpleTable>
 
 | Var | Default | What it controls | Learn more |
 |-----|---------|------------------|------------|
@@ -109,5 +104,4 @@ Set these in `dbt_project.yml` under `vars:`. The package's [var reference](http
 | `embedding_canary_test_severity` | `warn` | Whether a canary mismatch warns or fails | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
 | `embedding_canary_vector_dimension` | `768` | Snowflake only. Match your embedding model's vector size. | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
 | `bq_connection` | None | BigQuery only. A Vertex AI connection, optional for interactive runs. | [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |
-
-</SimpleTable>
+ 
