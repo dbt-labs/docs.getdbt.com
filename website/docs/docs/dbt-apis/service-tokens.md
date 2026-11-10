@@ -8,6 +8,8 @@ availability:
   minPlan: starter
 ---
 
+import TokenExpiration from '/snippets/_token-expiration.md';
+
 # Service account tokens
 
 Service account tokens enable you to securely authenticate with the <Constant name="dbt" /> API by assigning each token a narrow set of permissions that more precisely manages access to the API. While similar to [personal access tokens](user-tokens), service account tokens belong to an account rather than a user.
@@ -35,22 +37,13 @@ You can generate service tokens if you have a Developer [license](/docs/platform
 
 ## Set a token expiration
 
-Set an expiration when you create the token so a token stops working on its own, even if you forget about it.  You won't be able to change it later so if you need a different expiry, create a new token. The expiration options are:
-
-- **No expiry** (default)
-- **7 days**
-- **14 days**
-- **30 days**
-- **90 days**
-- **365 days**
-
-<Lightbox src="/img/docs/dbt-platform/api-tokens/service-token-expiry-options.png" width="80%" title="Choose an expiry when you create a service token" />
-
-The **Expires** column on the **Service tokens** page shows the date and time each token stops working, in GMT. Existing tokens without an expiration don’t expire. You can’t add an expiration to an existing token, so to set one, create a new token and replace the old one in your system.
-
-<Lightbox src="/img/docs/dbt-platform/api-tokens/token-list-expires-column.png" width="95%" title="The Expires column shows when each token stops working" />
-
-After the expiration date, requests that use the token will fail. Create a new token with the same permissions and update your systems before then. 
+<TokenExpiration
+  pageName="Service tokens"
+  newToken="a new token with the same permissions"
+  whereToUpdate="systems"
+  optionsImage="/img/docs/dbt-platform/api-tokens/service-token-expiry-options.png"
+  optionsImageTitle="Choose an expiry when you create a service token"
+/>
 
 ## Permissions for service account tokens
 

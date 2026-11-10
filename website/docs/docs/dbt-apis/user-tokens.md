@@ -10,6 +10,8 @@ availability:
   minPlan: starter
 ---
 
+import TokenExpiration from '/snippets/_token-expiration.md';
+
 # Account-scoped personal access tokens
 
 :::warning
@@ -38,23 +40,13 @@ As a security best practice, rotate your PATs regularly. To rotate a PAT, create
 
 ## Set a token expiration
 
-Set an expiration so a token stops working on its own, even if you forget about it. Pick one when you create the token. You can't change it later, so if you need a different expiry, create a new token. The expiration options are:
-
-- **No expiry** (default)
-- **7 days**
-- **14 days**
-- **30 days**
-- **90 days**
-- **365 days**
-
-<Lightbox src="/img/docs/dbt-platform/api-tokens/pat-expiry-options.png" width="80%" title="Choose an expiry when you create a personal access token" />
-
-The **Expires** column on the **Personal tokens** page shows the date and time each token stops working, in GMT. Existing tokens without an expiration don’t expire. You can’t add an expiration to an existing token, so to set one, create a new token and replace the old one in your system.
-
-<Lightbox src="/img/docs/dbt-platform/api-tokens/token-list-expires-column.png" width="95%" title="The Expires column shows when each token stops working" />
-
-After the expiration date, requests that use the token will fail. Create a new token and update your scripts before then. 
-
+<TokenExpiration
+  pageName="Personal tokens"
+  newToken="a new token"
+  whereToUpdate="scripts"
+  optionsImage="/img/docs/dbt-platform/api-tokens/pat-expiry-options.png"
+  optionsImageTitle="Choose an expiry when you create a personal access token"
+/>
 
 ## Delete a personal access token
 
