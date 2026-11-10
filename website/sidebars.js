@@ -1909,7 +1909,8 @@ const sidebarSettings = {
             "best-practices/how-we-context-engineer/5-enrich-with-ai",
             "best-practices/how-we-context-engineer/6-keep-context-trustworthy",
             "best-practices/how-we-context-engineer/7-control-cost",
-            "best-practices/how-we-context-engineer/8-glossary",
+            "best-practices/how-we-context-engineer/8-pair-with-the-semantic-layer",
+            "best-practices/how-we-context-engineer/9-glossary",
           ],
         },
         {

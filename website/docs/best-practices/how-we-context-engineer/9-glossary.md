@@ -1,6 +1,6 @@
 ---
 title: "Glossary"
-id: 8-glossary
+id: 9-glossary
 description: Plain-language definitions of the terms used in the context engineering guide, plus every package macro and var in one place.
 displayText: Glossary
 hoverSnippet: Look up the terms used in the context engineering guide.

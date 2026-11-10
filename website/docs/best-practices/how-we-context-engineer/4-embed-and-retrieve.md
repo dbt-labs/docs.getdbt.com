@@ -15,7 +15,7 @@ In this section, you'll learn how to:
 - Combine many sources into one knowledge base that cites its origins
 - Keep embeddings fresh without overspending
 
-Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/8-glossary).
+Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/9-glossary).
 
 ## Embed your text
 

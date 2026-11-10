@@ -24,7 +24,7 @@ To get started with context engineering in practice, make sure you check out the
 
 All the other concepts after that makes the result better: labels for precision, tests for trust, and guards for cost.
 
-Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/8-glossary).
+Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/9-glossary).
 
 ## Try it first, no credentials needed
 

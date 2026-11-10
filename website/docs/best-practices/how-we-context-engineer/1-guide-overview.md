@@ -42,7 +42,8 @@ This guide covers the following:
 4. [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai): Label each piece so search gets precise, with prompts managed as versioned code.
 5. [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy): Test AI output the way you test any other dbt model, and keep lineage and citations intact.
 6. [Control cost](/best-practices/how-we-context-engineer/7-control-cost): Build in limits and a record of what each run spent.
-7. [Glossary](/best-practices/how-we-context-engineer/8-glossary): Look up new terms, macros, and vars in one place.
+7. [Pair context with the semantic layer](/best-practices/how-we-context-engineer/8-pair-with-the-semantic-layer): See how context and metrics fit in one project, and how an agent uses both.
+8. [Glossary](/best-practices/how-we-context-engineer/9-glossary): Look up new terms, macros, and vars in one place.
 
 ## What is context?
 
@@ -67,19 +68,7 @@ Context engineering not only structures data but also adds ownership, tests, and
 
 ## Context and the semantic layer
 
-You might've previously asked yourself, 'when should I use the semantic layer and when should I use context?'.  Use the semantic layer for your metrics and context for your unstructured and semi-structured data. They complement each other and work side by side:
-
-<SimpleTable>
-
-| Layer | What it holds | Example question |
-|-------|---------------|------------------|
-| Semantic layer | Your metrics and how they're defined | "What was on-time delivery last quarter?" |
-| Context | Your unstructured and semi-structured data, modeled so agents can find and cite it | "Why did on-time delivery slip, and which accounts drove it?" |
-</SimpleTable>
-
-Your metrics tell an agent _what_ happened. Context tells it _why_. Agents discover both through [Agents Schema](https://github.com/dbt-labs/agents_schema), a standard `AGENTS` schema in your warehouse.
-
-This guide covers _modeling_ context, not serving it. The package isn't an agent, an MCP server, or a serving layer. It makes the context those systems read.
+Use the semantic layer for your metrics and context for your unstructured and semi-structured data. Your metrics tell an agent _what_ happened. Context tells it _why_. They live in the same project and work side by side, and an agent uses both to answer one question. [Pair context with the semantic layer](/best-practices/how-we-context-engineer/8-pair-with-the-semantic-layer) shows how.
 
 ## What counts as unstructured data?
 
@@ -135,7 +124,7 @@ On Redshift, structured output is best-effort, and there's no managed vector ind
 :::info New to some dbt basics? 
 If you're new to dbt, we recommend you skim [SQL models](/docs/build/sql-models), [materializations](/docs/build/materializations), [incremental models](/docs/build/incremental-models), [data tests](/docs/build/data-tests), [hooks](/docs/build/hooks-operations), [project variables](/docs/build/project-variables), and [packages](/docs/build/packages) first. You don't need to be an expert.
 
-If you're unsure on some context engineering terms, check out the [glossary](/best-practices/how-we-context-engineer/8-glossary).
+If you're unsure on some context engineering terms, check out the [glossary](/best-practices/how-we-context-engineer/9-glossary).
 :::
 
 

@@ -185,3 +185,7 @@ The second fix is **event sourcing**: instead of flipping a field on an existing
 
 - **Use an append-only log on every engine:** Concurrency failures show up differently per engine, with a transaction conflict on Databricks and a rate-limit error on BigQuery, but the fix is the same.
 - **Don't pay for an index you forgot:** A managed vector index is billed separately and charges even when idle. Create it as a deliberate operation, and drop it when you're done. See [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve).
+
+## What's next
+
+You've built context and made it safe to run. Next, [Pair context with the semantic layer](/best-practices/how-we-context-engineer/8-pair-with-the-semantic-layer) shows how it sits beside your metrics and how an agent uses both.
