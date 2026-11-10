@@ -303,7 +303,7 @@ A prompt isn't documentation. It's an input that changes your output, exactly li
 
 The **output schema** is the same. It declares the shape the LLM must return: field names, types, and allowed values. Together, a prompt and a schema turn free-form prose into a typed object per row you can store and query. That's what lets an LLM act as a data transformation instead of a chat window.
 
-### Our recommendations
+## Our recommendations
 
 - **Version prompts and schemas like database migrations:** Each version is an immutable, named artifact, such as `v3`. To improve a prompt, write `v4`. Never edit a released version in place.
 - **Reference an explicit version every time:** There's no "latest". A context model on `v3` stays on `v3` until you deliberately bump it, so changes roll out and roll back one context model at a time.
