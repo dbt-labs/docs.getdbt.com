@@ -28,6 +28,10 @@ AI output fails in three ways:
 
 </SimpleTable>
 
+Ask for `pain_point`, `requirement`, or `objection`, and an LLM can still hand back `PROBLEM`. It's well formed and confident, and every ordinary test passes.
+
+<Lightbox src="/img/best-practices/context-engineering/meme-i-like-turtles.jpg" width="60%" title="An LLM answering off the list. The shape is fine. The answer isn't." />
+
 ## Check with code, not with another LLM
 
 Checking is far cheaper than producing:

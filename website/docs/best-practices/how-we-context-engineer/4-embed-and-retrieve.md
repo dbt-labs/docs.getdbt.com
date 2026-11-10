@@ -95,7 +95,9 @@ An index is optional and in beta. It's a separate service that bills even when n
 - On Databricks, you create it through its Vector Search API.
 - On Redshift, it isn't supported. Search stays brute force.
 
-To scope a search to one customer, filter before you rank, as the `filter` argument above does.
+To scope a search to one customer, filter before you rank, as the `filter` argument above does. Rows from other accounts don't rank low. They never enter the search.
+
+<Lightbox src="/img/best-practices/context-engineering/meme-i-dont-know-her.jpg" width="60%" title="A search filtered on account_key never sees other accounts' rows." />
 
 ## Search alone isn't enough
 
