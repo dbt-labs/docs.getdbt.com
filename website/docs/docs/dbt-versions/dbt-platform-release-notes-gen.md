@@ -22,6 +22,8 @@ Release notes are grouped by date for single-tenant environments.
 
 <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](https://docs.getdbt.com/feeds/release-notes-st-rss.xml), [Atom](https://docs.getdbt.com/feeds/release-notes-st-atom.xml), or [JSON Feed](https://docs.getdbt.com/feeds/release-notes-st-rss.json).</span>
 
+<ReleaseNotesFilter layout="weekly" />
+
 ## November 4, 2026
 
 ## Enhancements

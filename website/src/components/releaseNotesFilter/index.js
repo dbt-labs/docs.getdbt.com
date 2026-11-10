@@ -8,6 +8,17 @@ import styles from './styles.module.css';
 const DEFAULT_AREAS = areaList.areas.map((area) => area.name);
 const ALL = 'All';
 const ANNOUNCEMENTS = 'Announcements';
+const OTHER = 'Other';
+
+// Weekly layout (single-tenant page): other headings that mean the same area.
+const AREA_LOOKUP = areaList.areas.reduce((lookup, area) => {
+  [area.name, ...(area.st_aliases || [])].forEach((name) => {
+    lookup[name.toLowerCase()] = area.name;
+  });
+  return lookup;
+}, {});
+const WEEK_HEADING = /^[A-Z][a-z]+ \d{1,2}, \d{4}$/;
+const TYPE_HEADINGS = ['new', 'enhancements', 'enhancement', 'fixes', 'fix', 'behavior changes', 'behavior change'];
 
 const headingText = (el) => el.textContent.replace(/[#\u200b]/g, '').trim();
 const isAnnouncement = (el) => el.tagName === 'H3' && /announcements/i.test(headingText(el));
@@ -76,6 +87,67 @@ function applyFilter(root, areas, selected) {
   syncToc(getSiblings(root));
 }
 
+// Weekly layout, used by the single-tenant page. Weeks are dated `##` headings,
+// the note types (New, Enhancements, Fixes, Behavior changes) are `##` headings
+// under them, and areas are `###` headings. The page's headings are matched to
+// an area by name, ignoring case; anything that doesn't match, and notes that
+// aren't under an area heading, go under "Other".
+function scanWeekly(root) {
+  let week = null;
+  let type = null;
+  let group = OTHER;
+  const containers = [];
+  const entries = getSiblings(root).map((el) => {
+    const text = /^H[23]$/.test(el.tagName) ? headingText(el) : '';
+    if (el.tagName === 'H2' && WEEK_HEADING.test(text)) {
+      week = { heading: el, visible: false };
+      type = null;
+      group = OTHER;
+      containers.push(week);
+      return { container: week };
+    }
+    if (
+      el.tagName === 'H2' ||
+      (el.tagName === 'H3' && TYPE_HEADINGS.includes(text.toLowerCase()))
+    ) {
+      type = { heading: el, visible: false };
+      group = OTHER;
+      containers.push(type);
+      return { container: type };
+    }
+    if (el.tagName === 'H3') group = AREA_LOOKUP[text.toLowerCase()] || OTHER;
+    return { el, week, type, group };
+  });
+  return { entries, containers };
+}
+
+function applyWeeklyFilter(root, selected) {
+  const { entries, containers } = scanWeekly(root);
+  entries.forEach(({ el, week, type, group, container }) => {
+    if (container) return;
+    const show = selected === ALL || !week || group === selected;
+    el.style.display = show ? '' : 'none';
+    if (show && selected !== ALL) {
+      if (week) week.visible = true;
+      if (type) type.visible = true;
+    }
+  });
+  containers.forEach((c) => {
+    c.heading.style.display = selected === ALL || c.visible ? '' : 'none';
+  });
+  syncToc(getSiblings(root));
+}
+
+const findPresentWeeklyAreas = (root, areas) => {
+  const found = new Set(
+    scanWeekly(root)
+      .entries.filter((entry) => entry.week && entry.el && entry.el.tagName !== 'H3')
+      .map((entry) => entry.group)
+  );
+  const present = areas.filter((area) => found.has(area));
+  return found.has(OTHER) ? [...present, OTHER] : present;
+};
+
 // Mirrors heading visibility in the right-hand table of contents, so the
 // sidebar only lists the sections that are currently on screen.
 function syncToc(siblings) {
@@ -97,7 +169,10 @@ const findPresentAreas = (root, areas) => {
   return areas.filter((area) => found.has(area));
 };
 
-export default function ReleaseNotesFilter({ areas = DEFAULT_AREAS, inline = 7 }) {
+export default function ReleaseNotesFilter({ areas = DEFAULT_AREAS, inline = 7, layout = 'monthly' }) {
+  const weekly = layout === 'weekly';
+  const apply = (root, selection) =>
+    weekly ? applyWeeklyFilter(root, selection) : applyFilter(root, areas, selection);
   const rootRef = useRef(null);
   const [selected, setSelected] = useState(ALL);
   const [present, setPresent] = useState([]);
@@ -106,23 +181,28 @@ export default function ReleaseNotesFilter({ areas = DEFAULT_AREAS, inline = 7 }
   // Marks the page body so the CSS module can style the area headings.
   useEffect(() => {
     const page = rootRef.current && rootRef.current.parentElement;
-    if (!page) return undefined;
+    if (!page || weekly) return undefined;
     page.classList.add('rn-page');
     return () => page.classList.remove('rn-page');
-  }, []);
+  }, [weekly]);
 
   useEffect(() => {
-    if (rootRef.current) setPresent(findPresentAreas(rootRef.current, areas));
-  }, [areas]);
+    if (!rootRef.current) return;
+    setPresent(
+      weekly
+        ? findPresentWeeklyAreas(rootRef.current, areas)
+        : findPresentAreas(rootRef.current, areas)
+    );
+  }, [areas, weekly]);
 
   useEffect(() => {
-    if (rootRef.current) applyFilter(rootRef.current, areas, selected);
-  }, [selected, areas]);
+    if (rootRef.current) apply(rootRef.current, selected);
+  }, [selected, areas, weekly]);
 
   useEffect(() => {
     const root = rootRef.current;
-    return () => root && applyFilter(root, areas, ALL);
-  }, [areas]);
+    return () => root && apply(root, ALL);
+  }, [areas, weekly]);
 
   const pick = (name) => {
     setSelected(name);
