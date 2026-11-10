@@ -51,7 +51,7 @@ Set an expiration so a token stops working on its own, even if you forget about 
 
 The **Expires** column on the **Personal tokens** page shows the date and time each token stops working, in GMT. Tokens you created before expiry was available don't expire.
 
-<Lightbox src="/img/docs/dbt-platform/api-tokens/token-list-expires-column.png" width="80%" title="The Expires column shows when each token stops working" />
+<Lightbox src="/img/docs/dbt-platform/api-tokens/token-list-expires-column.png" width="95%" title="The Expires column shows when each token stops working" />
 
 After the expiration date, requests that use the token will fail. Create a new token and date your scripts before then. Delete the old token only by clicking "X" to the right of the token description fields only after the new one is in place.
 
