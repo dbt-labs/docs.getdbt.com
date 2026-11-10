@@ -29,12 +29,35 @@ You can't use a PAT to create a [service token](/docs/dbt-apis/service-tokens). 
 Creating an account-scoped PAT requires only a few steps.
 1. Navigate to your **Account Settings**, expand **API tokens** and click **Personal tokens**.
 2. Click **Create personal access token**.
-3. Give the token a descriptive name and click **Save**. 
-
-4. Copy the token before closing the window. _It will not be available after, and you will have to create a new token if you lose it._ 
-
+3. Give the token a descriptive name.
+4. Choose an **Expiry**. The default is **No expiry**. Refer to [Set a token expiration](#set-a-token-expiration).
+5. Click **Save**.
+6. Copy the token before closing the window. _It will not be available after, and you will have to create a new token if you lose it._ 
 
 To maintain best security practices, it's recommended that you regularly rotate your PATs. To do so, create a new token and delete the old one once it's in place.
+
+## Set a token expiration
+
+Set an expiration so a token stops working on its own, even if you forget about it. Pick one when you create the token:
+
+- **No expiry** (default)
+- **7 days**
+- **14 days**
+- **30 days**
+- **90 days**
+- **365 days**
+
+<Lightbox src="/img/docs/dbt-platform/api-tokens/pat-expiry-options.png" width="80%" title="Choose an expiry when you create a personal access token" />
+
+The **Expires** column on the **Personal tokens** page shows the date and time each token stops working, in GMT. Tokens you created before expiry was available don't expire.
+
+<Lightbox src="/img/docs/dbt-platform/api-tokens/token-list-expires-column.png" width="80%" title="The Expires column shows when each token stops working" />
+
+After the expiration date, requests that use the token fail. Create a new token and update your scripts before then.
+
+:::tip Pick the shortest expiry that works
+A shorter lifetime limits the damage if a token leaks. Skip expiry for tokens that production workflows depend on, unless you track the date. An expired token breaks everything that uses it.
+:::
 
 ## Delete a personal access token
 
