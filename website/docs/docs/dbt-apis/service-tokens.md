@@ -49,10 +49,6 @@ The **Expires** column on the **Service tokens** page shows the date and time ea
 
 After the expiration date, requests that use the token fail. Create a new token with the same permissions and update your systems before then. Delete the old token only after the new one is in place.
 
-:::tip Pick the shortest expiry that works
-A shorter lifetime limits the damage if a token leaks. Be careful with tokens that jobs, CI pipelines, or integrations rely on: an expired token breaks everything that uses it, so put the expiry date on your calendar.
-:::
-
 ## Permissions for service account tokens
 
 You can assign service account tokens to any permission set available in <Constant name="dbt" />. When you assign a permission set to a token, you will also be able to choose whether to grant those permissions to all projects in the account or to specific projects.
