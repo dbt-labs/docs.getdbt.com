@@ -38,7 +38,7 @@ Checking is far cheaper than producing:
 
 Every check is exact string, set, or arithmetic logic: no model, no spend, no randomness. So these tests run on every pull request like any other dbt test.
 
-## Three tests we recommend
+## Recommended tests
 
 The `dbt_context_engineering` package ships with four tests:
 

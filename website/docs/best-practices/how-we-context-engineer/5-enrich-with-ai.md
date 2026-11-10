@@ -15,7 +15,6 @@ In this section, you'll learn how to:
 - Manage prompts and output shapes as versioned code
 - Read the model's answer back out the same way on every warehouse
 
-Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/8-glossary).
 
 ## Treat inference as a transformation
 
@@ -26,11 +25,11 @@ Warehouses now expose AI as SQL functions, so an AI call is just a column expres
 - Governance which allows the AI step to inherit version control, code review, tests, lineage, and scheduling.
 - Data remains so nothing is exported and there's no second copy to secure.
 
-Run the model _per row_, not with many rows stuffed into one giant prompt. A giant prompt breaks the one-to-one link between input and output, doesn't work with incremental builds, and can blow past the model's context window (how much text it can read at once). Per-row calls also keep cost controls simple (read [Control cost](/best-practices/how-we-context-engineer/7-control-cost) for more info).
+Run the model _per row_, not with many rows stuffed into one giant prompt. A giant prompt breaks the one-to-one link between input and output, doesn't work with incremental builds, and can blow past the model's context window. Per-row calls also keep cost controls simple (read [Control cost](/best-practices/how-we-context-engineer/7-control-cost) for more info).
 
 ## Choose an operation
 
-Context engineering runs on a small vocabulary. There are four row-level operations and one group-level operation, and picking the right one is most of the skill:
+Context engineering is still evolving and there are roughly 4 row-level operations and 1 group-level operation:
 
 <SimpleTable>
 
@@ -58,7 +57,7 @@ Every major warehouse exposes these as SQL functions, but each names them differ
 
 </SimpleTable>
 
-You don't write these by hand. In your models, you call the package macro from the first table, and it writes your warehouse's function for you. The examples on this page use Snowflake. On Databricks or BigQuery, the same macro call works. Only the function it writes changes.
+You don't need to write these by hand. You can call the packages in your models from the first table and it writes your warehouse's function for you. The examples on this page use Snowflake. On Databricks or BigQuery, the same macro call works. Only the function it writes changes.
 
 ### Classify
 
@@ -147,7 +146,7 @@ Labels make search precise. Without them, short boilerplate chunks crowd the top
 
 Treat your labels like any other model: someone owns them, and changes go through a pull request.
 
-- **Never edit `v1`: Copy both macros to `v2`, make your change, and change the version in `meta.ai_prompt` to `v2`.
+- Never edit `v1`: Copy both macros to `v2`, make your change, and change the version in `meta.ai_prompt` to `v2`.
 - Change both macros together: The instructions and the list need the same labels. A test catches a label that isn't on the list (refer to [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy)).
 - Rebuild: Classify relabels every chunk on each build, so it bills again.
 - Check accuracy: Keep a small set of chunks you've labeled yourself, and test the model's labels against them.

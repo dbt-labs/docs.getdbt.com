@@ -42,7 +42,7 @@ The terms are in alphabetical order.
 
 The following table lists most of the macros in the the [`dbt_context_engineering` package](https://github.com/dbt-labs/dbt-context-engineering/tree/main/macros), but refer to the repo for the official list. You call them as `dbt_context_engineering.MACRO_NAME` (replacing `MACRO_NAME` with the macro name). 
 
-| Macro | What it does | Learn more |
+| Macro name| What it does | Learn more |
 |-------|--------------|------------|
 | `chunk` | Splits text into chunks without cutting a unit in half | [Prepare your text](/best-practices/how-we-context-engineer/3-prepare-your-text) |
 | `no_oversized_chunks` | Test that flags chunks over your size target | [Prepare your text](/best-practices/how-we-context-engineer/3-prepare-your-text) |

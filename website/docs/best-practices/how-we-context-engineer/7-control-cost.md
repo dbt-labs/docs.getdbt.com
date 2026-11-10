@@ -20,18 +20,18 @@ In this section, you'll learn how to:
 
 ## Why does AI cost need its own controls?
 
-You're used to "just run it again." AI breaks that for two reasons:
+Re-running things can be costly:
 
 - Each row costs money, so cost grows with your data volume.
 - Part of the cost isn't yours to control. You're billed per token (a sub-word piece a model reads and writes, roughly four characters of English) for what you send (input tokens) and what comes back (output tokens). The model decides how many output tokens to spend, and it can spend hundreds "thinking" before a one-word answer.
 
-In our own testing, one generation run over 10 one-sentence rows on BigQuery produced 65,825 output tokens, about 6,600 per row. Nearly all of it was the model's default "thinking," which is billed as output. The inputs were tiny. The cost wasn't.
+In our own testing, one generation run over 10 one-sentence rows on BigQuery produced 65,825 output tokens, about 6,600 per row. Nearly all of it was the model's default "thinking," which is billed as output. The inputs were tiny but the cost wasn't.
 
 A report the next morning only tells you what you already spent. The control has to fire before the tokens are spent.
 
 ## Use a circuit breaker and a meter
 
-Two tools do the work:
+Use two tools do the work:
 
 <SimpleTable>
 
@@ -91,7 +91,7 @@ Record each run's function, model, row count, estimated tokens, estimated cost, 
 - The log is built from estimates, so treat it as observability, not an invoice. Reconciling it against each engine's billing tables is separate work, and it's yours to add.
 
 ## Make spend an opt-in
-
+You can control costs by making further adjustments to your projects using the tips described in this section.
 ### Turn AI functions off by default
 
 A plain `dbt build` in a fresh environment, or a CI job that never meant to call a model, shouldn't be able to bill you. Add a setting that's `false` by default and raises an error unless you've set it to `true` for the target. In the package, that's the `ai_functions_enabled` var.
