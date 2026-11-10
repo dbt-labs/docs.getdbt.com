@@ -108,28 +108,87 @@ By adding classification, that now closes the gap! Give each chunk one label, th
 
 ## Combine sources into a knowledge base
 
-Useful questions rarely live in one table. "Tell me everything about this account" spans tickets, call transcripts, meeting notes, and emails, each with its own column names, grain, and timestamps. An agent shouldn't need to know that a ticket body and a call transcript are the same kind of thing.
+Questions like "Tell me everything about this account" span different tables. The answer lives in tickets, call transcripts, meeting notes, and emails, each with its own column names and timestamps.
 
-You've solved this problem before. A conformed dimension defines one canonical shape and maps every source into it. A **knowledge base** is the same idea for context: a retrieval-ready table where every source lands in one common shape.
+A _knowledge base_ is one table that holds all of them. You create it with the package's `knowledge_base()` macro where you list your sources and say which columns map to which, and the macro then renames and stacks them into one table. 
+
+Think of it as a union model that writes itself. Because every source ends up with the same columns, one search covers all of them.
+
+### Where this fits in your workflow
+
+You build the knowledge base last, after every source is ready. Two kinds of model are involved:
 
 <SimpleTable>
 
-| Column | Meaning |
-|--------|---------|
+| Model | What it is | Who writes it |
+|-------|------------|---------------|
+| Source models | One set per source. Each chunks, embeds, and optionally classifies that source's text, as covered earlier in this guide. | You |
+| Knowledge base model | One model that stacks all the source models into a single table. Its body is one call to the package's `knowledge_base()` macro. | You write the call. The macro writes the SQL. |
+
+</SimpleTable>
+
+Here's the recommended order of your workflow:
+
+1. Prepare, embed, and optionally classify each source, with the same embedding model for every source.
+2. Create one new model that calls `knowledge_base()` and lists those sources.
+3. Build it with `dbt build`.
+4. Point your agent or app at the result and search it.
+
+The macro doesn't create embeddings or labels but it does stack what your source models already have.
+
+### What comes out
+
+Your sources that start with different column names:
+
+<SimpleTable>
+
+| Source | Id | Account | Text | Timestamp |
+|--------|----|---------|------|-----------|
+| Tickets | `ticket_id` | `account_id` | `body` | `created_at` |
+| Calls | `chunk_id` | `client_id` | `chunk_text` | `artifact_ts` |
+
+</SimpleTable>
+
+The knowledge base gives them one set of names, so a ticket and a call can sit in the same table:
+
+<SimpleTable>
+
+| Column | What it holds |
+|--------|---------------|
 | `source_type` | Which system the row came from, such as ticket or call |
 | `source_id` | The row's id in that system |
 | `account_key` | The key you filter on, such as account or tenant |
 | `text` | The content |
-| `embedding` | Its vector |
+| `embedding` | The vector for that text |
 | `ts` | When it happened |
-| `citation_url` | A link back to the original. Optional per source. |
-| `classification` | The label from [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai). Optional per source. |
+| `citation_url` | A link back to the original. Optional. |
+| `classification` | The label from [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai). Optional. |
 
 </SimpleTable>
 
-With this in place, one filtered search answers a cross-system question, and every hit says which system and row it came from.
+The macro also adds `source_key` and `content_hash` for you, so incremental runs can find new and changed rows.
 
-In the package, you list each source and say which of its columns map to the shared shape. Here are two of the five sources in `jaffle-logistics`:
+### Tell the macro how to map each source
+
+Use the package's `knowledge_base()` macro in a model. You pass it a list with one entry per source. Each entry says which of that source's columns goes into which knowledge base column:
+
+<SimpleTable>
+
+| Key in your entry | You set it to | Required |
+|-------------------|---------------|----------|
+| `relation` | The source model, such as `ref('legal_docs_embedded_classified')` | Yes |
+| `source_type` | A label you pick, such as `'Legal Document'` | Yes |
+| `source_id` | The source column with the row's id | Yes |
+| `account_key` | The source column you filter by | Yes |
+| `text` | The source column with the text | Yes |
+| `embedding` | The source column with the vector | Yes |
+| `timestamp` | The source column with the date or time. It becomes `ts`. | Yes |
+| `citation_url` | The source column with a link back to the original | No |
+| `classification` | The source column with the label | No |
+
+</SimpleTable>
+
+If you leave out an optional key, that source's rows get `null` in the column. Here are two of the five sources in `jaffle-logistics`:
 
 <File name="models/context/ai/knowledge_base.sql">
 
@@ -147,6 +206,20 @@ In the package, you list each source and say which of its columns map to the sha
 ```
 
 </File>
+
+To add a source, add one more entry to the list.
+
+### Build and use it
+
+The knowledge base is a regular dbt model, so you build it like any other. Build your source models first, because their embed and classify steps make the AI calls. Then build the knowledge base:
+
+```shell
+dbt build --select knowledge_base --vars '{"ai_functions_enabled": true}'
+```
+
+The knowledge base itself is plain SQL with no AI calls, so it adds warehouse compute only. You build it. Your agent or app queries it, and your end users ask the agent.
+
+To answer a cross-system question, [search by meaning](#retrieve-by-meaning) over the table and filter on `account_key`. Every hit carries its `source_type` and `source_id`, so it says which system and row it came from.
 
 Our recommendations:
 
