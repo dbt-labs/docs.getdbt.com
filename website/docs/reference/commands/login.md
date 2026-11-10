@@ -28,7 +28,7 @@ Refer to [VS Code extension features](/docs/dbt-extension-features#feature-avail
 
 ## Before you log in
 
-A <Constant name="dbt_platform" /> account carries your access across all your dbt tools &mdash; the CLI, the VS Code extension, and dbt State &mdash; so you only log in once. All [account plans](https://www.getdbt.com/pricing) are supported, including the free Developer plan.
+A <Constant name="dbt_platform" /> account carries your access across all your dbt tools &mdash; the CLI, the VS Code extension, and dbt State &mdash; so you only log in once. All [account plans](https://www.getdbt.com/pricing) are supported.
 
 Run `dbt login` to create an account, or log in to an existing one. Logging in is simply how dbt confirms your access to dbt platform-based capabilities in your local development environment.
 
