@@ -59,6 +59,27 @@ This guide covers modeling, not serving. The package isn't an agent or an MCP se
 
 Agents reach both layers through tools over MCP. The [dbt MCP server](/docs/dbt-ai/about-mcp) exposes the semantic layer, and agents discover context through [Agents Schema](https://github.com/dbt-labs/agents_schema), a standard `AGENTS` schema in your warehouse.
 
-## What's next
+## Conclusion
+
+You already model numbers so a person can trust them. Context engineering gives your text the same treatment, so an agent can search it, cite it, and trust it. The core flow is the same every time: chunk, embed, search.
+
+<Lightbox src="/img/best-practices/context-engineering/pipeline.svg" width="100%" title="A call transcript is chunked, embedded as numbers, and placed on a map where similar meanings sit close together. A question lands on the same map, and the closest chunks come back with a score and a source." />
+
+Around that flow, you add four habits:
+
+<SimpleTable>
+
+| Habit | What you do | Go back to |
+|-------|-------------|------------|
+| Label | Tag each chunk with an LLM, using prompts kept as versioned code | [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) |
+| Test | Check AI output with plain code, and carry a citation on every claim | [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy) |
+| Budget | Cap what AI calls spend and record what each run used | [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |
+| Pair | Get the number from a metric and the reason from context | [How an agent answers](#how-an-agent-answers) |
+
+</SimpleTable>
+
+Metrics tell you what moved. Context tells you why.
+
+At the start of this guide, we said that for a decade we've modeled data for one reader: the dashboard. Now there's a second reader, the agent. It's only as trustworthy as what you hand it, and that's where your discipline comes in.
 
 New terms? The [Glossary](/best-practices/how-we-context-engineer/9-glossary) lists them, plus every macro and var in the package.
