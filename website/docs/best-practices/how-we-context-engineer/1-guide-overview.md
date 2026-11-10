@@ -46,18 +46,18 @@ Context is the information an AI agent reads to do its job. Good context is:
 - Tested so you can prove it’s correct
 - Traceable so every claim points back to the source it came from
 
-### Good context vs. bad context
-
-Ask an agent, _"Why were deliveries late for this account?"_
+So if you ask an agent a question, like _"Why were deliveries late for this account?"_, the answer you get will vary depending on how well your context is structured:
 
 <SimpleTable>
 
-| | Bad context | Good context |
+| | Example of bad context | Example of good context |
 |---|---|---|
 | What the agent reads | One pasted blob: "…pattern of late deliveries. Reviewed with dispatch. Truck 14 slid on ice…" | Small pieces, each with an id, account, and source: `IR-9001::1`, "Truck slid on ice during the storm and missed the delivery window." |
-| The answer | "Probably weather." No source, so you can't check it. | "An ice storm (`IR-9001::1`)." You can check it. |
+| The answer | "Probably weather." No source, so you can't check it. | "Truck 14 slid on ice during the storm and missed its delivery window (`IR-9001::1`)" You can check it. |
 
 </SimpleTable>
+
+Context engineering not only structures data but also adds ownership, tests, and traceability, so that you and your end users can check where an agent’s answers come from instead of just believe it.
 
 ## Context and the semantic layer
 
