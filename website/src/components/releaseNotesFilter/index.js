@@ -151,9 +151,9 @@ const findPresentWeeklyAreas = (root, areas) => {
 };
 
 // Mirrors heading visibility in the right-hand table of contents, so the
-// sidebar only lists the sections that are currently on screen. When a single
-// area is selected, its heading would repeat under every month, so the area
-// level (`areaTag`) is left out and the list shows the months that have it.
+// sidebar only lists the sections that are currently on screen. When an area
+// is selected, its heading would repeat under every month, so the area level
+// (`areaTag`) is left out and the list shows the months that have it.
 function syncToc(siblings, areaTag) {
   siblings
     .filter((el) => /^H[234]$/.test(el.tagName) && el.id)
@@ -179,14 +179,13 @@ export default function ReleaseNotesFilter({ areas = DEFAULT_AREAS, inline = 7, 
   const apply = (root, selection) =>
     weekly ? applyWeeklyFilter(root, selection) : applyFilter(root, areas, selection);
   const rootRef = useRef(null);
-  // Selected areas. Empty means "All".
+  // The selected area, as a list of one. Empty means "All".
   const [selected, setSelected] = useState([]);
   const [present, setPresent] = useState([]);
   const [moreOpen, setMoreOpen] = useState(false);
   const moreRef = useRef(null);
 
-  // The More menu stays open while you tick areas; close it on an outside
-  // click or Escape.
+  // Close the More menu on an outside click or Escape.
   useEffect(() => {
     if (!moreOpen) return undefined;
     const onDown = (event) => {
@@ -229,14 +228,10 @@ export default function ReleaseNotesFilter({ areas = DEFAULT_AREAS, inline = 7, 
     return () => root && apply(root, []);
   }, [areas, weekly]);
 
-  // Pills toggle, so more than one area can be on at a time. "All" clears them.
+  // One area at a time. "All" clears the selection.
   const pick = (name) => {
-    setSelected((current) => {
-      if (name === ALL) return [];
-      return current.includes(name)
-        ? current.filter((area) => area !== name)
-        : [...current, name];
-    });
+    setSelected(name === ALL ? [] : [name]);
+    setMoreOpen(false);
   };
   const isOn = (name) => (name === ALL ? selected.length === 0 : selected.includes(name));
 
@@ -277,7 +272,7 @@ export default function ReleaseNotesFilter({ areas = DEFAULT_AREAS, inline = 7, 
             aria-expanded={moreOpen}
             onClick={() => setMoreOpen(!moreOpen)}
           >
-            {moreActive ? `More (${moreSelected.length})` : 'More'} ▾
+            {moreActive ? moreSelected[0] : 'More'} ▾
           </button>
           {moreOpen && (
             <div className={styles.menu} role="menu">
@@ -285,12 +280,10 @@ export default function ReleaseNotesFilter({ areas = DEFAULT_AREAS, inline = 7, 
                 <button
                   key={name}
                   type="button"
-                  role="menuitemcheckbox"
-                  aria-checked={isOn(name)}
+                  role="menuitem"
                   className={`${styles.menuItem} ${isOn(name) ? styles.menuItemActive : ''}`}
                   onClick={() => pick(name)}
                 >
-                  {isOn(name) ? '✓ ' : ''}
                   {name}
                 </button>
               ))}
