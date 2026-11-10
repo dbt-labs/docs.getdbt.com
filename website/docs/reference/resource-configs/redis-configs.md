@@ -52,6 +52,8 @@ The adapter also supports `on_schema_change` and `incremental_predicates`. For m
 
 You can enforce model contracts. The driver enforces `not_null` and `check` constraints. It accepts `primary_key`, `unique`, and `foreign_key` constraints without enforcing them; dbt warns about those constraints.
 
+Small integer literals have the `integer` type. In a contract, declare a column such as `select 1 as id` as `integer`, or cast the expression to `bigint` in the model.
+
 ## Persisted documentation
 
 Enable `persist_docs` to store relation and column descriptions through SQL comments:
@@ -76,7 +78,9 @@ Incremental Python models are not supported.
 
 ## Relation names and access control
 
-The driver exposes one catalog named `redis`. SQL relations render as `schema.table`, without the catalog. Schema and table names retain their case. Use dbt's `quoting` configuration when identifiers require quotes.
+The driver exposes one catalog named `redis`. SQL relations render as `schema.table`, without the catalog. By default, the adapter doesn't quote schema or table names, and the driver folds unquoted identifiers to lowercase, as PostgreSQL does. Double-quoted names keep their exact case. To keep a name's case, enable dbt's `quoting` configuration for it.
+
+Relations that driver releases earlier than 0.0.16 created with mixed-case names keep those names. Quote their exact names when you reference them, or rename them.
 
 Redis controls access through ACL users, commands, and key patterns. The adapter skips SQL `grants` configurations with a warning. Configure permissions in Redis instead, following the [driver's ACL documentation](https://github.com/redis/redis-adbc-driver/blob/main/docs/driver-reference.md#acl-users).
 
