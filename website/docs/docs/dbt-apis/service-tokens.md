@@ -49,7 +49,7 @@ The **Expires** column on the **Service tokens** page shows the date and time ea
 
 <Lightbox src="/img/docs/dbt-platform/api-tokens/token-list-expires-column.png" width="95%" title="The Expires column shows when each token stops working" />
 
-After the expiration date, requests that use the token will fail. Create a new token with the same permissions and update your systems before then. Delete the old token only by clicking "X" to the right of the token description fields only after the new one is in place.
+After the expiration date, requests that use the token will fail. Create a new token with the same permissions and update your systems before then. 
 
 ## Permissions for service account tokens
 
