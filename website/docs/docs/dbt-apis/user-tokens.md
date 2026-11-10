@@ -38,7 +38,7 @@ To maintain best security practices, it's recommended that you regularly rotate 
 
 ## Set a token expiration
 
-Set an expiration so a token stops working on its own, even if you forget about it. Pick one when you create the token:
+Set an expiration so a token stops working on its own, even if you forget about it. Pick one when you create the token. You can't change it later, so if you need a different expiry, create a new token:
 
 - **No expiry** (default)
 - **7 days**
