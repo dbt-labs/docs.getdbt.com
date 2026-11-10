@@ -1,0 +1,74 @@
+{
+  "description": "Product areas for the dbt platform release notes (docs/docs/dbt-versions/release-notes.md). Each area is a #### heading under the month. The order here is the order of headings in a month and of the filter pills on the page.",
+  "fallback": "dbt platform",
+  "areas": [
+    {
+      "name": "dbt AI and agents",
+      "definition": "Wizard, Wizard Desktop, Copilot, the dbt MCP server, AI models and providers, and AI billing.",
+      "subgroups": ["Wizard", "Wizard Desktop"],
+      "links": ["/docs/dbt-ai/", "/docs/platform/wizard-", "/docs/platform/manage-dbt-ai"],
+      "names": ["Wizard", "Wizard Desktop", "Copilot", "MCP"]
+    },
+    {
+      "name": "Studio IDE",
+      "definition": "The browser-based editor: file explorer, command panel, editor features, and development settings.",
+      "links": ["/docs/platform/studio-ide"],
+      "names": ["Studio IDE"]
+    },
+    {
+      "name": "dbt State",
+      "definition": "dbt State and state-aware orchestration: reuse and clone behavior, the dbt State pages, trials, and usage.",
+      "links": ["/docs/deploy/dbt-state", "/docs/deploy/state-aware", "/faqs/State/", "/reference/commands/state-explain"],
+      "names": ["dbt State", "state-aware orchestration"]
+    },
+    {
+      "name": "Catalog",
+      "definition": "Catalog pages, search, lineage, model and column details, and the Discovery API.",
+      "links": ["/docs/explore/", "/docs/dbt-apis/discovery"],
+      "names": ["Catalog", "Discovery API"]
+    },
+    {
+      "name": "Orchestration and run status",
+      "definition": "Jobs, runs, scheduling, continuous integration, run logs, notifications, and webhooks.",
+      "links": ["/docs/deploy/"],
+      "names": []
+    },
+    {
+      "name": "Semantic Layer",
+      "definition": "The dbt Semantic Layer, MetricFlow, metrics, saved queries, and Semantic Layer integrations.",
+      "links": ["/docs/use-dbt-semantic-layer/", "/docs/build/latest-metrics-spec"],
+      "names": ["Semantic Layer", "MetricFlow"]
+    },
+    {
+      "name": "APIs, Identity, and Administration",
+      "definition": "Admin APIs, tokens, SSO, SCIM, permissions, licenses, account settings, billing, and security settings.",
+      "links": ["/docs/platform/manage-access", "/docs/platform/secure", "/dbt-cloud/api", "/docs/dbt-apis/", "/docs/platform/billing", "/docs/platform/account-settings"],
+      "names": ["SCIM", "SSO"]
+    },
+    {
+      "name": "Announcements",
+      "definition": "Event sections, such as summit announcements. These keep their own ### heading and are not filed under a #### area.",
+      "section": true,
+      "links": [],
+      "names": []
+    },
+    {
+      "name": "Insights",
+      "definition": "Insights and Cost Insights: queries, charts, and cost data.",
+      "links": ["/docs/explore/cost-insights", "/docs/explore/set-up-cost-insights", "/docs/explore/explore-cost-data", "/docs/explore/navigate-dbt-insights"],
+      "names": ["Insights", "Cost Insights"]
+    },
+    {
+      "name": "Integrations",
+      "definition": "Data platform connections, adapters, and Git providers.",
+      "links": ["/docs/platform/connect-data-platform", "/docs/platform/git"],
+      "names": []
+    },
+    {
+      "name": "dbt platform",
+      "definition": "Anything that doesn't fit another area, including dbt engine and CLI changes.",
+      "links": [],
+      "names": []
+    }
+  ]
+}

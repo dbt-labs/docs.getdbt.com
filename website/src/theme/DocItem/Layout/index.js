@@ -104,6 +104,9 @@ function useDocTOC() {
             level = 2;
           } else if (heading.nodeName === "H3") {
             level = 3;
+          } else if (heading.nodeName === "H4") {
+            // Only shown on pages that set toc_max_heading_level to 4
+            level = 4;
           } else {
             level = null;
           }

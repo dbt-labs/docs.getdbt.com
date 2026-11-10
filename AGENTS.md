@@ -163,6 +163,19 @@ Full guide: `contributing/content-style-guide.md`
 
 Full guide: `contributing/content-types.md`
 
+### Release notes
+
+dbt platform release notes live in one file: `website/docs/docs/dbt-versions/release-notes.md`. Don't create a new file for a release note.
+
+- Months are `##` headings (`## November 2026`), newest first.
+- Inside a month, notes are grouped by product area. Each area is a `####` heading with a month-qualified anchor, for example `#### Catalog {#catalog-november-2026}`.
+- Add the bullet under the matching area heading in the current month. If the month doesn't have that area yet, add the heading, keeping areas in the order they appear in `website/release-note-areas.json`.
+- Pick the area from `website/release-note-areas.json`. It lists every area with a one-line definition, plus the docs paths and product names that point to it. If nothing fits, use **dbt platform**.
+- Under **dbt AI and agents**, Wizard notes go under a `##### Wizard` or `##### Wizard Desktop` sub-heading.
+- Start each bullet with `**New:**`, `**Enhancement:**`, `**Fix:**`, or `**Behavior change:**`.
+- Don't use `###` for areas. The RSS feed creates an item for every `##` and `###` heading in this file, so a new `###` heading notifies subscribers. `###` is only for event sections, such as summit announcements.
+- Don't rename or re-level existing `##` or `###` headings, for the same reason.
+
 ### Frontmatter
 
 #### Docs pages

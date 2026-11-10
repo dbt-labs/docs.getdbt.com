@@ -1,0 +1,99 @@
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 1.5rem 0;
+}
+
+.pill {
+  background: transparent;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 20px;
+  color: var(--ifm-font-color-base);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25;
+  padding: 6px 14px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.pill:hover {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.pill:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+.active,
+.active:hover {
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+  color: #fff;
+}
+
+.more {
+  position: relative;
+}
+
+.menu {
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  margin-top: 4px;
+  min-width: 180px;
+  padding: 4px;
+  position: absolute;
+  z-index: 10;
+}
+
+.menuItem {
+  background: transparent;
+  border: 0;
+  border-radius: 4px;
+  color: var(--ifm-font-color-base);
+  cursor: pointer;
+  font-size: 0.875rem;
+  padding: 6px 10px;
+  text-align: left;
+}
+
+.menuItem:hover {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.menuItemActive {
+  font-weight: 600;
+}
+
+/* Area headings are `####` under the month, and `#####` headings label
+   sub-groups. */
+:global(.rn-page) h4 {
+  align-items: center;
+  color: var(--ifm-color-emphasis-700);
+  display: flex;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.85rem;
+  font-weight: 500;
+  gap: 10px;
+  letter-spacing: 0.02em;
+  margin: 1.75rem 0 0.75rem;
+}
+
+:global(.rn-page) h4::after {
+  background: var(--ifm-color-emphasis-300);
+  content: '';
+  flex: 1;
+  height: 1px;
+}
+
+:global(.rn-page) h5 {
+  font-size: 0.9rem;
+  margin: 1rem 0 0.5rem;
+}

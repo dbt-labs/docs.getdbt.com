@@ -31,7 +31,7 @@ to the `website/` directory (repo root for this project).
 | Standard guide | none beyond defaults | `##` sections for the task, no special components |
 | Reference page | `keywords` (list) | Property/config table, links to related build docs |
 | New feature/product page | `tags`, `availability` block | `<IntroText>`, `<Lifecycle status="...">`, "Where to access", "Considerations"/FAQ |
-| Release note entry | none — appended to existing file, no new frontmatter | Bullet under the current month's `##` heading, using **New:**/**Enhancement:**/**Fix:**/**Behavior change:** prefix |
+| Release note entry | none — appended to existing file, no new frontmatter | Bullet under the matching `####` area heading in the current month, using **New:**/**Enhancement:**/**Fix:**/**Behavior change:** prefix |
 
 Verified against real pages in this repo:
 `docs/docs/dbt-ai/copilot-overview.md` (feature page),
@@ -134,9 +134,24 @@ Don't create a new file — append to the current month's section in
 `docs/docs/dbt-versions/release-notes.md`. If the current month has no `##`
 heading yet, add one (`## <Month> <Year>`) above the previous month's.
 
+Inside a month, notes are grouped by product area. Each area is a `####`
+heading with a month-qualified anchor. Add the bullet under the matching area,
+and add the area heading if the month doesn't have it yet:
+
 ```md
+#### Catalog {#catalog-november-2026}
+
 - **New:** <What shipped and why it matters. Link to the full doc.>
 ```
+
+Pick the area from `website/release-note-areas.json`, which lists each area
+with a one-line definition and the docs paths and product names that point to
+it. Keep areas in the order they appear in that file. If nothing fits, use
+**dbt platform**. Under **dbt AI and agents**, Wizard notes go under a
+`##### Wizard` or `##### Wizard Desktop` sub-heading.
+
+Don't use `###` for an area. The RSS feed creates an item for every `##` and
+`###` heading in that file, so a new `###` heading notifies subscribers.
 
 Use **Enhancement:**, **Fix:**, or **Behavior change:** instead of **New:**
 as appropriate — see the categories defined at the top of that file.
