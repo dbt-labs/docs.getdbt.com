@@ -15,6 +15,15 @@ In this section, you'll learn how to:
 - Manage prompts and output shapes as versioned code
 - Read the LLM's answer back out the same way on every warehouse
 
+## Embedding buys recall. Classification buys precision.
+
+Semantic search finds text that means something like your question, but not always the text you needed. **Recall** is whether search finds the right chunk at all. **Precision** is whether the right chunk ranks near the top.
+
+We ran plain similarity search on a realistic multi-source corpus and asked, "late deliveries and what is driving them." The top-scoring chunk for the account was six tokens long: "Reviewed with dispatch." Most of the rest of the top 10 was boilerplate and routine check-ins. The quarterly business reviews that documented the real root cause never made the list.
+
+The cause is structural, not a tuning problem. Short, formulaic text sits near the center of embedding space, so it scores decently against almost any question. Recall was fine 🙂. Precision wasn't 🙁.
+
+By adding classification, that now closes the gap! Give each chunk one label, then filter the search to the category your question is about. You don't need it to get started. Run chunk → embed → search first, and what you see is exactly why you'll want it. The rest of this page covers how.
 
 ## Treat inference as a transformation
 
@@ -153,7 +162,7 @@ Each chunk now has one label (the values here are illustrative):
 
 </SimpleTable>
 
-Labels make search precise. Without them, short boilerplate chunks crowd the top results (check out [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve#embedding-buys-recall-classification-buys-precision)). With them, you filter search to the category your question is about. In our test, every result in the top 10 became real account content.
+Labels make search precise. Without them, short boilerplate chunks crowd the top results (as [the top of this page](#embedding-buys-recall-classification-buys-precision) shows). With them, you filter search to the category your question is about. In our test, every result in the top 10 became real account content.
 
 #### Change your labels
 

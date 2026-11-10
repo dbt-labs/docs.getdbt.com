@@ -97,15 +97,9 @@ An index is optional and in beta. It's a separate service that bills even when n
 
 To scope a search to one customer, filter before you rank, as the `filter` argument above does.
 
-## Embedding buys recall. Classification buys precision.
+## Search alone isn't enough
 
-Semantic search finds text that means something like your question, but not always the text you needed. **Recall** is whether search finds the right chunk at all. **Precision** is whether the right chunk ranks near the top.
-
-We ran plain similarity search on a realistic multi-source corpus and asked, "late deliveries and what is driving them." The top-scoring chunk for the account was six tokens long: "Reviewed with dispatch." Most of the rest of the top 10 was boilerplate and routine check-ins. The quarterly business reviews that documented the real root cause never made the list.
-
-The cause is structural, not a tuning problem. Short, formulaic text sits near the center of embedding space, so it scores decently against almost any question. Recall was fine 🙂. Precision wasn't 🙁.
-
-By adding classification, that now closes the gap! Give each chunk one label, then filter the search to the category your question is about. You don't need it to get started. Run chunk → embed → search first, and what you see is exactly why you'll want it. [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) covers how.
+Search by meaning finds text that means something like your question, but short, formulaic text can crowd the top results. [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai#embedding-buys-recall-classification-buys-precision) explains why, and fixes it with one label per chunk.
 
 ## Combine sources into a knowledge base
 

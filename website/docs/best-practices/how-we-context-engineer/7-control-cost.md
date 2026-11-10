@@ -90,6 +90,23 @@ Record each run's function, model name, row count, estimated tokens, estimated c
 - When a CI job [defers](/reference/node-selection/defer) to production (reads production's models instead of rebuilding them), still write the run log in the environment doing the work, never in production's table.
 - The log is built from estimates, so treat it as observability, not an invoice. Reconciling it against each engine's billing tables is separate work, and it's yours to add.
 
+Every context model that calls an AI function writes to this one table, and dbt runs them on parallel threads. Two rules keep that from turning your audit log into build failures.
+
+First, create the table once, in an `on-run-start` hook. Those hooks run before any model starts, so ten models can't race to create it:
+
+<File name="dbt_project.yml">
+
+```yaml
+on-run-start:
+  - "-- depends_on: {{ ref('ai_run_log') }}\n{{ dbt_context_engineering.create_ai_run_log_table() }}"
+```
+
+</File>
+
+The `-- depends_on` line is needed because dbt's parser can't see the `ref` inside the macro.
+
+Second, never update a row. `complete_ai_run` appends a `completed` row instead of flipping a flag, so two writes never touch the same row. In our test of eight models on eight threads, updates failed 7 of 8 on Databricks and 1 of 8 on BigQuery. With only inserts, all 8 succeeded on both.
+
 ## Make spend an opt-in
 You can control costs by making further adjustments to your projects using the tips described in this section.
 ### Turn AI functions off by default
@@ -139,36 +156,6 @@ A view re-runs its query every time someone reads it. Materialize context models
 ### Sample while you iterate
 
 When you're developing, cap each context model to a small random sample of rows, so nothing runs against the full corpus by accident. Switch the sample off when you're ready for the real run. In the package, add `dev_sample_filter()` to the end of a model's `select` and set the `ai_sample_rows` var.
-
-## Keep the run log safe under concurrency
-
-This section is advanced. Skim it now and come back when you see run log failures.
-
-dbt runs independent models on different threads, and every context model that calls an AI function writes to the same log table. Unsafe writes can turn your audit log into a source of build failures. We found two causes:
-
-<SimpleTable>
-
-| Problem | What went wrong | Fix |
-|---------|-----------------|-----|
-| Redundant creation | Every model's hook tried to create the log table the first time it ran, so ten models selected together made ten concurrent attempts at the same statement | Create the table once, in an `on-run-start` hook. Those hooks run serially, before any model starts. |
-| Updates colliding | Marking a run as complete with an `update` conflicted with other concurrent writes to the same table | Never update. Append a new `completed` row instead. |
-
-</SimpleTable>
-
-To create the table once, add an `on-run-start` hook to `dbt_project.yml`:
-
-<File name="dbt_project.yml">
-
-```yaml
-on-run-start:
-  - "-- depends_on: {{ ref('ai_run_log') }}\n{{ dbt_context_engineering.create_ai_run_log_table() }}"
-```
-
-</File>
-
-The `-- depends_on` line is needed because dbt's parser can't see the `ref` inside the macro.
-
-The second fix is **event sourcing**: instead of flipping a field on an existing row, you append a second row. Whether a run finished becomes an existence check, so two writes never touch the same row. In our test of eight models on eight threads, updates failed 7 of 8 on Databricks and 1 of 8 on BigQuery. With only inserts, all 8 succeeded on both.
 
 ## Adapter notes
 

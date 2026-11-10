@@ -44,6 +44,7 @@ We recommend **packing** instead. You work through the text in order, keeping a 
 - **Don't cross a partition key:** A partition key is the column that identifies one source object, such as `call_id`. Chunks stay inside one call, so turns from different customers never end up together.
 - **Make chunking deterministic and free:** Deterministic means the same input always produces the same chunks. Chunking runs over everything and sits upstream of every embedding, search, and test, so it must be cheap and repeatable. Skip AI calls here.
 - **Estimate size, don't measure it:** Estimating tokens as characters divided by four is close enough for budgeting and needs no model.
+- **Record which source rows each chunk packed:** An agent will quote this text to a person, so every chunk needs to say where it came from. You can't rebuild that link later. [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy#carry-lineage-at-every-stage) covers lineage end to end.
 
 Here's the idea in plain SQL. Estimate tokens per unit, keep a running total within each partition, and use the total to number the chunks:
 
@@ -95,10 +96,6 @@ The package's [`chunk()` macro](https://github.com/dbt-labs/dbt-context-engineer
 This example SQL uses 512 tokens, a typical target, and it's the package's default. Change it with the `chunk_target_tokens` var. The jaffle project uses 100 on purpose. Its sample documents are short, so 512 would never split anything.
 
 If searches miss answers that straddle a chunk boundary, you can repeat the last unit or two of the previous chunk at the start of the next. It costs extra tokens, so add it only when you need it. In the package, that's the `chunk_overlap_tokens` var, which defaults to 0.
-
-### Keep lineage from the start
-
-**Lineage** means you can trace any piece of context back to the source rows it came from. Every chunk should record which source rows it packed. This is non-negotiable. An agent will quote this context to a person, often to justify a decision. If a chunk forgets where it came from, nobody can trace the claim, and you can't rebuild that link later. 
 
 ### Adapter notes
 

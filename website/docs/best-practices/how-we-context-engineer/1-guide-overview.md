@@ -66,6 +66,18 @@ So if you ask an agent a question, like _"Why were deliveries late for this acco
 
 Context engineering not only structures data but also adds ownership, tests, and traceability, so that you and your end users can check where an agent’s answers come from instead of just believe it.
 
+If you've built a dbt project, you already have most of the instincts:
+
+<SimpleTable>
+
+| In dbt you... | In context engineering you... |
+|---------------|-------------------------------|
+| Test models | Test that AI output is grounded in its source |
+| Build incremental models | Refresh embeddings only when text or settings change |
+| Build a conformed dimension | Build a knowledge base, one common shape for every source |
+
+</SimpleTable>
+
 ## Context and the semantic layer
 
 Use the semantic layer for your metrics and context for your unstructured and semi-structured data. Your metrics tell an agent _what_ happened. Context tells it _why_. They live in the same project and work side by side, and an agent uses both to answer one question. [Pair context with the semantic layer](/best-practices/how-we-context-engineer/8-pair-with-the-semantic-layer) shows how.
@@ -91,20 +103,6 @@ The question people keep asking is: _"What's driving late deliveries for this ac
 </SimpleTable>
 
 Emails, runbooks, and internal docs work the same way.
-
-## How context engineering maps to what you know
-
-You already have most of the instincts:
-
-<SimpleTable>
-
-| In dbt you... | In context engineering you... |
-|---------------|-------------------------------|
-| Test models | Test that AI output is grounded in its source |
-| Build incremental models | Refresh embeddings only when text or settings change |
-| Build a conformed dimension | Build a knowledge base, one common shape for every source |
-
-</SimpleTable>
 
 ## Prerequisites
 
