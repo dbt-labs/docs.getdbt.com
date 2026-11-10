@@ -9,10 +9,10 @@ slug: /docs/lake-compute
 
 :::info Lake Compute is in private beta
 
-To request access or region support, fill out the [Lake Compute signup form](https://docs.google.com/forms/d/e/1FAIpQLSdWXHU3VFqq1t8GVAA2BMfY_AfeVJH26OXJFlNwXiVv4pcuXQ/viewform). Lake Compute is in active development and likely to change. 
+Lake Compute is in active development and likely to change.
 
-Want to talk with us about how Lake Compute can work for you?
-
+- Are you ready to get started? Fill out the [Lake Compute signup form](https://docs.google.com/forms/d/e/1FAIpQLSdWXHU3VFqq1t8GVAA2BMfY_AfeVJH26OXJFlNwXiVv4pcuXQ/viewform) to request access or ask for support in a specific region.
+- Want to chat to see if Lake Compute is right for your team before signing up? Book a meeting with us to talk through how Lake Compute fits your use case. Book a meeting:
 <a className="button button--primary" href="https://calendly.com/data-lakes-team/lake-compute-meeting?utm_source=docs&utm_medium=lake-compute" target="_blank" rel="noopener noreferrer">Book a meeting</a>
 
 
