@@ -146,7 +146,7 @@ Find the chunks closest in meaning to a question. This model turns your question
 
 The result is your top 10 chunks with one new column, `score`. A higher score means the chunk is closer in meaning to your question. You'll see what that looks like in [What it looks like](#what-it-looks-like).
 
-The question and the chunks are embedded with the same macro and the same `embedding_model` setting, so their numbers are comparable. If you embedded them with different models, the scores wouldn't mean anything.
+The question and the chunks are embedded with the same macro and the same `embedding_model` setting, so their numbers are comparable. If you embedded them with different embedding models, the scores wouldn't mean anything.
 
 ### 4. Run it
 

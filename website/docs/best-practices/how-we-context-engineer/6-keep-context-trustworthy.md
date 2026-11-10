@@ -8,13 +8,13 @@ hoverSnippet: Learn how to test AI output and keep every claim traceable.
 
 Like metrics, trusted context need to be tested in order to be trusted. In this section, you'll learn how to:
 
-- Test AI output with checks that need no model and cost nothing to run
-- Gate prompt and model changes so quality can't slip quietly
+- Test AI output with checks that need no LLM and cost nothing to run
+- Gate prompt and LLM changes so quality can't slip quietly
 - Keep every claim traceable to the exact source it came from
 
 ## Why do you need a new kind of test?
 
-Ordinary tests check shape: right type, in range, not null. They can't tell you whether a value is correct. A model can return a well-formed answer it made up (a hallucination), and every check still passes.
+Ordinary tests check shape: right type, in range, not null. They can't tell you whether a value is correct. An LLM can return a well-formed answer it made up (a hallucination), and every check still passes.
 
 AI output fails in three ways:
 
@@ -22,21 +22,21 @@ AI output fails in three ways:
 
 | Failure | What it looks like |
 |---------|--------------------|
-| Hallucinated evidence | The model reports a fact and attaches a supporting quote that appears nowhere in the source |
+| Hallucinated evidence | The LLM reports a fact and attaches a supporting quote that appears nowhere in the source |
 | Out-of-taxonomy labels | A classifier told to pick from `pain_point`, `requirement`, or `objection` returns `PROBLEM` |
-| Silent regression | A prompt tweak or model upgrade quietly drops accuracy, and nothing turns red |
+| Silent regression | A prompt tweak or LLM upgrade quietly drops accuracy, and nothing turns red |
 
 </SimpleTable>
 
-## Check with code, not with another model
+## Check with code, not with another LLM
 
 Checking is far cheaper than producing:
 
-- To produce a grounded quote, you need a model. To check that a quote is grounded, you need a substring test.
-- To produce a correct label, you need a model. To check a label is allowed, you need set membership.
+- To produce a grounded quote, you need an LLM. To check that a quote is grounded, you need a substring test.
+- To produce a correct label, you need an LLM. To check a label is allowed, you need set membership.
 - To score accuracy, you compare against a hand-labeled answer key.
 
-Every check is exact string, set, or arithmetic logic: no model, no spend, no randomness. So these tests run on every pull request like any other dbt test.
+Every check is exact string, set, or arithmetic logic: no LLM, no spend, no randomness. So these tests run on every pull request like any other dbt test.
 
 ## Recommended tests
 
@@ -55,21 +55,24 @@ A groundedness test fails any row whose evidence quote isn't actually in its sou
 
 ```yaml
 models:
-  - name: extracted_facts
+  - name: incident_facts
     columns:
       - name: evidence
         data_tests:
           - dbt_context_engineering.grounded:
-              source_text_column: chunk_text
+              arguments:
+                source_text_column: chunk_text
 ```
 
 </File>
+
+The test reads two columns from the context model it checks: `evidence` (the quote) and the text the quote should appear in. Here that's `chunk_text`, which `chunk()` creates. The `incident_facts` context model from [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) keeps both, so there's nothing extra to add.
 
 Our recommendations:
 
 - **Normalize case and whitespace by default:** Trivial formatting differences shouldn't fail a build.
 - **Let a missing quote be null:** If a quote legitimately doesn't exist, null is correct, and the test shouldn't flag it. This only works if the field is optional in your schema, as covered in [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai).
-- **Know its limit:** A passing test proves the quote is real. It doesn't prove the model read it correctly.
+- **Know its limit:** A passing test proves the quote is real. It doesn't prove the LLM read it correctly.
 
 ### Conformance
 
@@ -95,7 +98,7 @@ Our recommendations:
 
 ### Evaluation
 
-An evaluation test scores your predictions against a hand-labeled **golden set**: accuracy overall, plus precision and recall for each label. Set a threshold on a metric and you have a gate: if a prompt tweak or model upgrade drops accuracy below the bar, the build fails.
+An evaluation test scores your predictions against a hand-labeled **golden set**: accuracy overall, plus precision and recall for each label. Set a threshold on a metric and you have a gate: if a prompt tweak or LLM upgrade drops accuracy below the bar, the build fails.
 
 The package's `eval` macro takes a table with a predicted column and an expected column, and returns one row per metric:
 
@@ -124,7 +127,7 @@ where metric = 'accuracy'
 Our recommendations:
 
 - **Build a golden set early:** A small hand-labeled set beats none. Without it, you can't tell an improvement from a regression.
-- **Gate every prompt and model change on it:** Regression is silent by nature. A gate is how it becomes loud.
+- **Gate every prompt and LLM change on it:** Regression is silent by nature. A gate is how it becomes loud.
 - **Keep the set stable:** Add to it as you find edge cases, but don't quietly relabel to make a new prompt look better.
 
 ### Chunk size
@@ -158,7 +161,7 @@ A retrieved hit can then say: this came from ticket T-42, and here's the exact s
 
 Two granularities matter, and you need both:
 
-- **Row-level lineage** says _where_ a fact came from. It doesn't prove the fact is in that row, because a model can cite the right ticket and still invent the detail.
+- **Row-level lineage** says _where_ a fact came from. It doesn't prove the fact is in that row, because an LLM can cite the right ticket and still invent the detail.
 - **Span-level evidence** says _what in the row_ supports it. Because it's literal text, you can machine-check it, which is what makes the groundedness test possible.
 
 Design lineage in on day one, because it can't be rebuilt later. Once a chunk forgets which sentences it packed, no later step can recover that. The cost is small: a few extra columns and an evidence field.

@@ -15,7 +15,7 @@ Browse the package's [`macros` folder](https://github.com/dbt-labs/dbt-context-e
 In this section, you'll learn how to:
 
 - Stop oversized runs before they start
-- Cap the part of the bill the model controls
+- Cap the part of the bill the LLM controls
 - Keep a safe, append-only record of what each run used
 
 ## Why does AI cost need its own controls?
@@ -23,9 +23,9 @@ In this section, you'll learn how to:
 Re-running things can be costly:
 
 - Each row costs money, so cost grows with your data volume.
-- Part of the cost isn't yours to control. You're billed per token (a sub-word piece a model reads and writes, roughly four characters of English) for what you send (input tokens) and what comes back (output tokens). The model decides how many output tokens to spend, and it can spend hundreds "thinking" before a one-word answer.
+- Part of the cost isn't yours to control. You're billed per token (a sub-word piece an LLM reads and writes, roughly four characters of English) for what you send (input tokens) and what comes back (output tokens). The LLM decides how many output tokens to spend, and it can spend hundreds "thinking" before a one-word answer.
 
-In our own testing, one generation run over 10 one-sentence rows on BigQuery produced 65,825 output tokens, about 6,600 per row. Nearly all of it was the model's default "thinking," which is billed as output. The inputs were tiny but the cost wasn't.
+In our own testing, one generation run over 10 one-sentence rows on BigQuery produced 65,825 output tokens, about 6,600 per row. Nearly all of it was the LLM's default "thinking," which is billed as output. The inputs were tiny but the cost wasn't.
 
 A report the next morning only tells you what you already spent. The control has to fire before the tokens are spent.
 
@@ -37,7 +37,7 @@ Use two tools do the work:
 
 | Tool | What it does | When it runs |
 |------|--------------|--------------|
-| Guard | Counts the rows and the estimated tokens for the whole call, and raises an error if either is over your ceiling | Before the model runs, as a pre-hook (SQL dbt runs before a model builds) |
+| Guard | Counts the rows and the estimated tokens for the whole call, and raises an error if either is over your ceiling | Before the AI call runs, as a pre-hook (SQL dbt runs before a model builds) |
 | Run log | Records what the run actually used | After the run, as an append to a log table |
 
 </SimpleTable>
@@ -47,8 +47,8 @@ Use two tools do the work:
 Our recommendations:
 
 - **Ship the guard with the first AI call:** If the guard arrives later, there's always an ungoverned call somewhere.
-- **Estimate the whole call, not just the text:** A row sent to `generate`, `classify`, or `extract` is billed for its text plus the prompt template, the schema, and the model's reply. On one Snowflake extraction workload, billed tokens were about 6.4 times an input-text-only estimate. The guard counts all of it. Embedding calls send only the text, so they count the text alone.
-- **Name the prompt once:** Set `meta.ai_prompt` (a prompt name and version) in the model's config. The AI function in the model body and both hooks read it, so a version bump can't leave a hook undercounting. This needs package 0.2.0 or later, where `config_prompt()` and `config_schema()` first appeared. Here's the classify model from [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai), with the guard added:
+- **Estimate the whole call, not just the text:** A row sent to `generate`, `classify`, or `extract` is billed for its text plus the prompt template, the schema, and the LLM's reply. On one Snowflake extraction workload, billed tokens were about 6.4 times an input-text-only estimate. The guard counts all of it. Embedding calls send only the text, so they count the text alone.
+- **Name the prompt once:** Set `meta.ai_prompt` (a prompt name and version) in the context model's config. The AI function in its body and both hooks read it, so a version bump can't leave a hook undercounting. This needs package 0.2.0 or later, where `config_prompt()` and `config_schema()` first appeared. Here's the classify model from [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai), with the guard added:
 
 <File name="models/context/ai/call_transcripts_classify.sql">
 
@@ -77,16 +77,16 @@ from {{ ref('call_transcripts_hashed') }}
 
 ### Cap the output, too
 
-The guard can only _estimate_ the reply, because the model decides how long it is. Output needs its own levers:
+The guard can only _estimate_ the reply, because the LLM decides how long it is. Output needs its own levers:
 
 - Set a maximum output size for every call, across all engines, with the `max_output_tokens` var. The guard uses it as the output allowance, so a lower cap also makes the estimate tighter.
 - On BigQuery with Gemini models, set the `bq_thinking_budget` var to `0` to turn off default "thinking". That default caused the 65,825-token run above.
 
 ### Keep a run log
 
-Record each run's function, model, row count, estimated tokens, estimated cost, timestamp, and invocation id in an append-only table. In the package, `log_ai_run` adds a `started` row to the `ai_run_log` table, `complete_ai_run` adds the `completed` row, and the `cost_per_1k_tokens` var sets the price behind the estimated cost.
+Record each run's function, model name, row count, estimated tokens, estimated cost, timestamp, and invocation id in an append-only table. In the package, `log_ai_run` adds a `started` row to the `ai_run_log` table, `complete_ai_run` adds the `completed` row, and the `cost_per_1k_tokens` var sets the price behind the estimated cost.
 
-- Log the dbt node too. One invocation can run several models that call the same function with the same model, so the log's `node_id` (the node's unique id) tells their rows apart and lets you join the log to warehouse query history, where dbt query comments carry the same id.
+- Log the dbt node too. One invocation can run several context models that call the same function with the same LLM, so the log's `node_id` (the node's unique id) tells their rows apart and lets you join the log to warehouse query history, where dbt query comments carry the same id.
 - When a CI job [defers](/reference/node-selection/defer) to production (reads production's models instead of rebuilding them), still write the run log in the environment doing the work, never in production's table.
 - The log is built from estimates, so treat it as observability, not an invoice. Reconciling it against each engine's billing tables is separate work, and it's yours to add.
 
@@ -94,7 +94,7 @@ Record each run's function, model, row count, estimated tokens, estimated cost, 
 You can control costs by making further adjustments to your projects using the tips described in this section.
 ### Turn AI functions off by default
 
-A plain `dbt build` in a fresh environment, or a CI job that never meant to call a model, shouldn't be able to bill you. Add a setting that's `false` by default and raises an error unless you've set it to `true` for the target. In the package, that's the `ai_functions_enabled` var.
+A plain `dbt build` in a fresh environment, or a CI job that never meant to call an LLM, shouldn't be able to bill you. Add a setting that's `false` by default and raises an error unless you've set it to `true` for the target. In the package, that's the `ai_functions_enabled` var.
 
 Our recommendations:
 
@@ -114,7 +114,7 @@ The package reads the rendered text, so the string `'false'` counts as off. A va
 
 ### Gate full refreshes
 
-A bare `--full-refresh` shouldn't be able to silently re-bill your whole corpus. In the package, `require_full_refresh_gate` raises an error when an incremental AI model sets no `full_refresh` config, so a rebuild is always a deliberate choice. It doesn't set the opt-in for you. Write it in the model's config:
+A bare `--full-refresh` shouldn't be able to silently re-bill your whole corpus. In the package, `require_full_refresh_gate` raises an error when an incremental context model that calls an AI function sets no `full_refresh` config, so a rebuild is always a deliberate choice. It doesn't set the opt-in for you. Write it in the model's config:
 
 <File name="models/context/ai/call_transcripts_embed.sql">
 
@@ -132,19 +132,19 @@ Two limits to know about:
 - It only covers incremental models, since a `table` model rebuilds on every run anyway.
 - A version bump skips it. When you pin a new embedding model, the package re-embeds the whole corpus without `--full-refresh`. The `guard_batch` ceilings bound that run, not this gate.
 
-### Don't use views for AI models
+### Don't use views for context models that call AI functions
 
-A view re-runs its query every time someone reads it. Materialize AI models as tables or incremental models, so the model call happens once per build and not once per read. In the package, `require_safe_materialization` raises an error if an AI function runs in a view.
+A view re-runs its query every time someone reads it. Materialize context models that call AI functions as tables or incremental models, so the AI call happens once per build and not once per read. In the package, `require_safe_materialization` raises an error if an AI function runs in a view.
 
 ### Sample while you iterate
 
-When you're developing, cap each model to a small random sample of rows, so nothing runs against the full corpus by accident. Switch the sample off when you're ready for the real run. In the package, add `dev_sample_filter()` to the end of a model's `select` and set the `ai_sample_rows` var.
+When you're developing, cap each context model to a small random sample of rows, so nothing runs against the full corpus by accident. Switch the sample off when you're ready for the real run. In the package, add `dev_sample_filter()` to the end of a model's `select` and set the `ai_sample_rows` var.
 
 ## Keep the run log safe under concurrency
 
 This section is advanced. Skim it now and come back when you see run log failures.
 
-dbt runs independent models on different threads, and every AI model writes to the same log table. Unsafe writes can turn your audit log into a source of build failures. We found two causes:
+dbt runs independent models on different threads, and every context model that calls an AI function writes to the same log table. Unsafe writes can turn your audit log into a source of build failures. We found two causes:
 
 <SimpleTable>
 

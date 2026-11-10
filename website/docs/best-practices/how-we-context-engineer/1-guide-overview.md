@@ -26,6 +26,8 @@ The following diagram explains the entire concept: text is split into chunks, ea
 
 <Lightbox src="/img/best-practices/context-engineering/pipeline.svg" width="100%" title="A call transcript is chunked, embedded as numbers, and placed on a map where similar meanings sit close together. A question lands on the same map, and the closest chunks come back with a score and a source." />
 
+In this guide, a **context model** is a dbt model that prepares text for agents: it chunks, embeds, labels, or combines it. An **LLM** or **embedding model** is the model your warehouse calls from those context models.
+
 ## What's in the guide
 
 This guide covers the following:
@@ -34,7 +36,7 @@ This guide covers the following:
 2. [Prepare your text](/best-practices/how-we-context-engineer/3-prepare-your-text): Break raw text into pieces an agent can retrieve, and attach source details so every piece can cite where it came from.
 3. [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve): Make text searchable by meaning, search across sources, and keep vectors fresh.
 4. [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai): Label each piece so search gets precise, with prompts managed as versioned code.
-5. [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy): Test AI output the way you test any other model, and keep lineage and citations intact.
+5. [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy): Test AI output the way you test any other dbt model, and keep lineage and citations intact.
 6. [Control cost](/best-practices/how-we-context-engineer/7-control-cost): Build in limits and a record of what each run spent.
 7. [Glossary](/best-practices/how-we-context-engineer/8-glossary): Look up new terms, macros, and vars in one place.
 

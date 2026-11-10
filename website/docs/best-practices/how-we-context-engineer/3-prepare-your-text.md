@@ -8,7 +8,7 @@ hoverSnippet: Learn how to chunk raw text and attach source metadata.
 
 Raw text is the source-conformed data of context engineering: shaped by systems you don't control, and too big or messy for an agent to use as-is. Preparing it is the first step, and the one everything else depends on.
 
-Retrieval quality is decided before any AI runs. A chunk that splits a sentence in half, or mixes two customers' calls, isn't helpful for anyone and won't improve by the time it gets to a downstream model. This is because search over context works on _embeddings_: which are lists of numbers that capture what a piece of text _means_, so that similar meanings land close together. A chunk that fuses two unrelated thoughts embeds to a muddy point and helps no one. Chunk well and now you get embeddings worth searching.
+Retrieval quality is decided before any AI runs. A chunk that splits a sentence in half, or mixes two customers' calls, isn't helpful for anyone and won't improve by the time it gets to the embedding model or LLM. This is because search over context works on _embeddings_: which are lists of numbers that capture what a piece of text _means_, so that similar meanings land close together. A chunk that fuses two unrelated thoughts embeds to a muddy point and helps no one. Chunk well and now you get embeddings worth searching.
 
 In this section, you'll learn how to:
 
@@ -17,7 +17,7 @@ In this section, you'll learn how to:
 
 ## Chunking
 
-A **chunk** is a piece of text small enough to embed (turn into a list of numbers that captures its meaning) and retrieve. Models can only read so much at once, so a 90-minute transcript or a 40-page contract has to be broken up.
+A **chunk** is a piece of text small enough to embed (turn into a list of numbers that captures its meaning) and retrieve. Embedding models can only read so much at once, so a 90-minute transcript or a 40-page contract has to be broken up.
 
 <Lightbox src="/img/best-practices/context-engineering/chunk-too-big.jpg" width="50%" title="Make sure your chunk isn't bigger than the embedding model's limit." />
 
@@ -128,7 +128,7 @@ The same metadata serves two readers with different eyes:
 ### Our recommendations
 
 - Attach metadata in its own step, after chunking. Attaching is a simple join, and chunking is the fragile step. Keeping them apart means a metadata change can't break your chunks.
-- Keep metadata as columns. Add it to the text only if the model needs it (`in_text=true`). Keep the metadata columns so you never have to parse metadata back out of the text.
+- Keep metadata as columns. Add it to the text only if the LLM or embedding model needs it (`in_text=true`). Keep the metadata columns so you never have to parse metadata back out of the text.
 - Recount tokens if you add metadata to the text. It adds tokens, so your size estimate is too low until you recompute it.
 - Add the citation link in the knowledge base. When many sources merge into one shape, the link gets its own column. [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) covers it.
 

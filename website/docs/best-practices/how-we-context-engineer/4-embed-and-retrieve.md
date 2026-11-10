@@ -39,18 +39,18 @@ You can't read meaning off the numbers by eye. What matters is how close two vec
 
 ### Treat embeddings as derived assets
 
-An embedding only matches embeddings from the same model. Each model arranges meaning differently, so comparing embeddings from two models gives meaningless scores. This is the biggest gotcha in the practice, and it drives three rules:
+An embedding only matches embeddings from the same embedding model. Each embedding model arranges meaning differently, so comparing embeddings from two models gives meaningless scores. This is the biggest gotcha in the practice, and it drives three rules:
 
 - Use one embedding model for the whole corpus. Never mix models in one searchable set.
-- Embed your question with the same model as your chunks. A different model returns confidently wrong results.
-- Set the model explicitly in your config, with the `embedding_model` var. A floating alias like "latest" can quietly switch to a new version.
+- Embed your question with the same embedding model as your chunks. A different embedding model returns confidently wrong results.
+- Set the embedding model explicitly in your config, with the `embedding_model` var. A floating alias like "latest" can quietly switch to a new version.
 
 Embedding costs money, so refresh only what changed. [Keep embeddings fresh](#keep-embeddings-fresh) covers how, once you have search working.
 
 ## Retrieve by meaning
 Retrieval is how an agent finds what it needs: given a question, it returns the most relevant chunks. It takes three steps:
 
-1. Turn the question into an embedding, using the same model as your chunks.
+1. Turn the question into an embedding, using the same embedding model as your chunks.
 2. Score every chunk by how close its meaning is to the question (cosine similarity).
 3. Return the highest-scoring chunks, usually the top 10.
 
@@ -118,7 +118,7 @@ Think of it as a union model that writes itself. Because every source ends up wi
 
 ### Where this fits in your workflow
 
-You build the knowledge base last, after every source is ready. Two kinds of model are involved:
+You build the knowledge base last, after every source is ready. Two kinds of context model are involved:
 
 <SimpleTable>
 
@@ -132,7 +132,7 @@ You build the knowledge base last, after every source is ready. Two kinds of mod
 Here's the recommended order of your workflow:
 
 1. Prepare, embed, and optionally classify each source, with the same embedding model for every source.
-2. Create one new model that calls `knowledge_base()` and lists those sources.
+2. Create one new context model that calls `knowledge_base()` and lists those sources.
 3. Build it with `dbt build`.
 4. Point your agent or app at the result and search it.
 
@@ -233,7 +233,7 @@ Our recommendations:
 
 You can skip this section on a first pass and come back to it once you're re-running builds and want to stop paying to re-embed text that hasn't changed.
 
-An embedding goes stale when anything on the input side changes: the text, the model, or the settings. Embedding costs money, so you really don't want to re-embed a row you've already processed. That makes an incremental model the natural fit. The [`dbt_context_engineering` package](https://github.com/dbt-labs/dbt-context-engineering) builds these practices in, and each recommendation in the next section names the macro or var that does it.
+An embedding goes stale when anything on the input side changes: the text, the embedding model, or the settings. Embedding costs money, so you really don't want to re-embed a row you've already processed. That makes an incremental model the natural fit. The [`dbt_context_engineering` package](https://github.com/dbt-labs/dbt-context-engineering) builds these practices in, and each recommendation in the next section names the macro or var that does it.
 
 :::tip Accessing the `var` list
 
@@ -241,7 +241,7 @@ Browse the package's [`macros` folder](https://github.com/dbt-labs/dbt-context-e
 :::
 
 ### Refresh incrementally
-Since vectors are only comparable within one model, your model needs to know which of two modes it's in on each run:
+Since vectors are only comparable within one embedding model, your context model needs to know which of two modes it's in on each run:
 
 <Lightbox src="/img/best-practices/context-engineering/refresh-modes.webp" width="70%" title="On each run, the embedding model checks whether the stored version differs from the pinned one. If not, it embeds only new and changed rows. If so, it re-embeds the whole corpus. Either way, the corpus ends up on one model." />
 
@@ -254,13 +254,13 @@ Since vectors are only comparable within one model, your model needs to know whi
 
 </SimpleTable>
 
-- Decide the mode when the model runs, not when dbt parses it. "Did the stored version change?" can only be answered by reading the table. Use a runtime signal that flips an ordinary incremental model's `where` clause. In the package, `version_guard` returns true when the stored version differs from the pinned one, and `incremental_delta_predicate` builds the `where` clause for you. [ADR-0004](https://github.com/dbt-labs/dbt-context-engineering/blob/main/adr/0004-version-aware-incremental-refresh.md) explains the reasoning.
+- Decide the mode when the context model runs, not when dbt parses it. "Did the stored version change?" can only be answered by reading the table. Use a runtime signal that flips an ordinary incremental model's `where` clause. In the package, `version_guard` returns true when the stored version differs from the pinned one, and `incremental_delta_predicate` builds the `where` clause for you. [ADR-0004](https://github.com/dbt-labs/dbt-context-engineering/blob/main/adr/0004-version-aware-incremental-refresh.md) explains the reasoning.
 - To catch edited rows, not just new ones, store a hash (a short fingerprint of the text) of exactly what you embedded, and re-embed when it changes. In the package, that's `content_hash`.
 - Gate full rebuilds, so a bare `--full-refresh` can't silently re-bill your whole corpus. [Control cost](/best-practices/how-we-context-engineer/7-control-cost#gate-full-refreshes) shows how.
 
 ### Store a cache key with every vector
 
-Alongside the hash of the text, store a fingerprint of the model, vector size, and provider settings you used. You need both. Without the fingerprint, a settings change with identical text goes undetected. Without the hash, an edit to a row under the same model goes undetected. Keep each vector in the same row as the entity it describes.
+Alongside the hash of the text, store a fingerprint of the embedding model, vector size, and provider settings you used. You need both. Without the fingerprint, a settings change with identical text goes undetected. Without the hash, an edit to a row under the same embedding model goes undetected. Keep each vector in the same row as the entity it describes.
 
 In the package, `embedding_fn_fingerprint` covers the model and settings, `embedding_dimension` records the vector size the engine returned, and `embedding_logic_hash` fingerprints the embedding code itself. [ADR-0023](https://github.com/dbt-labs/dbt-context-engineering/blob/main/adr/0023-embedding-metadata-and-content-hash-delta.md) explains the reasoning.
 
@@ -268,7 +268,7 @@ Two more things to watch for. If you re-chunk and a chunk id disappears, nothing
 
 ### Monitor for drift <Lifecycle status="beta" />
 
-Your code and config can stay exactly the same while the provider changes what comes back, for example when a model alias moves to a new snapshot.
+Your code and config can stay exactly the same while the provider changes what comes back, for example when an embedding model alias moves to a new snapshot.
 
 You can use a **canary** to catch this. You keep a handful of frozen probe strings, re-embed them on every build, and compare each result to a baseline a person has already reviewed. If similarity drops below your threshold, the test raises a warning.
 
@@ -296,7 +296,7 @@ When you change the embedding function on purpose, re-review the baseline. Run `
 ### Adapter notes for freshness
 
 - **Vectors aren't bit-for-bit repeatable on Snowflake and Databricks:** Re-embedding the same text gives cosine similarity above 0.999999 between runs. Never compare vectors for exact equality. BigQuery showed no variation in our tests.
-- **On Snowflake, check the canary's vector size:** The `embedding_canary_vector_dimension` var defaults to 768, the size of `snowflake-arctic-embed-m-v1.5`. Set it if your model's vectors are a different size. Databricks and BigQuery need nothing.
+- **On Snowflake, check the canary's vector size:** The `embedding_canary_vector_dimension` var defaults to 768, the size of `snowflake-arctic-embed-m-v1.5`. Set it if your embedding model's vectors are a different size. Databricks and BigQuery need nothing.
 - **Databricks needs a recent runtime for AI functions:** It requires DBR 15.4 LTS or above, and not Databricks SQL Classic. If you don't meet this, you'll see an opaque SQL error, so check it first when troubleshooting.
 
 ## What's next
