@@ -55,7 +55,7 @@ The example values are from the Jaffle Logistics showcase and are illustrative. 
 
 ## Where serving starts
 
-This guide covers modeling, not serving. The package isn't an agent or an MCP server. It makes the tables those systems read.
+This guide covers modeling, not serving. The package isn't an agent or an MCP server. It makes the tables those systems read. Your agent or app embeds each live question as it arrives, with the same embedding model as your chunks, then searches the knowledge base.
 
 Agents reach both layers through tools over MCP. The [dbt MCP server](/docs/dbt-ai/about-mcp) exposes the semantic layer, and agents discover context through [Agents Schema](https://github.com/dbt-labs/agents_schema), a standard `AGENTS` schema in your warehouse.
 

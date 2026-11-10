@@ -47,7 +47,8 @@ The following table lists most of the macros in the the [`dbt_context_engineerin
 
 | Macro name| What it does | Learn more |
 |-------|--------------|------------|
-| `chunk` | Splits text into chunks without cutting a unit in half | [Prepare your text](/best-practices/how-we-context-engineer/3-prepare-your-text) |
+| `chunk` | Packs whole units, such as speaker turns or sentences, into chunks | [Prepare your text](/best-practices/how-we-context-engineer/3-prepare-your-text) |
+| `split_sentences` | Splits each document into one row per sentence, ready for `chunk` | [Prepare your text](/best-practices/how-we-context-engineer/3-prepare-your-text) |
 | `no_oversized_chunks` | Test that flags chunks over your size target | [Prepare your text](/best-practices/how-we-context-engineer/3-prepare-your-text) |
 | `embed` | Turns text into a vector | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
 | `vector_search` | Finds the chunks closest in meaning to a question | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |

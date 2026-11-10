@@ -113,7 +113,7 @@ You need:
 - A warehouse the package supports, which runs the AI calls with its own built-in AI:
   - Snowflake, using Cortex AI functions
   - Databricks, on Databricks Runtime 15.4 LTS or above (not Databricks SQL Classic)
-  - BigQuery, with no extra setup. A BigQuery connection is optional.
+  - BigQuery, using its built-in AI functions. Your normal dbt connection is enough. A separate connection for AI functions is optional.
   - Redshift, using Amazon Bedrock. You create the Bedrock functions once with the package's `create_bedrock_function` operation, which needs permission to create models, an IAM role that can call Bedrock, and Bedrock model access.
 - Optionally, DuckDB, to run the parts that don't call AI without any credentials
 

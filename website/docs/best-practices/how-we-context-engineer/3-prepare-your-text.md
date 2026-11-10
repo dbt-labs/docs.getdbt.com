@@ -37,9 +37,11 @@ We recommend **packing** instead. You work through the text in order, keeping a 
 
 </SimpleTable>
 
+`chunk()` only packs rows that are already units. It never cuts text. If your text is one long row per document, split it first. The package's `split_sentences` macro turns each document into one row per sentence, and you feed those rows to `chunk()`. Its sentence boundaries are naive, so abbreviations such as "Inc." and decimals such as "3.5" can over-split. For prose that needs better boundaries, split upstream with a tokenizer instead.
+
 ### Our recommendations
 
-- **Dom't split a unit:** Meaning lives in whole thoughts. If two goals conflict, keep the one that protects meaning.
+- **Don't split a unit:** Meaning lives in whole thoughts. If two goals conflict, keep the one that protects meaning.
 - **Treat the size limit as soft, and watch for big units:** Because units are never split, a unit that starts a chunk can push it over the limit. One very large unit makes an oversized chunk, which can exceed your embedding model's input limit. Chunking flags these rows with `exceeds_target`, and you can opt in to the `no_oversized_chunks` test to fail on them.
 - **Don't cross a partition key:** A partition key is the column that identifies one source object, such as `call_id`. Chunks stay inside one call, so turns from different customers never end up together.
 - **Make chunking deterministic and free:** Deterministic means the same input always produces the same chunks. Chunking runs over everything and sits upstream of every embedding, search, and test, so it must be cheap and repeatable. Skip AI calls here.

@@ -166,7 +166,7 @@ When you're developing, cap each context model to a small random sample of rows,
 | Turning off default thinking | Not applicable | Not applicable | Set the thinking budget to `0` (Gemini models) | No package setting |
 | Concurrent writes to the run log | Use append-only writes | Updates conflict with concurrent writes | Updates hit a table-update rate limit | Use append-only writes |
 | Group-level ceiling for aggregation | Handled by the engine | You set a token ceiling | Handled by the engine | You set a token ceiling, and keep each group under 64 KB |
-| Extra requirements | None | A recent runtime (DBR 15.4 LTS or above, not Databricks SQL Classic) | A connection is optional | Bedrock functions created once, plus IAM and model access (refer to [Prerequisites](/best-practices/how-we-context-engineer/1-guide-overview#prerequisites)) |
+| Extra requirements | None | A recent runtime (DBR 15.4 LTS or above, not Databricks SQL Classic) | A separate connection for AI functions is optional | Bedrock functions created once, plus IAM and model access (refer to [Prerequisites](/best-practices/how-we-context-engineer/1-guide-overview#prerequisites)) |
 
 </SimpleTable>
 

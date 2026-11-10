@@ -74,6 +74,8 @@ In the package, the `embed()` macro handles step 1, and the `vector_search` macr
 
 A good chunk is similar to the question, filterable, and traceable to its source. That's what lets an agent cite a source instead of paraphrasing one.
 
+`vector_search` is for testing and development, and for building a table of results for a known question that comes up often. It isn't how real users search. In a chat app, each question is embedded live, as the person asks it, and then searched against your knowledge base. That happens outside your dbt build. [Where serving starts](/best-practices/how-we-context-engineer/8-pair-with-the-semantic-layer#where-serving-starts) covers it.
+
 ### Pick how to search
 
 There are two ways to rank:

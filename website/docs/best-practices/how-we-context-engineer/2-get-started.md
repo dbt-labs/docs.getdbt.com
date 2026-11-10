@@ -16,7 +16,7 @@ To get started with context engineering in practice, make sure you check out the
 
 | Step | What you do | Package macro | Where to learn more |
 |------|-------------|---------------|---------------------|
-| 1. Chunk | Break each text into pieces small enough to search | `chunk()` | [Prepare your text](/best-practices/how-we-context-engineer/3-prepare-your-text) |
+| 1. Chunk | Pack your rows of text into chunks small enough to search | `chunk()` | [Prepare your text](/best-practices/how-we-context-engineer/3-prepare-your-text) |
 | 2. Embed | Turn each chunk into a list of numbers that captures its meaning | `embed()` | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
 | 3. Search | Find the chunks closest in meaning to a question | `vector_search()` | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
 
@@ -87,7 +87,7 @@ Each step in the next section is one dbt model: a plain `.sql` file in your `mod
 </SimpleTable>
 
 ### 1. Chunk
-Chunking is one macro call. You tell `chunk()` which of your columns is which, and it groups neighboring rows into chunks by breaking each text into pieces small enough to search. A chunk never splits a turn and never mixes two calls:
+Chunking is one macro call. You tell `chunk()` which of your columns is which, and it packs neighboring rows into chunks up to a token target. A chunk never splits a turn and never mixes two calls:
 
 <File name="models/context/chunk_transcripts.sql">
 
