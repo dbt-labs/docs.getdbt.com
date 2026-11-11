@@ -43,7 +43,7 @@ The terms are in alphabetical order.
 
 ## Macros
 
-The following table lists most of the macros in the the [`dbt_context_engineering` package](https://github.com/dbt-labs/dbt-context-engineering/tree/main/macros), but refer to the repo for the official list. You call them as `dbt_context_engineering.MACRO_NAME` (replacing `MACRO_NAME` with the macro name). 
+The following table lists most of the macros in the the [`dbt_context_engineering` package](https://github.com/dbt-labs/dbt-context-engineering/tree/main/macros), but refer to the repo for the official list. You call them as `dbt_context_engineering.MACRO_NAME`, replacing `MACRO_NAME` with the actual macro name.
 
 | Macro name| What it does | Learn more |
 |-------|--------------|------------|
