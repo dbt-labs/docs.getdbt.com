@@ -139,6 +139,46 @@ If your organization uses [Prefect](https://www.prefect.io/), the way you will r
 </Tabs>
 
 
+## Windmill
+
+If your organization uses [Windmill](https://www.windmill.dev/), you can run a <Constant name="core" /> or <Constant name="core_v2" /> project as a Windmill script. The project is copied in unmodified and runs on your own workers as a single `dbt build`, started from a schedule, a webhook, or a step in a Windmill flow. To import an existing project with the Windmill CLI:
+
+```shell
+mkdir -p f/analytics/analytics__dbt
+cp -r my-dbt-project/. f/analytics/analytics__dbt/
+wmill sync push
+```
+
+The run page shows each model's status on the project graph, with its timing and row count when the run ends. On a failed run, **Resume this run** fills in a `dbt retry` that rebuilds only the failed and skipped nodes. Models, seeds, snapshots, and sources also appear on Windmill's asset graph, next to the Python, TypeScript, and DuckDB scripts that read them.
+
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src="/img/docs/running-a-dbt-project/windmill_dbt_run_graph.png" alt="Windmill run page for a dbt build: the project graph with each model's status and row count, and a result table reading 11 passed, 1 failed, 1 skipped of 13 nodes" title="dbt run in Windmill, with a failed model and the model it skipped"/>
+
+<Lightbox src="/img/docs/running-a-dbt-project/windmill_dbt_asset_graph.png" alt="Windmill asset graph of a folder: dbt seeds, a source, staging views, and table models connected by ref() lineage, with a TypeScript script reading the orders model and a Python script reading the customers model" title="dbt models and the scripts that read them on the Windmill asset graph"/>
+
+</DocCarousel>
+
+<Tabs>
+
+<TabItem value="windmillv1" label="dbt v1">
+
+- Runs on the default `dbt-core-1x` engine, which installs the adapter from PyPI.
+- The project graph updates live as each model finishes.
+
+</TabItem>
+
+<TabItem value="windmillv2" label="dbt v2">
+
+- Runs on the `dbt-core-2x` or `fusion` engine, which carry their adapters in the binary.
+- Model statuses are set from `run_results.json` when the run ends.
+- With `fusion`, a project can opt in to column-level lineage.
+
+</TabItem>
+</Tabs>
+
+For setup steps, refer to the [Windmill dbt quickstart](https://www.windmill.dev/docs/getting_started/scripts_quickstart/dbt).
+
 ## Related docs
 
 - [<Constant name="dbt" /> plans and pricing](https://www.getdbt.com/pricing/)
