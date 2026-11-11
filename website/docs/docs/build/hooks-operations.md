@@ -39,6 +39,8 @@ Hooks are snippets of SQL that are executed at different times:
   * `on-run-start`: executed at the _start_ of <OnRunCommands/>
   * `on-run-end`: executed at the _end_ of <OnRunCommands/>
 
+<Lightbox src="/img/docs/building-a-dbt-project/hook-order-diagram.png" width="90%" alt="A timeline showing on-run-start first, then pre-hook, build and post-hook for each model, then on-run-end." title="The order dbt runs hooks during a single `dbt run`." />
+
 Hooks are a more-advanced capability that enable you to run custom SQL, and leverage database-specific actions, beyond what dbt makes available out-of-the-box with standard materializations and configurations.
 
 If (and only if) you can't leverage the [`grants` resource-config](/reference/resource-configs/grants), you can use `post-hook` to perform more advanced workflows:
