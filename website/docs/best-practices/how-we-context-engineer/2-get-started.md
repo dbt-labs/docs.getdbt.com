@@ -14,7 +14,7 @@ To get started with context engineering in practice, make sure you check out the
 
 <SimpleTable>
 
-| Step | What you do | Package macro | Where to learn more |
+| Step | What you do | Package macro | Learn more |
 |------|-------------|---------------|---------------------|
 | 1. Chunk | Pack your rows of text into chunks small enough to search | `chunk()` | [Prepare your text](/best-practices/how-we-context-engineer/3-prepare-your-text) |
 | 2. Embed | Turn each chunk into a list of numbers that captures its meaning | `embed()` | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
@@ -22,7 +22,7 @@ To get started with context engineering in practice, make sure you check out the
 
 </SimpleTable>
 
-All the other concepts after that makes the result better: labels for precision, tests for trust, and guards for cost.
+All the other concepts after that make the result better: labels for precision, tests for trust, and guards for cost.
 
 Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/9-glossary).
 
@@ -30,13 +30,20 @@ Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/9-
 
 The fastest way to see the pipeline is the `jaffle-logistics` project on DuckDB. Note that it runs on your laptop and can't bill you since the AI step is skipped by default.
 
-1. Clone [`jaffle-logistics`](https://github.com/dbt-labs/jaffle-logistics). It needs [<Constant name="core" /> 1.12](/docs/local/connect-data-platform/duckdb-setup?version=1.12) or later and the `dbt-duckdb` adapter.
+1. Clone [`jaffle-logistics`](https://github.com/dbt-labs/jaffle-logistics). It needs dbt v1.12 or later and the [`dbt-duckdb` adapter](/docs/local/connect-data-platform/duckdb-setup?version=1.12).
 2. Add a `jaffle-logistics` profile to your `profiles.yml` that points at DuckDB, as the project README shows.
 3. Run `dbt deps`, then `dbt build`.
-4. Then open `analyses/the_pattern/` in the project. It walks the whole pipeline in seven numbered queries: raw transcript, chunk, embed, knowledge base, raw search, classify, and search with classify.
+4. Open `analyses/the_pattern/` in the project. It walks the whole pipeline in seven numbered queries: 
+      - raw transcript
+      - chunk
+      - embed
+      - knowledge base
+      - raw search
+      - classify
+      - search with classify
 
-:::caution About setting `ai_functions_enabled` to `true`
-To see real embeddings and search results, point the project at Snowflake, Databricks, BigQuery, or Redshift and set `ai_functions_enabled` to `true`. Those are real AI calls, and they bill. On Redshift, create the Bedrock functions first (refer to [Prerequisites](/best-practices/how-we-context-engineer/1-guide-overview#prerequisites)). The [Control cost](/best-practices/how-we-context-engineer/7-control-cost) page shows how to keep that safe.
+:::caution Real AI calls bill your warehouse
+The DuckDB run skips the AI step, so you won't see real embeddings or search results. To see them, point the project at Snowflake, Databricks, BigQuery, or Redshift and set `ai_functions_enabled` to `true`. This makes real AI calls, which bill your warehouse. On Redshift, create the Bedrock functions first (refer to [Prerequisites](/best-practices/how-we-context-engineer/1-guide-overview#prerequisites)). The [Control cost](/best-practices/how-we-context-engineer/7-control-cost) page shows how to keep spending in check.
 :::
 
 ## Use it in your own project
@@ -194,4 +201,4 @@ That's a working context pipeline. It's not perfect yet, though. Short, formulai
 
 ## What's next
 
-Ok no we've got a working pipeline! Next, you'll learn why each piece is built the way it is, starting with [Prepare your text](/best-practices/how-we-context-engineer/3-prepare-your-text).
+Ok now we've got a working pipeline! Next, you'll learn why each piece is built the way it is, starting with [Prepare your text](/best-practices/how-we-context-engineer/3-prepare-your-text).
