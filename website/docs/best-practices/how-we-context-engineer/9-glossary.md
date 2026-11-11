@@ -83,7 +83,7 @@ The following table lists most of the macros in the the [`dbt_context_engineerin
 
 ## Vars
 
-Set these in `dbt_project.yml` under `vars:`. The package's [var reference](https://github.com/dbt-labs/dbt-context-engineering/blob/main/skills/dbt-ce-setup/references/vars-reference.md) officially lists the vars.
+Set these in `dbt_project.yml` under `vars:`. Refer to the package's [var reference](https://github.com/dbt-labs/dbt-context-engineering/blob/main/skills/dbt-ce-setup/references/vars-reference.md) for the full list of `vars` supported.
 
 | Var | Default | What it controls | Learn more |
 |-----|---------|------------------|------------|
