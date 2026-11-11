@@ -54,6 +54,8 @@ Deferral requires both `--defer` and `--state` to be set, either by passing flag
 
 When `--favor-state` is passed, dbt prioritizes node definitions from the `--state` directory. However, this doesn’t apply if the node is also part of the selected nodes.
 
+<Lightbox src="/img/docs/reference/favor-state-diagram.png" width="85%" alt="A decision tree showing when a ref points to your dev schema and when it points to production." title="Where `ref` resolves with `--defer`, and how `--favor-state` changes the answer." />
+
 ### Example
 
 In my local development environment, I create all models in my target schema, `dev_alice`. In production, the same models are created in a schema named `prod`.
