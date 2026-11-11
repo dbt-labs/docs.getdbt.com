@@ -1,5 +1,5 @@
 {
-  "description": "Product areas for the dbt platform release notes (docs/docs/dbt-versions/release-notes.md). Each area is a #### heading under the month. The order here is the order of headings in a month and of the filter pills on the page. 'links' and 'names' are the docs paths and product names that point to an area, 'constants' are <Constant> names that do the same, and 'st_aliases' are other headings the single-tenant release notes use for it. Areas marked 'featured' get their own filter pill; every area is also listed under the Filters menu.",
+  "description": "Product areas for the dbt platform release notes (docs/docs/dbt-versions/release-notes.md). Each area is a #### heading under the month. The order here is the order of headings in a month and of the filter pills on the page. 'links' and 'names' are the docs paths and product names that point to an area, 'constants' are <Constant> names that do the same, and 'st_aliases' are other headings the single-tenant release notes use for it. Areas marked 'featured' get their own filter pill; the other areas are listed under the Filters menu.",
   "fallback": "dbt platform",
   "areas": [
     {

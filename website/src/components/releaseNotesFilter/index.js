@@ -3,8 +3,8 @@ import areaList from '@site/release-note-areas.json';
 import styles from './styles.module.css';
 
 // Release note areas. The list lives in website/release-note-areas.json. Areas
-// marked `featured` there get their own pill; every area that appears on the
-// page is also listed, in alphabetical order, under the "Filters" menu.
+// marked `featured` there get their own pill; the other areas that appear on
+// the page are listed, in alphabetical order, under the "Filters" menu.
 const DEFAULT_AREAS = areaList.areas.map((area) => area.name);
 const FEATURED_AREAS = areaList.areas.filter((area) => area.featured).map((area) => area.name);
 const byName = (a, b) => a.localeCompare(b, 'en', { sensitivity: 'base' });
@@ -241,12 +241,13 @@ export default function ReleaseNotesFilter({
   };
   const isOn = (name) => (name === ALL ? selected.length === 0 : selected.includes(name));
 
-  // Pills for the featured areas, then one menu with every area. "Other" (the
+  // Pills for the featured areas, then one menu with the rest. "Other" (the
   // single-tenant catch-all) stays last in the menu.
   const pillAreas = present.filter((area) => featured.includes(area)).sort(byName);
+  const rest = present.filter((area) => !pillAreas.includes(area));
   const menuAreas = [
-    ...present.filter((area) => area !== OTHER).sort(byName),
-    ...present.filter((area) => area === OTHER),
+    ...rest.filter((area) => area !== OTHER).sort(byName),
+    ...rest.filter((area) => area === OTHER),
   ];
   const menuSelected = selected.filter((area) => !pillAreas.includes(area));
   const menuActive = menuSelected.length > 0;
