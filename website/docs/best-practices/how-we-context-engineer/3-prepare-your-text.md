@@ -8,7 +8,7 @@ hoverSnippet: Learn how to chunk raw text and attach source metadata.
 
 Raw text is the source-conformed data of context engineering: shaped by systems you don't control, and too big or messy for an agent to use as-is. Preparing it is the first step, and the one everything else depends on.
 
-Retrieval quality is decided before any AI runs. A chunk that splits a sentence in half, or mixes two customers' calls, isn't helpful for anyone and won't improve by the time it gets to the embedding model or LLM. This is because search over context works on _embeddings_: which are lists of numbers that capture what a piece of text _means_, so that similar meanings land close together. A chunk that fuses two unrelated thoughts embeds to a muddy point and helps no one. Chunk well and now you get embeddings worth searching.
+Retrieval quality is decided before any AI runs. A chunk that splits a sentence in half, or mixes two customers' calls, isn't helpful for anyone and won't improve by the time it gets to the embedding model or LLM. This is because search over context works on _embeddings_, which are lists of numbers that capture what a piece of text _means_, so that similar meanings land close together. A chunk that fuses two unrelated thoughts embeds to a muddy point and helps no one. Chunk well, and you get embeddings worth searching.
 
 In this section, you'll learn how to:
 
@@ -17,13 +17,13 @@ In this section, you'll learn how to:
 
 ## Chunking
 
-A **chunk** is a piece of text small enough to embed (turn into a list of numbers that captures its meaning) and retrieve. Embedding models can only read so much at once, so a 90-minute transcript or a 40-page contract has to be broken up.
+A **chunk** is a piece of text small enough to embed and retrieve. Embedding models can only read so much at once, so a 90-minute transcript or a 40-page contract has to be broken up.
 
 <Lightbox src="/img/best-practices/context-engineering/chunk-too-big.jpg" width="50%" title="Make sure your chunk isn't bigger than the embedding model's limit." />
 
 ### Pack, don't cut
 
-It makes sense to use the approach of cutting the text every _N_ characters. But doing a blind cut can split a sentence or cut off a speaker's convo. And each half embeds to something that represents nothing.
+It makes sense to use the approach of cutting the text every _N_ characters. However, a blind cut can split a sentence or cut off a speaker mid-turn, and each half embeds to something that represents nothing.
 
 We recommend **packing** instead. You work through the text in order, keeping a running token count. Each whole **unit** goes into the chunk it _starts_ in. A unit is the smallest piece of text you'll never split, like a speaker turn in a transcript or a sentence in a document.
 
@@ -39,7 +39,7 @@ We recommend **packing** instead. You work through the text in order, keeping a 
 
 `chunk()` only packs rows that are already units. It never cuts text. If your text is one long row per document, split it first. The package's `split_sentences` macro turns each document into one row per sentence, and you feed those rows to `chunk()`. Its sentence boundaries are naive, so abbreviations such as "Inc." and decimals such as "3.5" can over-split. For prose that needs better boundaries, split upstream with a tokenizer instead.
 
-### Our recommendations
+### Chunking recommendations
 
 - **Don't split a unit:** Meaning lives in whole thoughts. If two goals conflict, keep the one that protects meaning.
 - **Treat the size limit as soft, and watch for big units:** Because units are never split, a unit that starts a chunk can push it over the limit. One very large unit makes an oversized chunk, which can exceed your embedding model's input limit. Chunking flags these rows with `exceeds_target`, and you can opt in to the `no_oversized_chunks` test to fail on them.
@@ -125,7 +125,7 @@ The same metadata serves two readers with different eyes:
 
 </SimpleTable>
 
-### Our recommendations
+### Metadata recommendations
 
 - Attach metadata in its own step, after chunking. Attaching is a simple join, and chunking is the fragile step. Keeping them apart means a metadata change can't break your chunks.
 - Keep metadata as columns. Add it to the text only if the LLM or embedding model needs it (`in_text=true`). Keep the metadata columns so you never have to parse metadata back out of the text.
