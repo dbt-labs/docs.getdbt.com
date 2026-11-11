@@ -8,13 +8,13 @@ hoverSnippet: Learn how we model the data AI agents read.
 
 import ContextEngineeringEvolving from '/snippets/_context-engineering-evolving.md';
 
-For a decade, we've modelled data for one reader: the dashboard. And every model, test, and metric existed so a person could look at a number and trust it.
+For a decade, we've modeled data for one reader: the dashboard. And every model, test, and metric existed so a person could look at a number and trust it.
 
-That worked for a bit but a metric is thousands of rows squashed into something you can read at a glance, and you can't un-squash it. Every number on a dashboard sets off the same three questions (give or take): which ones moved and why? and what do we do about it? Since dashboards can't answer any of them, they usually become a ticket in the data team's queue.
+That worked for a bit, but a metric is thousands of rows squashed into something you can read at a glance, and you can't un-squash it. Every number on a dashboard sets off the same three questions (give or take): which rows moved, why, and what do we do about it? Since dashboards can't answer any of them, they usually become a ticket in the data team's queue.
 
-The answer always existed except it was sitting in your warehouse, or could easily land there: call transcripts, support tickets, CRM notes, contracts, emails, etc. But historically, it's not something you really modelled, mostly because there's no bar chart (or `gasp: pie chart`) for a call transcript.
+The answer was already in your warehouse, or it could easily land there: call transcripts, support tickets, CRM notes, contracts, emails, and more. But historically, teams rarely modeled that text, mostly because there's no bar chart (or `gasp: pie chart`) for a call transcript.
 
-AI agents are new readers that can now use that detail, but they can only be as good as what they get. Context engineering is the practice of modeling data for that new reader, with the same discipline you already apply to metrics: staging, tests, docs, and one governed DAG.
+AI agents are new readers that can now use that detail, but they can only be as good as what they get. Context engineering is the practice of modeling data for that new reader, with the same discipline you already apply to metrics: staging, tests, docs, and one governed <Term id="dag"/>
 
 <ContextEngineeringEvolving />
 
@@ -26,7 +26,7 @@ We also use the [`jaffle-logistics`](https://github.com/dbt-labs/jaffle-logistic
 
 Each recommendation comes with an example and a _why_, so you can decide when to deviate.
 
-The following diagram explains the entire concept: text is split into chunks, each chunk becomes numbers that capture its meaning, and a question finds the chunks closest to it. The numbers and chunks in the diagram are made up and simplified: embeddings for reals have hundreds of dimensions, not two.
+The following diagram explains the entire concept: text is split into chunks, each chunk becomes numbers that capture its meaning, and a question finds the chunks closest to it. The numbers and chunks in the diagram are made up and simplified: embeddings have hundreds of dimensions, not two.
 
 <Lightbox src="/img/best-practices/context-engineering/pipeline.svg" width="100%" title="A call transcript is chunked, embedded as numbers, and placed on a map where similar meanings sit close together. A question lands on the same map, and the closest chunks come back with a score and a source." />
 
@@ -42,7 +42,7 @@ This guide covers the following:
 4. [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai): Label each piece so search gets precise, with prompts managed as versioned code.
 5. [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy): Test AI output the way you test any other dbt model, and keep lineage and citations intact.
 6. [Control cost](/best-practices/how-we-context-engineer/7-control-cost): Build in limits and a record of what each run spent.
-7. [Pair context with the semantic layer](/best-practices/how-we-context-engineer/8-pair-with-the-semantic-layer): See how context and metrics fit in one project, and how an agent uses both.
+7. [Pair context with the <Constant name="semantic_layer" />](/best-practices/how-we-context-engineer/8-pair-with-the-semantic-layer): See how context and metrics fit in one project, and how an agent uses both.
 8. [Glossary](/best-practices/how-we-context-engineer/9-glossary): Look up new terms, macros, and vars in one place.
 
 ## What is context?
@@ -50,7 +50,7 @@ This guide covers the following:
 Context is the information an AI agent reads to do its job. Good context is:
 
 - Governed, which means someone owns it, and changes are reviewed
-- Tested so you can prove it’s correct
+- Tested so you can prove it's correct
 - Traceable so every claim points back to the source it came from
 
 So if you ask an agent a question, like _"Why were deliveries late for this account?"_, the answer you get will vary depending on how well your context is structured:
@@ -60,11 +60,11 @@ So if you ask an agent a question, like _"Why were deliveries late for this acco
 | | Example of bad context | Example of good context |
 |---|---|---|
 | What the agent reads | One pasted blob: "…pattern of late deliveries. Reviewed with dispatch. Truck 14 slid on ice…" | Small pieces, each with an id, account, and source: `IR-9001::1`, "Truck slid on ice during the storm and missed the delivery window." |
-| The answer | "Probably weather." No source, so you can't check it. | "Truck 14 slid on ice during the storm and missed its delivery window (`IR-9001::1`)" You can check it. |
+| The answer | "Probably weather." No source, so you can't check it. | "Truck 14 slid on ice during the storm and missed its delivery window (`IR-9001::1`)." You can check it. |
 
 </SimpleTable>
 
-Context engineering not only structures data but also adds ownership, tests, and traceability, so that you and your end users can check where an agent’s answers come from instead of just believe it.
+Context engineering not only structures data but also adds ownership, tests, and traceability, so that you and your end users can check where an agent's answers come from instead of just believing it.
 
 If you've built a dbt project, you already have most of the instincts:
 
@@ -78,9 +78,9 @@ If you've built a dbt project, you already have most of the instincts:
 
 </SimpleTable>
 
-## Context and the semantic layer
+## Context and the Semantic Layer
 
-Use the semantic layer for your metrics and context for your unstructured and semi-structured data. Your metrics tell an agent _what_ happened. Context tells it _why_. They live in the same project and work side by side, and an agent uses both to answer one question. [Pair context with the semantic layer](/best-practices/how-we-context-engineer/8-pair-with-the-semantic-layer) shows how.
+Use the <Constant name="semantic_layer" /> for your metrics and context for text that does not fit neatly in rows and columns, like transcripts and tickets. Your metrics tell an agent _what_ happened. Context tells it _why_. They live in the same project and work side by side, and an agent uses both to answer one question. [Pair context with the <Constant name="semantic_layer" />](/best-practices/how-we-context-engineer/8-pair-with-the-semantic-layer) shows how.
 
 ## What counts as unstructured data?
 
