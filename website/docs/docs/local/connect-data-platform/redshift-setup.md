@@ -161,7 +161,7 @@ import RedshiftDatasharing from '/snippets/_redshift-datasharing.md';
 | `autocreate`  | false | Optional, default `False`. Creates user if they do not exist |
 | `db_groups`  | ['ANALYSTS'] | Optional. A list of existing database group names that the DbUser joins for the current session |
 | `ra3_node`  | true | Optional, default `False`. Enables cross-database sources. Kept for backward compatibility; use `datasharing` for new projects instead. |
-| `datasharing` <Lifecycle status="beta" /> | true | Optional, default `False`. Enables cross-database and cross-cluster access for [Redshift Datasharing](https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html). Available in `dbt-redshift` v1.11.0rc1 and later. |
+| `datasharing` | true | Optional, default `False`. Enables cross-database and cross-cluster access for [Redshift Datasharing](https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html). Available in `dbt-redshift` v1.11.0rc1 and later. |
 | `autocommit`  | true | Optional, default `True`. Enables autocommit after each statement |
 | `retries`  | 1 | Number of retries (on each statement) |
 | `retry_all`  | true | Allows dbt to retry all statements in a query|
@@ -367,7 +367,7 @@ profile-to-my-RS-target:
 
 To run certain macros with autocommit, load the profile with autocommit using the `--profile` flag. For more context, please refer to this [PR](https://github.com/dbt-labs/dbt-redshift/pull/475/files).
 
-### `datasharing` <Lifecycle status="beta" />
+### `datasharing`
 
 <RedshiftDatasharing />
 

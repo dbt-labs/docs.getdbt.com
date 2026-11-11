@@ -9,22 +9,29 @@ slug: /docs/lake-compute
 
 :::info Lake Compute is in private beta
 
-To request access or region support, fill out the [Lake Compute signup form](https://docs.google.com/forms/d/e/1FAIpQLSdWXHU3VFqq1t8GVAA2BMfY_AfeVJH26OXJFlNwXiVv4pcuXQ/viewform). Lake Compute is in active development and likely to change. Breaking changes may occur, documentation may be incomplete, technical support may be limited, and no service-level agreement covers it during beta. Refer to [Private beta limitations](/docs/lake-compute#private-beta-limitations) before you plan real work around it.
+Lake Compute is in active development and likely to change.
+
+- Are you ready to get started? Fill out the [Lake Compute signup form](https://docs.google.com/forms/d/e/1FAIpQLSdWXHU3VFqq1t8GVAA2BMfY_AfeVJH26OXJFlNwXiVv4pcuXQ/viewform) to request access or ask for support in a specific region.
+- Want to chat to see if Lake Compute is right for your team before signing up? Book a meeting with us to talk through how Lake Compute fits your use case. <a className="button button--primary" href="https://calendly.com/data-lakes-team/lake-compute-meeting?utm_source=docs&utm_medium=lake-compute" target="_blank" rel="noopener noreferrer">Book a meeting</a>
+
 
 :::
 
-Lake Compute is a hosted, serverless compute engine for running dbt models. It is powered by DuckDB and Apache Iceberg, and it is intended to support transformation workloads that do not need the full scale or feature set of a distributed cloud data warehouse.
+Lake Compute is a hosted, serverless compute engine for running dbt models, powered by DuckDB and Apache Iceberg. It's designed to cut the cost of your dbt transformations while keeping one dbt project, one DAG, and one `ref` graph.
 
 Lake Compute supports two execution models:
 
-1. As a "sidecar" alongside your existing data warehouse, such as Snowflake or Databricks. You can choose the execution engine model by model while keeping one dbt project, one DAG, and one `ref` graph.
-2. As the primary compute adapter for new dbt projects, along with an Iceberg catalog (such as Fivetran MDLS).
+- **As a "sidecar" alongside your existing data warehouse, such as Snowflake or Databricks:**
+ Start small by moving some models to Lake Compute and keeping the rest in your primary warehouse. You choose the execution engine model by model, and you can move more models over time.
+- **As the primary compute adapter, along with an Iceberg catalog, such as Fivetran MDLS:** 
+Adopt completely by running all of your models on Lake Compute.
 
-Lake Compute doesn't intend to fully replace your cloud data warehouse, and it isn't a general-purpose query engine. Use Lake Compute for dbt transformations only. Keep workloads that need high concurrency, BI connectivity, advanced data warehouse features (such as ML or AI functions), or distributed compute on your primary data warehouse.
+
+Some workloads, such as those that use warehouse-native AI functions, may still belong on your primary warehouse. Refer to [Private beta limitations](#private-beta-limitations) for what Lake Compute doesn't support yet.
 
 ## Why use Lake Compute
 
-Optionality and flexibility. Simpler and smaller transformations can run on Lake Compute, while your warehouse remains available for workloads that need distributed processing, high concurrency, proprietary functions, or advanced analytics. Lake Compute always reads and writes data in the Iceberg table format, so it’s easy to add in other compute engines.
+Lower transformation costs, with flexibility. Move as many or as few models as you like to Lake Compute, and keep your warehouse available for anything that still needs it. Lake Compute always reads and writes data in the Iceberg table format, so it's easy to add other compute engines.
 
 ## Prerequisites
 
