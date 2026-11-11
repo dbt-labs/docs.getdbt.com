@@ -8,6 +8,10 @@ hoverSnippet: Learn how context and the semantic layer work together in one proj
 
 Most real questions need two kinds of answer: a number and a reason. "How far did on-time delivery fall, and why?" The semantic layer gives the number. Context gives the reason. This page shows how the two fit in one dbt project, which to build first, and how an agent uses both.
 
+:::note Emerging pattern
+Pairing context with the semantic layer is new. Teams on the leading edge are still building it out, so treat this page as a starting point, not a settled pattern.
+:::
+
 <Lightbox src="/img/best-practices/context-engineering/two-layers.svg" width="100%" title="Your marts feed two things: semantic models and metrics in the semantic layer, and context models that end in a knowledge base. An agent splits a question in two. It gets the number from the semantic layer and the cause from the knowledge base, then answers with both and cites both." />
 
 ## Two layers, one project
@@ -53,7 +57,7 @@ The example values are from the Jaffle Logistics showcase and are illustrative. 
 - **Keep both in one project:** One pull request can change a metric definition and the context model that explains it. Lineage covers both.
 - **Cite both in every answer:** Carry the metric name and the `source_id` through to the agent's reply, so a person can check either half.
 
-## Where serving starts
+## Where serving starts <Lifecycle status="beta" /> {#where-serving-starts}
 
 This guide covers modeling, not serving. The package isn't an agent or an MCP server. It makes the tables those systems read. Your agent or app embeds each live question as it arrives, with the same embedding model as your chunks, then searches the knowledge base.
 
