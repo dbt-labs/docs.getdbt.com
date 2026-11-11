@@ -13,8 +13,11 @@ availability:
 ---
 
 import Prerequisites from '/snippets/_canvas-prerequisites.md';
+import CanvasLifecycle from '/snippets/_canvas-lifecycle.md';
 
-# Edit and create dbt models
+# Edit and create dbt models <Lifecycle status="eol"/>
+
+<CanvasLifecycle/>
 
 <p style={{ color: '#717d7d', fontSize: '1.1em' }}>
 Access and use <Constant name="canvas" /> to create or edit dbt models through a visual, drag-and-drop experience.
