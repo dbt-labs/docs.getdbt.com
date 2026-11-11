@@ -22,6 +22,7 @@ The connection uses OAuth. You register an app integration in the <Constant name
 - A Google Cloud account with access to Gemini Enterprise, where you can create data stores and apps. You can get started by contacting Google Cloud sales, or try [Gemini Enterprise Plus edition at no cost for 30 days](https://console.cloud.google.com/freetrial?redirectPath=gemini-enterprise) without sales assistance.
 
 ## Register the app in dbt platform
+Add your Gemini app integration in <Constant name="dbt_platform"/> by following these steps:
 
 1. In <Constant name="dbt_platform" />, go to **Account settings** → **Integrations** → **App integrations**.
 2. Copy your **MCP Endpoint URL** and note your host, for example `abc123.us1.dbt.com`. You use both in the next section.
@@ -85,6 +86,7 @@ Gemini Enterprise calls MCP tools *actions*. Refer to [Google's docs on enabling
 
 ## Create a Gemini Enterprise app
 
+Create Gemini Enterprise app by following these steps:
 1. In Gemini Enterprise, go to **Apps** and select **Create app**.
 2. Enter an app name, choose a location (**global** works if you have no preference), and enter your company's external name (optional). Select **Create**.
 
@@ -103,6 +105,8 @@ Gemini Enterprise calls MCP tools *actions*. Refer to [Google's docs on enabling
    <Lightbox src="/img/mcp/gemini-enterprise/gemini-connect-existing-data-store.png" width="90%" title="Selecting the dbt MCP connector in the 'Connect an existing data store' dialog" />
 
 ## Use dbt MCP from Gemini
+
+Connect the dbt MCP server in your Gemini app by following these steps:
 
 1. Open your web app URL.
 2. Select the connectors icon, then select **Authorize** next to the dbt connector and **Allow access** in the <Constant name="dbt_platform" /> window. Each user needs to do this only once.
