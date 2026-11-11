@@ -20,7 +20,7 @@ With <Constant name="catalog" />, you can view your project's [resources](/docs/
 
 </IntroText>
 
-Use <Constant name="catalog" /> to navigate and manage your projects within <Constant name="dbt" /> to help you and other data developers, analysts, and consumers discover and leverage your dbt resources. <Constant name="catalog" /> integrates with the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), [<Constant name="orchestrator" />](/docs/deploy/deployments), and [<Constant name="canvas" />](/docs/platform/canvas) to help you develop or view your dbt resources.
+Use <Constant name="catalog" /> to navigate and manage your projects within <Constant name="dbt" /> to help you and other data developers, analysts, and consumers discover and leverage your dbt resources. <Constant name="catalog" /> integrates with the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) and [<Constant name="orchestrator" />](/docs/deploy/deployments) to help you develop or view your dbt resources.
 
 ## Prerequisites
 
@@ -233,7 +233,7 @@ From the sidebar, you can browse your project's resources, its file tree, and th
 
 ## Integrated tool access
 
-Users with a [developer license](/docs/platform/manage-access/about-user-access#license-based-access-control) or an analyst seat\* can open a resource directly from the <Constant name="catalog" /> in the <Constant name="studio_ide" /> to view its model files or in <Constant name="canvas" /> for visual editing.
+Users with a [developer license](/docs/platform/manage-access/about-user-access#license-based-access-control) or an analyst seat\* can open a resource directly from the <Constant name="catalog" /> in the <Constant name="studio_ide" /> to view its model files.
 
 \* The [Analyst license type](/docs/platform/manage-access/about-user-access?version=1.12#licenses) is not available for new purchase.
 

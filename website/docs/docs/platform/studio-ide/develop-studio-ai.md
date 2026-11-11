@@ -17,7 +17,7 @@ Leverage AI to develop dbt projects in the <Constant name="studio_ide" />.
 
 [<Constant name="wizard" />](/docs/platform/wizard-platform) in [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) is the new and recommended way to develop governed dbt projects with AI. It uses your project context to help you develop governed dbt changes faster. Think of it like a smart AI agent that has a map of your project: instead of reading through each file to understand context, it can answer questions and help you develop and validate changes faster.
 
-dbt also supports dbt Copilot, a separate inline AI assistance experience for single-click generation of SQL, documentation, tests, and semantic models in <Constant name="studio_ide" /> and <Constant name="canvas" />.
+dbt also supports dbt Copilot, a separate inline AI assistance experience for single-click generation of SQL, documentation, tests, and semantic models in <Constant name="studio_ide" />.
 
 ## Prerequisites
 
@@ -38,7 +38,7 @@ Use [<Constant name="wizard" />](/docs/dbt-ai/wizard-ide) for autonomous model g
 
 _The earlier version of dbt Copilot in the Studio IDE is available only to a limited set of accounts. dbt Wizard is available to all accounts and is the recommended way to develop with AI in the Studio IDE &mdash; it covers everything dbt Copilot's quick actions did, plus multi-step changes with built-in validation._
 
-[dbt Copilot](/docs/dbt-ai/copilot-overview) provides single-click generation of SQL, documentation, tests, and semantic models in <Constant name="studio_ide" /> and <Constant name="canvas" />.
+[dbt Copilot](/docs/dbt-ai/copilot-overview) provides single-click generation of SQL, documentation, tests, and semantic models in <Constant name="studio_ide" />.
 
 1. Navigate to the <Constant name="studio_ide" /> and select a SQL model file under the **File Explorer**.
 2. In the **Console** section, click the **dbt Copilot** button to view the available AI options.

@@ -24,7 +24,7 @@ Learn how to access <Constant name="insights" />, run queries, and view results.
 - Create a visualization of your query results using the **Chart** tab
 - View the history of queries and their statuses (like Success, Error, Pending) using the **Query history** tab
 - Use dbt Copilot in Insights to generate or edit SQL queries using natural language prompts
-- Integrate with [<Constant name="catalog" />](/docs/explore/explore-projects), [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), and [<Constant name="canvas" />](/docs/platform/canvas) to provide a seamless experience for data exploration, AI-assisted writing, and collaboration
+- Integrate with [<Constant name="catalog" />](/docs/explore/explore-projects) and [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) to provide a seamless experience for data exploration, AI-assisted writing, and collaboration
 
 ## Access the dbt Insights interface
 
@@ -105,7 +105,7 @@ From here, you can:
 - If you want to save the query, you can click **Save Insight** in the [query console menu](/docs/explore/navigate-dbt-insights#query-console-menu) to save it for future reference.
 
 :::tip Want to turn a query into a model?
-You can access the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) or [<Constant name="canvas" />](/docs/platform/canvas) from the [Query console menu](/docs/explore/navigate-dbt-insights#query-console-menu) to promote your SQL into a reusable dbt model &mdash; all within <Constant name="dbt" />!
+You can access the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) from the [Query console menu](/docs/explore/navigate-dbt-insights#query-console-menu) to promote your SQL into a reusable dbt model &mdash; all within <Constant name="dbt" />!
 :::
 
 ### View results
@@ -165,7 +165,7 @@ Set the compilation environment to control how Jinja functions are rendered. Thi
 - Supports "typed" environments marked as `Production`, `Staging`, and/or `Development`.
 - Enables you to run <Constant name="semantic_layer" />. queries against staging environments (development environments not supported).
 - Still uses the individual user credentials, so users must have appropriate access to query `PROD` and `STG`. 
-- Changing the environment changes context for the <Constant name="catalog" /> view in <Constant name="insights" />, as well as the environment context during the handoff to <Constant name="catalog" /> and <Constant name="canvas" />. For example, switching to `Staging` in <Constant name="insights" /> and selecting **View in Catalog** will open the `Staging` view in <Constant name="catalog" />. 
+- Changing the environment changes context for the <Constant name="catalog" /> view in <Constant name="insights" />, as well as the environment context during the handoff to <Constant name="catalog" />. For example, switching to `Staging` in <Constant name="insights" /> and selecting **View in Catalog** will open the `Staging` view in <Constant name="catalog" />. 
 
 <Lightbox src="/img/docs/dbt-insights/insights-jinja-environment.png" width="90%" title="Set the environment for your Jinja context" />
 
