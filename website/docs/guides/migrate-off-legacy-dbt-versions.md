@@ -81,6 +81,19 @@ Autofix runs the [dbt-autofix](https://github.com/dbt-labs/dbt-autofix) script t
 2. Resolve them with the [dbt-autofix](https://github.com/dbt-labs/dbt-autofix?tab=readme-ov-file#installation) tool, either from the command line or by following the prompts in the extension's upgrade assistant.
 3. If you're moving this project to <Constant name="fusion" /> (recommended), use the extension's [agentic migration](/docs/upgrade-to-dbt-extension#agentic-migration) flow instead, which runs autofix as part of the full v1-to-v2 upgrade.
 
+### Use dbt Wizard
+
+<Constant name="wizard" /> is an AI agent that understands your project's lineage, tests, contracts, and run results. Use it for scenarios autofix can't resolve on its own, like deprecations that need a judgment call or issues that only show up at build time. For more information, refer to [About dbt Wizard](/docs/platform/wizard-overview).
+
+To upgrade effectively with <Constant name="wizard" />:
+
+1. **Start in development:** Open your project in <Constant name="wizard" /> after you [migrate the environment](#migrate-an-environment-to-a-release-track), so it works against the same warnings and errors you'd see.
+2. **Triage first:** Prompt it to run `dbt parse --show-all-deprecations`, group the results by type and by affected models, and propose an order of fixes. Fixing one category at a time keeps each change small and easy to review.
+3. **Review impact before changing code:** Because <Constant name="wizard" /> checks upstream and downstream dependencies, ask it to list which models, tests, and exposures a change touches before it edits anything. This is especially useful for macros and packages that many models depend on.
+4. **Validate as you go:** Have it compile and build the affected models after each batch of fixes, and fix any new failures before moving on. Ask it to summarize what changed and why so reviewers can follow along in your pull request.
+5. **Review and commit:** Treat its edits like any other contributor's: review the diff, run your CI checks, and then commit.
+
+If you're moving to dbt v2, <Constant name="wizard" /> can also help you work through the [v2 upgrade](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2?version=2) by explaining and fixing incompatibilities that surface during the move.
 
 ### Manually fix
 
