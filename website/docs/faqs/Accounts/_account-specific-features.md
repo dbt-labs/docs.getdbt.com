@@ -13,13 +13,13 @@ The features in <Constant name="dbt" /> are tailored to each organization's uniq
 
 This document provides a comprehensive overview of account-specific features in <Constant name="dbt" /> according to plan type.
 
-## Copilot
+## dbt Wizard
 
 [<Constant name="wizard" />](/docs/platform/wizard-platform) is an AI-powered assistant designed to accelerate your development workflow and help you focus on delivering high-quality data.
 
 <Constant name="wizard" /> is available to all users in <Constant name="dbt" /> but limits are imposed according to plan type. Have a look at [dbt's pricing](https://www.getdbt.com/pricing) for more information.
 
-## Copilot features
+## dbt Wizard features
 
 ### Codegen <Lifecycle status="self_service, managed, managed_plus"/>
 
