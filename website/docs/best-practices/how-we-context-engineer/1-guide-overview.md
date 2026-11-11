@@ -108,7 +108,7 @@ Emails, runbooks, and internal docs work the same way.
 
 You need:
 
-- <Constant name="core" /> 1.11 or later, or the <Constant name="fusion_engine" />
+- <Constant name="core" /> 1.11 or later, or <Constant name="fusion" />
 - The [`dbt_context_engineering` package](https://github.com/dbt-labs/dbt-context-engineering), version 0.2.0 or later. You add it to your `packages.yml` and run `dbt deps`. [Get started](/best-practices/how-we-context-engineer/2-get-started#use-it-in-your-own-project) shows how.
 - A warehouse the package supports, which runs the AI calls with its own built-in AI:
   - Snowflake, using Cortex AI functions
@@ -118,7 +118,6 @@ You need:
 
 To try the steps that don't call AI, you can use DuckDB, with no warehouse credentials.
 
-On Redshift, structured output is best-effort, and there's no managed vector index or drift canary.
 
 :::info New to some dbt basics? 
 If you're new to dbt, we recommend you skim [SQL models](/docs/build/sql-models), [materializations](/docs/build/materializations), [incremental models](/docs/build/incremental-models), [data tests](/docs/build/data-tests), [hooks](/docs/build/hooks-operations), [project variables](/docs/build/project-variables), and [packages](/docs/build/packages) first. You don't need to be an expert.
