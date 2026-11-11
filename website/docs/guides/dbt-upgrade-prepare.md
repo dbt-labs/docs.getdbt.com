@@ -82,12 +82,12 @@ With the readiness experience enabled, you can monitor your project's eligibilit
 
 <Lightbox src="/img/v2/v2-readiness.png" width="60%" title="The dbt v2 readiness checklist"/>
 
-Common ineligibility reasons include:
-- No environment on a [release track](/docs/dbt-versions/dbt-release-tracks#which-release-tracks-are-available) that supports <Constant name="fusion" /> (a pinned legacy version such as 1.9 blocks eligibility)
-- Not using a [supported data platform](/docs/dbt/supported-features?version=2.0#requirements)
-- Project has jobs but none have run successfully
-- Jobs that haven't run in the last 7 days, or that failed during that time, show an unknown status
-- Jobs that aren't on the **v1 Latest** release track aren't tested
+Common blockers to eligibility include:
+- No environment is on a [release track](/docs/dbt-versions/dbt-release-tracks#which-release-tracks-are-available) that supports <Constant name="fusion" /> (a pinned legacy version such as 1.9 blocks eligibility)
+- Your [data platform isn’t supported](/docs/dbt/supported-features?version=2.0#requirements). 
+- None of the project’s jobs have run successfully
+- The job hasn’t run in the last 7 days, or its most recent run failed, showing an unknown status.
+- The job isn’t on the **v1 Latest** release track.
 - Jobs whose steps use only commands that eligibility checks don't test (only `seed`, `build`, `run`, `test`, and `snapshot` are tested), or that use `state:modified`
 
 As you complete the steps in this guide, check the readiness panel to see your eligibility improve.
