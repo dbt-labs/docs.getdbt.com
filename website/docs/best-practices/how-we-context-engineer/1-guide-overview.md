@@ -30,7 +30,7 @@ The following diagram explains the entire concept: text is split into chunks, ea
 
 <Lightbox src="/img/best-practices/context-engineering/pipeline.svg" width="100%" title="A call transcript is chunked, embedded as numbers, and placed on a map where similar meanings sit close together. A question lands on the same map, and the closest chunks come back with a score and a source." />
 
-In this guide, a **context model** is a dbt model that prepares text for agents: it chunks, embeds, labels, or combines it. An **LLM** or **embedding model** is the model your warehouse calls from those context models.
+In this guide, a _context model_ is a dbt model that prepares text for agents: it chunks, embeds, labels, or combines it. An _LLM_ or _embedding model_ is the model your warehouse calls from those context models.
 
 ## What's in the guide
 
@@ -84,7 +84,7 @@ Use the <Constant name="semantic_layer" /> for your metrics and context for text
 
 ## What counts as unstructured data?
 
-Anything that carries meaning but doesn't fit neatly in rows and columns, like support tickets, transcripts, call, etc. Context engineering is a new way to think about the data you already have, not one use case.
+Anything that carries meaning but doesn't fit neatly in rows and columns, like support tickets, transcripts, and calls. Context engineering is a new way to think about the data you already have, not one use case.
 
 Our example project is Jaffle Logistics, a fictional logistics company whose customer story is scattered across roughly eight disconnected systems. Five of them go through the pipeline in the [`jaffle-logistics`](https://github.com/dbt-labs/jaffle-logistics) project, the reference implementation for the package. 
 
@@ -115,17 +115,17 @@ You need:
   - Databricks, on Databricks Runtime 15.4 LTS or above (not Databricks SQL Classic)
   - BigQuery, using its built-in AI functions. Your normal dbt connection is enough. A separate connection for AI functions is optional.
   - Redshift, using Amazon Bedrock. You create the Bedrock functions once with the package's `create_bedrock_function` operation, which needs permission to create models, an IAM role that can call Bedrock, and Bedrock model access.
-- Optionally, DuckDB, to run the parts that don't call AI without any credentials
+
+To try the steps that don't call AI, you can use DuckDB, with no warehouse credentials.
 
 On Redshift, structured output is best-effort, and there's no managed vector index or drift canary.
 
 :::info New to some dbt basics? 
 If you're new to dbt, we recommend you skim [SQL models](/docs/build/sql-models), [materializations](/docs/build/materializations), [incremental models](/docs/build/incremental-models), [data tests](/docs/build/data-tests), [hooks](/docs/build/hooks-operations), [project variables](/docs/build/project-variables), and [packages](/docs/build/packages) first. You don't need to be an expert.
 
-If you're unsure on some context engineering terms, check out the [glossary](/best-practices/how-we-context-engineer/9-glossary).
 :::
 
-
+If you're unsure on some context engineering terms, check out the [glossary](/best-practices/how-we-context-engineer/9-glossary).
 ## What's next
 
 Ready to try it? Head to [Get started](/best-practices/how-we-context-engineer/2-get-started). **Hope** it's smooth rowing from here 🚣‍♀️
