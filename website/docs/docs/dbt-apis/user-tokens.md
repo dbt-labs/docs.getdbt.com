@@ -10,6 +10,8 @@ availability:
   minPlan: starter
 ---
 
+import TokenExpiration from '/snippets/_token-expiration.md';
+
 # Account-scoped personal access tokens
 
 :::warning
@@ -29,12 +31,19 @@ You can't use a PAT to create a [service token](/docs/dbt-apis/service-tokens). 
 Creating an account-scoped PAT requires only a few steps.
 1. Navigate to your **Account Settings**, expand **API tokens** and click **Personal tokens**.
 2. Click **Create personal access token**.
-3. Give the token a descriptive name and click **Save**. 
+3. Give the token a descriptive name.
+4. Choose an **Expiry**. The default is **No expiry**. Refer to [Set a token expiration](#set-a-token-expiration).
+5. Click **Save**.
+6. Copy the token before closing the window. _It will not be available after, and you will have to create a new token if you lose it._ 
 
-4. Copy the token before closing the window. _It will not be available after, and you will have to create a new token if you lose it._ 
+As a security best practice, rotate your PATs regularly. To rotate a PAT, create a new token, replace the old one wherever it's used, and then delete the old token.
 
+## Set a token expiration
 
-To maintain best security practices, it's recommended that you regularly rotate your PATs. To do so, create a new token and delete the old one once it's in place.
+<TokenExpiration
+  pageName="Personal tokens"
+  newToken="a new token"
+/>
 
 ## Delete a personal access token
 
