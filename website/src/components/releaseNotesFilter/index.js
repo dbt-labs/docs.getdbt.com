@@ -2,10 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import areaList from '@site/release-note-areas.json';
 import styles from './styles.module.css';
 
-// Release note areas, in pill order. The list lives in
-// website/release-note-areas.json. Only areas that appear on the page get a
-// pill; the first `inline` pills show in the row and the rest go under "More".
+// Release note areas. The list lives in website/release-note-areas.json. Areas
+// marked `featured` there get their own pill; every area that appears on the
+// page is also listed, in alphabetical order, under the "Filters" menu.
 const DEFAULT_AREAS = areaList.areas.map((area) => area.name);
+const FEATURED_AREAS = areaList.areas.filter((area) => area.featured).map((area) => area.name);
+const byName = (a, b) => a.localeCompare(b, 'en', { sensitivity: 'base' });
 const ALL = 'All';
 const ANNOUNCEMENTS = 'Announcements';
 const OTHER = 'Other';
@@ -174,7 +176,11 @@ const findPresentAreas = (root, areas) => {
   return areas.filter((area) => found.has(area));
 };
 
-export default function ReleaseNotesFilter({ areas = DEFAULT_AREAS, inline = 7, layout = 'monthly' }) {
+export default function ReleaseNotesFilter({
+  areas = DEFAULT_AREAS,
+  featured = FEATURED_AREAS,
+  layout = 'monthly',
+}) {
   const weekly = layout === 'weekly';
   const apply = (root, selection) =>
     weekly ? applyWeeklyFilter(root, selection) : applyFilter(root, areas, selection);
@@ -185,7 +191,7 @@ export default function ReleaseNotesFilter({ areas = DEFAULT_AREAS, inline = 7, 
   const [moreOpen, setMoreOpen] = useState(false);
   const moreRef = useRef(null);
 
-  // Close the More menu on an outside click or Escape.
+  // Close the Filters menu on an outside click or Escape.
   useEffect(() => {
     if (!moreOpen) return undefined;
     const onDown = (event) => {
@@ -235,10 +241,15 @@ export default function ReleaseNotesFilter({ areas = DEFAULT_AREAS, inline = 7, 
   };
   const isOn = (name) => (name === ALL ? selected.length === 0 : selected.includes(name));
 
-  const inlineAreas = present.slice(0, inline);
-  const moreAreas = present.slice(inline);
-  const moreSelected = moreAreas.filter((area) => selected.includes(area));
-  const moreActive = moreSelected.length > 0;
+  // Pills for the featured areas, then one menu with every area. "Other" (the
+  // single-tenant catch-all) stays last in the menu.
+  const pillAreas = present.filter((area) => featured.includes(area)).sort(byName);
+  const menuAreas = [
+    ...present.filter((area) => area !== OTHER).sort(byName),
+    ...present.filter((area) => area === OTHER),
+  ];
+  const menuSelected = selected.filter((area) => !pillAreas.includes(area));
+  const menuActive = menuSelected.length > 0;
 
   const pill = (name) => (
     <button
@@ -262,21 +273,21 @@ export default function ReleaseNotesFilter({ areas = DEFAULT_AREAS, inline = 7, 
       aria-label="Filter release notes by area"
       data-md-hide="true"
     >
-      {[ALL, ...inlineAreas].map(pill)}
-      {moreAreas.length > 0 && (
+      {[ALL, ...pillAreas].map(pill)}
+      {menuAreas.length > 0 && (
         <div className={styles.more} ref={moreRef}>
           <button
             type="button"
-            className={`${styles.pill} ${moreActive ? styles.active : ''}`}
+            className={`${styles.pill} ${menuActive ? styles.active : ''}`}
             aria-haspopup="true"
             aria-expanded={moreOpen}
             onClick={() => setMoreOpen(!moreOpen)}
           >
-            {moreActive ? moreSelected[0] : 'More'} ▾
+            {menuActive ? menuSelected[0] : 'Filters'} ▾
           </button>
           {moreOpen && (
             <div className={styles.menu} role="menu">
-              {moreAreas.map((name) => (
+              {menuAreas.map((name) => (
                 <button
                   key={name}
                   type="button"
