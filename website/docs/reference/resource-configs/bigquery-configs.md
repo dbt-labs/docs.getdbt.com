@@ -315,7 +315,7 @@ You can set `reservation` at three levels, from lowest to highest precedence:
 <File name='profiles.yml'>
 
 ```yaml
-my-profile:
+my_profile:
   target: dev
   outputs:
     dev:
