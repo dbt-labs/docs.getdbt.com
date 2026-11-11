@@ -141,7 +141,7 @@ If your organization uses [Prefect](https://www.prefect.io/), the way you will r
 
 ## Windmill
 
-If your organization uses [Windmill](https://www.windmill.dev/), you can run a <Constant name="core" /> or <Constant name="core_v2" /> project as a Windmill script. The project is copied in unmodified and runs on your own workers as a single `dbt build`, started from a schedule, a webhook, or a step in a Windmill flow. To import an existing project with the Windmill CLI:
+If your organization uses [Windmill](https://www.windmill.dev/), you can run a <Constant name="core" /> or <Constant name="core_v2" /> project as a Windmill script. The project is copied in unmodified and runs on your own workers as a single `dbt build`, started from a schedule, a webhook, or a step in a Windmill flow. The warehouse connection is a Windmill resource configured once per workspace, so the project needs no `profiles.yml` of its own. To import an existing project with the Windmill CLI:
 
 ```shell
 mkdir -p f/analytics/analytics__dbt
@@ -149,13 +149,17 @@ cp -r my-dbt-project/. f/analytics/analytics__dbt/
 wmill sync push
 ```
 
-The run page shows each model's status on the project graph, with its timing and row count when the run ends. On a failed run, **Resume this run** fills in a `dbt retry` that rebuilds only the failed and skipped nodes. Models, seeds, snapshots, and sources also appear on Windmill's asset graph, next to the Python, TypeScript, and DuckDB scripts that read them.
+The run page shows each model's status on the project graph, with its timing and row count when the run ends. Windmill stores the last run's `run_results.json` in its database, so on a failed run **Resume this run** starts a `dbt retry` that rebuilds only the failed and skipped nodes, and the retry can run on a different worker.
+
+Models, seeds, snapshots, and sources appear on Windmill's asset graph, keyed by warehouse, schema, and relation name, so a table that one project builds and another reads as a source is a single node. Python, TypeScript, and DuckDB scripts that read a model, or that declare they write a source table, appear on the same graph.
 
 <DocCarousel slidesPerView={1}>
 
-<Lightbox src="/img/docs/running-a-dbt-project/windmill_dbt_run_graph.png" alt="Windmill run page for a dbt build: the project graph with each model's status and row count, and a result table reading 11 passed, 1 failed, 1 skipped of 13 nodes" title="dbt run in Windmill, with a failed model and the model it skipped"/>
+<Lightbox src="/img/docs/running-a-dbt-project/windmill_dbt_run_failed.png" alt="Windmill run page for a failed dbt build. A banner reads 1 failed, 3 skipped, with a Resume this run button. On the project graph, raw_orders and stg_orders succeeded and stg_payments failed. The result table shows the database error for stg_payments, and orders and its two tests as skipped." title="Failed dbt build: stg_payments failed, orders and its tests skipped"/>
 
-<Lightbox src="/img/docs/running-a-dbt-project/windmill_dbt_asset_graph.png" alt="Windmill asset graph of a folder: dbt seeds, a source, staging views, and table models connected by ref() lineage, with a TypeScript script reading the orders model and a Python script reading the customers model" title="dbt models and the scripts that read them on the Windmill asset graph"/>
+<Lightbox src="/img/docs/running-a-dbt-project/windmill_dbt_run_retry.png" alt="Windmill run page for the dbt retry started by Resume this run. The graph shows payments, stg_payments, and orders. The result table reads 4 passed of 4 nodes, retry, dbt-core-1x 1.12.6: stg_payments, orders, and the two tests on orders." title="The dbt retry started by Resume this run: 4 of 4 nodes rebuilt"/>
+
+<Lightbox src="/img/docs/running-a-dbt-project/windmill_dbt_asset_graph.png" alt="Windmill asset graph of a folder with two dbt projects. The payments source node is labeled with the Python script f/analytics/ingest_payments that declares it writes the table, on an hourly schedule. raw_orders and payments feed stg_orders and stg_payments, which feed orders. orders feeds monthly_revenue, built by a second project, and is read by the TypeScript script f/analytics/revenue_alerts." title="Asset graph: a Python script writes the payments source; a second dbt project and a TypeScript script read orders"/>
 
 </DocCarousel>
 
