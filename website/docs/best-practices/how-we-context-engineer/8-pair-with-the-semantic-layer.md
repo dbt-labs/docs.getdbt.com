@@ -61,7 +61,7 @@ Agents reach both layers through tools over MCP. The [dbt MCP server](/docs/dbt-
 
 ## Conclusion
 
-You already model numbers so a person can trust them. Context engineering gives your text the same treatment, so an agent can search it, cite it, and trust it. The core flow is the same every time: chunk, embed, search.
+The great thing is that data practitioners already model numbers so a person can trust them. Now context engineering gives your text the same treatment, so an agent can search it, cite it, and trust it. The core flow is the same every time: chunk, embed, search.
 
 <Lightbox src="/img/best-practices/context-engineering/pipeline.svg" width="100%" title="A call transcript is chunked, embedded as numbers, and placed on a map where similar meanings sit close together. A question lands on the same map, and the closest chunks come back with a score and a source." />
 
