@@ -96,7 +96,7 @@ To choose a provider or bring your own key, refer to [Manage AI features](/docs/
 
 <Constant name="dbt_platform" /> also has AI features that work separately from <Constant name="wizard" />:
 
-- The [dbt Support Assistant](/docs/dbt-support?version=2#ask-dbt-support-assistant) answers product questions and helps you open a ticket. Contact the [dbt Support team](mailto:support@getdbt.com) for more info.
+The [dbt Support Assistant](/docs/dbt-support?version=2#ask-dbt-support-assistant) answers product questions and helps you open a ticket. Contact the [dbt Support team](mailto:support@getdbt.com) for more info.
 
 ## Related docs
 
