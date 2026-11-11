@@ -47,13 +47,13 @@ Read-only users only have access to Explore mode and see a simpler UI. The only 
 
 <Expandable alt_header="Which license does a read-only user need?">
 
-Read-only. For current license types and how they're assigned, refer to [User licenses](/docs/platform/manage-access/about-user-access). 
+You can use a Read-only license. For current license types and how they're assigned, refer to [User licenses](/docs/platform/manage-access/about-user-access). 
 
 </Expandable>
 
 <Expandable alt_header="How many read-only users can we invite?">
 
-It depends on your <Constant name="dbt_platform"/> plan. For license availability by plan, refer to [dbt pricing](https://www.getdbt.com/pricing).
+You can invite any user that has a read-only license! Check out [Invite read-only users](#invite-read-only-users) for instructions on how to invite users. For license availability by plan, refer to [dbt pricing](https://www.getdbt.com/pricing).
 
 </Expandable>
 
@@ -97,12 +97,9 @@ Seeing <Constant name="wizard" /> in the Home tab doesn't mean the account is re
 
 </Expandable>
 
-
 ## Invite read-only users
 
-Read-only users need AI features turned on to use Wizard. AI features are [enabled](/docs/platform/manage-dbt-ai) by default, so there's usually nothing to change.
-
-
+This section explains how to invite read-only users to <Constant name="dbt_platform" /> so they can use the Wizard home tab. 
 1. In <Constant name="dbt_platform" />, go to **Account settings** --> **Users**.
 2. Click **Invite users**.
 3. Enter the email addresses of the people you want to invite.
@@ -118,11 +115,17 @@ These are the read-only specifics. For the full invite flow, seat management, an
 
 To run a query, Explore mode needs warehouse credentials. Most read-only users don't have their own, so an admin sets up an **analytics credential**: a shared, project-level warehouse credential that read-only users fall back to when they haven't configured personal credentials. Read-only users that have their own credentials can use the [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set.
 
-At query time, <Constant name="wizard" /> resolves credentials in this order:
+The analytics credential also works with the [remote dbt MCP server](/docs/dbt-ai/setup-remote-mcp#read-only-users-and-warehouse-credentials). Once an admin sets it up, read-only users can query metrics through their MCP client without logging in to <Constant name="dbt_platform" /> to set up their own credentials.
+
+At query time, <Constant name="wizard" /> and remote MCP resolve credentials in this order:
 
 1. The user's personal warehouse credentials if they have them.
 2. The project's analytics credential, if an admin has [set one up](/docs/platform/wizard-read-only-users#add-an-analytics-credential-to-a-connection).
-3. If neither exists, <Constant name="wizard" /> returns an error asking the user to set up personal credentials or contact an admin.
+3. If neither exists, the query returns an error asking the user to set up personal credentials or contact an admin.
+
+:::note
+Only an admin can set up the analytics credential. End users can't set it up themselves.
+:::
 
 ### Prerequisites
 

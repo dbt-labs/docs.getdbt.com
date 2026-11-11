@@ -17,7 +17,7 @@ In this article, two Montreal Analytics consultants, Jade and Callie, discuss th
 
 ## What brought you to the exam?
 
-**Jade (J):** I’m a newly minted Montreal Analytics Analytics Engineer coming from a background as a data analyst with a few months of dbt experience. My last company used some basic dbt in their BI implementation, not so far as tests or snapshots, but I have some exposure(s) (pun intended). I decided to take the exam to build up my knowledge as a Junior Analytics Engineer and to give future clients confidence in my skills.
+**Jade (J):** I’m a newly minted Montreal Analytics Engineer coming from a background as a data analyst with a few months of dbt experience. My last company used some basic dbt in their BI implementation, not so far as tests or snapshots, but I have some exposure(s) (pun intended). I decided to take the exam to build up my knowledge as a Junior Analytics Engineer and to give future clients confidence in my skills.
 
 **Callie (C):** As an experienced Analytics Engineer with 4 years of dbt experience, dating back to late 2018, 5 years of experience across the Modern Data Stack, and an overall 6 years of a career spent in data, I approached the new dbt test with an ‘old school’ dbt repertoire and years of ingrained bad habits. I have been through the whole evolution of dbt’s growth, and so I wanted to take the exam to polish up my skills, showcase Montreal Analytics’ dbt expertise, and earn that shiny badge for my LinkedIn profile.
 

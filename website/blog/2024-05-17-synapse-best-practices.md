@@ -168,7 +168,7 @@ With the infrastructure in place and the analytics engineers enabled with best p
 
 ### Upstream
 
-In dbt, we assume the data has already been ingested into the warehouse raw. This follows a broader paradigm known as Extract-Load-Transform (ELT). The same goes for dbt with Azure Synapse. The goal should be to have the data ingested into Synapse that is as “untouched” as possible from when it came from the upstream source system. It’s common for data teams using Azure Data Factory to continue to imploy an ETL-paradigm where data is transformed before it even lands in the warehouse. We do not recommend this, as it results in critical data transformation living outside of the dbt project, and therefore undocumented.
+In dbt, we assume the data has already been ingested into the warehouse raw. This follows a broader paradigm known as Extract-Load-Transform (ELT). The same goes for dbt with Azure Synapse. The goal should be to have the data ingested into Synapse that is as “untouched” as possible from when it came from the upstream source system. It’s common for data teams using Azure Data Factory to continue to employ an ETL-paradigm where data is transformed before it even lands in the warehouse. We do not recommend this, as it results in critical data transformation living outside of the dbt project, and therefore undocumented.
 
 If you have not already, engage the central/upstream data engineering team to devise a plan to integrate data extraction and movement in tools such as SSIS and Azure Data Factory with the transformation performed via dbt Cloud.
 

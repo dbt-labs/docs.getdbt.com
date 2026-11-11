@@ -222,12 +222,20 @@ As a temporary workaround during private beta, you can set Lake Compute configur
 ```yaml
 lakecompute:
   method: fivetran
-  token: "{{ env_var('DBT_LAKE_COMPUTE_TOKEN') }}"
+  fivetran_credential: "{{ env_var('DBT_ENV_SECRET_LAKE_COMPUTE_TOKEN') }}"
+method: self_signed_jwt
 ```
 
+:::caution Don't put your token in Extended Attributes
+Extended Attributes aren't a safe place for secrets, so never paste the token itself into this field. Reference it with `env_var()`, as shown above, and store the token in a [secret environment variable](/docs/build/environment-variables#handling-secrets) instead.
+:::
+
 Then within your environment variables, set:
+- `DBT_ALLOW_EXPERIMENTAL_ADAPTERS`: `true`
 - `DBT_ENGINE_EXPERIMENTAL_MULTI_ADAPTER`: `true`
-- `DBT_LAKE_COMPUTE_TOKEN`: the token you generated in step 3
+- `DBT_ENV_SECRET_LAKE_COMPUTE_TOKEN`: the token you generated in step 3
+
+This differs from running locally, where you set both `DBT_ENGINE_EXPERIMENTAL_MULTI_ADAPTER` and `DBT_ALLOW_EXPERIMENTAL_ADAPTERS`. Refer to [Required environment variable](/docs/lake-compute#required-environment-variable).
 
 ### Verify your setup
 

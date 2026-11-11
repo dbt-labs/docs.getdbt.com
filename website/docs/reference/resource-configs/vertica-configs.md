@@ -320,7 +320,7 @@ The `merge_update_columns` config parameter is passed to only update the columns
 
 **`delete+insert` strategy**: 
 
-Through the `delete+insert` incremental strategy, you can instruct dbt to use a two-step incremental approach. It will first delete the records detected through the configured `is_incremental()` block and then re-insert them. The `unique_key` is  a required parameter for using `delete+instert` strategy which specifies how to update the records when there is duplicate data. The value accepted by this parameter is a single table column.
+Through the `delete+insert` incremental strategy, you can instruct dbt to use a two-step incremental approach. It will first delete the records detected through the configured `is_incremental()` block and then re-insert them. The `unique_key` is  a required parameter for using `delete+insert` strategy which specifies how to update the records when there is duplicate data. The value accepted by this parameter is a single table column.
 
 
 
@@ -679,7 +679,7 @@ To learn more about partition by clause check [here](https://www.vertica.com/doc
 
 #### Using the `partition_by_string` config parameter
 
-`partition_by_string` (optinal) accepts a string value of a any one specific `column_name` based on which partitioning of the table data takes place.
+`partition_by_string` (optional) accepts a string value of a any one specific `column_name` based on which partitioning of the table data takes place.
 
 <Tabs
   defaultValue="source"

@@ -68,11 +68,11 @@ We just didn’t realize it yet, but momentum for an AE team was building.  Sev
 
 Around this same time, I discovered the [Locally Optimistic](https://locallyoptimistic.com/) data community and learned the name of our efforts: [Analytics Engineering](https://locallyoptimistic.com/post/analytics-engineer/#:~:text=They%20bring%20a%20formal%20and,data%20team%20as%20a%20whole.). Given our clear need for this internally and the early traction of our initial schema, my job became clear: Smartsheet needed Analytics Engineering. I put together a couple slide decks going over our analytics issues and why an AE practice would help. For example, I drew a chart showing our existing messy data ecosystem:
 
-![Graphic depicting the current state of Smartsheet's enrichment structure and its flaws](/img/blog/2022-02-23-founding-an-AE-team-smartsheet/current-enrichment-structure.png)
+<Lightbox src="/img/blog/2022-02-23-founding-an-AE-team-smartsheet/current-enrichment-structure.png" title="Graphic depicting the current state of Smartsheet's enrichment structure and its flaws" />
 
 I also presented slides going over solutions to these issues. After all, outlining problems is easy; bringing solutions is difficult.
 
-![Image of Nate's proposed solutions to Smartsheet's dysfunctional data enrichment structure](/img/blog/2022-02-23-founding-an-AE-team-smartsheet/enrichment-structure-solutions.png)
+<Lightbox src="/img/blog/2022-02-23-founding-an-AE-team-smartsheet/enrichment-structure-solutions.png" title="Image of Nate's proposed solutions to Smartsheet's dysfunctional data enrichment structure" />
 
 The core of the solutions at the time seemed simple. It boiled down to:
 
@@ -131,7 +131,7 @@ We believed this because our goal was to have wide, denormalized tables covering
 
 Then, the lightbulb came suddenly one day. We realized that the **ownership of data could be at the column level, *not* just at the table level.** That piece of the puzzle unlocked our design.
 
-![Graphic depicting Smartsheet's new proposed data structure ](/img/blog/2022-02-23-founding-an-AE-team-smartsheet/new-structure-example.png)
+<Lightbox src="/img/blog/2022-02-23-founding-an-AE-team-smartsheet/new-structure-example.png" title="Graphic depicting Smartsheet's new proposed data structure" />
 
 1. Each core ‘object’ in our database (e.g., a customer Contract) would start with a **Frame** table, which was just a simple table holding one row for each record to serve as the backbone of downstream transformations (e.g., a list of all unique Contract IDs).
 2. Each department would then take that Frame into their own schema and own their **Detail** version of the table. Finance would have the Finance.Contract table, Product would have Product.Contract table, etc. These were simply left joins of the Frame table with the columns about which each domain could supply trustworthy information. For example: Finance knows the value and when that contract is up for renewal, Product knows how many active users there are for that contract, and Sales knows the value of open opportunities for that contract’s renewal.
@@ -150,7 +150,7 @@ To get through the fog of questions, we chose one principle on which to plant ou
 
 We settled on the following [data transformation](https://www.getdbt.com/analytics-engineering/transformation/) flow. Our transformation code is pulled every 8 hours onto a virtual machine (VM). A script on that VM triggers dbt to run that code, populating a staging database which is visible only to my team. Staging continues to update table by table until the run is successful.  When successful, Staging immediately clones over to Prod, with no downtime for users even if they are mid-query.  Everyone is happy.
 
-![Graphic depicting Smartsheet's finalized data transformation workflow structure](/img/blog/2022-02-23-founding-an-AE-team-smartsheet/new-transformation-workflow.png)
+<Lightbox src="/img/blog/2022-02-23-founding-an-AE-team-smartsheet/new-transformation-workflow.png" title="Graphic depicting Smartsheet's finalized data transformation workflow structure" />
 
 This is scratching the surface of the decisions we made, but I hope it’s helpful in illuminating some of the hidden decisions one makes when designing a reliable analytics database.
 
@@ -174,9 +174,9 @@ Plenty more to make but the foundation was there, and now it was time to enroll 
 
 This topic also deserves its own blog post, but I’ll attempt to quickly describe what we changed. As described in the problem statement, analysts could only ship code every 1-2 weeks and the process was incredibly painful. It was more than 16 steps with multiple ‘gotchas’ where analysts would get stuck and waste time.
 
-The process is now six steps, with massive time savings for the analytics team both in the creation and testing of their script along with how long it takes for new data to get into the data warehouse.This is on top of all of dbt’s benefits such as data definitions, <Term id="data-lineage">lineage</Term>, automatic testing, macros…the list goes on.
+The process is now six steps, with massive time savings for the analytics team both in the creation and testing of their script along with how long it takes for new data to get into the data warehouse. This is on top of all of dbt’s benefits such as data definitions, <Term id="data-lineage">lineage</Term>, automatic testing, macros…the list goes on.
 
-![Graphic depicting Smartsheet's new and improved code production process that outlines 6 steps](/img/blog/2022-02-23-founding-an-AE-team-smartsheet/completed-process.png)
+<Lightbox src="/img/blog/2022-02-23-founding-an-AE-team-smartsheet/completed-process.png" title="Graphic depicting Smartsheet's new and improved code production process that outlines 6 steps" />
 
 ### Cleaned up dashboard/reporting ecosystem
 

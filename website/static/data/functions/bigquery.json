@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "bigquery",
     "platform_name": "BigQuery",
-    "count": 412
+    "count": 414
   },
   "functions": [
     {
@@ -1812,6 +1812,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "REGEXP_EXTRACT_GROUPS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#regexp_extract_groups",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "REGEXP_INSTR",
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#regexp_instr",
@@ -1971,6 +1978,13 @@
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#sech",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "SECURE_CONTEXT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/security_functions#secure_context",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "SESSION_USER",

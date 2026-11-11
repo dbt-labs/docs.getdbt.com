@@ -1,6 +1,6 @@
 ---
 title: How do I run models downstream of a seed?
-description: "You run models downstread using model selection syntax"
+description: "You run models downstream using model selection syntax"
 sidebar_label: 'Run models downstream of a seed'
 id: run-downstream-of-seed
 

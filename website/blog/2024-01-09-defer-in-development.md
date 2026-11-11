@@ -92,7 +92,7 @@ dbt-cloud:
 
 When you’re developing with dbt Cloud, you can defer right away, and completely avoid unnecessary model builds in development!
 
-### Other things to to know about defer
+### Other things to know about defer
 
 **Favoring state**
 

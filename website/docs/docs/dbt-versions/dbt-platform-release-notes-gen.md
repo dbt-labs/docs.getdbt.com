@@ -22,6 +22,172 @@ Release notes are grouped by date for single-tenant environments.
 
 <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](https://docs.getdbt.com/feeds/release-notes-st-rss.xml), [Atom](https://docs.getdbt.com/feeds/release-notes-st-atom.xml), or [JSON Feed](https://docs.getdbt.com/feeds/release-notes-st-rss.json).</span>
 
+## November 4, 2026
+
+## Enhancements
+
+### Catalog
+
+- **More rows in the Marts table**: The [**Marts**](/docs/explore/explore-projects#catalog-overview) table on the Catalog project landing page now shows 20 rows per page by default, up from 5. The page size dropdown includes a **20 Rows** option, so you move through the list with fewer page turns.
+
+### APIs, Identity, and Administration
+
+- **Add or remove a user from specific groups**: The [Assign User to Groups API](/dbt-cloud/api-v3?version=2#/operations/Assign%20User%20to%20Groups) (`POST /api/v3/accounts/{account_id}/assign-groups/`) now accepts `add_group_ids` and `remove_group_ids`. Use these fields to add a user to groups, or remove them from groups, without replacing every group they belong to. Sending `desired_group_ids` still replaces the full list.
+
+## Fixes
+
+### Catalog
+
+- **Parent models in another project show in the Discovery API**: In the [Discovery API](/docs/dbt-apis/discovery-api), a model's parents used to leave out models that live in another project ([Mesh](/docs/mesh/about-mesh)). Those parent models are included now. Lineage already listed these parents.
+
+### APIs, Identity, and Administration
+
+- **All assigned groups show for accounts with many groups**: When an account had more than 1,000 groups, some of a user's assigned [groups](/docs/platform/manage-access/about-user-access#groups) were missing from the user details view. All assigned groups now appear checked. Saving with `POST /api/v3/accounts/{id}/assign-groups/` also keeps the full list of groups.
+
+- **Clearer errors for an invalid IP restriction**: Creating or updating an [IP restriction](/docs/platform/secure/ip-restrictions) with a missing or invalid `type` now returns a 400 error (the request was invalid) and a message that describes the problem, instead of a 500 server error. A missing `name` is rejected with a 400 error too. Before this fix, dbt saved that missing name as the word None.
+
+## Behavior changes
+
+### dbt platform
+
+- **dbt v2 runs in Studio IDE use your thread count**: These runs now follow the [`threads`](/docs/running-a-dbt-project/using-threads) value in your [user credentials](/docs/dbt-platform-environments#set-user-credentials) instead of the dbt v2 default (for example, 48 on Snowflake). The same change also applies to Canvas runs. Jobs, dbt v1 runs, and editor features such as autocomplete are unchanged.
+
+## October 28, 2026
+
+## New
+
+### dbt platform
+
+- **Private connection for a GitHub Enterprise Server app you manage**: If your GitHub Enterprise Server can only be reached over a private connection (PrivateLink), you can now save that connection on the GitHub app. Set `private_link_endpoint_id` when you create or update the app through the API, and dbt routes the connection over your private network.
+
+### Orchestration and run status
+
+- **Filter the Model timing table:** On the Model timing tab, you can now filter [Resource details](/docs/deploy/run-visibility#resource-details) to find what's slowing a run down. Use the **Est. critical path** filter to show only the resources on the longest chain of dependent resources, which sets the minimum run time (Yes), or everything else (No). Use the resource type filter to narrow the list to **Model**, **Test**, **Snapshot**, or **Exposure**. You can still search by name.
+
+### dbt v2
+
+- **Set the environment for a Mesh dependency**: You can now route cross-project refs to a specific upstream environment, such as Staging, instead of only the default Production or Staging environment.
+
+- **Files that end with a Jinja suffix**: Set [`allow_jinja_file_extensions`](/reference/global-configs/behavior-flags/allow_jinja_file_extensions) in your project config so dbt reads files with an extra Jinja ending, such as `model.sql.j2` or `doc.md.j2`. Jinja is the templating language dbt already uses inside SQL and Markdown files.
+
+### dbt AI and agents
+
+- **Bookmarkable dbt Wizard home conversations**: In the dbt Wizard [home tab](/docs/platform/wizard-home), the conversation you have open appears in the browser URL. You can bookmark that conversation and open it again from the URL.
+
+## Enhancements
+
+### dbt platform
+
+- **Clearer message when you cannot select dbt v2**: If a project can use dbt v2 but you do not have permission to select it, the dbt v2 choices stay visible and disabled in the environment, job, and development version menus. The tooltip says that an Account Admin or a [v2 Migration Admin](/docs/platform/manage-access/enterprise-permissions#v2-migration-admin) has to select dbt v2.
+
+### Orchestration and run status
+
+- **Definitions on the Model timing tiles**: The six [summary tiles](/docs/deploy/run-visibility#metric-tiles) on the Model timing tab now have a question-mark icon: **Est. critical path**, **Peak concurrency**, **Avg active models**, **Longest model**, **Wall clock**, and **Latest start**. Select the icon to read what that number means.
+
+- **Retry when a usage chart does not load**: If a [usage chart](/docs/platform/billing/how-pricing-works#viewing-usage-in-the-product) fails to load or refresh, you see a message and a **Retry** button. This applies to the monthly models built chart on **Project home** and the top jobs chart on an **Environment** page. A chart that loaded earlier keeps its last numbers and shows when they were updated while the retry runs.
+
+### Studio IDE
+
+- **dbt v2 Stable no longer shows Preview**: In Studio [User development settings](/docs/dbt-versions/upgrade-dbt-platform-version#override-dbt-version), the **v2 Stable** option no longer shows a **Preview** label. dbt v2 is generally available.
+
+### dbt v2
+
+- **Resize columns in query results**: In the dbt VS Code extension, drag the edge of a column header in the query results panel to make that column wider or narrower.
+
+## Fixes
+
+### dbt platform
+
+- **Signup tells you when an email is already taken**: If a signup uses an email address that already has an account, including when two signups use that email at the same time, dbt shows a page that says the email is already taken. You no longer get a generic error page.
+
+### Identity, APIs, and Administration
+
+- **Clearer errors for an invalid API request**: A request with a bad value now returns a clear error instead of a server error. An unsupported `order_by` value on version 3 list endpoints, and a negative or too-large `limit` or `offset` on version 2 list endpoints, return a 400 error (the request was invalid). Creating a project with `POST /api/v2/accounts/{id}/projects/` also returns a 400 error when `type` is not text. Getting run timing with `GET /api/v3/accounts/:id/projects/:id/runs/:id/timing/` returns a 404 (not found) when that run is not in the account or project in the URL.
+
+### Studio IDE
+
+- **Ephemeral models show in command results**: In Studio IDE, an [ephemeral](/docs/build/materializations#ephemeral) model is a model that is not built as its own table or view. Those models were missing from the command result list, so a tab such as **Error**, **Warn**, **Skip**, **Reused**, or **Pass** could show a count and no rows. They now appear on the matching tab with the other models.
+
+### Orchestration and run status
+
+- **Model logs on the System logs tab**: Open a job run, select a step, and open **System logs**. That tab now includes the logs from your models, so you can troubleshoot a failed run in one place.
+
+### dbt v2
+
+- **`dbt fmt` keeps a stable indentation**: [`dbt fmt`](/reference/commands/lint#dbt-format) no longer shifts a Jinja tag to the left when that same line ends with a SQL comment. It also settles on one indentation for Jinja tags inside a `for` loop, and for an `{% if %}...{%- else -%}` block whose condition looks up warehouse information, such as the columns on a table. Running `dbt fmt` again does not keep changing those lines.
+
+## Behavior changes
+
+### Orchestration and run status
+
+- **System logs now include model logs**: The **System logs** tab on a run step used to show only system messages. It now shows every log for that step, including logs from your models. If you used this tab for system messages only, you will see more lines there.
+
+### dbt v2
+
+- **New names for three environment variables**: dbt v2 renamed the variable that selects an AI provider, and the two variables that write the [information schema](/docs/build/dbt-information-schema#generating-the-information-schema) (a local copy of project metadata you can query). If you set `DBT_AI_PROVIDER`, change it to [`DBT_ENGINE_AI_PROVIDER`](/docs/dbt-ai/package-skills#set-the-ai_provider-flag). If you set `DBT_GENERATE_INFO_SCHEMA` or `DBT_INFO_SCHEMA_DIR`, change them to `DBT_ENGINE_GENERATE_INFO_SCHEMA` and `DBT_ENGINE_INFO_SCHEMA_DIR`. The command-line flags for these options are unchanged. Update the variables anywhere you set them, including continuous integration (CI).
+
+## October 21, 2026
+
+## New
+
+### dbt platform
+
+- **dbt State allowance and trial email notifications**: Billing admins now receive proactive email notifications about dbt State usage, including a warning at 80% of the monthly allowance (with a projected run-out date), a notification when the allowance is fully used and State is paused, and a reminder 7 days before a trial expires. All emails include plan-specific messaging and calls to action.
+
+### Insights
+
+- **Cost Insights ingestion failure email alerts**: Account admins now receive an email when Cost Insights ingestion has been failing for 3 or more cycles, with follow-up emails at 14 and 28 days if it continues.
+
+## Enhancements
+
+### dbt platform
+
+- **dbt State usage graph period selector**: The dbt State usage graph now includes a dropdown to select the reporting period: this month, previous month, last 30 days, last 60 days, or last 90 days. The chart x-axis also shows month abbreviations when the selected range spans multiple months.
+
+### dbt AI and agents
+
+- **Turn duration visible in Wizard conversations**: dbt Wizard now displays how long each turn took at the bottom of every completed turn. For previously loaded conversations, the completion timestamp is also shown.
+
+## Fixes
+
+### APIs, Identity, and Administration
+
+- **SCIM `licenseType` updates applied to pending invites**: If you manage access through SCIM (your identity provider, like Okta or Microsoft Entra ID), you can change the user's license type before they even log in. Previously this only worked for active users, but now it works for pending and not-yet-fully-signed-in users too. dbt still checks that you have an available seat of that license type before applying any change.
+
+- **Clearer API validation errors**: API requests with an invalid permission value or a malformed body now return a descriptive error instead of a server error.
+
+## October 19, 2026
+
+## New
+
+### APIs, Identity, and Administration
+
+- **Default license for new users**: Admins can now set the [default license](/docs/platform/manage-access/seats-and-users#default-license-for-new-users) for new users who aren't assigned a license through SSO, SCIM, or license mapping. Choose Developer, Read-Only, or Analyst. Admins should check their settings and update the default as needed. This is available for all single-tenant accounts.
+
+## October 14, 2026
+
+## Enhancements
+
+### APIs, Identity, and Administration
+
+- **Account connections page**: You can now sort columns, search by connection name, and filter by connection type, credentials, and connection method (private link or OAuth).
+
+### dbt State
+
+- **dbt State trial email**: When a dbt State trial ends, you'll get an email that communicates your Consumption or Enterprise plan and includes the allowance end date when your plan has one.
+
+## Fixes
+
+### Insights
+
+- **Dates on Insights charts**: Charts now show dates such as `2026-01` or `2026-01-15` from oldest to newest. Tables keep your query's row order until you sort a column.
+
+## Behavior change
+
+### APIs, Identity, and Administration
+
+- **SCIM tokens require a signed-in user**: You can no longer create a System for Cross-domain Identity Management (SCIM) token with a personal access token or a service token. Sign in to dbt and [create a SCIM token](/docs/platform/manage-access/scim#set-up-dbt).
+
 ## October 7, 2026
 
 ## New
@@ -735,7 +901,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### APIs, Identity, and Administration
 
-- **Notification Manager permission set**: A new `notification_manager` account-level role grants read and write access to job notification settings, Slack integration status, and member listings without requiring broader admin permissions. Refer to [Notification Manger](/docs/platform/manage-access/enterprise-permissions#notification-manager) for more information.
+- **Notification Manager permission set**: A new `notification_manager` account-level role grants read and write access to job notification settings, Slack integration status, and member listings without requiring broader admin permissions. Refer to [Notification Manager](/docs/platform/manage-access/enterprise-permissions#notification-manager) for more information.
 
 ## Enhancements
 

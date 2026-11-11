@@ -224,7 +224,7 @@ The custom `node_color` attribute isn't applicable in <Constant name="catalog" /
 
 Add custom `node_colors` to models that support it within subdirectories based on hex codes or a plain color name.
 
-![Example](../../../../website/static/img/node_color_example.png)
+<Lightbox src="/img/node_color_example.png" title="Example" />
 
 `marts/core/fct_orders.sql` with `node_color: red` overrides `dbt_project.yml` with `node_color: gold`
 

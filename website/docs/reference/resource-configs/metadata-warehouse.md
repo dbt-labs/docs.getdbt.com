@@ -34,7 +34,7 @@ dbt State performs metadata introspection queries to determine whether models ne
 
 If metadata queries on your main warehouse take longer than 15 seconds, dbt emits a warning suggesting you configure a dedicated warehouse.
 
-You can also use `metadata_warehouse` on the <Constant name="dbt_platform" /> by adding it as an [extended attribute](/docs/dbt-platform-environments#extended-attributes) in your environment settings.
+You can also use `metadata_warehouse` on the <Constant name="dbt_platform" /> by adding it as an [extended attribute](/docs/dbt-platform-environments#extended-attributes) on the [connection profile](/docs/platform/about-profiles) for a deployment environment.
 
 :::note
 This configuration currently applies only to dbt State metadata queries. It might be used more broadly in the future. See [dbt-labs/dbt#12122](https://github.com/dbt-labs/dbt/issues/12122) for the feature request.

@@ -37,7 +37,7 @@ dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it 
 
 <sup>4</sup>  Do not use `liquid_clustered_by` and `auto_liquid_cluster` on the same model.
 
-<sup>5</sup> We do not yet have a PySpark API to set tblproperties at table creation, so this feature is primarily to allow users to anotate their python-derived tables with tblproperties.
+<sup>5</sup> We do not yet have a PySpark API to set tblproperties at table creation, so this feature is primarily to allow users to annotate their python-derived tables with tblproperties.
 
 <sup>6</sup> `databricks_tags` are applied via `ALTER` statements. Tags cannot be removed via dbt-databricks once applied. To remove tags, use Databricks directly or a post-hook. Starting in `dbt-databricks` v1.12, `databricks_tags` set at multiple config hierarchy levels [merge additively](#databricks_tags) instead of the lower (more specific) level fully replacing the higher one.
 
@@ -52,7 +52,7 @@ _Available in versions 1.9 or higher_
 
 In dbt-databricks v1.9 (try it now in [the <Constant name="dbt" /> **v1 Latest** release track](/docs/dbt-versions/dbt-release-tracks)), you can use these four options for `submission_method`: 
 
-* `all_purpose_cluster`: Executes the python model either directly using the [command api](https://docs.databricks.com/api/workspace/commandexecution) or by uploading a notebook and creating a one-off job run
+* `all_purpose_cluster`: Executes the python model either directly using the [command api](https://docs.databricks.com/api/command-execution/v2/execute) or by uploading a notebook and [creating a one-off job run](https://docs.databricks.com/api/jobs/v2/submit-run)
 * `job_cluster`: Creates a new job cluster to execute an uploaded notebook as a one-off job run
 * `serverless_cluster`: Uses a [serverless cluster](https://docs.databricks.com/en/jobs/run-serverless-jobs.html) to execute an uploaded notebook as a one-off job run
 * `workflow_job`: Creates/updates a reusable workflow and uploaded notebook, for execution on all-purpose, job, or serverless clusters.
@@ -62,14 +62,15 @@ In dbt-databricks v1.9 (try it now in [the <Constant name="dbt" /> **v1 Latest**
 
 We are currently in a transitionary period where there is a disconnect between old submission methods (which were grouped by compute), and the logically distinct submission methods (command, job run, workflow).
 
-As such, the supported config matrix is somewhat complicated:
+As such, the supported config matrix is somewhat complicated. In the **Default** column, `[]` means an empty list and `{}` means an empty dictionary (no values set yet).
 
 | Config                | Use                                                                  | Default            | `all_purpose_cluster`* | `job_cluster` | `serverless_cluster` | `workflow_job` |
 | --------------------- | -------------------------------------------------------------------- | ------------------ | ---------------------- | ------------- | -------------------- | -------------- |
 | `create_notebook`     | if false, use Command API, otherwise upload notebook and use job run | `false`            | ✅                     | ❌             | ❌                   | ❌             |
 | `timeout`             | maximum time to wait for command/job to run                          | `0` (No timeout)   | ✅                     | ✅             | ✅                   | ✅             |
 | `job_cluster_config`  | configures a [new cluster](https://docs.databricks.com/api/workspace/jobs/submit#tasks-new_cluster) for running the model | `{}` | ❌ | ✅ | ❌            | ✅             |
-| `access_control_list` | directly configures [access control](https://docs.databricks.com/api/workspace/jobs/submit#access_control_list) for the job | `{}` | ✅ | ✅ | ✅          | ✅             |
+| `access_control_list` | who can view or manage the Databricks [job](https://docs.databricks.com/api/workspace/jobs/submit#access_control_list) that runs this Python model | `[]` | ✅ | ✅ | ✅          | ✅             |
+| `notebook_access_control_list` | who can view, run, or edit the [notebook](https://docs.databricks.com/aws/en/security/auth/access-control/#notebook-acls) dbt creates in Databricks from this Python model | `[]` | ✅ | ✅ | ✅ | ✅ |
 | `packages`            | list of packages to install on the executing cluster                 | `[]`               | ✅                     | ✅             | ✅                   | ✅             |
 | `index_url`           | url to install `packages` from                                       | `None` (uses pypi) | ✅                     | ✅             | ✅                   | ✅             |
 | `additional_libs`     | directly configures [libraries](https://docs.databricks.com/api/workspace/jobs/submit#tasks-libraries) | `[]` | ✅ | ✅             | ✅                   | ✅             |
@@ -77,7 +78,16 @@ As such, the supported config matrix is somewhat complicated:
 | `cluster_id`          | id of existing all purpose cluster to execute against                | `None`             | ✅                     | ❌             | ❌                   | ✅             |
 | `http_path`           | path to existing all purpose cluster to execute against              | `None`             | ✅                     | ❌             | ❌                   | ❌             |
 
-\* Only `timeout` and `cluster_id`/`http_path` are supported when `create_notebook` is false
+\* Only `timeout` and `cluster_id`/`http_path` are supported when `create_notebook` is false. `notebook_access_control_list` applies only when dbt creates a notebook in Databricks.
+
+When dbt creates a notebook for a Python model, it copies the model's code into your Databricks workspace and runs that notebook as a job. The exception is the `all_purpose_cluster` submission method, which by default runs the code directly on an all-purpose cluster without creating a notebook or job.
+
+When dbt creates a notebook and job, you can control access to each:
+
+- `access_control_list` sets who can view or manage the job. Refer to [Job ACLs](https://docs.databricks.com/aws/en/security/auth/access-control/#job-acls) for permission levels.
+- `notebook_access_control_list` sets who can open the notebook, for example to inspect the code after a failed run. Refer to [Notebook ACLs](https://docs.databricks.com/aws/en/security/auth/access-control/#notebook-acls) for permission levels.
+
+We recommend you use the permission names the Databricks API expects, such as `CAN_READ` rather than the UI's CAN VIEW.
 
 With the introduction of the `workflow_job` submission method, we chose to segregate further configuration of the python model submission under a top level configuration named `python_job_config`. This keeps configuration options for jobs and workflows namespaced in such a way that they do not interfere with other model config, allowing us to be much more flexible with what is supported for job execution.
 

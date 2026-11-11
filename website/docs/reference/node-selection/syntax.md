@@ -139,7 +139,7 @@ dbt run --select "selector:staging,tag:nightly"
 
 </Tabs>
 
-As your selection logic gets more complex, and becomes unwieldly to type out as command-line arguments, consider using a [yaml selector](/reference/node-selection/yaml-selectors).
+As your selection logic gets more complex, and becomes unwieldy to type out as command-line arguments, consider using a [yaml selector](/reference/node-selection/yaml-selectors).
 
 <VersionBlock lastVersion="1.11">
 You can use a predefined definition with the `--selector` flag. Note that when you're using `--selector`, dbt ignores `--select` and `--exclude`.

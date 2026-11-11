@@ -185,7 +185,50 @@ select * from analytics.orders;
 
 </File>
 
+### Redshift
 
+Leave the default quoting values. You can do this  in `dbt_project.yml` by either omitting the `quoting` config or setting `database`, `schema`, and `identifier` to `true`. The `quoting` config only controls whether dbt wraps names in double quotes, so it can't work around Redshift lowercasing mixed-case names. If you need mixed-case names, turn on the Redshift `enable_case_sensitive_identifier` setting and keep `quoting` on. If you set `quoting` to `false`, dbt sends unquoted names, and Redshift lowercases them even when `enable_case_sensitive_identifier` is `true`.
+
+By default, Redshift lowercases database, schema, table, and column names, even when they're quoted. The `enable_case_sensitive_identifier` setting controls this:
+
+- `false` (default): Redshift lowercases all names, whether or not they're quoted.
+- `true`: Redshift keeps the case of quoted names. Unquoted names are still lowercased.
+
+You can set this parameter to `true` for a cluster or workgroup. A `SET` command applies only to the current session. Refer to [Turn on case sensitivity](https://docs.aws.amazon.com/redshift/latest/mgmt/zero-etl-setting-up.case-sensitivity.html) and the [parameter reference](https://docs.aws.amazon.com/redshift/latest/dg/r_enable_case_sensitive_identifier.html) in the Amazon Redshift documentation.
+
+The following example shows the difference between setting the parameter to `false` or `true` when run in a Redshift session:
+
+<File name="redshift_casing.sql">
+
+```sql
+-- Default: quoted names are still lowercased
+SET enable_case_sensitive_identifier TO false;
+
+CREATE TABLE "MixedCasedTable" ("MixedCasedColumn" int);
+INSERT INTO "MixedCasedTable" VALUES (1);
+
+-- These work. Redshift stored the names in lowercase.
+SELECT mixedcasedcolumn FROM mixedcasedtable;
+SELECT "MixedCasedColumn" FROM "MixedCasedTable";
+
+DROP TABLE mixedcasedtable;
+
+-- With the setting on, quoted names keep their case.
+SET enable_case_sensitive_identifier TO true;
+
+CREATE TABLE "MixedCasedTable" ("MixedCasedColumn" int);
+INSERT INTO "MixedCasedTable" ("MixedCasedColumn") VALUES (1);
+
+-- This works. You must quote the names and match the case.
+SELECT "MixedCasedColumn" FROM "MixedCasedTable";
+
+-- This fails: relation "mixedcasedtable" does not exist
+SELECT mixedcasedcolumn FROM mixedcasedtable;
+
+DROP TABLE "MixedCasedTable";
+```
+
+</File>
 
 ### Other warehouses
 

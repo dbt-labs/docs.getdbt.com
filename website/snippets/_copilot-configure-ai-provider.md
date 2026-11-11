@@ -1,6 +1,6 @@
 import OpenAiProjectRegion from '/snippets/_open-ai-project-region.md';
 
-dbt Copilot supports fewer providers than <Constant name="wizard" />, including bring your own key (BYOK) on any plan:
+dbt Copilot supports fewer providers than <Constant name="wizard" />, including bring your own key (BYOK) on Starter, Enterprise, and Enterprise+ plans:
 
 - dbt Labs-<Term id="managed" /> OpenAI API key
 - BYOK OpenAI API key
@@ -8,7 +8,7 @@ dbt Copilot supports fewer providers than <Constant name="wizard" />, including 
 
 Snowflake Cortex, AWS Bedrock, Azure AI Foundry, and Anthropic aren't supported for dbt Copilot.
 
-dbt Copilot is available for inline assistance in <Constant name="studio_ide" />, <Constant name="canvas" />, and <Constant name="insights" />. Configure it separately from <Constant name="wizard" /> if your team uses these inline AI experiences.
+dbt Copilot is available for inline assistance in <Constant name="studio_ide" /> and <Constant name="insights" />. Configure it separately from <Constant name="wizard" /> if your team uses these inline AI experiences.
 
 **To configure a provider:**
 

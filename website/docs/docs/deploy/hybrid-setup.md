@@ -39,7 +39,7 @@ Make sure to enable the hybrid projects toggle in <Constant name="dbt" />’s **
 
 ### Make <Constant name="dbt" /> models public (optional) {#make-dbt-models-public}
 
-This step is optional and and only needed if you want to share your <Constant name="core" /> models with other <Constant name="dbt" /> projects using the [cross-project referencing](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref) feature.
+This step is optional and only needed if you want to share your <Constant name="core" /> models with other <Constant name="dbt" /> projects using the [cross-project referencing](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref) feature.
 
 Before connecting your <Constant name="core" /> project to a <Constant name="dbt" /> project, make sure models that you want to share have `access: public` in their model configuration. This setting makes those models visible to other <Constant name="dbt" /> projects for better collaboration, such as [cross-project referencing](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref).
 
@@ -161,5 +161,4 @@ Now that you've integrated <Constant name="core" /> artifacts with your <Constan
 
 
 - Collaborate with <Constant name="dbt" /> users by enabling them to visualize and perform [cross-project references](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref) to dbt models that live in <Constant name="core" /> projects.
-- (Coming soon) New users interested in the [<Constant name="canvas" />](/docs/platform/canvas) can build off of dbt models already created by a central data team in <Constant name="core" /> rather than having to start from scratch.
 - <Constant name="core" /> users can navigate to [<Constant name="catalog" />](/docs/explore/explore-projects) and view their models and assets. To view <Constant name="catalog" />, you must have a [read-only seat](/docs/platform/manage-access/seats-and-users).

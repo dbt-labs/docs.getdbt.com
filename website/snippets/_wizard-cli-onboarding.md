@@ -26,7 +26,7 @@ Windows (PowerShell):
 irm https://public.cdn.getdbt.com/dbt-wizard/install/install-wizard.ps1 | iex
 ```
 
-This installs <Constant name="wizard"/> to `/usr/local/bin/wizard`, along with the dbt [metadata engine](/docs/dbt-ai/wizard-how-it-works#native-metadata-engine) that powers <Constant name="wizard"/>'s project-aware answers. For install and update details, refer to [Install <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli); to remove them, refer to [Uninstall](/docs/dbt-ai/wizard-cli#uninstall).
+This installs <Constant name="wizard"/> to `/usr/local/bin/wizard`, along with the [dbt Information Schema](/docs/build/dbt-information-schema) that powers <Constant name="wizard"/>'s project-aware answers. For install and update details, refer to [Install <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli); to remove them, refer to [Uninstall](/docs/dbt-ai/wizard-cli#uninstall).
 
 </Step>
 
@@ -88,7 +88,7 @@ Refer to [Configure BYOK](/docs/dbt-ai/wizard-byok) for more examples.
 
 <Step title="Review and ask your first question">
 
-After onboarding, <Constant name="wizard" /> shows a welcome screen with **STATUS** (version, active model &mdash; change it with `/model` &mdash; and project directory) and **OVERVIEW** (a snapshot of your project's build status and passing, warning, and failing checks from the [metadata engine](/docs/dbt-ai/wizard-how-it-works#native-metadata-engine)).
+After onboarding, <Constant name="wizard" /> shows a welcome screen with **STATUS** (version, active model &mdash; change it with `/model` &mdash; and project directory) and **OVERVIEW** (a snapshot of your project's build status and passing, warning, and failing checks from the [dbt Information Schema](/docs/build/dbt-information-schema)).
 
 Enter `/` to see the available [slash commands](/docs/dbt-ai/wizard-slash-commands), then ask your first question:
 

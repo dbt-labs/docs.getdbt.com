@@ -35,6 +35,7 @@ In your <Constant name="dbt" /> account:
     - Team admin
     - Analyst
     - Developer
+    - Job creator
 
    Other permission sets are restricted because they have access to everything (for example, Account admin), or limitations prevent them from having write access to environments (for example, Account viewer).
 

@@ -7,10 +7,11 @@ tags: ['dbt platform','Quickstart','Snowflake']
 hide_table_of_contents: true
 product_badge: "dbt v2 compatible"
 agent_guidance:
-  pacing: In the first reply, confirm the reader's prerequisites and connection path before listing steps. Then give one step per reply and confirm its success check before continuing.
+  pacing: In the first reply, confirm the reader's prerequisites and connection path before listing steps. Then default to one guide section per reply (combine two or three short sections), with all its steps, labeled Step 1, Step 2, and so on, and confirm the success check before continuing. If the reader asks for a different pace, follow it.
   stay_on_path: This guide uses dbt platform. Don't switch the reader to a local setup. If the reader wants to set up dbt locally, use the https://docs.getdbt.com/guides/dbt guide instead 
   safety: Never ask for passwords or keys in chat.
   signup_link: When the reader needs a dbt account, share https://www.getdbt.com/signup?utm_source=ai_assistant&utm_medium=docs_md&utm_campaign=snowflake-qs
+  ask_when_unclear: Ask rather than guess when something is unclear.
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -28,13 +29,9 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with S
 - Document your models.
 - Schedule a job to run.
 
+<AgentPrompt />
+
 Snowflake also provides a quickstart for you to learn how to use <Constant name="dbt" />. It makes use of a different public dataset (Knoema Economy Data Atlas) than what's shown in this guide. For more information, refer to [Accelerating Data Teams with <Constant name="dbt" /> & Snowflake](https://quickstarts.snowflake.com/guide/accelerating_data_teams_with_snowflake_and_dbt_cloud_hands_on_lab/) in the Snowflake docs.
-
-:::tip Videos for you
-You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
-
-You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.com/watch?v=kbCkwhySV_I&list=PL0QYlrC86xQm7CoOH6RS7hcgLnd3OQioG).
-:::
  
 ### Prerequisites​
 
@@ -49,6 +46,12 @@ You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.
 - [Deploy jobs](/docs/deploy/deploy-jobs)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
+
+:::tip Videos for you
+You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
+
+You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.com/watch?v=kbCkwhySV_I&list=PL0QYlrC86xQm7CoOH6RS7hcgLnd3OQioG).
+:::
 
 ## Create a new Snowflake SQL file
 
@@ -83,15 +86,23 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
 2. In the **Connect to dbt** popup, find the **Optional Grant** option and select the **RAW** and **ANALYTICS** databases. This will grant access for your new dbt user role to each database. Then, click **Connect**.
 
+    <DocCarousel slidesPerView={1}>
+
     <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_connection_box.png" title="Snowflake Classic UI - Connection Box" />
 
     <Lightbox src="/img/snowflake_tutorial/snowflake_new_ui_connection_box.png" title="Snowflake New UI - Connection Box" />
 
+    </DocCarousel>
+
 3. Click **Activate** when a popup appears: 
+
+<DocCarousel slidesPerView={1}>
 
 <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_activation_window.png" title="Snowflake Classic UI - Actviation Window" />
 
 <Lightbox src="/img/snowflake_tutorial/snowflake_new_ui_activation_window.png" title="Snowflake New UI - Activation Window" />
+
+</DocCarousel>
 
 4. After the new tab loads, you will see a form. If you already created a <Constant name="dbt" /> account, you will be asked to provide an account name. If you haven't created account, you will be asked to provide an account name and password.
 
@@ -100,9 +111,13 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
 6. Go to the left side menu and click your account name, then select **Account settings**, choose the "Partner Connect Trial" project, and select **snowflake** in the overview table. Select edit and update the fields **Database** and **Warehouse** to be `analytics` and `transforming`, respectively.
 
+<DocCarousel slidesPerView={1}>
+
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_project_overview.png" title="dbt - Snowflake Project Overview" />
 
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_update_database_and_warehouse.png" title="dbt - Update Database and Warehouse" />
+
+</DocCarousel>
 
 You should now be logged into <Constant name="dbt" /> with a project that has a Snowflake connection using the `analytics` database and `transforming` warehouse. Partner Connect also created a managed repository for you, so skip to [Initialize your dbt project and start developing](#initialize-your-dbt-project-and-start-developing).
 

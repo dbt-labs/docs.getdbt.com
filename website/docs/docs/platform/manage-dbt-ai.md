@@ -21,7 +21,6 @@ The details on this page are generally for admin tasks. If you're looking for wh
 
 - A [<Constant name="dbt_platform" /> account](https://www.getdbt.com/pricing) on Developer, Starter, Enterprise, or Enterprise+ plans
   - [Legacy team plans](/docs/platform/billing/plans-and-billing#legacy-plans) don't have access to <Constant name="wizard" /> and we recommend moving to a [Starter, Enterprise, or Enterprise+ plan](https://www.getdbt.com/pricing) to use it and other features.
-  - Certain features like [natural prompts in Canvas](/docs/platform/build-canvas-copilot) are only available on Enterprise and Enterprise+ plans.
 - <Constant name="dbt" /> admin permissions to change account settings and configure providers.
 - A development environment on a supported [release track](/docs/dbt-versions/dbt-release-tracks) to receive ongoing updates.
 
@@ -47,7 +46,7 @@ dbt Copilot supports a smaller set of providers. Refer to [dbt Copilot](/docs/db
 
 <WizardConfigureAiProvider />
 
-To bring your own key instead of using dbt Labs' managed infrastructure, refer to [Configure BYOK for dbt Wizard in dbt platform](/docs/platform/wizard-byok-platform).
+To bring your own key instead of using dbt Labs' managed infrastructure, refer to [Configure BYOK for dbt Wizard in dbt platform](/docs/platform/wizard-byok-platform). BYOK is available on Starter, Enterprise, and Enterprise+ plans.
 
 ## Manage spend
 

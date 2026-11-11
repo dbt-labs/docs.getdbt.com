@@ -28,7 +28,7 @@ AI features are enabled by default. Admins can [turn them off or back on anytime
 
 ## dbt Wizard in Studio IDE <Lifecycle status="preview" />
 
-Use [<Constant name="wizard" />](/docs/dbt-ai/wizard-ide) for autonomous model generation, refactoring, and multi-step workflows in the <Constant name="studio_ide" />. It's grounded in dbt's native metadata engine &mdash; a structured index of your project's lineage, tests, model health, and semantic definitions &mdash; so it knows your data, not just your code.
+Use [<Constant name="wizard" />](/docs/dbt-ai/wizard-ide) for autonomous model generation, refactoring, and multi-step workflows in the <Constant name="studio_ide" />. It's grounded in the [dbt Information Schema](/docs/build/dbt-information-schema) &mdash; a structured view of your project's lineage, tests, model health, and semantic definitions &mdash; so it knows your data, not just your code.
 
 <Constant name="wizard" /> is accessible from the sidebar panel or in the Console section of the <Constant name="studio_ide" />.
 

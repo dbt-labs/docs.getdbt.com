@@ -8,17 +8,14 @@ availability: local_all
 ---
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
-import WizardDesktopPrivatePreview from '/snippets/_wizard-desktop-private-preview.md';
 
-# Use Wizard Desktop <Lifecycle status="private_beta"/>
+# Use Wizard Desktop <Lifecycle status="beta"/>
 
 <IntroText>
 Navigate Wizard Desktop and learn how to work in a session with dbt Wizard &mdash; with rich data visualizations, data diffs, lineage, and more rendered right in the app. Start with [Get started](/docs/dbt-ai/wizard-desktop).
 </IntroText>
 
 This page is your map of the app: where everything lives, how a session works, what to do when <Constant name="wizard" /> proposes a change, and how it <WizardPopcorn>conjures its magic</WizardPopcorn>.
-
-<WizardDesktopPrivatePreview />
 
 ## Tour the app
 
@@ -33,13 +30,13 @@ When you open Wizard Desktop, everything you need is in one window &mdash; you'l
 
 | What you see | What it's for |
 |---|---|
-| Sidebar (left) | **+ New** starts a session. **Projects** lists your projects and the sessions in each one, **Chats** holds conversations that aren't tied to a project, and **Settings** sits at the bottom |
+| Sidebar (left) | **+ New** starts a session. **Pinned** keeps the chats and environments you pin at the top, and you can reorder them. **Projects** lists your projects and the sessions in each one, **Chats** holds conversations that aren't tied to a project, and **Settings** sits at the bottom |
 | Session header | The session name, the branch it's working on, and **Open in** to jump to the same branch in Finder, VS Code, Cursor, iTerm, or Terminal |
 | Chat area (middle) | Your conversation. Replies, charts, tables, and diffs all render here |
 | Wayfinder bar | Above the chat composer box: your project, branch, connection · environment, plus **Validation** and **Create PR** |
 | Chat composer | Where you ask. Press <kbd>⌘</kbd> + <kbd>L</kbd> to jump to it. **+** attaches files, and the two pickers set your permission mode and AI model |
-| Side pane (right) | Whichever pane you've opened, with a terminal underneath. The Explorer is read-only, so browse your files here but edit them in your own editor |
-| Pane rail (far right) | Switch panes: Explorer, Lineage, Changes, Queries, Commands, Validation, Summary, Checks, Metrics, and Insights. A badge means something needs a look |
+| Side pane (right) | Whichever pane you've opened, with a terminal underneath. You can edit text files in the Explorer |
+| Pane rail (far right) | Switch panes: Explorer, Lineage, Changes, Queries, Commands, Validation, Summary, CI checks, Metrics, and Insights. A badge means something needs a look |
 
 </SimpleTable>
 
@@ -58,11 +55,11 @@ Select an icon in the right hand pane rail to open a pane in the side panel:
 | Summary | A summary of the work in this chat |
 | Changes | Diffs waiting for review |
 | Validation | Your validation plan and its results &mdash; what passed, what failed, and what needs a look. Refer to [Validation](#validation) |
-| Explorer | Your project files. Select a file path in the chat to open it here. The Explorer is read-only, so edit files in your own editor |
+| Explorer |  View and edit your project files here or by clicking file paths in chat. Save changes with Save or <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>S</kbd>.  Edits stay isolated to the chat environment, unsaved drafts remain intact if you navigate away or restart, and if you make external changes &mdash; it won't be overwritten.|
 | Lineage | How your dbt models connect |
 | Queries | Write and run ad hoc SQL against your connection. Refer to [Explore your data](#explore-your-data) |
 | Commands | Queries you run and commands <Constant name="wizard" /> executes, scoped to this chat |
-| Checks | The checks <Constant name="wizard" /> ran and their results |
+| CI checks | The CI checks <Constant name="wizard" /> ran and their results |
 | Insights | Analysis of your project and data |
 | Metrics | The metrics in your project |
 | Terminal | Run commands without leaving the app. Sits underneath whichever pane you've opened |
@@ -120,7 +117,7 @@ This section goes over what you can do when you're working in a chat session.
 ### Prompt Wizard
 
 - Type your prompt and hit **Enter**. <Constant name="wizard" /> reads your files, lineage, tests, and metadata, then edits and runs things based on your permission mode.
-- Select **+** next to the chat composer to attach an image, like a screenshot of the error you hit, a chart that looks wrong, or a mockup of what you want. Images are all you can attach for now. Support for adding a file is coming soon.
+- Attach files and images, like a screenshot of the error you hit, a chart that looks wrong, or a mockup of what you want. Select **+** next to the chat composer, drag files in, paste them, or copy them from Finder. You can preview attachments before you send them, and sent files show up as readable cards in the chat.
 - Changed your mind halfway through? No worries, just stop the run, or just type the correction and send it &mdash; <Constant name="wizard" /> then picks it up after the current step and adjusts.
 - When <Constant name="wizard" /> mentions a dbt model, select its name to:
     - **Copy name**
@@ -167,6 +164,8 @@ Sometimes you just want to poke at the data yourself:
 1. Select **Queries** in the pane rail on the right.
 2. Write your ad hoc SQL in the query editor.
 3. Select **Run**. Your results render in **Results** underneath the editor.
+
+To run SQL that <Constant name="wizard" /> wrote, select **Open in Queries** on the SQL in the chat. It opens in the same pane.
 
 The pane sits alongside your chat, so you can check something yourself without losing your place in the conversation. To start another conversation instead, select **+ New** in the left sidebar.
 
@@ -230,7 +229,7 @@ The app only scans <Constant name="git" /> repos in your home folder. If your pr
 
 - [Get started with Wizard Desktop](/docs/dbt-ai/wizard-desktop)
 - [Wizard Desktop settings](/docs/dbt-ai/wizard-desktop-settings)
-- [Use <Constant name="wizard" /> locally (CLI)](/docs/dbt-ai/wizard-quickstart)
+- [Use <Constant name="wizard" /> locally (CLI)](/docs/dbt-ai/wizard-cli)
 - [<Constant name="wizard" /> config reference](/docs/dbt-ai/wizard-config)
 - [Data use and telemetry](/docs/dbt-ai/wizard-telemetry)
 

@@ -20,13 +20,13 @@ Here at dbt Labs, we used the Model Timing tab in our internal analytics dbt pro
 
 The dbt Labs internal project is a beast! Our daily incremental dbt Cloud job runs 4x/day and invokes over 1,700 models. We like to sift through our dbt Cloud job using the [Model Timing](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab) tab in dbt Cloud. The `Model Timing` dashboard displays the model composition, order, and run time for every job run in dbt Cloud (for team and enterprise plans). The top 1% of model durations are automatically highlighted, which makes it easy to find bottlenecks in our runs. You can see that our longest running model stuck out like a sore thumb -- here's an example of our incremental job before a fix was applied:
 
-![Model Timing tab before picture](/img/blog/2022-08-12-model-timing/model_timing_before.png)
+<Lightbox src="/img/blog/2022-08-12-model-timing/model_timing_before.png" title="Model timing tab before picture" />
 
 As you can see, it's straightforward to identify the model that's causing the long run times and holding up other models. The model `fct_dbt_invocations` takes, on average, 1.5 hours to run. This isn't surprising, given that it's a relatively large dataset (~5B records) and that we're performing several intense SQL calculations. Additionally, this model calls an [ephemeral model](https://docs.getdbt.com/docs/build/materializations#ephemeral) named `dbt_model_summary` that also does some heavy lifting. Still, we decided to explore if we could refactor this model and make it faster.
 
 After refactoring this code, we ended up swapping the ephemeral model `dbt_model_summary` to an incremental model that took the bulk of the processing out of the main `fct_dbt_invocations` model. Instead of recalculating this complex logic every run, we pull only new data and run that logic on the smaller subset of those records. The combined run time of the new `dbt_model_summary` and `fct_dbt_invocations` is now ~15-20 minutes, a savings of over an hour per run!
 
-![Model Timing tab after picture](/img/blog/2022-08-12-model-timing/model_timing_after.png)
+<Lightbox src="/img/blog/2022-08-12-model-timing/model_timing_after.png" title="Model timing tab after picture" />
 
 ## Identifying the problem
 
@@ -42,7 +42,7 @@ There are a few ways you can do this: either find the executed query in the `His
 
 Below you can see the query plan for `fct_dbt_invocations`, which includes the logic from `dbt_model_summary`:
 
-![Snowflake query plan](/img/blog/2022-08-12-model-timing/snowflake_query_plan.png)
+<Lightbox src="/img/blog/2022-08-12-model-timing/snowflake_query_plan.png" title="Snowflake query plan" />
 
 From the query profile, it was easy to find the issue. There are two window functions that account for over 90% of the run time when we factor in the table scan needed to retrieve the data. Additionally, there is nearly 1TB worth of data that is [spilled to remote storage](https://github.com/dbt-labs/docs.getdbt.com/discussions/1550) as part of this query. Within Snowflake, [remote storage is considerably slower](https://docs.snowflake.com/en/user-guide/ui-query-profile.html?_ga=2.162889724.1914632094.1659383329-1610273913.1651521575&_gac=1.229438062.1658341107.Cj0KCQjwz96WBhC8ARIsAATR2516I_11uMuOf0cXXe0zlyOBUXLap5CfVvKnpGwTb3bLqC5tHwlurxcaAskEEALw_wcB#queries-too-large-to-fit-in-memory:~:text=This%20spilling%20can%20have%20a%20profound%20effect%20on%20query%20performance%20(especially%20if%20remote%20disk%20is%20used%20for%20spilling).%20To%20alleviate%20this%2C%20we%20recommend%3A) to both write and read from, so any data that’s on the remote drive will really slow down a query. We’ve found the problem!
 
@@ -153,7 +153,7 @@ with model_execution as (
 
     {% elif is_incremental() %}
 
-        --incremental runs re-process a full day everytime to get an accurate mode below
+        --incremental runs re-process a full day every time to get an accurate mode below
         and collector_tstamp > (select max(max_collector_tstamp)::date from {{ this }})
 
     {% endif %}

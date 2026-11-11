@@ -21,6 +21,7 @@ const sidebarSettings = {
         "docs/platform/about-platform/change-your-dbt-theme",
         "docs/platform/about-platform/dbt-platform-features",
         "docs/platform/about-platform/access-regions-ip-addresses",
+        "docs/platform/about-platform/account-url-migration",
         "docs/platform/about-platform/tenancy",
       ],
     }, // About dbt platform directory
@@ -336,6 +337,7 @@ const sidebarSettings = {
                 "docs/local/connect-data-platform/duckdb-setup",
                 "docs/local/connect-data-platform/exasol-setup",
                 "docs/local/connect-data-platform/extrica-setup",
+                "docs/local/connect-data-platform/firebird-setup",
                 "docs/local/connect-data-platform/firebolt-setup",
                 "docs/local/connect-data-platform/greenplum-setup",
                 "docs/local/connect-data-platform/ibm-db2-setup",
@@ -349,6 +351,7 @@ const sidebarSettings = {
                 "docs/local/connect-data-platform/mindsdb-setup",
                 "docs/local/connect-data-platform/mysql-setup",
                 "docs/local/connect-data-platform/oracle-setup",
+                "docs/local/connect-data-platform/redis-setup",
                 "docs/local/connect-data-platform/risingwave-setup",
                 "docs/local/connect-data-platform/rockset-setup",
                 "docs/local/connect-data-platform/sail-setup",
@@ -386,7 +389,6 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/platform/wizard-overview" },
           items: [
             "docs/platform/wizard-overview",
-            "docs/dbt-ai/wizard-quickstart",
             "docs/platform/manage-dbt-ai",
             "docs/dbt-ai/wizard-use-cases",
             "docs/dbt-ai/wizard-how-it-works",
@@ -498,6 +500,7 @@ const sidebarSettings = {
             "docs/dbt-ai/integrate-mcp-cursor",
             "docs/dbt-ai/integrate-mcp-vscode",
             "docs/dbt-ai/integrate-mcp-snowflake-cortex",
+            "docs/dbt-ai/integrate-mcp-databricks",
           ],
         },
         "docs/dbt-ai/mcp-troubleshooting",
@@ -728,6 +731,7 @@ const sidebarSettings = {
                 "docs/build/iceberg/adapters/databricks-iceberg-support",
                 "docs/build/iceberg/adapters/bigquery-iceberg-support",
                 "docs/build/iceberg/adapters/duckdb-iceberg-support",
+                "docs/build/iceberg/adapters/aws-iceberg-support",
               ],
             },
           ],
@@ -1332,6 +1336,7 @@ const sidebarSettings = {
         "reference/resource-configs/mindsdb-configs",
         "reference/resource-configs/oracle-configs",
         "reference/resource-configs/postgres-configs",
+        "reference/resource-configs/redis-configs",
         "reference/resource-configs/redshift-configs",
         "reference/resource-configs/singlestore-configs",
         "reference/resource-configs/snowflake-configs",
@@ -1433,6 +1438,7 @@ const sidebarSettings = {
             "reference/resource-properties/model_name",
             "reference/resource-configs/on_configuration_change",
             "reference/resource-configs/on_error",
+            "reference/resource-configs/python-model-configs",
             "reference/resource-configs/sql_header",
           ],
         },
@@ -1811,6 +1817,7 @@ const sidebarSettings = {
         description: "The list of Jinja functions and context variables available in dbt.",
       },
       items: [
+        "reference/jinja-file-support",
         {
           type: "category",
           label: "dbt Jinja context functions",
@@ -1818,7 +1825,7 @@ const sidebarSettings = {
             type: "generated-index",
             title: "dbt Jinja functions and context variables",
             description:
-              "In addition to the standard Jinja library, we've added additional functions and variables to the Jinja context that are useful when working with a dbt project. Note that dependencies.yml is not Jinja rendered and therefore does not support Jinja.",
+              "In addition to the standard Jinja library, we've added additional functions and variables to the Jinja context that are useful when working with a dbt project. For a file-by-file overview, refer to Jinja support by file type. Note that dependencies.yml is not Jinja rendered in dbt v1 and therefore, does not support Jinja.",
             slug: "/reference/dbt-jinja-functions-context-variables",
           },
           items: [
@@ -1886,6 +1893,7 @@ const sidebarSettings = {
             "best-practices/how-we-structure/3-intermediate",
             "best-practices/how-we-structure/4-marts",
             "best-practices/how-we-structure/5-the-rest-of-the-project",
+            "best-practices/how-we-structure/6-mapping-folders-to-warehouse",
           ],
         },
         {

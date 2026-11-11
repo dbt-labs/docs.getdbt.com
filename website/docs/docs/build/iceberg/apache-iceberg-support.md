@@ -55,4 +55,10 @@ To the extent possible, dbt tries to abstract away the complexity of table forma
     link="/docs/build/iceberg/adapters/duckdb-iceberg-support"
     icon="duckdb-seeklogo"/>
 
+<Card
+    title="AWS + Iceberg"
+    body="AWS Iceberg configurations, including Amazon S3 Tables"
+    link="/docs/build/iceberg/adapters/aws-iceberg-support"
+    icon="aws"/>
+
 </div>

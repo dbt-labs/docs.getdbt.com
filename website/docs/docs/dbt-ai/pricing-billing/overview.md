@@ -43,7 +43,7 @@ These four terms come up on every <Constant name="wizard" /> billing page:
 | Term | What it means |
 |---|---|
 | Token | The unit of AI model usage. How many tokens you use, and the rate you pay for them, depends on the model, the context window, the length and complexity of your prompt, and the size of the response |
-| Usage credits | The free balance included with your plan, shared by everyone on the account, whether thats trial credits on Developer and Starter, or monthly credits on Enterprise and Enterprise+. Scoped to <Constant name="wizard" /> only |
+| Usage credits | The free balance included with your plan, shared by everyone on the account, whether that's trial credits on Developer and Starter, or monthly credits on Enterprise and Enterprise+. Scoped to <Constant name="wizard" /> only |
 | Consumption pool | Your overall dbt <Term id="managed" /> usage balance, including any pool you purchase once your credits run out. A purchased pool covers both <Constant name="wizard" /> and dbt State. Shown as **Consumption pool** in **Billing & Usage** |
 | Spend limit | The maximum dbt <Term id="managed" /> usage your account can consume in a billing period |
 </SimpleTable>
@@ -61,9 +61,18 @@ You'll see two kinds of models across these pages:
 
 Refer to the [Model Provider Rate Table](https://www.getdbt.com/legal/dbt-wizard-token-costs-by-model) and [Supported AI providers](#supported-ai-providers) for the full list of what's available where.
 
+### Automatic backup during outages
+
+If an AI model provider (Anthropic, OpenAI, or Fireworks) has an outage, <Constant name="wizard" /> in <Constant name="dbt_platform"/> automatically reroutes your requests to Amazon Web Services (AWS) Bedrock so you can keep working.
+
+- **Who this applies to:** <Constant name="dbt_platform" /> accounts hosted on AWS that use dbt <Term id="managed" /> models.
+- **Who this doesn't apply to:** BYOK users. Traffic only goes to the provider you configured, so if that provider is down, requests will fail.
+
 ## Bring your own key (BYOK)
 
 With BYOK, you supply your own credentials for a provider &mdash; OpenAI, Anthropic, Azure AI Foundry, AWS Bedrock, Google Gemini, Snowflake Cortex, or Databricks.
+
+BYOK in <Constant name="dbt_platform" /> is available on Starter, Enterprise, and Enterprise+ plans.
 
 To set up BYOK, refer to [Configure BYOK for dbt platform](/docs/platform/wizard-byok-platform) or [Configure BYOK for the CLI](/docs/dbt-ai/wizard-byok).
 

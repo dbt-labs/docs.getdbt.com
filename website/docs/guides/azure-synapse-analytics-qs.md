@@ -101,7 +101,7 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [
 5. Enter the **User credentials** for your new project:
     - **Authentication** &mdash; Choose **Service Principal** from the dropdown.
     - **Tenant ID** &mdash; Use the service principal’s **Directory (tenant) id** as the value.
-    - **Client ID** &mdash; Use the service principal’s **application (client) ID id** as the value.
+    - **Client ID** &mdash; Use the service principal’s **application (client) ID** as the value.
     - **Client secret** &mdash; Use the service principal’s **client secret** (not the  **client secret id**) as the value.
 6. Click **Test connection**. This verifies that <Constant name="dbt" /> can access your Azure Synapse Analytics account.
 7. Click **Next** when the test succeeds. If it failed, you might need to check your Microsoft service principal.
