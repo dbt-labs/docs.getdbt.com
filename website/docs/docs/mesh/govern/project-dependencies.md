@@ -89,6 +89,8 @@ The `dbt_utils` package &mdash; When you run `dbt deps`, dbt will pull down this
 
 The `jaffle_finance` projects &mdash; This is a new scenario. Unlike installing a package, the models in the `jaffle_finance` project will _not_ be pulled down as source code and parsed into your project. Instead, <Constant name="dbt" /> provides a metadata service that resolves references to [**public models**](/docs/mesh/govern/model-access) defined in the `jaffle_finance` project.
 
+<Lightbox src="/img/docs/mesh/cross-project-ref-diagram.png" width="90%" alt="Two projects side by side: marketing references a public model in finance through the dbt metadata service, while private and protected models stay hidden." title="A project can `ref` public models from another project without copying its code." />
+
 ### Advantages
 
 When you're building on top of another team's work, resolving the references in this way has several advantages:
