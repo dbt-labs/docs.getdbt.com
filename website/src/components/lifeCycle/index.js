@@ -3,7 +3,7 @@
 // This component renders two unrelated token families as pills:
 //   - plan tokens (developer, self_service, managed, managed_plus) signal which
 //     dbt platform plan a feature requires.
-//   - status tokens (new, beta, preview, ga, private_beta, private_preview, eol) signal
+//   - status tokens (new, beta, preview, ga, private_beta, private_preview, eol, deprecated, retired) signal
 //     feature maturity/lifecycle stage.
 // These are intentionally styled differently (see styles.module.css: .lifecycle vs
 // .planPill) so a plan requirement is never visually confused with a lifecycle status.
@@ -43,6 +43,8 @@ const statusColors = {
   preview: '#FE6703',
   private_preview: '#FE6703',
   eol: '#99A1AF',
+  deprecated: '#99A1AF',
+  retired: '#99A1AF',
   // new_constant: '#99A1AF', use this gray color if you want a new color.
 };
 
@@ -59,6 +61,8 @@ const fontColors = {
   private_beta: "#030711",
   private_preview: "#030711",
   eol: "#030711",
+  deprecated: "#030711",
+  retired: "#030711",
 };
 
 // Display names for status values
@@ -74,6 +78,8 @@ const statusDisplayNames = {
   preview: 'Preview',
   private_preview: 'Private preview',
   eol: 'No longer sold',
+  deprecated: 'Deprecated',
+  retired: 'Retired',
 };
 
 // URL mapping for predefined lifecycle statuses. urls defined in ../lifeCycle/lifecycle-urls.js file so we can update them in one place
