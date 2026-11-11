@@ -86,8 +86,8 @@ The following steps walk you through creating your first check.
     dbt check
     ```
 
-:::tip
-[dbt_project_evaluator](https://github.com/dbt-labs/dbt-project-evaluator) is a dbt package that provides pre-built checks across modeling, testing, documentation, structure, performance, and governance. Use it as a reference for what to enforce in your own project, or add it to your `packages.yml` to run its checks directly. For more information, refer to the [dbt_project_evaluator documentation](https://dbt-labs.github.io/dbt-project-evaluator/latest/).
+:::tip Start with pre-built checks
+The [dbt_project_evaluator](https://github.com/dbt-labs/dbt-project-evaluator) package provides pre-built checks for modeling, testing, documentation, structure, performance, and governance. Use it as a reference for what to enforce in your own project, or add it to your `packages.yml` to run its checks directly. Refer to the [dbt_project_evaluator documentation](https://dbt-labs.github.io/dbt-project-evaluator/latest/).
 :::
 
 ## Example checks
