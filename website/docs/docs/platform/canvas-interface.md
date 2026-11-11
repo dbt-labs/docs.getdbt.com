@@ -12,7 +12,11 @@ availability:
   minPlan: enterprise
 ---
 
-# Navigate the interface
+import CanvasLifecycle from '/snippets/_canvas-lifecycle.md';
+
+# Navigate the interface <Lifecycle status="eol"/>
+
+<CanvasLifecycle/>
 
 <p style={{ color: '#717d7d', fontSize: '1.1em' }}>
 
