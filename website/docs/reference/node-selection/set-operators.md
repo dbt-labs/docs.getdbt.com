@@ -5,6 +5,8 @@ description: "Union and intersection set operators for dbt --select and --exclud
 
 Unions and intersections combine <Term id="selector-expression">selector expressions</Term> when you list multiple arguments for `--select` or `--exclude`. A selector expression defines a subset of nodes in your project (models, tests, seeds, and other resource types) so you do not have to run the entire DAG. For the full selection language and for named selectors in `selectors.yml`, refer to [Syntax overview](/reference/node-selection/syntax) and [YAML selectors](/reference/node-selection/yaml-selectors).
 
+<Lightbox src="/img/docs/reference/set-operators-diagram.png" width="90%" alt="Two Venn diagrams: one with both circles filled for union, one with only the overlap filled for intersection." title="A space combines selections (union). A comma keeps only what both select (intersection)." />
+
 ## Unions
 
 A union merges the node sets from several selector expressions; every resource that matches _any_ of those expressions is selected. In other words, union behaves like OR across the arguments you pass to `--select` or `--exclude`.
