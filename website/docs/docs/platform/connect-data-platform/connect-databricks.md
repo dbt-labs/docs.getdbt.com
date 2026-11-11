@@ -58,6 +58,6 @@ These fields set the Unity Catalog this connection builds into and the Databrick
 - **OAuth Client ID** is the client ID from your Databricks OAuth app.
 - **OAuth Client Secret** is the client secret from that same app.
 
-**OAuth Client ID** and **OAuth Client Secret** are available on Enterprise and Enterprise+ plans. Once you set them, each developer signs in with Databricks to use the <Constant name="studio_ide" />. Deployment environments do not use these fields. For jobs, configure token-based credentials in the [deployment environment](/guides/set-up-your-databricks-dbt-project#defining-your-dbt-deployment-environment). A service principal token is recommended.
+**OAuth Client ID** and **OAuth Client Secret** are available on Enterprise and Enterprise+ plans. Once you set them, each developer signs in with Databricks to use the <Constant name="studio_ide" />. Deployment environments do not use these fields. For jobs, configure token-based credentials in the [deployment connection profile](/docs/platform/about-profiles).
 
 For setup steps, refer to [Set up Databricks OAuth](/docs/platform/manage-access/set-up-databricks-oauth).
