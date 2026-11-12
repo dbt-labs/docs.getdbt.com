@@ -1,8 +1,8 @@
 ---
 title: "Migrate off legacy dbt versions"
 id: migrate-off-legacy-dbt-versions
-description: "Use the Legacy dbt versions dashboard to move environments and jobs off legacy dbt versions to a dbt v1 or v2 release track."
-hoverSnippet: "Move your environments and jobs off legacy dbt versions to a release track."
+description: "Use the Legacy dbt versions dashboard to move environments and jobs off legacy dbt versions to the dbt v1 Latest release track."
+hoverSnippet: "Move your environments and jobs off legacy dbt versions to the v1 Latest release track."
 icon: 'guides'
 hide_table_of_contents: true
 tags: ['Migration', 'dbt v1', 'dbt platform', 'Upgrade']
@@ -10,14 +10,11 @@ keywords: ['legacy dbt version', 'release track', 'migrate dbt version', 'upgrad
 level: 'Beginner'
 ---
 
-Legacy <Constant name="dbt" /> versions v1.3–v1.7 are being deprecated on <Constant name="legacy_deprecation_date" />. To keep your work running and supported, move your environments and jobs to a [<Constant name="dbt" /> release track](/docs/dbt-versions/dbt-release-tracks) (v1 or v2) now. A release track keeps you on a supported version automatically.
+Legacy <Constant name="dbt" /> versions v1.3–v1.7 are being deprecated on <Constant name="legacy_deprecation_date" />. To keep your work running and supported, move your environments and jobs to the **v1 Latest** [<Constant name="dbt" /> release track](/docs/dbt-versions/dbt-release-tracks) now. A release track keeps you on a supported version automatically.
 
-:::info Which release track to choose
+:::info Migrating to v1 Latest
 
-When migrating off a legacy version:
-
-- **v2 (recommended)**: [dbt v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2?version=2) is generally available. Since you're already upgrading, move directly to v2 to get all the powerful features and capabilities it has to offer.
-- **v1 (minimum requirement)**: To keep your environments and jobs running after <Constant name="legacy_deprecation_date" />, move to a v1 release track to stay supported.
+This guide and the **Legacy dbt versions** dashboard migrate you to the **v1 Latest** release track only. The tooling doesn't support migrating directly to <Constant name="fusion" />. If you want to move to v2, you can do so yourself after you finish this migration. Refer to [Upgrading to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2?version=2).
 
 :::
 
@@ -71,7 +68,7 @@ On the dashboard, each project has an **Upgrade with dbt Wizard** button. <Const
    - <Constant name="wizard" /> loads any skills in your project (`SKILL.md` files under a `skills/` folder). A project skill with the same name as a built-in one replaces it, which can change how the migration runs. Consider removing or renaming custom skills first.
    - <Constant name="wizard" /> works on a new branch and leaves the changes uncommitted for you to review. It doesn't change your environments or jobs.
 
-   <Constant name="wizard" /> migrates your project code to the v1 **Latest** release track. After you upgrade your environments, you can move to v2.
+   <Constant name="wizard" /> migrates your project code to the v1 **Latest** release track.
    
 <Lightbox src="/img/docs/dbt-platform/legacy-dbt-versions/wizard-upgrade-confirmation.png" width="60%" title="The dbt Wizard migration confirmation" />
 
@@ -87,7 +84,7 @@ Once the migration is merged, [upgrade the project's environments](#upgrade-envi
 Start with development or test environments. Moving them to a release track first lets you find any remaining issues before you touch production.
 
 1. On the **Legacy dbt versions** dashboard, find the environment and click **Upgrade**. To upgrade several at once, select the checkboxes next to the environments (or a whole project) and click **Upgrade** above the list.
-2. Read the confirmation window and click **Upgrade**. Upgrading:
+2. Read the confirmation window and click **Upgrade**. Upgrading starts a trial period in which your jobs run on **v1 Latest**. Upgrading:
    - Moves the environment to the **v1 Latest** release track. Normal runs of jobs on unsupported versions use **v1 Latest**, including jobs explicitly pinned below v1.8. Job pins on supported versions and explicit per-run version overrides keep priority.
    - Takes effect on each job's next run. It doesn't start runs, unpause jobs, or verify compatibility.
    - Leaves saved versions, code, schedules, and <Constant name="studio_ide" /> sessions as they are.
@@ -99,9 +96,15 @@ Start with development or test environments. Moving them to a release track firs
 
 If a job fails after the upgrade, select the environment on the **Upgraded** tab and click **Revert**. Jobs run on the previously configured version until you upgrade again. Reverting is temporary, because legacy versions are retired on <Constant name="legacy_deprecation_date" />.
 
-### Move to v2
+:::caution Upgrading from the dashboard is a trial
 
-The dashboard upgrade moves environments to **v1 Latest**. To get all the capabilities of v2, [dbt v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2?version=2), select the **V2 Stable** [release track](/docs/dbt-versions/dbt-release-tracks) in the environment's settings after the upgrade. Refer to [Upgrade versions in dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version) for the full walkthrough, including the Admin API and Terraform.
+Upgrading from the dashboard only puts the environment on a trial where jobs execute on **v1 Latest**. After you verify that your jobs run successfully during the trial, update the environments and jobs to the **v1 Latest** release track yourself. Refer to [Upgrade an environment from its settings](#upgrade-an-environment-from-its-settings) and [Update jobs](#update-jobs).
+
+:::
+
+### Move to v2 later
+
+After you finish migrating to v1 Latest, you can optionally move to [dbt v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2?version=2) on your own by selecting the **V2 Stable** release track in the environment's settings. Refer to [Upgrade versions in dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version) for the full walkthrough.
 
 ## Update jobs
 
@@ -109,7 +112,7 @@ Jobs that are pinned to a legacy version in an otherwise supported environment n
 
 1. On the **Legacy dbt versions** dashboard, click **View jobs** for the environment. **View jobs** appears only for environments that have jobs.
 2. In the list of jobs, click a job to open its page in the product. This is the same page you reach from **Orchestration** > **Jobs**.
-3. In the job's settings, find the **dbt version** setting and either clear the override so the job inherits the environment's version or set it to a [release track](/docs/dbt-versions/dbt-release-tracks).
+3. In the job's settings, find the **dbt version** setting and either clear the override so the job inherits the environment's version or set it to the **v1 Latest** [release track](/docs/dbt-versions/dbt-release-tracks).
 4. Save your changes.
 
 ## Other ways to upgrade
@@ -120,7 +123,7 @@ If you can't use the dashboard, or you want to handle part of the migration your
 
 1. Navigate to **Orchestration** > **Environments** and select the environment.
 2. Click **Settings**, then **Edit**.
-3. Click the **dbt version** dropdown and select the **V2 Stable** [release track](/docs/dbt-versions/dbt-release-tracks), or **v1 Latest** if you need to stay on v1.
+3. Click the **dbt version** dropdown and select the **v1 Latest** [release track](/docs/dbt-versions/dbt-release-tracks).
 4. Save your changes.
 
 ### Fix compatibility issues with autofix
@@ -128,7 +131,7 @@ If you can't use the dashboard, or you want to handle part of the migration your
 Autofix runs the [dbt-autofix](https://github.com/dbt-labs/dbt-autofix) script to resolve many deprecation warnings for you. It's available from both the <Constant name="studio_ide" /> and the VS Code extension.
 
 - **<Constant name="studio_ide" />**: Open the environment in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), select **[Check & fix deprecations](/docs/platform/studio-ide/autofix-deprecations)** from the three-dot menu, then click **Commit and sync**.
-- **dbt VS Code extension**: Run `dbt parse` in the [dbt VS Code extension](/docs/about-dbt-extension) to surface deprecation warnings, then resolve them with [dbt-autofix](https://github.com/dbt-labs/dbt-autofix?tab=readme-ov-file#installation) or the extension's upgrade assistant. If you're moving to <Constant name="fusion" />, use the [agentic migration](/docs/upgrade-to-dbt-extension#agentic-migration) flow instead.
+- **dbt VS Code extension**: Run `dbt parse` in the [dbt VS Code extension](/docs/about-dbt-extension) to surface deprecation warnings, then resolve them with [dbt-autofix](https://github.com/dbt-labs/dbt-autofix?tab=readme-ov-file#installation) or the extension's upgrade assistant.
 
 ### Fix compatibility issues manually
 
@@ -146,4 +149,4 @@ Moving from a pinned legacy version to a release track can surface behavior chan
 
 ## Get help
 
-If you hit a blocker you can't resolve, [contact Support](mailto:support@getdbt.com) with your project ID, environment ID, affected job run IDs and logs, your current version, and your target release track.
+If you hit a blocker you can't resolve, [contact Support](mailto:support@getdbt.com) with your project ID, environment ID, affected job run IDs and logs, your current version, and the target release track.
