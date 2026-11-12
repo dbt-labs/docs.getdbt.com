@@ -52,6 +52,23 @@ You must provide this Deploy Key in the Repository configuration of your <Consta
 
 **Note**: Each <Constant name="dbt" /> project will generate a different deploy key when connected to a repo, even if two projects are connected to the same repo. You will need to supply both deploy keys to your <Constant name="git" /> provider.
 
+## Reconnect an existing repository
+
+If you need to change the clone URL for a project that's already connected, for example when your git provider changes its SSH hostname, disconnect and reconnect the repository. Reconnecting generates a new deploy key, so you also need to add the new key to your git provider.
+
+1. In <Constant name="dbt_platform" />, go to **Account settings** and select **Projects**, then select your project.
+2. Select the **Repository** link, then **Edit**, then **Disconnect**.
+3. Select **Confirm Disconnect**.
+4. Reconnect the repo using the **<Constant name="git" /> Clone** tab and your new SSH clone URL. For example:
+   - GitHub: `git@github.com:<org>/<repo>.git`
+   - GitLab: `git@gitlab.com:<org>/<repo>.git`
+   - Bitbucket: `git@ssh.bitbucket.org:<workspace>/<repo>.git`
+5. Copy the new key under **Deploy Key** on the repository details page.
+6. In your repository, add the key in your Git settings.
+   - If you use Bitbucket, add it as an SSH key. We recommend using a service account. Sign in as the service account, go to **Personal settings** and select **SSH keys**, then select **Add key** and paste in the key.
+   - You can also add the key to a personal Bitbucket account using the same steps. Bitbucket links commits and other <Constant name="git" /> actions to that account's email.
+7. Go back to <Constant name="dbt_platform" /> and restart the <Constant name="studio_ide" />.
+
 ## Troubleshooting clone errors
 If <Constant name="dbt" /> can't clone your repository after you connect it using a git URL, the issue is usually one of the following:
 
@@ -127,19 +144,7 @@ If your existing <Constant name="dbt_platform" /> project connects to Bitbucket 
 3. Add the new deploy key in Bitbucket.
 4. Go back to <Constant name="dbt_platform" /> and restart the <Constant name="studio_ide" />.
 
-<Expandable alt_header="Step-by-step instructions">
-
-1. In <Constant name="dbt_platform" />, go to **Account settings** and select **Projects**, then select your project.
-2. Select the **Repository** link, then **Edit**, then **Disconnect**.
-3. Select **Confirm Disconnect**.
-4. Reconnect the repo using the **<Constant name="git" /> Clone** tab and your new SSH clone URL. For example, `git@ssh.bitbucket.org:<workspace>/<repo>.git`. Replace `<workspace>` and `<repo>` with your own values.
-5. Copy the new key under **Deploy Key** on the repository details page.
-6. In Bitbucket, add the key as an SSH key:
-   - We recommend using a service account. Sign in as the service account, go to **Personal settings** and select **SSH keys**, then select **Add key** and paste in the key.
-   - You can also add the key to a personal Bitbucket account using the same steps. Bitbucket links commits and other <Constant name="git" /> actions to that account's email.
-7. Go back to <Constant name="dbt_platform" /> and restart the <Constant name="studio_ide" />.
-
-</Expandable>
+For detailed steps, see [Reconnect an existing repository](#reconnect-an-existing-repository).
 
 :::
 
