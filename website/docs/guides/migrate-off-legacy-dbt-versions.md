@@ -96,9 +96,9 @@ Start with development or test environments. Moving them to a release track firs
 
 If a job fails after the upgrade, select the environment on the **Upgraded** tab and click **Revert**. Jobs run on the previously configured version until you upgrade again. Reverting is temporary, because legacy versions are retired on <Constant name="legacy_deprecation_date" />.
 
-:::caution Upgrading from the dashboard is a trial
+:::caution Upgrading from the dashboard is a trial run
 
-Upgrading from the dashboard only puts the environment on a trial where jobs execute on **v1 Latest**. After you verify that your jobs run successfully during the trial, update the environments and jobs to the **v1 Latest** release track yourself. Refer to [Upgrade an environment from its settings](#upgrade-an-environment-from-its-settings) and [Update jobs](#update-jobs).
+Upgrading from the dashboard only puts the environment on a trial run, where jobs execute on **v1 Latest**. After you verify that your jobs run successfully during the trial, update the environments and jobs to the **v1 Latest** release track yourself. Refer to [Upgrade an environment from its settings](#upgrade-an-environment-from-its-settings) and [Update jobs](#update-jobs).
 
 :::
 
