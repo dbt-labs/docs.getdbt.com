@@ -13,8 +13,11 @@ availability:
 ---
 
 import Prerequisites from '/snippets/_canvas-prerequisites.md';
+import CanvasLifecycle from '/snippets/_canvas-lifecycle.md';
 
-# About Canvas
+# About Canvas <Lifecycle status="eol"/>
+
+<CanvasLifecycle/>
 
 <p style={{ color: '#717d7d', fontSize: '1.1em' }}>
 <Constant name="canvas" /> helps you quickly access and transform data through a visual, drag-and-drop experience.
