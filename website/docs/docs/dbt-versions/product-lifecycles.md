@@ -80,7 +80,7 @@ Features of the cloud-hosted dbt platform move through the following lifecycle:
 <TabItem value="engine" label="dbt engine (v1 and v2)">
 
 This tab covers the dbt engine (v1 and v2) that runs in the dbt platform. These stages don't apply to the platform features in the first tab. Engine releases follow semantic versioning. Read more in [About dbt versions](/docs/dbt-versions). Both v1 and v2 releases adhere to the following lifecycle path:
-
+ 
 <div className="grid--3-col" style={{gap: '1.5rem', marginTop: '1rem'}}>
 
 <div style={{border: '1px solid var(--border-neutral-tertiary)', borderRadius: '16px', overflow: 'hidden'}}>
