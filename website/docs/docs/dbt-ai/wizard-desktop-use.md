@@ -190,7 +190,7 @@ To add a server:
 You can also run the same commands directly in Desktop's built-in terminal:
 
 1. Start a new project-scoped chat and send your first message to start the terminal.
-2. To add a server, run `wizard mcp add`. [Refer to Add an MCP server](/docs/dbt-ai/wizard-mcp#add-an-mcp-server)
+2. To add a server, run `wizard mcp add`. Refer to [Add an MCP server](/docs/dbt-ai/wizard-mcp#add-an-mcp-server).
 3. To see servers you already added, run `wizard`, then run `/mcp`.
 
 For server types, config keys, and examples, refer to [Use MCP servers](/docs/dbt-ai/wizard-mcp).
