@@ -84,7 +84,7 @@ Choose how <Constant name="wizard" /> reaches a model. Come here if you selected
 
 </SimpleTable>
 
-Each provider lists how many of its models are enabled, such as `6/6 models enabled`. Select **Manage** to add credentials and turn individual models on or off. You then pick the model and reasoning effort per chat from the chat composer, not here.
+Each provider lists how many of its models are enabled, such as `6/6 models enabled`. Select **Configure** to add credentials and turn individual models on or off. You then pick the model and reasoning effort per chat from the chat composer, not here.
 
 
 ## Connectors

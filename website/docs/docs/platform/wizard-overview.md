@@ -120,7 +120,7 @@ A terminal-based agent for governed data development in dbt, whether your team u
 - [dbt Wizard in Studio IDE](/docs/dbt-ai/wizard-ide) — generate docs, tests, semantic models, SQL, and delegate end-to-end model work
 - [Invite read-only users to dbt Wizard](/docs/platform/wizard-read-only-users) — let business users ask questions of production data in Explore mode, without development access
 - [Use skills in dbt platform](/docs/dbt-ai/wizard-platform-skills) — give dbt Wizard reusable instructions for your project
-- [Use MCP servers with dbt Wizard CLI](/docs/dbt-ai/wizard-mcp) — connect the dbt Wizard CLI to more tools and context
+- [Use MCP servers with dbt Wizard CLI and Desktop](/docs/dbt-ai/wizard-mcp) — set up MCP servers in the dbt Wizard CLI and use them in Wizard Desktop for more tools and context
 - [Privacy and data FAQs](/docs/dbt-ai/dbt-ai-faqs#privacy-and-data) — understand how dbt Wizard handles privacy and data
 
 <WizardFeedbackCallout />
