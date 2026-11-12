@@ -11,6 +11,12 @@ const FEATURED_AREAS = areaList.areas
   .filter((area) => area.featured)
   .sort((a, b) => a.featured - b.featured)
   .map((area) => area.name);
+// Shorter pill text for areas with a long name, so the pills fit on one row.
+// Headings and the Filters menu keep the full name.
+const PILL_LABELS = areaList.areas.reduce((labels, area) => {
+  if (area.label) labels[area.name] = area.label;
+  return labels;
+}, {});
 const byName = (a, b) => a.localeCompare(b, 'en', { sensitivity: 'base' });
 const ALL = 'All';
 const ANNOUNCEMENTS = 'Announcements';
@@ -282,9 +288,11 @@ export default function ReleaseNotesFilter({
       type="button"
       className={`${styles.pill} ${isOn(name) ? styles.active : ''}`}
       aria-pressed={isOn(name)}
+      aria-label={PILL_LABELS[name] ? name : undefined}
+      title={PILL_LABELS[name] ? name : undefined}
       onClick={() => pick(name)}
     >
-      {name}
+      {PILL_LABELS[name] || name}
     </button>
   );
 

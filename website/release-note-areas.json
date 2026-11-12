@@ -1,5 +1,5 @@
 {
-  "description": "Product areas for the dbt platform release notes (docs/docs/dbt-versions/release-notes.md). Each area is a #### heading under the month. The order here is the order of headings in a month and of the filter pills on the page. 'links' and 'names' are the docs paths and product names that point to an area, 'constants' are <Constant> names that do the same, and 'st_aliases' are other headings the single-tenant release notes use for it. Areas with a 'featured' number get their own filter pill, in that order; the other areas are listed under the Filters menu.",
+  "description": "Product areas for the dbt platform release notes (docs/docs/dbt-versions/release-notes.md). Each area is a #### heading under the month. The order here is the order of headings in a month and of the filter pills on the page. 'links' and 'names' are the docs paths and product names that point to an area, 'constants' are <Constant> names that do the same, and 'st_aliases' are other headings the single-tenant release notes use for it. Areas with a 'featured' number get their own filter pill, in that order; the other areas are listed under the Filters menu. An optional 'label' is shorter text for the pill; headings and the Filters menu always use the name.",
   "fallback": "dbt platform",
   "areas": [
     {
@@ -94,7 +94,8 @@
         "Webhooks",
         "Run Automation"
       ],
-      "featured": 3
+      "featured": 3,
+      "label": "Orchestration"
     },
     {
       "name": "Semantic Layer",
@@ -133,7 +134,8 @@
         "Identity, APIs, and Administration",
         "dbt platform APIs"
       ],
-      "featured": 4
+      "featured": 4,
+      "label": "APIs and admin"
     },
     {
       "name": "Announcements",
