@@ -118,10 +118,28 @@ In the **<Constant name="git" /> Clone** tab, enter your Bitbucket SSH clone URL
 
 Atlassian is moving Git over SSH from `bitbucket.org` to `ssh.bitbucket.org`. `bitbucket.org` will serve HTTPS only. 
 
-If your existing <Constant name="dbt_platform" /> project connects to Bitbucket over SSH, disconnect and reconnect your repo to ensure you're using the `ssh.bitbucket.org` format. For example, `git@ssh.bitbucket.org:<workspace>/<repo>.git`. Replace `<workspace>` and `<repo>` with your own values.
-
-
 For details, read [Atlassian's announcement](https://community.atlassian.com/forums/discussion/3234032/upcoming-change-to-bitbucket-cloud-ssh-access-move-from-bitbucket-org-to-ssh-bitbucket-org).
+
+If your existing <Constant name="dbt_platform" /> project connects to Bitbucket over SSH, you need to:
+
+1. Disconnect and reconnect your repo using the updated `ssh.bitbucket.org` clone URL.
+2. Copy the new deploy key.
+3. Add the new deploy key in Bitbucket.
+4. Go back to <Constant name="dbt_platform" /> and restart the <Constant name="studio_ide" />.
+
+<Expandable alt_header="Step-by-step instructions">
+
+1. In <Constant name="dbt_platform" />, go to **Account settings** and select **Projects**, then select your project.
+2. Select the **Repository** link, then **Edit**, then **Disconnect**.
+3. Select **Confirm Disconnect**.
+4. Reconnect the repo using the **<Constant name="git" /> Clone** tab and your new SSH clone URL. For example, `git@ssh.bitbucket.org:<workspace>/<repo>.git`. Replace `<workspace>` and `<repo>` with your own values.
+5. Copy the new key under **Deploy Key** on the repository details page.
+6. In Bitbucket, add the key as an SSH key:
+   - We recommend using a service account. Sign in as the service account, go to **Personal settings** and select **SSH keys**, then select **Add key** and paste in the key.
+   - You can also add the key to a personal Bitbucket account using the same steps. Bitbucket links commits and other <Constant name="git" /> actions to that account's email.
+7. Go back to <Constant name="dbt_platform" /> and restart the <Constant name="studio_ide" />.
+
+</Expandable>
 
 :::
 
