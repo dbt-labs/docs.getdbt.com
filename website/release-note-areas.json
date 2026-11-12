@@ -30,7 +30,7 @@
         "Copilot",
         "dbt Copilot"
       ],
-      "featured": 3
+      "featured": 2
     },
     {
       "name": "Studio IDE",
@@ -94,7 +94,7 @@
         "Webhooks",
         "Run Automation"
       ],
-      "featured": 4
+      "featured": 3
     },
     {
       "name": "Semantic Layer",
@@ -133,7 +133,7 @@
         "Identity, APIs, and Administration",
         "dbt platform APIs"
       ],
-      "featured": 5
+      "featured": 4
     },
     {
       "name": "Announcements",
@@ -190,8 +190,7 @@
       ],
       "names": [],
       "constants": [],
-      "st_aliases": [],
-      "featured": 2
+      "st_aliases": []
     },
     {
       "name": "dbt platform",
