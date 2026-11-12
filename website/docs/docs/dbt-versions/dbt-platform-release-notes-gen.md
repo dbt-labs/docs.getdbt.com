@@ -8,7 +8,6 @@ pagination_prev: null
 unlisted: true
 availability:
   surface: platform
-  access: free
 ---
 
 import ReleaseNotesFeedback from '/snippets/_release-notes-feedback.md';
