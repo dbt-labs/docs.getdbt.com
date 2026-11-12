@@ -132,7 +132,8 @@
         "Admin And APIs",
         "Identity, APIs, and Administration",
         "dbt platform APIs"
-      ]
+      ],
+      "featured": 5
     },
     {
       "name": "Announcements",
