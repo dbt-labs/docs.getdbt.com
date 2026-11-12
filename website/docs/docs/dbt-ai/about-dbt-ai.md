@@ -28,7 +28,7 @@ import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
 
 <Card
     title="dbt Wizard in dbt platform"
-    body="AI is on by default in your dbt platform account. Use dbt Wizard for governed dbt data development and dbt Copilot for inline AI assistance."
+    body="AI is on by default in your dbt platform account. Use dbt Wizard for governed dbt data development."
     link="/docs/platform/wizard-platform"
     icon="wizard"/>
 
@@ -43,24 +43,6 @@ import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
     body="Install the dbt Wizard CLI and start a terminal session."
     link="/docs/dbt-ai/wizard-cli"
     icon="wizard"/>
-
-</div>
-
-## Explore dbt Copilot
-
-<div style={{maxWidth: '1200px'}} className="grid--2-col">
-
-<Card
-    title="dbt Copilot"
-    body="dbt's inline AI assistance for single-click generation of SQL, docs, tests, and semantic models."
-    link="/docs/dbt-ai/copilot-overview"
-    icon="dbt-copilot"/>
-
-<Card
-    title="dbt Copilot in Insights"
-    body="Chat with your data using dbt Copilot in Insights, powered by the Semantic Layer."
-    link="/docs/dbt-ai/analyst-agent"
-    icon="dbt-copilot"/>
 
 </div>
 
