@@ -498,7 +498,7 @@ Use the migrating-dbt-core-to-v2 skill to get this project ready for dbt v2. Run
 
 ### Check readiness with Wizard
 
-When <Constant name="wizard" /> finishes, use it to confirm the work:
+When <Constant name="wizard" /> finishes, use the following prompts to confirm the work:
 
 - `Run dbt compile --static-analysis strict and summarize any remaining errors or warnings.`
 - `List any packages in packages.yml that aren't compatible with dbt v2 and the version I should upgrade to.`
