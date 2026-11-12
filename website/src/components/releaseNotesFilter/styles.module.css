@@ -98,20 +98,22 @@
   margin: 1.25rem 0 0.5rem;
 }
 
-/* Weekly page: dates and note types are both `##`. Dates get a rule above
-   them, and the types read as sub-headings. */
+/* Weekly page: dates are `##` with a rule above them, note types are tagged
+   `.rn-type`, and areas are the headings under a type. */
 :global(.rn-weekly h2:not(.rn-type)) {
   border-top: 1px solid var(--ifm-color-emphasis-300);
   margin-top: 2.5rem;
   padding-top: 1.5rem;
 }
 
-:global(.rn-weekly h2.rn-type) {
+:global(.rn-weekly .rn-type) {
   font-size: 1.3rem;
   margin: 1.5rem 0 0.5rem;
 }
 
-:global(.rn-weekly h3) {
+:global(.rn-weekly h3:not(.rn-type)),
+:global(.rn-weekly h4) {
   font-size: 1.05rem;
+  font-weight: 700;
   margin: 1.25rem 0 0.5rem;
 }

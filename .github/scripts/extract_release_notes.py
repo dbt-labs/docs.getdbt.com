@@ -172,7 +172,13 @@ def extract_week_section(lines: list[str], week: str) -> tuple[int, int]:
 
 
 def extract_bullets(week_lines: list[str]) -> list[tuple[str, str, str | None]]:
-    """Return (category, bullet text, single-tenant area heading) for a week."""
+    """Return (category, bullet text, single-tenant area heading) for a week.
+
+    A week is a dated `##` heading. The note types (New, Enhancements, Fixes,
+    Behavior changes) are `###` headings under it and areas are `####` headings
+    under a type. Older weeks that use `##` for the types and `###` for the
+    areas are read the same way.
+    """
     category = None
     st_area: str | None = None
     bullets: list[tuple[str, str, str | None]] = []
@@ -184,7 +190,15 @@ def extract_bullets(week_lines: list[str]) -> list[tuple[str, str, str | None]]:
             st_area = None
             continue
         if stripped.startswith("### "):
-            st_area = stripped[4:].strip()
+            heading = stripped[4:].strip()
+            if heading.lower() in CATEGORY_MAP:
+                category = CATEGORY_MAP[heading.lower()]
+                st_area = None
+            else:
+                st_area = heading
+            continue
+        if stripped.startswith("#### "):
+            st_area = stripped[5:].strip()
             continue
         if stripped.startswith("- ") and category:
             bullets.append((category, stripped[2:].strip(), st_area))

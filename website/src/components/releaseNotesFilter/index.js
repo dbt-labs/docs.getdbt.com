@@ -95,17 +95,19 @@ function applyFilter(root, areas, selected) {
 }
 
 // Weekly layout, used by the single-tenant page. Weeks are dated `##` headings,
-// the note types (New, Enhancements, Fixes, Behavior changes) are `##` headings
-// under them, and areas are `###` headings. The page's headings are matched to
-// an area by name, ignoring case; anything that doesn't match, and notes that
-// aren't under an area heading, go under "Other".
+// the note types (New, Enhancements, Fixes, Behavior changes) are `###`
+// headings under them, and areas are `####` headings under a type. Older weeks
+// that put the types at `##`, or the areas at `###`, are read the same way.
+// The page's headings are matched to an area by name, ignoring case; anything
+// that doesn't match, and notes that aren't under an area heading, go under
+// "Other".
 function scanWeekly(root) {
   let week = null;
   let type = null;
   let group = OTHER;
   const containers = [];
   const entries = getSiblings(root).map((el) => {
-    const text = /^H[23]$/.test(el.tagName) ? headingText(el) : '';
+    const text = /^H[234]$/.test(el.tagName) ? headingText(el) : '';
     if (el.tagName === 'H2' && WEEK_HEADING.test(text)) {
       week = { heading: el, visible: false, kind: 'week' };
       type = null;
@@ -122,8 +124,9 @@ function scanWeekly(root) {
       containers.push(type);
       return { container: type };
     }
-    if (el.tagName === 'H3') group = AREA_LOOKUP[text.toLowerCase()] || OTHER;
-    return { el, week, type, group };
+    const isArea = el.tagName === 'H3' || el.tagName === 'H4';
+    if (isArea) group = AREA_LOOKUP[text.toLowerCase()] || OTHER;
+    return { el, week, type, group, isArea };
   });
   return { entries, containers };
 }
@@ -143,13 +146,14 @@ function applyWeeklyFilter(root, selected) {
   containers.forEach((c) => {
     c.heading.style.display = all || c.visible ? '' : 'none';
   });
-  syncToc(getSiblings(root), selected.length === 1 ? 'H3' : null);
+  const areaHeadings = new Set(entries.filter((entry) => entry.isArea).map((entry) => entry.el));
+  syncToc(getSiblings(root), selected.length === 1 ? areaHeadings : null);
 }
 
 const findPresentWeeklyAreas = (root, areas) => {
   const found = new Set(
     scanWeekly(root)
-      .entries.filter((entry) => entry.week && entry.el && entry.el.tagName !== 'H3')
+      .entries.filter((entry) => entry.week && entry.el && !entry.isArea)
       .map((entry) => entry.group)
   );
   const present = areas.filter((area) => found.has(area));
@@ -159,8 +163,11 @@ const findPresentWeeklyAreas = (root, areas) => {
 // Mirrors heading visibility in the right-hand table of contents, so the
 // sidebar only lists the sections that are currently on screen. When an area
 // is selected, its heading would repeat under every month, so the area level
-// (`areaTag`) is left out and the list shows the months that have it.
-function syncToc(siblings, areaTag) {
+// (`areas`: a tag name, or the set of area headings) is left out and the list
+// shows the months or weeks that have it.
+function syncToc(siblings, areas) {
+  const isArea = (el) =>
+    areas instanceof Set ? areas.has(el) : Boolean(areas) && el.tagName === areas;
   siblings
     .filter((el) => /^H[234]$/.test(el.tagName) && el.id)
     .forEach((el) => {
@@ -168,7 +175,7 @@ function syncToc(siblings, areaTag) {
         `.table-of-contents a[href="#${CSS.escape(el.id)}"]`
       );
       const item = link && link.closest('li');
-      const hide = el.style.display === 'none' || el.tagName === areaTag;
+      const hide = el.style.display === 'none' || isArea(el);
       if (item) item.style.display = hide ? 'none' : '';
     });
 }
@@ -213,8 +220,8 @@ export default function ReleaseNotesFilter({
   }, [moreOpen]);
 
   // Marks the page body so the CSS module can style the headings. On the weekly
-  // page the note types (New, Enhancements, and so on) share a heading level
-  // with the dates, so they are tagged to be styled as sub-headings.
+  // page the note types (New, Enhancements, and so on) are tagged, so they are
+  // styled the same whichever heading level a week uses for them.
   useEffect(() => {
     const root = rootRef.current;
     const page = root && root.parentElement;

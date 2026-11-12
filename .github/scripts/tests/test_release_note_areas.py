@@ -10,6 +10,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from extract_release_notes import extract_bullets  # noqa: E402
 from file_release_notes import file_notes, fix_headings  # noqa: E402
 from release_note_areas import (  # noqa: E402
     insert_notes,
@@ -89,6 +90,37 @@ class ClassifyTest(unittest.TestCase):
         self.assertEqual(subgroup_for("dbt AI and agents", desktop), "Wizard Desktop")
         self.assertIsNone(subgroup_for("dbt AI and agents", "Remote MCP note."))
         self.assertIsNone(subgroup_for("Catalog", desktop))
+
+
+class ExtractTest(unittest.TestCase):
+    EXPECTED = [
+        ("New", "**Title**: A new thing.", "Catalog"),
+        ("Fix", "**Title**: A fix.", "dbt v2"),
+    ]
+
+    def test_types_nested_under_the_date(self):
+        week = [
+            "## November 11, 2026",
+            "### New",
+            "#### Catalog",
+            "- **Title**: A new thing.",
+            "### Fixes",
+            "#### dbt v2",
+            "- **Title**: A fix.",
+        ]
+        self.assertEqual(extract_bullets(week), self.EXPECTED)
+
+    def test_older_layout_with_types_at_level_two(self):
+        week = [
+            "## November 4, 2026",
+            "## New",
+            "### Catalog",
+            "- **Title**: A new thing.",
+            "## Fixes",
+            "### dbt v2",
+            "- **Title**: A fix.",
+        ]
+        self.assertEqual(extract_bullets(week), self.EXPECTED)
 
 
 class InsertTest(unittest.TestCase):
