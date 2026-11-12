@@ -18,5 +18,8 @@ Expand a row to see the full decision details. Not all analyses apply to every r
 
 </SimpleTable>
 
-<Lightbox src="/img/docs/dbt-platform/deployment/explain-tab.png" title="Explain tab showing the decision breakdown" />
+:::note Data retention
+State explanations are retained for seven days. After that, the **Explain** tab still loads, but detailed explanations are no longer available.
+:::
 
+<Lightbox src="/img/docs/dbt-platform/deployment/explain-tab.png" title="Explain tab showing the decision breakdown" />
