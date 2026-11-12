@@ -57,7 +57,7 @@ Enable access to features in your account by selecting the appropriate option fr
 
 ### Enabling AI features
 
-Admins can enable access to both <Constant name="wizard" /> (dbt Labs’ AI agent layer, available on the <Constant name="dbt_platform" /> and CLI) and dbt Copilot for authorized users across the <Constant name="dbt_platform" />. 
+Admins can enable access to <Constant name="wizard" /> (dbt Labs’ AI agent layer, available on the <Constant name="dbt_platform" /> and CLI) for authorized users across the <Constant name="dbt_platform" />. 
 
 ### Enabling Advanced CI features <Lifecycle status="managed,managed_plus" />
 
