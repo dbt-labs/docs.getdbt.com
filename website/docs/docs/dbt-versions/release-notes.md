@@ -52,6 +52,10 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 
 ## October 2026
 
+- **Fix:** Several gaps in the [columns available for checks](/reference/info-schema#columns-available-for-checks) have been resolved:
+  - The `exposures` view now includes `meta` and `config` columns. Previously these were always `NULL`, preventing checks from reading exposure `meta` or config values.
+  - The `unit_tests`, `saved_queries`, `semantic_models`, `semantic_entities`, `semantic_measures`, and `semantic_dimensions` views now include `config`. The `node_columns` view now includes `meta`.
+- **Fix:** `models.config` in the [dbt Information Schema](/reference/info-schema) is now correctly encoded, so `json_extract` and `json_extract_string` return the correct values in [checks](/docs/build/checks). Previously, `models.config` was double-encoded, causing these functions to return `NULL` silently and preventing checks from reading config values such as `config.enabled` or `config.meta`.
 - **New:** <Constant name="wizard" /> Desktop is now in public beta. [Download the app](/docs/dbt-ai/wizard-desktop#install-and-open-wizard-desktop) for macOS, Windows, or Linux and start your first session.
 - **New:** If your GitHub Enterprise Server can only be reached over a private connection (PrivateLink), you can now save that connection on the GitHub app. Set `private_link_endpoint_id` when you create or update the app through the API, and dbt routes the connection over your private network.
 - **New:** **Filter the Model timing table:** On the Model timing tab, you can now filter [Resource details](/docs/deploy/run-visibility#resource-details) to find what's slowing a run down. Use the **Est. critical path** filter to show only the resources on the longest chain of dependent resources, which sets the minimum run time (Yes), or everything else (No). Use the resource type filter to narrow the list to **Model**, **Test**, **Snapshot**, or **Exposure**. You can still search by name.
