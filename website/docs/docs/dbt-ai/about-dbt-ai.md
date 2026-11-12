@@ -41,7 +41,7 @@ import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
 <Card
     title="dbt Wizard CLI"
     body="Install the dbt Wizard CLI and start a terminal session."
-    link="/docs/platform/wizard-overview#get-started"
+    link="/docs/dbt-ai/wizard-cli"
     icon="wizard"/>
 
 </div>
