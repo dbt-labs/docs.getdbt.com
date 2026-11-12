@@ -9,32 +9,41 @@ availability: all_users
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-dbt Labs manages the lifecycle of features across the cloud-hosted dbt platform and self-hosted v1 and v2. Each feature is assigned a lifecycle status that describes its stability, support level, and availability. Use the tabs below to find the lifecycle stages for the product you're using.
+dbt Labs manages lifecycles for two things: features of the dbt platform, and the dbt engine (v1 and v2) that runs in it. Each is assigned a lifecycle status that describes its stability, support level, and availability. Use the tabs below to find the stages that apply.
 
-Service level objective (SLO) support varies between products and lifecycles.
+Service level objective (SLO) support varies between lifecycles.
 
 <Tabs>
-<TabItem value="platform" label="dbt platform">
+<TabItem value="platform" label="dbt platform features">
 
-dbt platform features adhere to the following lifecycle path:
+Features of the cloud-hosted dbt platform move through the following lifecycle:
 
 <div className="grid--3-col" style={{gap: '1.5rem'}}>
+
+<div style={{border: '1px solid var(--border-neutral-tertiary)', borderRadius: '16px', overflow: 'hidden'}}>
+  <div style={{background: 'var(--color-coalesce-purple-100)', padding: '0.75rem 1.5rem', borderBottom: '1px solid var(--border-neutral-tertiary)'}}>
+    <strong style={{color: 'var(--color-coalesce-purple-800)', fontSize: '1rem'}}>Private preview</strong>
+  </div>
+  <div style={{padding: '1.25rem 1.5rem', background: 'var(--ifm-background-color)'}}>
+    Invite-only experimental stage. Free to use, with minimal documentation, no SLA, and limited support. Not for production workflows.
+  </div>
+</div>
+
+<div style={{border: '1px solid var(--border-neutral-tertiary)', borderRadius: '16px', overflow: 'hidden'}}>
+  <div style={{background: 'var(--color-coalesce-purple-100)', padding: '0.75rem 1.5rem', borderBottom: '1px solid var(--border-neutral-tertiary)'}}>
+    <strong style={{color: 'var(--color-coalesce-purple-800)', fontSize: '1rem'}}>Public preview</strong>
+  </div>
+  <div style={{padding: '1.25rem 1.5rem', background: 'var(--ifm-background-color)'}}>
+    Open broad selection of dbt customers. Free to use, with public documentation, limited support, and no SLA. Expected pricing may be shared. Not for production workflows.
+  </div>
+</div>
 
 <div style={{border: '1px solid var(--border-neutral-tertiary)', borderRadius: '16px', overflow: 'hidden'}}>
   <div style={{background: 'var(--color-transform-orange-100)', padding: '0.75rem 1.5rem', borderBottom: '1px solid var(--border-neutral-tertiary)'}}>
     <strong style={{color: 'var(--color-transform-orange-800)', fontSize: '1rem'}}>Beta</strong>
   </div>
   <div style={{padding: '1.25rem 1.5rem', background: 'var(--ifm-background-color)'}}>
-    In active development. May not be fully stable and breaking changes can occur. Documentation may be incomplete, technical support is limited, and SLOs may not apply. Download the [Beta Terms and Conditions](/assets/beta-tc.pdf) for details. If marked `Private`, access must be enabled by dbt Labs.
-  </div>
-</div>
-
-<div style={{border: '1px solid var(--border-neutral-tertiary)', borderRadius: '16px', overflow: 'hidden'}}>
-  <div style={{background: 'var(--color-coalesce-purple-100)', padding: '0.75rem 1.5rem', borderBottom: '1px solid var(--border-neutral-tertiary)'}}>
-    <strong style={{color: 'var(--color-coalesce-purple-800)', fontSize: '1rem'}}>Preview</strong>
-  </div>
-  <div style={{padding: '1.25rem 1.5rem', background: 'var(--ifm-background-color)'}}>
-    Stable and functionally ready for production. Planned additions or non-backward-compatible changes may still occur before GA. Includes documentation, technical support, and SLOs. If marked `Private`, access must be enabled by dbt Labs.
+    Ready to prove in production. Billing may begin. Complete documentation and support apply, but uptime and delivery SLAs do not. Minor bugs may occur.
   </div>
 </div>
 
@@ -43,7 +52,7 @@ dbt platform features adhere to the following lifecycle path:
     <strong style={{color: 'var(--color-green-700)', fontSize: '1rem'}}>Generally available (GA)</strong>
   </div>
   <div style={{padding: '1.25rem 1.5rem', background: 'var(--ifm-background-color)'}}>
-    Stable features available to all qualified dbt accounts. SLOs, documentation, and technical support apply. Pricing changes may change or apply. Feature availability may depend on your environment's dbt version. Use a supported [release track](/docs/dbt-versions/dbt-release-tracks) to receive the latest GA features.
+    Validated and fully supported for all qualified dbt accounts. Full SLAs, documentation, and technical support apply. Use a supported [release track](/docs/dbt-versions/dbt-release-tracks) to receive the latest GA features.
   </div>
 </div>
 
@@ -52,7 +61,7 @@ dbt platform features adhere to the following lifecycle path:
     <strong style={{color: 'var(--color-yellow-800)', fontSize: '1rem'}}>Deprecated</strong>
   </div>
   <div style={{padding: '1.25rem 1.5rem', background: 'var(--ifm-background-color)'}}>
-    No longer being actively developed or enhanced. Features continue to function as-is and documentation remains available until the removal date. Technical support no longer applies.
+    No longer being actively developed or enhanced. Features continue to function as-is until the removal date. Technical support no longer applies.
   </div>
 </div>
 
@@ -68,29 +77,11 @@ dbt platform features adhere to the following lifecycle path:
 </div>
 
 </TabItem>
-<TabItem value="self-hosted" label="dbt v1 and v2">
+<TabItem value="engine" label="dbt engine (v1 and v2)">
 
-Self-hosted dbt releases follow semantic versioning. Read more in [About dbt versions](/docs/dbt-versions). Both v1 and v2 releases adhere to the following lifecycle path:
+This tab covers the dbt engine (v1 and v2) that runs in the dbt platform. These stages don't apply to the platform features in the first tab. Engine releases follow semantic versioning. Read more in [About dbt versions](/docs/dbt-versions). Both v1 and v2 releases adhere to the following lifecycle path:
 
 <div className="grid--3-col" style={{gap: '1.5rem', marginTop: '1rem'}}>
-
-<div style={{border: '1px solid var(--border-neutral-tertiary)', borderRadius: '16px', overflow: 'hidden'}}>
-  <div style={{background: 'var(--color-terminal-black-100)', padding: '0.75rem 1.5rem', borderBottom: '1px solid var(--border-neutral-tertiary)'}}>
-    <strong style={{color: 'var(--color-terminal-black-600)', fontSize: '1rem'}}>Undocumented</strong>
-  </div>
-  <div style={{padding: '1.25rem 1.5rem', background: 'var(--ifm-background-color)'}}>
-    Open source dbt codebases may have visibility into internal, non-contracted, or intentionally undocumented functionality. Not considered part of the release's product surface area.
-  </div>
-</div>
-
-<div style={{border: '1px solid var(--border-neutral-tertiary)', borderRadius: '16px', overflow: 'hidden'}}>
-  <div style={{background: 'var(--color-terminal-black-100)', padding: '0.75rem 1.5rem', borderBottom: '1px solid var(--border-neutral-tertiary)'}}>
-    <strong style={{color: 'var(--color-terminal-black-700)', fontSize: '1rem'}}>Unreleased</strong>
-  </div>
-  <div style={{padding: '1.25rem 1.5rem', background: 'var(--ifm-background-color)'}}>
-    Planned for the next minor version prerelease. No commitments on behavior or implementation. Maintainers reserve the right to change or remove it entirely.
-  </div>
-</div>
 
 <div style={{border: '1px solid var(--border-neutral-tertiary)', borderRadius: '16px', overflow: 'hidden'}}>
   <div style={{background: 'var(--color-terminal-black-100)', padding: '0.75rem 1.5rem', borderBottom: '1px solid var(--border-neutral-tertiary)'}}>
