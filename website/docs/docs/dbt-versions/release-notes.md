@@ -48,6 +48,7 @@ The full list lives in website/release-note-areas.json.
 
 #### dbt AI and agents {#dbt-ai-and-agents-november-2026}
 
+- **New:** You can now connect Gemini Enterprise to the remote dbt MCP server to explore your dbt projects in plain English. Refer to [Integrate Gemini Enterprise with dbt MCP](/docs/dbt-ai/integrate-mcp-gemini-enterprise).
 - **New:** The remote dbt MCP server is now available on [Databricks Marketplace](https://marketplace.databricks.com/details/6d83d4e0-5279-47b7-831c-3cb90a82ecb3/dbt-Labs_dbt-MCP). Install it in a few steps to use your dbt project from Databricks. Refer to [Integrate Databricks with dbt MCP](/docs/dbt-ai/integrate-mcp-databricks).
 - **New**: Read-only users can query metrics through [remote MCP](/docs/dbt-ai/setup-remote-mcp#read-only-users-and-warehouse-credentials) using the shared [analytics credential](/docs/platform/wizard-read-only-users#set-up-analytics-credentials), which needs to be set up by an admin. 
 - **Enhancement:** [Remote MCP](/docs/dbt-ai/setup-remote-mcp#permissions) now checks permissions for each tool call against the project, environment, job, or run it targets. This applies to OAuth, personal access tokens (PATs), and service tokens. You no longer need the `Developer` permission set just to connect. Service tokens can also use `text_to_sql` to generate SQL, but running SQL with `execute_sql` still requires OAuth or a PAT.
@@ -84,6 +85,7 @@ The full list lives in website/release-note-areas.json.
 
 #### APIs, Identity, and Administration {#apis-identity-and-administration-november-2026}
 
+- **New:** Set an expiration date when you create a [personal access token](/docs/dbt-apis/user-tokens#set-a-token-expiration) or [service token](/docs/dbt-apis/service-tokens#set-a-token-expiration). Choose 7, 14, 30, 90, or 365 days, or keep the default of no expiry. Existing tokens that don't have an expiration set won't expire.
 - **Enhancement:** The [Assign User to Groups API](/dbt-cloud/api-v3?version=2#/operations/Assign%20User%20to%20Groups) (`POST /api/v3/accounts/{account_id}/assign-groups/`) now accepts `add_group_ids` and `remove_group_ids`. Use these fields to add a user to groups, or remove them from groups, without replacing every group they belong to. Sending `desired_group_ids` still replaces the full list.
 - **Fix:** When an account had more than 1,000 groups, some of a user's assigned [groups](/docs/platform/manage-access/about-user-access#groups) were missing from the user details view. All assigned groups now appear checked. Saving with `POST /api/v3/accounts/{id}/assign-groups/` also keeps the full list of groups.
 - **Fix:** Creating or updating an [IP restriction](/docs/platform/secure/ip-restrictions) with a missing or invalid `type` now returns a 400 error (the request was invalid) and a message that describes the problem, instead of a 500 server error. A missing `name` is rejected with a 400 error too. Before this fix, dbt saved that missing name as the word None.
