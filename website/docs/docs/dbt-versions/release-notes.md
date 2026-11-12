@@ -10,6 +10,8 @@ availability:
   surface: platform
 ---
 
+import ReleaseNotesFeedback from '/snippets/_release-notes-feedback.md';
+
 <Constant name="dbt" /> release notes for recent and historical changes. Release notes fall into one of the following categories:
 
 - **New:** New products and features
@@ -43,6 +45,8 @@ Not sure which area? Add the bullet directly under the month heading. A check on
 Event sections, such as summit announcements, keep their own ### heading.
 The full list lives in website/release-note-areas.json.
 -->
+
+<ReleaseNotesFeedback />
 
 <ReleaseNotesFilter />
 

@@ -11,6 +11,8 @@ availability:
   access: free
 ---
 
+import ReleaseNotesFeedback from '/snippets/_release-notes-feedback.md';
+
 <Constant name="dbt" /> Single-tenant release notes for weekly updates. Release notes fall into one of these categories:
 
 - **New:** New products and features
@@ -21,6 +23,8 @@ availability:
 Release notes are grouped by date for single-tenant environments.
 
 <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](https://docs.getdbt.com/feeds/release-notes-st-rss.xml), [Atom](https://docs.getdbt.com/feeds/release-notes-st-atom.xml), or [JSON Feed](https://docs.getdbt.com/feeds/release-notes-st-rss.json).</span>
+
+<ReleaseNotesFeedback />
 
 <ReleaseNotesFilter layout="weekly" />
 
