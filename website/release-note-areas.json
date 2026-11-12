@@ -27,7 +27,8 @@
       ],
       "st_aliases": [
         "dbt Copilot and agents",
-        "Copilot"
+        "Copilot",
+        "dbt Copilot"
       ],
       "featured": true
     },
@@ -77,7 +78,8 @@
         "catalog"
       ],
       "st_aliases": [
-        "Catalog and Discovery"
+        "Catalog and Discovery",
+        "Discovery API"
       ]
     },
     {
@@ -129,7 +131,8 @@
       "constants": [],
       "st_aliases": [
         "Admin And APIs",
-        "Identity, APIs, and Administration"
+        "Identity, APIs, and Administration",
+        "dbt platform APIs"
       ]
     },
     {
@@ -140,24 +143,32 @@
       "names": []
     },
     {
-      "name": "Insights",
-      "definition": "Insights and Cost Insights: queries, charts, and cost data.",
+      "name": "Cost Insights",
+      "definition": "Warehouse cost and usage data, Cost Insights setup, and cost charts.",
       "links": [
         "/docs/explore/cost-insights",
         "/docs/explore/set-up-cost-insights",
-        "/docs/explore/explore-cost-data",
+        "/docs/explore/explore-cost-data"
+      ],
+      "names": [
+        "Cost Insights"
+      ],
+      "constants": [],
+      "st_aliases": []
+    },
+    {
+      "name": "Insights",
+      "definition": "Querying, charts, and the Analyst agent experience in Insights.",
+      "links": [
         "/docs/explore/navigate-dbt-insights"
       ],
       "names": [
-        "Insights",
-        "Cost Insights"
+        "Insights"
       ],
       "constants": [
         "insights"
       ],
-      "st_aliases": [
-        "Cost Insights"
-      ]
+      "st_aliases": []
     },
     {
       "name": "Integrations",
@@ -171,8 +182,19 @@
       "st_aliases": []
     },
     {
+      "name": "dbt v2",
+      "definition": "The dbt v2 engine and CLI (formerly Fusion): engine features, commands, release tracks, upgrading, and the dbt VS Code extension.",
+      "links": [
+        "/docs/dbt-versions/dbt-upgrade",
+        "/guides/prepare-v2-upgrade"
+      ],
+      "names": [],
+      "constants": [],
+      "st_aliases": []
+    },
+    {
       "name": "dbt platform",
-      "definition": "Anything that doesn't fit another area, including dbt engine and CLI changes.",
+      "definition": "Anything that doesn't fit another area, such as account-wide platform changes.",
       "links": [],
       "names": [],
       "constants": [],

@@ -34,9 +34,11 @@ Not sure which area? Add the bullet directly under the month heading. A check on
 - Orchestration and run status: Jobs, runs, scheduling, continuous integration, run logs, notifications, and webhooks.
 - Semantic Layer: The dbt Semantic Layer, MetricFlow, metrics, saved queries, and Semantic Layer integrations.
 - APIs, Identity, and Administration: Admin APIs, tokens, SSO, SCIM, permissions, licenses, account settings, billing, and security settings.
-- Insights: Insights and Cost Insights: queries, charts, and cost data.
+- Cost Insights: Warehouse cost and usage data, Cost Insights setup, and cost charts.
+- Insights: Querying, charts, and the Analyst agent experience in Insights.
 - Integrations: Data platform connections, adapters, and Git providers.
-- dbt platform: Anything that doesn't fit another area, including dbt engine and CLI changes.
+- dbt v2: The dbt v2 engine and CLI (formerly Fusion): engine features, commands, release tracks, upgrading, and the dbt VS Code extension.
+- dbt platform: Anything that doesn't fit another area, such as account-wide platform changes.
 
 Event sections, such as summit announcements, keep their own ### heading.
 The full list lives in website/release-note-areas.json.
@@ -99,7 +101,6 @@ The full list lives in website/release-note-areas.json.
 - **Enhancement:** You can now add a `table` block type to `compose_report` reports to render query results as formatted, scrollable tables. Columns can be narrowed and reordered using the `columns` field, and the display caps at 50 rows on screen with a truncation notice for clipped results.
 - **Fix:** Charts with decimal data values (for example, 25.43 minutes) no longer push the y-axis name outside the visible canvas area. The axis gap is now calculated from rounded tick values.
 - **Fix:** The x-axis name, grid bottom margin, and legend centering on horizontal bar charts are now computed correctly so the axis label no longer overlaps the legend.
-- **Behavior change:** dbt v2 renamed the variable that selects an AI provider, and the two variables that write the [information schema](/docs/build/dbt-information-schema#generating-the-information-schema) (a local copy of project metadata you can query). If you set `DBT_AI_PROVIDER`, change it to [`DBT_ENGINE_AI_PROVIDER`](/docs/dbt-ai/package-skills#set-the-ai_provider-flag). If you set `DBT_GENERATE_INFO_SCHEMA` or `DBT_INFO_SCHEMA_DIR`, change them to `DBT_ENGINE_GENERATE_INFO_SCHEMA` and `DBT_ENGINE_INFO_SCHEMA_DIR`. The command-line flags for these options are unchanged. Update the variables anywhere you set them, including continuous integration (CI).
 
 ##### Wizard
 
@@ -136,7 +137,6 @@ The full list lives in website/release-note-areas.json.
 
 #### Studio IDE {#studio-ide-october-2026}
 
-- **Enhancement:** In Studio [User development settings](/docs/dbt-versions/upgrade-dbt-platform-version#override-dbt-version), the **v2 Stable** option no longer shows a **Preview** label. dbt v2 is generally available.
 - **Fix:** In <Constant name="studio_ide" />, an [ephemeral](/docs/build/materializations#ephemeral) model is a model that is not built as its own table or view. Those models were missing from the command result list, so a tab such as **Error**, **Warn**, **Skip**, **Reused**, or **Pass** could show a count and no rows. They now appear on the matching tab with the other models.
 
 #### dbt State {#dbt-state-october-2026}
@@ -180,23 +180,31 @@ Admins can check their settings and update the default as needed. This is availa
 - **Fix:** API requests with an invalid permission value or a malformed body now return a descriptive error instead of a server error.
 - **Behavior change:** You can no longer create a System for Cross-domain Identity Management (SCIM) token with a personal access token or a service token. Sign in to dbt and [create a SCIM token](/docs/platform/manage-access/scim#set-up-dbt).
 
-#### Insights {#insights-october-2026}
+#### Cost Insights {#cost-insights-october-2026}
 
 - **New:** Account admins now receive an email when Cost Insights ingestion has been failing for 3 or more cycles, with follow-up emails at 14 and 28 days if it continues.
-- **Fix:** Charts now show dates such as `2026-01` or `2026-01-15` from oldest to newest. Tables keep your query's row order until you sort a column.
 - **Fix:** The Cost Insights dashboard no longer shows a perpetual loading spinner when partial cost data exists. You now see available cost data even when some rows have not been fully processed.
+
+#### Insights {#insights-october-2026}
+
+- **Fix:** Charts now show dates such as `2026-01` or `2026-01-15` from oldest to newest. Tables keep your query's row order until you sort a column.
 
 #### Integrations {#integrations-october-2026}
 
 - **New:** If your GitHub Enterprise Server can only be reached over a private connection (PrivateLink), you can now save that connection on the GitHub app. Set `private_link_endpoint_id` when you create or update the app through the API, and dbt routes the connection over your private network.
 
+#### dbt v2 {#dbt-v2-october-2026}
+
+- **Enhancement:** In the dbt VS Code extension, drag the edge of a column header in the query results panel to make that column wider or narrower.
+- **Enhancement:** If a project can use dbt v2 but you do not have permission to select it, the dbt v2 choices stay visible and disabled in the environment, job, and development version menus. The tooltip says that an Account Admin or a [v2 Migration Admin](/docs/platform/manage-access/enterprise-permissions#v2-migration-admin) has to select dbt v2.
+- **Enhancement:** In Studio [User development settings](/docs/dbt-versions/upgrade-dbt-platform-version#override-dbt-version), the **v2 Stable** option no longer shows a **Preview** label. dbt v2 is generally available.
+- **Fix:** [`dbt fmt`](/reference/commands/lint#dbt-format) no longer shifts a Jinja tag to the left when that same line ends with a SQL comment. It also settles on one indentation for Jinja tags inside a `for` loop, and for an `{% if %}...{%- else -%}` block whose condition looks up warehouse information, such as the columns on a table. Running `dbt fmt` again does not keep changing those lines.
+- **Behavior change:** dbt v2 renamed the variable that selects an AI provider, and the two variables that write the [information schema](/docs/build/dbt-information-schema#generating-the-information-schema) (a local copy of project metadata you can query). If you set `DBT_AI_PROVIDER`, change it to [`DBT_ENGINE_AI_PROVIDER`](/docs/dbt-ai/package-skills#set-the-ai_provider-flag). If you set `DBT_GENERATE_INFO_SCHEMA` or `DBT_INFO_SCHEMA_DIR`, change them to `DBT_ENGINE_GENERATE_INFO_SCHEMA` and `DBT_ENGINE_INFO_SCHEMA_DIR`. The command-line flags for these options are unchanged. Update the variables anywhere you set them, including continuous integration (CI).
+
 #### dbt platform {#dbt-platform-october-2026}
 
 - **New:** Set [`allow_jinja_file_extensions`](/reference/global-configs/behavior-flags/allow_jinja_file_extensions) in your project config so dbt reads files with an extra Jinja ending, such as `model.sql.j2` or `doc.md.j2`. Jinja is the templating language dbt already uses inside SQL and Markdown files.
 - **New:** You can now [route cross-project `ref()`](/docs/mesh/govern/project-dependencies#route-environments-across-projects) to a specific upstream environment, such as Staging, instead of only the default Production or Staging environment.
-- **Enhancement:** If a project can use dbt v2 but you do not have permission to select it, the dbt v2 choices stay visible and disabled in the environment, job, and development version menus. The tooltip says that an Account Admin or a [v2 Migration Admin](/docs/platform/manage-access/enterprise-permissions#v2-migration-admin) has to select dbt v2.
-- **Enhancement:** In the dbt VS Code extension, drag the edge of a column header in the query results panel to make that column wider or narrower.
-- **Fix:** [`dbt fmt`](/reference/commands/lint#dbt-format) no longer shifts a Jinja tag to the left when that same line ends with a SQL comment. It also settles on one indentation for Jinja tags inside a `for` loop, and for an `{% if %}...{%- else -%}` block whose condition looks up warehouse information, such as the columns on a table. Running `dbt fmt` again does not keep changing those lines.
 
 ## September 2026
 
@@ -245,12 +253,15 @@ Admins can check their settings and update the default as needed. This is availa
 - **Fix:** The error for a missing Azure DevOps account link now shows the correct message: "Missing Azure user; link your Azure DevOps account in your personal profile."
 - **Behavior change:** Creating accounts via `POST /api/v2/accounts/` is now blocked for service tokens, account-scoped personal access tokens (PATs), and OAuth access tokens. Service tokens and account-scoped user API tokens receive HTTP 400; OAuth access tokens receive HTTP 403, with explicit error messages in each case.
 
-#### Insights {#insights-september-2026}
+#### Cost Insights {#cost-insights-september-2026}
 
 - **Private beta:** Snowflake users can now configure [custom relation overrides](/docs/explore/set-up-cost-insights#custom-relation-overrides) when setting up Cost Insights. If your credentials don't have access to the `SNOWFLAKE` system database, you can use your own tables or views in place of the default Snowflake system tables. Contact your account representative for access.
-- **Enhancement:** The "last run finished at" column in the account Insights table now displays times in UTC, giving you a consistent reference regardless of your local timezone.
 - **Enhancement:** Per-query Snowflake Adaptive warehouse costs are now tracked automatically for all accounts in [Cost Insights](/docs/explore/cost-insights) when `QUERY_METERING_HISTORY` is accessible, with no additional configuration required.
 - **Behavior change:** Cost Insights aggregates now include unit tests when you filter by the Test resource type. Previously, unit tests were silently excluded, causing lower-than-expected execution counts.
+
+#### Insights {#insights-september-2026}
+
+- **Enhancement:** The "last run finished at" column in the account Insights table now displays times in UTC, giving you a consistent reference regardless of your local timezone.
 
 #### Integrations {#integrations-september-2026}
 
@@ -391,7 +402,7 @@ Two other things moved:
 - **Beta:** You can now request a Redshift PrivateLink endpoint in dbt platform in <Constant name="dbt_platform" /> without contacting dbt Support. For more information, refer to [Configure AWS PrivateLink for Redshift](/docs/platform/secure/private-connectivity/aws/aws-redshift#self-serve-private-endpoints). 
 - **Enhancement:** System for Cross-domain Identity Management (SCIM) API errors for seat or licensing failures now include email addresses so you can identify which users are blocking provisioning.
 
-#### Insights {#insights-august-2026}
+#### Cost Insights {#cost-insights-august-2026}
 
 - **Enhancement:** [Cost Insights](/docs/explore/cost-insights) now supports cost attribution for [Snowflake Adaptive Warehouses](https://docs.snowflake.com/en/user-guide/warehouses-adaptive). For setup details, refer to [Assign required permissions](/docs/explore/set-up-cost-insights#assign-required-permissions).
 
@@ -399,7 +410,7 @@ Two other things moved:
 
 - **Enhancement:** When you connect an MCP client with OAuth, more clients can now complete sign-in successfully.
 
-#### dbt platform {#dbt-platform-august-2026}
+#### dbt v2 {#dbt-v2-august-2026}
 
 - **Beta**: [dbt Core 2.0](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) is now available in beta!
 
@@ -461,14 +472,13 @@ Two other things moved:
 #### APIs, Identity, and Administration {#apis-identity-and-administration-july-2026}
 
 - **New:** Redshift development connections now support [external OAuth](/docs/platform/manage-access/redshift-external-oauth) (Okta or Entra ID) through AWS IAM Identity Center.
-- **Enhancement:** When saving a <Constant name="fusion" /> upgrade fails, the platform now displays the top-level user message from the API instead of internal field-level error details.
 - **Enhancement:** The Daily Active Target Tables (DATTs) chart now stacks billable and free series, so trial users whose usage is entirely free see real bars instead of an empty chart.
 - **Enhancement:** Users with `user_credential_write` access can now view and manage their credentials without needing `credentials_read` privileges. This update reduces the need for additional, broader permissions when performing credential updates.
 - **Enhancement:** The users table, group member lists, and user edit drawer now search, filter, sort, and paginate server-side. On large accounts, all users are findable by name, email, or license type, group member search no longer misses results beyond the first page, and users beyond the first page can be opened and edited in the user edit drawer.
 - **Enhancement:** The **Enable global account discovery** setting on the **Account settings** page is now visible to all entitled accounts without requiring a feature flag. You can allow or restrict account discovery from [Account settings](/docs/platform/account-settings#enable-global-account-discovery).
 - **Behavior change:** You can no longer create a [service token](/docs/dbt-apis/service-tokens) using an account-scoped [personal access token](/docs/dbt-apis/user-tokens) (PAT). Requests to the service tokens endpoint authenticated with a PAT now return a `400` error. Use a service token to create new ones instead.
 
-#### Insights {#insights-july-2026}
+#### Cost Insights {#cost-insights-july-2026}
 
 - **New:** [Cost Insights](/docs/explore/cost-insights) is now generally available (GA) for Snowflake, BigQuery, and Databricks.
 - **Preview:** [Cost Insights](/docs/explore/cost-insights) for Amazon Redshift is now in preview.
@@ -477,25 +487,28 @@ Two other things moved:
 
 - **Enhancement:** Credential-level [connection overrides](/docs/dbt-platform-environments#extended-attributes) (such as Databricks catalog, Snowflake warehouse, role, and database) are now surfaced as a read-only **Connection overrides** section in the profile details view, without requiring you to open the edit form.
 
+#### dbt v2 {#dbt-v2-july-2026}
+
+- **Enhancement:** When saving a <Constant name="fusion" /> upgrade fails, the platform now displays the top-level user message from the API instead of internal field-level error details.
+- **Enhancement:** On the Enable <Constant name="fusion" /> Environments page, environments already running <Constant name="fusion" /> now show a disabled checkbox, preventing unnecessary saves.
+- **Enhancement:** The `latest-fusion` release track is now <Constant name="fusion" /> Stable across all settings. Existing configurations have been updated automatically. No action is needed.
+
 #### dbt platform {#dbt-platform-july-2026}
 
-- **Enhancement:** The `latest-fusion` release track is now <Constant name="fusion" /> Stable across all settings. Existing configurations have been updated automatically. No action is needed.
-- **Enhancement:** On the Enable <Constant name="fusion" /> Environments page, environments already running <Constant name="fusion" /> now show a disabled checkbox, preventing unnecessary saves.
-
-#### Docs changes
+##### Docs changes
 
 To simplify the docs experience, clarify availability, and make it easier to find what applies to you, we made the following changes to the docs site:
 
 *tl;dr:* The docs are now organized around v1 and v2 for simplified docs versioning and navigation. We've clarified dbt Core and licensing, reorganized v2 content, and refreshed adapter and Fusion availability guidance. If you notice anything off or have any feedback, we'd love to hear it! Open up a [docs issue here](https://github.com/dbt-labs/docs.getdbt.com/issues).
 
-- **Enhancement**: We've updated the version switcher on the docs site. The version switcher now just shows v1 and v2. v2 is the current generation of dbt, built on Rust for a faster, richer dev experience; v1 is the Python-based generation of dbt. Refer to [dbt versions](/docs/introduction#dbt-versions) for what's different between v1 and v2.
 - **New:** We've added a dedicated page explaining dbt Core and its distributions. dbt Core 2.0 is the Rust-based open-source runtime. dbt Core v1.x is the Python-based runtime. Refer to [About dbt Core](/docs/introduction) for more info.
 - **New:** Licensing across dbt Core now has its own page, so you can see what applies to your setup in one place. Refer to [dbt licensing](/docs/dbt-licensing).
+- **New:** Added availability badges to pages and sections so you can quickly see what applies to your setup at a glance.
+- **Enhancement**: We've updated the version switcher on the docs site. The version switcher now just shows v1 and v2. v2 is the current generation of dbt, built on Rust for a faster, richer dev experience; v1 is the Python-based generation of dbt. Refer to [dbt versions](/docs/introduction#dbt-versions) for what's different between v1 and v2.
 - **Enhancement:** [Static analysis](/docs/build/about-static-analysis) now lives with the rest of your build docs and available in v2.
 - **Enhancement:** The Fusion upgrade readiness checklist now sits right next to the [v2 upgrade guide](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2), and the networking and telemetry references moved in [local install](/docs/local/dbt-networking-requirements) and [Reference](/reference/telemetry-observability).
 - **Enhancement:** More adapters are closer to general availability &mdash; Snowflake, BigQuery, Databricks, and Redshift are now in **Preview**, and Spark and DuckDB are in **Beta**. Refer to [Adapter lifecycles](/docs/dbt/dbt-availability?version=2.0#adapter-lifecycle) for the current status of each adapter.
 - **Enhancement:** Simplified and clarified the [Fusion feature tables](/docs/dbt/dbt-availability?version=2.0#what-you-get-with-v2) to make it easier to see what's available and how to get it.
-- **New:** Added availability badges to pages and sections so you can quickly see what applies to your setup at a glance.
 
 ## June 2026
 
@@ -519,6 +532,7 @@ To simplify the docs experience, clarify availability, and make it easier to fin
 
 #### Catalog {#catalog-june-2026}
 
+- **New:** [Model query history](/docs/explore/model-query-history) for Redshift and Databricks is now generally available (GA). 
 - **Enhancement:** [Column-level tags](/reference/resource-configs/tags) defined in your dbt project now appear on the **Columns** tab of resource details pages in <Constant name="catalog" />. You can click any tag badge to filter the lineage view, or search for columns directly by tag name. Refer to [View resource details](/docs/explore/explore-projects#view-resource-details).
 
 #### Orchestration and run status {#orchestration-and-run-status-june-2026}
@@ -536,14 +550,13 @@ To simplify the docs experience, clarify availability, and make it easier to fin
 - **Enhancement**: The [Administrative API v3](/dbt-cloud/api-v3) now supports private endpoint operations &mdash; [`list`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0#/operations/List%20Private%20Endpoints), [`create`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0#/operations/Create%20Private%20Endpoint), [`retrieve`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0#/operations/Retrieve%20Private%20Endpoint), [`update`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0#/operations/Update%20Private%20Endpoint), and [`delete`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0#/operations/Delete%20Private%20Endpoint). Use these endpoints to manage private connectivity programmatically.
 - **Fix:** If you use the Administrator API to manage [SCIM](/docs/platform/manage-access/scim) to sync users from your identity provider, the `/api/v3/accounts/{account_id}/scim/v2/Users` response now returns `value` and `display` on each embedded group reference. `id` and `displayName` are retained so existing integrations keep working — this is a non-breaking change.
 
-#### Insights {#insights-june-2026}
+#### Cost Insights {#cost-insights-june-2026}
 
 - **Beta**: [Cost Insights](/docs/explore/cost-insights) now supports Amazon Redshift Serverless and provisioned clusters. Configure your platform metadata credentials with the `sys:monitor` role or `SYSLOG ACCESS UNRESTRICTED` permission to allow dbt to read cross-user query history, then set your pricing in Cost Insights settings. For more information, refer to [Set up Cost Insights](/docs/explore/set-up-cost-insights).
 - **Enhancement**: The [Cost Insights](/docs/explore/cost-insights) table view now includes **All** and **Jobs** buttons to switch between an aggregated cost view and a per-job cost breakdown. Available in the project dashboard and the **Model performance** section in <Constant name="catalog" />. When **Jobs** is selected, the CSV export includes job-level data. For more information, refer to [Explore cost data](/docs/explore/explore-cost-data).
 
 #### Integrations {#integrations-june-2026}
 
-- **New:** [Model query history](/docs/explore/model-query-history) for Redshift and Databricks is now generally available (GA). 
 - **Beta:** <Constant name="fusion_engine" /> now supports the Salesforce Data 360 connection in the <Constant name="dbt_platform" />. For more information, refer to [Connect Salesforce Data 360](/docs/platform/connect-data-platform/connect-salesforce).
 - **Beta**: Workspace-level Private Link for Microsoft Fabric is now available in beta. Configure a private connection between the <Constant name="dbt_platform" /> and your Fabric workspace so SQL traffic stays on Azure's private network. For more information, refer to [Configuring Private Link for Microsoft Fabric](/docs/platform/secure/private-connectivity/azure/azure-fabric).
 
@@ -599,13 +612,12 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 
 #### APIs, Identity, and Administration {#apis-identity-and-administration-may-2026}
 
-- **New:** Fusion release tracks are now being rolled out across accounts in phases. Refer to [Fusion release tracks](/docs/dbt-versions/dbt-release-tracks?version=2.0#dbt-v2-release-tracks) for more information.
 - **Enhancement:** Users granted `user_credential_write` can access **Your profile** > **Credentials** without `develop_access` (including read-only users). Environment variable overrides and dbt version overrides still require `develop_access`. Refer to [Enterprise permissions](/docs/platform/manage-access/enterprise-permissions) for more information.
 - **Enhancement:** The [dbt VS Code extension](/docs/install-dbt-extension?version=2.0) now supports account creation. If you sign in with an existing dbt user that doesn't have an associated <Constant name="dbt_platform"/> account, the registration flow prompts you to create one instead of requiring a separate workflow.
 - **Enhancement:** In the Discovery API [Tests object schema](/docs/dbt-apis/discovery-schema-environment-applied-tests), you can now filter `environment.applied.tests` by multiple test result statuses in a single query using the new `lastKnownResults: [TestStatus]` filter field on `TestAppliedFilter`. The single-value `lastKnownResult` filter field is still supported but deprecated. Update your queries to use `lastKnownResults` going forward.
 - **Behavior change:** When you set up single sign-on (SSO) in the <Constant name="dbt_platform" />, the SSO slug is now system-generated and read-only. Existing SSO configurations remain valid, but you can’t change the slug. If you delete and recreate your SSO configuration, the new configuration uses a new, system-generated slug. Refer to [Single sign-on overview](/docs/platform/manage-access/sso-overview) for more information.
 
-#### Insights {#insights-may-2026}
+#### Cost Insights {#cost-insights-may-2026}
 
 - **Beta**: [Cost Insights](/docs/explore/cost-insights), available in public beta, shows estimated warehouse compute costs and run times for dbt projects and models in <Constant name="dbt_platform"/>, highlighting efficiency gains from [state-aware orchestration](/docs/deploy/state-aware-about). Refer to [Set up Cost Insights](/docs/explore/set-up-cost-insights) and [Explore cost data](/docs/explore/explore-cost-data) to learn more.
 
@@ -614,6 +626,10 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 - **New:** The Fusion + Snowflake connection experience is now generally available on the dbt platform. See our [Fusion upgrade guides](/guides/prepare-v2-upgrade?step=1) for information on enabling the upgrade workflows for your environments today!
 - **Enhancement:** Repository clone failures now surface a more actionable diagnostic message to help you resolve common issues faster. For guidance, refer to [Troubleshooting clone errors](/docs/platform/git/import-a-project-by-git-url#troubleshooting-clone-errors).
 - **Fix:** The connection test failure message now prompts you to verify your connection details and confirm that your credentials have access to the data warehouse, rather than showing a generic failure message.
+
+#### dbt v2 {#dbt-v2-may-2026}
+
+- **New:** Fusion release tracks are now being rolled out across accounts in phases. Refer to [Fusion release tracks](/docs/dbt-versions/dbt-release-tracks?version=2.0#dbt-v2-release-tracks) for more information.
 
 #### dbt platform {#dbt-platform-may-2026}
 
@@ -627,7 +643,6 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 - **New**: The [dbt Remote dbt MCP server](/docs/dbt-ai/about-mcp?version=2.0) now supports Admin API calls! This allows users to troubleshoot job-related errors in agents like Claude and Cursor.
 - **New**: The [Developer agent](/docs/dbt-ai/wizard-ide) is now in beta. Use the Developer agent to write or refactor dbt models from natural language, generate documentation, tests, semantic models, and SQL code from scratch, giving you the flexibility to modify or fix generated code. For more information, refer to the [Developer agent](/docs/dbt-ai/wizard-ide).
 - **Enhancement:** When a dbt command run by the [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) times out, the agent now automatically attempts to cancel the stuck invocation on the server and returns a retry-friendly message, letting you decide whether to retry. Previously, timeouts resulted in an unhandled error. This applies to both model invocations and autofix runs.
-- **Enhancement:** The dbt VS Code extension's **Get started** panel has been redesigned and surfaces the exact next setup step you need to install the extension and <Constant name="fusion"/>. The new panel also supports a new **agentic migration** option that helps you upgrade your project to <Constant name="fusion"/>  automatically in Copilot or Cursor. For more info, see [Getting started](/docs/install-dbt-extension#getting-started).
 
 ##### Wizard
 
@@ -640,24 +655,31 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 - **Enhancement:** The Studio IDE status bar now offers more control, more detailed information, and quicker access to settings for deferral, dbt version, and project status. For more information, refer to the [Studio IDE docs](/docs/platform/studio-ide/ide-user-interface#the-command-and-status-bar). These updates roll out in phases to existing accounts starting April 6.
 - **Enhancement:** The <Constant name="studio_ide" /> now supports deep links to a specific console tab using the `?consoleTab=` query parameter. For example, append `?consoleTab=problems` to open Studio with the **Problems** tab pre-selected. The `problems` tab applies only when it is available for the current session.
 
+#### Catalog {#catalog-april-2026}
+
+- **Beta**: [Model query history](/docs/explore/model-query-history) now also supports Databricks and Redshift. Refer to [Credential permissions](/docs/explore/model-query-history#credential-permissions) for more information.
+
 #### Orchestration and run status {#orchestration-and-run-status-april-2026}
 
-- **Beta**: DuckDB is now supported in the <Constant name="fusion_engine" /> CLI, which lets you run local dbt projects without a warehouse account. For more information, refer to [Connect DuckDB](/docs/local/connect-data-platform/duckdb-setup).
 - **Enhancement:** In <Constant name="dbt_platform" /> run logs, `dbt ls` and `dbt list` now display node results as **No-op** instead of **Unknown** when using <Constant name="fusion_engine" />. Refer to [dbt ls (list)](/reference/commands/list) for more information.
 - **Enhancement:** [Slack notifications (account-level)](/docs/deploy/job-notifications#slack-notifications-account) and [Microsoft Teams notifications](/docs/deploy/job-notifications#microsoft-teams-notifications) are now generally available, enabling you to send job notifications directly to Slack channels configured at the account level, and to Teams channels.
 
 #### APIs, Identity, and Administration {#apis-identity-and-administration-april-2026}
 
 - **New:** A universal login URL is available at [https://login.dbt.com](https://login.dbt.com), making it easier for you to view accounts you have access to across instances (regions and tenancies). This is currently available for multi-tenant accounts with an account-specific domain, and support for single-tenant accounts is coming soon. For more information, refer to [Log in to dbt platform](/docs/platform/about-platform/login).
-- **Beta**: [Model query history](/docs/explore/model-query-history) now also supports Databricks and Redshift. Refer to [Credential permissions](/docs/explore/model-query-history#credential-permissions) for more information.
 - **New**: You can now configure Snowflake PrivateLink endpoints directly in <Constant name="dbt_platform" /> without contacting dbt Support, available in private beta. Go to **Account settings → Integrations → Private endpoints** to request and manage Snowflake PrivateLink endpoints on AWS. This feature is available for Snowflake on AWS only. For more information, refer to [AWS PrivateLink for Snowflake](/docs/platform/secure/private-connectivity/aws/aws-snowflake?version=1.12).
 - **Enhancement:** You can now use arrays as values for keys in the <Constant name="dbt_platform" /> extended attributes YAML editor. For example, `db_groups: [db_editor, db_viewer]` is now valid. Previously, array values were only supported using the API. For more information, refer to [Extended attributes](/docs/dbt-platform-environments#extended-attributes).
 
 #### Integrations {#integrations-april-2026}
 
+- **Beta**: DuckDB is now supported in the <Constant name="fusion_engine" /> CLI, which lets you run local dbt projects without a warehouse account. For more information, refer to [Connect DuckDB](/docs/local/connect-data-platform/duckdb-setup).
 - **Beta**: The Redshift adapter now supports a `datasharing` profile credential on the <Constant name="dbt_platform" /> **Latest** release track. When set to `true`, dbt uses Redshift's native `SHOW` commands (for example, `SHOW TABLES`, `SHOW COLUMNS`, `SHOW SCHEMAS`) for metadata queries instead of PostgreSQL catalog tables, enabling cross-database and cross-cluster access with [Redshift Datasharing](https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html). For more information, refer to [Redshift setup](/docs/local/connect-data-platform/redshift-setup#datasharing).
 - **Enhancement:** When a connection does not have platform metadata credentials configured yet, the credentials form now renders in edit mode immediately &mdash; you no longer need to click **Add credentials** first. If you cancel, the **Add credentials** button appears so you can return to the form. Existing connections with configured platform metadata credentials are unaffected. Refer to [Configure the warehouse connection](/docs/explore/external-metadata-ingestion#configure-the-warehouse-connection) for more information.
 - **Enhancement:** In Snowflake **Private endpoints**, output validation errors now display inline beneath the text area (instead of as a page-level banner). The **Submit request** button is also disabled when the output is invalid (for example, empty, malformed JSON, or missing required fields).
+
+#### dbt v2 {#dbt-v2-april-2026}
+
+- **Enhancement:** The dbt VS Code extension's **Get started** panel has been redesigned and surfaces the exact next setup step you need to install the extension and <Constant name="fusion"/>. The new panel also supports a new **agentic migration** option that helps you upgrade your project to <Constant name="fusion"/>  automatically in Copilot or Cursor. For more info, see [Getting started](/docs/install-dbt-extension#getting-started).
 
 ## March 2026
 
@@ -677,21 +699,18 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 
 - **New**: The new <Constant name="semantic_layer"/> YAML specification is now available on the <Constant name="dbt_platform" /> **Latest** release track. For an overview of the changes and steps how to migrate to the latest YAML spec, refer to [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec).
 
-#### APIs, Identity, and Administration {#apis-identity-and-administration-march-2026}
-
-- **Behavior change:** New projects in trial, starter, or Enterprise accounts now default to **Fusion Stable** for all new environments with a supported adapter (Redshift, Snowflake, BigQuery, and Databricks). You can revert to another version by changing the dbt version in your [environment settings](/docs/dbt-platform-environments#change-environment-settings).
-
-#### Insights {#insights-march-2026}
+#### Cost Insights {#cost-insights-march-2026}
 
 - **Enhancement:** [Cost Insights](/docs/explore/cost-insights) charts now include an **Assets** filter (**Models** / **Tests** / **All**) on the **Cost**, **Usage**, **Query run time**, and **Builds** tabs. Use the dropdown on each chart to filter the data you want to view; your selection is stored per tab. The former **Model builds** tab is now labeled **Builds**. For more information, refer to [Explore cost data](/docs/explore/explore-cost-data).
 
 #### Integrations {#integrations-march-2026}
 
+-  **Beta:** Apache Spark is now supported in the <Constant name="fusion_engine" /> CLI, enabling faster compilation and execution for Spark-based dbt projects. <Constant name="fusion" /> currently supports only Apache Spark 3.0. For more information, refer to [Connect Apache Spark to Fusion](/docs/local/connect-data-platform/spark-setup).
 - **Enhancement:** The environment [Connection profiles](/docs/platform/about-profiles#environment-profiles-table) page has been updated. The profile name is now a clickable button that opens the view/edit drawer, the Connection column links to the connection details page in a new tab, and in edit mode a **swap icon** button lets you change the assigned profile. The previous ellipsis menu has been removed. For details, refer to [About profiles](/docs/platform/about-profiles).
 
-#### dbt platform {#dbt-platform-march-2026}
+#### dbt v2 {#dbt-v2-march-2026}
 
--  **Beta:** Apache Spark is now supported in the <Constant name="fusion_engine" /> CLI, enabling faster compilation and execution for Spark-based dbt projects. <Constant name="fusion" /> currently supports only Apache Spark 3.0. For more information, refer to [Connect Apache Spark to Fusion](/docs/local/connect-data-platform/spark-setup).
+- **Behavior change:** New projects in trial, starter, or Enterprise accounts now default to **Fusion Stable** for all new environments with a supported adapter (Redshift, Snowflake, BigQuery, and Databricks). You can revert to another version by changing the dbt version in your [environment settings](/docs/dbt-platform-environments#change-environment-settings).
 
 ## February 2026
 
@@ -719,15 +738,18 @@ The Invites endpoints of the dbt platform Admin v2 API now include these additio
   - `4` (PENDINGEMAIL_VERIFICATION)
   - `5` (EMAIL_VERIFIED_SSO).
 
-#### Insights {#insights-february-2026}
+#### Cost Insights {#cost-insights-february-2026}
 
 - **Private beta**: [Cost Insights](/docs/explore/cost-insights) shows estimated warehouse compute costs and run times for your dbt projects and models, directly in the <Constant name="dbt_platform" />. It highlights cost reductions and efficiency gains from optimizations like [state-aware orchestration](/docs/deploy/state-aware-about) across your project dashboard, model pages, and job details. Refer to [Set up Cost Insights](/docs/explore/set-up-cost-insights) and [Explore cost data](/docs/explore/explore-cost-data) to learn more.
 
 #### Integrations {#integrations-february-2026}
 
 - **Beta**: The `dbt-salesforce` adapter available in the <Constant name="fusion_engine" /> CLI is now in beta. For more information, refer to [Salesforce Data 360 setup](/docs/local/connect-data-platform/salesforce-data-cloud-setup).
-- **New**: [Python UDFs](/docs/build/udfs) are now supported and available in <Constant name="fusion_engine" /> when using Snowflake or BigQuery.
 - **New**: The `immutable_where` configuration is now supported for Snowflake dynamic tables. For more information, refer to [Snowflake configurations](/reference/resource-configs/snowflake-configs#immutable-where).
+
+#### dbt v2 {#dbt-v2-february-2026}
+
+- **New**: [Python UDFs](/docs/build/udfs) are now supported and available in <Constant name="fusion_engine" /> when using Snowflake or BigQuery.
 
 #### dbt platform {#dbt-platform-february-2026}
 
@@ -754,7 +776,6 @@ The Invites endpoints of the dbt platform Admin v2 API now include these additio
   - When a model fails a data test, state-aware orchestration rebuilds it on subsequent runs instead of reusing it from prior state to ensure dbt reevaluates data quality issues.
   - State-aware orchestration now detects and rebuilds models whose tables are deleted from the warehouse, even when there are no code or data changes. Previously, tables deleted externally were not detected, and therefore not rebuilt, unless code or data had changed. For more information, review [Handling deleted tables](/docs/deploy/state-aware-about#handling-deleted-tables). 
   State-aware orchestration is in private preview. refer to the [prerequisites for using the feature](/docs/deploy/state-aware-setup#prerequisites).
-- **Enhancement**: v2 now automatically reads environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. This provides a simple way to manage credentials and configuration without hardcoding them in your `profiles.yml`. The [dbt VS Code extension](/docs/about-dbt-extension) also supports `.env` files and <Term id="lsp" />-powered features. For more information, refer to [Configure environment variables](/docs/local/configure-environment-variables).
 - **Fix:** Debug logs in the **Run summary** tab are now properly truncated to improve performance and user interface responsiveness. Previously, debug logs were not truncated correctly, causing slower page loads. You can access the full debug logs by clicking **Download > Download all debug logs**. For more information, review [Run visibility](/docs/deploy/run-visibility#run-summary-tab).
 
 #### Semantic Layer {#semantic-layer-january-2026}
@@ -766,10 +787,11 @@ The Invites endpoints of the dbt platform Admin v2 API now include these additio
   - Frequently used options are now top-level keys, reducing YAML nesting depth.
   For an overview of the changes and steps how to migrate to the latest YAML spec, check [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec).
 
-#### APIs, Identity, and Administration {#apis-identity-and-administration-january-2026}
-
-- **Enhancement**: Eligible <Constant name="dbt_platform" /> accounts in the <Constant name="fusion" /> private preview can now use [Exposures](/docs/platform-integrations/downstream-exposures). 
-
 #### Insights {#insights-january-2026}
 
 - **New:** The [Semantic Layer querying](/docs/explore/navigate-dbt-insights#semantic-layer-querying) within dbt <Constant name="insights" /> is now generally available (GA), enabling you to build SQL queries against the Semantic Layer without writing SQL code.
+
+#### dbt v2 {#dbt-v2-january-2026}
+
+- **Enhancement**: Eligible <Constant name="dbt_platform" /> accounts in the <Constant name="fusion" /> private preview can now use [Exposures](/docs/platform-integrations/downstream-exposures). 
+- **Enhancement**: v2 now automatically reads environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. This provides a simple way to manage credentials and configuration without hardcoding them in your `profiles.yml`. The [dbt VS Code extension](/docs/about-dbt-extension) also supports `.env` files and <Term id="lsp" />-powered features. For more information, refer to [Configure environment variables](/docs/local/configure-environment-variables).

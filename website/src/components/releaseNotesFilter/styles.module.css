@@ -72,18 +72,16 @@
   font-weight: 600;
 }
 
-/* Area headings are `####` under the month, and `#####` headings label
-   sub-groups. */
+/* Monthly page: area headings are `####` under the month, and `#####`
+   headings label sub-groups. */
 :global(.rn-page) h4 {
   align-items: center;
-  color: var(--ifm-color-emphasis-700);
+  color: var(--ifm-heading-color);
   display: flex;
-  font-family: var(--ifm-font-family-monospace);
-  font-size: 0.85rem;
-  font-weight: 500;
-  gap: 10px;
-  letter-spacing: 0.02em;
-  margin: 1.75rem 0 0.75rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  gap: 12px;
+  margin: 2rem 0 0.75rem;
 }
 
 :global(.rn-page) h4::after {
@@ -94,6 +92,26 @@
 }
 
 :global(.rn-page) h5 {
-  font-size: 0.9rem;
-  margin: 1rem 0 0.5rem;
+  color: var(--ifm-heading-color);
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 1.25rem 0 0.5rem;
+}
+
+/* Weekly page: dates and note types are both `##`. Dates get a rule above
+   them, and the types read as sub-headings. */
+:global(.rn-weekly h2:not(.rn-type)) {
+  border-top: 1px solid var(--ifm-color-emphasis-300);
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+}
+
+:global(.rn-weekly h2.rn-type) {
+  font-size: 1.3rem;
+  margin: 1.5rem 0 0.5rem;
+}
+
+:global(.rn-weekly h3) {
+  font-size: 1.05rem;
+  margin: 1.25rem 0 0.5rem;
 }

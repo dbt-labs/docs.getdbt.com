@@ -103,7 +103,7 @@ function scanWeekly(root) {
   const entries = getSiblings(root).map((el) => {
     const text = /^H[23]$/.test(el.tagName) ? headingText(el) : '';
     if (el.tagName === 'H2' && WEEK_HEADING.test(text)) {
-      week = { heading: el, visible: false };
+      week = { heading: el, visible: false, kind: 'week' };
       type = null;
       group = OTHER;
       containers.push(week);
@@ -113,7 +113,7 @@ function scanWeekly(root) {
       el.tagName === 'H2' ||
       (el.tagName === 'H3' && TYPE_HEADINGS.includes(text.toLowerCase()))
     ) {
-      type = { heading: el, visible: false };
+      type = { heading: el, visible: false, kind: 'type' };
       group = OTHER;
       containers.push(type);
       return { container: type };
@@ -208,12 +208,25 @@ export default function ReleaseNotesFilter({
     };
   }, [moreOpen]);
 
-  // Marks the page body so the CSS module can style the area headings.
+  // Marks the page body so the CSS module can style the headings. On the weekly
+  // page the note types (New, Enhancements, and so on) share a heading level
+  // with the dates, so they are tagged to be styled as sub-headings.
   useEffect(() => {
-    const page = rootRef.current && rootRef.current.parentElement;
-    if (!page || weekly) return undefined;
-    page.classList.add('rn-page');
-    return () => page.classList.remove('rn-page');
+    const root = rootRef.current;
+    const page = root && root.parentElement;
+    if (!page) return undefined;
+    const pageClass = weekly ? 'rn-weekly' : 'rn-page';
+    page.classList.add(pageClass);
+    const typeHeadings = weekly
+      ? scanWeekly(root)
+          .containers.filter((container) => container.kind === 'type')
+          .map((container) => container.heading)
+      : [];
+    typeHeadings.forEach((heading) => heading.classList.add('rn-type'));
+    return () => {
+      page.classList.remove(pageClass);
+      typeHeadings.forEach((heading) => heading.classList.remove('rn-type'));
+    };
   }, [weekly]);
 
   useEffect(() => {

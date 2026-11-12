@@ -52,7 +52,12 @@ PAGE = """Intro text.
 class ClassifyTest(unittest.TestCase):
     def test_docs_link_wins(self):
         area, _ = AREAS.classify("See [costs](/docs/explore/cost-insights#x) in Catalog.")
-        self.assertEqual(area, "Insights")
+        self.assertEqual(area, "Cost Insights")
+
+    def test_cost_insights_and_insights_are_separate(self):
+        self.assertEqual(AREAS.classify("Cost Insights charts load faster.")[0], "Cost Insights")
+        self.assertEqual(AREAS.classify("Insights charts keep their sort order.")[0], "Insights")
+        self.assertEqual(AREAS.from_st_heading("dbt v2"), "dbt v2")
 
     def test_longest_link_prefix_wins(self):
         self.assertEqual(
