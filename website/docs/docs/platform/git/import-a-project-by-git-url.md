@@ -54,20 +54,21 @@ You must provide this Deploy Key in the Repository configuration of your <Consta
 
 ## Reconnect an existing repository
 
-If you need to change the clone URL for a project that's already connected, for example when your git provider changes its SSH hostname, disconnect and reconnect the repository. Reconnecting generates a new deploy key, so you also need to add the new key to your git provider.
+If you need to change the clone URL for a project that's already connected, disconnect and reconnect the repository. Reconnecting generates a new deploy key, so you also need to add the new key to your git provider.
 
 1. In <Constant name="dbt_platform" />, go to **Account settings** and select **Projects**, then select your project.
 2. Select the **Repository** link, then **Edit**, then **Disconnect**.
-3. Select **Confirm Disconnect**.
-4. Reconnect the repo using the **<Constant name="git" /> Clone** tab and your new SSH clone URL. For example:
+3. Select **Confirm Disconnect**. This is an irreversible action so take caution when proceeding.
+4. Reconnect the repo in your dbt project by clicking **Edit** and **Configure a repository**.
+5. Select the **<Constant name="git" /> Clone** tab and add your new SSH clone URL. For example:
    - GitHub: `git@github.com:<org>/<repo>.git`
    - GitLab: `git@gitlab.com:<org>/<repo>.git`
-   - Bitbucket: `git@ssh.bitbucket.org:<workspace>/<repo>.git`
-5. Copy the new key under **Deploy Key** on the repository details page.
-6. In your repository, add the key in your Git settings.
+   - Bitbucket: `git@ssh.bitbucket.org:<workspace>/<repo>.git` 
+6. dbt will generate a new deploy key, Copy the new key under **Deploy Key**. 
+7. In your repository, add the key in your Git settings.
    - If you use Bitbucket, add it as an SSH key. We recommend using a service account. Sign in as the service account, go to **Personal settings** and select **SSH keys**, then select **Add key** and paste in the key.
    - You can also add the key to a personal Bitbucket account using the same steps. Bitbucket links commits and other <Constant name="git" /> actions to that account's email.
-7. Go back to <Constant name="dbt_platform" /> and restart the <Constant name="studio_ide" />.
+8. Go back to <Constant name="dbt_platform" /> and restart the <Constant name="studio_ide" />.
 
 ## Troubleshooting clone errors
 If <Constant name="dbt" /> can't clone your repository after you connect it using a git URL, the issue is usually one of the following:
@@ -133,19 +134,9 @@ In the **<Constant name="git" /> Clone** tab, enter your Bitbucket SSH clone URL
 
 :::caution Bitbucket is moving SSH to a new hostname
 
-Atlassian is moving Git over SSH from `bitbucket.org` to `ssh.bitbucket.org`. `bitbucket.org` will serve HTTPS only. 
+Bitbucket is moving Git over SSH from `bitbucket.org` to `ssh.bitbucket.org`. `bitbucket.org` will serve HTTPS only. For details, read [Atlassian's announcement](https://community.atlassian.com/forums/discussion/3234032/upcoming-change-to-bitbucket-cloud-ssh-access-move-from-bitbucket-org-to-ssh-bitbucket-org).
 
-For details, read [Atlassian's announcement](https://community.atlassian.com/forums/discussion/3234032/upcoming-change-to-bitbucket-cloud-ssh-access-move-from-bitbucket-org-to-ssh-bitbucket-org).
-
-If your existing <Constant name="dbt_platform" /> project connects to Bitbucket over SSH, you need to:
-
-1. Disconnect and reconnect your repo using the updated `ssh.bitbucket.org` clone URL.
-2. Copy the new deploy key.
-3. Add the new deploy key in Bitbucket.
-4. Go back to <Constant name="dbt_platform" /> and restart the <Constant name="studio_ide" />.
-
-For detailed steps, see [Reconnect an existing repository](#reconnect-an-existing-repository).
-
+If your existing <Constant name="dbt_platform" /> project connects to Bitbucket over SSH, [disconnect and reconnect your repo](#reconnect-an-existing-repository) with the `ssh.bitbucket.org` clone URL. You'll also need to add the new deploy key in Bitbucket and restart the <Constant name="studio_ide" />.
 :::
 
 Note that the **Git URL** field is an SSH URL and different from the **Pull request URL**, which accepts `http` and `https`.  For details, see [PR template](/docs/platform/git/pr-template#bitbucket).
