@@ -29,7 +29,7 @@ If the month doesn't have that heading yet, add it in the order below with an an
 Inside an area, notes go in this order: New (and Beta or Preview), Enhancement, Fix, Behavior change.
 Not sure which area? Add the bullet directly under the month heading. A check on your pull request files it for you, or asks you to pick.
 
-- dbt AI and agents: Wizard, Wizard Desktop, Copilot, the dbt MCP server, AI models and providers, and AI billing.
+- dbt AI and agents: Wizard, Wizard Desktop, the dbt MCP server, AI agents, AI models and providers, and AI billing.
 - Studio IDE: The browser-based editor: file explorer, command panel, editor features, and development settings.
 - dbt State: dbt State and state-aware orchestration: reuse and clone behavior, the dbt State pages, trials, and usage.
 - Catalog: Catalog pages, search, lineage, model and column details, and the Discovery API.
@@ -37,10 +37,9 @@ Not sure which area? Add the bullet directly under the month heading. A check on
 - Semantic Layer: The dbt Semantic Layer, MetricFlow, metrics, saved queries, and Semantic Layer integrations.
 - APIs, Identity, and Administration: Admin APIs, tokens, SSO, SCIM, permissions, licenses, account settings, billing, and security settings.
 - Cost Insights: Warehouse cost and usage data, Cost Insights setup, and cost charts.
-- Insights: Querying, charts, and the Analyst agent experience in Insights.
 - Integrations: Data platform connections, adapters, and Git providers.
 - dbt v2: The dbt v2 engine and CLI (formerly Fusion): engine features, commands, release tracks, upgrading, and the dbt VS Code extension.
-- dbt platform: Anything that doesn't fit another area, such as account-wide platform changes.
+- dbt platform: Insights, Copilot, Canvas, and anything that doesn't fit another area, such as account-wide platform changes.
 
 Event sections, such as summit announcements, keep their own ### heading.
 The full list lives in website/release-note-areas.json.
@@ -189,10 +188,6 @@ Admins can check their settings and update the default as needed. This is availa
 - **New:** Account admins now receive an email when Cost Insights ingestion has been failing for 3 or more cycles, with follow-up emails at 14 and 28 days if it continues.
 - **Fix:** The Cost Insights dashboard no longer shows a perpetual loading spinner when partial cost data exists. You now see available cost data even when some rows have not been fully processed.
 
-#### Insights {#insights-october-2026}
-
-- **Fix:** Charts now show dates such as `2026-01` or `2026-01-15` from oldest to newest. Tables keep your query's row order until you sort a column.
-
 #### Integrations {#integrations-october-2026}
 
 - **New:** If your GitHub Enterprise Server can only be reached over a private connection (PrivateLink), you can now save that connection on the GitHub app. Set `private_link_endpoint_id` when you create or update the app through the API, and dbt routes the connection over your private network.
@@ -209,6 +204,7 @@ Admins can check their settings and update the default as needed. This is availa
 
 - **New:** Set [`allow_jinja_file_extensions`](/reference/global-configs/behavior-flags/allow_jinja_file_extensions) in your project config so dbt reads files with an extra Jinja ending, such as `model.sql.j2` or `doc.md.j2`. Jinja is the templating language dbt already uses inside SQL and Markdown files.
 - **New:** You can now [route cross-project `ref()`](/docs/mesh/govern/project-dependencies#route-environments-across-projects) to a specific upstream environment, such as Staging, instead of only the default Production or Staging environment.
+- **Fix:** Charts now show dates such as `2026-01` or `2026-01-15` from oldest to newest. Tables keep your query's row order until you sort a column.
 
 ## September 2026
 
@@ -263,13 +259,13 @@ Admins can check their settings and update the default as needed. This is availa
 - **Enhancement:** Per-query Snowflake Adaptive warehouse costs are now tracked automatically for all accounts in [Cost Insights](/docs/explore/cost-insights) when `QUERY_METERING_HISTORY` is accessible, with no additional configuration required.
 - **Behavior change:** Cost Insights aggregates now include unit tests when you filter by the Test resource type. Previously, unit tests were silently excluded, causing lower-than-expected execution counts.
 
-#### Insights {#insights-september-2026}
-
-- **Enhancement:** The "last run finished at" column in the account Insights table now displays times in UTC, giving you a consistent reference regardless of your local timezone.
-
 #### Integrations {#integrations-september-2026}
 
 - **New:** [DuckDB support for Apache Iceberg](/docs/build/iceberg/adapters/duckdb-iceberg-support) is now generally available for local use with <Constant name="fusion" />.
+
+#### dbt platform {#dbt-platform-september-2026}
+
+- **Enhancement:** The "last run finished at" column in the account Insights table now displays times in UTC, giving you a consistent reference regardless of your local timezone.
 
 ### dbt Summit 2026 announcements
 
@@ -598,8 +594,6 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 #### dbt AI and agents {#dbt-ai-and-agents-may-2026}
 
 - **Preview**: The [Developer agent](/docs/dbt-ai/wizard-ide) is now in preview. Use natural language prompts to build or refactor models, and generate SQL, tests, documentation, and semantic models from scratch. For more information, refer to the [Developer agent](/docs/dbt-ai/wizard-ide).
-- **Enhancement:** The admin API toolset (job management and run operations) is now always available in the <Constant name="dbt" /> <Constant name="copilot" /> [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) and no longer requires a feature flag. You no longer need to contact your account manager to enable these tools.
-- **Enhancement:** Commands run by <Constant name="copilot" /> and the [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) now appear in the <Constant name="studio_ide" /> **Commands** tab with a <Constant name="copilot" /> icon and **Run by Copilot** tooltip, so you can tell agent-run commands apart from manually run ones.
 - **Enhancement:** The [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) input bar now supports arrow key history navigation. Press the up arrow at the start of the input to cycle through previous inputs, and the down arrow at the end to return to more recent ones. dbt stores up to 5 previous inputs per session.
 - **Enhancement:** Tool approval and file edit dialogs in the [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) now support number key shortcuts (1, 2, 3) to select options. The first option is auto-focused when a dialog appears, so you can act immediately without clicking.
 
@@ -638,6 +632,8 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 #### dbt platform {#dbt-platform-may-2026}
 
 - **New:** [Native private packages](/docs/build/packages#native-private-packages) are now generally available (GA).
+- **Enhancement:** The admin API toolset (job management and run operations) is now always available in the <Constant name="dbt" /> <Constant name="copilot" /> [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) and no longer requires a feature flag. You no longer need to contact your account manager to enable these tools.
+- **Enhancement:** Commands run by <Constant name="copilot" /> and the [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) now appear in the <Constant name="studio_ide" /> **Commands** tab with a <Constant name="copilot" /> icon and **Run by Copilot** tooltip, so you can tell agent-run commands apart from manually run ones.
 - **Fix:** [`state:modified`](/reference/node-selection/methods#state) now detects changes to [UDF](/docs/build/udfs) properties (such as `arguments` and `returns`) defined in `.yml` files. Previously, only changes to the SQL or Python function body were detected.
 
 ## April 2026
@@ -791,11 +787,11 @@ The Invites endpoints of the dbt platform Admin v2 API now include these additio
   - Frequently used options are now top-level keys, reducing YAML nesting depth.
   For an overview of the changes and steps how to migrate to the latest YAML spec, check [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec).
 
-#### Insights {#insights-january-2026}
-
-- **New:** The [Semantic Layer querying](/docs/explore/navigate-dbt-insights#semantic-layer-querying) within dbt <Constant name="insights" /> is now generally available (GA), enabling you to build SQL queries against the Semantic Layer without writing SQL code.
-
 #### dbt v2 {#dbt-v2-january-2026}
 
 - **Enhancement**: Eligible <Constant name="dbt_platform" /> accounts in the <Constant name="fusion" /> private preview can now use [Exposures](/docs/platform-integrations/downstream-exposures). 
 - **Enhancement**: v2 now automatically reads environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. This provides a simple way to manage credentials and configuration without hardcoding them in your `profiles.yml`. The [dbt VS Code extension](/docs/about-dbt-extension) also supports `.env` files and <Term id="lsp" />-powered features. For more information, refer to [Configure environment variables](/docs/local/configure-environment-variables).
+
+#### dbt platform {#dbt-platform-january-2026}
+
+- **New:** The [Semantic Layer querying](/docs/explore/navigate-dbt-insights#semantic-layer-querying) within dbt <Constant name="insights" /> is now generally available (GA), enabling you to build SQL queries against the Semantic Layer without writing SQL code.

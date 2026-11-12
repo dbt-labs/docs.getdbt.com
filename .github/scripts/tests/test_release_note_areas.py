@@ -55,9 +55,13 @@ class ClassifyTest(unittest.TestCase):
         area, _ = AREAS.classify("See [costs](/docs/explore/cost-insights#x) in Catalog.")
         self.assertEqual(area, "Cost Insights")
 
-    def test_cost_insights_and_insights_are_separate(self):
+    def test_insights_copilot_and_canvas_file_under_dbt_platform(self):
         self.assertEqual(AREAS.classify("Cost Insights charts load faster.")[0], "Cost Insights")
-        self.assertEqual(AREAS.classify("Insights charts keep their sort order.")[0], "Insights")
+        self.assertEqual(AREAS.classify("Insights charts keep their sort order.")[0], "dbt platform")
+        self.assertEqual(AREAS.classify('<Constant name="copilot" /> shows a clearer message.')[0], "dbt platform")
+        self.assertEqual(AREAS.classify("Canvas uploads resume after a failure.")[0], "dbt platform")
+        self.assertEqual(AREAS.from_st_heading("Insights"), "dbt platform")
+        self.assertEqual(AREAS.from_st_heading("Canvas"), "dbt platform")
         self.assertEqual(AREAS.from_st_heading("dbt v2"), "dbt v2")
 
     def test_longest_link_prefix_wins(self):
@@ -82,7 +86,10 @@ class ClassifyTest(unittest.TestCase):
             AREAS.from_st_heading("Orchestration and Run Status"),
             "Orchestration and run status",
         )
-        self.assertEqual(AREAS.from_st_heading("Copilot"), "dbt AI and agents")
+        self.assertEqual(AREAS.from_st_heading("Copilot"), "dbt platform")
+        self.assertEqual(
+            AREAS.from_st_heading("dbt Copilot and agents"), "dbt AI and agents"
+        )
         self.assertIsNone(AREAS.from_st_heading("Packages"))
 
     def test_subgroup(self):
@@ -133,8 +140,8 @@ class InsertTest(unittest.TestCase):
 
     def test_new_area_goes_in_order_before_the_event_section(self):
         lines = list(PAGE)
-        insert_notes(lines, "November 2026", "Insights", [["- **New:** Chart."]], AREAS)
-        heading = lines.index("#### Insights {#insights-november-2026}")
+        insert_notes(lines, "November 2026", "Cost Insights", [["- **New:** Chart."]], AREAS)
+        heading = lines.index("#### Cost Insights {#cost-insights-november-2026}")
         self.assertGreater(heading, lines.index("#### Catalog {#catalog-november-2026}"))
         self.assertLess(heading, lines.index("### Summit 2026 announcements"))
         self.assertEqual(lines[heading - 1], "")
@@ -217,7 +224,7 @@ class InsertTest(unittest.TestCase):
     def test_no_new_level_two_or_three_headings(self):
         lines = list(PAGE)
         before = [line for line in lines if line.startswith(("## ", "### "))]
-        insert_notes(lines, "November 2026", "Insights", [["- **New:** Chart."]], AREAS)
+        insert_notes(lines, "November 2026", "Cost Insights", [["- **New:** Chart."]], AREAS)
         self.assertEqual(
             [line for line in lines if line.startswith(("## ", "### "))], before
         )

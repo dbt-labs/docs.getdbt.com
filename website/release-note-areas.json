@@ -4,7 +4,7 @@
   "areas": [
     {
       "name": "dbt AI and agents",
-      "definition": "Wizard, Wizard Desktop, Copilot, the dbt MCP server, AI models and providers, and AI billing.",
+      "definition": "Wizard, Wizard Desktop, the dbt MCP server, AI agents, AI models and providers, and AI billing.",
       "subgroups": [
         "Wizard",
         "Wizard Desktop"
@@ -17,18 +17,14 @@
       "names": [
         "Wizard",
         "Wizard Desktop",
-        "Copilot",
         "MCP"
       ],
       "constants": [
         "wizard",
-        "copilot",
         "dev_agent"
       ],
       "st_aliases": [
-        "dbt Copilot and agents",
-        "Copilot",
-        "dbt Copilot"
+        "dbt Copilot and agents"
       ],
       "featured": 2
     },
@@ -159,20 +155,6 @@
       "st_aliases": []
     },
     {
-      "name": "Insights",
-      "definition": "Querying, charts, and the Analyst agent experience in Insights.",
-      "links": [
-        "/docs/explore/navigate-dbt-insights"
-      ],
-      "names": [
-        "Insights"
-      ],
-      "constants": [
-        "insights"
-      ],
-      "st_aliases": []
-    },
-    {
       "name": "Integrations",
       "definition": "Data platform connections, adapters, and Git providers.",
       "links": [
@@ -196,11 +178,30 @@
     },
     {
       "name": "dbt platform",
-      "definition": "Anything that doesn't fit another area, such as account-wide platform changes.",
-      "links": [],
-      "names": [],
-      "constants": [],
-      "st_aliases": [],
+      "definition": "Insights, Copilot, Canvas, and anything that doesn't fit another area, such as account-wide platform changes.",
+      "links": [
+        "/docs/explore/navigate-dbt-insights",
+        "/docs/dbt-ai/copilot",
+        "/docs/platform/canvas",
+        "/docs/platform/use-canvas",
+        "/docs/platform/build-canvas-copilot"
+      ],
+      "names": [
+        "Insights",
+        "Copilot",
+        "Canvas"
+      ],
+      "constants": [
+        "insights",
+        "copilot",
+        "canvas"
+      ],
+      "st_aliases": [
+        "Insights",
+        "Copilot",
+        "dbt Copilot",
+        "Canvas"
+      ],
       "featured": 1
     }
   ]
