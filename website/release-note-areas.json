@@ -1,5 +1,5 @@
 {
-  "description": "Product areas for the dbt platform release notes (docs/docs/dbt-versions/release-notes.md). Each area is a #### heading under the month. The order here is the order of headings in a month and of the filter pills on the page. 'links' and 'names' are the docs paths and product names that point to an area, 'constants' are <Constant> names that do the same, and 'st_aliases' are other headings the single-tenant release notes use for it. Areas marked 'featured' get their own filter pill; the other areas are listed under the Filters menu.",
+  "description": "Product areas for the dbt platform release notes (docs/docs/dbt-versions/release-notes.md). Each area is a #### heading under the month. The order here is the order of headings in a month and of the filter pills on the page. 'links' and 'names' are the docs paths and product names that point to an area, 'constants' are <Constant> names that do the same, and 'st_aliases' are other headings the single-tenant release notes use for it. Areas with a 'featured' number get their own filter pill, in that order; the other areas are listed under the Filters menu.",
   "fallback": "dbt platform",
   "areas": [
     {
@@ -30,7 +30,7 @@
         "Copilot",
         "dbt Copilot"
       ],
-      "featured": true
+      "featured": 3
     },
     {
       "name": "Studio IDE",
@@ -44,8 +44,7 @@
       "constants": [
         "studio_ide"
       ],
-      "st_aliases": [],
-      "featured": true
+      "st_aliases": []
     },
     {
       "name": "dbt State",
@@ -95,7 +94,7 @@
         "Webhooks",
         "Run Automation"
       ],
-      "featured": true
+      "featured": 4
     },
     {
       "name": "Semantic Layer",
@@ -190,7 +189,8 @@
       ],
       "names": [],
       "constants": [],
-      "st_aliases": []
+      "st_aliases": [],
+      "featured": 2
     },
     {
       "name": "dbt platform",
@@ -198,7 +198,8 @@
       "links": [],
       "names": [],
       "constants": [],
-      "st_aliases": []
+      "st_aliases": [],
+      "featured": 1
     }
   ]
 }

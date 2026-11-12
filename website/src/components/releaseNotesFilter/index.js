@@ -3,10 +3,14 @@ import areaList from '@site/release-note-areas.json';
 import styles from './styles.module.css';
 
 // Release note areas. The list lives in website/release-note-areas.json. Areas
-// marked `featured` there get their own pill; the other areas that appear on
-// the page are listed, in alphabetical order, under the "Filters" menu.
+// with a `featured` number there get their own pill, in that order; the other
+// areas that appear on the page are listed, in alphabetical order, under the
+// "Filters" menu.
 const DEFAULT_AREAS = areaList.areas.map((area) => area.name);
-const FEATURED_AREAS = areaList.areas.filter((area) => area.featured).map((area) => area.name);
+const FEATURED_AREAS = areaList.areas
+  .filter((area) => area.featured)
+  .sort((a, b) => a.featured - b.featured)
+  .map((area) => area.name);
 const byName = (a, b) => a.localeCompare(b, 'en', { sensitivity: 'base' });
 const ALL = 'All';
 const ANNOUNCEMENTS = 'Announcements';
@@ -256,7 +260,7 @@ export default function ReleaseNotesFilter({
 
   // Pills for the featured areas, then one menu with the rest. "Other" (the
   // single-tenant catch-all) stays last in the menu.
-  const pillAreas = present.filter((area) => featured.includes(area)).sort(byName);
+  const pillAreas = featured.filter((area) => present.includes(area));
   const rest = present.filter((area) => !pillAreas.includes(area));
   const menuAreas = [
     ...rest.filter((area) => area !== OTHER).sort(byName),
