@@ -50,7 +50,7 @@ The following table shows where <Constant name="wizard" /> is available, the AI 
 | Where | Status | AI access options |
 |---|---|---|
 | [<Constant name="dbt_platform" />](/docs/platform/wizard-platform) | Public preview | dbt <Term id="managed" /> or BYOK |
-| [Locally: Wizard Desktop](/docs/dbt-ai/wizard-desktop) | Public beta | dbt <Term id="managed" /> or BYOK, or OpenAI subscription |
+| [Locally: Wizard Desktop](/docs/dbt-ai/wizard-desktop) | Public beta | dbt <Term id="managed" />, BYOK, or OpenAI subscription |
 | [Locally: Wizard terminal (CLI)](/docs/dbt-ai/wizard-cli) | Public beta | dbt <Term id="managed" />, BYOK, or OpenAI subscription |
 </SimpleTable>
 
