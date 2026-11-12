@@ -50,7 +50,7 @@ The following table shows where <Constant name="wizard" /> is available, the AI 
 | Where | Status | AI access options |
 |---|---|---|
 | [<Constant name="dbt_platform" />](/docs/platform/wizard-platform) | Public preview | dbt <Term id="managed" /> or BYOK |
-| [Locally: Wizard Desktop](/docs/dbt-ai/wizard-desktop) | Public beta | dbt <Term id="managed" /> or BYOK |
+| [Locally: Wizard Desktop](/docs/dbt-ai/wizard-desktop) | Public beta | dbt <Term id="managed" /> or BYOK, or OpenAI subscription |
 | [Locally: Wizard terminal (CLI)](/docs/dbt-ai/wizard-cli) | Public beta | dbt <Term id="managed" />, BYOK, or OpenAI subscription |
 </SimpleTable>
 
@@ -66,7 +66,7 @@ If AI model provider (OpenAI, Anthropic, or Fireworks) has an outage, dbt <Term 
 
 ## Get started
 
-You can get started with Wizard wherever you work, whether it's the terminal or <Constant name="dbt_platform" />:
+You can get started with Wizard wherever you work, whether it's the Desktop app, <Constant name="dbt_platform" />, or the terminal:
 - [Wizard in <Constant name="dbt_platform"/>](#wizard-in-dbt-platform)
 - [Wizard Desktop](#wizard-desktop)
 - [Wizard in the CLI](#wizard-in-the-cli)
