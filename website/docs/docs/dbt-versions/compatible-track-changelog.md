@@ -13,6 +13,71 @@ Each monthly **v1 Compatible** release includes functionality matching up-to-dat
 
 For more information, see [release tracks](/docs/dbt-versions/dbt-release-tracks).
 
+## November 2026
+
+Release date: November 12, 2026
+
+### dbt platform
+
+#### Features
+
+- Add the `state_decision_id` attribute to `RunResult`.
+
+#### Fixes
+
+- Pass git package URLs, revisions, and subdirectories to git after `--` in `dbt deps`.
+- Recognize supported dbt State configurations on snapshots and data tests during JSON schema validation.
+- Unquote and lowercase `unique_key` in compare results so it matches the sample record field names for quoted or uppercase primary key columns.
+
+#### Dependencies
+
+- Raise the `dbt-databricks` upper bound from `<1.13` to `<1.14` so the lockfile can resolve `dbt-databricks` 1.13.0, the first release whose `dbt-core` bound (`<1.12.7`) admits `dbt-core` 1.12.6.
+- Raise the `dbt-protos` minimum to 1.0.565 so `RunResultMsg` carries `state_decision_id`.
+
+This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
+
+```
+dbt-core==1.12.6
+
+# shared interfaces
+dbt-adapters==1.24.5
+dbt-common==1.38.0
+dbt-extractor==0.6.0
+dbt-semantic-interfaces==0.9.0
+dbt-sl-sdk[sync]==0.13.4
+dbt-state==2.62.10
+
+# adapters
+dbt-athena==1.11.1
+dbt-bigquery==1.12.3
+dbt-databricks==1.13.0
+dbt-fabric==1.9.4
+dbt-postgres==1.11.0
+dbt-redshift==1.11.2
+dbt-snowflake==1.12.5
+dbt-spark==1.10.3
+dbt-synapse==1.8.5
+dbt-teradata==1.12.1
+dbt-trino==1.11.0
+```
+
+Changelogs:
+- [dbt-core 1.12.6](https://github.com/dbt-labs/dbt/blob/1.12.latest/CHANGELOG.md)
+- [dbt-adapters 1.24.5](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md)
+- [dbt-common 1.38.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
+- [dbt-state 2.62.10](https://github.com/dbt-labs/dbt-state)
+- [dbt-athena 1.11.1](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-athena/CHANGELOG.md)
+- [dbt-bigquery 1.12.3](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-bigquery/CHANGELOG.md)
+- [dbt-databricks 1.13.0](https://github.com/databricks/dbt-databricks/blob/main/CHANGELOG.md)
+- [dbt-fabric 1.9.4](https://github.com/microsoft/dbt-fabric/releases/tag/v1.9.4)
+- [dbt-postgres 1.11.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-postgres/CHANGELOG.md)
+- [dbt-redshift 1.11.2](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-redshift/CHANGELOG.md)
+- [dbt-snowflake 1.12.5](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-snowflake/CHANGELOG.md)
+- [dbt-spark 1.10.3](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-spark/CHANGELOG.md)
+- [dbt-synapse 1.8.5](https://github.com/microsoft/dbt-synapse/blob/v1.8.latest/CHANGELOG.md)
+- [dbt-teradata 1.12.1](https://github.com/Teradata/dbt-teradata/releases/tag/v1.12.1)
+- [dbt-trino 1.11.0](https://github.com/starburstdata/dbt-trino/blob/master/CHANGELOG.md)
+
 ## October 2026
 
 Release date: October 15, 2026
