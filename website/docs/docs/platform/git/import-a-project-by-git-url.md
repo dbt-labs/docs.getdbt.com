@@ -116,11 +116,16 @@ In the **<Constant name="git" /> Clone** tab, enter your Bitbucket SSH clone URL
 
 :::caution Bitbucket is moving SSH to a new hostname
 
-Atlassian is moving Git over SSH from `bitbucket.org` to `ssh.bitbucket.org`. `bitbucket.org` will serve HTTPS only. For details, read [Atlassian's announcement](https://community.atlassian.com/forums/discussion/3234032/upcoming-change-to-bitbucket-cloud-ssh-access-move-from-bitbucket-org-to-ssh-bitbucket-org).
+Atlassian is moving Git over SSH from `bitbucket.org` to `ssh.bitbucket.org`. `bitbucket.org` will serve HTTPS only. 
+
+If your existing <Constant name="dbt_platform" /> project connects to Bitbucket over SSH, disconnect and reconnect your repo to ensure you're using the `ssh.bitbucket.org` format. For example, `git@ssh.bitbucket.org:<workspace>/<repo>.git`. Replace `<workspace>` and `<repo>` with your own values.
+
+
+For details, read [Atlassian's announcement](https://community.atlassian.com/forums/discussion/3234032/upcoming-change-to-bitbucket-cloud-ssh-access-move-from-bitbucket-org-to-ssh-bitbucket-org).
 
 :::
 
-Note that the Git URL is an SSH URL and different from the **Pull request URL**: it's an HTTPS web link on `bitbucket.org`. <Constant name="dbt" /> fills it in for you, and it stays an `https://bitbucket.org/...` link even when your clone URL uses `ssh.bitbucket.org`. For details, see [PR template](/docs/platform/git/pr-template#bitbucket).
+Note that the **Git URL** field is an SSH URL and different from the **Pull request URL**, which accepts `http` and `https`.  For details, see [PR template](/docs/platform/git/pr-template#bitbucket).
 
 ### Add a deploy key
 
