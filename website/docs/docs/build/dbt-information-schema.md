@@ -97,9 +97,9 @@ models = pd.read_parquet("target/info_schema/v1/dbt.models.parquet")
 
 [Checks](/docs/build/checks) are SQL queries that run against the dbt Information Schema to check your project quality.
 
-Use the [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) macro in your check to reference a view in the dbt Information Schema. You don't need to run `--generate-info-schema` before `dbt check` &mdash; checks run against an intermediate representation of the Information Schema built at parse time.
+Use the [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) macro in your check to reference a view in the dbt Information Schema. Checks use a version of the Information Schema built during parsing, so you don't need to run `--generate-info-schema` before dbt check.
 
-You must set the version of the `info_schema` you want to use in `dbt_project.yml`. Currently, `1` is the only available version.
+Set the `info_schema` version in `dbt_project.yml`. Currently, `1` is the only available version.
 
 ```yaml
 info_schema:
