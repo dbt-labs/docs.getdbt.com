@@ -54,7 +54,7 @@ To set up the Databricks connection, supply the following fields:
 
 The following configurations are optional and you can save the connection without filling them in.
 
-- **Catalog** is the Unity Catalog name this connection builds into, such as `dev` or `prod`. dbt then uses a three-part name: catalog, schema, and model.
+- **Catalog:** The Unity Catalog name this connection builds into, such as `dev` or `prod`. dbt puts that name in front of the schema and model, for example `prod.analytics.orders`.
 - **OAuth Client ID:** The client ID from your Databricks OAuth app.
 - **OAuth Client Secret:** The client secret from that same app.
 
