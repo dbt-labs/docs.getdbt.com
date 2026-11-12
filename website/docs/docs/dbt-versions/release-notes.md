@@ -61,7 +61,6 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 - **Fix:** Unit tests that set [`overrides.vars`](/reference/resource-properties/unit-tests) can still see the variables from your project.
 - **Fix:** If your project defines its own adapter macros, such as `create_schema`, dbt uses those macros.
 - **Fix:** [Auto-exposures](/docs/platform-integrations/downstream-exposures) from business intelligence tools no longer fail with a `dbt1005` error on warehouses other than Snowflake.
-
 - **New:** You can now connect Gemini Enterprise to the remote dbt MCP server to explore your dbt projects in plain English. Refer to [Integrate Gemini Enterprise with dbt MCP](/docs/dbt-ai/integrate-mcp-gemini-enterprise).
 - **New:** Set an expiration date when you create a [personal access token](/docs/dbt-apis/user-tokens#set-a-token-expiration) or [service token](/docs/dbt-apis/service-tokens#set-a-token-expiration). Choose 7, 14, 30, 90, or 365 days, or keep the default of no expiry. Existing tokens that don't have an expiration set won't expire.
 - **New:** The remote dbt MCP server is now available on [Databricks Marketplace](https://marketplace.databricks.com/details/6d83d4e0-5279-47b7-831c-3cb90a82ecb3/dbt-Labs_dbt-MCP). Install it in a few steps to use your dbt project from Databricks. Refer to [Integrate Databricks with dbt MCP](/docs/dbt-ai/integrate-mcp-databricks).
