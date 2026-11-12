@@ -23,7 +23,6 @@ Learn how to access <Constant name="insights" />, run queries, and view results.
 - View the results of the query and its details using the **Data** or **Details** tabs
 - Create a visualization of your query results using the **Chart** tab
 - View the history of queries and their statuses (like Success, Error, Pending) using the **Query history** tab
-- Integrate with [<Constant name="catalog" />](/docs/explore/explore-projects), [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), and [<Constant name="canvas" />](/docs/platform/canvas) to provide a seamless experience for data exploration, AI-assisted writing, and collaboration
 
 ## Access the dbt Insights interface
 
@@ -71,7 +70,6 @@ Let's use an example to illustrate how to run queries in <Constant name="insight
     group by 1
     order by 1
     ```
-
 
 ### View results
 
@@ -130,7 +128,7 @@ Set the compilation environment to control how Jinja functions are rendered. Thi
 - Supports "typed" environments marked as `Production`, `Staging`, and/or `Development`.
 - Enables you to run <Constant name="semantic_layer" />. queries against staging environments (development environments not supported).
 - Still uses the individual user credentials, so users must have appropriate access to query `PROD` and `STG`. 
-- Changing the environment changes context for the <Constant name="catalog" /> view in <Constant name="insights" />, as well as the environment context during the handoff to <Constant name="catalog" /> and <Constant name="canvas" />. For example, switching to `Staging` in <Constant name="insights" /> and selecting **View in Catalog** will open the `Staging` view in <Constant name="catalog" />. 
+- Changing the environment changes context for the <Constant name="catalog" /> view in <Constant name="insights" />, as well as the environment context during the handoff to <Constant name="catalog" />. For example, switching to `Staging` in <Constant name="insights" /> and selecting **View in Catalog** will open the `Staging` view in <Constant name="catalog" />. 
 
 <Lightbox src="/img/docs/dbt-insights/insights-jinja-environment.png" width="90%" title="Set the environment for your Jinja context" />
 

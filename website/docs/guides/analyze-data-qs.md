@@ -16,11 +16,12 @@ As a data analyst, you play a key role in transforming complex data into trusted
 In this quickstart, you’ll learn how to:
 
 * Use <Constant name="catalog" /> to browse and understand data models across both dbt and Snowflake data assets
-* Use <Constant name="canvas" /> to visually build your own data models
 * Build confidence using <Constant name="dbt" /> as your workspace enhanced with AI
 
 Here's more about the tools you will use on your journey:
 * <Constant name="catalog" />: View your project's resources (such as models, tests, and metrics), their lineage, and query patterns to gain a better understanding of its latest production state.
+* <Constant name="insights" />: Explore, validate, and query data with an intuitive, context-rich interface that bridges technical and business users by combining metadata, documentation, AI-assisted tools, and powerful querying capabilities.
+* <Constant name="studio_ide" />: Develop, test, and commit dbt models in your browser with built-in AI for custom code generation.
 * <Constant name="canvas" />: Quickly access and transform data through a visual, drag-and-drop experience and with a built-in AI for custom code generation.
 
 
@@ -58,6 +59,9 @@ The `first_ordered_at` column stands out to Kimiko, and she wonders if she might
 
 ### Visualize results
 
+Kimiko has a few conversations with teammates and she finds out they're running pretty similar one-off queries, so she decides to take her long running query that she previously bookmarked and turn it into a full-fledged dbt model using <Constant name="studio_ide" />. She does this so she can share it with others, which de-duplicates work and helps her team become more efficient. 
+
+To do this, she opens the query in <Constant name="insights" /> and clicks **Develop** then ***Develop in** <Constant name="studio_ide" />. This opens the SQL query as a new model in the IDE.
 Kimiko wants to answer the stakeholder's question by building on the `customers` model, and she wants to share the result with her team so they don't repeat the same one-off work. To do this, she turns her analysis into a full-fledged dbt model using <Constant name="canvas" />. From the **Customer model page** in <Constant name="catalog" />, she selects **Develop** then **Develop in** <Constant name="canvas" />. This opens the model in a visual form, represented in a DAG.
 
 
