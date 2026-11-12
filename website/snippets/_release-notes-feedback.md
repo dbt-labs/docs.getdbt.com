@@ -1,4 +1,4 @@
-:::tip New look, and we'd love your feedback
+:::tip New look, and we'd love your feedback!
 
 We've redesigned the release notes to make them easier to scan. Use the filters to show the product area you care about.
 
