@@ -52,12 +52,12 @@ To set up the Databricks connection, supply the following fields:
 
 ## Optional settings
 
-These fields set the Unity Catalog this connection builds into and the Databricks OAuth app for the <Constant name="studio_ide" />. You can save the connection without filling them in.
+The following configurations are optional and you can save the connection without filling them in.
 
 - **Catalog** is the Unity Catalog name this connection builds into, such as `dev` or `prod`. dbt then uses a three-part name: catalog, schema, and model.
-- **OAuth Client ID** is the client ID from your Databricks OAuth app.
-- **OAuth Client Secret** is the client secret from that same app.
+- **OAuth Client ID:** The client ID from your Databricks OAuth app.
+- **OAuth Client Secret:** The client secret from that same app.
 
-**OAuth Client ID** and **OAuth Client Secret** are available on Enterprise and Enterprise+ plans. Once you set them, each developer signs in with Databricks to use the <Constant name="studio_ide" />. Deployment environments do not use these fields. For jobs, configure token-based credentials in the [deployment connection profile](/docs/platform/about-profiles).
+**OAuth Client ID** and **OAuth Client Secret** are available on Enterprise and Enterprise+ plans and applicable only to Development environments. Once you set them, each developer signs in with Databricks to use the <Constant name="studio_ide" />.  For jobs, configure token-based credentials in the [deployment connection profile](/docs/platform/about-profiles).
 
 For setup steps, refer to [Set up Databricks OAuth](/docs/platform/manage-access/set-up-databricks-oauth).
