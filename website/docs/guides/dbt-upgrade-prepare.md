@@ -44,9 +44,42 @@ Start with smaller, newer, or more familiar projects first. This makes it easier
 
 :::
 
+## Prepare with dbt Wizard workflows {#prepare-with-wizard}
+
+If you're taking advantage of <Constant name="wizard" />, you can use it to do most of the preparation in this guide for you: run the autofix tool, triage the errors that remain, apply validated fixes, and confirm your project compiles. This section covers only the upgrade workflows and assumes you already have <Constant name="wizard" /> configured. To set up <Constant name="wizard" />, refer to the [<Constant name="wizard" /> overview](/docs/platform/wizard-overview).
+
+Before you start, make sure you're on a new branch and that your environments use the **v1 Latest** release track.
+
+### Run the v2 migration workflow in Studio IDE
+
+The v2 migration workflow is the fastest way to update an ineligible job. You can start it from either:
+
+- **Job list:** Click **Review job** for a job, then choose **Debug in Studio with dbt Wizard**. Refer to [Debug in Studio with dbt Wizard](#debug-in-studio-with-dbt-wizard).
+- **Studio IDE:** Run **Check & fix deprecations**, then click **Migrate with dbt Wizard** when dbt prompts you to enable v2.
+
+### Run a migration workflow from your terminal or Wizard Desktop
+
+If you develop locally, ask <Constant name="wizard" /> to run the `migrating-dbt-core-to-v2` skill from your dbt project root:
+
+```text
+Use the migrating-dbt-core-to-v2 skill to get this project ready for dbt v2. Run dbt-autofix first, then triage anything that's left.
+```
+
+<Constant name="wizard" /> runs [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix), classifies the remaining errors as auto-fixable, guided, needs your input, or blocked, and applies fixes in that order. Review each permission request and the final summary before you commit.
+
+### Check readiness with Wizard
+
+When <Constant name="wizard" /> finishes, use the following prompts to confirm the work:
+
+- `Run dbt compile --static-analysis strict and summarize any remaining errors or warnings.`
+- `List any packages in packages.yml that aren't compatible with dbt v2 and the version I should upgrade to.`
+- `Summarize every file you changed and why, so I can review the diff.`
+
+Then commit your changes and open a pull request. After you merge it, re-run your jobs and check the readiness panel to confirm they're eligible.
+
 ## Enable dbt v2 readiness features
 
-The <Constant name="fusion" /> readiness panel in the <Constant name="dbt_platform" /> and shows each project's eligibility status and blockers, is being rolled out in phases. If it hasn't been automatically enabled for your account yet, an [account admin](/docs/platform/manage-access/enterprise-permissions#account-admin) can manually enable it. This lets admins and developers see which projects and jobs are eligible for <Constant name="fusion" />, identify blockers, and initiate the upgrade once preparation is complete.
+The <Constant name="fusion" /> readiness panel in the <Constant name="dbt_platform" /> shows each project's eligibility status and blockers. If it hasn't been automatically enabled for your account, an [account admin](/docs/platform/manage-access/enterprise-permissions#account-admin) can manually enable it. This lets admins and developers see which projects and jobs are eligible for <Constant name="fusion" />, identify blockers, and initiate the upgrade once preparation is complete.
 
 ### Step 1: Enable the readiness toggle
 
@@ -473,38 +506,6 @@ Congratulations! You have validated <Constant name="fusion" /> eligibility for y
 
 <Lightbox src="/img/v2/v2-eligible.png" width="60%" title="Your job is now ready for v2!"/>
 
-## Prepare with dbt Wizard workflows {#prepare-with-wizard}
-
-If you're taking advantage of <Constant name="wizard" />, you can use it to do most of the preparation in this guide for you: run the autofix tool, triage the errors that remain, apply validated fixes, and confirm your project compiles. This section covers only the upgrade workflows and assumes you already have <Constant name="wizard" /> configured. To set up <Constant name="wizard" />, refer to the [<Constant name="wizard" /> overview](/docs/platform/wizard-overview).
-
-Before you start, make sure you're on a new branch and that your environments use the **v1 Latest** release track.
-
-### Run the v2 migration workflow in Studio IDE
-
-The v2 migration workflow is the fastest way to update an ineligible job. You can start it from either:
-
-- **Job list:** Click **Review job** for a job, then choose **Debug in Studio with dbt Wizard**. Refer to [Debug in Studio with dbt Wizard](#debug-in-studio-with-dbt-wizard).
-- **Studio IDE:** Run **Check & fix deprecations**, then click **Migrate with dbt Wizard** when dbt prompts you to enable v2.
-
-### Run a migration workflow from your terminal or Wizard Desktop
-
-If you develop locally, ask <Constant name="wizard" /> to run the `migrating-dbt-core-to-v2` skill from your dbt project root:
-
-```text
-Use the migrating-dbt-core-to-v2 skill to get this project ready for dbt v2. Run dbt-autofix first, then triage anything that's left.
-```
-
-<Constant name="wizard" /> runs [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix), classifies the remaining errors as auto-fixable, guided, needs your input, or blocked, and applies fixes in that order. Review each permission request and the final summary before you commit.
-
-### Check readiness with Wizard
-
-When <Constant name="wizard" /> finishes, use the following prompts to confirm the work:
-
-- `Run dbt compile --static-analysis strict and summarize any remaining errors or warnings.`
-- `List any packages in packages.yml that aren't compatible with dbt v2 and the version I should upgrade to.`
-- `Summarize every file you changed and why, so I can review the diff.`
-
-Then commit your changes and open a pull request. After you merge it, re-run your jobs and check the readiness panel to confirm they're eligible.
 
 ## What's next? 
 
