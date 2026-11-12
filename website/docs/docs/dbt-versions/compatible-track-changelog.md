@@ -15,7 +15,7 @@ For more information, see [release tracks](/docs/dbt-versions/dbt-release-tracks
 
 ## November 2026
 
-Release date: November 12, 2026
+Release date: November 16, 2026
 
 ### dbt platform
 
