@@ -1,7 +1,7 @@
 ---
 title: "dbt AI FAQs"
 sidebar_label: "dbt AI FAQs"
-description: "Answers to common questions about dbt AI features, including dbt Wizard and dbt Copilot."
+description: "Answers to common questions about dbt AI features, including dbt Wizard."
 availability: all_users
 ---
 
@@ -10,7 +10,7 @@ import WizardArchitecturePlatform from '/snippets/_wizard-architecture-platform.
 # dbt AI FAQs
 
 <IntroText>
-Answers to common questions about dbt AI features, including <Constant name="wizard" /> and dbt Copilot.
+Answers to common questions about dbt AI features, including <Constant name="wizard" />.
 </IntroText>
 
 <Constant name="wizard" /> is an AI-powered assistant fully integrated into your <Constant name="dbt" /> experience that handles the tedious tasks, speeds up workflows, and ensures consistency, helping you deliver exceptional data products faster.
@@ -25,7 +25,7 @@ dbt Labs is committed to protecting your privacy and data. This page provides in
 
 Use <Constant name="wizard" /> to investigate lineage and downstream impact, generate or refactor SQL from natural-language prompts, create [documentation](/docs/build/documentation), [data tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models), and validate changes with warehouse awareness.
 
-In the <Constant name="dbt_platform" />, <Constant name="wizard" /> is available in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-studio-ai) and the [<Constant name="wizard" /> home tab](/docs/platform/wizard-home). dbt Copilot is available in [<Constant name="insights" />](/docs/explore/dbt-insights).
+In the <Constant name="dbt_platform" />, <Constant name="wizard" /> is available in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-studio-ai) and the [<Constant name="wizard" /> home tab](/docs/platform/wizard-home).
 
 In the CLI, you can use <Constant name="wizard" /> from your terminal for local development workflows.
 
@@ -60,17 +60,6 @@ AI features are enabled by default. Admins can [turn them off or back on anytime
 - Review proposed file changes as diffs before they are persisted.
 
 <Constant name="wizard" /> is built into dbt experiences with dbt governance, privacy, and security controls.
-
-</Expandable>
-
-<Expandable alt_header="Is dbt Wizard the same as dbt Copilot?">
-
-No, <Constant name="wizard" /> and dbt Copilot are separate products.
-
-<Constant name="wizard" /> is the latest and next generation of agentic product available in the <Constant name="dbt_platform" /> and as a CLI. It uses your project context to help you develop governed dbt changes faster. Think of it like a smart AI agent that has a map of your project. Instead of having to read through each file and understand the context, it can answer questions and help you develop _and_ validate your changes faster.
-
-dbt Copilot features for those who have access to them, include quick-action buttons in <Constant name="studio_ide" /> and the Copilot pane in <Constant name="insights" />.
-
 </Expandable>
 
 <Expandable alt_header="Can I use my existing dbt Copilot action allotment with dbt Wizard?">
