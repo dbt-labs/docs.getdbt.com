@@ -85,6 +85,5 @@ If you want to re-run onboarding — re-authenticate, reset project config, or r
 - [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro) for recommended workflows
 - [Use skills locally](/docs/dbt-ai/wizard-skills) for giving Wizard reusable instructions for your project
 - [Use MCP servers](/docs/dbt-ai/wizard-mcp) to connect <Constant name="wizard" /> CLI to more tools and context
-- [Migrate from Claude Code](/docs/dbt-ai/wizard-migrate) for bringing existing Claude Code project context into <Constant name="wizard" />
 
 <WizardFeedbackCallout />
