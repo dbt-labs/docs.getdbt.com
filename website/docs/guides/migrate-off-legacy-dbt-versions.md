@@ -40,13 +40,14 @@ The fastest way to migrate is the **Legacy dbt versions** dashboard in your acco
 
 4. Use the following table to decide what to do with each environment.
 
+If you don't upgrade a legacy environment or clear a legacy job, it's cleaned up when legacy versions are retired on <Constant name="legacy_deprecation_date" />: a legacy environment (and its jobs) is deleted, a legacy environment that already has a job on a supported version is **updated** with only the legacy jobs removed, and a supported environment with legacy-pinned jobs keeps the environment and loses **only those jobs**.
+
+
 | Environment | Jobs | What you do |
 |-------------|------|-------------|
 | Legacy (v1.3–v1.7) | Inherit the environment's version or are pinned to a legacy version | [Upgrade the project's code](/guides/migrate-off-legacy-dbt-versions?step=3&version=2), then [upgrade the environment](/guides/migrate-off-legacy-dbt-versions?step=4&version=2) |
 | Supported | One or more jobs pinned to a legacy version | [Update the jobs](/guides/migrate-off-legacy-dbt-versions?step=5&version=2) from **View jobs** |
 | Legacy and **dormant** (unused 12+ months) | — | [Delete the environment](/guides/migrate-off-legacy-dbt-versions?step=2&version=2), or upgrade it if you still need it |
-
-If you don't upgrade a legacy environment or clear a legacy job, it's cleaned up when legacy versions are retired on <Constant name="legacy_deprecation_date" />: a legacy environment (and its jobs) is deleted, a legacy environment that already has a job on a supported version is **updated** with only the legacy jobs removed, and a supported environment with legacy-pinned jobs keeps the environment and loses **only those jobs**.
 
 ## Delete a dormant environment
 
