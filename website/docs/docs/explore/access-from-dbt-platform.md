@@ -5,9 +5,9 @@ description: "Learn where and how to directly access and interact with Catalog f
 availability: platform_login
 ---
 
-Access <Constant name="catalog" /> from jobs, <Constant name="insights" />, and other areas of <Constant name="dbt" /> to move quickly between run context, lineage, and resource metadata in your project.
+Access <Constant name="catalog" /> from jobs and other areas of <Constant name="dbt" /> to move quickly between run context, lineage, and resource metadata in your project.
 
-This page describes how to open <Constant name="catalog" /> from orchestration and exploration workflows in <Constant name="dbt" />. The primary way to open <Constant name="catalog" /> is **Catalog** in the navigation; you can also open it from jobs and <Constant name="insights" /> as described in the sections below.
+This page describes how to open <Constant name="catalog" /> from orchestration and exploration workflows in <Constant name="dbt" />. The primary way to open <Constant name="catalog" /> is **Catalog** in the navigation; you can also open it from jobs as described in the sections below.
 
 ### Lineage tab in jobs
 
@@ -33,10 +33,3 @@ You can open <Constant name="catalog" /> from the **model timing tab** to invest
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-from-model-timing.png" title="Access dbt Catalog from the model timing tab by hovering over the resource and clicking 'View in Explorer'." />
 
-### dbt Insights <Lifecycle status="managed,managed_plus" />
-
-Open <Constant name="catalog" /> from [<Constant name="insights" />](/docs/explore/access-dbt-insights) to view project lineage and resources such as tables, columns, metrics, dimensions, and more.
-
-To open <Constant name="catalog" /> from <Constant name="insights" />, select the **<Constant name="catalog" />** icon in the Query console sidebar menu, then search for the resource you want.
-
-<Lightbox src="/img/docs/dbt-insights/insights-explorer.png" width="90%" title="dbt Insights integrated with dbt Catalog" />
