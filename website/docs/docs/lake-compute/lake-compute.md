@@ -46,9 +46,9 @@ After you complete setup, you need a dbt project running on **dbt v2**. You also
 
 ### Supported warehouses
 
-Snowflake is the only warehouse supported during private beta. Early Databricks support is available to a limited number of design partners. To evaluate Lake Compute with Databricks, fill out the [Lake Compute signup form](https://docs.google.com/forms/d/e/1FAIpQLSdWXHU3VFqq1t8GVAA2BMfY_AfeVJH26OXJFlNwXiVv4pcuXQ/viewform) and name Databricks as your platform.
+Snowflake and BigQuery are supported during private beta. Refer to [Lake Compute with Snowflake](/docs/lake-compute/compute-onboarding-snowflake) and [Lake Compute with BigQuery](/docs/lake-compute/compute-onboarding-bigquery) for setup. Early Databricks support is available to a limited number of design partners. To evaluate Lake Compute with Databricks, fill out the [Lake Compute signup form](https://docs.google.com/forms/d/e/1FAIpQLSdWXHU3VFqq1t8GVAA2BMfY_AfeVJH26OXJFlNwXiVv4pcuXQ/viewform) and name Databricks as your platform.
 
-In "sidecar" execution, Lake Compute runs alongside your warehouse, reading from and writing/propagating back to the warehouse’s managed Iceberg catalog (Snowflake Horizon or Databricks Unity).
+In "sidecar" execution, Lake Compute runs alongside your warehouse, reading from and writing/propagating back to the warehouse’s managed Iceberg catalog (Snowflake Horizon or Databricks Unity) or, for BigQuery, publishing results to BigQuery as Iceberg tables through a BigLake connection.
 
 ### Required permissions
 
@@ -63,7 +63,7 @@ Depending on your data warehouse, you may also need to:
 - Configure key-pair or other required programmatic authentication
 - Allow Lake Compute egress if your warehouse account enforces network policies
 
-For Snowflake, some setup steps require `ACCOUNTADMIN` or equivalent delegated privileges, such as `NETWORK_ADMIN` for network policy changes. Always refer to the [latest setup guide](/docs/lake-compute/compute-onboarding), which may have changed since you initially set up Lake Compute.
+For Snowflake, some setup steps require `ACCOUNTADMIN` or equivalent delegated privileges, such as `NETWORK_ADMIN` for network policy changes. Always refer to the [latest setup guide](/docs/lake-compute/compute-onboarding-snowflake), which may have changed since you initially set up Lake Compute.
 
 ### Required environment variable
 
@@ -94,8 +94,7 @@ The following are not supported or are intentionally limited during private beta
 - Automatic SQL dialect translation.
 - Distributed or multi-node execution.
 - Large two-sided joins and other workloads that require distributed processing.
-- GCP and Azure storage.
-- BigQuery integration.
+- Azure storage. GCS storage is supported only for [Lake Compute with BigQuery](/docs/lake-compute/compute-onboarding-bigquery).
 - AWS regions other than the currently supported beta regions.
 
 Additional capabilities and regions may be introduced over time, but roadmap items and dates are not commitments.
@@ -124,4 +123,6 @@ Not yet supported:
 ## Related docs
 
 - [Lake Compute setup](/docs/lake-compute/compute-onboarding)
+- [Lake Compute with Snowflake](/docs/lake-compute/compute-onboarding-snowflake)
+- [Lake Compute with BigQuery](/docs/lake-compute/compute-onboarding-bigquery)
 - [Lake Compute FAQs](/docs/lake-compute/compute-faq)
