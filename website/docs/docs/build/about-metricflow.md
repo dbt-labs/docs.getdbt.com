@@ -15,7 +15,7 @@ MetricFlow handles SQL query construction and defines the specification for dbt 
 
 <VersionBlock firstVersion="2.0">
 
-In the <Constant name="wizard" /> CLI and Wizard Desktop, MetricFlow builds the SQL when you ask <Constant name="wizard" /> about a metric. The SQL uses the metric's definition, including its filters and any filters in your question. Refer to [How dbt Wizard queries metrics](/docs/dbt-ai/wizard-how-it-works#how-dbt-wizard-queries-metrics).
+In the <Constant name="wizard" /> Desktop and Wizard CLI, MetricFlow turns your questions about metrics into SQL. It uses the metric’s definition and applies filters from both the definition and your question. Refer to [How dbt Wizard queries metrics](/docs/dbt-ai/wizard-how-it-works#how-dbt-wizard-queries-metrics).
 
 </VersionBlock>
 
