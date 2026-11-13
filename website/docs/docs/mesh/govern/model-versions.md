@@ -44,6 +44,8 @@ During that migration window, anywhere that model is being used downstream, it c
 
 <Constant name="dbt" /> 1.6 introduced first-class support for **deprecating models** by specifying a [`deprecation_date`](/reference/resource-properties/deprecation_date). Taken together, model versions and deprecation offer a pathway for model producers to _sunset_ old models, and consumers the time to _migrate_ across breaking changes. It's a way of managing change across an organization: develop a new version, bump the latest, slate the old version for deprecation, update downstream references, and then remove the old version.
 
+<Lightbox src="/img/docs/mesh/model-versions-diagram.png" width="90%" alt="Three versions of a model side by side, labeled old, latest and prerelease, above the steps for retiring an old version." title="A model can have several versions at once. Old versions are deprecated on a date you set." />
+
 There is a real trade-off that exists here—the cost to frequently migrate downstream code, and the cost (and clutter) of materializing multiple versions of a model in the data warehouse. Model versions do not make that problem go away, but by setting a deprecation date, and communicating a clear window for consumers to gracefully migrate off old versions, they put a known boundary on the cost of that migration.
 
 ## When should you version a model?
