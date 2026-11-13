@@ -22,6 +22,104 @@ Release notes are grouped by date for single-tenant environments.
 
 <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](https://docs.getdbt.com/feeds/release-notes-st-rss.xml), [Atom](https://docs.getdbt.com/feeds/release-notes-st-atom.xml), or [JSON Feed](https://docs.getdbt.com/feeds/release-notes-st-rss.json).</span>
 
+## November 11, 2026
+
+## New
+
+### dbt platform
+
+- **Delete Azure DevOps Microsoft Entra application integration**: You can now delete your Azure DevOps Microsoft Entra (Entra) application integration directly from workspace Git Integration settings using a new delete button and confirmation dialog.
+
+- **Delete GitLab custom app integration**: You can now delete a GitLab custom app integration directly from the GitLab integration drawer in account settings. After confirming the deletion, the drawer closes and a confirmation banner appears.
+
+### dbt v2
+
+- **BigQuery query reservation configuration**: You can now configure BigQuery query reservations at the model and connection levels.
+
+- **Single Sign-On authentication with `DBT_CLOUD_LOGIN_HOST`**: Two new environment variables, `DBT_CLOUD_LOGIN_HOST` and `DBT_CLOUD_LOGIN_ACCOUNT_ID`, let `dbt login` authenticate through an account host's `/oauth/authorize` endpoint instead of the registration page, enabling Single Sign-On (SSO) accounts that cannot route through the registration page.
+
+- **Metrics tool can show SQL without running it**: The metrics tool can show the SQL for a metric without running it. The SQL matches your warehouse instead of always using DuckDB.
+
+## Enhancements
+
+### dbt platform
+
+- **Consistent dbt v2 branding in Account Settings**: The rollback version section in Account Settings now uses "dbt v2" instead of "Fusion" in all section headers, modal titles, button labels, and descriptive copy.
+
+- **dbt v2 Stable generally available for Databricks**: The "Preview" badge no longer appears next to dbt v2 Stable in job and environment version settings or the upgrade checklist for Databricks projects.
+
+## Fixes
+
+### dbt platform
+
+- **Case-insensitive model search in structured logs**: Model name search in the run step structured logs view is now case-insensitive and trims surrounding whitespace, so a search for `my_model` matches `My_Model`. Changing the search term also resets pagination to the first page, fixing an issue where narrowing results on a later page showed an empty list with no "No models found" message.
+
+- **Correct formatter for non-SQL language modes in Studio IDE**: Untitled buffers switched to Markdown, JSON, or YAML via Change Language Mode now format with Prettier instead of the SQL formatter. The [Format](/docs/platform/studio-ide/lint-format#format-yaml-markdown-json) button is also no longer hidden for these buffers when SQLFluff is selected as the linter.
+
+- **Slack connection cancellation**: If you cancel connecting Slack, you return to the Integrations page with a cancellation message instead of an error.
+
+### APIs, Identity, and Administration
+
+- **Clearer error when deleting a System for Cross-domain Identity Management-managed user**: Attempting to delete a System for Cross-domain Identity Management (SCIM)-managed user while manual updates are disabled now returns HTTP 400 with an actionable message directing you to enable "[Allow manual updates](/docs/platform/manage-access/scim-faq#what-does-allow-manual-updates-mean)" in SSO and SCIM settings, rather than a generic HTTP 500 error.
+
+- **Clearer errors for bad API requests**: An API request that is nested too deeply, too large, or missing a content type now returns a client error instead of a server error.
+
+### dbt v2
+
+- **Snowflake seed transient tables**: Snowflake seeds now honor the `transient` config instead of silently creating a permanent table.
+
+- **Snowflake vector columns**: Comparing changes in [Advanced CI](/docs/deploy/advanced-ci) no longer fails when a Snowflake table has a vector column.
+
+- **Snowflake private keys with Windows line endings**: Snowflake private keys saved with Windows line endings now decode correctly.
+
+- **Snowflake functions when dbt runs SQL locally**: More Snowflake functions now run correctly when dbt runs the SQL on your machine, including `ILIKE`, `LIKE ALL`, `INSERT`, `CORR`, `APPROX_PERCENTILE`, `RATIO_TO_REPORT`, and Base64 functions.
+
+- **BigQuery incremental models**: BigQuery [incremental models](/docs/build/incremental-models) are updated in place again, instead of being rebuilt when another run drops a table at the same time.
+
+- **BigQuery cluster_by quoting and case**: BigQuery tables with backtick-quoted or mixed-case [`cluster_by`](/reference/resource-configs/bigquery-configs#clustering-clause) entries are no longer dropped and rebuilt unnecessarily.
+
+- **BigQuery Iceberg tables**: BigQuery Iceberg tables that use a [lakehouse catalog](/docs/build/iceberg/adapters/bigquery-iceberg-support#lakehouse-runtime-catalog-lrc) no longer fail to build.
+
+- **BigQuery incremental and snapshot builds**: Incremental and [snapshot](/docs/build/snapshots) builds no longer overwrite an existing BigQuery table when dbt thinks the table is missing.
+
+- **BigQuery source freshness checks**: BigQuery [source freshness](/docs/deploy/source-freshness) checks are faster. Checks in different schemas run at the same time, and a repeated check in the same schema runs once.
+
+- **Databricks column tag updates**: Updating [column tags](/reference/resource-configs/databricks-configs#configuring-columns) on Databricks now changes only the tags you edited.
+
+- **Databricks views on an Iceberg catalog**: Databricks views and metric views under an Iceberg catalog no longer fail with a materialization error when catalogs v2 is enabled.
+
+- **Databricks metric view comments**: A semicolon inside a Databricks [metric view](/reference/resource-configs/databricks-configs#metric-views) comment no longer cuts off the model.
+
+- **Databricks `WITH RECURSIVE` syntax**: Databricks now recognizes `WITH RECURSIVE` as valid SQL in `dbt lint` and `dbt compile`.
+
+- **Missing Databricks hive_metastore tables**: A missing Databricks `hive_metastore` table no longer causes an error.
+
+- **Databricks Python models**: Databricks [Python models](/docs/build/python-models) wait until the cluster is running before they start, and a cluster failure shows a clearer error.
+
+- **Failed Databricks view builds**: The existing Databricks table is preserved when a view model that replaces it fails to build.
+
+- **Redshift external OAuth**: Redshift external OAuth no longer fails when a run does several things at once.
+
+- **BigQuery unit test fixture types**: BigQuery decimal and nested types are now preserved in [unit test fixtures](/reference/resource-properties/data-types).
+
+- **Unit test fixture files**: Unit test [fixture files](/reference/resource-properties/data-formats) are read correctly, including fixture files inside a package.
+
+- **Canceled microbatch batches**: After a concurrent [microbatch](/docs/build/incremental-microbatch) batch fails, remaining unstarted batches are now canceled instead of continuing to run.
+
+- **BigQuery functions when dbt runs SQL locally**: More BigQuery functions now run correctly when dbt runs the SQL on your machine, including date math, JSON, strings, math, arrays, intervals, and regular expressions.
+
+- **BigQuery text pattern checks**: When dbt runs BigQuery SQL on your machine, a check for whether text matches a pattern now returns an error if you pass the wrong kind of value. BigQuery already returns this error. The check is `REGEXP_CONTAINS`.
+
+- **BigQuery snapshot check column case**: BigQuery snapshot check columns are now matched without regard to case, avoiding false row changes.
+
+- **Keyword arguments for `modules.re`**: Functions in [`modules.re`](/reference/dbt-jinja-functions/modules) no longer silently drop keyword arguments such as `flags=`, `maxsplit=`, and `count=`.
+
+- **Unit test variable overrides**: Unit tests that set [`overrides.vars`](/reference/resource-properties/unit-tests) can still see the variables from your project.
+
+- **Custom create_schema macros**: If your project defines its own adapter macros, such as `create_schema`, dbt uses those macros.
+
+- **Auto-exposures on other warehouses**: [Auto-exposures](/docs/platform-integrations/downstream-exposures) from business intelligence tools no longer fail with a `dbt1005` error on warehouses other than Snowflake.
+
 ## November 4, 2026
 
 ## Enhancements
