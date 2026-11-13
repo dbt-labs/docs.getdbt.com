@@ -17,7 +17,7 @@ Skills are reusable instructions that help <Constant name="wizard" /> follow you
 
 When you initialize <Constant name="wizard" /> in a project, it can also detect existing Claude Code skills in the current directory.
 
-For general project context (`AGENTS.md`, `CLAUDE.md`), refer to [Migrate to dbt Wizard](/docs/dbt-ai/wizard-migrate) — <Constant name="wizard" /> reads those instruction files out of the box.
+You don't need a skill for general project context. <Constant name="wizard" /> reads instruction files like `AGENTS.md` and `CLAUDE.md` out of the box. Refer to [Project context files](#project-context-files) for which file it uses.
 
 ## Locations and precedence
 
@@ -56,6 +56,29 @@ The following table summarizes where <Constant name="wizard" /> looks for skills
 </SimpleTable>
 
 Avoid duplicate skill names across locations. If you need to replace a built-in or imported skill, create the replacement in an intended project or user location and remove or rename the older copy.
+
+## Project context files
+
+Use skills for reusable workflows, and an instruction file for general project context, like conventions that apply to every session. <Constant name="wizard" /> reads common instruction files automatically, so if you already use Claude Code, you don't need to move anything over.
+
+In each directory, <Constant name="wizard" /> uses the first file in the following table that has content, and skips the rest:
+
+<SimpleTable>
+
+| Order | File | What Wizard does |
+| --- | --- | --- |
+| 1 | `AGENTS.override.md` | Checks this first for local override instructions |
+| 2 | `AGENTS.md` | Uses this as the primary project instruction file |
+| 3 | `CLAUDE.md` | Uses this as a fallback when the directory has no `AGENTS.md` |
+| 4 | `.claude/CLAUDE.md` | Uses this as another fallback instruction file |
+
+</SimpleTable>
+
+A few things to know:
+
+- If a directory has both `AGENTS.md` and `CLAUDE.md`, <Constant name="wizard" /> uses only `AGENTS.md`. An empty `AGENTS.md` doesn't count, so <Constant name="wizard" /> falls back to `CLAUDE.md`.
+- <Constant name="wizard" /> checks every directory from your project root (the directory that contains `.git`) down to your current working directory, and combines the files it finds for the session.
+- To create a starter `AGENTS.md`, run `/init` in a <Constant name="wizard" /> session.
 
 ## Skills from dbt packages
 
