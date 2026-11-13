@@ -110,12 +110,6 @@ In addition to providing a hosted architecture for running dbt across your organ
     icon="dbt-bit"/>
 
   <Card
-    title="dbt Insights*"
-    body="Learn how to query data and perform exploratory data analysis using dbt Insights."
-    link="/docs/explore/dbt-insights"
-    icon="dbt-bit"/>
-
-  <Card
     title="Cost Insights*"
     body="Track warehouse compute costs and understand the impact of optimizations across your dbt projects and models."
     link="/docs/explore/cost-insights"
