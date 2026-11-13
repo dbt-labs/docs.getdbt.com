@@ -38,7 +38,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Single Sign-On authentication with `DBT_CLOUD_LOGIN_HOST`**: Two new environment variables, `DBT_CLOUD_LOGIN_HOST` and `DBT_CLOUD_LOGIN_ACCOUNT_ID`, let `dbt login` authenticate through an account host's `/oauth/authorize` endpoint instead of the registration page, enabling Single Sign-On (SSO) accounts that cannot route through the registration page.
 
-- **Metrics tool can show SQL without running it**: The metrics tool can show the SQL for a metric without running it. The SQL matches your warehouse instead of always using DuckDB.
+- **Metrics tool can show SQL without running it**: The metrics tool can show the SQL for a metric without running it. The SQL matches your warehouse instead of always using DuckDB. Refer to [Questions about metrics](/docs/dbt-ai/wizard-how-it-works#questions-about-metrics) for more information.
 
 ## Enhancements
 

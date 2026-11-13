@@ -26,7 +26,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 - **New:** You can now delete a GitLab custom app integration directly from the GitLab integration drawer in account settings. After confirming the deletion, the drawer closes and a confirmation banner appears.
 - **New:** You can now configure BigQuery query reservations at the model and connection levels.
 - **New:** Two new environment variables, `DBT_CLOUD_LOGIN_HOST` and `DBT_CLOUD_LOGIN_ACCOUNT_ID`, let `dbt login` authenticate through an account host's `/oauth/authorize` endpoint instead of the registration page, enabling Single Sign-On (SSO) accounts that cannot route through the registration page.
-- **New:** The metrics tool can show the SQL for a metric without running it. The SQL matches your warehouse instead of always using DuckDB.
+- **New:** The metrics tool can show the SQL for a metric without running it. The SQL matches your warehouse instead of always using DuckDB. Refer to [Questions about metrics](/docs/dbt-ai/wizard-how-it-works#questions-about-metrics).
 - **Enhancement:** The rollback version section in Account Settings now uses "dbt v2" instead of "Fusion" in all section headers, modal titles, button labels, and descriptive copy.
 - **Enhancement:** The "Preview" badge no longer appears next to dbt v2 Stable in job and environment version settings or the upgrade checklist for Databricks projects.
 - **Fix:** Model name search in the run step structured logs view is now case-insensitive and trims surrounding whitespace, so a search for `my_model` matches `My_Model`. Changing the search term also resets pagination to the first page, fixing an issue where narrowing results on a later page showed an empty list with no "No models found" message.
