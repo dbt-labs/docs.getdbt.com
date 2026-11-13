@@ -235,6 +235,8 @@ When you run the [`dbt snapshot` command](/reference/commands/snapshot):
   - The `dbt_valid_to` column will be updated for any existing records that have changed.
   - The updated record and any new records will be inserted into the snapshot table. These records will now have `dbt_valid_to = null` or the value configured in `dbt_valid_to_current` (available in <Constant name="dbt" /> v1.9+).
 
+<Lightbox src="/img/docs/building-a-dbt-project/snapshot-row-history-diagram.png" width="90%" alt="Three snapshot tables over time showing one order, with the previous row getting a valid-to date each time the status changes." title="Each snapshot run closes the old row with a `dbt_valid_to` timestamp and adds a new current row." />
+
 <SnapshotFullRefresh />
 
 <VersionBlock firstVersion="1.9">
