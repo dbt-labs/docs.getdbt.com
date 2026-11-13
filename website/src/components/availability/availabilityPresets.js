@@ -78,7 +78,7 @@ const PLAN_TIER_ORDER = ['developer', 'starter', 'enterprise', 'enterprise_plus'
 
 const ACCESS_TOOLTIPS = {
   Free: 'No account needed.',
-  'Login required': 'Sign in with a dbt account. Supported across all dbt plans, including Developer plans.',
+  'Login required': 'Sign in with a dbt account. Supported across all dbt plans.',
   'Usage-based': 'Billed based on usage.',
 };
 
