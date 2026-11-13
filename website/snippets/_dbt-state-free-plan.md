@@ -4,7 +4,7 @@ When your trial ends, you move to your plan's monthly allowance:
 
 - Self-hosted dbt users move to the free plan, which includes 1,000 DATT each month indefinitely.
 - Developer plan users also get 1,000 DATT each month indefinitely.
-- Paid dbt platform plans get a temporary monthly allowance. Check out [paid plans with a temporary allowance](#paid-plans-with-a-temporary-allowance) for more details.
+- Starter, Enterprise, and Enterprise+ dbt platform plans get a temporary monthly allowance. Check out [plans with a temporary allowance](#plans-with-a-temporary-allowance) for more details.
 
 The allowance works the same way on every plan:
 
@@ -19,14 +19,14 @@ The allowance works the same way on every plan:
 
 | Plan | Monthly allowance | When you reach the limit |
 |------|-------------------|--------------------------|
-| Self-hosted dbt (free plan) | 1,000 DATT | dbt State stops reusing nodes until the next reset. [Set up usage-based billing](/docs/deploy/dbt-state-trial#setting-up-usage-based-billing) to resume. |
+| Self-hosted dbt | 1,000 DATT | dbt State stops reusing nodes until the next reset. [Set up usage-based billing](/docs/deploy/dbt-state-trial#setting-up-usage-based-billing) to resume. |
 | Developer | 1,000 DATT | dbt State stops reusing nodes until the next reset. [Set up usage-based billing](/docs/deploy/dbt-state-trial#setting-up-usage-based-billing) to resume, which moves your account to the Developer (Usage) plan. |
 
 </SimpleTable>
 
-#### Paid plans with a temporary allowance
+#### Plans with a temporary allowance
 
-Paid <Constant name="dbt_platform"/> plans also get a monthly allowance for a limited time.
+Starter, Enterprise, and Enterprise+ <Constant name="dbt_platform"/> plans also get a monthly allowance for a limited time.
 
 <SimpleTable>
 
