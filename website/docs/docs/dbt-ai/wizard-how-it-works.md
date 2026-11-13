@@ -119,6 +119,12 @@ For Studio-specific behavior and availability, refer to [<Constant name="wizard"
 
 Use the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli) or [Wizard Desktop](/docs/dbt-ai/wizard-desktop) for local development. Everything in this section applies to both, since the app runs the same engine as the CLI.
 
+### Questions about metrics
+
+When you ask <Constant name="wizard" /> about a metric, it builds the SQL from that metric's definition, including the metric's filters and any filters in your question, and runs that SQL in your warehouse.
+
+The SQL matches your project's warehouse on Snowflake, BigQuery, Redshift, Databricks, and DuckDB. On other warehouses, such as Postgres, the SQL is written for DuckDB, so it may not run unchanged.
+
 ### Connections and authentication (MCP)
 
 <Constant name="wizard" /> can connect to MCP servers from the CLI, including the [dbt MCP server](/docs/dbt-ai/about-mcp), for access to platform APIs, <Constant name="semantic_layer" /> metadata, and cross-project context. For the complete setup (like supported server types, configuration keys, authentication, and examples), refer to [Use MCP servers with the <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-mcp). MCP connector support for Wizard Desktop is coming soon.
