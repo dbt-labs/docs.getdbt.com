@@ -149,6 +149,18 @@ You control the information you submit to <Constant name="wizard" />. dbt Labs d
 
 </Expandable>
 
+<Expandable alt_header="How does dbt Wizard use embeddings?">
+
+To find related models, <Constant name="wizard" /> creates embeddings of your project metadata.
+
+- **What is embedded**: Each model's name and description, its columns' names, types, and descriptions, and its compiled SQL. Query results and sample rows are not embedded. The text of your prompt is also embedded when you make a request, to search for related models.
+- **Provider**: OpenAI generates the embeddings. If you bring your own OpenAI key, embeddings use your key. Make sure your OpenAI account or API key has access to the `text-embedding-3-small` model. Refer to [Manage AI features in dbt platform](/docs/platform/manage-dbt-ai).
+- **Retention and deletion**: Embeddings are project metadata and follow the same removal rules as other metadata in <Constant name="catalog" />. They are purged if an environment has had no job runs in the past 3 months, and a model's embeddings are removed after a job run in which the model no longer exists in the project. Refer to [When dbt removes model metadata](/docs/explore/explore-projects#when-dbt-removes-model-metadata).
+- **Region**: Embeddings are stored in the same region as the rest of your project metadata. The embedding request is sent to OpenAI's global API, so generation is not restricted to a region.
+- **Disabling**: There is no separate setting for embeddings. They follow the AI features setting. Refer to [Manage AI features in dbt platform](/docs/platform/manage-dbt-ai).
+
+</Expandable>
+
 <Expandable alt_header="Is my data used by dbt Labs to train AI models?">
 
 No. dbt Labs does not use customer content processed by <Constant name="wizard" /> &mdash; including warehouse query results, prompts, or conversation history &mdash; for AI model training. Our terms with AI providers prevent training on the provider side as well.
