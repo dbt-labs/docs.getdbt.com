@@ -82,7 +82,7 @@ Once the migration is merged, [upgrade the project's environments](#upgrade-envi
 
 ## Upgrade environments {#upgrade-environments}
 
-Start with development or test environments. Moving them to a release track first lets you find any remaining issues before you touch production.
+Start with development or test environments. Moving them to a release track first lets you find any remaining issues before you touch production. These are intermediate steps to complete the upgrade. Once you validate the jobs run from the dashboard, you'll need to [complete the upgrade]#complete-the-upgrade) from the Orchestration settings.
 
 1. On the **Legacy dbt versions** dashboard, find the environment and click **Upgrade**. To upgrade several at once, select the checkboxes next to the environments (or a whole project) and click **Upgrade** above the list.
 2. Read the confirmation window and click **Upgrade**. Upgrading starts a trial period in which your jobs run on **v1 Latest**. Upgrading:
@@ -95,13 +95,12 @@ Start with development or test environments. Moving them to a release track firs
 
 <Lightbox src="/img/docs/dbt-platform/legacy-dbt-versions/upgraded-environments-tab.png" width="90%" title="The Upgraded tab with a Revert option" />
 
-If a job fails after the upgrade, select the environment on the **Upgraded** tab and click **Revert**. Jobs run on the previously configured version until you upgrade again. Reverting is temporary, because legacy versions are retired on <Constant name="legacy_deprecation_date" />.
+If a job fails after the upgrade, select the environment on the **Upgraded** tab and click **Revert**. Jobs run on the previously configured version until you upgrade again. Reverting is temporary, because legacy versions are being retired on <Constant name="legacy_deprecation_date" />.
 
-:::caution Upgrading from the dashboard is a trial run
+### Complete the upgrade
 
-Upgrading from the dashboard only puts the environment on a trial run, where jobs execute on **v1 Latest**. After you verify that your jobs run successfully during the trial, update the environments and jobs to the **v1 Latest** release track yourself. Refer to [Upgrade an environment from its settings](#upgrade-an-environment-from-its-settings) and [Update jobs](#update-jobs).
+Upgrading from the dashboard only puts the environment on a trial run, where jobs execute on **v1 Latest**. After you verify that your jobs run successfully, update the environments and jobs to the **v1 Latest** release track yourself. Refer to [Upgrade an environment from its settings](#upgrade-an-environment-from-its-settings) and [Update jobs](#update-jobs).
 
-:::
 
 ### Move to v2 later
 
