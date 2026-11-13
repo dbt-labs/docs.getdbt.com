@@ -121,9 +121,7 @@ Use the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli) or [Wizard Des
 
 ### Questions about metrics
 
-When you ask <Constant name="wizard" /> about a metric, it builds the SQL from that metric's definition, including the metric's filters and any filters in your question, and runs that SQL in your warehouse.
-
-The SQL matches your project's warehouse on Snowflake, BigQuery, Redshift, Databricks, and DuckDB. On other warehouses, such as Postgres, the SQL is written for DuckDB, so it may not run unchanged.
+When you ask <Constant name="wizard" /> about a metric, it builds the SQL from that metric's definition, including the metric's filters and any filters in your question. On Snowflake, BigQuery, Redshift, Databricks, and DuckDB, it runs that SQL in your warehouse. On other warehouses, such as Postgres, the SQL is written for DuckDB, so it may not run unchanged.
 
 ### Connections and authentication (MCP)
 
