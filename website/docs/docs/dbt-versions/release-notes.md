@@ -92,9 +92,54 @@ The full list lives in website/release-note-areas.json.
 
 - **New:** Set an expiration date when you create a [personal access token](/docs/dbt-apis/user-tokens#set-a-token-expiration) or [service token](/docs/dbt-apis/service-tokens#set-a-token-expiration). Choose 7, 14, 30, 90, or 365 days, or keep the default of no expiry. Existing tokens that don't have an expiration set won't expire.
 - **Enhancement:** The [Assign User to Groups API](/dbt-cloud/api-v3?version=2#/operations/Assign%20User%20to%20Groups) (`POST /api/v3/accounts/{account_id}/assign-groups/`) now accepts `add_group_ids` and `remove_group_ids`. Use these fields to add a user to groups, or remove them from groups, without replacing every group they belong to. Sending `desired_group_ids` still replaces the full list.
+- **Fix:** Attempting to delete a System for Cross-domain Identity Management (SCIM)-managed user while manual updates are disabled now returns HTTP 400 with an actionable message directing you to enable "[Allow manual updates](/docs/platform/manage-access/scim-faq#what-does-allow-manual-updates-mean)" in SSO and SCIM settings, rather than a generic HTTP 500 error.
+- **Fix:** An API request that is nested too deeply, too large, or missing a content type now returns a client error instead of a server error.
 - **Fix:** When an account had more than 1,000 groups, some of a user's assigned [groups](/docs/platform/manage-access/about-user-access#groups) were missing from the user details view. All assigned groups now appear checked. Saving with `POST /api/v3/accounts/{id}/assign-groups/` also keeps the full list of groups.
 - **Fix:** Creating or updating an [IP restriction](/docs/platform/secure/ip-restrictions) with a missing or invalid `type` now returns a 400 error (the request was invalid) and a message that describes the problem, instead of a 500 server error. A missing `name` is rejected with a 400 error too. Before this fix, dbt saved that missing name as the word None.
 - **Fix:** Accounts on the usage plan can now complete the upgrade to [Starter](/docs/platform/billing/plans-and-billing#starter-plan-billing) without the checkout spinning indefinitely. The purchase button stays available when a card is already on file.
+
+#### dbt v2 {#dbt-v2-november-2026}
+
+- **New:** You can now configure BigQuery query reservations at the model and connection levels.
+- **New:** Two new environment variables, `DBT_CLOUD_LOGIN_HOST` and `DBT_CLOUD_LOGIN_ACCOUNT_ID`, let `dbt login` authenticate through an account host's `/oauth/authorize` endpoint instead of the registration page, enabling Single Sign-On (SSO) accounts that cannot route through the registration page.
+- **New:** The metrics tool can show the SQL for a metric without running it. The SQL matches your warehouse instead of always using DuckDB.
+- **Fix:** Snowflake seeds now honor the `transient` config instead of silently creating a permanent table.
+- **Fix:** Comparing changes in [Advanced CI](/docs/deploy/advanced-ci) no longer fails when a Snowflake table has a vector column.
+- **Fix:** Snowflake private keys saved with Windows line endings now decode correctly.
+- **Fix:** More Snowflake functions now run correctly when dbt runs the SQL on your machine, including `ILIKE`, `LIKE ALL`, `INSERT`, `CORR`, `APPROX_PERCENTILE`, `RATIO_TO_REPORT`, and Base64 functions.
+- **Fix:** BigQuery [incremental models](/docs/build/incremental-models) are updated in place again, instead of being rebuilt when another run drops a table at the same time.
+- **Fix:** BigQuery tables with backtick-quoted or mixed-case [`cluster_by`](/reference/resource-configs/bigquery-configs#clustering-clause) entries are no longer dropped and rebuilt unnecessarily.
+- **Fix:** BigQuery Iceberg tables that use a [lakehouse catalog](/docs/build/iceberg/adapters/bigquery-iceberg-support#lakehouse-runtime-catalog-lrc) no longer fail to build.
+- **Fix:** Incremental and [snapshot](/docs/build/snapshots) builds no longer overwrite an existing BigQuery table when dbt thinks the table is missing.
+- **Fix:** BigQuery [source freshness](/docs/deploy/source-freshness) checks are faster. Checks in different schemas run at the same time, and a repeated check in the same schema runs once.
+- **Fix:** Updating [column tags](/reference/resource-configs/databricks-configs#configuring-columns) on Databricks now changes only the tags you edited.
+- **Fix:** Databricks views and metric views under an Iceberg catalog no longer fail with a materialization error when catalogs v2 is enabled.
+- **Fix:** A semicolon inside a Databricks [metric view](/reference/resource-configs/databricks-configs#metric-views) comment no longer cuts off the model.
+- **Fix:** Databricks now recognizes `WITH RECURSIVE` as valid SQL in `dbt lint` and `dbt compile`.
+- **Fix:** A missing Databricks `hive_metastore` table no longer causes an error.
+- **Fix:** Databricks [Python models](/docs/build/python-models) wait until the cluster is running before they start, and a cluster failure shows a clearer error.
+- **Fix:** The existing Databricks table is preserved when a view model that replaces it fails to build.
+- **Fix:** Redshift external OAuth no longer fails when a run does several things at once.
+- **Fix:** BigQuery decimal and nested types are now preserved in [unit test fixtures](/reference/resource-properties/data-types).
+- **Fix:** Unit test [fixture files](/reference/resource-properties/data-formats) are read correctly, including fixture files inside a package.
+- **Fix:** After a concurrent [microbatch](/docs/build/incremental-microbatch) batch fails, remaining unstarted batches are now canceled instead of continuing to run.
+- **Fix:** More BigQuery functions now run correctly when dbt runs the SQL on your machine, including date math, JSON, strings, math, arrays, intervals, and regular expressions.
+- **Fix:** When dbt runs BigQuery SQL on your machine, a check for whether text matches a pattern now returns an error if you pass the wrong kind of value. BigQuery already returns this error. The check is `REGEXP_CONTAINS`.
+- **Fix:** BigQuery snapshot check columns are now matched without regard to case, avoiding false row changes.
+- **Fix:** Functions in [`modules.re`](/reference/dbt-jinja-functions/modules) no longer silently drop keyword arguments such as `flags=`, `maxsplit=`, and `count=`.
+- **Fix:** Unit tests that set [`overrides.vars`](/reference/resource-properties/unit-tests) can still see the variables from your project.
+- **Fix:** If your project defines its own adapter macros, such as `create_schema`, dbt uses those macros.
+- **Fix:** [Auto-exposures](/docs/platform-integrations/downstream-exposures) from business intelligence tools no longer fail with a `dbt1005` error on warehouses other than Snowflake.
+
+#### dbt platform {#dbt-platform-november-2026}
+
+- **New:** You can now delete your Azure DevOps Microsoft Entra (Entra) application integration directly from workspace Git Integration settings using a new delete button and confirmation dialog.
+- **New:** You can now delete a GitLab custom app integration directly from the GitLab integration drawer in account settings. After confirming the deletion, the drawer closes and a confirmation banner appears.
+- **Enhancement:** The rollback version section in Account Settings now uses "dbt v2" instead of "Fusion" in all section headers, modal titles, button labels, and descriptive copy.
+- **Enhancement:** The "Preview" badge no longer appears next to dbt v2 Stable in job and environment version settings or the upgrade checklist for Databricks projects.
+- **Fix:** Model name search in the run step structured logs view is now case-insensitive and trims surrounding whitespace, so a search for `my_model` matches `My_Model`. Changing the search term also resets pagination to the first page, fixing an issue where narrowing results on a later page showed an empty list with no "No models found" message.
+- **Fix:** Untitled buffers switched to Markdown, JSON, or YAML via Change Language Mode now format with Prettier instead of the SQL formatter. The [Format](/docs/platform/studio-ide/lint-format#format-yaml-markdown-json) button is also no longer hidden for these buffers when SQLFluff is selected as the linter.
+- **Fix:** If you cancel connecting Slack, you return to the Integrations page with a cancellation message instead of an error.
 
 ## October 2026
 
