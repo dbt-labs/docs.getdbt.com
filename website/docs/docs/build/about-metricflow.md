@@ -13,6 +13,11 @@ This guide introduces MetricFlow's fundamental ideas for people new to this feat
 
 MetricFlow handles SQL query construction and defines the specification for dbt semantic models and metrics. It allows you to define metrics in your dbt project and query them with [MetricFlow commands](/docs/build/metricflow-commands) whether in <Constant name="dbt" /> or <Constant name="core" />.
 
+<VersionBlock firstVersion="2.0">
+
+In the <Constant name="wizard" /> CLI and Wizard Desktop, MetricFlow builds the SQL when you ask <Constant name="wizard" /> about a metric. The SQL uses the metric's definition, including its filters and any filters in your question. Refer to [How dbt Wizard queries metrics](/docs/dbt-ai/wizard-how-it-works#how-dbt-wizard-queries-metrics).
+
+</VersionBlock>
 
 ## Prerequisites
 Before you start, consider the following guidelines:

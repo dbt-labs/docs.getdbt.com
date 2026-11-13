@@ -119,9 +119,9 @@ For Studio-specific behavior and availability, refer to [<Constant name="wizard"
 
 Use the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli) or [Wizard Desktop](/docs/dbt-ai/wizard-desktop) for local development. Everything in this section applies to both, since the app runs the same engine as the CLI.
 
-### Questions about metrics
+### How dbt Wizard queries metrics
 
-When you ask <Constant name="wizard" /> about a metric, it builds the SQL from that metric's definition, including the metric's filters and any filters in your question. On Snowflake, BigQuery, Redshift, Databricks, and DuckDB, it runs that SQL in your warehouse. On other warehouses, such as Postgres, the SQL is written for DuckDB, so it may not run unchanged.
+In the <Constant name="wizard" /> CLI and Wizard Desktop, when you ask <Constant name="wizard" /> about a metric, [MetricFlow](/docs/build/about-metricflow) builds the SQL from that metric's definition, including the metric's filters and any filters in your question. On Snowflake, BigQuery, Redshift, Databricks, and DuckDB, <Constant name="wizard" /> runs that SQL in your warehouse. On other warehouses, such as Postgres, the SQL is written for DuckDB, so it may not run unchanged.
 
 ### Connections and authentication (MCP)
 
