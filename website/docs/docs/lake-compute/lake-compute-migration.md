@@ -4,9 +4,9 @@ description: "Use the built-in dbt tools to update your models to use Lake Compu
 sidebar_label: "Lake Compute migration"
 id: lake-compute-migration
 ---
-# Lake Compute migration <Lifecycle status="private_beta" />
+# Migrate models to Lake Compute <Lifecycle status="private_beta" />
 
-dbt offers a native tool to help you move your dbt models to Lake Compute. It's currently supported only for Snowflake, but support for more data warehouses will be enabled soon. Start by running `dbt init lakecompute`.
+dbt offers a native tool to help you move your dbt models to Lake Compute. Take advantage of the costs savings by moving as few or as many supported models as you want. It's currently supported only for Snowflake, but support for more data warehouses will be enabled soon. 
 
 ## Prerequisites
 
@@ -40,7 +40,7 @@ The Lake Compute skills let an agent run the entire workflow. It assesses the pr
    > Move as much of this project as you can from Snowflake to Lake Compute.
 
 3. Review the agent's plan. It runs the offline check, fixes the syntax that the tool can't translate, performs a dry run of the switch, and then asks you to confirm.
-4. Confirm. The agent writes the switch, builds the models on Lake Compute, and compares each table with its Snowflake version. It then lists what's left on Snowflake.
+4. Confirm the results. The agent writes the switch, builds the models on Lake Compute, and compares each table with its Snowflake version. It then lists what's left on Snowflake.
 
 ## Migrate manually
 
@@ -59,16 +59,16 @@ dbt init lakecompute --history-days 1
 To run each step as a command, or to use it in scripts, add `--json --quiet` for machine-readable output:
 
 ```bash
-# Check the project offline and print a summary
+# Check the project offline and print a summary.
 dbt init lakecompute --json --quiet --dry-run --summary
 
-# Size the models using Snowflake query history
+# Size the models using Snowflake query history.
 dbt init lakecompute --snowflake --history-days 1 --json --quiet --yes
 
 # Preview the switch. Remove --dry-run to write the changes.
 dbt init lakecompute --switch --convert-views --dry-run
 
-# Build the migrated models on Lake Compute
+# Build the migrated models on Lake Compute.
 DBT_ENGINE_EXPERIMENTAL_MULTI_ADAPTER=true dbt build --target lakecompute --select config.adapter:lakecompute
 ```
 
