@@ -38,7 +38,7 @@ The fastest way to migrate is the **Legacy dbt versions** dashboard in your acco
 
 <Lightbox src="/img/docs/dbt-platform/legacy-dbt-versions/projects-and-environments.png" width="90%" title="Projects and environments on legacy versions" />
 
-Use the following table to decide what to do with each environment.
+4. Use the following table to decide what to do with each environment.
 
 | Environment | Jobs | What you do |
 |-------------|------|-------------|
