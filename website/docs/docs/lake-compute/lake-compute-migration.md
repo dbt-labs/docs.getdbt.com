@@ -50,11 +50,12 @@ Take a baseline so you have a comparison to validate after switching:
 dbt init lakecompute --baseline
 ```
 
-In a terminal, run the following command to open a guided flow for the first three steps (check, size, and switch). Validate separately, as described in [Validate the results](#validate-the-results).
+2. In a terminal, run the following command to open a guided flow for the first three steps (check, size, and switch). Validate separately, as described in [Validate the results](#validate-the-results).
 
 ```bash
 dbt init lakecompute --history-days 1
 ```
+### Individual commands
 
 To run each step as a command, or to use it in scripts, add `--json --quiet` for machine-readable output:
 
