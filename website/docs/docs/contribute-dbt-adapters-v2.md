@@ -622,10 +622,10 @@ cargo build --bin dbt
 
 ### CI testing
 
-CI testing for community adapter PRs is coordinated with the dbt Labs adapters team — the test infrastructure is not publicly distributed. When your PR is ready, reach out in `#adapter-ecosystem` and the adapters team will work with you on warehouse validation.
+CI testing for community adapter PRs is coordinated with the dbt Labs adapters team — the test infrastructure is not publicly distributed. When your PR is ready, open an issue in the [`dbt-labs/dbt` repository](https://github.com/dbt-labs/dbt/issues) that links to your PR, and the adapters team will work with you on warehouse validation. If you hit roadblocks or problems along the way, follow up in a comment on that issue. GitHub issues are preferred over Slack because they're triaged and live closer to the code, but you can also find adapter developers in `#adapter-ecosystem` on the [dbt Community Slack](https://community.getdbt.com/).
 
 :::caution Known gap: CI requires coordination
-Community contributors cannot run CI independently. dbt Labs' CI pipeline requires warehouse credentials for the target warehouse — which means dbt Labs needs access configs for whatever warehouse you're contributing. The process for this handoff is still being defined. Expect to coordinate closely with the adapters team. If you hit friction, flag it in `#adapter-ecosystem`.
+Community contributors cannot run CI independently. dbt Labs' CI pipeline requires warehouse credentials for the target warehouse — which means dbt Labs needs access configs for whatever warehouse you're contributing. The process for this handoff is still being defined. Expect to coordinate closely with the adapters team. If you hit friction, flag it in a comment on your [GitHub issue](https://github.com/dbt-labs/dbt/issues).
 :::
 
 ---
@@ -659,10 +659,11 @@ dbt Labs reviews and merges community adapter PRs into `dbt-labs/dbt`. Wait unti
 
 ### Community channels
 
-Join the dbt Community Slack and find:
-- **`#adapter-ecosystem`** — the main channel for adapter developers
+For questions, roadblocks, or coordination with the adapters team, open or comment on an issue in the [`dbt-labs/dbt` repository](https://github.com/dbt-labs/dbt/issues). GitHub issues are preferred because they're triaged and live closer to the code.
+
+You can also join the [dbt Community Slack](https://community.getdbt.com/) and find:
+- **`#adapter-ecosystem`** — the community channel for adapter developers
 - **`#db-<yourwarehouse>`** — if a channel exists for your warehouse, let users know v2 support is available. Note: v1 adapter users will still be on the Python-based adapter and will need to migrate.
-- **`#proj-isv-adapters-in-fusion`** — ping the dbt Labs adapters team here once your PR is up for review.
 
 ### Before you announce
 
