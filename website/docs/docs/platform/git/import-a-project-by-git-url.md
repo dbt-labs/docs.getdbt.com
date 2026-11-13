@@ -54,7 +54,7 @@ You must provide this Deploy Key in the Repository configuration of your <Consta
 
 ## Reconnect an existing repository
 
-If you need to change the clone URL for a project that's already connected, disconnect and reconnect the repository. Reconnecting generates a new deploy key, so you also need to add the new key to your git provider.
+If you need to change the clone URL for a project that's already connected to <Constant name="dbt_platform"/>, disconnect and reconnect the repository. Reconnecting generates a new deploy key, so you also need to add the new key to your git provider.
 
 1. In <Constant name="dbt_platform" />, go to **Account settings** and select **Projects**, then select your project.
 2. Select the **Repository** link, then **Edit**, then **Disconnect**.
