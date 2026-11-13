@@ -23,9 +23,12 @@ jobs:
       pull-requests: write
     env:
       MT_FILE: website/docs/docs/dbt-versions/release-notes.md
-      REPORT_FILE: ${{ runner.temp }}/release-note-areas.md
       SAME_REPO: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
     steps:
+      # The runner context isn't available in job-level env, so set the path here.
+      - name: Set the report path
+        run: echo "REPORT_FILE=$RUNNER_TEMP/release-note-areas.md" >> "$GITHUB_ENV"
+
       - name: Check out the pull request branch
         if: env.SAME_REPO == 'true'
         uses: actions/checkout@v4
