@@ -33,7 +33,6 @@ The <Constant name="canvas" /> interface is composed of:
 	- **Input:** Source models and data
 	- **Transform:** Data transformation tools
 	- **Output:** Output model configurations
-	- **[dbt Copilot](/docs/platform/build-canvas-copilot):** AI tools to help you build fast and efficiently
 	- **SQL:** View your completed model's compiled SQL
 - **Operators** &mdash; Tiles that provide source data, perform specific transformations, and layer configurations (such as model, join, aggregate, filter, and so on). Use connectors to link the operators and build a complete data transformation pipeline. 
 - **Canvas** &mdash; The main whiteboard space below the node toolbar. The canvas allows you to create or modify models through a sleek drag-and-drop experience.
@@ -56,8 +55,8 @@ Input operators configure source data:
 Transform operators shape your data:
 - **Join**: Define the join conditions and choose columns from both tables.
 - **Union:** Perform a `UNION` to remove duplicates or `UNION ALL` to prevent deduplicaation.
-- **Formula**: Add the formula to create a new column. Use [dbt Copilot](/docs/platform/build-canvas-copilot) to help generate SQL.
-- **Aggregate**: Specify the aggregation functions and the columns they apply to. To generate SQL with a natural language prompt, click the question mark (?) icon and use [dbt Copilot](/docs/platform/build-canvas-copilot).
+- **Formula**: Add the formula to create a new column.
+- **Aggregate**: Specify the aggregation functions and the columns they apply to.
 - **Pivot:** Select the column and values to create a pivot.
 - **Limit**: Set the maximum number of rows you want to return.  
 - **Order**: Select the columns to sort by and the sort order.
@@ -80,7 +79,6 @@ If you have any feedback on additional operators that you might need, we'd love 
 <Constant name="canvas" /> has a sleek drag-and-drop interface for creating and modifying dbt SQL models. It's like a digital whiteboard space for easily viewing and delivering trustworthy data. Use the canvas to:
 
 - Drag-and-drop operators to create and configure your model(s)
-- Generate SQL code using [dbt Copilot](/docs/platform/build-canvas-copilot)
 - Zoom in or out for better visualization
 - Version-control your dbt models
 - [Coming soon] Test and document your created models
@@ -101,7 +99,7 @@ Connectors allow you to connect your operators to create dbt models. Once you've
 Each operator has a configuration side panel that opens when you click on it. The configuration panel allows you to configure the operator, review the current model, preview changes, view the SQL code for the operator, and delete the operator.
 
 The configuration side panel has the following:
-- Configure tab &mdash; This section allows you to configure the operator to your specified requirements, such as using [dbt Copilot](/docs/platform/build-canvas-copilot) to generate SQL.
+- Configure tab &mdash; This section allows you to configure the operator to your specified requirements.
 - Input tab &mdash; This section allows you to view the data for the current source table. Not available for model operators.
 - Output tab &mdash; This section allows you to preview the data for the modified source model.
 - Code &mdash; This section allows you to view the underlying SQL code for the data transformation.
