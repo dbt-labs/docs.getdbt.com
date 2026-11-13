@@ -495,6 +495,34 @@ def _bullet_insert_after_month(lines: list[str], month_index: int) -> int:
     return month_index + 1
 
 
+def splice_month_bullets(
+    lines: list[str], insert_at: int, bullets: list[str]
+) -> list[str]:
+    """Insert bullets without loosening an existing Markdown list.
+
+    A blank line between list items makes the whole list loose, so every
+    bullet renders with paragraph spacing. Only add a blank line when the
+    next line is a new section, not another bullet.
+    """
+    if not bullets:
+        return lines
+
+    prefix = lines[:insert_at]
+    suffix = lines[insert_at:]
+    block = list(bullets)
+
+    if prefix and prefix[-1].startswith("## "):
+        block = [""] + block
+
+    following = suffix[0] if suffix else ""
+    if following.startswith("- ") or following.strip() == "":
+        separator: list[str] = []
+    else:
+        separator = [""]
+
+    return prefix + block + separator + suffix
+
+
 def ensure_month_heading(lines: list[str], month_heading: str) -> tuple[int, bool]:
     """Ensure the month heading exists (newest-first). Mutates lines if created.
 
@@ -605,7 +633,7 @@ def main() -> int:
         print("Dry run only — no files were changed.")
         return 0
 
-    new_mt_lines = mt_lines[:insert_at] + to_insert + [""] + mt_lines[insert_at:]
+    new_mt_lines = splice_month_bullets(mt_lines, insert_at, to_insert)
     mt_path.write_text("\n".join(new_mt_lines) + "\n", encoding="utf-8")
     print(f"Updated {mt_path}")
     return 0
