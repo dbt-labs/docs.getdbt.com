@@ -121,7 +121,9 @@ Use the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli) or [Wizard Des
 
 ### How dbt Wizard queries metrics
 
-In the <Constant name="wizard" /> CLI and Wizard Desktop, when you ask <Constant name="wizard" /> about a metric, [MetricFlow](/docs/build/about-metricflow) builds the SQL from that metric's definition, including the metric's filters and any filters in your question. On Snowflake, BigQuery, Redshift, Databricks, and DuckDB, <Constant name="wizard" /> runs that SQL in your warehouse. On other warehouses, such as Postgres, the SQL is written for DuckDB, so it may not run unchanged.
+In the <Constant name="wizard" /> Desktop and Wizard CLI, [MetricFlow](/docs/build/about-metricflow) turns your questions about metrics into SQL. It uses the metric’s definition and applies filters from both the definition and your question.
+
+On Snowflake, BigQuery, Redshift, Databricks, and DuckDB, <Constant name="wizard" /> runs that SQL in your warehouse. On other warehouses, such as Postgres, the SQL is written for DuckDB, so it may not run unchanged.
 
 ### Connections and authentication (MCP)
 
