@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="704" viewBox="0 0 1000 440" role="img" aria-labelledby="title desc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <title id="title">How context engineering works</title>
+  <desc id="desc">A call transcript is split into chunks. Each chunk is turned into numbers that capture its meaning. Those numbers place each chunk on a map where similar meanings sit close together. A question is placed on the same map, and the closest chunks come back as results with a score and a source.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8b93a1"/>
+    </marker>
+  </defs>
+
+  <rect x="10" y="20" width="170" height="400" rx="12" fill="#F9FAFB" stroke="#D1D5DB" stroke-width="2"/>
+  <rect x="205" y="20" width="185" height="400" rx="12" fill="#F9FAFB" stroke="#D1D5DB" stroke-width="2"/>
+  <rect x="415" y="20" width="190" height="400" rx="12" fill="#F9FAFB" stroke="#D1D5DB" stroke-width="2"/>
+  <rect x="630" y="20" width="360" height="400" rx="12" fill="#F9FAFB" stroke="#D1D5DB" stroke-width="2"/>
+  <g stroke="#8b93a1" stroke-width="2.5" marker-end="url(#arrow)">
+    <line x1="182" y1="220" x2="203" y2="220"/>
+    <line x1="392" y1="220" x2="413" y2="220"/>
+    <line x1="607" y1="220" x2="628" y2="220"/>
+  </g>
+  <text x="95.0" y="42" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="1" fill="#C2410C">START</text>
+  <text x="95.0" y="62" text-anchor="middle" font-size="16" font-weight="700" fill="#1F2937">Raw text</text>
+  <text x="95.0" y="78" text-anchor="middle" font-size="11" fill="#4B5563">Messy, long, and</text>
+  <text x="95.0" y="91" text-anchor="middle" font-size="11" fill="#4B5563">hard to search</text>
+  <rect x="22" y="104" width="146" height="132" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1.5"/>
+  <text x="32" y="122" font-size="11" font-weight="700" fill="#1F2937" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">Call CT-99021</text>
+  <text x="32" y="142" font-size="11" font-weight="400" fill="#1F2937" text-anchor="start">Janet: We've seen a</text>
+  <text x="32" y="156" font-size="11" font-weight="400" fill="#1F2937" text-anchor="start">pattern of late</text>
+  <text x="32" y="170" font-size="11" font-weight="400" fill="#1F2937" text-anchor="start">deliveries. Cause</text>
+  <text x="32" y="184" font-size="11" font-weight="400" fill="#1F2937" text-anchor="start">unknown so far.</text>
+  <line x1="30" y1="200" x2="160" y2="200" stroke="#FF694A" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="32" y="216" font-size="11" font-weight="400" fill="#1F2937" text-anchor="start">Marcus: I'll bring</text>
+  <text x="32" y="230" font-size="11" font-weight="400" fill="#1F2937" text-anchor="start">findings next time.</text>
+  <text x="95" y="262" font-size="11" font-weight="400" fill="#4B5563" text-anchor="middle">plus tickets, CRM</text>
+  <text x="95" y="276" font-size="11" font-weight="400" fill="#4B5563" text-anchor="middle">notes, contracts…</text>
+  <rect x="22" y="292" width="146" height="26" rx="8" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="1.5"/>
+  <text x="95" y="309" font-size="11" font-weight="400" fill="#374151" text-anchor="middle">Support tickets</text>
+  <rect x="22" y="326" width="146" height="26" rx="8" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="1.5"/>
+  <text x="95" y="343" font-size="11" font-weight="400" fill="#374151" text-anchor="middle">CRM notes</text>
+  <rect x="22" y="360" width="146" height="26" rx="8" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="1.5"/>
+  <text x="95" y="377" font-size="11" font-weight="400" fill="#374151" text-anchor="middle">Contracts</text>
+  <text x="297.5" y="42" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="1" fill="#C2410C">STEP 1</text>
+  <text x="297.5" y="62" text-anchor="middle" font-size="15" font-weight="700" fill="#1F2937" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">chunk()</text>
+  <text x="297.5" y="78" text-anchor="middle" font-size="11" fill="#4B5563">Split into pieces. Each one</text>
+  <text x="297.5" y="91" text-anchor="middle" font-size="11" fill="#4B5563">keeps its source id</text>
+  <rect x="215" y="104" width="165" height="108" rx="8" fill="#FFE9E3" stroke="#FF694A" stroke-width="1.5"/>
+  <text x="225" y="124" font-size="11" font-weight="700" fill="#1F2937" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">CT-99021::1</text>
+  <text x="225" y="144" font-size="11" font-weight="400" fill="#1F2937" text-anchor="start">Janet: We've seen a</text>
+  <text x="225" y="158" font-size="11" font-weight="400" fill="#1F2937" text-anchor="start">pattern of late</text>
+  <text x="225" y="172" font-size="11" font-weight="400" fill="#1F2937" text-anchor="start">deliveries. Cause</text>
+  <text x="225" y="186" font-size="11" font-weight="400" fill="#1F2937" text-anchor="start">unknown so far.</text>
+  <rect x="215" y="226" width="165" height="76" rx="8" fill="#FFE9E3" stroke="#FF694A" stroke-width="1.5"/>
+  <text x="225" y="246" font-size="11" font-weight="700" fill="#1F2937" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">CT-99021::2</text>
+  <text x="225" y="266" font-size="11" font-weight="400" fill="#1F2937" text-anchor="start">Marcus: I'll bring</text>
+  <text x="225" y="280" font-size="11" font-weight="400" fill="#1F2937" text-anchor="start">findings next time.</text>
+  <rect x="215" y="316" width="165" height="76" rx="8" fill="#FFE9E3" stroke="#FF694A" stroke-width="1.5"/>
+  <text x="225" y="336" font-size="11" font-weight="700" fill="#1F2937" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">CT-99022::1</text>
+  <text x="225" y="356" font-size="11" font-weight="400" fill="#1F2937" text-anchor="start">Delays are clustering</text>
+  <text x="225" y="370" font-size="11" font-weight="400" fill="#1F2937" text-anchor="start">around Columbus.</text>
+  <text x="510.0" y="42" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="1" fill="#C2410C">STEP 2</text>
+  <text x="510.0" y="62" text-anchor="middle" font-size="15" font-weight="700" fill="#1F2937" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">embed()</text>
+  <text x="510.0" y="78" text-anchor="middle" font-size="11" fill="#4B5563">Turn each piece into numbers</text>
+  <text x="510.0" y="91" text-anchor="middle" font-size="11" fill="#4B5563">that capture its meaning</text>
+  <rect x="425" y="104" width="170" height="108" rx="8" fill="#EEF2FF" stroke="#6366F1" stroke-width="1.5"/>
+  <text x="435" y="154.0" font-size="11" font-weight="700" fill="#1F2937" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">CT-99021::1</text>
+  <text x="435" y="172.0" font-size="11" font-weight="400" fill="#1F2937" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">[0.79, -0.12, 0.40, …]</text>
+  <rect x="425" y="226" width="170" height="76" rx="8" fill="#EEF2FF" stroke="#6366F1" stroke-width="1.5"/>
+  <text x="435" y="260.0" font-size="11" font-weight="700" fill="#1F2937" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">CT-99021::2</text>
+  <text x="435" y="278.0" font-size="11" font-weight="400" fill="#1F2937" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">[0.74, -0.18, 0.47, …]</text>
+  <rect x="425" y="316" width="170" height="76" rx="8" fill="#EEF2FF" stroke="#6366F1" stroke-width="1.5"/>
+  <text x="435" y="350.0" font-size="11" font-weight="700" fill="#1F2937" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">CT-99022::1</text>
+  <text x="435" y="368.0" font-size="11" font-weight="400" fill="#1F2937" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">[0.88, -0.05, 0.33, …]</text>
+  <text x="510" y="410" font-size="10" font-weight="400" fill="#6B7280" text-anchor="middle">Made-up. Real ones are longer.</text>
+  <text x="810.0" y="42" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="1" fill="#C2410C">STEP 3</text>
+  <text x="810.0" y="62" text-anchor="middle" font-size="15" font-weight="700" fill="#1F2937" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">vector_search()</text>
+  <text x="810.0" y="78" text-anchor="middle" font-size="11" fill="#4B5563">Embed the question too. Closer on</text>
+  <text x="810.0" y="91" text-anchor="middle" font-size="11" fill="#4B5563">the map means closer in meaning.</text>
+  <rect x="644" y="104" width="332" height="190" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/>
+  <circle cx="880" cy="128" r="6" fill="#3B82F6"/>
+  <circle cx="902" cy="144" r="6" fill="#3B82F6"/>
+  <circle cx="922" cy="122" r="6" fill="#3B82F6"/>
+  <circle cx="896" cy="164" r="6" fill="#3B82F6"/>
+  <circle cx="930" cy="154" r="6" fill="#3B82F6"/>
+  <circle cx="912" cy="176" r="6" fill="#3B82F6"/>
+  <circle cx="820" cy="252" r="6" fill="#2F9E6E"/>
+  <circle cx="846" cy="234" r="6" fill="#2F9E6E"/>
+  <circle cx="872" cy="258" r="6" fill="#2F9E6E"/>
+  <circle cx="894" cy="242" r="6" fill="#2F9E6E"/>
+  <circle cx="842" cy="272" r="6" fill="#2F9E6E"/>
+  <circle cx="866" cy="278" r="6" fill="#2F9E6E"/>
+  <circle cx="796" cy="196" r="6" fill="#FF694A" opacity="0.55"/>
+  <circle cx="690" cy="140" r="6" fill="#FF694A" opacity="0.55"/>
+  <circle cx="748" cy="162" r="50" fill="#FFF3EF" fill-opacity="0.7" stroke="#C2410C" stroke-width="2" stroke-dasharray="6 4"/>
+  <circle cx="770" cy="144" r="7" fill="#FF694A" stroke="#C2410C" stroke-width="1.5"/>
+  <circle cx="724" cy="180" r="7" fill="#FF694A" stroke="#C2410C" stroke-width="1.5"/>
+  <circle cx="736" cy="138" r="7" fill="#FF694A" stroke="#C2410C" stroke-width="1.5"/>
+  <polygon points="752.0,153.0 754.6,160.4 762.5,160.6 756.3,165.4 758.5,172.9 752.0,168.5 745.5,172.9 747.7,165.4 741.5,160.6 749.4,160.4" fill="#111827" stroke="#FFFFFF" stroke-width="1.2"/>
+  <text x="748" y="230" font-size="11" font-weight="400" fill="#6B7280" text-anchor="middle">delivery issues</text>
+  <text x="906" y="198" font-size="11" font-weight="400" fill="#6B7280" text-anchor="middle">contracts &amp; pricing</text>
+  <text x="656" y="266" font-size="11" font-weight="400" fill="#6B7280" text-anchor="start">incidents &amp; weather</text>
+  <polygon points="660.0,306.0 661.9,311.3 667.6,311.5 663.1,315.0 664.7,320.5 660.0,317.3 655.3,320.5 656.9,315.0 652.4,311.5 658.1,311.3" fill="#111827"/>
+  <text x="672" y="318" font-size="11" font-weight="400" fill="#374151" text-anchor="start">your question</text>
+  <circle cx="766" cy="314" r="5" fill="#8b93a1"/>
+  <text x="776" y="318" font-size="11" font-weight="400" fill="#374151" text-anchor="start">a chunk</text>
+  <circle cx="842" cy="314" r="7" fill="none" stroke="#C2410C" stroke-width="1.5" stroke-dasharray="3 2"/>
+  <text x="854" y="318" font-size="11" font-weight="400" fill="#374151" text-anchor="start">closest matches</text>
+  <text x="646" y="346" font-size="12" font-weight="700" fill="#15803D" text-anchor="start">Result: top matches</text>
+  <text x="976" y="346" font-size="11" font-weight="400" fill="#4B5563" text-anchor="end">each one cites its source</text>
+  <rect x="644" y="358" width="332" height="16" rx="4" fill="#E3F5EC"/>
+  <text x="652" y="370" font-size="11" font-weight="700" fill="#1F2937" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">CT-99021::2</text>
+  <text x="968" y="370" font-size="11" font-weight="400" fill="#1F2937" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">score 0.57</text>
+  <rect x="644" y="376" width="332" height="16" rx="4" fill="#E3F5EC"/>
+  <text x="652" y="388" font-size="11" font-weight="700" fill="#1F2937" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">CT-99021::1</text>
+  <text x="968" y="388" font-size="11" font-weight="400" fill="#1F2937" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">score 0.54</text>
+  <rect x="644" y="394" width="332" height="16" rx="4" fill="#E3F5EC"/>
+  <text x="652" y="406" font-size="11" font-weight="700" fill="#1F2937" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">CT-99022::1</text>
+  <text x="968" y="406" font-size="11" font-weight="400" fill="#1F2937" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">score 0.50</text>
+</svg>

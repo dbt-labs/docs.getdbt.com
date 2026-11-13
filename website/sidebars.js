@@ -1952,6 +1952,25 @@ const sidebarSettings = {
         },
         {
           type: "category",
+          label: "How to do context engineering",
+          link: {
+            type: "doc",
+            id: "best-practices/how-we-context-engineer/1-guide-overview",
+          },
+          items: [
+            "best-practices/how-we-context-engineer/1-guide-overview",
+            "best-practices/how-we-context-engineer/2-get-started",
+            "best-practices/how-we-context-engineer/3-prepare-your-text",
+            "best-practices/how-we-context-engineer/4-embed-and-retrieve",
+            "best-practices/how-we-context-engineer/5-enrich-with-ai",
+            "best-practices/how-we-context-engineer/6-keep-context-trustworthy",
+            "best-practices/how-we-context-engineer/7-control-cost",
+            "best-practices/how-we-context-engineer/8-pair-with-the-semantic-layer",
+            "best-practices/how-we-context-engineer/9-glossary",
+          ],
+        },
+        {
+          type: "category",
           label: "How we build our dbt Mesh projects",
           link: {
             type: "doc",
