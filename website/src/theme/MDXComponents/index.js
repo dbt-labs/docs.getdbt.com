@@ -53,6 +53,7 @@ import Constant from '@site/src/components/constant';
 import Availability from '@site/src/components/availability';
 import AvailabilityContext from '@site/src/components/availabilityContext';
 import AvailabilityMatrix from '@site/src/components/availabilityMatrix';
+import ReleaseNotesFilter from '@site/src/components/releaseNotesFilter';
 
 function H1WithAvailability(props) {
   const { availability, renderAfterH1 } = useContext(AvailabilityContext);
@@ -126,6 +127,7 @@ const MDXComponents = {
   IntroText: IntroText,
   Constant: Constant,
   AvailabilityMatrix: AvailabilityMatrix,
+  ReleaseNotesFilter: ReleaseNotesFilter,
   AgentPrompt: AgentPrompt,
 };
 export default MDXComponents;
