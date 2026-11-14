@@ -9,6 +9,7 @@
 
 <Card
     title="Apache Spark"
+    designation="first-party"
     icon="apache-spark"
     platformHref="/docs/platform/connect-data-platform/connect-apache-spark"
     v1Href="/docs/local/connect-data-platform/spark-setup"
@@ -31,6 +32,7 @@
 
 <Card
     title="BigQuery"
+    designation="first-party"
     icon="bigquery"
     platformHref="/docs/platform/connect-data-platform/connect-bigquery"
     v1Href="/docs/local/connect-data-platform/bigquery-setup"
@@ -39,6 +41,7 @@
 
 <Card
     title="ClickHouse"
+    designation="first-party"
     icon="clickhouse"
     platformHref="/docs/platform/connect-data-platform/connect-clickhouse"
     v1Href="/docs/local/connect-data-platform/clickhouse-setup"
@@ -47,6 +50,7 @@
 
 <Card
     title="Databricks"
+    designation="first-party"
     icon="databricks"
     platformHref="/docs/platform/connect-data-platform/connect-databricks"
     v1Href="/docs/local/connect-data-platform/databricks-setup"
@@ -55,6 +59,7 @@
 
 <Card
     title="DuckDB"
+    designation="first-party"
     icon="duckdb-seeklogo"
     v1Href="/docs/local/connect-data-platform/duckdb-setup?version=1"
     v2Href="/docs/local/connect-data-platform/duckdb-setup?version=2"
@@ -74,6 +79,7 @@
 
 <Card
     title="Exasol"
+    designation="community-maintained"
     icon="exasol"
     v1Href="/docs/local/connect-data-platform/exasol-setup"
     badgeHref="https://badge.fury.io/py/dbt-exasol"/>
@@ -142,6 +148,7 @@
 
 <Card
     title="Redshift"
+    designation="first-party"
     icon="redshift"
     platformHref="/docs/platform/connect-data-platform/connect-redshift"
     v1Href="/docs/local/connect-data-platform/redshift-setup"
@@ -155,6 +162,12 @@
     badgeHref="https://badge.fury.io/py/dbt-risingwave"/>
 
 <Card
+    title="Salesforce Data 360"
+    icon="salesforce"
+    designation="community-maintained"
+    v2Href="/docs/local/connect-data-platform/salesforce-data-cloud-setup"/>
+
+<Card
     title="SingleStore"
     icon="singlestore"
     v1Href="/docs/local/connect-data-platform/singlestore-setup"
@@ -162,6 +175,7 @@
 
 <Card
     title="Snowflake"
+    designation="first-party"
     icon="snowflake"
     platformHref="/docs/platform/connect-data-platform/connect-snowflake"
     v1Href="/docs/local/connect-data-platform/snowflake-setup"
