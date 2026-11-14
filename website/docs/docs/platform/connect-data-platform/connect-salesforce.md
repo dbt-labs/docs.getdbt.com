@@ -9,7 +9,7 @@ availability:
   access: login_required
 ---
 
-# Connect Salesforce Data 360 <Lifecycle status="beta"/> <ProductCard text="dbt v2 compatible" />
+# Connect Salesforce Data 360 <Lifecycle status="community_maintained"/> <ProductCard text="dbt v2 compatible" />
 
 <Constant name="fusion_engine" /> in <Constant name="dbt_platform" /> supports connecting to Salesforce Data 360.
 

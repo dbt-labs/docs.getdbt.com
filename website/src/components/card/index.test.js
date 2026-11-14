@@ -30,3 +30,36 @@ describe('Card heading level', () => {
     expect(screen.getByRole('heading', { level: 3, name: 'No link' })).toBeInTheDocument();
   });
 });
+
+describe('Card adapter designation', () => {
+  const VersionContext = require('../../stores/VersionContext').default;
+  const renderAt = (version, props) =>
+    render(
+      <VersionContext.Provider value={{ version }}>
+        <Card title="Exasol" {...props} />
+      </VersionContext.Provider>
+    );
+
+  it('shows the designation tag in v2', () => {
+    renderAt('2.0', { v2Href: '/v2', designation: 'first-party' });
+    expect(screen.getByText('first-party')).toHaveClass('tag');
+  });
+
+  it('hides the designation tag in v1', () => {
+    renderAt('1.11', { v1Href: '/v1', designation: 'first-party' });
+    expect(screen.queryByText('first-party')).not.toBeInTheDocument();
+  });
+
+  it('keeps a designated card without a v2 link on the v2 page, with no links', () => {
+    renderAt('2.0', { v1Href: '/v1', designation: 'community-maintained' });
+    expect(screen.getByRole('heading', { name: 'Exasol' })).toBeInTheDocument();
+    expect(screen.getByText('community-maintained')).toBeInTheDocument();
+    expect(screen.queryByRole('link')).not.toBeInTheDocument();
+    expect(screen.queryByRole('list')).not.toBeInTheDocument();
+  });
+
+  it('still hides a v1-only card without a designation in v2', () => {
+    renderAt('2.0', { v1Href: '/v1' });
+    expect(screen.queryByRole('heading', { name: 'Exasol' })).not.toBeInTheDocument();
+  });
+});

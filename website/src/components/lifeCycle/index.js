@@ -5,6 +5,8 @@
 //     dbt platform plan a feature requires.
 //   - status tokens (new, beta, preview, ga, private_beta, private_preview, eol, deprecated, retired) signal
 //     feature maturity/lifecycle stage.
+//   - community_maintained marks a community-maintained v2 adapter. Those adapters
+//     don't move through lifecycle stages, so this token takes the place of one.
 // These are intentionally styled differently (see styles.module.css: .lifecycle vs
 // .planPill) so a plan requirement is never visually confused with a lifecycle status.
 // Don't reuse status colors/shapes for plan tokens or vice versa.
@@ -45,6 +47,7 @@ const statusColors = {
   eol: '#99A1AF',
   deprecated: '#99A1AF',
   retired: '#99A1AF',
+  community_maintained: '#A7F3D0',
   // new_constant: '#99A1AF', use this gray color if you want a new color.
 };
 
@@ -63,6 +66,7 @@ const fontColors = {
   eol: "#030711",
   deprecated: "#030711",
   retired: "#030711",
+  community_maintained: "#030711",
 };
 
 // Display names for status values
@@ -80,6 +84,7 @@ const statusDisplayNames = {
   eol: 'No longer sold',
   deprecated: 'Deprecated',
   retired: 'Retired',
+  community_maintained: 'community-maintained',
 };
 
 // URL mapping for predefined lifecycle statuses. urls defined in ../lifeCycle/lifecycle-urls.js file so we can update them in one place

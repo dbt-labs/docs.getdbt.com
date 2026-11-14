@@ -337,6 +337,7 @@ Terms defined in `website/docs/terms/hover-terms.md`.
 <Lifecycle status="preview" />
 <Lifecycle status="private_preview" />
 <Lifecycle status="beta" />
+<Lifecycle status="community_maintained" />
 ```
 Source for statuses: `website/src/components/lifeCycle/index.js`. GA is not used as a status — when a feature graduates to general availability, **remove the `<Lifecycle>` tag entirely** rather than looking for a "GA" value. If you're reviewing or updating an existing page, check whether a lingering Preview/Beta tag is actually still accurate.
 
