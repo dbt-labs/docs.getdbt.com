@@ -126,6 +126,7 @@ dbt Docs was built to make it easy to host on the web. The site is "static," mea
 
 * Host on [Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html) (optionally [with IP access restrictions](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html#example-bucket-policies-use-case-3))
 * Publish with [Netlify](https://discourse.getdbt.com/t/publishing-dbt-docs-to-netlify/121)
+* Share a single file: [`dbt docs generate --static`](/reference/commands/cmd-docs#dbt-docs-generate) writes `target/static_index.html` with the manifest and catalog embedded, so you can upload just that file to any static host, for example [deed.page](https://deed.page), which accepts an upload over HTTP without an account. Anyone with the link can view the docs, so only use a public link for projects you're comfortable sharing.
 * Use your own web server like Apache/Nginx
 * If you're on a <Constant name="dbt" /> Developer plan, see [Build and view your docs with <Constant name="dbt" />](/docs/explore/build-and-view-your-docs#dbt-docs) to learn how to deploy your documentation site.
 
