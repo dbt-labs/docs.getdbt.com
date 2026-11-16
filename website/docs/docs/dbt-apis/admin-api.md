@@ -43,7 +43,7 @@ link="/dbt-cloud/api-v3"
  <Card
     title="dbt Terraform provider"
     link="https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest"
-    body="The Terraform provider maintained by dbt Labs which can be used to manage a dbt account."
+    body="The Terraform provider maintained by dbt which can be used to manage a dbt account."
     icon="pencil-paper"/>
     <a href="https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest"
     className="external-link"

@@ -198,4 +198,4 @@ If you need any additional help or have some questions, use the following resour
 For tailored assistance, you can use the following resources:
 
 - Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights
-- Work with the [dbt Labs' Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and move.
+- Work with the [dbt's Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and move.

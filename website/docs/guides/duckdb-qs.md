@@ -24,7 +24,7 @@ This guide covers DuckDB with <Constant name="core" /> command-line interface (C
 
 This guide will demonstrate how to: 
 
-- Create a virtual development environment using a template provided by dbt Labs.
+- Create a virtual development environment using a template provided by dbt.
 - We will set up a fully functional dbt environment with an operational and executable project. The codespace automatically connects to the DuckDB database and loads a year's worth of data from our fictional Jaffle Shop café, which sells food and beverages in several US cities.
 - Run through the steps outlined in the `jaffle_shop_duckdb` repository, but if you want to dig into the underlying code further, refer to the [README](https://github.com/dbt-labs/jaffle_shop_duckdb/blob/duckdb/README.md) for the Jaffle Shop template.
 - Run any dbt command from the environment’s terminal. 
@@ -284,14 +284,14 @@ If you'd like to work with a larger selection of Jaffle Shop data, you can gener
     ``` 
     Replace `NUMBER_OF_YEARS` with the number of years you want to simulate. For example, to generate data for 6 years, run `jafgen 6`. This command builds the CSV files and stores them in the `jaffle-data` folder, and is automatically sourced based on the `sources.yml` file and the [dbt-duckdb](/docs/local/connect-data-platform/duckdb-setup) adapter.
 
-As you increase the number of years, it takes exponentially more time to generate the data because the Jaffle Shop stores grow in size and number. For a good balance of data size and time to build, dbt Labs suggests a maximum of 6 years.
+As you increase the number of years, it takes exponentially more time to generate the data because the Jaffle Shop stores grow in size and number. For a good balance of data size and time to build, dbt suggests a maximum of 6 years.
 ## Next steps
 
 Now that you have <Constant name="core" />, DuckDB, and the Jaffle Shop data up and running, you can explore dbt's capabilities. Refer to these materials to get a better understanding of dbt projects and commands:
 
 - The [About projects](/docs/build/projects) page guides you through the structure of a dbt project and its components.
 - [dbt command reference](/reference/dbt-commands) explains the various commands available and what they do.
-- [dbt Labs courses](https://courses.getdbt.com/collections) offer a variety of beginner, intermediate, and advanced learning modules designed to help you become a dbt expert. 
+- [dbt courses](https://courses.getdbt.com/collections) offer a variety of beginner, intermediate, and advanced learning modules designed to help you become a dbt expert. 
 - Once you see the potential of dbt and what it can do for your organization, sign up for a free trial of [<Constant name="dbt" />](https://www.getdbt.com/signup). It's the fastest and easiest way to deploy dbt today!
 - Check out the other [quickstart guides](/guides?tags=Quickstart) to begin integrating into your existing data warehouse.
 

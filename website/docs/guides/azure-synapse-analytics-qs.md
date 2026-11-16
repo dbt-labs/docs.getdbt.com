@@ -13,7 +13,7 @@ tags: ['dbt platform','Quickstart']
 
 In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [Azure Synapse Analytics](https://azure.microsoft.com/en-us/products/synapse-analytics/). It will show you how to:
 
-- Load the Jaffle Shop sample data (provided by dbt Labs) into your Azure Synapse Analytics warehouse. 
+- Load the Jaffle Shop sample data (provided by dbt) into your Azure Synapse Analytics warehouse. 
 - Connect <Constant name="dbt" /> to Azure Synapse Analytics.
 - Turn a sample query into a model in your dbt project. A model in dbt is a SELECT statement.
 - Add tests to your models.

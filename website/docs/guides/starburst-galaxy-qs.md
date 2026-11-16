@@ -56,7 +56,7 @@ You can also watch the [Build Better Data Pipelines with dbt and Starburst](http
 
 ## Load data to an Amazon S3 bucket {#load-data-to-s3}
 
-Using Starburst Galaxy, you can create tables and also transform them with dbt. Start by loading the Jaffle Shop data (provided by dbt Labs) to your Amazon S3 bucket. Jaffle Shop is a fictional cafe selling food and beverages in several US cities. 
+Using Starburst Galaxy, you can create tables and also transform them with dbt. Start by loading the Jaffle Shop data (provided by dbt) to your Amazon S3 bucket. Jaffle Shop is a fictional cafe selling food and beverages in several US cities. 
 
 1. Download these CSV files to your local machine:
 

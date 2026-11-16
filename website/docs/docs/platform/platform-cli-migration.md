@@ -34,7 +34,7 @@ This keeps working indefinitely, but won't receive further <Constant name="platf
 
 ## FAQ
 
-- **Why is dbt Labs doing this?** dbt v2 is the new default `dbt` engine going forward. Publishing it under the `dbt` name on PyPI means new users get v2 by default, matching how `dbt` already behaves everywhere else (Homebrew, standalone install).
+- **Why is dbt doing this?** dbt v2 is the new default `dbt` engine going forward. Publishing it under the `dbt` name on PyPI means new users get v2 by default, matching how `dbt` already behaves everywhere else (Homebrew, standalone install).
 
 - **Will my pinned <Constant name="platform_cli" /> version stop working?** No. Pinned installs keep working. They just won't get new <Constant name="platform_cli" /> releases through pip after September 14. For that, reinstall using a currently supported method.
 

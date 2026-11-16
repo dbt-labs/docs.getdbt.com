@@ -83,7 +83,7 @@ Refer to [Enterprise permissions](/docs/platform/manage-access/enterprise-permis
 
 ## Service token update
 
-On July 18, 2023, dbt Labs changed how tokens are generated and validated to increase performance. These improvements only apply to tokens created after July 18, 2023.
+On July 18, 2023, dbt changed how tokens are generated and validated to increase performance. These improvements only apply to tokens created after July 18, 2023.
 
 Old tokens remain valid, but if they are used in high-frequency API invocations, we recommend you rotate them for reduced latency.
 

@@ -29,7 +29,7 @@ Use <Constant name="wizard" /> in the <Constant name="studio_ide" /> to ship tru
 
 The agent comes with the following out of the box, meaning no configuration needed:
 
-- [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills): dbt-recommended guidance and instructions, managed by dbt Labs.
+- [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills): dbt-recommended guidance and instructions, managed by dbt.
 - [dbt MCP server Product docs toolset](/docs/dbt-ai/mcp-available-tools#product-docs): Tools for searching and fetching content from dbt's official documentation.
 
 AI features are being enabled by default. They're already on for new accounts and are rolling out soon to existing accounts. If your organization opted out, they'll remain off. Admins can [turn AI off or back on and configure providers](/docs/platform/manage-dbt-ai) anytime.

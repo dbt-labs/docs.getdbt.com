@@ -15,7 +15,7 @@ If in the future you choose to host this repository elsewhere, you can export th
 
 
 :::info
-dbt Labs recommends against using a managed repository in a production environment. You can't use <Constant name="git" /> features like pull requests, which are part of our recommended version control best practices.
+dbt recommends against using a managed repository in a production environment. You can't use <Constant name="git" /> features like pull requests, which are part of our recommended version control best practices.
 :::
 
 To set up a project with a managed repository:

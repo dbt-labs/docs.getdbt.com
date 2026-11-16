@@ -42,8 +42,8 @@ BYOK allows users to provide and manage their own encryption or API keys, rather
 
 BYOK means users can bring and configure their own OpenAI, Anthropic, or Azure AI Foundry credentials. With BYOK, users have more control over privacy, observability, and security for their data and metadata. Take note of the following when using BYOK:
 
-- When you use your own API key, your contract with the LLM provider (not dbt Labs') applies. You are responsible for managing costs, usage limits, and data handling. This means ownership and liability for API use rests with the user, not dbt Labs.
-- dbt Labs does not impose usage limits on the user's key, as it does with internally managed keys.
+- When you use your own API key, your contract with the LLM provider (not dbt's) applies. You are responsible for managing costs, usage limits, and data handling. This means ownership and liability for API use rests with the user, not dbt.
+- dbt does not impose usage limits on the user's key, as it does with internally managed keys.
 - <OpenAiProjectRegion />
 - Currently, BYOK in <Constant name="dbt" /> supports OpenAI and Azure-hosted OpenAI API keys. Users enter their key through the [account settings](/docs/platform/account-settings), and requests made by <Constant name="wizard" /> or other AI features are billed directly to the customer by the respective provider.⁠⁠⁠⁠
 

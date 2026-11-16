@@ -314,7 +314,7 @@ dbt will now add the **dbt-cloud-integration app** to your Microsoft Entra tenan
   - `Channel.ReadBasic.All`
 
 :::info
-The `dbt-cloud-integration` app is a multi-tenant Microsoft Entra app that dbt Labs already owns. You don't need to pre-register anything in your tenant. Approving the consent prompt during **Link** registers the app as an Enterprise Application in your tenant. This follows the same pattern as other multi-tenant SaaS apps, for example Slack or Zoom.
+The `dbt-cloud-integration` app is a multi-tenant Microsoft Entra app that dbt already owns. You don't need to pre-register anything in your tenant. Approving the consent prompt during **Link** registers the app as an Enterprise Application in your tenant. This follows the same pattern as other multi-tenant SaaS apps, for example Slack or Zoom.
 :::
 
 ### Troubleshooting the Teams link

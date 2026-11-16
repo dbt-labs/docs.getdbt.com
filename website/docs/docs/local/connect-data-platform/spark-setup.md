@@ -4,7 +4,7 @@ sidebar_label: "Apache Spark"
 description: "Read this guide to learn about the Apache Spark warehouse setup in dbt."
 id: "spark-setup"
 meta:
-  maintained_by: dbt Labs
+  maintained_by: dbt
   authors: 'core dbt maintainers'
   github_repo: 'dbt-labs/dbt-adapters'
   pypi_package: 'dbt-spark'

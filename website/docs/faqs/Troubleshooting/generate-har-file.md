@@ -15,7 +15,7 @@ HTTP Archive (HAR) files are used to gather data from users’ browser, which db
 The following sections describe how to generate HAR files using common browsers such as [Google Chrome](#google-chrome), [Mozilla Firefox](#mozilla-firefox), [Apple Safari](#apple-safari), and [Microsoft Edge](#microsoft-edge).
 
 :::info
-Remove or hide any confidential or personally identifying information before you send the HAR file to dbt Labs. You can edit the file using a text editor. 
+Remove or hide any confidential or personally identifying information before you send the HAR file to dbt. You can edit the file using a text editor. 
 :::
 
 ### Google Chrome

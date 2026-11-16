@@ -10,7 +10,7 @@ availability:
 :::caution Work in progress
 This guide is a work in progress — synthesized from internal v2 adapter team docs, DuckDB/ClickHouse reference implementations, the Exasol community adapter, and the v1 adapter creation guide.
 
-**Community contribution scope:** You are responsible for **Phase 1 (foundation)** only — connecting, running macros, and basic materializations. Phase 2 (SQL static analysis) is led by dbt Labs after your Phase 1 PR is merged.
+**Community contribution scope:** You are responsible for **Phase 1 (foundation)** only — connecting, running macros, and basic materializations. Phase 2 (SQL static analysis) is led by dbt after your Phase 1 PR is merged.
 :::
 
 ## Step 1: Introduction
@@ -64,12 +64,12 @@ Before starting, you should:
 ### Your ADBC driver
 
 :::caution The ADBC driver for your warehouse must already exist before you start
-dbt Labs does not write drivers. If your warehouse doesn't have an ADBC driver yet, that work comes first — it's a prerequisite you can't skip.
+dbt does not write drivers. If your warehouse doesn't have an ADBC driver yet, that work comes first — it's a prerequisite you can't skip.
 :::
 
 **What "having an ADBC driver" actually means**
 
-For certain adapters (Snowflake, BigQuery, Databricks, Redshift, DuckDB, ClickHouse, Spark, SQL Server), v2 automatically downloads the correct driver binary from the dbt Labs CDN on first use. Users never have to think about it.
+For certain adapters (Snowflake, BigQuery, Databricks, Redshift, DuckDB, ClickHouse, Spark, SQL Server), v2 automatically downloads the correct driver binary from the dbt CDN on first use. Users never have to think about it.
 
 Community adapters don't have CDN support. Instead, <Constant name="fusion" /> looks for a shared library by name on the user's system — for example, `libadbc_driver_exasol.dylib` on macOS and `libadbc_driver_exasol.so` on Linux. If the file isn't present, the connection fails at runtime.
 
@@ -78,16 +78,16 @@ This means two things for you as a contributor:
 2. **Your users will need to install it manually.** Unlike first-party adapters, there's no auto-download. Your documentation (Step 6) needs to tell users where to get the driver and how to install it.
 
 Check whether a driver already exists for your warehouse:
-- [dbt-labs/arrow-adbc](https://github.com/dbt-labs/arrow-adbc) — the dbt Labs fork
+- [dbt-labs/arrow-adbc](https://github.com/dbt-labs/arrow-adbc) — the dbt fork
 - [apache/arrow-adbc](https://github.com/apache/arrow-adbc) — the upstream community repo
 - [adbc-drivers](https://github.com/orgs/adbc-drivers/repositories?type=all) — the [ADBC driver foundry](https://adbc-drivers.org/2025/10/29/announcing-adbc-driver-foundry.html), the primary community home for ADBC drivers, with active drivers for Trino, MySQL, BigQuery, Databricks, Snowflake, and more; also includes Rust/Go frameworks (`driverbase-rs`, `template-rs`) for building new drivers from scratch
 - The warehouse vendor's own GitHub org (many vendors publish ADBC drivers independently)
 
 :::note Driver source is flexible — with a security caveat
-<Constant name="fusion" /> loads drivers by shared library name from the system path (for example, `libadbc_driver_exasol.dylib` on macOS) — the source repository is flexible, as long as the binary implements the ADBC C ABI. dbt Labs is working on a driver signing and verification mechanism. Until that ships, users are responsible for trusting the driver binary they install.
+<Constant name="fusion" /> loads drivers by shared library name from the system path (for example, `libadbc_driver_exasol.dylib` on macOS) — the source repository is flexible, as long as the binary implements the ADBC C ABI. dbt is working on a driver signing and verification mechanism. Until that ships, users are responsible for trusting the driver binary they install.
 :::
 
-If no driver exists yet, building one is a separate project that comes before the adapter contribution. This is outside the scope of what dbt Labs can help with. [Columnar](https://columnar.tech/) specializes in building ADBC drivers and may be a useful resource if you need help getting a driver built.
+If no driver exists yet, building one is a separate project that comes before the adapter contribution. This is outside the scope of what dbt can help with. [Columnar](https://columnar.tech/) specializes in building ADBC drivers and may be a useful resource if you need help getting a driver built.
 
 ### Are you porting an existing v1 adapter?
 
@@ -103,7 +103,7 @@ Before writing any Rust, check a few things:
 
 Refer to the [community adapters](/docs/community-adapters) list. If one exists, find its GitHub repo. The macro SQL and connection logic are almost directly reusable.
 
-**2. Did dbt Labs already add a placeholder for your warehouse?**
+**2. Did dbt already add a placeholder for your warehouse?**
 
 Some warehouses already appear in v2's `AdapterType` enum but aren't fully implemented yet — the enum variant exists, which means the boilerplate is partially in place. When you add the remaining code, the compiler shows you exactly what's still missing. The warehouses in this state are:
 
@@ -134,7 +134,7 @@ For warehouses not yet in `AdapterType` at all (MySQL, Hive, Vertica, SQL Server
 A few components won't transfer 1:1 from v1 to v2 — meaning less code and maintenance for you:
 - `ConnectionManager` methods (`open`, `cancel`, `get_response`, `execute`) — In v1, these were your responsibility to implement against the Python DB API 2.0 spec. In v2, connection management is owned entirely by the ADBC driver.
 - Python adapter class hierarchy and execution-wrapping methods — now handled by `match adapter_type()` expressions in the shared `adapter_impl.rs` (Step 4.5 explains how these work).
-- `setup.py` / package dependencies on `dbt-core` — dbt Labs handles packaging and distribution once your PR is merged. No `setup.py`, no PyPI release, and no version pinning required.
+- `setup.py` / package dependencies on `dbt-core` — dbt handles packaging and distribution once your PR is merged. No `setup.py`, no PyPI release, and no version pinning required.
 
 **How to use the v1 adapter with AI**
 
@@ -236,7 +236,7 @@ error[E0004]: non-exhaustive patterns: `AdapterType::MyWarehouse` not covered
 
 ### Layer stack
 
-The diagram below shows how a dbt project request flows through the crates at runtime — from configuration to SQL execution. Your adapter work lives in the middle layers: profile config, credential resolution, driver loading, relation logic, and macros. The bottom layer (SQL execution against the warehouse) is owned by dbt Labs.
+The diagram below shows how a dbt project request flows through the crates at runtime — from configuration to SQL execution. Your adapter work lives in the middle layers: profile config, credential resolution, driver loading, relation logic, and macros. The bottom layer (SQL execution against the warehouse) is owned by dbt.
 
 ```
 profiles.yml / dbt_project.yml
@@ -256,7 +256,7 @@ profiles.yml / dbt_project.yml
   dbt-loader         ← Jinja SQL macros (materializations, catalog, utils)
         │
         ▼
-  [dbt internal]     ← SQL execution against warehouse (dbt Labs)
+  [dbt internal]     ← SQL execution against warehouse (dbt)
 ```
 
 ### Crate map
@@ -326,7 +326,7 @@ This is where v2 learns how to find and load your warehouse's ADBC driver at run
 | File | What to do | Required? |
 |---|---|---|
 | `src/driver.rs` | Add a variant to the `Backend` enum; add the ADBC library name (for example, `"adbc_driver_exasol"`) and FFI protocol; also define a `LoadStrategy` | **Yes** |
-| `src/install.rs` | Add CDN download URL and platform strings | No — only if the driver will be distributed through the dbt Labs CDN, which requires separate coordination with dbt Labs. Community adapter drivers are not on the CDN by default. |
+| `src/install.rs` | Add CDN download URL and platform strings | No — only if the driver will be distributed through the dbt CDN, which requires separate coordination with dbt. Community adapter drivers are not on the CDN by default. |
 
 The `Backend` enum maps to the ADBC shared library name (`lib<name>.so` / `<name>.dll` / `lib<name>.dylib`). You're registering its identity so v2 knows what to load — you're not writing the driver here.
 
@@ -622,10 +622,10 @@ cargo build --bin dbt
 
 ### CI testing
 
-CI testing for community adapter PRs is coordinated with the dbt Labs adapters team — the test infrastructure is not publicly distributed. When your PR is ready, reach out in `#adapter-ecosystem` and the adapters team will work with you on warehouse validation.
+CI testing for community adapter PRs is coordinated with the dbt adapters team — the test infrastructure is not publicly distributed. When your PR is ready, reach out in `#adapter-ecosystem` and the adapters team will work with you on warehouse validation.
 
 :::caution Known gap: CI requires coordination
-Community contributors cannot run CI independently. dbt Labs' CI pipeline requires warehouse credentials for the target warehouse — which means dbt Labs needs access configs for whatever warehouse you're contributing. The process for this handoff is still being defined. Expect to coordinate closely with the adapters team. If you hit friction, flag it in `#adapter-ecosystem`.
+Community contributors cannot run CI independently. dbt's CI pipeline requires warehouse credentials for the target warehouse — which means dbt needs access configs for whatever warehouse you're contributing. The process for this handoff is still being defined. Expect to coordinate closely with the adapters team. If you hit friction, flag it in `#adapter-ecosystem`.
 :::
 
 ---
@@ -654,7 +654,7 @@ Unlike first-party adapters, your users won't get the driver automatically — <
 ## Step 7: Promote your adapter
 
 :::caution Your PR must be merged first
-dbt Labs reviews and merges community adapter PRs into `dbt-labs/dbt`. Wait until the PR is merged and the adapter ships in a published release before directing users to it.
+dbt reviews and merges community adapter PRs into `dbt-labs/dbt`. Wait until the PR is merged and the adapter ships in a published release before directing users to it.
 :::
 
 ### Community channels
@@ -662,7 +662,7 @@ dbt Labs reviews and merges community adapter PRs into `dbt-labs/dbt`. Wait unti
 Join the dbt Community Slack and find:
 - **`#adapter-ecosystem`** — the main channel for adapter developers
 - **`#db-<yourwarehouse>`** — if a channel exists for your warehouse, let users know v2 support is available. Note: v1 adapter users will still be on the Python-based adapter and will need to migrate.
-- **`#proj-isv-adapters-in-fusion`** — ping the dbt Labs adapters team here once your PR is up for review.
+- **`#proj-isv-adapters-in-fusion`** — ping the dbt adapters team here once your PR is up for review.
 
 ### Before you announce
 

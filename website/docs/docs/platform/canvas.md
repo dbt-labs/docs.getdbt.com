@@ -39,7 +39,7 @@ These models compile directly to SQL and are indistinguishable from other dbt mo
 
 Please note, always review AI-generated code and content as it may produce incorrect results.
 
-To give feedback, please reach out to your dbt Labs account team. We appreciate your feedback and suggestions as we improve <Constant name="canvas" />.
+To give feedback, please reach out to your dbt account team. We appreciate your feedback and suggestions as we improve <Constant name="canvas" />.
 
 ## Resources
 

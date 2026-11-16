@@ -20,13 +20,13 @@ This page covers which AI models <Constant name="wizard" /> can use and how usag
 
 Get started with free dbt-managed usage credits. Every credit balance is _per account, not per user_, which means everyone on your account shares the same pool. Enterprise and Enterprise+ accounts get monthly usage credits, and all other plans get a 30-day free trial with $100 in credits.
 
-There are two ways to pay for AI usage: let dbt Labs handle the models and the billing, or bring your own provider key. Here's how they compare:
+There are two ways to pay for AI usage: let dbt handle the models and the billing, or bring your own provider key. Here's how they compare:
 
 <SimpleTable>
 | <div style={{width:'150px'}}></div> | <div style={{width:'250px'}}>[dbt <Term id="managed" />](#dbt-managed-providers)</div> | <div style={{width:'250px'}}>[Bring your own key (BYOK)](#bring-your-own-key-byok)</div> |
 |---|---|---|
 | **Choose it when** | You want to start now, with no AI provider account of your own | You already have provider credits, or your company requires a specific vendor |
-| **Who bills you** | dbt Labs, through your dbt account | Your AI provider, directly |
+| **Who bills you** | Fivetran, through your dbt account | Your AI provider, directly |
 | **Spend controls** | Consumption pool and spend limits in **Billing & Usage** | Managed with your provider |
 | **Setup** | Nothing to configure | [Configure a provider key](/docs/platform/wizard-byok-platform) |
 </SimpleTable>
@@ -52,12 +52,12 @@ Usage draws down from your credits first, then your consumption pool, and stops 
 
 ## dbt managed providers
 
-In the <Constant name="dbt_platform" />, <Constant name="wizard" /> offers a <Term id="managed" /> OpenAI model by default. dbt Labs also offers <Term id="managed" /> access to Anthropic and to open weight models.
+In the <Constant name="dbt_platform" />, <Constant name="wizard" /> offers a <Term id="managed" /> OpenAI model by default. dbt also offers <Term id="managed" /> access to Anthropic and to open weight models.
 
 You'll see two kinds of models across these pages:
 
 - **Frontier models** are the flagship models hosted by providers like OpenAI and Anthropic. They're the most capable and the most expensive per token.
-- **Open weight models**, such as DeepSeek and Kimi, are openly published models available through dbt Labs. They offer a strong balance of capability and cost compared to frontier models.
+- **Open weight models**, such as DeepSeek and Kimi, are openly published models available through dbt. They offer a strong balance of capability and cost compared to frontier models.
 
 Refer to the [Model Provider Rate Table](https://www.getdbt.com/legal/dbt-wizard-token-costs-by-model) and [Supported AI providers](#supported-ai-providers) for the full list of what's available where.
 

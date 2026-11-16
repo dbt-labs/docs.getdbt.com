@@ -3,7 +3,7 @@ title: "Salesforce Data 360 setup"
 description: "Read this guide to learn about the Salesforce Data 360 warehouse setup in dbt."
 id: "salesforce-data-cloud-setup"
 meta:
-  maintained_by: dbt Labs
+  maintained_by: dbt
   authors: 'dbt v2 dbt maintainers'
   github_repo: 'dbt-labs/dbt'
   pypi_package: N/A

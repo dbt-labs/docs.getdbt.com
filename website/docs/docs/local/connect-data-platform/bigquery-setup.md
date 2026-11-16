@@ -2,7 +2,7 @@
 title: "BigQuery"
 description: "Read this guide to learn about the BigQuery warehouse setup in dbt."
 meta:
-  maintained_by: dbt Labs
+  maintained_by: dbt
   authors: 'dbt maintainers'
   github_repo: 'dbt-labs/dbt-adapters'
   pypi_package: 'dbt-bigquery'

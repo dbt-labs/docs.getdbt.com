@@ -56,7 +56,7 @@ This guide outlines the steps you need to take to move from self-hosted dbt to t
 ### Related docs
 - [Learn <Constant name="dbt" />](https://learn.getdbt.com) on-demand video learning.
 - Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights
-- Work with the [dbt Labs' Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
+- Work with the [dbt's Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
 
 ## Prerequisites
 
@@ -270,7 +270,7 @@ For the next steps, you can continue exploring our 3-part-guide series on moving
 ### Related docs
 - [Learn <Constant name="dbt" />](https://learn.getdbt.com) video courses for on-demand learning.
 - Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights.
-- Work with the [dbt Labs' Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
+- Work with the [dbt's Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
 - [How the <Constant name="dbt_platform" /> compares with self-hosted dbt](https://www.getdbt.com/product/dbt-core-vs-dbt-cloud) for a detailed comparison of self-hosted dbt and the <Constant name="dbt_platform" />.
 - Subscribe to the [<Constant name="dbt_platform" /> RSS alerts](https://status.getdbt.com/)
 

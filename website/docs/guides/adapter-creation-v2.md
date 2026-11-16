@@ -27,7 +27,7 @@ Another advantage of <Constant name="core_v2" />: connection management lives in
 
 What you need to contribute is the exact logic that varies by warehouse: credentials, relation naming, macros, and catalog queries. A complete community adapter touches ~13 files; that's the bar we're aiming for.
 
-This guide walks you through the architecture, crate structure, and how to contribute a <Constant name="core_v2" /> adapter step by step. I’m Hope Watson, product manager for <Constant name="core_v2" /> adapters at dbt Labs, and I put this together to help design, document, and shepherd this process for the community in the v2 world. 
+This guide walks you through the architecture, crate structure, and how to contribute a <Constant name="core_v2" /> adapter step by step. I’m Hope Watson, product manager for <Constant name="core_v2" /> adapters at dbt, and I put this together to help design, document, and shepherd this process for the community in the v2 world. 
 
 The Exasol adapter, contributed by [Marco Nätlitz](https://www.linkedin.com/in/marco-naetlitz/), is used as the reference example throughout. The full file breakdown in the [reference section](#reference-file-by-file-implementation-guide) defines exactly what you're building.
 
@@ -36,7 +36,7 @@ The Exasol adapter, contributed by [Marco Nätlitz](https://www.linkedin.com/in/
 | Topic | <Constant name="core_v1" /> | <Constant name="core_v2" /> |
 |-------|-------------|-------------|
 | **Package structure** | Separate Python packages (for example, `dbt-snowflake` and `dbt-bigquery`), each inheriting from `dbt-adapters` | Part of the `dbt-labs/dbt` monorepo, contributed as PRs |
-| **Who maintains them** | dbt Labs maintains base adapter and 6 major adapters; others community-maintained independently | dbt Labs maintains the monorepo; community contributes through pull requests |
+| **Who maintains them** | dbt maintains base adapter and 6 major adapters; others community-maintained independently | dbt maintains the monorepo; community contributes through pull requests |
 | **Language** | Python | Rust (with Jinja SQL macros still used for SQL logic) |
 | **How they load** | Dynamically loaded at runtime through Python's plugin system | Compiled into the monorepo binary |
 | **Connection management** | Each adapter implements its own connection logic, built on vendor Python SDK connectors/drivers | ADBC drivers handle connection management: a unified driver interface that abstracts away wire protocol details |
@@ -72,14 +72,14 @@ Think of your adapter contribution as the bridge between <Constant name="core_v2
 
 Check these sources to find out if one exists for your warehouse:
 - [apache/arrow-adbc](https://github.com/apache/arrow-adbc): upstream community repo
-- [dbt-labs/arrow-adbc](https://github.com/dbt-labs/arrow-adbc): the dbt Labs fork
+- [dbt-labs/arrow-adbc](https://github.com/dbt-labs/arrow-adbc): the dbt fork
 - [ADBC driver foundry](https://github.com/adbc-drivers): primary community home for ADBC drivers, with active drivers and Rust/Go frameworks for building new ones
 - Your warehouse vendor's own GitHub org
 
-If no driver exists yet, building one is a separate project that comes before the adapter contribution. This is outside the scope of dbt Labs. [Columnar](https://columnar.tech/) specializes in building ADBC drivers and may be a useful resource.
+If no driver exists yet, building one is a separate project that comes before the adapter contribution. This is outside the scope of dbt. [Columnar](https://columnar.tech/) specializes in building ADBC drivers and may be a useful resource.
 
 :::note Long-term: signed driver distribution
-dbt Labs is working toward a model where community drivers can be distributed and loaded safely through signed binaries, similar to how operating systems verify installers. The goal is to make third-party driver installation as seamless and trustworthy as first-party. This isn't in place yet, but dbt Labs is considering this direction.
+dbt is working toward a model where community drivers can be distributed and loaded safely through signed binaries, similar to how operating systems verify installers. The goal is to make third-party driver installation as seamless and trustworthy as first-party. This isn't in place yet, but dbt is considering this direction.
 :::
 
 ## Step 3: Understanding the codebase shape before you build
@@ -148,9 +148,9 @@ Each failure is a concrete implementation task.
 
 ### Are you porting an existing v1 adapter?
 
-No v1 adapter? Skip to [Step 4](#step-4-development-machine-setup). If you're porting, use this map to see exactly what transfers, what needs rethinking, and what dbt Labs now owns for you in v2.
+No v1 adapter? Skip to [Step 4](#step-4-development-machine-setup). If you're porting, use this map to see exactly what transfers, what needs rethinking, and what dbt now owns for you in v2.
 
-<Lightbox src="/img/adapter-guide/adapter-creation-v2-blocks.svg" title="Diagram showing which v1 adapter components map directly to v2 (green), require rethinking (purple), or are absorbed by dbt Labs or the ADBC driver (red)" />
+<Lightbox src="/img/adapter-guide/adapter-creation-v2-blocks.svg" title="Diagram showing which v1 adapter components map directly to v2 (green), require rethinking (purple), or are absorbed by dbt or the ADBC driver (red)" />
 
 Most community contributors aren't building from scratch, they're porting an adapter they already maintain or use in Python for <Constant name="core_v1" />. If that's you, **you have a significant head start**, and this is the most realistic path for the vast majority of contributors.
 
@@ -160,7 +160,7 @@ Before writing any Rust, check a couple of things:
 
 Refer to the [community adapters](/docs/community-adapters) list. If one exists, find its GitHub repo. The macro SQL and connection logic are almost directly reusable.
 
-2. Did dbt Labs already add a placeholder for your warehouse?
+2. Did dbt already add a placeholder for your warehouse?
 
 Some warehouses already appear in v2's `AdapterType` enum but aren't fully implemented yet: the enum variant exists, which means the boilerplate is partially in place. When you add the remaining code, the compiler shows you exactly what's still missing. The warehouses in this state are:
 
@@ -192,7 +192,7 @@ Four categories of v1 code simply don't exist in v2, which means less code to po
 - **Connection management**: In v1 you owned the full connection lifecycle against the Python DB API. In v2 the ADBC driver handles this entirely; skip anything related to cursors, retries, or connection pooling.
 - **Query execution**: Shared Rust infrastructure handles raw query plumbing (`execute`, `add_query`). You don't implement it.
 - **Adapter class hierarchy**: The Python subclass structure is replaced by shared Rust match expressions. You register your adapter; you don't implement execution logic.
-- **Packaging and distribution**: No `setup.py`, no PyPI release. dbt Labs ships your adapter once the PR is merged.
+- **Packaging and distribution**: No `setup.py`, no PyPI release. dbt ships your adapter once the PR is merged.
 
 ## Step 4: Development machine setup
 
@@ -300,7 +300,7 @@ Your driver already exists (covered in Step 2). This step is where you register 
 | File | What to do | Required? |
 |-------|-----------|-----------|
 | `src/driver.rs` | Add a variant to the `Backend` enum; add the ADBC library name (for example, `"adbc_driver_exasol"`) and FFI protocol; also define a `LoadStrategy` | **Yes** |
-| `src/install.rs` | Add CDN download URL and platform strings | No, only for drivers distributed through the dbt Labs CDN, which requires separate coordination with dbt Labs |
+| `src/install.rs` | Add CDN download URL and platform strings | No, only for drivers distributed through the dbt CDN, which requires separate coordination with dbt |
 
 The `Backend` enum maps to the ADBC shared library name (`lib<name>.so` / `<name>.dll` / `lib<name>.dylib`). You're registering its identity so <Constant name="core_v2" /> knows what to load. You're not writing the driver here.
 
@@ -630,10 +630,10 @@ cargo build --bin dbt
 
 ### CI testing
 
-CI testing for community adapter PRs is coordinated with the dbt Labs adapters team: the test infrastructure is not publicly distributed. When your PR is ready, reach out in `#adapter-ecosystem` on the [dbt Community Slack](https://community.getdbt.com/), tag Hope Watson (`@Hope Watson (dbt Labs)`), and the adapters team will work with you on warehouse validation. Note that this may take some time and coordination.
+CI testing for community adapter PRs is coordinated with the dbt adapters team: the test infrastructure is not publicly distributed. When your PR is ready, reach out in `#adapter-ecosystem` on the [dbt Community Slack](https://community.getdbt.com/), tag Hope Watson (`@Hope Watson (dbt)`), and the adapters team will work with you on warehouse validation. Note that this may take some time and coordination.
 
 :::caution Known gap: CI requires coordination
-Community contributors cannot run CI independently. dbt Labs' CI pipeline requires certain checks. For certain adapters, that means warehouse credentials. dbt Labs is still defining this handoff process for <Constant name="core_v2" />. Expect to coordinate closely with the adapters team, for the approval process to take some time, and for some back-and-forth. If you hit friction, flag it in `#adapter-ecosystem`.
+Community contributors cannot run CI independently. dbt's CI pipeline requires certain checks. For certain adapters, that means warehouse credentials. dbt is still defining this handoff process for <Constant name="core_v2" />. Expect to coordinate closely with the adapters team, for the approval process to take some time, and for some back-and-forth. If you hit friction, flag it in `#adapter-ecosystem`.
 :::
 
 ## Step 7: Document your adapter
@@ -658,7 +658,7 @@ Unlike adapters distributed through the CDN, your users won't get the driver aut
 ## Step 8: Promote your adapter
 
 :::caution Your PR must be merged first
-dbt Labs reviews and merges community adapter PRs into `dbt-labs/dbt`. Wait until the PR is merged and the adapter ships in a published release before directing users to it.
+dbt reviews and merges community adapter PRs into `dbt-labs/dbt`. Wait until the PR is merged and the adapter ships in a published release before directing users to it.
 :::
 
 ### Community channels

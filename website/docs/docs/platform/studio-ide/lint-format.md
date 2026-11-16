@@ -113,7 +113,7 @@ Note that you should explicitly exclude snapshots in your `.sqlfluffignore` file
 Refer to the [Jaffle shop SQLFluff config file](https://github.com/dbt-labs/jaffle-shop-template/blob/main/.sqlfluff) for dbt-specific (or dbtonic) linting rules we use for our own projects:
 
 <details>
-<summary>dbtonic config code example provided by dbt Labs</summary>
+<summary>dbtonic config code example provided by dbt</summary>
 
 ```
 [sqlfluff]

@@ -76,9 +76,9 @@ After [comparing changes](#compare-changes), <Constant name="dbt" /> stores a ca
 
 You control what data to use. This may include synthetic data if pre-production or development data is heavily regulated or sensitive. 
 
-- The selected data is cached on dbt Labs' systems for up to 30 days. No data is retained on dbt Labs' systems beyond this period.
+- The selected data is cached on dbt's systems for up to 30 days. No data is retained on dbt's systems beyond this period.
 - The cache is encrypted and stored in an Amazon S3 or Azure blob storage in your account’s region. 
-- dbt Labs will not access cached data from Advanced CI for its benefit and the data is only used to provide services as directed by you. 
+- dbt will not access cached data from Advanced CI for its benefit and the data is only used to provide services as directed by you. 
 - Third-party subcontractors, other than storage subcontractors, will not have access to the cached data.
 
 If you access a CI job run that's more than 30 days old, you will not be able to see the comparison results. Instead, a message will appear indicating that the data has expired.
@@ -89,7 +89,7 @@ If you access a CI job run that's more than 30 days old, you will not be able to
 
 The compare changes feature uses the same credentials as the CI job, as defined in the CI job’s environment. The <Constant name="dbt" /> administrator must ensure that client CI credentials are appropriately restricted since all customer's account users will be able to view the comparison results and the cached data.
 
-If using dynamic data masking in the data warehouse, the cached data will no longer be dynamically masked in the Advanced CI output, depending on the permissions of the users who view it. dbt Labs recommends limiting user access to unmasked data or considering using synthetic data for the Advanced CI testing functionality.
+If using dynamic data masking in the data warehouse, the cached data will no longer be dynamically masked in the Advanced CI output, depending on the permissions of the users who view it. dbt recommends limiting user access to unmasked data or considering using synthetic data for the Advanced CI testing functionality.
 
 <Lightbox src="/img/docs/deploy/compare-credentials.png" width="60%" title="Example of credentials in the user settings" />
 

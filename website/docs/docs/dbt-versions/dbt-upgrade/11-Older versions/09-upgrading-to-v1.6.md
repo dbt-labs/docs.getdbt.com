@@ -26,7 +26,7 @@ import CoreVersionDeprecation from '/snippets/_core-version-deprecation-callout.
 
 ## What to know before upgrading
 
-dbt Labs is committed to providing backward compatibility for all versions 1.x, with the exception of any changes explicitly mentioned below. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt/issues/new).
+dbt is committed to providing backward compatibility for all versions 1.x, with the exception of any changes explicitly mentioned below. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt/issues/new).
 
 ### Behavior changes
 
@@ -41,7 +41,7 @@ If your dbt project defines metrics, you must migrate to dbt v1.6 because the YA
 - <Constant name="dbt" /> v1.6 does not support Python 3.7, which reached End Of Life on June 23. Support Python versions are 3.8, 3.9, 3.10, and 3.11.
 - As part of the [dbt Semantic layer](/docs/use-dbt-semantic-layer/dbt-sl) re-launch, the spec for `metrics` has changed significantly.
 - The manifest schema version is now v10.
-- dbt Labs is ending support for Homebrew installation of <Constant name="core" /> and adapters. See [the discussion](https://github.com/dbt-labs/dbt/discussions/8277) for more details.
+- dbt is ending support for Homebrew installation of <Constant name="core" /> and adapters. See [the discussion](https://github.com/dbt-labs/dbt/discussions/8277) for more details.
 
 ### For consumers of dbt artifacts (metadata)
 

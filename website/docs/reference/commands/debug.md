@@ -141,7 +141,7 @@ Options:
                 output.profile`
 
  --send-anonymous-usage-stats / --no-send-anonymous-usage-stats
-                Send anonymous usage stats to dbt Labs.
+                Send anonymous usage stats to dbt.
 
  --state DIRECTORY        
                 Unless overridden, use this state directory

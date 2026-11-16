@@ -161,7 +161,7 @@ Patch releases of `dbt-adapters` will _not_ include breaking changes or new feat
 
 #### Versioning and releasing your adapter
 
-dbt Labs strongly recommends you to adopt the following approach when versioning and releasing your plugin. 
+dbt strongly recommends you to adopt the following approach when versioning and releasing your plugin. 
 
 - Declare major version compatibility with `dbt-adapters` and only set a boundary on the minor version if there is some known reason.
 - Do not import or rely on code from `dbt-core`. 
@@ -1354,8 +1354,8 @@ There are tactical pieces on how and where to share that help ensure success.
   - LinkedIn
   - Social media posts _from the author_ or an individual connected to the project tend to have better engagement than posts from a company or organization account.
   - Ask your partner representative about:
-    - Retweets and shares from the official dbt Labs accounts.
-    - Flagging posts internally at dbt Labs to get individual employees to share.
+    - Retweets and shares from the official dbt accounts.
+    - Flagging posts internally at dbt to get individual employees to share.
 
 #### Measuring engagement
 
@@ -1371,7 +1371,7 @@ We’d recommend _against_ boilerplate announcements and encourage finding a uni
   > With the release of our new dbt adapter, you’ll be able to use dbt to model and transform your data in [name-of-your-org]
 - Particular or unique use cases or functionality unlocked by the adapter.
 - Plans for future / ongoing support / development.
-- The link to the documentation for using the adapter on the dbt Labs docs site.
+- The link to the documentation for using the adapter on the dbt docs site.
 - An announcement blog.
 
 #### Announcing new release versions of existing adapters

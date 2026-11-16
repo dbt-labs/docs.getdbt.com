@@ -141,7 +141,7 @@ We recommend you start upgrading projects that are smaller, newer, or more famil
 
 ### Considerations
 
-To learn more about how dbt Labs deploys stable dbt upgrades in a safe manner to <Constant name="dbt" />, we recommend that you read our blog post: [How we're making sure you can confidently switch to the \"Latest\" release track in <Constant name="dbt" />](/blog/latest-dbt-stability).
+To learn more about how dbt deploys stable dbt upgrades in a safe manner to <Constant name="dbt" />, we recommend that you read our blog post: [How we're making sure you can confidently switch to the \"Latest\" release track in <Constant name="dbt" />](/blog/latest-dbt-stability).
 
 
 <Expandable alt_header="I'm using an older version of dbt in the dbt platform. What should I do? What happens if I do nothing?" >
@@ -171,7 +171,7 @@ If you see new failures in your scheduled jobs now that they are running on a ne
 
 </Expandable>
 
-<Expandable alt_header="What about breaking changes to packages (maintained by dbt Labs or by others)?" >
+<Expandable alt_header="What about breaking changes to packages (maintained by dbt or by others)?" >
 
 When we talk about _latest version_, we’re referring to the underlying runtime for dbt, not the versions of packages you’re installing. Our continuous release for dbt includes testing against several popular dbt packages. This ensures that updates we make to `dbt`, adapters, or anywhere else are compatible with the code in those packages.
 
@@ -179,7 +179,7 @@ If a new version of a dbt package includes a breaking change (for example, a cha
 
 If you upgrade to the **v1 Latest** release track, and immediately see something that breaks, please [contact support](/docs/dbt-support#dbt-cloud-support) and, in the meantime, downgrade back to v1.7.
 
-If you’re already on the **v1 Latest** release track, and you observe a breaking change (like something worked yesterday, but today it isn't working, or works in a surprising/different way), please [contact support](/docs/dbt-support#dbt-cloud-support) immediately. Depending on your contracted support agreement, the dbt Labs team will respond within our SLA time and we would seek to roll back the change and/or roll out a fix (just as we would for any other part of dbt). This is the same whether or not the root cause of the breaking change is in the project code or in the code of a package.
+If you’re already on the **v1 Latest** release track, and you observe a breaking change (like something worked yesterday, but today it isn't working, or works in a surprising/different way), please [contact support](/docs/dbt-support#dbt-cloud-support) immediately. Depending on your contracted support agreement, the dbt team will respond within our SLA time and we would seek to roll back the change and/or roll out a fix (just as we would for any other part of dbt). This is the same whether or not the root cause of the breaking change is in the project code or in the code of a package.
 
 If the package you’ve installed relies on _undocumented_ functionality of dbt, it doesn't have the same guarantees as functionality that we’ve documented and tested. However, we will still do our best to avoid breaking them.
 

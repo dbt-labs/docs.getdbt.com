@@ -15,7 +15,7 @@ level: 'Intermediate'
 
 ## Introduction
 
-You can migrate your projects from using the `dbt-spark` adapter to using the [dbt-databricks adapter](https://github.com/databricks/dbt-databricks). In collaboration with dbt Labs, Databricks built this adapter using dbt-spark as the foundation and added some critical improvements. With it, you get an easier set up &mdash; requiring only three inputs for authentication &mdash; and more features such as support for [Unity Catalog](https://www.databricks.com/product/unity-catalog).
+You can migrate your projects from using the `dbt-spark` adapter to using the [dbt-databricks adapter](https://github.com/databricks/dbt-databricks). In collaboration with dbt, Databricks built this adapter using dbt-spark as the foundation and added some critical improvements. With it, you get an easier set up &mdash; requiring only three inputs for authentication &mdash; and more features such as support for [Unity Catalog](https://www.databricks.com/product/unity-catalog).
 
 ### Prerequisite
 
@@ -49,7 +49,7 @@ If you use <Constant name="core" />, you no longer have to download an independe
 
 You can migrate your projects to the Databricks-specific adapter from the generic Apache Spark adapter. If you're using <Constant name="core" />, then skip to Step 4.
 
-The migration to the `dbt-databricks` adapter from `dbt-spark` shouldn't cause any downtime for production jobs. dbt Labs recommends that you schedule the connection change when usage of the IDE is light to avoid disrupting your team.
+The migration to the `dbt-databricks` adapter from `dbt-spark` shouldn't cause any downtime for production jobs. dbt recommends that you schedule the connection change when usage of the IDE is light to avoid disrupting your team.
 
 To update your Databricks connection in <Constant name="dbt" />:
 

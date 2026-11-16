@@ -14,7 +14,7 @@ level: 'Beginner'
 
 ## What is Jaffle Shop?
 
-[Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) is dbt Labs' canonical sample dbt project for a fictional cafe business. This guide shows you how to clone the project using Git from GitHub or GitLab.
+[Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) is dbt's canonical sample dbt project for a fictional cafe business. This guide shows you how to clone the project using Git from GitHub or GitLab.
 
 Cloning downloads the dbt project files to your machine: models, seeds, tests, and configuration. It doesn't install dbt or set up a database. If you only need the project files, follow the [Clone the repository](#clone-the-repository) and [Verify the clone](#verify-the-clone) sections.
 

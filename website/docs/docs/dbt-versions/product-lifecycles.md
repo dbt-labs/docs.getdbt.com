@@ -2,14 +2,14 @@
 title: "Product lifecycles"
 id: "product-lifecycles"
 hide_table_of_contents: true
-description: "Learn about dbt Labs' product lifecycles."
+description: "Learn about dbt's product lifecycles."
 availability: all_users
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-dbt Labs manages the lifecycle of features across the cloud-hosted dbt platform and self-hosted v1 and v2. Each feature is assigned a lifecycle status that describes its stability, support level, and availability. Use the tabs below to find the lifecycle stages for the product you're using.
+dbt manages the lifecycle of features across the cloud-hosted dbt platform and self-hosted v1 and v2. Each feature is assigned a lifecycle status that describes its stability, support level, and availability. Use the tabs below to find the lifecycle stages for the product you're using.
 
 Service level objective (SLO) support varies between products and lifecycles.
 
@@ -25,7 +25,7 @@ dbt platform features adhere to the following lifecycle path:
     <strong style={{color: 'var(--color-transform-orange-800)', fontSize: '1rem'}}>Beta</strong>
   </div>
   <div style={{padding: '1.25rem 1.5rem', background: 'var(--ifm-background-color)'}}>
-    In active development. May not be fully stable and breaking changes can occur. Documentation may be incomplete, technical support is limited, and SLOs may not apply. Download the [Beta Terms and Conditions](/assets/beta-tc.pdf) for details. If marked `Private`, access must be enabled by dbt Labs.
+    In active development. May not be fully stable and breaking changes can occur. Documentation may be incomplete, technical support is limited, and SLOs may not apply. Download the [Beta Terms and Conditions](/assets/beta-tc.pdf) for details. If marked `Private`, access must be enabled by dbt.
   </div>
 </div>
 
@@ -34,7 +34,7 @@ dbt platform features adhere to the following lifecycle path:
     <strong style={{color: 'var(--color-coalesce-purple-800)', fontSize: '1rem'}}>Preview</strong>
   </div>
   <div style={{padding: '1.25rem 1.5rem', background: 'var(--ifm-background-color)'}}>
-    Stable and functionally ready for production. Planned additions or non-backward-compatible changes may still occur before GA. Includes documentation, technical support, and SLOs. If marked `Private`, access must be enabled by dbt Labs.
+    Stable and functionally ready for production. Planned additions or non-backward-compatible changes may still occur before GA. Includes documentation, technical support, and SLOs. If marked `Private`, access must be enabled by dbt.
   </div>
 </div>
 

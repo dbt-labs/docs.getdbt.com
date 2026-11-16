@@ -4,7 +4,7 @@ sidebar_label: "Snowflake"
 description: "Read this guide to learn about the Snowflake warehouse setup in dbt."
 id: "snowflake-setup"
 meta:
-  maintained_by: dbt Labs
+  maintained_by: dbt
   authors: 'dbt maintainers'
   github_repo: 'dbt-labs/dbt-adapters'
   pypi_package: 'dbt-snowflake'

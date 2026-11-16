@@ -69,7 +69,7 @@ You should see rows returned for all three queries. If a `create` or `copy into`
 
 ## Connect dbt to Snowflake
 
-There are two ways to connect <Constant name="dbt" /> to Snowflake. The first option is Partner Connect, which provides a streamlined setup to create your <Constant name="dbt" /> account from within your new Snowflake trial account. The second option is to create your <Constant name="dbt" /> account separately and build the Snowflake connection yourself (connect manually). If you want to get started quickly, dbt Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the <Constant name="dbt" /> setup flow, dbt Labs recommends connecting manually.
+There are two ways to connect <Constant name="dbt" /> to Snowflake. The first option is Partner Connect, which provides a streamlined setup to create your <Constant name="dbt" /> account from within your new Snowflake trial account. The second option is to create your <Constant name="dbt" /> account separately and build the Snowflake connection yourself (connect manually). If you want to get started quickly, dbt recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the <Constant name="dbt" /> setup flow, dbt recommends connecting manually.
 
 <Tabs>
 <TabItem value="partner-connect" label="Use Partner Connect" default>

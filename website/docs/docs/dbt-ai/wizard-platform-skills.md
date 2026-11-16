@@ -15,7 +15,7 @@ availability: platform_usage
 Skills are reusable instructions that help <Constant name="wizard" /> follow your team's SQL conventions, naming rules, modeling patterns, and workflows without repeating them in every prompt.
 </IntroText>
 
-<Constant name="wizard" /> also includes built-in skills from [dbt Agent skills](https://github.com/dbt-labs/dbt-agent-skills), maintained by dbt Labs. These are always available, no setup needed.
+<Constant name="wizard" /> also includes built-in skills from [dbt Agent skills](https://github.com/dbt-labs/dbt-agent-skills), maintained by dbt. These are always available, no setup needed.
 
 You don't need a skill for general project context. <Constant name="wizard" /> reads `AGENTS.md` and `CLAUDE.md` out of the box.
 
@@ -89,7 +89,7 @@ In the <Constant name="wizard"/> chat panel:
 
 ## Built-in dbt skills
 
-<Constant name="wizard"/> ships with skills from [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills), maintained by dbt Labs and the community. These capture analytics engineering knowledge for common workflows and all ship bundled with <Constant name="wizard"/>. You don't call them directly as the agent loads whichever one matches your prompt.
+<Constant name="wizard"/> ships with skills from [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills), maintained by dbt and the community. These capture analytics engineering knowledge for common workflows and all ship bundled with <Constant name="wizard"/>. You don't call them directly as the agent loads whichever one matches your prompt.
 
 For the latest catalog, refer to the [dbt Agent Skills repository](https://github.com/dbt-labs/dbt-agent-skills).
 

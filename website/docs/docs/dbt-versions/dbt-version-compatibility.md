@@ -82,7 +82,7 @@ For network and proxy requirements, and how to pre-build an offline bundle, refe
 
 ## Known-bad releases
 
-If a shipped <Constant name="fusion" /> release is later found to contain a regression, dbt Labs flags it as a known-bad release. When you have a flagged version installed, the dbt VS Code extension shows a warning notification telling you which version to update to, even if that version is otherwise within the supported range.
+If a shipped <Constant name="fusion" /> release is later found to contain a regression, dbt flags it as a known-bad release. When you have a flagged version installed, the dbt VS Code extension shows a warning notification telling you which version to update to, even if that version is otherwise within the supported range.
 
 Air-gapped users who don't have outbound network access can distribute the known-bad releases manifest alongside their binary bundle and point the extension at the local copy with the `dbt.badReleasesManifestPath` setting. Refer to [dbt extension settings](/docs/configure-dbt-extension#dbt-extension-settings).
 

@@ -212,7 +212,7 @@ For the current model, the catalog tab surfaces:
 
 ## Generate a system report
 
-Generate a system report to collect your VS Code extension logs and system information into a zip file. This is useful when troubleshooting issues with the dbt VS Code extension. You can share the zip file with dbt Labs support to help diagnose problems.
+Generate a system report to collect your VS Code extension logs and system information into a zip file. This is useful when troubleshooting issues with the dbt VS Code extension. You can share the zip file with dbt support to help diagnose problems.
 
 To generate and download a system report:
 

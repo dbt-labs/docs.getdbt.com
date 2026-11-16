@@ -316,7 +316,7 @@ sandbox-galaxy:
 
 <TabItem value="none">
 
-You don't need to set up authentication (`method: none`), however, dbt Labs strongly discourages people from using it in any real application. Its use case is only for toy purposes (as in to play around with it), like local examples such as running Trino and dbt entirely within a single Docker container.
+You don't need to set up authentication (`method: none`), however, dbt strongly discourages people from using it in any real application. Its use case is only for toy purposes (as in to play around with it), like local examples such as running Trino and dbt entirely within a single Docker container.
 
 #### Example profiles.yml for no authentication
 

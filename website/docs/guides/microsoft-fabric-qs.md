@@ -18,7 +18,7 @@ agent_guidance:
 
 In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [Microsoft Fabric](https://www.microsoft.com/en-us/microsoft-fabric). It will show you how to:
 
-- Load the Jaffle Shop sample data (provided by dbt Labs) into your Microsoft Fabric warehouse. 
+- Load the Jaffle Shop sample data (provided by dbt) into your Microsoft Fabric warehouse. 
 - Connect <Constant name="dbt" /> to Microsoft Fabric.
 - Turn a sample query into a model in your dbt project. A model in dbt is a SELECT statement.
 - Add tests to your models.

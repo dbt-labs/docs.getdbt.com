@@ -31,7 +31,7 @@ Billing and spend controls are shared across the <Constant name="dbt_platform" /
 
 <WizardHowTrialWorks product={<Constant name="wizard" />} />
 
-Everything on this page describes dbt <Term id="managed" /> billing &mdash; usage that dbt Labs bills through your <Constant name="dbt" /> account. If you bring your own key, your AI provider bills you directly and none of this applies. Refer to [BYOK for <Constant name="dbt_platform" />](/docs/platform/wizard-byok-platform) or [BYOK for the CLI](/docs/dbt-ai/wizard-byok) instead.
+Everything on this page describes dbt <Term id="managed" /> billing &mdash; usage that Fivetran bills through your <Constant name="dbt" /> account. If you bring your own key, your AI provider bills you directly and none of this applies. Refer to [BYOK for <Constant name="dbt_platform" />](/docs/platform/wizard-byok-platform) or [BYOK for the CLI](/docs/dbt-ai/wizard-byok) instead.
 
 ## Start your trial
 

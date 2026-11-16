@@ -73,7 +73,7 @@ On the **Scan for your dbt projects** screen, choose how <Constant name="wizard"
 
 On the **Connect an AI model provider** screen, choose how <Constant name="wizard" /> accesses an AI model:
 
-- **Start free trial with dbt-managed keys**: dbt Labs manages the keys and keeps you on current models from OpenAI, Anthropic, and open source. Usage is metered against your dbt usage credits.
+- **Start free trial with dbt-managed keys**: dbt manages the keys and keeps you on current models from OpenAI, Anthropic, and open source. Usage is metered against your dbt usage credits.
 - **Use my own API key**: bring your own provider credentials with [BYOK](/docs/dbt-ai/wizard-desktop-byok) for OpenAI, Anthropic, AWS Bedrock, Azure, Snowflake Cortex, Google Gemini, Databricks, and more. Your provider bills you directly, and this option works without a dbt platform plan.
 - **Skip, I'll do this later**: continue without choosing a provider. To configure one later, go to **Settings** &rarr; **AI providers**.
 

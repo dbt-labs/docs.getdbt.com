@@ -19,7 +19,7 @@ Originally, the `dbt-redshift` adapter was built on top of the `dbt-postgres` ad
 
 Note that this flag does not apply to all metadata queries emitted by the adapter. For example, a list relations query may continue to query `information_schema` even when the flag is disabled.
 
-While you shouldn't notice any behavior changes due to this change, however, to be cautious dbt Labs is gating it behind a behavior-change flag and encouraging you to test it before it becoming the default.
+While you shouldn't notice any behavior changes due to this change, however, to be cautious dbt is gating it behind a behavior-change flag and encouraging you to test it before it becoming the default.
 -->
 
 ## The `redshift_skip_autocommit_transaction_statements` flag {#redshift_skip_autocommit_transaction_statements-flag}

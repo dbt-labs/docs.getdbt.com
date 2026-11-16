@@ -3,8 +3,8 @@ title: "Connect Athena to dbt v1"
 sidebar_label: "Athena"
 description: "Read this guide to learn about the Athena warehouse setup in dbt."
 meta:
-  maintained_by: dbt Labs
-  authors: dbt Labs
+  maintained_by: dbt
+  authors: dbt
   github_repo: 'dbt-labs/dbt-adapters'
   pypi_package: 'dbt-athena'
   min_core_version: 'v1.3.0'
@@ -25,7 +25,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 :::tip `dbt-athena` vs `dbt-athena-community`
 
-`dbt-athena-community` was the community-maintained adapter until dbt Labs took over maintenance in late 2024. Both `dbt-athena` and `dbt-athena-community` are maintained by dbt Labs, but `dbt-athena-community` is now simply a wrapper on `dbt-athena`, published for backwards compatibility.
+`dbt-athena-community` was the community-maintained adapter until dbt took over maintenance in late 2024. Both `dbt-athena` and `dbt-athena-community` are maintained by dbt, but `dbt-athena-community` is now simply a wrapper on `dbt-athena`, published for backwards compatibility.
 
 :::
 

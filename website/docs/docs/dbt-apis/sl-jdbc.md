@@ -18,10 +18,10 @@ A JDBC driver is a software component enabling a Java application to interact wi
 - The <Constant name="semantic_layer" /> JDBC API utilizes the open-source JDBC driver with ArrowFlight SQL protocol.
 - You can download the JDBC driver from [Maven](https://search.maven.org/remotecontent?filepath=org/apache/arrow/flight-sql-jdbc-driver/12.0.0/flight-sql-jdbc-driver-12.0.0.jar). 
 - The <Constant name="semantic_layer" /> supports ArrowFlight SQL driver version 12.0.0 and higher. 
-- You can embed the driver into your application stack as needed, and you can use dbt Labs' [example project](https://github.com/dbt-labs/example-semantic-layer-clients) for reference.
+- You can embed the driver into your application stack as needed, and you can use dbt's [example project](https://github.com/dbt-labs/example-semantic-layer-clients) for reference.
 - If you’re a partner or user building a homegrown application, you’ll need to install an AWS root CA to the Java Trust [documentation](https://www.amazontrust.com/repository/) (specific to Java and JDBC call).
 
-dbt Labs partners can use the JDBC API to build integrations in their tools with the <Constant name="semantic_layer" />
+dbt partners can use the JDBC API to build integrations in their tools with the <Constant name="semantic_layer" />
 
 ## Using the JDBC API
 

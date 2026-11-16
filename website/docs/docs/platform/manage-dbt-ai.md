@@ -34,7 +34,7 @@ Eligible accounts, including new ones, have AI features on by default, so most u
 4. Turn **Enable account access to AI features** off to disable access or on to enable it.
 5. Click **Save**.
 
-Turning AI features off applies to the whole account, including <Constant name="wizard" />. The [dbt Support Assistant](/docs/dbt-support?version=2#ask-dbt-support-assistant) is managed separately by dbt Labs (contact the [dbt Support team](mailto:support@dbtlabs.com) for more info).
+Turning AI features off applies to the whole account, including <Constant name="wizard" />. The [dbt Support Assistant](/docs/dbt-support?version=2#ask-dbt-support-assistant) is managed separately by dbt (contact the [dbt Support team](mailto:support@dbtlabs.com) for more info).
 
 ## Supported AI providers
 
@@ -44,7 +44,7 @@ Turning AI features off applies to the whole account, including <Constant name="
 
 <WizardConfigureAiProvider />
 
-To bring your own key instead of using dbt Labs' managed infrastructure, refer to [Configure BYOK for dbt Wizard in dbt platform](/docs/platform/wizard-byok-platform). BYOK is available on Starter, Enterprise, and Enterprise+ plans.
+To bring your own key instead of using dbt's managed infrastructure, refer to [Configure BYOK for dbt Wizard in dbt platform](/docs/platform/wizard-byok-platform). BYOK is available on Starter, Enterprise, and Enterprise+ plans.
 
 ## Manage spend
 
