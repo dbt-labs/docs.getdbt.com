@@ -65,7 +65,7 @@ Each project has the following environment types.
 
 </SimpleTable>
 
-For more information, refer to [Deployment environments](/docs/deploy/deploy-environments).
+For more information, refer to [dbt environments](/docs/dbt-platform-environments) and [Deployment environments](/docs/deploy/deploy-environments).
 
 ## More than one data platform
 
