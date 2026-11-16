@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <rect width="1200" height="760" fill="#FFFFFF"/>
+
+  <!-- Account boundary -->
+  <rect x="30" y="30" width="1140" height="705" rx="20" fill="#FFF6EE" stroke="#FF694A" stroke-width="3"/>
+  <rect x="60" y="55" width="330" height="50" rx="10" fill="#262A3A"/>
+  <text x="80" y="88" font-size="24" font-weight="700" fill="#FFFFFF">Your dbt account</text>
+  <text x="1140" y="88" font-size="19" font-style="italic" fill="#8A4B2A" text-anchor="end">Set up once. Every project shares it.</text>
+
+  <!-- Shared account settings -->
+  <g>
+    <rect x="60" y="130" width="255" height="125" rx="12" fill="#FFFFFF" stroke="#D9DEE7" stroke-width="2"/>
+    <text x="78" y="168" font-size="21" font-weight="700" fill="#262A3A">Git integration</text>
+    <text x="78" y="198" font-size="17" fill="#4A5163">One per git provider</text>
+    <text x="78" y="222" font-size="17" fill="#4A5163">GitHub, GitLab, or Azure</text>
+    <text x="78" y="244" font-size="17" fill="#4A5163">DevOps</text>
+
+    <rect x="335" y="130" width="255" height="125" rx="12" fill="#FFFFFF" stroke="#D9DEE7" stroke-width="2"/>
+    <text x="353" y="168" font-size="21" font-weight="700" fill="#262A3A">Single sign-on</text>
+    <text x="353" y="198" font-size="17" fill="#4A5163">One per account</text>
+    <text x="353" y="222" font-size="17" fill="#4A5163">Every project inherits it</text>
+
+    <rect x="610" y="130" width="255" height="125" rx="12" fill="#FFFFFF" stroke="#D9DEE7" stroke-width="2"/>
+    <text x="628" y="168" font-size="21" font-weight="700" fill="#262A3A">Users and access</text>
+    <text x="628" y="198" font-size="17" fill="#4A5163">Set up once, then scope</text>
+    <text x="628" y="222" font-size="17" fill="#4A5163">to individual projects</text>
+
+    <rect x="885" y="130" width="255" height="125" rx="12" fill="#FFFFFF" stroke="#D9DEE7" stroke-width="2"/>
+    <text x="903" y="168" font-size="21" font-weight="700" fill="#262A3A">Security</text>
+    <text x="903" y="198" font-size="17" fill="#4A5163">IP rules, private links,</text>
+    <text x="903" y="222" font-size="17" fill="#4A5163">audit log</text>
+  </g>
+
+  <!-- Warehouse connections -->
+  <rect x="60" y="275" width="1080" height="135" rx="14" fill="#FFFFFF" stroke="#E4572E" stroke-width="2.5" stroke-dasharray="9 6"/>
+  <text x="80" y="310" font-size="21" font-weight="700" fill="#C2410C">Warehouse connections</text>
+  <text x="80" y="337" font-size="17" fill="#4A5163">Created once for the account. Any project can reuse them.</text>
+  <rect x="80" y="355" width="270" height="40" rx="20" fill="#FFE9DF" stroke="#E4572E" stroke-width="1.5"/>
+  <text x="215" y="381" font-size="17" font-weight="600" fill="#9A3412" text-anchor="middle">Warehouse A · production</text>
+  <rect x="370" y="355" width="270" height="40" rx="20" fill="#FFE9DF" stroke="#E4572E" stroke-width="1.5"/>
+  <text x="505" y="381" font-size="17" font-weight="600" fill="#9A3412" text-anchor="middle">Warehouse A · development</text>
+  <text x="665" y="381" font-size="17" font-style="italic" fill="#4A5163">Add as many as you need</text>
+
+  <!-- Projects -->
+  <text x="60" y="447" font-size="21" font-weight="700" fill="#262A3A">Projects</text>
+  <text x="152" y="447" font-size="18" fill="#4A5163">One per codebase or team. Not one per dev or prod stage.</text>
+
+  <!-- Project A -->
+  <rect x="60" y="465" width="525" height="245" rx="14" fill="#FFFFFF" stroke="#262A3A" stroke-width="2.5"/>
+  <rect x="60" y="465" width="525" height="48" rx="14" fill="#262A3A"/>
+  <rect x="60" y="490" width="525" height="23" fill="#262A3A"/>
+  <text x="80" y="497" font-size="20" font-weight="700" fill="#FFFFFF">Project A · Core analytics</text>
+  <rect x="80" y="530" width="485" height="46" rx="8" fill="#E8EEFB"/>
+  <text x="98" y="559" font-size="17" fill="#1E3A8A"><tspan font-weight="700">1 repository</tspan> (exactly one per project)</text>
+  <rect x="80" y="588" width="485" height="46" rx="8" fill="#E4F5EA"/>
+  <text x="98" y="617" font-size="17" fill="#14532D"><tspan font-weight="700">Connection profiles</tspan> (only in this project)</text>
+  <text x="80" y="663" font-size="17" font-weight="700" fill="#262A3A">Environments</text>
+  <rect x="80" y="674" width="151" height="26" rx="13" fill="#EEF0F5"/>
+  <text x="155" y="693" font-size="15" fill="#262A3A" text-anchor="middle">Development</text>
+  <rect x="247" y="674" width="151" height="26" rx="13" fill="#EEF0F5"/>
+  <text x="322" y="693" font-size="15" fill="#262A3A" text-anchor="middle">Staging</text>
+  <rect x="414" y="674" width="151" height="26" rx="13" fill="#EEF0F5"/>
+  <text x="489" y="693" font-size="15" fill="#262A3A" text-anchor="middle">Production</text>
+
+  <!-- Project B -->
+  <rect x="615" y="465" width="525" height="245" rx="14" fill="#FFFFFF" stroke="#262A3A" stroke-width="2.5"/>
+  <rect x="615" y="465" width="525" height="48" rx="14" fill="#262A3A"/>
+  <rect x="615" y="490" width="525" height="23" fill="#262A3A"/>
+  <text x="635" y="497" font-size="20" font-weight="700" fill="#FFFFFF">Project B · Marketing analytics</text>
+  <rect x="635" y="530" width="485" height="46" rx="8" fill="#E8EEFB"/>
+  <text x="653" y="559" font-size="17" fill="#1E3A8A"><tspan font-weight="700">1 repository</tspan> (exactly one per project)</text>
+  <rect x="635" y="588" width="485" height="46" rx="8" fill="#E4F5EA"/>
+  <text x="653" y="617" font-size="17" fill="#14532D"><tspan font-weight="700">Connection profiles</tspan> (only in this project)</text>
+  <text x="635" y="663" font-size="17" font-weight="700" fill="#262A3A">Environments</text>
+  <rect x="635" y="674" width="151" height="26" rx="13" fill="#EEF0F5"/>
+  <text x="710" y="693" font-size="15" fill="#262A3A" text-anchor="middle">Development</text>
+  <rect x="802" y="674" width="151" height="26" rx="13" fill="#EEF0F5"/>
+  <text x="877" y="693" font-size="15" fill="#262A3A" text-anchor="middle">Staging</text>
+  <rect x="969" y="674" width="151" height="26" rx="13" fill="#EEF0F5"/>
+  <text x="1044" y="693" font-size="15" fill="#262A3A" text-anchor="middle">Production</text>
+</svg>
