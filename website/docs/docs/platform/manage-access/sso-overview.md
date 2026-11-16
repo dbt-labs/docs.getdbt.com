@@ -54,7 +54,7 @@ The diagram below explains the basic process by which users are provisioned in <
 - **Attach Matching Permissions (Groups)**: <Constant name="dbt" /> iterates through the groups on the matching accounts and finds all that fit one of the following categories:
   - Have an SSO mapping group that is assigned to the user
   - Have the **Assign by Default** option selected.
-Then, assign all of these (and only these) to the user license. This step also removes any permissions that the user should not have based on the current SSO group mappings.
+Then, <Constant name="dbt" /> assigns these groups to the user license and removes the user from any group with an SSO mapping that no longer matches their IdP groups. Groups with no SSO mapping keep their existing membership &mdash; <Constant name="dbt" /> doesn't add or remove users from them at sign-in.
 - **<Constant name="dbt" /> Application**: After these steps, the user is redirected into the <Constant name="dbt" /> application, and they can begin to use the application normally.
 
 :::note License and permission mappings use IdP groups
