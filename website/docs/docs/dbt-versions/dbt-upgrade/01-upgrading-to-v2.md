@@ -126,7 +126,7 @@ The [`dbt source freshness`](/reference/commands/source?version=2#dbt-source-fre
 
 All v2 adapters connect to data warehouses via the [Arrow Database Connectivity (ADBC)](https://arrow.apache.org/adbc/) standard instead of Python-based adapter libraries. As a result, dbt ships as a single self-contained binary with no Python runtime required.
 
-On first run, dbt downloads adapter drivers from the dbt Labs CDN and caches them locally. Subsequent runs work offline. For supported adapters, refer to [Supported data platforms](/docs/supported-data-platforms).
+On first run, dbt downloads adapter drivers from the dbt CDN and caches them locally. Subsequent runs work offline. For supported adapters, refer to [Supported data platforms](/docs/supported-data-platforms).
 
 ### `dbt lint`
 

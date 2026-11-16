@@ -77,7 +77,7 @@ If possible, it's recommended to configure multiple MFA methods so that if one f
 
 The terms below apply to <Constant name="dbt" />’s MFA via SMS program, that dbt Labs (“dbt Labs”, “we”, or “us”) uses to facilitate auto sending of authorization codes to users via SMS for <Constant name="dbt" /> log-in requests.
 
-Any clients of dbt Labs that use <Constant name="dbt" /> Labs 2FA via SMS program (after password is input) are subject to the dbt Labs privacy policy, the client warranty in TOU Section 5.1 second paragraph that Client's use will comply with the Documentation (or similar language in the negotiated service agreement between the parties) and these terms:
+Any clients of dbt that use <Constant name="dbt" /> Labs 2FA via SMS program (after password is input) are subject to the dbt privacy policy, the client warranty in TOU Section 5.1 second paragraph that Client's use will comply with the Documentation (or similar language in the negotiated service agreement between the parties) and these terms:
 
 (1) The message frequency is a maximum of 1 message per user login;
 

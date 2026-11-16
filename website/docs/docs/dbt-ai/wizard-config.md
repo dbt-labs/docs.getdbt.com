@@ -87,7 +87,7 @@ You can view more by running `wizard config --help`.
 
 #### AI model and API
 
-New <Constant name="wizard"/> CLI installs use dbt Labs-managed models out of the box. Refer to [Configure BYOK](/docs/dbt-ai/wizard-byok) to use a different provider.
+New <Constant name="wizard"/> CLI installs use dbt-managed models out of the box. Refer to [Configure BYOK](/docs/dbt-ai/wizard-byok) to use a different provider.
 
 <SimpleTable>
 

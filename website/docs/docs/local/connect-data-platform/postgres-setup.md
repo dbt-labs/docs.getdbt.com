@@ -4,7 +4,7 @@ sidebar_label: "Postgres"
 description: "Read this guide to learn about the Postgres warehouse setup in dbt."
 id: "postgres-setup"
 meta:
-  maintained_by: dbt Labs
+  maintained_by: dbt
   authors: 'core dbt maintainers'
   github_repo: 'dbt-labs/dbt-adapters'
   pypi_package: 'dbt-postgres'

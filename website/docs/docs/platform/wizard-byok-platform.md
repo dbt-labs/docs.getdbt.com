@@ -13,14 +13,14 @@ import OpenAiProjectRegion from '/snippets/_open-ai-project-region.md';
 import WizardConfigureAiProvider from '/snippets/_wizard-configure-ai-provider.md';
 
 <IntroText>
-Use bring-your-own-key (BYOK) to connect <Constant name="wizard" /> in <Constant name="dbt_platform" /> to your own AI provider account instead of using dbt Labs' managed infrastructure.
+Use bring-your-own-key (BYOK) to connect <Constant name="wizard" /> in <Constant name="dbt_platform" /> to your own AI provider account instead of using dbt's managed infrastructure.
 </IntroText>
 
 The following BYOK instructions apply to <Constant name="dbt_platform" /> only. For CLI BYOK setup, refer to [Configure BYOK for dbt Wizard](/docs/dbt-ai/wizard-byok).
 
-When you configure a provider with your own key, usage costs appear on your provider account instead of your dbt Labs account, and token costs are billed by whichever provider you choose.
+When you configure a provider with your own key, usage costs appear on your provider account instead of your dbt account, and token costs are billed by whichever provider you choose.
 
-If you'd rather skip that upkeep, the [dbt Labs-<Term id="managed" /> option](/docs/platform/manage-dbt-ai#configure-ai-provider) is ready to use with no setup, and comes with [trial and monthly usage credits](/docs/dbt-ai/pricing-billing/trial-and-billing).
+If you'd rather skip that upkeep, the [dbt-<Term id="managed" /> option](/docs/platform/manage-dbt-ai#configure-ai-provider) is ready to use with no setup, and comes with [trial and monthly usage credits](/docs/dbt-ai/pricing-billing/trial-and-billing).
 
 ## Prerequisites
 

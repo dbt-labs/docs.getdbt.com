@@ -13,7 +13,7 @@ import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
 For shared CLI logging configs such as `--log-format` and `--log-level`, refer to [Logs](/reference/global-configs/logs).
 
-This system is separate from the anonymous usage statistics that dbt sends to dbt Labs. To configure anonymous usage statistics, refer to [Anonymous usage stats](/reference/global-configs/usage-stats).
+This system is separate from the anonymous usage statistics that dbt sends to dbt. To configure anonymous usage statistics, refer to [Anonymous usage stats](/reference/global-configs/usage-stats).
 
 This uses the same integration that <Constant name="dbt_platform" /> relies on for orchestration and monitoring, providing proven and production-ready features that work at scale.
 
@@ -341,7 +341,7 @@ This makes <Constant name="fusion" /> telemetry a reliable foundation for produc
 
 ## Official client library
 
-dbt Labs provides an official open-source client library. Built in Rust for performance, it is available as:
+dbt provides an official open-source client library. Built in Rust for performance, it is available as:
 
 - A standalone Rust crate and CLI (`dbt-telemetry-export-cli`).
 - A fully typed Python package wrapping the Rust core, installable via `uv tool install`.

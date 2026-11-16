@@ -18,7 +18,7 @@ The dashboard displays your full run history, including job name, status, associ
 
 <Constant name="dbt" /> developers can access their run history for the last 365 days through the <Constant name="dbt" /> user interface (UI) and API.
 
-dbt Labs limits self-service retrieval of run history metadata to 365 days to improve <Constant name="dbt" />'s performance.
+dbt limits self-service retrieval of run history metadata to 365 days to improve <Constant name="dbt" />'s performance.
 
 <Lightbox src="/img/docs/dbt-platform/deployment/run-history.png" width="85%" title="Run history dashboard allows you to monitor the health of your dbt project and displays jobs, job status, environment, timing, and more."/>
 

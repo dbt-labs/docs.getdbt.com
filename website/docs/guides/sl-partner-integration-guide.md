@@ -14,7 +14,7 @@ level: 'Advanced'
 
 ## Introduction
 
-To fit your tool within the world of the <Constant name="semantic_layer" />, dbt Labs offers some best practice recommendations for how to expose metrics and allow users to interact with them seamlessly.
+To fit your tool within the world of the <Constant name="semantic_layer" />, dbt offers some best practice recommendations for how to expose metrics and allow users to interact with them seamlessly.
 
 This is an evolving guide that is meant to provide recommendations based on our experience. If you have any feedback, we'd love to hear it!
 
@@ -39,7 +39,7 @@ The dbt Semantic Layer APIs authenticate with `environmentId`, `SERVICE_TOKEN`, 
 
 We recommend you provide users with separate input fields with these components for authentication (<Constant name="dbt" /> will surface these parameters for the user). 
 
-### Exposing metadata to dbt Labs 
+### Exposing metadata to dbt 
 
 When building an integration, we recommend you expose certain metadata in the request for analytics and troubleshooting purpose.
 

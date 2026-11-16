@@ -20,7 +20,7 @@ The following table summarizes all endpoints. See each section below for details
 
 ## Adapter drivers {#adapter-drivers}
 
-The <Constant name="fusion" /> binary does _not_ bundle database drivers. Instead, <Constant name="fusion" /> automatically downloads the correct [ADBC](https://arrow.apache.org/adbc/) driver for your data platform the first time you run a dbt command (such as `dbt run`, `dbt debug`, or `dbt compile`). <Constant name="fusion" /> detects which driver you need based on your `profiles.yml` configuration and downloads it from the dbt Labs CDN. <Constant name="fusion" /> distributes all checksums with the binary itself to guarantee authenticity of the downloaded drivers.
+The <Constant name="fusion" /> binary does _not_ bundle database drivers. Instead, <Constant name="fusion" /> automatically downloads the correct [ADBC](https://arrow.apache.org/adbc/) driver for your data platform the first time you run a dbt command (such as `dbt run`, `dbt debug`, or `dbt compile`). <Constant name="fusion" /> detects which driver you need based on your `profiles.yml` configuration and downloads it from the dbt CDN. <Constant name="fusion" /> distributes all checksums with the binary itself to guarantee authenticity of the downloaded drivers.
 
 Adapter driver downloads require outbound HTTPS access to the dbt CDN:
 

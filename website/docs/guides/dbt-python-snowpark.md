@@ -45,14 +45,14 @@ All code in today’s workshop can be found on [GitHub](https://github.com/dbt-l
     2. Which constructor has the fastest pit stops in 2021?
     3. Predicting the position of each driver given using a decade of data (2010 - 2020)
 
-As inputs, we are going to leverage Formula 1 datasets hosted on a dbt Labs public S3 bucket. We will create a Snowflake Stage for our CSV files then use Snowflake’s `COPY INTO` function to copy the data in from our CSV files into tables. The Formula 1 is available on [Kaggle](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020). The data is originally compiled from the [Ergast Developer API](http://ergast.com/mrd/).
+As inputs, we are going to leverage Formula 1 datasets hosted on a dbt public S3 bucket. We will create a Snowflake Stage for our CSV files then use Snowflake’s `COPY INTO` function to copy the data in from our CSV files into tables. The Formula 1 is available on [Kaggle](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020). The data is originally compiled from the [Ergast Developer API](http://ergast.com/mrd/).
 
 Overall we are going to set up the environments, build scalable pipelines in dbt, establish data tests, and promote code to production.
 
 ## Configure Snowflake
 
 1. Log in to your trial Snowflake account. You can [sign up for a Snowflake Trial Account using this form](https://signup.snowflake.com/) if you don’t have one.
-2. Ensure that your account is set up using **AWS** in the **US East (N. Virginia)**. We will be copying the data from a public AWS S3 bucket hosted by dbt Labs in the us-east-1 region. By ensuring our Snowflake environment setup matches our bucket region, we avoid any multi-region data copy and retrieval latency issues.
+2. Ensure that your account is set up using **AWS** in the **US East (N. Virginia)**. We will be copying the data from a public AWS S3 bucket hosted by dbt in the us-east-1 region. By ensuring our Snowflake environment setup matches our bucket region, we avoid any multi-region data copy and retrieval latency issues.
 
 <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/2-snowflake-configuration/1-snowflake-trial-AWS-setup.png" width="60%" title="Snowflake trial"/>
 
@@ -76,7 +76,7 @@ Overall we are going to set up the environments, build scalable pipelines in dbt
 
 ## Connect to data source
 
-We need to obtain our data source by copying our Formula 1 data into Snowflake tables from a public S3 bucket that dbt Labs hosts.
+We need to obtain our data source by copying our Formula 1 data into Snowflake tables from a public S3 bucket that dbt hosts.
 
 1. When a new Snowflake account is created, there should be a preconfigured warehouse in your account named `COMPUTE_WH`.
 2. If for any reason your account doesn’t have this warehouse, we can create a warehouse using the following script:
@@ -287,7 +287,7 @@ We need to obtain our data source by copying our Formula 1 data into Snowflake t
 
 9. Select **Complete Registration**. You should now be redirected to your <Constant name="dbt" /> account, complete with a connection to your Snowflake account, a deployment and a development environment, and a sample job.
 
-10. To help you version control your dbt project, we have connected it to a [managed repository](/docs/platform/git/managed-repository), which means that dbt Labs will be hosting your repository for you. This will give you access to a <Constant name="git" /> workflow without you having to create and host the repository yourself. You will not need to know <Constant name="git" /> for this workshop; <Constant name="dbt" /> will help guide you through the workflow. In the future, when you’re developing your own project, [feel free to use your own repository](/docs/platform/git/connect-github). This will allow you to learn more about features like [Slim CI](/docs/deploy/continuous-integration) builds after this workshop.
+10. To help you version control your dbt project, we have connected it to a [managed repository](/docs/platform/git/managed-repository), which means that dbt will be hosting your repository for you. This will give you access to a <Constant name="git" /> workflow without you having to create and host the repository yourself. You will not need to know <Constant name="git" /> for this workshop; <Constant name="dbt" /> will help guide you through the workflow. In the future, when you’re developing your own project, [feel free to use your own repository](/docs/platform/git/connect-github). This will allow you to learn more about features like [Slim CI](/docs/deploy/continuous-integration) builds after this workshop.
 
 ## Change development schema name and navigate the IDE
 
@@ -413,7 +413,7 @@ In this step, we’ll need to create a development branch and set up project lev
 
 ## Create folders and organize files
 
-dbt Labs has developed a [project structure guide](/best-practices/how-we-structure/1-guide-overview/) that contains a number of recommendations for how to build the folder structure for your project. Do check out that guide if you want to learn more. Right now we are going to create some folders to organize our files:
+dbt has developed a [project structure guide](/best-practices/how-we-structure/1-guide-overview/) that contains a number of recommendations for how to build the folder structure for your project. Do check out that guide if you want to learn more. Right now we are going to create some folders to organize our files:
 
 - Sources &mdash; This is our Formula 1 dataset and it will be defined in a source properties YAML file.
 - Staging models &mdash; These models have a 1:1 with their source table.

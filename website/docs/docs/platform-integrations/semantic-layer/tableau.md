@@ -43,7 +43,7 @@ Alternatively, you can follow these steps to install the connector. Note that th
    - Windows: `C:\Program Files\Tableau\Drivers`
    - Mac: `~/Library/Tableau/Drivers` or `/Library/JDBC` or `~/Library/JDBC`
    - Linux: ` /opt/tableau/tableau_driver/jdbc`
-3. Open Tableau Desktop or Tableau Server and find the **<Constant name="semantic_layer" /> by dbt Labs** connector on the left-hand side. You may need to restart these applications for the connector to be available.
+3. Open Tableau Desktop or Tableau Server and find the **<Constant name="semantic_layer" /> by dbt** connector on the left-hand side. You may need to restart these applications for the connector to be available.
 4. Connect with your Host, Environment ID, and service or personal token information <Constant name="dbt" /> provides during the [<Constant name="semantic_layer" /> configuration](/docs/use-dbt-semantic-layer/setup-sl). 
    - In Tableau Server, the authentication screen may show "User" & "Password" instead, in which case the User is the Environment ID and the password is the Service Token.
 

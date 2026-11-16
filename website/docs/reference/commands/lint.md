@@ -11,7 +11,7 @@ availability:
 
 It's SQLFluff-compatible: it reads your `.sqlfluff` config, uses the same rule codes (for example, `CP01`, `RF03`), and respects `-- noqa` suppression comments. Compatible doesn't mean identical: `dbt lint` and SQLFluff can return different results for the same file and config. Refer to [Rule parity with SQLFluff](#rule-parity-with-sqlfluff).
 
-You can use your existing SQLFluff config with minimal changes. dbt Labs intends to track the latest SQLFluff rule spec going forward.
+You can use your existing SQLFluff config with minimal changes. dbt intends to track the latest SQLFluff rule spec going forward.
 
 :::note
 `dbt lint` is part of <Constant name="fusion_engine" /> and is not the same as `dbt sqlfluff lint` on the <Constant name="platform_cli" />. For SQLFluff on the platform CLI, refer to [Configure the dbt platform CLI](/docs/platform/configure-dbt-cli). [Linting in Studio IDE](/docs/platform/studio-ide/lint-format) continues to use SQLFluff.
@@ -21,7 +21,7 @@ You can use your existing SQLFluff config with minimal changes. dbt Labs intends
 
 Across project sizes from 1k to 10k models, `dbt lint` runs _40×–250×_ faster than SQLFluff with all cores enabled and _280×–1500×_ faster than single-threaded SQLFluff.
 
-dbt Labs ran these benchmarks on SQLFluff 4.2.1 against dbt projects on the Snowflake dialect, ranging from 1k to 10k models, on a MacBook Pro with a 12-core Apple M4 Pro and 24 GB of RAM.
+dbt ran these benchmarks on SQLFluff 4.2.1 against dbt projects on the Snowflake dialect, ranging from 1k to 10k models, on a MacBook Pro with a 12-core Apple M4 Pro and 24 GB of RAM.
 
 ## Usage
 

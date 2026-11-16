@@ -171,7 +171,7 @@ If you get a session error and don’t get redirected to this page, you can go b
 
 ## Connect dbt to Databricks
 
-There are two ways to connect <Constant name="dbt" /> to Databricks. The first option is Partner Connect, which provides a streamlined setup to create your <Constant name="dbt" /> account from within your new Databricks trial account. The second option is to create your <Constant name="dbt" /> account separately and build the Databricks connection yourself (connect manually). If you want to get started quickly, dbt Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the <Constant name="dbt" /> setup flow, dbt Labs recommends connecting manually.
+There are two ways to connect <Constant name="dbt" /> to Databricks. The first option is Partner Connect, which provides a streamlined setup to create your <Constant name="dbt" /> account from within your new Databricks trial account. The second option is to create your <Constant name="dbt" /> account separately and build the Databricks connection yourself (connect manually). If you want to get started quickly, dbt recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the <Constant name="dbt" /> setup flow, dbt recommends connecting manually.
 
 ## Set up the integration from Partner Connect
 
@@ -216,7 +216,7 @@ To connect <Constant name="dbt" /> to Databricks using Partner Connect, do the f
 
 8. Click **Next**.
 
-   The **Email** box displays the email address for your Databricks account. dbt Labs uses this email address to prompt you to create a trial <Constant name="dbt" /> account.
+   The **Email** box displays the email address for your Databricks account. dbt uses this email address to prompt you to create a trial <Constant name="dbt" /> account.
 
 9. Click **Connect to <Constant name="dbt" />**.
 

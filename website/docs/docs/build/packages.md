@@ -77,7 +77,7 @@ You can specify a package using one of the following methods, depending on where
 
 ### Hub packages (recommended)
 
-dbt Labs hosts the [Package hub](https://hub.getdbt.com), registry for dbt packages, as a courtesy to the dbt Community, but does not certify or confirm the integrity, operability, effectiveness, or security of any Packages. Please read the [dbt Labs Package Disclaimer](https://hub.getdbt.com/disclaimer/) before installing Hub packages.
+dbt hosts the [Package hub](https://hub.getdbt.com), registry for dbt packages, as a courtesy to the dbt Community, but does not certify or confirm the integrity, operability, effectiveness, or security of any Packages. Please read the [dbt Package Disclaimer](https://hub.getdbt.com/disclaimer/) before installing Hub packages.
 
 You can install available hub packages in the following way:
 
@@ -243,7 +243,7 @@ There are some considerations and limitations when using native private packages
     
     This limitation doesn't affect local development with <Constant name="core" /> or <Constant name="fusion" /> when cloning private packages over SSH.
 
-    We're currently working to address this, and if you're running into issues, please contact your dbt Labs account team.
+    We're currently working to address this, and if you're running into issues, please contact your dbt account team.
 
 </Expandable>
 :::

@@ -72,7 +72,7 @@ When you click on each operator, it opens a configuration panel. The configurati
 
 <Lightbox src="/img/docs/dbt-platform/canvas/canvas.png" width="90%" title="The Canvas interface that contains a node toolbar and canvas." />
 
-If you have any feedback on additional operators that you might need, we'd love to hear it! Please contact your dbt Labs account team and share your thoughts.
+If you have any feedback on additional operators that you might need, we'd love to hear it! Please contact your dbt account team and share your thoughts.
 
 ## Canvas
 

@@ -13,7 +13,7 @@ availability: local_all
 Skills are reusable instructions that help <Constant name="wizard" /> follow your team's SQL conventions, naming rules, modeling patterns, and workflows without repeating them in every prompt.
 </IntroText>
 
-<Constant name="wizard" /> also includes built-in skills from [dbt Agent skills](https://github.com/dbt-labs/dbt-agent-skills), maintained by dbt Labs. These are always available, no setup needed.
+<Constant name="wizard" /> also includes built-in skills from [dbt Agent skills](https://github.com/dbt-labs/dbt-agent-skills), maintained by dbt. These are always available, no setup needed.
 
 When you initialize <Constant name="wizard" /> in a project, it can also detect existing Claude Code skills in the current directory.
 
@@ -205,7 +205,7 @@ If a project skill and a global skill use the same name, the project skill takes
 
 ## Built-in dbt skills
 
-<Constant name="wizard"/> ships with skills from [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills), maintained by dbt Labs and the community. These capture analytics engineering knowledge for common workflows and are always available. The agent loads the relevant skill automatically when your prompt matches its use case.
+<Constant name="wizard"/> ships with skills from [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills), maintained by dbt and the community. These capture analytics engineering knowledge for common workflows and are always available. The agent loads the relevant skill automatically when your prompt matches its use case.
 
 The following skills all ship bundled with <Constant name="wizard"/>. You don't call them directly as the agent loads whichever one best matches your prompt. Refer to the [dbt Agent Skills repository](https://github.com/dbt-labs/dbt-agent-skills) for installation in other AI clients, contributing new skills, and the latest catalog.
 

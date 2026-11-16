@@ -11,7 +11,7 @@ availability:
 
 # Migrating to Auth0 for SSO
 
-dbt Labs is partnering with Auth0 to bring enhanced features to <Constant name="dbt" />'s single sign-on (SSO) capabilities. Auth0 is an identity and access management (IAM) platform with advanced security features, and it will be leveraged by <Constant name="dbt" />. These changes will require some action from customers with SSO configured in <Constant name="dbt" /> today, and this guide will outline the necessary changes for each environment. 
+dbt is partnering with Auth0 to bring enhanced features to <Constant name="dbt" />'s single sign-on (SSO) capabilities. Auth0 is an identity and access management (IAM) platform with advanced security features, and it will be leveraged by <Constant name="dbt" />. These changes will require some action from customers with SSO configured in <Constant name="dbt" /> today, and this guide will outline the necessary changes for each environment. 
 
 If you have not yet configured SSO in <Constant name="dbt" />, refer instead to our setup guides for [SAML](/docs/platform/manage-access/set-up-sso-saml-2.0), [Okta](/docs/platform/manage-access/set-up-sso-okta), [Google Workspace](/docs/platform/manage-access/set-up-sso-google-workspace), or [Microsoft Entra ID (formerly Azure AD)](/docs/platform/manage-access/set-up-sso-microsoft-entra-id) single sign-on services.
 

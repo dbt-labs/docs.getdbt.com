@@ -17,10 +17,10 @@ import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 
 Inbound AWS PrivateLink lets your services reach a single-tenant <Constant name="dbt_platform" /> instance privately over your access URL, without traffic traversing the public internet. You create an interface VPC endpoint in your AWS account that connects to the PrivateLink endpoint service <Constant name="dbt" /> publishes in front of your instance.
 
-:::info Single-tenant only, provisioned by dbt Labs
+:::info Single-tenant only, provisioned by dbt
 Ingress PrivateLink is available only for single-tenant deployments; multi-tenant ingress isn't currently supported (refer to the [AWS private connectivity matrix](/docs/platform/secure/private-connectivity/aws/aws-overview)).
 
-dbt Labs provisions it for your instance. To scope it and receive your endpoint service name, contact your **dbt Labs account team or Solutions Architect**. If you don't have a single-tenant deployment yet, [contact our sales team](mailto:sales@getdbt.com).
+dbt provisions it for your instance. To scope it and receive your endpoint service name, contact your **dbt account team or Solutions Architect**. If you don't have a single-tenant deployment yet, [contact our sales team](mailto:sales@getdbt.com).
 :::
 
 
@@ -36,7 +36,7 @@ This guide uses two roles, matching the AWS PrivateLink model:
 Single-tenant ingress uses the domain convention `<customer_name>.private.dbt.com` for your access URL. When you enable private DNS on the endpoint (see [Step 3](#step-3-select-your-vpc-and-enable-private-dns)), AWS provisions a private hosted zone containing a wildcard record for this domain. The wildcard covers the product subdomains served by your instance, such as the semantic layer and metadata (Discovery) endpoints, so a single endpoint serves all of them.
 
 :::info The provider must verify your custom domain first
-Private DNS on the endpoint only works once <Constant name="dbt" /> (the provider) has verified the custom domain on the endpoint service. Confirm with your dbt Labs account team or Solutions Architect that your instance is ready for ingress PrivateLink before you begin.
+Private DNS on the endpoint only works once <Constant name="dbt" /> (the provider) has verified the custom domain on the endpoint service. Confirm with your dbt account team or Solutions Architect that your instance is ready for ingress PrivateLink before you begin.
 :::
 
 ## Prerequisites

@@ -2,7 +2,7 @@
 title: "Community adapters"
 id: "community-adapters"
 sidebar_label: "Community adapters"
-description: "Community adapters connect dbt to data platforms. They are maintained by dbt Labs, partners, and the community."
+description: "Community adapters connect dbt to data platforms. They are maintained by dbt, partners, and the community."
 hide_table_of_contents: true
 availability: all_users
 ---
@@ -15,7 +15,7 @@ The Trusted Adapter Program for v1 has ended. All dbt, partner, and community ma
 
 </VersionBlock>
 
-Adapters connect dbt to data platforms. They are maintained by dbt Labs, partners, and community members.
+Adapters connect dbt to data platforms. They are maintained by dbt, partners, and community members.
 
 We welcome [contributions to an existing adapter](/docs/contribute-dbt-adapters#contribute-to-a-pre-existing-adapter). Many adapters are maintained by volunteers, so be kind and help where you can.
 

@@ -23,7 +23,7 @@ For a long time, dbt has supported code reuse and extension by installing other 
 
 While this is a great way to reuse code, share utility macros, and establish a starting point for common transformations, it's not a great way to enable collaboration across teams and at scale, especially in larger organizations.
 
-dbt Labs supports an expanded notion of `dependencies` across multiple dbt projects:
+dbt supports an expanded notion of `dependencies` across multiple dbt projects:
 - **Packages** &mdash; Familiar and pre-existing type of dependency. You take this dependency by installing the package's full source code (like a software library).
 - **Projects** &mdash; The dbt method to take a dependency on another project. Using a metadata service that runs behind the scenes, <Constant name="dbt" /> resolves references on-the-fly to public models defined in other projects. You don't need to parse or run those upstream models yourself. Instead, you treat your dependency on those models as an API that returns a dataset. The maintainer of the public model is responsible for guaranteeing its quality and stability.
 
@@ -65,7 +65,7 @@ name: jaffle_marketing
 </File>
 
 As part of your modeling of marketing data, you need to take a dependency on two other projects:
-- `dbt_utils` as a package: A collection of utility macros you can use while writing the SQL for your own models. This package is open-source public and maintained by dbt Labs.
+- `dbt_utils` as a package: A collection of utility macros you can use while writing the SQL for your own models. This package is open-source public and maintained by dbt.
 - `jaffle_finance` as a project use case: Data models about the Jaffle Shop's revenue. This project is private and maintained by your colleagues on the Finance team. You want to select from some of this project's final models, as a starting point for your own work.
 
 Refer to [Use cases](/docs/mesh/govern/project-dependencies#use-cases) for information on package and project dependencies.

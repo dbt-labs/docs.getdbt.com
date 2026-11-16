@@ -69,7 +69,7 @@ You can run this script directly from [<Constant name="studio_ide"/>](/docs/plat
 
 ### Silence deprecation warnings
 
-dbt Labs recommends fixing deprecation warnings rather than silencing them. If you need to temporarily reduce noise in logs, use `--warn-error-options` with the `silence` parameter. This works with any dbt command, including `dbt test` and `dbt parse`.
+dbt recommends fixing deprecation warnings rather than silencing them. If you need to temporarily reduce noise in logs, use `--warn-error-options` with the `silence` parameter. This works with any dbt command, including `dbt test` and `dbt parse`.
 
 For full configuration options (CLI flag, environment variable, and `dbt_project.yml`), refer to [Warnings](/reference/global-configs/warnings).
 

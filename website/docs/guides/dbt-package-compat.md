@@ -108,7 +108,7 @@ Only update the [`require-dbt-version` config](/reference/project-configs/requir
     require-dbt-version: [">=1.10.0,<3.0.0"] 
     ```
     This signals that your package supports both <Constant name="core"/> and <Constant name="fusion"/>. 
-    dbt Labs uses this release metadata to mark your package with a <Constant name="fusion"/>-compatible badge in the [dbt package hub](https://hub.getdbt.com/). Packages without this metadata don't
+    dbt uses this release metadata to mark your package with a <Constant name="fusion"/>-compatible badge in the [dbt package hub](https://hub.getdbt.com/). Packages without this metadata don't
     display the <Constant name="fusion"/>-compatible badge.
 
 2. Commit and push your changes to your repository.

@@ -2,8 +2,8 @@
 title: "Connect AlloyDB to dbt v1"
 sidebar_label: "AlloyDB"
 meta:
-  maintained_by: dbt Labs
-  authors: dbt Labs
+  maintained_by: dbt
+  authors: dbt
   github_repo: 'dbt-labs/dbt-adapters'
   pypi_package: 'dbt-postgres'
   min_core_version: 'v1.0.0'

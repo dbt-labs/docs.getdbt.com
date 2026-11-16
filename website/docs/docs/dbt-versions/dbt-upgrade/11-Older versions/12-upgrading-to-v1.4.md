@@ -24,7 +24,7 @@ import CoreVersionDeprecation from '/snippets/_core-version-deprecation-callout.
 
 ## What to know before upgrading
 
-dbt Labs is committed to providing backward compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt/issues/new).
+dbt is committed to providing backward compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt/issues/new).
 
 ### For consumers of dbt artifacts (metadata)
 

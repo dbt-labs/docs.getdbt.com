@@ -82,7 +82,7 @@ This section covers the minimum API set for <Constant name="fusion" /> compatibi
 - SQL query execution.
 - Metadata queries to understand remote warehouse state (certain connection-level metadata functions can use cheaper or more performant APIs to pull table schemas).
 
-These requirements are not exhaustive. dbt Labs encourages implementing the full ADBC specification to benefit both <Constant name="fusion" /> and the broader ADBC community.
+These requirements are not exhaustive. dbt encourages implementing the full ADBC specification to benefit both <Constant name="fusion" /> and the broader ADBC community.
 
 #### Driver
 

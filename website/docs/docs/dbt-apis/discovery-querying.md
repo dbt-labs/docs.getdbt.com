@@ -15,7 +15,7 @@ The Discovery API supports ad-hoc queries and integrations. If you are new to th
 
 <ApiRateLimitsCallout />
 
-Use the Discovery API to evaluate data pipeline health and project state across runs or at a moment in time. dbt Labs provide a default [GraphQL explorer](https://metadata.cloud.getdbt.com/graphql) for this API, enabling you to run queries and browse the schema. However, you can also use any GraphQL client of your choice to query the API.
+Use the Discovery API to evaluate data pipeline health and project state across runs or at a moment in time. dbt provide a default [GraphQL explorer](https://metadata.cloud.getdbt.com/graphql) for this API, enabling you to run queries and browse the schema. However, you can also use any GraphQL client of your choice to query the API.
 
 Since GraphQL describes the data in the API, the schema displayed in the GraphQL explorer accurately represents the graph and fields available to query.
 
@@ -89,7 +89,7 @@ Find your Discovery API endpoint in **Account settings** under **Access URLs** i
 
 Discovery (GraphQL) API usage is subject to request rate and response size limits to maintain the performance and stability of the metadata platform and prevent abuse.
 
-Job-level endpoints are subject to query complexity limits. Nested nodes (like parents), code (like rawCode), and catalog columns are considered as most complex. Overly complex queries should be broken up into separate queries with only necessary fields included. dbt Labs recommends using the environment endpoint instead for most use cases to get the latest descriptive and result metadata for a <Constant name="dbt" /> project.
+Job-level endpoints are subject to query complexity limits. Nested nodes (like parents), code (like rawCode), and catalog columns are considered as most complex. Overly complex queries should be broken up into separate queries with only necessary fields included. dbt recommends using the environment endpoint instead for most use cases to get the latest descriptive and result metadata for a <Constant name="dbt" /> project.
 
 ## Retention limits
 You can use the Discovery API to query data from the previous two months. For example, if today was April 1st, you could query data back to February 1st.
@@ -232,7 +232,7 @@ We recommend always specifying `first` to keep response sizes manageable. Histor
 
 :::note Upcoming change to unpaginated requests
 
-In a future update, requests that omit `first` and `after` will return at most 100 rows. dbt Labs will provide advance notice before that change rolls out.
+In a future update, requests that omit `first` and `after` will return at most 100 rows. dbt will provide advance notice before that change rolls out.
 
 :::
 

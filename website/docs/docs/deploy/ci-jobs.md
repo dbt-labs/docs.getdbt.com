@@ -32,13 +32,13 @@ import GitProvidersCI from '/snippets/_git-providers-supporting-ci.md';
 
 ## Set up CI jobs {#set-up-ci-jobs}
 
-dbt Labs recommends that you create your CI job in a dedicated <Constant name="dbt" /> [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. A separate CI environment improves isolation between your temporary CI schemas and production builds.
+dbt recommends that you create your CI job in a dedicated <Constant name="dbt" /> [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. A separate CI environment improves isolation between your temporary CI schemas and production builds.
 
 You can trigger CI jobs for pull requests targeting a branch other than `main`. For example, if you use a long-lived staging branch, you can associate a CI environment with that branch via [custom branch](/faqs/Environments/custom-branch-settings) settings. Then the job in that environment runs only when someone opens PRs against that branch.
 
 To learn more, refer to [Get started with CI tests](/guides/set-up-ci).
 
-To make CI job creation easier, many options on the **CI job** page are set to default values that dbt Labs recommends that you use. If you don't want to use the defaults, you can change them.
+To make CI job creation easier, many options on the **CI job** page are set to default values that dbt recommends that you use. If you don't want to use the defaults, you can change them.
 
 1. On your deployment environment page, click **Create job** > **Continuous integration job** to create a new CI job.
 
@@ -77,7 +77,7 @@ To make CI job creation easier, many options on the **CI job** page are set to d
 5. (optional) Options in the **Advanced settings** section: 
     - **Environment variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when this CI job runs. You can specify that a CI job is running in a _Staging_ or _CI_ environment by setting an environment variable and modifying your project code to behave differently, depending on the context. It's common for teams to process only a subset of data for CI runs, using environment variables to branch logic in their dbt project code.
     - **Target name** &mdash; Define the [target name](/docs/build/custom-target-names). Similar to **Environment Variables**, this option lets you customize the behavior of the project. You can use this option to specify that a CI job is running in a _Staging_ or _CI_ environment by setting the target name and modifying your project code to behave differently, depending on the context. 
-    - **dbt version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions) from the environment. dbt Labs strongly recommends that you don't change the default setting. This option to change the version at the job level is useful only when you upgrade a project to the next dbt version; otherwise, mismatched versions between the environment and job can lead to confusing behavior.
+    - **dbt version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions) from the environment. dbt strongly recommends that you don't change the default setting. This option to change the version at the job level is useful only when you upgrade a project to the next dbt version; otherwise, mismatched versions between the environment and job can lead to confusing behavior.
     - **Threads** &mdash; By default, it’s set to 4 [threads](/docs/local/profiles.yml#understanding-threads). Increase the thread count to increase model execution concurrency.
     <VersionBlock lastVersion="1.99">
 

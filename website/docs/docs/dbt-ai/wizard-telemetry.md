@@ -51,8 +51,8 @@ Tool telemetry records the tool type, tool name, whether the call failed, and ex
 
 ## Data handling
 
-- Telemetry is transmitted over HTTPS to dbt Labs ingestion infrastructure.
-- Events are stored in an internal dbt Labs data warehouse.
+- Telemetry is transmitted over HTTPS to dbt ingestion infrastructure.
+- Events are stored in an internal dbt data warehouse.
 - Telemetry is not shared with third parties.
 - API keys and tokens are not transmitted in raw form.
 - Local development users who opt out with the supported environment variables generate no <Constant name="wizard" /> CLI client telemetry events.

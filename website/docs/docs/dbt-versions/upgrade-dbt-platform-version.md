@@ -19,7 +19,7 @@ Navigate to the settings page of an environment, then click **Edit**. Click the 
 
 Release tracks determine the version of dbt and release cadence for your projects. dbt supports two major versions &mdash; v1 and v2 &mdash; and automatically delivers [minor version updates](/docs/dbt-versions/dbt-upgrade) for you. For more information, refer to [About release tracks](/docs/dbt-versions/dbt-release-tracks).
 
-As a best practice, dbt Labs recommends that you test the upgrade in development first; use the [Override dbt version](#override-dbt-version) setting to test _your_ project on the latest dbt version before upgrading your deployment environments and the default development environment for all your colleagues.
+As a best practice, dbt recommends that you test the upgrade in development first; use the [Override dbt version](#override-dbt-version) setting to test _your_ project on the latest dbt version before upgrading your deployment environments and the default development environment for all your colleagues.
 
 
 ### Override dbt version
@@ -40,8 +40,8 @@ Configure your project to use a different dbt version than what's configured in 
 
 ## <Constant name="fusion_engine" /> {#dbt-v2}
 
-dbt Labs has introduced the new [<Constant name="fusion_engine" />](/docs/introduction), a ground-up rebuild of dbt. This is currently generally available for Snowflake, BigQuery, Redshift, and Databricks projects. It is in preview for other supported adapters on the <Constant name="dbt_platform" />. Eligible customers can update environments to <Constant name="fusion" /> using the same workflows as v1.x, but remember:
-- If you don't see the **v2 Stable** release track as an option, you should check with your dbt Labs account team about eligibility.
+dbt has introduced the new [<Constant name="fusion_engine" />](/docs/introduction), a ground-up rebuild of dbt. This is currently generally available for Snowflake, BigQuery, Redshift, and Databricks projects. It is in preview for other supported adapters on the <Constant name="dbt_platform" />. Eligible customers can update environments to <Constant name="fusion" /> using the same workflows as v1.x, but remember:
+- If you don't see the **v2 Stable** release track as an option, you should check with your dbt account team about eligibility.
 - To increase the compatibility of your project, update all jobs and environments to the **v1 Latest** release track and read more about the changes in our [upgrade guide](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2).
 - Make sure you're using a [supported adapter](/docs/platform/connect-data-platform/about-connections?version=2.0) and authentication method:
   <FusionDWH /> 
@@ -131,7 +131,7 @@ The example job seen in the screenshot above belongs to the environment "Prod". 
 
 ## Supported versions
 
-dbt Labs has always encouraged users to upgrade <Constant name="core" /> versions whenever a new minor version is released. We released our first major version of dbt - `dbt 1.0` - in December 2021. Alongside this release, we updated our policy on which versions of <Constant name="core" /> we will support in the <Constant name="dbt_platform" />.
+dbt has always encouraged users to upgrade <Constant name="core" /> versions whenever a new minor version is released. We released our first major version of dbt - `dbt 1.0` - in December 2021. Alongside this release, we updated our policy on which versions of <Constant name="core" /> we will support in the <Constant name="dbt_platform" />.
 
 > **Starting with v1.0, all subsequent minor versions are available in <Constant name="dbt" />. Versions are actively supported, with patches and bug fixes, for 1 year after their initial release. At the end of the 1-year window, we encourage all users to upgrade to a newer version for better ongoing maintenance and support.**
 

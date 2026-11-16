@@ -15,7 +15,7 @@ Answers to common questions about dbt AI features, including <Constant name="wiz
 
 <Constant name="wizard" /> is an AI-powered assistant fully integrated into your <Constant name="dbt" /> experience that handles the tedious tasks, speeds up workflows, and ensures consistency, helping you deliver exceptional data products faster.
 
-dbt Labs is committed to protecting your privacy and data. This page provides information about how <Constant name="wizard" /> handles your data. For more information, check out the [dbt Labs AI development principles](https://www.getdbt.com/legal/ai-principles) page.
+dbt is committed to protecting your privacy and data. This page provides information about how <Constant name="wizard" /> handles your data. For more information, check out the [dbt AI development principles](https://www.getdbt.com/legal/ai-principles) page.
 
 ## Overview
 
@@ -83,7 +83,7 @@ Refer to [Wizard Desktop](/docs/dbt-ai/wizard-desktop) for installation and setu
 
 **In the CLI**:
 
-<Constant name="wizard" /> CLI uses dbt Labs-managed models (OpenAI, Anthropic, or open weight models), billed through dbt's spend-limit billing. You can also bring your own API key or credentials for a supported provider using [BYOK](/docs/dbt-ai/wizard-byok): OpenAI, Anthropic, Azure AI Foundry, AWS Bedrock, Google Gemini, or Snowflake Cortex (preview). BYOK is a good backup option if you want to manage AI costs directly &mdash; token costs are billed directly by whichever provider you choose. Install and configure the CLI on your local machine.
+<Constant name="wizard" /> CLI uses dbt-managed models (OpenAI, Anthropic, or open weight models), billed through dbt's spend-limit billing. You can also bring your own API key or credentials for a supported provider using [BYOK](/docs/dbt-ai/wizard-byok): OpenAI, Anthropic, Azure AI Foundry, AWS Bedrock, Google Gemini, or Snowflake Cortex (preview). BYOK is a good backup option if you want to manage AI costs directly &mdash; token costs are billed directly by whichever provider you choose. Install and configure the CLI on your local machine.
 
 Refer to [Wizard in the CLI](/docs/platform/wizard-overview#wizard-in-the-cli-) for more information.
 
@@ -100,16 +100,16 @@ Yes, <Constant name="wizard" /> is deployed everywhere, including [multi-tenant 
 <Expandable alt_header="What data/code is used to train the AI model supporting dbt Wizard?">
 
 
-<Constant name="wizard" /> is supported by dbt Labs-managed models (OpenAI, Anthropic, or open weight models), or by several third-party pre-trained AI models at your discretion (BYOK OpenAI, BYOK Anthropic, BYOK Azure AI Foundry, and so on). When using <Term id="managed" /> OpenAI, our agreement with OpenAI prohibits OpenAI from retaining your data persistently. Refer to our [dbt Labs AI principles page](https://www.getdbt.com/legal/ai-principles) for more information.
+<Constant name="wizard" /> is supported by dbt-managed models (OpenAI, Anthropic, or open weight models), or by several third-party pre-trained AI models at your discretion (BYOK OpenAI, BYOK Anthropic, BYOK Azure AI Foundry, and so on). When using <Term id="managed" /> OpenAI, our agreement with OpenAI prohibits OpenAI from retaining your data persistently. Refer to our [dbt AI principles page](https://www.getdbt.com/legal/ai-principles) for more information.
 
 
 </Expandable>
 
 <Expandable alt_header="Which AI model providers does dbt Wizard use?">
 
-In the <Constant name="dbt_platform" />, <Constant name="wizard" /> uses a managed OpenAI model by default. dbt Labs also offers managed open weight models. On any plan, you can also [bring your own provider keys](/docs/platform/wizard-byok-platform) for OpenAI, Anthropic, or Azure AI Foundry.
+In the <Constant name="dbt_platform" />, <Constant name="wizard" /> uses a managed OpenAI model by default. dbt also offers managed open weight models. On any plan, you can also [bring your own provider keys](/docs/platform/wizard-byok-platform) for OpenAI, Anthropic, or Azure AI Foundry.
 
-The [<Constant name="wizard"/> CLI](/docs/dbt-ai/wizard-cli) supports the same dbt Labs-managed models, or OpenAI, Anthropic, Azure AI Foundry, AWS Bedrock, Google Gemini, and Snowflake Cortex (preview) in bring-your-own-key mode. Refer to [Configure BYOK](/docs/dbt-ai/wizard-byok) and [Supported AI providers](/docs/dbt-ai/pricing-billing/overview#supported-ai-providers) for more information.
+The [<Constant name="wizard"/> CLI](/docs/dbt-ai/wizard-cli) supports the same dbt-managed models, or OpenAI, Anthropic, Azure AI Foundry, AWS Bedrock, Google Gemini, and Snowflake Cortex (preview) in bring-your-own-key mode. Refer to [Configure BYOK](/docs/dbt-ai/wizard-byok) and [Supported AI providers](/docs/dbt-ai/pricing-billing/overview#supported-ai-providers) for more information.
 
 For how model choice affects cost, which models draw from your consumption pool, and how BYOK billing works, refer to [<Constant name="wizard" /> billing and access FAQs](/docs/dbt-ai/wizard-billing-faqs).
 
@@ -119,7 +119,7 @@ Refer to the [Model Provider Rate table](https://www.getdbt.com/legal/dbt-wizard
 
 <Expandable alt_header="Do we support BYOK (bring your own key) at the project level?">
 
-In <Constant name="dbt_platform" />, the <Constant name="wizard"/> BYOK option is currently an account-only configuration. However, there may be a future where we make this configurable on a project-level. BYOK is a good option if you want to manage AI costs directly, rather than using a dbt Labs-managed model.
+In <Constant name="dbt_platform" />, the <Constant name="wizard"/> BYOK option is currently an account-only configuration. However, there may be a future where we make this configurable on a project-level. BYOK is a good option if you want to manage AI costs directly, rather than using a dbt-managed model.
 
 <Constant name="wizard" /> CLI supports BYOK locally for OpenAI, Anthropic, Azure AI Foundry, AWS Bedrock, Google Gemini, and Snowflake Cortex (preview). 
 
@@ -145,41 +145,41 @@ Refer to [Model Provider Rate table](https://www.getdbt.com/legal/dbt-wizard-tok
 
 <Constant name="wizard" /> stores your conversation history &mdash; including your prompts, responses, and any query results returned during your session &mdash; so you can revisit past chats. Conversation history is retained for 90 days; feedback you submit on a <Constant name="wizard" /> conversation is retained for 400 days. You can delete your conversation history or feedback at any time in the product.
 
-You control the information you submit to <Constant name="wizard" />. dbt Labs does not use your prompts, conversation history, command results, or feedback to train AI models.
+You control the information you submit to <Constant name="wizard" />. dbt does not use your prompts, conversation history, command results, or feedback to train AI models.
 
 </Expandable>
 
-<Expandable alt_header="Is my data used by dbt Labs to train AI models?">
+<Expandable alt_header="Is my data used by dbt to train AI models?">
 
-No. dbt Labs does not use customer content processed by <Constant name="wizard" /> &mdash; including warehouse query results, prompts, or conversation history &mdash; for AI model training. Our terms with AI providers prevent training on the provider side as well.
+No. dbt does not use customer content processed by <Constant name="wizard" /> &mdash; including warehouse query results, prompts, or conversation history &mdash; for AI model training. Our terms with AI providers prevent training on the provider side as well.
 
 </Expandable>
 
-<Expandable alt_header="Does dbt Labs share my personal data with third parties?">
+<Expandable alt_header="Does dbt share my personal data with third parties?">
 
-dbt Labs only shares client personal information as needed to perform the services, under client instructions, or for legal, tax, or compliance reasons.
+dbt only shares client personal information as needed to perform the services, under client instructions, or for legal, tax, or compliance reasons.
 
 </Expandable>
 
 <Expandable alt_header="Can dbt Wizard data be deleted upon client written request?">
 
-Yes. <Constant name="wizard" /> conversation history is retained for 90 days by default, feedback you submit on a <Constant name="wizard" /> conversation is retained for 400 days, and you can delete this information in the product at any time. To the extent a client identifies personal or sensitive information uploaded to dbt Labs systems, that data can be deleted within 30 days of written request.
+Yes. <Constant name="wizard" /> conversation history is retained for 90 days by default, feedback you submit on a <Constant name="wizard" /> conversation is retained for 400 days, and you can delete this information in the product at any time. To the extent a client identifies personal or sensitive information uploaded to dbt systems, that data can be deleted within 30 days of written request.
 
 </Expandable>
 
-<Expandable alt_header="Does dbt Labs own the output generated by dbt Wizard?">
+<Expandable alt_header="Does dbt own the output generated by dbt Wizard?">
 
 
-dbt Labs will not dispute your ownership of any output (e.g., code or artifacts) that are unique to your company generated when you use <Constant name="wizard" />. Your code will not be used to train AI models for the benefit of dbt Labs or other third parties, including other dbt Labs customers.
+dbt will not dispute your ownership of any output (e.g., code or artifacts) that are unique to your company generated when you use <Constant name="wizard" />. Your code will not be used to train AI models for the benefit of dbt or other third parties, including other dbt customers.
 
 </Expandable>
 
-<Expandable alt_header="Does dbt Labs have terms in place?">
+<Expandable alt_header="Does dbt have terms in place?">
 
 
-dbt Wizard is governed by our [Terms of Use](https://www.getdbt.com/terms-of-use). In the event clients prefer additional terms, clients may enter into the presigned AI & Beta Addendum (the dbt Labs signature will be dated as of the date the client signs). Contact your account manager for more information.
+dbt Wizard is governed by our [Terms of Use](https://www.getdbt.com/terms-of-use). In the event clients prefer additional terms, clients may enter into the presigned AI & Beta Addendum (the dbt signature will be dated as of the date the client signs). Contact your account manager for more information.
 
-Clients who signed with terms after January 2024 don't need additional terms prior to enabling <Constant name="wizard" />. Longer term clients have also protected their data through confidentiality and data deletion obligations. In the event clients prefer additional terms, clients may enter into the presigned AI & Beta Addendum (the dbt Labs signature will be dated as of the date the client signs).
+Clients who signed with terms after January 2024 don't need additional terms prior to enabling <Constant name="wizard" />. Longer term clients have also protected their data through confidentiality and data deletion obligations. In the event clients prefer additional terms, clients may enter into the presigned AI & Beta Addendum (the dbt signature will be dated as of the date the client signs).
 
 </Expandable>
 

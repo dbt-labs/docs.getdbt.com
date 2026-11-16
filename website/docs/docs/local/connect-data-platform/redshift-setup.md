@@ -4,7 +4,7 @@ sidebar_label: "Redshift"
 description: "Read this guide to learn about the Redshift warehouse setup in dbt."
 id: "redshift-setup"
 meta:
-  maintained_by: dbt Labs
+  maintained_by: dbt
   authors: 'dbt maintainers'
   github_repo: 'dbt-labs/dbt-adapters'
   pypi_package: 'dbt-redshift'

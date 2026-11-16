@@ -13,7 +13,7 @@ import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 # Configure BYOK in Wizard Desktop <Lifecycle status="beta"/>
 
 <IntroText>
-Bring your own key (BYOK) means you use credentials from your own AI provider instead of dbt Labs-managed models. Add them in <Constant name="wizard" /> Desktop under **Settings** &rarr; **AI providers**.
+Bring your own key (BYOK) means you use credentials from your own AI provider instead of dbt-managed models. Add them in <Constant name="wizard" /> Desktop under **Settings** &rarr; **AI providers**.
 </IntroText>
 
 With BYOK, <Constant name="wizard" /> calls your provider directly, so usage costs show up on your provider account, not your dbt account. 
@@ -46,7 +46,7 @@ You can update or disable a provider directly in Wizard Desktop's **Settings** &
 
 ## Switch the dbt account for managed models
 
-Under **Managed by dbt Labs**, select **Configure** on the `dbt` provider to:
+Under **Managed by dbt**, select **Configure** on the `dbt` provider to:
 
 - Choose which dbt account <Constant name="wizard" /> uses for hosted models and billing. This doesn't change which accounts <Constant name="wizard" /> can import projects from.
 - Turn individual dbt-managed models on or off.
@@ -58,6 +58,6 @@ Under **Managed by dbt Labs**, select **Configure** on the `dbt` provider to:
 - [Wizard Desktop settings](/docs/dbt-ai/wizard-desktop-settings)
 - [Get started with Wizard Desktop](/docs/dbt-ai/wizard-desktop)
 - [Configure BYOK for the CLI](/docs/dbt-ai/wizard-byok)
-- [dbt Labs-managed providers and billing](/docs/dbt-ai/pricing-billing/overview#dbt-managed-providers)
+- [dbt-managed providers and billing](/docs/dbt-ai/pricing-billing/overview#dbt-managed-providers)
 
 <WizardFeedbackCallout />
