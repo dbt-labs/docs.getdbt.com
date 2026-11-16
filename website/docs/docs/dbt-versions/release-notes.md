@@ -70,9 +70,9 @@ The full list lives in website/release-note-areas.json.
 
 ##### Wizard Desktop
 
-- **New:** <Constant name="wizard" /> Desktop now names the git branch and environment for a new chat after the task, like `<prefix>/fix-orders-test`, instead of a random two-word name. Refer to [Worktree and schema names](/docs/dbt-ai/wizard-desktop-use#worktree-and-schema-names).
+- **New:** <Constant name="wizard" /> Desktop now names the git branch and environment for a new chat after the task, like `fix-orders-test`, instead of a random two-word name. Refer to [Worktree and schema names](/docs/dbt-ai/wizard-desktop-use#worktree-and-schema-names).
 - **New:** In <Constant name="wizard" /> Desktop, set a default base branch for each project in project settings. Choose a local or remote branch, and every new chat environment starts from it and compares against it. If that branch is no longer available, <Constant name="wizard" /> stops and shows recovery steps instead of quietly using another branch.
-- **New:** In <Constant name="wizard" /> Desktop, use the chat menu to copy a session ID or export the conversation as JSON, including its available tool details. You review the export before you choose where to save it.
+- **New:** In <Constant name="wizard" /> Desktop, use the chat menu and click on the ellipsis to copy a session ID or export the conversation as JSON, including its available tool details. You review the export before you choose where to save it.
 - **New:** In <Constant name="wizard" /> Desktop, filter the Inspector lineage graph with dbt [selectors](/reference/node-selection/syntax), show test resources on demand, and send column-lineage questions to chat.
 - **New:** In <Constant name="wizard" /> Desktop, you can edit existing text files in the [Explorer](/docs/dbt-ai/wizard-desktop-use). Select **Save** or press <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>S</kbd>. Edits save to a separate copy of your project, not your original files, and unsaved drafts persist after you navigate away or restart.
 - **New:** In <Constant name="wizard" /> Desktop, switch between local dbt profiles and the <Constant name="platform_cli" /> from the connection menu. <Constant name="wizard" /> remembers your choice, even for projects linked to <Constant name="dbt_platform" />.
