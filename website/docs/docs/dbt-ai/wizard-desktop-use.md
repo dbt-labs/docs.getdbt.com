@@ -216,7 +216,7 @@ For more info on how worktrees work, refer to [git worktree](https://git-scm.com
 | What you see | Example | Where it comes from |
 |---|---|---|
 | Worktree name, which is also the chat name | `fix-orders-test` | Generated from the task when the chat starts |
-| Branch | `oz/fix-orders-test` | Your `github.user` git config value, or `feature` if you haven't set one |
+| Branch | `name/fix-orders-test` | Your `github.user` git config value, or `feature` if you haven't set one |
 | Target in the worktree's `profiles.yml` | `fix-orders-test` | The worktree name, with hyphens swapped for underscores |
 | Schema | `dbt_oz_a1b2` | Your project's schema plus a random four-character suffix |
 
