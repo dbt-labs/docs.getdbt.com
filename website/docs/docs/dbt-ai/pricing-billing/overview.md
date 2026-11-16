@@ -26,7 +26,7 @@ There are two ways to pay for AI usage: let dbt handle the models and the billin
 | <div style={{width:'150px'}}></div> | <div style={{width:'250px'}}>[dbt <Term id="managed" />](#dbt-managed-providers)</div> | <div style={{width:'250px'}}>[Bring your own key (BYOK)](#bring-your-own-key-byok)</div> |
 |---|---|---|
 | **Choose it when** | You want to start now, with no AI provider account of your own | You already have provider credits, or your company requires a specific vendor |
-| **Who bills you** | dbt, through your dbt account | Your AI provider, directly |
+| **Who bills you** | Fivetran, through your dbt account | Your AI provider, directly |
 | **Spend controls** | Consumption pool and spend limits in **Billing & Usage** | Managed with your provider |
 | **Setup** | Nothing to configure | [Configure a provider key](/docs/platform/wizard-byok-platform) |
 </SimpleTable>
