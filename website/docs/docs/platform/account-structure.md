@@ -16,9 +16,9 @@ Think of your account as an office building. The front door, security desk, and 
 
 <DocCarousel slidesPerView={1}>
 
-<Lightbox src="/img/docs/dbt-platform/account-structure-account.svg" width="100%" title="The account: what you set up once, and the projects that share it." />
+<Lightbox src="/img/docs/dbt-platform/account-structure-account.svg" width="95%" title="The account: what you set up once, and the projects that share it." />
 
-<Lightbox src="/img/docs/dbt-platform/account-structure-project.svg" width="100%" title="Inside a project: the repository, connection profiles, and environments." />
+<Lightbox src="/img/docs/dbt-platform/account-structure-project.svg" width="95%" title="Inside a project: the repository, connection profiles, and environments." />
 
 </DocCarousel>
 
