@@ -1,0 +1,119 @@
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 1.5rem 0;
+}
+
+.pill {
+  background: transparent;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 20px;
+  color: var(--ifm-font-color-base);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25;
+  padding: 6px 14px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.pill:hover {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.pill:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+.active,
+.active:hover {
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+  color: #fff;
+}
+
+.more {
+  position: relative;
+}
+
+.menu {
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  margin-top: 4px;
+  min-width: 180px;
+  padding: 4px;
+  position: absolute;
+  z-index: 10;
+}
+
+.menuItem {
+  background: transparent;
+  border: 0;
+  border-radius: 4px;
+  color: var(--ifm-font-color-base);
+  cursor: pointer;
+  font-size: 0.875rem;
+  padding: 6px 10px;
+  text-align: left;
+}
+
+.menuItem:hover {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.menuItemActive {
+  font-weight: 600;
+}
+
+/* Monthly page: area headings are `####` under the month, and `#####`
+   headings label sub-groups. */
+:global(.rn-page) h4 {
+  align-items: center;
+  color: var(--ifm-heading-color);
+  display: flex;
+  font-size: 1.2rem;
+  font-weight: 700;
+  gap: 12px;
+  margin: 2rem 0 0.75rem;
+}
+
+:global(.rn-page) h4::after {
+  background: var(--ifm-color-emphasis-300);
+  content: '';
+  flex: 1;
+  height: 1px;
+}
+
+:global(.rn-page) h5 {
+  color: var(--ifm-heading-color);
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 1.25rem 0 0.5rem;
+}
+
+/* Weekly page: dates are `##` with a rule above them, note types are tagged
+   `.rn-type`, and areas are the headings under a type. */
+:global(.rn-weekly h2:not(.rn-type)) {
+  border-top: 1px solid var(--ifm-color-emphasis-300);
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+}
+
+:global(.rn-weekly .rn-type) {
+  font-size: 1.3rem;
+  margin: 1.5rem 0 0.5rem;
+}
+
+:global(.rn-weekly h3:not(.rn-type)),
+:global(.rn-weekly h4) {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 1.25rem 0 0.5rem;
+}
