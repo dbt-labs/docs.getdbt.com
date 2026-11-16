@@ -104,7 +104,7 @@ Open an issue in the [`dbt-labs/dbt` repository](https://github.com/dbt-labs/dbt
 
 <Expandable alt_header="Can I use a community-maintained adapter in the dbt platform?">
 
-The designation doesn't decide availability in the <Constant name="dbt_platform" />. To check whether an adapter is available today, look for a **Set up in the dbt platform** link on its card on this page.
+The designation doesn't decide availability in the <Constant name="dbt_platform" />. A **Set up in the dbt platform** link on the card shows where to look. Open that page and check which dbt version it supports.
 
 dbt Labs is working toward a future where any v2 adapter, first-party or community-maintained, can be supported in the <Constant name="dbt_platform" />. A v2 adapter with a working ADBC driver is the starting point.
 
