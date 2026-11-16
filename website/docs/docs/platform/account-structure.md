@@ -9,10 +9,10 @@ availability:
 ---
 
 <IntroText>
-A <Constant name="dbt_platform" /> account is the outer boundary. You set up some things once for the whole account, and other things inside each project.
+This page shows how a <Constant name="dbt_platform" /> account is organized. Some things, like git and single sign-on (SSO), you set up once for everyone. Others, like environments, you set up inside each project.
 </IntroText>
 
-Think of your account as an office building. The front door, security desk, and utilities are shared by everyone (account level). Each team gets its own floor with its own rooms (projects and environments).
+Think of your account as an office building. The front door and security desk are shared by everyone. Each team gets its own floor with its own rooms.
 
 <DocCarousel slidesPerView={1}>
 
