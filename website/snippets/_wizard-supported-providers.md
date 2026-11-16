@@ -19,7 +19,9 @@ Here are the following AI providers supported depending on where you work. Refer
 
 </TabItem>
 
-<TabItem value="local" label="Locally (CLI)">
+<TabItem value="local" label="Locally (Desktop and CLI)">
+
+Wizard Desktop and the Wizard CLI share the same providers and config.
 
 <SimpleTable>
 

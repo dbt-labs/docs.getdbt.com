@@ -154,13 +154,6 @@ function Home() {
                 />
                 <Card
                   headingLevel={3}
-                  title="dbt Insights"
-                  body="dbt Insights in dbt empowers users to seamlessly explore and query data with an intuitive, context-rich interface."
-                  link="/docs/explore/dbt-insights"
-                  icon="insights"
-                />
-                <Card
-                  headingLevel={3}
                   title="dbt Semantic Layer"
                   body="The dbt Semantic Layer eliminates duplicate coding by allowing data teams to define metrics on top of existing models and automatically handling data joins."
                   link="/docs/use-dbt-semantic-layer/dbt-sl"

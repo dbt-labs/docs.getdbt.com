@@ -23,7 +23,7 @@ import CanvasLifecycle from '/snippets/_canvas-lifecycle.md';
 <Constant name="canvas" /> helps you quickly access and transform data through a visual, drag-and-drop experience.
 </p>
 
-<Constant name="canvas" /> allows organizations to enjoy the many benefits of code-driven development, such as increased precision, ease of debugging, and ease of validation, while retaining the flexibility to have different contributors develop wherever they are most comfortable. For natural language and AI-assisted workflows, use [dbt Copilot in <Constant name="canvas" />](/docs/platform/build-canvas-copilot).
+<Constant name="canvas" /> allows organizations to enjoy the many benefits of code-driven development, such as increased precision, ease of debugging, and ease of validation, while retaining the flexibility to have different contributors develop wherever they are most comfortable.
 
 These models compile directly to SQL and are indistinguishable from other dbt models in your projects:
 - Visual models are version-controlled in your backing <Constant name="git" /> provider.
@@ -34,10 +34,6 @@ These models compile directly to SQL and are indistinguishable from other dbt mo
 <Lightbox src="/img/docs/dbt-platform/canvas/canvas.png" width="90%" title="Create or edit dbt models with Canvas, enabling everyone to develop with dbt through a drag-and-drop experience inside of dbt." />
 
 <Prerequisites feature={'/snippets/_canvas-prerequisites.md'} />
-
-import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
-
-<CopilotWizardDifferences/>
 
 ## Feedback
 
