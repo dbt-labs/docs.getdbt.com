@@ -625,7 +625,7 @@ cargo build --bin dbt
 CI testing for community adapter PRs is coordinated with the dbt Labs adapters team — the test infrastructure is not publicly distributed. When your PR is ready, open an issue in the [`dbt-labs/dbt` repository](https://github.com/dbt-labs/dbt/issues) that links to your PR, and the adapters team will work with you on warehouse validation. If you hit roadblocks or problems along the way, follow up in a comment on that issue. GitHub issues are preferred over Slack because they're triaged and live closer to the code, but you can also find adapter developers in `#adapter-ecosystem` on the [dbt Community Slack](https://community.getdbt.com/).
 
 :::caution Known gap: CI requires coordination
-Community contributors cannot run CI independently. dbt Labs' CI pipeline requires warehouse credentials for the target warehouse — which means dbt Labs needs access configs for whatever warehouse you're contributing. The process for this handoff is still being defined. Expect to coordinate closely with the adapters team. If you hit friction, flag it in a comment on your [GitHub issue](https://github.com/dbt-labs/dbt/issues).
+Community contributors cannot run CI independently. Run `dbt build` on your own warehouse and share the successful result. Whether dbt Labs needs access to your warehouse is decided for each adapter, and there is no general rule yet. Expect to coordinate closely with the adapters team. If you hit friction, flag it in a comment on that issue.
 :::
 
 ---
