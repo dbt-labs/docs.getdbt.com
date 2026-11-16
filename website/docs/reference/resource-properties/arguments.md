@@ -64,7 +64,7 @@ macros:
 From <Constant name="dbt" /> v1.10, when you use the [`validate_macro_args`](/reference/global-configs/behavior-flags/validate_macro_args) flag, dbt supports the following types for macro arguments:
 
 - `string` or `str`
-- `bool` (`boolean` isn't supported and triggers an invalid type warning)
+- `bool`, or `boolean` from <Constant name="dbt" /> v1.14 (earlier versions treat `boolean` as an invalid type and log a warning)
 - `integer` or `int`
 - `float`
 - `any`
