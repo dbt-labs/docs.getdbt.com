@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { usePluginData } from '@docusaurus/useGlobalData';
 import Card from './index';
 
 // Theme aliases aren't resolvable under jest; stub them.
@@ -61,5 +62,23 @@ describe('Card adapter designation', () => {
   it('still hides a v1-only card without a designation in v2', () => {
     renderAt('2.0', { v1Href: '/v1' });
     expect(screen.queryByRole('heading', { name: 'Exasol' })).not.toBeInTheDocument();
+  });
+
+  it('hides a v1-only platform link and pill on the v2 page', () => {
+    usePluginData.mockReturnValue({
+      versionedPages: [
+        { page: 'docs/platform/connect-data-platform/connect-apache-spark', lastVersion: '1.99' },
+      ],
+    });
+    renderAt('2.0', {
+      title: 'Apache Spark',
+      designation: 'first-party',
+      platformHref: '/docs/platform/connect-data-platform/connect-apache-spark',
+      v2Href: '/docs/local/connect-data-platform/spark-setup',
+    });
+    expect(screen.queryByRole('link', { name: 'Set up in the dbt platform' })).not.toBeInTheDocument();
+    expect(screen.queryByText('dbt platform')).not.toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Install with dbt v2' })).toBeInTheDocument();
+    usePluginData.mockReturnValue({ rawMarkdownData: {}, pathByIdMap: {} });
   });
 });
