@@ -19,7 +19,7 @@ Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/9-
 
 ## Embed your text
 
-An **embedding** is a list of numbers, called a **vector**, that captures what a piece of text means. Texts with similar meaning get similar numbers. That's what lets a search for "renewal risk" find a chunk that says "the customer is worried about resigning," even though they share no words.
+An **embedding** is a list of numbers, called a **vector**, that captures what a piece of text means. Texts with similar meaning get similar numbers. So a search for "renewal risk" finds a chunk that says "the customer is worried about resigning," even though they share no words.
 
 Here's what that looks like. Each chunk becomes a vector. We show three numbers per chunk to keep it readable. Real vectors have hundreds (for example, 768 for `snowflake-arctic-embed-m-v1.5`), and the values in this guide are made up ([fugazi](https://www.urbandictionary.com/define.php?term=fugazi) one would say) for illustration.
 
@@ -301,4 +301,4 @@ When you change the embedding function on purpose, re-review the baseline. Run `
 
 ## What's next
 
-Okayyy so your context is searchable and cited. Next, you'll make that search precise with labels in [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai).
+Okay, so your context is searchable and cited. Next, you'll make that search precise with labels in [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai).
