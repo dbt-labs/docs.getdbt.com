@@ -209,15 +209,15 @@ For more info on how worktrees work, refer to [git worktree](https://git-scm.com
 
 ### Worktree and schema names
 
-<Constant name="wizard" /> names each chat's worktree for you by pairing a random adjective with a random animal, like `docs-fox`. The name has nothing to do with your project or your data, so you won't recognize it. The branch and schema for that chat are then built from the worktree name:
+<Constant name="wizard" /> names each chat's worktree for you after the task you give it, like `fix-orders-test`, so you can tell your chats apart at a glance. The branch and schema for that chat are then built from the worktree name:
 
 <SimpleTable>
 
 | What you see | Example | Where it comes from |
 |---|---|---|
-| Worktree name, which is also the chat name | `docs-fox` | Generated when the chat starts |
-| Branch | `oz/docs-fox` | Your `github.user` git config value, or `feature` if you haven't set one |
-| Target in the worktree's `profiles.yml` | `docs-fox` | The worktree name, with hyphens swapped for underscores |
+| Worktree name, which is also the chat name | `fix-orders-test` | Generated from the task when the chat starts |
+| Branch | `oz/fix-orders-test` | Your `github.user` git config value, or `feature` if you haven't set one |
+| Target in the worktree's `profiles.yml` | `fix-orders-test` | The worktree name, with hyphens swapped for underscores |
 | Schema | `dbt_oz_a1b2` | Your project's schema plus a random four-character suffix |
 
 </SimpleTable>

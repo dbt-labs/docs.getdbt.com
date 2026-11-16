@@ -70,14 +70,33 @@ The full list lives in website/release-note-areas.json.
 
 ##### Wizard Desktop
 
+- **New:** <Constant name="wizard" /> Desktop now names the git branch and environment for a new chat after the task, like `<prefix>/fix-orders-test`, instead of a random two-word name. Refer to [Worktree and schema names](/docs/dbt-ai/wizard-desktop-use#worktree-and-schema-names).
+- **New:** In <Constant name="wizard" /> Desktop, set a default base branch for each project in project settings. Choose a local or remote branch, and every new chat environment starts from it and compares against it. If that branch is no longer available, <Constant name="wizard" /> stops and shows recovery steps instead of quietly using another branch.
+- **New:** In <Constant name="wizard" /> Desktop, use the chat menu to copy a session ID or export the conversation as JSON, including its available tool details. You review the export before you choose where to save it.
+- **New:** In <Constant name="wizard" /> Desktop, filter the Inspector lineage graph with dbt [selectors](/reference/node-selection/syntax), show test resources on demand, and send column-lineage questions to chat.
 - **New:** In <Constant name="wizard" /> Desktop, you can edit existing text files in the [Explorer](/docs/dbt-ai/wizard-desktop-use). Select **Save** or press <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>S</kbd>. Edits save to a separate copy of your project, not your original files, and unsaved drafts persist after you navigate away or restart.
 - **New:** In <Constant name="wizard" /> Desktop, switch between local dbt profiles and the <Constant name="platform_cli" /> from the connection menu. <Constant name="wizard" /> remembers your choice, even for projects linked to <Constant name="dbt_platform" />.
 - **New:** In the <Constant name="wizard" /> Desktop lineage view, right-click a model to copy its name, add it to chat, open its code, or view its diff. The actions you see depend on the model and the view you're in.
+- **Enhancement:** New chats in <Constant name="wizard" /> Desktop start faster. <Constant name="wizard" /> prepares the chat's environment as soon as you open it, so setup finishes while you're still typing. New environments also reuse the dbt packages already installed in your main checkout, so the first parse needs no download. Turn this on or off in **Settings** → [**General**](/docs/dbt-ai/wizard-desktop-settings#general).
+- **Enhancement:** In <Constant name="wizard" /> Desktop, `/model` now explains that it lists your enabled models and adds a **Manage enabled models…** option. The option opens the provider's model editor and returns you to `/model` without changing your active model.
+- **Enhancement:** If your dbt account can't use dbt-managed models, <Constant name="wizard" /> Desktop onboarding now tells you why and links to account settings. You can still continue or use your own API key.
+- **Enhancement:** In <Constant name="wizard" /> Desktop, lineage controls now sit in a toolbar on the graph, and the no-AI-access banner shrinks to a short resolved note once your access is restored.
+- **Enhancement:** Interrupted <Constant name="wizard" /> Desktop update downloads now retry up to three times. Signature checks are unchanged.
 - **Enhancement:** In <Constant name="wizard" /> Desktop, multi-question cards now open as a single paged card. Go back to change your answers, and submit multiple-choice responses with clearer inline controls.
 - **Enhancement:** In <Constant name="wizard" /> Desktop, the Inspector's **Checks** tab is now **CI checks**, so it's easier to tell apart from [dbt checks](/docs/build/checks).
+- **Fix:** With the <Constant name="platform_cli" />, the Catalog view in <Constant name="wizard" /> Desktop no longer re-runs its queries in a loop. The loop tied up the dbt session, blocked agent compiles and validation, and caused "Session occupied" errors. Catalog still refreshes after builds.
+- **Fix:** Automatic deferral in <Constant name="wizard" /> Desktop now matches the dbt executable you select, including a manually chosen <Constant name="platform_cli" /> path. It also keeps deferral settings you change while a chat is starting.
+- **Fix:** Renaming and restoring environments in <Constant name="wizard" /> Desktop keeps them on their original schema after project deferral changes. This includes quoted or unquoted Jinja schemas and targets without a schema.
+- **Fix:** When you or the agent rename a branch in the terminal, <Constant name="wizard" /> Desktop updates the environment's name and stored branch to match.
+- **Fix:** <Constant name="wizard" /> Desktop setup now uses your working copy, so files like `requirements.txt` reflect your local, uncommitted changes.
+- **Fix:** In <Constant name="wizard" /> Desktop, MCP servers such as Atlassian v2 now sign you in through the correct authorization server, and custom MCP headers are no longer sent to separate OAuth providers. If a server keeps asking you to sign in, sign out of it once and sign in again.
+- **Fix:** Valid Snowflake Cortex credentials no longer fail the credential check in <Constant name="wizard" /> Desktop with an HTTP 400 error.
+- **Fix:** In <Constant name="wizard" /> Desktop, CLI warehouse queries that return mixed numeric results no longer fail with Arrow buffer alignment errors.
+- **Fix:** Lineage nodes in <Constant name="wizard" /> Desktop stay clickable in compact Inspector panes.
 - **Fix:** Signing out of your AI model account in <Constant name="wizard" /> Desktop no longer switches you to another account. Pick a replacement, or sign out without switching. Your other signed-in accounts still work for your profile and dbt tools.
 - **Fix:** Failed Explorer saves in <Constant name="wizard" /> Desktop keep your draft, and a save no longer overwrites changes made outside <Constant name="wizard" />. Existing chats also keep working after you switch environments.
 - **Fix:** The lineage graph in <Constant name="wizard" /> Desktop no longer jumps around when your project refreshes, and model actions and right-click menus are more reliable.
+- **Behavior change:** In <Constant name="wizard" /> Desktop, package installs no longer wait on setup. The agent runs `dbt deps` when a task needs it, without asking for approval. Every other dbt command still asks.
 
 #### Studio IDE {#studio-ide-november-2026}
 

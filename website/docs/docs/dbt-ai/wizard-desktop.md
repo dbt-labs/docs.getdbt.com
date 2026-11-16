@@ -107,7 +107,7 @@ Some things worth asking on a first run:
 
 A chat is one conversation about your project. Each project chat works in its own copy of your repo on its own branch, called a <Constant name="git" /> worktree, so you can keep a few pieces of work going at once without them stepping on each other.
 
-Each chat gets a name like `docs-fox`, and its branch and schema are named after it. Refer to [Worktree and schema names](/docs/dbt-ai/wizard-desktop-use#worktree-and-schema-names) for what those names mean.
+Each chat gets a name based on its task, like `fix-orders-test`, and its branch and schema are named after it. Refer to [Worktree and schema names](/docs/dbt-ai/wizard-desktop-use#worktree-and-schema-names) for what those names mean.
 
 ## Review and accept changes
 
