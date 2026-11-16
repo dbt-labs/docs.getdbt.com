@@ -10,7 +10,7 @@ Unlike [pre-hooks and post-hooks](/reference/resource-configs/pre-hook-post-hook
 
 The primary function of `set_sql_header` is fairly limited. It's intended to: 
 - [Create UDFs](/reference/resource-configs/sql_header#create-a-bigquery-temporary-udf)
-- [Set script variables](https://cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language) (BigQuery) 
+- [Set script variables](/reference/resource-configs/sql_header#declare-a-bigquery-script-variable) (BigQuery) 
 - [Set temporary session parameters](/reference/resource-configs/sql_header#set-snowflake-session-parameters-for-a-particular-model) (Snowflake)
 
 :::
@@ -215,7 +215,7 @@ select yes_no_to_boolean(yes_no) from {{ ref('other_model') }}
 
 ### Declare a BigQuery script variable
 
-Use `set_sql_header` to declare a variable before the model query, then reference it in the query:
+Use `set_sql_header` to declare a variable before the model query, then reference it in the query. `DECLARE`, in BigQuery's [procedural language](https://cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language), takes a name, a type, and an optional `DEFAULT` value:
 
 <File name='models/my_model.sql'>
 
