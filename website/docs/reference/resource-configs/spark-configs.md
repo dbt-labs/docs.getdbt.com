@@ -4,6 +4,8 @@ id: "spark-configs"
 description: "Apache Spark Configurations - Read this in-depth guide to learn about configurations in dbt."
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
 <!----
 To-do:
 - use the reference doc structure for this article/split into separate articles
@@ -14,6 +16,8 @@ To-do:
 :::note
 See [Databricks configuration](#databricks-configs) for the Databricks version of this page.
 :::
+
+<PlatformConfigIntro platform="Apache Spark" summary="file format, partitions, incremental strategies, and persisting model descriptions." />
 
 ## Configuring tables
 

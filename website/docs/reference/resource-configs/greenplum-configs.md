@@ -4,6 +4,10 @@ description: "Greenplum Configurations - Read this in-depth guide to learn about
 id: "greenplum-configs"
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="Greenplum" summary="distribution, column orientation, compression, append-only tables, and partitions." />
+
 ## Performance Optimizations
     
 Tables in Greenplum have powerful optimization configurations to improve query performance:

@@ -4,6 +4,10 @@ description: "Configure Microsoft SQL Server-specific settings for dbt models, i
 id: "mssql-configs"
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="Microsoft SQL Server" summary="materializations, seeds, snapshots, indexes, and grants." />
+
 ## Materializations
 
 Ephemeral materialization is not supported due to T-SQL not supporting nested CTEs. It may work in some cases when you're working with very simple ephemeral models.

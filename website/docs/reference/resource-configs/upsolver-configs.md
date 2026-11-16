@@ -4,6 +4,10 @@ id: "upsolver-configs"
 description: "Upsolver Configurations - Read this in-depth guide to learn about configurations in dbt."
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="Upsolver" summary="connections, copy, insert, and merge jobs, materialized views, expectations, and connection, target, and transformation options." />
+
 ## Supported Upsolver SQLake functionality
 
 | COMMAND | STATE | MATERIALIZED |

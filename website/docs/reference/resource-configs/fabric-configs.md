@@ -4,6 +4,10 @@ description: "Configure Microsoft Fabric Data Warehouse settings in dbt, includi
 id: "fabric-configs"
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="Microsoft Fabric Data Warehouse" connectionNote={<>Warehouse snapshots need <code>workspace_id</code> in <code>profiles.yml</code>.</>} />
+
 This page describes configuration options specific to the `dbt-fabric` adapter for Microsoft Fabric Data Warehouse. It outlines supported materializations, incremental strategies (including [merge](#merge) and [microbatch](#microbatch)), [model contracts](#model-contracts), cross-warehouse references, warehouse snapshots, and profile setup.
 
 ## Materializations

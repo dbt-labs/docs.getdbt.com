@@ -13,7 +13,6 @@ meta:
   slack_channel_name: n/a
   slack_channel_link: 
   platform_name: 'Infer'
-  config_page: '/reference/resource-configs/infer-configs'
   min_supported_version: n/a
 availability: local_free
 ---

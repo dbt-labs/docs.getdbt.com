@@ -4,6 +4,10 @@ id: "confluent-configs"
 description: "Reference for Confluent Cloud-specific dbt model configurations for Apache Flink."
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="Confluent Cloud" />
+
 The `dbt-confluent` adapter supports the following materializations and configurations for building models on [Confluent Cloud for Apache Flink](https://docs.confluent.io/cloud/current/flink/overview.html). For more detailed documentation of how to get started, visit the [dbt documentation on Confluent Cloud](https://docs.confluent.io/cloud/current/flink/operate-and-deploy/deploy-flink-dbt.html).
 
 ## Materializations

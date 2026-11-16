@@ -4,6 +4,10 @@ description: "Materialize Configurations- Read this in-depth guide to learn abou
 id: "materialize-configs"
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="Materialize" connectionNote={<>The default cluster is set in <code>profiles.yml</code>. Set <code>cluster</code> on a model to override it.</>} summary="clusters, incremental models, and indexes." />
+
 ## Performance optimizations
 
 ### Clusters

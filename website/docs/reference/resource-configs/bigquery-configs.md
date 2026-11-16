@@ -10,6 +10,10 @@ To-do:
 - use the reference doc structure for this article/split into separate articles
 --->
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="BigQuery" connectionNote={<><code>reservation</code> can be set in <code>profiles.yml</code>, in <code>dbt_project.yml</code>, or on a model.</>} summary="using project and dataset instead of database and schema, partitioning and clustering, reservations, encryption keys, labels and tags, incremental merge behavior, table expiration, authorized views, materialized views, and Python models." />
+
 ## Use `project` and `dataset` in configurations
 
 - `schema` is interchangeable with the BigQuery concept `dataset`

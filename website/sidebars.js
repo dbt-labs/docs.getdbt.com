@@ -1305,11 +1305,8 @@ const sidebarSettings = {
       type: "category",
       label: "Platform-specific configs",
       link: {
-        type: "generated-index",
-        title: "Platform-specific configs",
-        description:
-          "Platform-specific configs are used to configure the dbt project for a specific database platform.",
-        slug: "/reference/resource-configs",
+        type: "doc",
+        id: "reference/platform-specific-configs",
       },
       items: [
         "reference/resource-configs/azuresynapse-configs",
@@ -1332,7 +1329,6 @@ const sidebarSettings = {
         "reference/resource-configs/hive-configs",
         "reference/resource-configs/ibm-db2-config",
         "reference/resource-configs/ibm-netezza-config",
-        "reference/resource-configs/infer-configs",
         "reference/resource-configs/materialize-configs",
         "reference/resource-configs/mssql-configs",
         "reference/resource-configs/mindsdb-configs",

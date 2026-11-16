@@ -4,6 +4,10 @@ description: "Exasol Configurations - Read this in-depth guide to learn about co
 id: "exasol-configs"
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="Exasol" connectionNote={<><code>timestamp_format</code> is set in <code>profiles.yml</code>.</>} summary="incremental strategies, model contracts, materialized views, and clones." />
+
 ## Incremental materialization strategies
 
 In dbt-exasol, the following incremental materialization strategies are supported:

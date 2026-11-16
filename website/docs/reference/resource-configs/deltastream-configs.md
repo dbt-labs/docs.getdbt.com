@@ -4,7 +4,11 @@ description: "DeltaStream Configurations - Read this in-depth guide to learn abo
 id: "deltastream-configs"
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
 # DeltaStream resource configurations
+
+<PlatformConfigIntro platform="DeltaStream" summary="streaming materializations, stores, entities, compute pools, and seeds." />
 
 ## Supported materializations
 

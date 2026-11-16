@@ -4,6 +4,10 @@ description: "Impala Configs - Read this in-depth guide to learn about configura
 id: "impala-configs"
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="Cloudera Impala" summary="partitions, storage format, location, and incremental models." />
+
 ## Configuring tables
 
 When materializing a model as `table`, you may include several optional configs that are specific to the dbt-impala plugin, in addition to the standard [model configs](/reference/model-configs).

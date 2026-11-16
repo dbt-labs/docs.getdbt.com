@@ -4,6 +4,10 @@ description: "Configure IBM watsonx.data Presto-specific settings for dbt models
 id: "watsonx-presto-config"
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="IBM watsonx.data Presto" summary="instance requirements, session and connector properties, file formats, seeds, and table and view materializations." />
+
 ## Instance requirements
 
 To use IBM watsonx.data Presto(java) with `dbt-watsonx-presto` adapter, ensure the instance has an attached catalog that supports creating, renaming, altering, and dropping objects such as tables and views. The user connecting to the instance via the `dbt-watsonx-presto` adapter must have the necessary permissions for the target catalog.

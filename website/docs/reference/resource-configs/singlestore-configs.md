@@ -4,6 +4,10 @@ description: "Configure SingleStore-specific settings for dbt models, including 
 id: "singlestore-configs"
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="SingleStore" summary="incremental strategies, storage type, keys, indexes, and model contracts." />
+
 ## Incremental materialization strategies
 The [`incremental_strategy` config](/docs/build/incremental-models#about-incremental_strategy) controls how dbt builds incremental models. Currently, SingleStoreDB supports `delete+insert`, `append`, and `microbatch` configurations.
 

@@ -12,6 +12,9 @@ To-do:
 --->
 
 import RedshiftDatasharing from '/snippets/_redshift-datasharing.md';
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="Redshift" connectionNote={<><code>query_group</code> can be set in <code>profiles.yml</code> and overridden on a model. <code>datasharing</code> is set in <code>profiles.yml</code>.</>} summary="sort and dist keys, incremental strategies, query groups, datasharing, late-binding views, and materialized views." />
 
 ## Incremental materialization strategies
 

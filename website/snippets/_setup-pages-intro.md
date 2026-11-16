@@ -22,7 +22,11 @@
 
 <code>python -m pip install {props.installPackages || props.meta.pypi_package}</code>
 
-<h2> Configuring {props.meta.pypi_package} </h2>
+{props.meta.config_page && (
+  <>
+    <h2> Configuring {props.meta.pypi_package} </h2>
 
-<p>For {props.meta.platform_name}-specific configuration, please refer to <a href={props.meta.config_page}>{props.meta.platform_name} configs.</a> </p>
+    <p>For {props.meta.platform_name}-specific configuration, please refer to <a href={props.meta.config_page}>{props.meta.platform_name} configs.</a> </p>
+  </>
+)}
 

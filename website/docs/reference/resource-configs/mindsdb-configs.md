@@ -4,6 +4,10 @@ description: "Configure MindsDB-specific settings for dbt models, including auth
 id: "mindsdb-configs"
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="MindsDB" connectionNote={<>Connection fields such as <code>host</code>, <code>port</code>, <code>username</code>, and <code>password</code> are set in <code>profiles.yml</code>.</>} summary="connection settings and predictor materializations." />
+
 ## Authentication
 
 To successfully connect dbt to MindsDB, you will need to provide the following configuration from the MindsDB instance.

@@ -4,6 +4,10 @@ description: "Configure Oracle-specific settings for dbt models, including paral
 id: "oracle-configs"
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="Oracle" connectionNote={<><code>session_info</code> is set in <code>profiles.yml</code>.</>} summary="parallel hints, table compression, partitioning, and session info." />
+
 <VersionBlock firstVersion="1.3.2">
 
 ## Use `parallel` hint

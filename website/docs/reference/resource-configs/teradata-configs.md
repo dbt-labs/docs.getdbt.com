@@ -4,6 +4,10 @@ description: "Configure Teradata-specific settings for dbt models, including quo
 id: "teradata-configs"
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="Teradata" connectionNote={<><code>query_band</code> can be set in <code>profiles.yml</code>, in <code>dbt_project.yml</code>, or on a model.</>} summary="models, seeds, snapshots, query bands, and the valid_history incremental strategy." />
+
 ## General
 
 * *Set `quote_columns`* - to prevent a warning, make sure to explicitly set a value for `quote_columns` in your `dbt_project.yml`. See the [doc on quote_columns](/reference/resource-configs/quote_columns) for more information.

@@ -4,6 +4,10 @@ description: "Configure IBM Db2-specific settings for dbt models, including inst
 id: "ibm-db2-config"
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="IBM Db2" summary="instance requirements, materializations, snapshots, constraints, and grants." />
+
 ## Instance requirements
 
 To use IBM Db2 with the `ibm-dbt-db2` adapter, ensure the instance has an attached database that supports creating, renaming, altering, and dropping objects such as tables and views. The user connecting to the instance via the `ibm-dbt-db2` adapter must have the necessary permissions for the target database and schema.
