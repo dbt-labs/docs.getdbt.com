@@ -26,6 +26,8 @@ Think of your account as an office building. The front door, security desk, and 
 
 The following table shows where you configure each part of your account.
 
+<SimpleTable>
+
 | Level | What you set up here | How many |
 |-------|----------------------|----------|
 | Account | [Git integration](/docs/platform/account-integrations) | One per git provider |
@@ -36,6 +38,8 @@ The following table shows where you configure each part of your account.
 | Project | Repository | One per project |
 | Project | [Connection profiles](/docs/platform/about-profiles) | As many as you need |
 | Project | [Environments](/docs/dbt-platform-environments) and jobs | One development environment, plus deployment environments |
+
+</SimpleTable>
 
 ## Common mix-ups
 
@@ -50,12 +54,16 @@ These are the things that trip people up most during setup.
 
 Each project has the following environment types.
 
+<SimpleTable>
+  
 | Environment type | How many per project | What it's for | Shows in <Constant name="catalog" /> |
 |------------------|----------------------|---------------|------|
 | Development | Exactly one | Building in the <Constant name="studio_ide" /> or <Constant name="platform_cli" /> with your personal credentials | No |
 | General | As many as you need | Deployment work like QA, sandboxes, or ad hoc runs | No |
 | Staging | One at most | Testing with production tools before changes reach production | Yes |
 | Production | One at most | Scheduled and triggered jobs that build your source of truth | Yes |
+
+</SimpleTable>
 
 For more information, refer to [Deployment environments](/docs/deploy/deploy-environments).
 
