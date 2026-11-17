@@ -79,7 +79,7 @@ The migration tool automates most configuration, but some things require manual 
 Before starting your migration, confirm the following:
 
 - A contract change has been initiated and confirmed with your account manager
-- You have received a migration window from the dbt Support team
+- You have received a migration window from the Fivetran Support team
 - You have admin access to both the source and target <Constant name="dbt_platform"/> accounts
 - The target account is provisioned in the new environment
 - You have a service token with Account Admin permissions on the source account
