@@ -58,7 +58,7 @@ Each project has the following environment types.
   
 | Environment type | How many per project | What it's for | Shows in <Constant name="catalog" /> |
 |------------------|----------------------|---------------|------|
-| Development | Exactly one | Building in the <Constant name="studio_ide" /> or <Constant name="platform_cli" /> with your personal credentials | No |
+| Development | One at most | Building in the <Constant name="studio_ide" /> or <Constant name="platform_cli" /> with your personal credentials | No |
 | General | As many as you need | Deployment work like QA, sandboxes, or ad hoc runs | No |
 | Staging | One at most | Testing with production tools before changes reach production | Yes |
 | Production | One at most | Scheduled and triggered jobs that build your source of truth | Yes |
