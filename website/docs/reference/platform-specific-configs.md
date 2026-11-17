@@ -9,7 +9,7 @@ availability: all_users
 
 import DocCardList from '@theme/DocCardList';
 
-Platform-specific configs are configurations unique to an data platform. These settings may change how <Constant name="dbt" /> builds models and other resources. 
+Platform-specific configs are configurations unique to a data platform. These configs may change how <Constant name="dbt" /> builds models and other resources.
 
 Configurations applicable to every platform, such as `materialized` and `schema`, are documented in [Model configurations](/reference/model-configs).
 
