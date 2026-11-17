@@ -31,58 +31,18 @@ When materializing a model as `table`, you may include several optional configs 
 [^1]: If you configure `location_root`, dbt specifies a location path in the `create table` statement. This changes the table from "managed" to "external" in Spark/Databricks.
 
 ## Setting table properties
-
-A table property is a key-value pair stored in a table's metadata. Use the `tblproperties` config to set them on a SQL model. The config works the same way on a table and on an incremental model.
-
-You might set a property for either of these reasons:
-
-- A file format reads specific keys that change how the table behaves. Each format documents its own keys for [Iceberg](https://iceberg.apache.org/docs/latest/configuration/#table-properties), [Delta Lake](https://docs.delta.io/latest/table-properties.html), and [Hudi](https://hudi.apache.org/docs/sql_ddl/#table-properties).
-- You want to attach your own label, such as the team that maintains the table.
-
-If you write the model in Python, dbt still creates the table, but it does not include these properties.
-
-dbt does not check the keys or values. It sends every value to Spark as text, so a number such as `90` is sent as `'90'`. Do not use `owner` for your own label. Spark reserves that name and rejects it.
-
-<File name="models/events_summary.sql">
-
+[Table properties](https://spark.apache.org/docs/latest/sql-ref-syntax-ddl-create-table-datasource.html) can be set with your configuration for tables or views using `tblproperties`:
+ 
+<File name='with_table_properties.sql'>
+   
 ```sql
 {{ config(
-    materialized='table',
     tblproperties={
-      'team': 'analytics_engineering',
-      'review_interval_days': 90
+      "write.metadata.metrics.default": "counts",
+      "write.metadata.metrics.column.amount": "full",
+      "write.metadata.metrics.column.status": "full"      
     }
-) }}
-
-select
-    event_date,
-    count(*) as event_count
-from {{ ref('events') }}
-group by event_date
-```
-
-</File>
-
-dbt adds a `tblproperties` clause to the `create table` statement. For this model, that clause looks like this:
-
-```sql
-tblproperties ('team' = 'analytics_engineering' , 'review_interval_days' = '90')
-```
-
-When `file_format` is `delta` or `iceberg`, dbt sends `create or replace table` instead of `create table`.
-
-To read the properties on the table, run `SHOW TBLPROPERTIES SCHEMA_NAME.TABLE_NAME` in Spark. Spark returns each value without extra quotes, so `90` comes back as `90`.
-
-:::caution
-If you change `tblproperties` on an incremental model, run a full refresh for that model only:
-
-```bash
-dbt run --full-refresh --select MODEL_NAME
-```
-
-dbt applies the new properties when it creates the table, including on a full refresh. An incremental run leaves the existing properties in place.
-:::
-
+ ) }}
 ## Incremental models
 
 dbt seeks to offer useful, intuitive modeling abstractions by means of its built-in configurations and <Term id="materialization">materializations</Term>. Because there is so much variance between Apache Spark clusters out in the world—not to mention the powerful features offered to Databricks users by the Delta file format and custom runtime—making sense of all the available options is an undertaking in its own right.
