@@ -27,6 +27,48 @@ Release notes are grouped by date for single-tenant environments.
 
 <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](https://docs.getdbt.com/feeds/release-notes-st-rss.xml), [Atom](https://docs.getdbt.com/feeds/release-notes-st-atom.xml), or [JSON Feed](https://docs.getdbt.com/feeds/release-notes-st-rss.json).</span>
 
+## November 18, 2026
+
+### New
+
+#### APIs, Identity, and Administration
+
+- **Expiration dates for personal access tokens and service tokens**: When you create a [personal access token](/docs/dbt-apis/user-tokens#set-a-token-expiration) or a [service token](/docs/dbt-apis/service-tokens#set-a-token-expiration), you can set it to expire in 7, 14, 30, 90, or 365 days. If you leave the date empty, the token does not expire. Tokens you already created without a date stay that way.
+
+### Enhancements
+
+#### dbt platform
+
+- **Clearer environment delete button**: On the environment settings page, the delete button now says **Delete environment**. The old label was **Delete**, which made it easier to remove the wrong thing.
+
+### Fixes
+
+#### Run logs
+
+- **dbt State badge shows correctly on dbt v1 runs**: When a dbt v1 run is reusing results from an earlier run, the badge now says **dbt State**. It used to say **dbt State disabled** even though reuse was on. This applies to the **v1 Compatible**, **v1 Extended**, and **v1 Latest** release tracks.
+
+- **State Explain tab says when details have expired**: On the [**Explain** tab](/docs/deploy/dbt-state-interface#explain-tab), the banner now says that the reuse decisions and their explanations are gone once that data expires. It used to suggest those decisions were still listed.
+
+#### Studio IDE
+
+- **Long error messages no longer block Dismiss button in the Studio IDE**: A long error popup, such as a file path from a lint warning, now wraps onto the next line so you can still see the dismiss button.
+
+#### APIs, Identity, and Administration
+
+- **Removing the last member of a SCIM group now works**: SCIM (System for Cross-domain Identity Management) lets an identity provider, such as Okta, manage groups in dbt. Previously, when the provider removed a group’s last member, dbt returned a success response but left the member in the group. dbt now clears the group when it receives an empty member list.
+
+- **SCIM errors no longer include email addresses**: If a SCIM group request fails because a member has no license or isn’t on the account, the error is now [“All users must have licenses on the account.”](/docs/platform/manage-access/scim-faq#there-is-a-all-users-must-have-licenses-on-the-account-error) The message no longer lists email addresses, which could previously include users from other accounts. 
+
+- **API errors use a clearer status code**: Creating an OpenAI key when the account already has one now returns 409 and the message “This account already has an OpenAI key.” Creating the same SCIM user twice at the same time also returns 409. Requests to the v1 and v2 Admin API for something that doesn’t exist, or for an account you can’t access, now return 404 (not found). These requests used to return a server error (500).
+
+### Behavior change
+
+#### APIs, Identity, and Administration
+
+- **Repository `full_name` comes from the repository address**: On [Admin API v2](/dbt-cloud/api-v2#/operations/List%20Repositories) and [Admin API v3](/dbt-cloud/api-v3#/operations/List%20Repositories) of the repositories API, `full_name` and `web_url` are now taken from the repository's web address. `full_name` is deprecated. The API no longer returns a custom `full_name` you set earlier.
+
+- **User id filters return only people on the account**: When you filter the account users list by user ID (`pk` or `pk__in`), the API now returns only members of that account. Looking up someone who isn’t a member now succeeds with an empty list instead of returning “not found,” and an empty `pk__in` list returns no one instead of every member. If you send both `pk` and `pk__in` to the [v3 account users list](/dbt-cloud/api-v3#/operations/List%20Users), the API returns only IDs that appear in both. The same applies to `GET /api/v2/users/`: if `pk` is your own ID and pk__in lists other users, you get an empty list.
+
 ## November 11, 2026
 
 ### New
