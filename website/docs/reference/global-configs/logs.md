@@ -102,7 +102,32 @@ When the `LOG_FORMAT` is set explicitly, it will take effect in both the console
 
 </VersionBlock>
 
+<VersionBlock lastVersion="1.99">
+
+The format also determines how timestamps are written. The time zone, whether the timestamp is aware or naive (includes a UTC offset or not), and the precision depend on the log format:
+
+| Log format | Time zone | Example | Precision |
+|------------|-----------|---------|-----------|
+| `text`     | UTC | `16:12:08` | Second |
+| `debug`    | Your computer's local time | `16:12:08.555032` | Microsecond |
+| `json`     | UTC | `2024-05-29T23:32:54.993336Z` | Microsecond |
+
+Only `json` shows the time zone, with the `Z` at the end (it means UTC). `text` and `debug` show the time of day only, so you need to know which zone they use.
+
+The console uses `text` by default, and the log file uses `debug`. This means the log file shows your local time unless you set `LOG_FORMAT_FILE` (or `LOG_FORMAT`) to `text` or `json`. Console output with `--debug` also uses `debug`, so it shows local time too.
+
+</VersionBlock>
+
 <VersionBlock firstVersion="2.0">
+
+In v2, timestamps are always UTC:
+
+| Log format | Example | Precision |
+|------------|---------|-----------|
+| `default` or `text` | `13:09:50.561472` | Microsecond |
+| `json` | `2026-11-17T13:09:52.182227Z` | Microsecond |
+
+Only `json` shows the time zone, with the `Z` at the end (it means UTC).
 
 When the `LOG_FORMAT` is set explicitly to `text`, `json`, or `default`, it takes effect in both the console and log files. The `otel` value applies to console output only. Use `LOG_FORMAT_FILE` to set a different format for the log file (`text`, `json`, or `default`).
 
