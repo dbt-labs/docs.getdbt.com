@@ -4,9 +4,7 @@ description: "Configure IBM Netezza-specific settings for dbt models, including 
 id: "ibm-netezza-config"
 ---
 
-import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
-
-<PlatformConfigIntro platform="IBM Netezza" summary="instance requirements and seed column types." />
+This page covers what your IBM Netezza instance needs before you run <Constant name="dbt" />, and how to set column types for seeds.
 
 ## Instance requirements
 

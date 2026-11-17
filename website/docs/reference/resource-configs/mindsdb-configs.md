@@ -4,9 +4,7 @@ description: "Configure MindsDB-specific settings for dbt models, including auth
 id: "mindsdb-configs"
 ---
 
-import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
-
-<PlatformConfigIntro platform="MindsDB" connectionNote={<>Connection fields such as <code>host</code>, <code>port</code>, <code>username</code>, and <code>password</code> are set in <code>profiles.yml</code>.</>} summary="connection settings and predictor materializations." />
+This page covers how to connect to MindsDB in `profiles.yml`, and how to create a predictor in a model's `config()` block.
 
 ## Authentication
 
