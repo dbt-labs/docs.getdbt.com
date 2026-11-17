@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1013" viewBox="0 0 1200 760" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <rect width="1200" height="760" fill="#FFFFFF"/>
+
+  <!-- Project boundary -->
+  <rect x="30" y="30" width="1140" height="705" rx="20" fill="#FFFFFF" stroke="#262A3A" stroke-width="3"/>
+  <rect x="60" y="55" width="430" height="50" rx="10" fill="#262A3A"/>
+  <text x="80" y="88" font-size="24" font-weight="700" fill="#FFFFFF">Inside one project</text>
+  <text x="1140" y="88" font-size="19" font-style="italic" fill="#4A5163" text-anchor="end">Project A · Core analytics</text>
+
+  <!-- Account connections feeding the project -->
+  <rect x="60" y="125" width="1080" height="62" rx="14" fill="#FFF6EE" stroke="#E4572E" stroke-width="2.5" stroke-dasharray="9 6"/>
+  <text x="80" y="162" font-size="19" font-weight="700" fill="#C2410C">From your account</text>
+  <text x="280" y="162" font-size="18" fill="#4A5163">Warehouse A · production and Warehouse A · development</text>
+  <text x="1120" y="162" font-size="26" fill="#C2410C" text-anchor="end">↓</text>
+
+  <!-- Repository + profiles -->
+  <rect x="60" y="210" width="340" height="115" rx="12" fill="#E8EEFB"/>
+  <text x="80" y="247" font-size="21" font-weight="700" fill="#1E3A8A">Repository</text>
+  <text x="80" y="277" font-size="17" fill="#1E3A8A">Exactly one per project.</text>
+  <text x="80" y="301" font-size="17" fill="#1E3A8A">Your dbt code lives here.</text>
+
+  <rect x="430" y="210" width="710" height="115" rx="12" fill="#E4F5EA"/>
+  <text x="450" y="247" font-size="21" font-weight="700" fill="#14532D">Connection profiles</text>
+  <text x="450" y="277" font-size="17" fill="#14532D">Each profile = one warehouse connection + deployment credentials.</text>
+  <text x="450" y="301" font-size="17" fill="#14532D">You create them in this project. Other projects can't see them.</text>
+
+  <!-- Environments -->
+  <text x="60" y="372" font-size="21" font-weight="700" fill="#262A3A">Environments</text>
+  <text x="222" y="372" font-size="18" fill="#4A5163">Where your code runs. Each one points at a warehouse connection.</text>
+
+  <!-- Development -->
+  <rect x="60" y="388" width="255" height="270" rx="12" fill="#FFFFFF" stroke="#D9DEE7" stroke-width="2"/>
+  <rect x="60" y="388" width="255" height="46" rx="12" fill="#E4E7EF"/>
+  <rect x="60" y="414" width="255" height="20" fill="#E4E7EF"/>
+  <text x="78" y="419" font-size="20" font-weight="700" fill="#262A3A">Development</text>
+  <text x="78" y="466" font-size="18" font-weight="700" fill="#C2410C">Exactly 1 per project</text>
+  <text x="78" y="487" font-size="16" fill="#4A5163">Build in Studio or the</text>
+  <text x="78" y="505" font-size="16" fill="#4A5163">dbt platform CLI</text>
+  <text x="78" y="527" font-size="16" fill="#4A5163">No connection profile,</text>
+  <text x="78" y="545" font-size="16" fill="#4A5163">uses developer credentials.</text>
+  <text x="78" y="574" font-size="14" fill="#4A5163">Connects to</text>
+  <rect x="78" y="582" width="219" height="34" rx="17" fill="#FFE9DF" stroke="#E4572E" stroke-width="1.5"/>
+  <text x="187" y="605" font-size="15" font-weight="600" fill="#9A3412" text-anchor="middle">Warehouse A · development</text>
+  <rect x="78" y="624" width="219" height="26" rx="13" fill="#EEF0F5"/>
+  <text x="187" y="642" font-size="14" fill="#4A5163" text-anchor="middle">Not in dbt Catalog</text>
+
+  <!-- Staging -->
+  <rect x="335" y="388" width="255" height="270" rx="12" fill="#FFFFFF" stroke="#D9DEE7" stroke-width="2"/>
+  <rect x="335" y="388" width="255" height="46" rx="12" fill="#FDE8C8"/>
+  <rect x="335" y="414" width="255" height="20" fill="#FDE8C8"/>
+  <text x="353" y="419" font-size="20" font-weight="700" fill="#262A3A">Staging</text>
+  <text x="353" y="466" font-size="18" font-weight="700" fill="#C2410C">1 at most</text>
+  <text x="353" y="494" font-size="16" fill="#4A5163">Runs CI on pull requests</text>
+  <text x="353" y="518" font-size="16" fill="#4A5163">Uses a connection profile</text>
+  <text x="353" y="574" font-size="14" fill="#4A5163">Connects to</text>
+  <rect x="353" y="582" width="219" height="34" rx="17" fill="#FFE9DF" stroke="#E4572E" stroke-width="1.5"/>
+  <text x="462" y="605" font-size="15" font-weight="600" fill="#9A3412" text-anchor="middle">Warehouse A · development</text>
+  <rect x="353" y="624" width="219" height="26" rx="13" fill="#DCEBFF"/>
+  <text x="462" y="642" font-size="14" font-weight="600" fill="#1E3A8A" text-anchor="middle">Shown in dbt Catalog</text>
+
+  <!-- Production -->
+  <rect x="610" y="388" width="255" height="270" rx="12" fill="#FFFFFF" stroke="#D9DEE7" stroke-width="2"/>
+  <rect x="610" y="388" width="255" height="46" rx="12" fill="#FFD1C7"/>
+  <rect x="610" y="414" width="255" height="20" fill="#FFD1C7"/>
+  <text x="628" y="419" font-size="20" font-weight="700" fill="#262A3A">Production</text>
+  <text x="628" y="466" font-size="18" font-weight="700" fill="#C2410C">1 at most</text>
+  <text x="628" y="494" font-size="16" fill="#4A5163">Runs your scheduled jobs</text>
+  <text x="628" y="518" font-size="16" fill="#4A5163">Uses a connection profile</text>
+  <text x="628" y="574" font-size="14" fill="#4A5163">Connects to</text>
+  <rect x="628" y="582" width="219" height="34" rx="17" fill="#FFE9DF" stroke="#E4572E" stroke-width="1.5"/>
+  <text x="737" y="605" font-size="15" font-weight="600" fill="#9A3412" text-anchor="middle">Warehouse A · production</text>
+  <rect x="628" y="624" width="219" height="26" rx="13" fill="#DCEBFF"/>
+  <text x="737" y="642" font-size="14" font-weight="600" fill="#1E3A8A" text-anchor="middle">Shown in dbt Catalog</text>
+
+  <!-- General -->
+  <rect x="885" y="388" width="255" height="270" rx="12" fill="#FFFFFF" stroke="#D9DEE7" stroke-width="2"/>
+  <rect x="885" y="388" width="255" height="46" rx="12" fill="#E4E7EF"/>
+  <rect x="885" y="414" width="255" height="20" fill="#E4E7EF"/>
+  <text x="903" y="419" font-size="20" font-weight="700" fill="#262A3A">General</text>
+  <text x="903" y="466" font-size="18" font-weight="700" fill="#C2410C">Any number</text>
+  <text x="903" y="494" font-size="16" fill="#4A5163">QA, sandboxes, ad hoc runs</text>
+  <text x="903" y="518" font-size="16" fill="#4A5163">Uses a connection profile</text>
+  <text x="903" y="574" font-size="14" fill="#4A5163">Connects to</text>
+  <rect x="903" y="582" width="219" height="34" rx="17" fill="#FFE9DF" stroke="#E4572E" stroke-width="1.5"/>
+  <text x="1012" y="605" font-size="15" font-weight="600" fill="#9A3412" text-anchor="middle">Warehouse A · development</text>
+  <rect x="903" y="624" width="219" height="26" rx="13" fill="#EEF0F5"/>
+  <text x="1012" y="642" font-size="14" fill="#4A5163" text-anchor="middle">Not in dbt Catalog</text>
+
+  <text x="60" y="702" font-size="17" fill="#4A5163">Jobs, environment variables, and developer credentials also live inside the project.</text>
+</svg>
