@@ -45,7 +45,7 @@ The following table shows where you configure each part of your account.
 
 These are the things that trip people up most during setup.
 
-- **You don't need a project per environment.** A project isn't "dev" or "prod". Each project holds its own development, staging, and production environments. Create a new project when you have a separate codebase or team, not a separate stage.
+- **You don't need a project per environment.** A project isn't "dev" or "prod". Each project an have a development, staging, or production environments. Create a new project when you have a separate codebase or team, not a separate stage. [Refer to [types of environments](/docs/dbt-platform-environments?version=2#types-of-environments) for more info.
 - **Integrations are shared by every project.** You connect your git provider and your SSO identity provider once at the account level. You can't set a different one for each project. For example, an account supports [one GitHub application](/docs/platform/git/connect-github), not one per project.
 - **Warehouse connections belong to the account, not the project.** Any project can reuse a connection. A connection only reaches a project when you attach it to one of that project's environments.
 - **Connection profiles belong to the project.** A profile bundles one connection with deployment credentials and extended attributes. Profiles you create in one project aren't visible in others, and they don't apply to development environments.
