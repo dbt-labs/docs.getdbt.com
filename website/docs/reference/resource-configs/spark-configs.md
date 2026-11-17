@@ -46,6 +46,8 @@ When materializing a model as `table`, you may include several optional configs 
 
 ```
 
+</File>
+
 ## Incremental models
 
 dbt seeks to offer useful, intuitive modeling abstractions by means of its built-in configurations and <Term id="materialization">materializations</Term>. Because there is so much variance between Apache Spark clusters out in the world—not to mention the powerful features offered to Databricks users by the Delta file format and custom runtime—making sense of all the available options is an undertaking in its own right.
