@@ -17,7 +17,7 @@ functions:
 
 </File>
 
-In the future, we're considering adding support for `table` type. Refer to [this issue](https://github.com/dbt-labs/dbt/issues/11917) to track the progress and provide any feedback.
+In the future, we're considering adding support for `table` type. Refer to [this issue](https://github.com/dbt-labs/dbt/issues/12492) to track the progress and provide any feedback.
 
 ## Definition
 
@@ -39,6 +39,7 @@ Support for `type` differs based on the warehouse and language (SQL or Python) y
 | dbt-databricks	| ✅	| ❌	| ❌	| ❌ |
 | dbt-postgres	| ✅	| ❌	| ❌	| ❌ |
 | dbt-redshift	| ✅	| ❌	| ❌	| ❌ |
+| dbt-trino	| ✅	| ❌	| ❌	| ❌ |
 
 ### scalar (default)
 

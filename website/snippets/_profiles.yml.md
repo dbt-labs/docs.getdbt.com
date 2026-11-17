@@ -146,13 +146,13 @@ my_profile:
   outputs:
     dev:
       type: ADAPTER_NAME
-      account: "{{ env_var("ADAPTER_ACCOUNT") }}"
-      user: "{{ env_var("ADAPTER_USER") }}"
-      password: "{{ env_var("ADAPTER_PASSWORD") }}"
-      database: "{{ env_var("ADAPTER_DATABASE") }}"
-      schema: "{{ env_var("ADAPTER_SCHEMA") }}"
-      warehouse: "{{ env_var("ADAPTER_WAREHOUSE") }}"
-      role: "{{ env_var("ADAPTER_ROLE") }}"
+      account: "{{ env_var('ADAPTER_ACCOUNT') }}"
+      user: "{{ env_var('ADAPTER_USER') }}"
+      password: "{{ env_var('ADAPTER_PASSWORD') }}"
+      database: "{{ env_var('ADAPTER_DATABASE') }}"
+      schema: "{{ env_var('ADAPTER_SCHEMA') }}"
+      warehouse: "{{ env_var('ADAPTER_WAREHOUSE') }}"
+      role: "{{ env_var('ADAPTER_ROLE') }}"
       threads: 4
 ```
 

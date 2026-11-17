@@ -86,15 +86,23 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
 2. In the **Connect to dbt** popup, find the **Optional Grant** option and select the **RAW** and **ANALYTICS** databases. This will grant access for your new dbt user role to each database. Then, click **Connect**.
 
+    <DocCarousel slidesPerView={1}>
+
     <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_connection_box.png" title="Snowflake Classic UI - Connection Box" />
 
     <Lightbox src="/img/snowflake_tutorial/snowflake_new_ui_connection_box.png" title="Snowflake New UI - Connection Box" />
 
+    </DocCarousel>
+
 3. Click **Activate** when a popup appears: 
+
+<DocCarousel slidesPerView={1}>
 
 <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_activation_window.png" title="Snowflake Classic UI - Actviation Window" />
 
 <Lightbox src="/img/snowflake_tutorial/snowflake_new_ui_activation_window.png" title="Snowflake New UI - Activation Window" />
+
+</DocCarousel>
 
 4. After the new tab loads, you will see a form. If you already created a <Constant name="dbt" /> account, you will be asked to provide an account name. If you haven't created account, you will be asked to provide an account name and password.
 
@@ -103,9 +111,13 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
 6. Go to the left side menu and click your account name, then select **Account settings**, choose the "Partner Connect Trial" project, and select **snowflake** in the overview table. Select edit and update the fields **Database** and **Warehouse** to be `analytics` and `transforming`, respectively.
 
+<DocCarousel slidesPerView={1}>
+
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_project_overview.png" title="dbt - Snowflake Project Overview" />
 
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_update_database_and_warehouse.png" title="dbt - Update Database and Warehouse" />
+
+</DocCarousel>
 
 You should now be logged into <Constant name="dbt" /> with a project that has a Snowflake connection using the `analytics` database and `transforming` warehouse. Partner Connect also created a managed repository for you, so skip to [Initialize your dbt project and start developing](#initialize-your-dbt-project-and-start-developing).
 

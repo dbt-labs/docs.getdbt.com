@@ -101,15 +101,23 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
 2. In the **Connect to dbt** popup, find the **Optional Grant** option and select the **RAW** and **ANALYTICS** databases. This will grant access for your new dbt user role to each selected database. Then, click **Connect**.
 
+    <DocCarousel slidesPerView={1}>
+
     <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_connection_box.png" title="Snowflake Classic UI - Connection Box" />
 
     <Lightbox src="/img/snowflake_tutorial/snowflake_new_ui_connection_box.png" title="Snowflake New UI - Connection Box" />
 
+    </DocCarousel>
+
 3. Click **Activate** when a popup appears: 
+
+<DocCarousel slidesPerView={1}>
 
 <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_activation_window.png" title="Snowflake Classic UI - Actviation Window" />
 
 <Lightbox src="/img/snowflake_tutorial/snowflake_new_ui_activation_window.png" title="Snowflake New UI - Activation Window" />
+
+</DocCarousel>
 
 4. After the new tab loads, you will see a form. If you already created a <Constant name="dbt" /> account, you will be asked to provide an account name. If you haven't created an account, you will be asked to provide an account name and password.
 
@@ -117,9 +125,13 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
 6. Click your account name in the left side menu and select **Account settings**, choose the "Partner Connect Trial" project, and select **snowflake** in the overview table. Select **Edit** and update the **Database** field to `analytics` and the **Warehouse** field to `transforming`.
 
+<DocCarousel slidesPerView={1}>
+
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_project_overview.png" title="dbt - Snowflake Project Overview" />
 
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_update_database_and_warehouse.png" title="dbt - Update Database and Warehouse" />
+
+</DocCarousel>
 
 </TabItem>
 <TabItem value="manual-connect" label="Connect manually">

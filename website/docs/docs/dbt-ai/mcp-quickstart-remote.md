@@ -56,6 +56,10 @@ Obtain the following information from <Constant name="dbt_platform"/>:
 
 <MCPRemoteOauthBetaCallout />
 
+:::tip Read-only users
+Read-only users can query metrics through remote MCP using a shared [analytics credential](/docs/platform/wizard-read-only-users#set-up-analytics-credentials) without having to log in to <Constant name="dbt_platform"/> to set up their own warehouse credentials. Refer to [Read-only users and warehouse credentials](/docs/dbt-ai/setup-remote-mcp#read-only-users-and-warehouse-credentials).
+:::
+
 ### 4. Get your MCP URL and IDs
 
 <MCPRemoteServerUrl />

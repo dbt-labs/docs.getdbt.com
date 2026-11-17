@@ -8,17 +8,14 @@ availability: local_all
 ---
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
-import WizardDesktopPrivatePreview from '/snippets/_wizard-desktop-private-preview.md';
 
-# Wizard Desktop settings <Lifecycle status="private_beta"/>
+# Wizard Desktop settings <Lifecycle status="beta"/>
 
 <IntroText>
 Open **Settings** from the bottom left of the app to change how <Constant name="wizard" /> behaves. Settings are grouped into General, Account, AI providers, Connectors, Appearance, Shortcuts, and version control.
 </IntroText>
 
 Settings that also exist in the Wizard CLI are shared. Changing them here changes them for `wizard` in your terminal too. Refer to [the config reference](/docs/dbt-ai/wizard-config) for the underlying files.
-
-<WizardDesktopPrivatePreview />
 
 ## General
 
@@ -40,6 +37,21 @@ Controls what appears alongside a chat while you work.
 Shows the dbt accounts <Constant name="wizard" /> uses for hosted models and platform access, and gives you the tools to clean up what the app has written to disk. 
 
 - **Connected dbt accounts** lists each <Constant name="dbt_platform" /> account you've connected, with the platform account hostname, such as `abc123.us1.dbt.com`. Connect more than one account by clicking on **+Add account** and switch between them without signing in again. Each account has its own **Sign out**. To pick which account powers AI models, go to [AI providers](#ai-providers).
+- **Sign-in or Advanced sign-in options** lets you choose where <Constant name="wizard" /> signs in to <Constant name="dbt_platform" />. Most people don't need this. Use it if signing in sends you to a registration page, or the page says your user already exists. To set it up:
+
+    1. Go to **Settings** &rarr; **Account**, and then click **Sign-in options**.
+    2. Enter your account's [Access URL](/docs/platform/about-platform/access-regions-ip-addresses) in **dbt account host**, such as `ab123.us1.dbt.com`. You can find it in your <Constant name="dbt_platform" /> account settings.
+    3. (Optional) Enter your **dbt account ID**. To find it, go to **Account settings** &rarr; **Account** in <Constant name="dbt_platform" />.
+    4. Click **Save**.
+
+    <Lightbox src="/img/wizard/desktop/wizard-desktop-sign-in-options.png" width="90%" title="Sign-in options in Wizard Desktop" />
+
+    You can also set the account host from the <Constant name="wizard" /> CLI with the `DBT_CLOUD_LOGIN_HOST` environment variable. For example:
+
+    ```shell
+    export DBT_CLOUD_LOGIN_HOST=ab123.us1.dbt.com
+    ```
+
 - **Maintenance** reclaims disk space or returns <Constant name="wizard" /> to a clean state. This will affect the Wizard CLI too:
 
     <SimpleTable>
@@ -68,11 +80,11 @@ Choose how <Constant name="wizard" /> reaches a model. Come here if you selected
 | Option | What it means |
 |---|---|
 | Managed by dbt Labs | No setup. dbt Labs [manages](/docs/dbt-ai/pricing-billing/overview#dbt-managed-providers) the keys and keeps you on the latest models, and usage is metered against your dbt usage credits. The `dbt` provider shows as **Active** when it's in use |
-| Managed by you | Bring your own key for Amazon Bedrock, Anthropic, Azure OpenAI, Databricks, Google Gemini, OpenAI, or an OpenAI subscription, and more. That provider's API charges apply. Refer to [BYOK](/docs/dbt-ai/wizard-byok) |
+| Managed by you | Bring your own key for Amazon Bedrock, Anthropic, Azure OpenAI, Databricks, Google Gemini, OpenAI, or an OpenAI subscription, and more. That provider's API charges apply. Refer to [BYOK in Wizard Desktop](/docs/dbt-ai/wizard-desktop-byok) |
 
 </SimpleTable>
 
-Each provider lists how many of its models are enabled, such as `6/6 models enabled`. Select **Manage** to add credentials and turn individual models on or off. You then pick the model and reasoning effort per chat from the chat composer, not here.
+Each provider lists how many of its models are enabled, such as `6/6 models enabled`. Select **Configure** to add credentials and turn individual models on or off. You then pick the model and reasoning effort per chat from the chat composer, not here.
 
 
 ## Connectors
@@ -82,11 +94,7 @@ If your project is connected to <Constant name="dbt_platform" />, <Constant name
 
 The remote dbt MCP server is available to <Constant name="dbt_platform" /> users only. <Constant name="wizard" /> still uses its local [dbt Information Schema](/docs/build/dbt-information-schema) for project metadata.
 
-Browsing and enabling other connectors from this pane is planned for future releases. Until then, add [MCP servers](/docs/dbt-ai/wizard-mcp) from the terminal:
-
-1. Start a project chat and send your first message, which starts the terminal.
-2. Run `wizard` from the terminal.
-3. Run `/mcp` to add a connector or manage the ones you've already added.
+Browsing and enabling other connectors on the **Connectors** page is coming soon. Until then, you can add [MCP servers](/docs/dbt-ai/wizard-mcp) through the CLI. Refer to [Connect MCP servers](/docs/dbt-ai/wizard-desktop-use#connect-mcp-servers).
 
 ## Appearance
 
@@ -145,7 +153,7 @@ Set how <Constant name="wizard" /> authenticates with GitHub to read repos and o
 - [Get started with Wizard Desktop](/docs/dbt-ai/wizard-desktop)
 - [Use Wizard Desktop](/docs/dbt-ai/wizard-desktop-use)
 - [<Constant name="wizard" /> config reference](/docs/dbt-ai/wizard-config)
-- [Configure BYOK](/docs/dbt-ai/wizard-byok)
+- [Configure BYOK in Wizard Desktop](/docs/dbt-ai/wizard-desktop-byok)
 - [Use MCP servers](/docs/dbt-ai/wizard-mcp)
 
 <WizardFeedbackCallout />

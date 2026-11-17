@@ -199,7 +199,7 @@ Some known issues and limitations:
 
 <div warehouse="Starburst Galaxy (dbt-trino)">
 
-- Requires configuring an [API Auth token](https://docs.starburst.io/starburst-galaxy/developer-tools/api/api-auth-token.html) and setting `starburst_url`, `starburst_client_id`, and `starburst_secret_key` in the [connection profile](/docs/local/connect-data-platform/trino-setup#additional-parameters).
+- To sync descriptions to Data Discovery Catalog, configure the [Starburst/Trino metadata profile fields](/reference/resource-configs/trino-configs#persist_docs).
 
 
 </div>
