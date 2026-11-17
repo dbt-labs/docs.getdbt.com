@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="560" viewBox="0 0 1000 350" role="img" aria-labelledby="title desc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
   <title id="title">How a context model uses an LLM</title>
-  <desc id="desc">Step 1: your context model, a dbt file, has a classify macro call in it. Step 2: when dbt builds it, the macro writes a call to the warehouse AI function, AI_CLASSIFY on Snowflake, one call per chunk. Step 3: the LLM behind the function reads each chunk and answers with a label from your list. Step 4: your context model saves the answers as a new column in a table.</desc>
+  <desc id="desc">Step 1: your context model, a dbt file, has a classify macro call in it. Step 2: when dbt builds it, the macro writes a call to the warehouse AI function, AI_CLASSIFY on Snowflake, one call per chunk. Step 3: your LLM, the model your warehouse calls, reads each chunk and answers with a label from your list. Step 4: your context model saves the answers as a new column in a table in your warehouse.</desc>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0 0 L10 5 L0 10 z" fill="#8b93a1"/>
@@ -23,21 +23,21 @@
   </g>
 
   <!-- Headers -->
-  <text x="130" y="44" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="1" fill="#C2410C" dx="8">YOU WRITE THIS</text>
+  <text x="130" y="44" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="1" fill="#C2410C" dx="8">YOUR PROJECT</text>
   <text x="130" y="64" text-anchor="middle" font-size="16" font-weight="700" fill="#1F2937">Context model</text>
-  <text x="130" y="79" text-anchor="middle" font-size="11" fill="#4B5563">A dbt file in your project</text>
+  <text x="130" y="79" text-anchor="middle" font-size="11" fill="#4B5563">A dbt file you write</text>
 
   <text x="375" y="44" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="1" fill="#C2410C" dx="8">YOUR WAREHOUSE</text>
   <text x="375" y="64" text-anchor="middle" font-size="16" font-weight="700" fill="#1F2937">AI function</text>
   <text x="375" y="79" text-anchor="middle" font-size="11" fill="#4B5563">Built into your warehouse</text>
 
-  <text x="620" y="44" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="1" fill="#C2410C" dx="8">THE MODEL</text>
+  <text x="620" y="44" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="1" fill="#C2410C" dx="8">YOUR LLM</text>
   <text x="620" y="64" text-anchor="middle" font-size="16" font-weight="700" fill="#1F2937">LLM</text>
-  <text x="620" y="79" text-anchor="middle" font-size="11" fill="#4B5563">Not part of your project</text>
+  <text x="620" y="79" text-anchor="middle" font-size="11" fill="#4B5563">The model your warehouse calls</text>
 
-  <text x="867" y="44" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="1" fill="#C2410C" dx="8">YOU GET</text>
+  <text x="867" y="44" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="1" fill="#C2410C" dx="8">YOUR TABLE</text>
   <text x="867" y="64" text-anchor="middle" font-size="16" font-weight="700" fill="#1F2937">A new column</text>
-  <text x="867" y="79" text-anchor="middle" font-size="11" fill="#4B5563">Saved by your context model</text>
+  <text x="867" y="79" text-anchor="middle" font-size="11" fill="#4B5563">Saved to a table in your warehouse</text>
 
   <!-- Arrows between panels -->
   <g stroke="#8b93a1" stroke-width="2.5" marker-end="url(#arrow)">
