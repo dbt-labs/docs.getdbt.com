@@ -84,7 +84,7 @@ const statusDisplayNames = {
   eol: 'No longer sold',
   deprecated: 'Deprecated',
   retired: 'Retired',
-  community_maintained: 'community-maintained',
+  community_maintained: 'Community-maintained',
 };
 
 // URL mapping for predefined lifecycle statuses. urls defined in ../lifeCycle/lifecycle-urls.js file so we can update them in one place
