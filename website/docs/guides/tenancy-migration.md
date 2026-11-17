@@ -21,7 +21,7 @@ Make sure you contact your account manager before starting this process to confi
 
 This guide walks you through a self-serve migration between [<Constant name="dbt_platform"/> tenancy types](/docs/platform/about-platform/tenancy) &mdash; for example, moving from multi-tenant to single-tenant.
 
-It's meant for accounts that have been assessed by the dbt team as low complexity. Your dbt contact will provide a migration window before you begin &mdash; do not start until you've received it.
+It's meant for accounts that have been assessed by the dbt team as low complexity. We will provide a migration window before you begin &mdash; do not start until you've received it.
 
 Use the following table to confirm this guide is the right path for your account. If your account crosses the high-complexity threshold for even one signal, we recommend a Professional Services-led migration instead.
 
