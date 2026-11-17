@@ -76,9 +76,9 @@ After [comparing changes](#compare-changes), <Constant name="dbt" /> stores a ca
 
 You control what data to use. This may include synthetic data if pre-production or development data is heavily regulated or sensitive. 
 
-- The selected data is cached on dbt's systems for up to 30 days. No data is retained on dbt's systems beyond this period.
+- The selected data is cached on Fivetran's systems for up to 30 days. No data is retained on Fivetran's systems beyond this period.
 - The cache is encrypted and stored in an Amazon S3 or Azure blob storage in your account’s region. 
-- dbt will not access cached data from Advanced CI for its benefit and the data is only used to provide services as directed by you. 
+- Fivetran will not access cached data from Advanced CI for its benefit and the data is only used to provide services as directed by you. 
 - Third-party subcontractors, other than storage subcontractors, will not have access to the cached data.
 
 If you access a CI job run that's more than 30 days old, you will not be able to see the comparison results. Instead, a message will appear indicating that the data has expired.

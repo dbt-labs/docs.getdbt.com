@@ -18,7 +18,7 @@ Use bring-your-own-key (BYOK) to connect <Constant name="wizard" /> in <Constant
 
 The following BYOK instructions apply to <Constant name="dbt_platform" /> only. For CLI BYOK setup, refer to [Configure BYOK for dbt Wizard](/docs/dbt-ai/wizard-byok).
 
-When you configure a provider with your own key, usage costs appear on your provider account instead of your dbt account, and token costs are billed by whichever provider you choose.
+When you configure a provider with your own key, usage costs appear on your provider account instead of your Fivetran account, and token costs are billed by whichever provider you choose.
 
 If you'd rather skip that upkeep, the [dbt-<Term id="managed" /> option](/docs/platform/manage-dbt-ai#configure-ai-provider) is ready to use with no setup, and comes with [trial and monthly usage credits](/docs/dbt-ai/pricing-billing/trial-and-billing).
 

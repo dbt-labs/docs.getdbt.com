@@ -19,7 +19,7 @@ In <Constant name="dbt_platform" />, <Constant name="wizard" /> can use dbt proj
 
 Although custom MCP server connections aren't supported yet for <Constant name="wizard" /> in <Constant name="dbt_platform" />, you can use the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-mcp) if you need custom MCP servers for development workflows.
 
-To discuss <Constant name="dbt_platform" /> MCP support, contact your dbt account representative.
+To discuss <Constant name="dbt_platform" /> MCP support, contact your Fivetran account representative.
 
 ## Related docs
 

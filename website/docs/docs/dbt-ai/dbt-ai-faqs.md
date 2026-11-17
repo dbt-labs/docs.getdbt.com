@@ -151,19 +151,19 @@ You control the information you submit to <Constant name="wizard" />. dbt does n
 
 <Expandable alt_header="Is my data used by dbt to train AI models?">
 
-No. dbt does not use customer content processed by <Constant name="wizard" /> &mdash; including warehouse query results, prompts, or conversation history &mdash; for AI model training. Our terms with AI providers prevent training on the provider side as well.
+No. Fivetran does not use customer content processed by <Constant name="wizard" /> &mdash; including warehouse query results, prompts, or conversation history &mdash; for AI model training. Our terms with AI providers prevent training on the provider side as well.
 
 </Expandable>
 
-<Expandable alt_header="Does dbt share my personal data with third parties?">
+<Expandable alt_header="Does Fivetran share my personal data with third parties?">
 
-dbt only shares client personal information as needed to perform the services, under client instructions, or for legal, tax, or compliance reasons.
+Fivetran only shares client personal information as needed to perform the services, under client instructions, or for legal, tax, or compliance reasons.
 
 </Expandable>
 
 <Expandable alt_header="Can dbt Wizard data be deleted upon client written request?">
 
-Yes. <Constant name="wizard" /> conversation history is retained for 90 days by default, feedback you submit on a <Constant name="wizard" /> conversation is retained for 400 days, and you can delete this information in the product at any time. To the extent a client identifies personal or sensitive information uploaded to dbt systems, that data can be deleted within 30 days of written request.
+Yes. <Constant name="wizard" /> conversation history is retained for 90 days by default, feedback you submit on a <Constant name="wizard" /> conversation is retained for 400 days, and you can delete this information in the product at any time. To the extent a client identifies personal or sensitive information uploaded to Fivetran systems, that data can be deleted within 30 days of written request.
 
 </Expandable>
 

@@ -29,10 +29,10 @@ Included model entitlements may differ from what's shown here, depending on the 
 
 As an Enterprise customer, you pay annually via invoice, monthly in arrears for additional usage (if applicable), and may benefit from negotiated usage rates. Please refer to your order form or contract for your specific pricing details, or [contact the account team](https://www.getdbt.com/contact-demo) with any questions. 
 
-Enterprise plan billing information is not available in the <Constant name="dbt" /> UI.  Changes are handled through your dbt Solutions Architect or account team manager.
+Enterprise plan billing information is not available in the <Constant name="dbt" /> UI.  Changes are handled through your Fivetran Solutions Architect or account team manager.
 
 ### Legacy plans
 
 Customers who purchased the <Constant name="dbt" /> Starter plan (formerly Team) plan before August 11, 2023, remain on a legacy pricing plan as long as your account is in good standing. The legacy pricing plan is based on seats and includes unlimited models, subject to reasonable use. 
 
-dbt may institute use limits if reasonable use is exceeded. Additional features, upgrades, or updates may be subject to separate charges. Any changes to your current plan pricing will be communicated in advance according to our Terms of Use.
+Fivetran may institute use limits if reasonable use is exceeded. Additional features, upgrades, or updates may be subject to separate charges. Any changes to your current plan pricing will be communicated in advance according to our Terms of Use.

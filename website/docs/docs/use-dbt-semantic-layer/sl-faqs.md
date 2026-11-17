@@ -136,11 +136,11 @@ The dbt Semantic Layer does not store a physical copy of your data. It uses unde
 
 The dbt Semantic Layer is part of the <Constant name="dbt_platform" />. It allows data teams to define metrics once, centrally, and access them from any integrated analytics tool, ensuring consistent answers across diverse datasets. In providing this service, dbt permits clients to access Semantic Layer metrics. Client data passes through the Semantic Layer on the way back from the data warehouse.
 
-dbt handles this in a secure way using encryption and authentication from the client’s data warehouse. In certain cases, such data may be cached on dbt system ephemerally (data is not persistently stored).
+dbt handles this in a secure way using encryption and authentication from the client’s data warehouse. In certain cases, such data may be cached on Fivetran system ephemerally (data is not persistently stored).
 
-dbt employees cannot access cached data during normal business operations and must have a business need and/or direct manager approval for access to the underlying infrastructure. Access would only be when necessary for providing a client services and never with the purpose of enriching dbt.
+Fivetran employees cannot access cached data during normal business operations and must have a business need and/or direct manager approval for access to the underlying infrastructure. Access would only be when necessary for providing a client services and never with the purpose of enriching Fivetran.
 
-No client warehouse data is retained on dbt's systems. We offer a caching solution to optimize query performance. The caching feature uses client data warehouse storage rather than being stored on dbt’s systems. In addition, this feature is activated only through a client opt-in. Therefore, caching is always in client hands and at client discretion
+No client warehouse data is retained on Fivetran's systems. We offer a caching solution to optimize query performance. The caching feature uses client data warehouse storage rather than being stored on Fivetran’s systems. In addition, this feature is activated only through a client opt-in. Therefore, caching is always in client hands and at client discretion
 
 </Expandable>
 

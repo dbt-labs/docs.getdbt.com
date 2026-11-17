@@ -20,7 +20,7 @@ This page covers which AI models <Constant name="wizard" /> can use and how usag
 
 Get started with free dbt-managed usage credits. Every credit balance is _per account, not per user_, which means everyone on your account shares the same pool. Enterprise and Enterprise+ accounts get monthly usage credits, and all other plans get a 30-day free trial with $100 in credits.
 
-There are two ways to pay for AI usage: let dbt handle the models and the billing, or bring your own provider key. Here's how they compare:
+There are two ways to pay for AI usage: let dbt handle the models and Fivetran handle the billing, or bring your own provider key. Here's how they compare:
 
 <SimpleTable>
 | <div style={{width:'150px'}}></div> | <div style={{width:'250px'}}>[dbt <Term id="managed" />](#dbt-managed-providers)</div> | <div style={{width:'250px'}}>[Bring your own key (BYOK)](#bring-your-own-key-byok)</div> |

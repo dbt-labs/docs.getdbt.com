@@ -40,7 +40,7 @@ You can set up billing during your trial or at any time after. Follow the steps 
 
 #### Managed accounts
 
-If your account has consumption spend on contract, go to the **State** tab of the **Usage-based features** page and click **Allow** to bill against your committed spend. Otherwise, [contact the dbt sales team](https://www.getdbt.com/contact).
+If your account has consumption spend on contract, go to the **State** tab of the **Usage-based features** page and click **Allow** to bill against your committed spend. Otherwise, [contact the Fivetran sales team](https://www.getdbt.com/contact).
 
 #### Self-hosted and Developer accounts
 

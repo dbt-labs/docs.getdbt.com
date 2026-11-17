@@ -243,7 +243,7 @@ There are some considerations and limitations when using native private packages
     
     This limitation doesn't affect local development with <Constant name="core" /> or <Constant name="fusion" /> when cloning private packages over SSH.
 
-    We're currently working to address this, and if you're running into issues, please contact your dbt account team.
+    We're currently working to address this, and if you're running into issues, please contact your Fivetran account team.
 
 </Expandable>
 :::
