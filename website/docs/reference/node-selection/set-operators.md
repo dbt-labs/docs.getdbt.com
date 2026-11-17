@@ -45,6 +45,8 @@ Select models that are under the `marts/finance` path and tagged `nightly`:
 dbt run --select "marts.finance,tag:nightly"
 ```
 
+<Lightbox src="/img/docs/reference/set-operators-diagram.png" width="90%" alt="Two Venn diagrams: one with both circles filled for union, one with only the overlap filled for intersection." title="A space combines selections (union). A comma keeps only what both select (intersection)." />
+
 ## Combining unions and intersections
 
 You can combine unions and intersections in a single `--select` or `--exclude` value to build complex selections in one command. dbt evaluates each space-delimited argument independently: commas with no spaces within an argument define an intersection, and a space between arguments combines their results as a union. Combining both operators lets you apply different filtering logic to different subsets of your project at once.
