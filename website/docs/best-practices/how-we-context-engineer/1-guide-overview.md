@@ -16,6 +16,10 @@ The answer was already in your warehouse, or it could easily land there: call tr
 
 AI agents are new readers that can now use that detail, but they can only be as good as what they get. Context engineering is the practice of modeling data for that new reader, with the same discipline you already apply to metrics: staging, tests, docs, and one governed <Term id="dag"/>
 
+In one picture: your text goes in, and context an agent can search, cite, and trust comes out.
+
+<Lightbox src="/img/best-practices/context-engineering/big-picture.svg" width="100%" title="Your text, such as call transcripts, tickets, CRM notes, and contracts, goes into context models in one dbt project. They chunk, embed, and label it, and end in a knowledge base. They're tested, traced to their source, and cost-limited like any other model. An agent reads the knowledge base, answers a question, and cites its source." />
+
 <ContextEngineeringEvolving />
 
 ## What you'll learn
@@ -26,7 +30,7 @@ We also use the [`jaffle-logistics`](https://github.com/dbt-labs/jaffle-logistic
 
 Each recommendation comes with an example and a _why_, so you can decide when to deviate.
 
-The following diagram explains the entire concept: text is split into chunks, each chunk becomes numbers that capture its meaning, and a question finds the chunks closest to it. The numbers and chunks in the diagram are made up and simplified: embeddings have hundreds of dimensions, not two.
+The following diagram zooms in on the middle of that picture: text is split into chunks, each chunk becomes numbers that capture its meaning, and a question finds the chunks closest to it. The numbers and chunks in the diagram are made up and simplified: embeddings have hundreds of dimensions, not two.
 
 <Lightbox src="/img/best-practices/context-engineering/pipeline.svg" width="100%" title="A call transcript is chunked, embedded as numbers, and placed on a map where similar meanings sit close together. A question lands on the same map, and the closest chunks come back with a score and a source." />
 
