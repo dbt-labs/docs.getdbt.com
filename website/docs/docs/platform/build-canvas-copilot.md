@@ -8,7 +8,11 @@ availability:
   minPlan: enterprise
 ---
 
-# Build with dbt Copilot
+import CanvasLifecycle from '/snippets/_canvas-lifecycle.md';
+
+# Build with dbt Copilot <Lifecycle status="eol"/>
+
+<CanvasLifecycle/>
 
 <IntroText>
 Use dbt Copilot to build visual models in the <Constant name="canvas" /> with natural language prompts.

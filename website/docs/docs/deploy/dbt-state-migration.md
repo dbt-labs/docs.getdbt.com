@@ -150,9 +150,11 @@ State-aware orchestration and dbt State differ in a few ways:
 - **More models rebuilding than expected**: If you notice more rebuilds after you migrate, the most common causes are:
   - **Views with `select *` on a `ref()` or `source()`**: dbt State can't determine which columns `select *` resolves to without querying the upstream schema, so it rebuilds these views rather than risk reusing a stale result. Views that use `select *` on a CTE are reused, because dbt can resolve the columns from the CTE definition. For more information, refer to [Views with `select *`](/faqs/State/views-rebuilt#views-with-select).
   - **Non-determinism in Jinja-templated SQL**: Macros like `dbt_utils.get_relations_by_pattern` with `dbt_utils.union_relations` can return relations in a different order on each run, which produces different compiled SQL. dbt State detects a new hash and rebuilds the model. If that model has downstream dependencies, those models rebuild, too.
+
+    To reduce unnecessary rebuilds from non-determinism, set [`compare_unrendered_code: true`](/reference/resource-configs/compare-unrendered-code). When enabled, dbt State reuses the model if its Jinja code, config, and macros haven't changed, even if the rendered SQL differs.
   - **Models with external sources on BigQuery**: Models that use external sources (such as Google Sheets) always rebuild because BigQuery doesn't expose modification timestamps for external sources, so dbt State can't determine freshness. 
   
-  To avoid this, configure [`loaded_at_field`](/reference/resource-configs/freshness) or [`loaded_at_query`](/reference/resource-configs/freshness) in your source definition to point to a timestamp field &mdash; this lets dbt State query a timestamp field directly to determine freshness, instead of relying on warehouse metadata.
+    To avoid this, configure [`loaded_at_field`](/reference/resource-configs/freshness) or [`loaded_at_query`](/reference/resource-configs/freshness) in your source definition to point to a timestamp field &mdash; this lets dbt State query a timestamp field directly to determine freshness, instead of relying on warehouse metadata.
 
   Refer to [Why is my model being rebuilt instead of reused?](/faqs/State/views-rebuilt) for details on each cause and how to diagnose them.
 
@@ -162,7 +164,7 @@ State-aware orchestration and dbt State differ in a few ways:
 - **No concurrent build detection**: In most cases, dbt State handles overlapping nodes the same way as state-aware orchestration: if a node is built by Job 1 before Job 2 starts, Job 2 sees the model as already built and reuses it. If Job 1 finishes building a node after Job 2 starts &mdash; but before Job 2 builds that node &mdash; Job 2 still builds it and uses compute to re-determine there's no new data. However, if Job 2 starts building the same snapshot or incremental model before Job 1 executing the same node, both jobs can detect the same changes in their separate transactions and commit them, which can lead to duplicate records or other data corruption.
 
   To prevent duplicate builds, ensure jobs that share the same nodes don't run at the same time &mdash; whether by configuring job schedules through the [<Constant name="dbt_platform" /> job scheduler](/docs/deploy/job-scheduler) or an external orchestration tool (for example, Airflow or Dagster), or by avoiding manually triggered runs that overlap.
-- **Efficient Testing not yet available**: State-aware orchestration offers Efficient Testing (private beta); dbt State doesn't support it yet.
+- **Efficient Testing not yet available**: State-aware orchestration offers Efficient Testing (private beta); dbt State doesn't support it yet. In dbt v2, you can use [`--batch-tests`](/reference/global-configs/batch-tests) to combine compatible `unique` and `not_null` tests on the same model into fewer queries.
 
 ## Related docs
 
