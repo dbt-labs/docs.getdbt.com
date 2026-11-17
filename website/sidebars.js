@@ -57,6 +57,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/platform/about-platform-setup" },
           items: [
             "docs/platform/about-platform-setup",
+            "docs/platform/account-structure",
             "docs/configuration-checklist",
             "docs/platform/about-profiles",
             "docs/platform/account-settings",
