@@ -327,6 +327,8 @@ Yes. If a group has no [SSO mappings](#sso-mappings), it stays unmanaged &mdash;
 
 Add an SSO mapping to an unmanaged group and it becomes managed: from then on, <Constant name="dbt" /> adjusts membership at sign-in based on the user's IdP groups.
 
+SSO mappings apply per group, so you can mix mapped and manually managed groups in the same account. Any manual change to a mapped group is overridden the next time the user signs in.
+
 </Expandable>
 
 <Expandable alt_header="Can I configure a user's license type based on IdP attributes?">
