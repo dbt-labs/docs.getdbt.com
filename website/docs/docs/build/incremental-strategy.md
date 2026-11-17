@@ -181,7 +181,7 @@ select * from {{ ref("some_model") }}
 
 #### About built-in incremental strategies
 
-<Lightbox src="/img/docs/building-a-dbt-project/incremental-strategies-diagram.png" width="90%" alt="Three before-and-after tables showing how append, merge and delete+insert handle an updated row and a new row." title="What `append`, `merge` and `delete+insert` do to existing and new rows." />
+<Lightbox src="/img/docs/building-a-dbt-project/incremental-strategies-diagram.png" width="90%" alt="Three before-and-after tables showing how append, merge and delete+insert handle an updated row and a new row." title="How `append`, `merge` and `delete+insert` alter existing and new rows." />
 
 ##### `append`
 
