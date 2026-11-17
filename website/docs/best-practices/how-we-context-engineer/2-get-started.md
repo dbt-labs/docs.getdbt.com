@@ -133,7 +133,7 @@ from {{ ref('chunk_transcripts') }}
 ```
 
 </File>
-
+This example uses the [`guard_batch`](https://github.com/dbt-labs/dbt-context-engineering/blob/021ef76078547832f0b7e2fde29eb322da4bf832/macros/cost/guard_batch.sql#L2) macro to manage warehouse costs and the [`embed`](https://github.com/dbt-labs/dbt-context-engineering/blob/021ef76078547832f0b7e2fde29eb322da4bf832/macros/functions/embed.sql#L2)  macro to safely and efficiently generate vector embeddings from raw text chunks.
 ### 3. Search
 
 Find the chunks closest in meaning to a question. This model turns your question into numbers with the same `embed()` macro from step 2, then ranks every chunk by how close it is:

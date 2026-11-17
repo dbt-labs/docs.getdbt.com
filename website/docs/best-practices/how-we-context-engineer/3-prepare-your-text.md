@@ -25,7 +25,9 @@ A **chunk** is a piece of text small enough to embed and retrieve. Embedding mod
 
 It makes sense to use the approach of cutting the text every _N_ characters. However, a blind cut can split a sentence or cut off a speaker mid-turn, and each half embeds to something that represents nothing.
 
-We recommend **packing** instead. You work through the text in order, keeping a running token count. Each whole **unit** goes into the chunk it _starts_ in. A unit is the smallest piece of text you'll never split, like a speaker turn in a transcript or a sentence in a document.
+We recommend packing instead. You work through the text in order, keeping a running token count. Each whole unit goes into the chunk it starts in. A unit is the smallest piece of text you'll never split, like a speaker turn in a transcript or a sentence in a document.
+
+For example, if your current chunk has room for only 5 more words, but your next sentence is 15 words long, you keep the entire 15-word sentence in this chunk (the chunk it starts in) rather than cutting it in half.
 
 <SimpleTable>
 
@@ -84,6 +86,8 @@ from running_total
 
 </File>
 
+This example SQL uses 512 tokens, a typical target, and it's the package's default. Change it with the `chunk_target_tokens` var. The [jaffle logistics project](https://github.com/dbt-labs/jaffle-logistics) uses 100 on purpose. Its sample documents are short, so 512 would never split anything.
+
 The package's [`chunk()` macro](https://github.com/dbt-labs/dbt-context-engineering/blob/main/macros/chunking/chunk.sql) does this for you and returns one row per chunk, with the chunk's text, its id, the source rows it packed, and a token estimate. Here's the shape of the result (the values are illustrative):
 
 <SimpleTable>
@@ -95,10 +99,10 @@ The package's [`chunk()` macro](https://github.com/dbt-labs/dbt-context-engineer
 
 </SimpleTable>
 
-This example SQL uses 512 tokens, a typical target, and it's the package's default. Change it with the `chunk_target_tokens` var. The jaffle project uses 100 on purpose. Its sample documents are short, so 512 would never split anything.
 
 :::info Using `chunk_overlap_tokens` var
 If searches miss answers that straddle a chunk boundary, you can repeat the last unit or two of the previous chunk at the start of the next. It costs extra tokens, so add it only when you need it. In the package, that's the `chunk_overlap_tokens` var, which defaults to 0.
+:::
 
 ### Adapter notes
 
