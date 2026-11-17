@@ -113,6 +113,7 @@ The dbt MCP server integrates with any [MCP client](https://modelcontextprotocol
 - [VS Code](/docs/dbt-ai/integrate-mcp-vscode)
 - [Snowflake Cortex](/docs/dbt-ai/integrate-mcp-snowflake-cortex)
 - [Databricks](/docs/dbt-ai/integrate-mcp-databricks)
+- [Gemini Enterprise](/docs/dbt-ai/integrate-mcp-gemini-enterprise)
 
 ## Data retention
 

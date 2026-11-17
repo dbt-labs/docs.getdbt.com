@@ -14,7 +14,6 @@ The <Constant name="dbt" /> integrated development environment (<Constant name="
 The <Constant name="studio_ide" /> offers several [keyboard shortcuts](/docs/platform/studio-ide/keyboard-shortcuts) and [editing features](/docs/platform/studio-ide/ide-user-interface#editing-features) for faster and efficient development and governance:
 
 - Agentic development: [<Constant name="wizard" />](/docs/dbt-ai/wizard-ide) is the new and recommended AI agent for governed data development in dbt. It uses your project context to help you develop governed dbt changes faster. 
-  - [dbt Copilot](/docs/platform/studio-ide/develop-studio-ai#dbt-copilot-in-studio-ide) is separate from <Constant name="wizard" /> and is dbt's inline AI assistance experience, providing single-click generation of SQL, documentation, tests, and semantic models in <Constant name="studio_ide" />, <Constant name="canvas" />, and <Constant name="insights" />. 
 - Auto-completion: Suggests tables, arguments, and columns as you type.
 - Code [formatting and linting](/docs/platform/studio-ide/lint-format): Standardizes and fixes SQL code.
 - Navigation tools: Jump to lines, find and replace text, and navigate project files.
@@ -95,9 +94,6 @@ For data practitioners, this means less time context-switching between files, le
 
 To get started, refer to [dbt Wizard in the Studio IDE](/docs/dbt-ai/wizard-ide).
 
-import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
-
-<CopilotWizardDifferences/>
 ## Get started with the Studio IDE
 
 In order to start experiencing the great features of the <Constant name="studio_ide" />, you need to first set up a [<Constant name="dbt" /> development environment](/docs/dbt-platform-environments). In the following steps, we outline how to set up user credentials and access the <Constant name="studio_ide" />. If you're creating a new project, you will automatically configure this during the project setup. 
@@ -156,8 +152,6 @@ Nice job, you're ready to start developing and building models 🎉!
   - Run [MetricFlow commands](/docs/build/metricflow-commands) to create and manage metrics in your project with the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl).
 
 - **Develop with <Constant name="wizard" />:** [<Constant name="wizard" />](/docs/platform/wizard-platform) is the new and recommended AI agent for governed data development in dbt. It uses your project context to help you develop governed dbt changes faster. 
-
-    [dbt Copilot](/docs/platform/studio-ide/develop-studio-ai#dbt-copilot-in-studio-ide) is separate from <Constant name="wizard" /> and is dbt's inline AI assistance experience, providing single-click generation of SQL, documentation, tests, and semantic models in <Constant name="studio_ide" />, <Constant name="canvas" />, and <Constant name="insights" />. 
 
 - **Build and view your project's docs** &mdash; The <Constant name="studio_ide" /> makes it possible to [build and view](/docs/explore/build-and-view-your-docs) documentation for your dbt project while your code is still in development. With this workflow, you can inspect and verify what your project's generated documentation will look like before your changes are released to production.
 
