@@ -55,6 +55,8 @@ import MacroAccessRestrictions from '/snippets/_macro-access-restrictions.md';
 
 Some models are implementation details, meant for reference only within their group of related models. Other models should be accessible through the [ref](/reference/dbt-jinja-functions/ref) function across groups and projects. Models can set an [access modifier](https://en.wikipedia.org/wiki/Access_modifiers) to indicate their intended level of accessibility.
 
+<Lightbox src="/img/docs/mesh/model-access-diagram.png" width="90%" alt="Nested boxes for group, project and other projects, showing which models each access level can be referenced from." title="Who can `ref` a model, based on its access level." />
+
 | Access    | Referenceable by                       |
 |-----------|----------------------------------------|
 | private   | Same group                             |
