@@ -110,6 +110,7 @@ exports.versionedPages = [
   { page: "docs/dbt-ai/package-skills", firstVersion: "2.0" },
   { page: "reference/project-configs/skill-paths", firstVersion: "2.0" },
   { page: "docs/dbt/fusion", firstVersion: "2.0" },
+  { page: "docs/build/iceberg/adapters/redshift-iceberg-support", firstVersion: "2.0" },
   { page: "docs/dbt/dbt-availability", firstVersion: "2.0" },
   { page: "docs/dbt/dbt-readiness", firstVersion: "2.0" },
   { page: "docs/dbt/new-concepts", firstVersion: "2.0" },

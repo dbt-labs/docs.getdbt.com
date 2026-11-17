@@ -235,4 +235,10 @@ This page covers Iceberg catalog integration through `dbt-athena`.
 
 For support for additional AWS engines, refer to [Apache Iceberg support adapters page](/docs/build/iceberg/apache-iceberg-support).
 
-Today, engines such as dbt-spark (on Amazon EMR), dbt-trino, and dbt-redshift can read and write Glue-registered Iceberg tables by configuring the engine's own Iceberg catalog against the AWS Glue Data Catalog or the S3 Tables Iceberg REST endpoint, but they do not yet expose a native AWS `catalog_type` in `catalogs.yml`.
+<VersionBlock firstVersion="2.0">
+
+In <Constant name="fusion_engine" />, Iceberg tables are created through a `glue` catalog in `catalogs.yml`. Refer to [Amazon Redshift and Apache Iceberg](/docs/build/iceberg/adapters/redshift-iceberg-support).
+
+</VersionBlock>
+
+Today, engines such as dbt-spark (on Amazon EMR) and dbt-trino can read and write Glue-registered Iceberg tables by configuring the engine's own Iceberg catalog against the AWS Glue Data Catalog or the S3 Tables Iceberg REST endpoint, but they do not yet expose a native AWS `catalog_type` in `catalogs.yml`.

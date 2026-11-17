@@ -61,4 +61,14 @@ To the extent possible, dbt tries to abstract away the complexity of table forma
     link="/docs/build/iceberg/adapters/aws-iceberg-support"
     icon="aws"/>
 
+<VersionBlock firstVersion="2.0">
+
+<Card
+    title="Redshift + Iceberg"
+    body="Amazon Redshift Iceberg configurations"
+    link="/docs/build/iceberg/adapters/redshift-iceberg-support"
+    icon="redshift"/>
+
+</VersionBlock>
+
 </div>
