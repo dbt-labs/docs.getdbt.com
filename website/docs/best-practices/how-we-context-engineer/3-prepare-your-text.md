@@ -134,6 +134,9 @@ The same metadata serves two readers with different eyes:
 
 - Attach metadata in its own step, after chunking. Attaching is a simple join, and chunking is the fragile step. Keeping them apart means a metadata change can't break your chunks.
 - Keep metadata as columns. Add it to the text only if the LLM or embedding model needs it (`in_text=true`). Keep the metadata columns so you never have to parse metadata back out of the text.
+  - Setting [`in_text=true`](https://github.com/dbt-labs/dbt-context-engineering/blob/021ef76078547832f0b7e2fde29eb322da4bf832/adr/0016-in-text-additive-metadata.md?plain=1#L14) tells the `attach_metadata` macro to automatically prepend your selected metadata fields (for example, `document_title: Q3 Update`) directly to the chunked text so the model can read it.
+
+
 - Recount tokens if you add metadata to the text. It adds tokens, so your size estimate is too low until you recompute it.
 - Add the citation link in the knowledge base. When many sources merge into one shape, the link gets its own column. [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) covers it.
 
