@@ -247,7 +247,7 @@ Set the `model_extract` var (or `model_generate`) to an LLM your Snowflake accou
 
 ### Generate <Lifecycle status="beta" />
 
-Generate produces open-ended output: a summary, a rewrite, or an answer. Reach for it when no label or field set fits. Because the output is free-form, it's the hardest operation to test, so prefer classify or extract when either would do.
+Generate produces open-ended output: a summary, a rewrite, or an answer. Reach for it when no label or field set fits.Because the output is free-form, it’s the hardest operation to test. If `classify` or `extract` can do the job, use one of those instead.
 
 On Snowflake, `generate()` runs `AI_COMPLETE`. It takes a prompt macro like the one for classify, with no schema needed:
 
