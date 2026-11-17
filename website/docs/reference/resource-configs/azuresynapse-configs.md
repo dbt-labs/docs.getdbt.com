@@ -4,10 +4,6 @@ description: "Configure index and distribution settings for Microsoft Azure Syna
 id: "azuresynapse-configs"
 ---
 
-import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
-
-<PlatformConfigIntro platform="Microsoft Azure Synapse" summary="indexes and distribution, in addition to the Microsoft SQL Server settings." />
-
 All [configuration options for the Microsoft SQL Server adapter](mssql-configs) also apply to this adapter.
 
 Additionally, the configuration options below are available.
