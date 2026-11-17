@@ -17,7 +17,7 @@ Choose a platform for configs such as:
 
 - How new data is added
 - How tables are stored, partitioned, clustered, or indexed
-- Advanced table formats such as `iceberg`, `transient`, and `dynamic`
+- How grants, seeds, and snapshots are created
 
 [Snowflake functions](/reference/resource-configs/snowflake-function-support) and [BigQuery functions](/reference/resource-configs/bigquery-function-support) are not platform configs. They list the SQL functions <Constant name="fusion" /> can check during [static analysis](/docs/build/about-static-analysis).
 
