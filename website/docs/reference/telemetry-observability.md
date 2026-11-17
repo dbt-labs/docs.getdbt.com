@@ -13,7 +13,7 @@ import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
 For shared CLI logging configs such as `--log-format` and `--log-level`, refer to [Logs](/reference/global-configs/logs).
 
-This system is separate from the anonymous usage statistics that dbt sends to dbt. To configure anonymous usage statistics, refer to [Anonymous usage stats](/reference/global-configs/usage-stats).
+This system is separate from the anonymous usage statistics that dbt sends to Fivetran. To configure anonymous usage statistics, refer to [Anonymous usage stats](/reference/global-configs/usage-stats).
 
 This uses the same integration that <Constant name="dbt_platform" /> relies on for orchestration and monitoring, providing proven and production-ready features that work at scale.
 
