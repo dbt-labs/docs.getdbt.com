@@ -52,11 +52,26 @@ describe('Card adapter designation', () => {
   });
 
   it('keeps a designated card without a v2 link on the v2 page, with no links', () => {
-    renderAt('2.0', { v1Href: '/v1', designation: 'community-maintained' });
+    renderAt('2.0', {
+      v1Href: '/v1',
+      designation: 'community-maintained',
+      body: 'A setup page for dbt v2 is not available yet.',
+    });
     expect(screen.getByRole('heading', { name: 'Exasol' })).toBeInTheDocument();
     expect(screen.getByText('community-maintained')).toBeInTheDocument();
+    expect(screen.getByText('A setup page for dbt v2 is not available yet.')).toBeInTheDocument();
     expect(screen.queryByRole('link')).not.toBeInTheDocument();
     expect(screen.queryByRole('list')).not.toBeInTheDocument();
+  });
+
+  it('hides the v2 note when the v1 install link is showing', () => {
+    renderAt('1.11', {
+      v1Href: '/v1',
+      designation: 'community-maintained',
+      body: 'A setup page for dbt v2 is not available yet.',
+    });
+    expect(screen.getByRole('link', { name: 'Install with dbt v1' })).toBeInTheDocument();
+    expect(screen.queryByText('A setup page for dbt v2 is not available yet.')).not.toBeInTheDocument();
   });
 
   it('still hides a v1-only card without a designation in v2', () => {

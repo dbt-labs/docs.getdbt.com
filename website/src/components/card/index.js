@@ -88,6 +88,9 @@ function Card({ title, body, link, icon, pills, tag, lifecycle, showBorderBeam =
         )}
       </ul>
       )}
+      {!(showPlatform || showV1 || showV2) && body && (
+        <p>{body}</p>
+      )}
       {badgeHref && availableInCurrentVersion(version, "0", "1.99") && (
         <a href={badgeHref}>
           <img alt="" src={`${badgeHref}.svg`} />

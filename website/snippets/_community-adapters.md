@@ -82,6 +82,7 @@
     designation="community-maintained"
     icon="exasol"
     v1Href="/docs/local/connect-data-platform/exasol-setup"
+    body="A setup page for dbt v2 is not available yet."
     badgeHref="https://badge.fury.io/py/dbt-exasol"/>
 
 <Card
