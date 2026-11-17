@@ -164,11 +164,11 @@ You control the information you submit to <Constant name="wizard" />. dbt Labs d
 
 To find related models, <Constant name="wizard" /> creates embeddings of your project metadata.
 
-- **What is embedded**: Each model's name and description, its columns' names, types, and descriptions, and its compiled SQL. Query results and sample rows are not embedded. The text of your prompt is also embedded when you make a request, to search for related models.
-- **Provider**: OpenAI generates the embeddings. If you bring your own OpenAI key, embeddings use your key. Make sure your OpenAI account or API key has access to the `text-embedding-3-small` model. Refer to [Manage AI features in dbt platform](/docs/platform/manage-dbt-ai).
-- **Retention and deletion**: Embeddings are project metadata and follow the same removal rules as other metadata in <Constant name="catalog" />. They are purged if an environment has had no job runs in the past 3 months, and a model's embeddings are removed after a job run in which the model no longer exists in the project. Refer to [When dbt removes model metadata](/docs/explore/explore-projects#when-dbt-removes-model-metadata).
-- **Region**: Embeddings are stored in the same region as the rest of your project metadata. The embedding request is sent to OpenAI's global API, so generation is not restricted to a region.
-- **Disabling**: There is no separate setting for embeddings. They follow the AI features setting. Refer to [Manage AI features in dbt platform](/docs/platform/manage-dbt-ai).
+- What gets embedded: Each model’s name, description, and compiled SQL, along with its column names, types, and descriptions. Query results and sample rows are not embedded. When you make a request, your prompt is also embedded to help find related models.
+- Provider: OpenAI generates the embeddings. If you use your own OpenAI key, dbt uses it for embeddings too. Your OpenAI account or API key must have access to `text-embedding-3-small`. Refer to [Manage AI features in dbt platform](/docs/platform/manage-dbt-ai).
+- Retention and deletion: Embeddings are project metadata and follow the same removal rules as other metadata in <Constant name="catalog" />. They are purged if an environment has had no job runs in the past 3 months, and a model's embeddings are removed after a job run in which the model no longer exists in the project. Refer to [When dbt removes model metadata](/docs/explore/explore-projects#when-dbt-removes-model-metadata).
+- Region: Embeddings are stored in the same region as the rest of your project metadata. Requests to generate them go to OpenAI’s global API, so generation isn’t restricted to a specific region.
+- Turning off embeddings: Embeddings use your AI features setting and don’t have a separate control. To turn them off, turn off AI features. Refer to [Manage AI features in dbt platform](/docs/platform/manage-dbt-ai).
 
 </Expandable>
 
