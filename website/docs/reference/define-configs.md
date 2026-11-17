@@ -20,7 +20,7 @@ Depending on the resource type, you can define configurations in a dbt project a
 
 The most specific config always takes precedence. This generally follows the order above: an in-file `config()` block --> properties defined in a `.yml` file --> config defined in the project file. 
 
-<Lightbox src="/img/docs/reference/config-precedence-diagram.png" width="85%" alt="A stack of config layers, with the in-file config block on top and installed packages at the bottom." title="The most specific config wins. Anything set closer to the model overrides what is set higher up." />
+<Lightbox src="/img/docs/reference/config-precedence-diagram.png" width="85%" alt="A stack of config layers, with the in-file config block on top and installed packages at the bottom." title="The most specific config takes precedence. Anything set closer to the model overrides what is set upstream." />
 
 Note - Generic data tests work a little differently when it comes to specificity. See [test configs](/reference/data-test-configs).
 
