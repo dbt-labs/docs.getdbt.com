@@ -33,7 +33,6 @@ The dbt platform supports [global connections](/docs/platform/connect-data-platf
 - [ ] Your users will need to [configure their credentials](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide) to connect to the development environment in the dbt Studio IDE.
     - [ ] Ensure that all users who need access to work in the IDE have a [developer license](/docs/platform/manage-access/seats-and-users) assigned in your account. 
 - [ ] dbt models are primarily written as [SELECT statements](/docs/build/sql-models), so an early step for measuring success is having a developer run a simple select statement in the IDE and validating the results. 
-    - [ ] You can also verify the connection by running basic SQL queries using [dbt Insights](/docs/explore/access-dbt-insights).
 - [ ] Create a single model and ensure that you can [run it](/reference/dbt-commands) successfully. 
 - [ ] Create a service account with proper access for your [production jobs](/docs/deploy/jobs).
 
