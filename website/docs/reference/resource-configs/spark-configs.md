@@ -53,7 +53,6 @@ dbt does not check the keys or values. It sends every value to Spark as text, so
       'review_interval_days': 90
     }
 ) }}
-```
 
 select
     event_date,
