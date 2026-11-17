@@ -1,7 +1,7 @@
 ---
 title: "Platform-specific configs"
 id: "platform-specific-configs"
-description: "Extra settings for one data platform, and where to set them."
+description: "Configs unique to one data platform."
 sidebar_label: "Platform-specific configs"
 slug: /reference/resource-configs
 availability: all_users
