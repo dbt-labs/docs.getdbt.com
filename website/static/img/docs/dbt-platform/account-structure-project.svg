@@ -10,7 +10,7 @@
   <!-- Account connections feeding the project -->
   <rect x="60" y="125" width="1080" height="62" rx="14" fill="#FFF6EE" stroke="#E4572E" stroke-width="2.5" stroke-dasharray="9 6"/>
   <text x="80" y="162" font-size="19" font-weight="700" fill="#C2410C">From your account</text>
-  <text x="280" y="162" font-size="18" fill="#4A5163">Warehouse A · production and Warehouse A · development</text>
+  <text x="280" y="162" font-size="18" fill="#4A5163">Warehouse A and Warehouse B</text>
   <text x="1120" y="162" font-size="26" fill="#C2410C" text-anchor="end">↓</text>
 
   <!-- Repository + profiles -->
@@ -40,7 +40,7 @@
   <text x="78" y="545" font-size="16" fill="#4A5163">uses developer credentials.</text>
   <text x="78" y="574" font-size="14" fill="#4A5163">Connects to</text>
   <rect x="78" y="582" width="219" height="34" rx="17" fill="#FFE9DF" stroke="#E4572E" stroke-width="1.5"/>
-  <text x="187" y="605" font-size="15" font-weight="600" fill="#9A3412" text-anchor="middle">Warehouse A · development</text>
+  <text x="187" y="605" font-size="15" font-weight="600" fill="#9A3412" text-anchor="middle">Warehouse A</text>
   <rect x="78" y="624" width="219" height="26" rx="13" fill="#EEF0F5"/>
   <text x="187" y="642" font-size="14" fill="#4A5163" text-anchor="middle">Not in dbt Catalog</text>
 
@@ -50,11 +50,12 @@
   <rect x="335" y="414" width="255" height="20" fill="#FDE8C8"/>
   <text x="353" y="419" font-size="20" font-weight="700" fill="#262A3A">Staging</text>
   <text x="353" y="466" font-size="18" font-weight="700" fill="#C2410C">1 at most</text>
-  <text x="353" y="494" font-size="16" fill="#4A5163">Runs CI on pull requests</text>
-  <text x="353" y="518" font-size="16" fill="#4A5163">Uses a connection profile</text>
+  <text x="353" y="494" font-size="16" fill="#4A5163">Runs CI, CD, or scheduled</text>
+  <text x="353" y="512" font-size="16" fill="#4A5163">dbt jobs</text>
+  <text x="353" y="536" font-size="16" fill="#4A5163">Uses a connection profile</text>
   <text x="353" y="574" font-size="14" fill="#4A5163">Connects to</text>
   <rect x="353" y="582" width="219" height="34" rx="17" fill="#FFE9DF" stroke="#E4572E" stroke-width="1.5"/>
-  <text x="462" y="605" font-size="15" font-weight="600" fill="#9A3412" text-anchor="middle">Warehouse A · development</text>
+  <text x="462" y="605" font-size="15" font-weight="600" fill="#9A3412" text-anchor="middle">Warehouse A</text>
   <rect x="353" y="624" width="219" height="26" rx="13" fill="#DCEBFF"/>
   <text x="462" y="642" font-size="14" font-weight="600" fill="#1E3A8A" text-anchor="middle">Shown in dbt Catalog</text>
 
@@ -64,11 +65,12 @@
   <rect x="610" y="414" width="255" height="20" fill="#FFD1C7"/>
   <text x="628" y="419" font-size="20" font-weight="700" fill="#262A3A">Production</text>
   <text x="628" y="466" font-size="18" font-weight="700" fill="#C2410C">1 at most</text>
-  <text x="628" y="494" font-size="16" fill="#4A5163">Runs your scheduled jobs</text>
-  <text x="628" y="518" font-size="16" fill="#4A5163">Uses a connection profile</text>
+  <text x="628" y="494" font-size="16" fill="#4A5163">Runs CI, CD, or scheduled</text>
+  <text x="628" y="512" font-size="16" fill="#4A5163">dbt jobs</text>
+  <text x="628" y="536" font-size="16" fill="#4A5163">Uses a connection profile</text>
   <text x="628" y="574" font-size="14" fill="#4A5163">Connects to</text>
   <rect x="628" y="582" width="219" height="34" rx="17" fill="#FFE9DF" stroke="#E4572E" stroke-width="1.5"/>
-  <text x="737" y="605" font-size="15" font-weight="600" fill="#9A3412" text-anchor="middle">Warehouse A · production</text>
+  <text x="737" y="605" font-size="15" font-weight="600" fill="#9A3412" text-anchor="middle">Warehouse B</text>
   <rect x="628" y="624" width="219" height="26" rx="13" fill="#DCEBFF"/>
   <text x="737" y="642" font-size="14" font-weight="600" fill="#1E3A8A" text-anchor="middle">Shown in dbt Catalog</text>
 
@@ -82,7 +84,7 @@
   <text x="903" y="518" font-size="16" fill="#4A5163">Uses a connection profile</text>
   <text x="903" y="574" font-size="14" fill="#4A5163">Connects to</text>
   <rect x="903" y="582" width="219" height="34" rx="17" fill="#FFE9DF" stroke="#E4572E" stroke-width="1.5"/>
-  <text x="1012" y="605" font-size="15" font-weight="600" fill="#9A3412" text-anchor="middle">Warehouse A · development</text>
+  <text x="1012" y="605" font-size="15" font-weight="600" fill="#9A3412" text-anchor="middle">Warehouse A</text>
   <rect x="903" y="624" width="219" height="26" rx="13" fill="#EEF0F5"/>
   <text x="1012" y="642" font-size="14" fill="#4A5163" text-anchor="middle">Not in dbt Catalog</text>
 

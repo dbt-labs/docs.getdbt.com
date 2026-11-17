@@ -36,9 +36,9 @@
   <text x="80" y="310" font-size="21" font-weight="700" fill="#C2410C">Warehouse connections</text>
   <text x="80" y="337" font-size="17" fill="#4A5163">Created once for the account. Any project can reuse them.</text>
   <rect x="80" y="355" width="270" height="40" rx="20" fill="#FFE9DF" stroke="#E4572E" stroke-width="1.5"/>
-  <text x="215" y="381" font-size="17" font-weight="600" fill="#9A3412" text-anchor="middle">Warehouse A · production</text>
+  <text x="215" y="381" font-size="17" font-weight="600" fill="#9A3412" text-anchor="middle">Warehouse A</text>
   <rect x="370" y="355" width="270" height="40" rx="20" fill="#FFE9DF" stroke="#E4572E" stroke-width="1.5"/>
-  <text x="505" y="381" font-size="17" font-weight="600" fill="#9A3412" text-anchor="middle">Warehouse A · development</text>
+  <text x="505" y="381" font-size="17" font-weight="600" fill="#9A3412" text-anchor="middle">Warehouse B</text>
   <text x="665" y="381" font-size="17" font-style="italic" fill="#4A5163">Add as many as you need</text>
 
   <!-- Projects -->
