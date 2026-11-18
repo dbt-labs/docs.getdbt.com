@@ -148,7 +148,7 @@ A test that has only ever passed hasn't been shown to work. Validate in both dir
 
 ## Carry lineage at every stage
 
-When an agent says "Acme is a churn risk," the only useful follow-up is "how do you know?" The answer has to point at the exact source: this ticket, that call turn, this sentence.
+When an agent says "Acme is a churn risk," the natural follow-up question is usually "how do you know?" We generally expect the answer to point at the exact source: whether that be a ticket, a call, email convo, etc.
 
 Tracing a value back to its source is lineage. For context an AI repeats, it's the **citation**.
 
@@ -159,13 +159,13 @@ Our core rule: **every piece of context carries enough identity, at every stage,
 | Stage | What carries lineage |
 |-------|----------------------|
 | Chunking | The ID of the source rows packed into each chunk |
-| Extraction | A required-or-optional `evidence` field with the verbatim quote |
+| Extraction | An optional `evidence` field with the verbatim quote |
 | Knowledge base | The source type and source id on every row |
 | Retrieval | Those ID carried into every result |
 
 </SimpleTable>
 
-A retrieved hit can then say: this came from ticket T-42, and here's the exact sentence.
+A retrieved result can then say: this came from ticket T-42, and here's the exact sentence.
 
 Two granularities matter, and you need both:
 
