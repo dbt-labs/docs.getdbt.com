@@ -104,7 +104,6 @@ The full list lives in website/release-note-areas.json.
 - **New:** Set an expiration date when you create a [personal access token](/docs/dbt-apis/user-tokens#set-a-token-expiration) or [service token](/docs/dbt-apis/service-tokens#set-a-token-expiration). Choose 7, 14, 30, 90, or 365 days, or keep the default of no expiry. Existing tokens that don't have an expiration set won't expire.
 - **Enhancement:** The [Assign User to Groups API](/dbt-cloud/api-v3?version=2#/operations/Assign%20User%20to%20Groups) (`POST /api/v3/accounts/{account_id}/assign-groups/`) now accepts `add_group_ids` and `remove_group_ids`. Use these fields to add a user to groups, or remove them from groups, without replacing every group they belong to. Sending `desired_group_ids` still replaces the full list.
 - **Fix:** SCIM (System for Cross-domain Identity Management) lets an identity provider, such as Okta, manage groups in dbt. Previously, when the provider removed a group’s last member, dbt returned a success response but left the member in the group. dbt now clears the group when it receives an empty member list.
-- **Fix:** If a SCIM group request fails because a member has no license or isn’t on the account, the error is now [“All users must have licenses on the account.”](/docs/platform/manage-access/scim-faq#there-is-a-all-users-must-have-licenses-on-the-account-error) The message no longer lists email addresses, which could previously include users from other accounts.
 - **Fix:** Creating an OpenAI key when the account already has one now returns 409 and the message “This account already has an OpenAI key.” Creating the same SCIM user twice at the same time also returns 409. Requests to the v1 and v2 Admin API for something that doesn’t exist, or for an account you can’t access, now return 404 (not found). These requests used to return a server error (500).
 - **Fix:** Attempting to delete a System for Cross-domain Identity Management (SCIM)-managed user while manual updates are disabled now returns HTTP 400 with an actionable message directing you to enable "[Allow manual updates](/docs/platform/manage-access/scim-faq#what-does-allow-manual-updates-mean)" in SSO and SCIM settings, rather than a generic HTTP 500 error.
 - **Fix:** An API request that is nested too deeply, too large, or missing a content type now returns a client error instead of a server error.
@@ -112,12 +111,11 @@ The full list lives in website/release-note-areas.json.
 - **Fix:** Creating or updating an [IP restriction](/docs/platform/secure/ip-restrictions) with a missing or invalid `type` now returns a 400 error (the request was invalid) and a message that describes the problem, instead of a 500 server error. A missing `name` is rejected with a 400 error too. Before this fix, dbt saved that missing name as the word None.
 - **Fix:** Accounts on the usage plan can now complete the upgrade to [Starter](/docs/platform/billing/plans-and-billing#starter-plan-billing) without the checkout spinning indefinitely. The purchase button stays available when a card is already on file.
 - **Behavior change:** On [Admin API v2](/dbt-cloud/api-v2#/operations/List%20Repositories) and [Admin API v3](/dbt-cloud/api-v3#/operations/List%20Repositories) of the repositories API, `full_name` and `web_url` are now taken from the repository's web address. `full_name` is deprecated. The API no longer returns a custom `full_name` you set earlier.
-- **Behavior change:** When you filter the account users list by user ID (`pk` or `pk__in`), the API now returns only members of that account. Looking up someone who isn’t a member now succeeds with an empty list instead of returning “not found,” and an empty `pk__in` list returns no one instead of every member. If you send both `pk` and `pk__in` to the [v3 account users list](/dbt-cloud/api-v3#/operations/List%20Users), the API returns only IDs that appear in both. The same applies to `GET /api/v2/users/`: if `pk` is your own ID and pk__in lists other users, you get an empty list.
 
 #### dbt v2 {#dbt-v2-november-2026}
 
 - **New:** You can now configure BigQuery query reservations at the model and connection levels.
-- **New:** Two new environment variables, `DBT_CLOUD_LOGIN_HOST` and `DBT_CLOUD_LOGIN_ACCOUNT_ID`, let `dbt login` authenticate through an account host's `/oauth/authorize` endpoint instead of the registration page, enabling Single Sign-On (SSO) accounts that cannot route through the registration page.
+- **New:** Two new environment variables, `DBT_CLOUD_LOGIN_HOST` and `DBT_CLOUD_LOGIN_ACCOUNT_ID`, let `dbt login` authenticate through an account host's `/oauth/authorize` endpoint instead of the registration page, enabling single sign-on (SSO) accounts that cannot route through the registration page.
 - **New:** The metrics tool can show the SQL for a metric without running it. The SQL matches your warehouse instead of always using DuckDB.
 - **Fix:** Snowflake seeds now honor the `transient` config instead of silently creating a permanent table.
 - **Fix:** Comparing changes in [Advanced CI](/docs/deploy/advanced-ci) no longer fails when a Snowflake table has a vector column.
@@ -149,13 +147,13 @@ The full list lives in website/release-note-areas.json.
 
 #### dbt platform {#dbt-platform-november-2026}
 
-- **New:** You can now delete your Azure DevOps Microsoft Entra (Entra) application integration directly from workspace Git Integration settings using a new delete button and confirmation dialog.
+- **New:** You can now delete your Azure DevOps Microsoft Entra (Entra) application integration directly from workspace Git integration settings using a new delete button and confirmation dialog.
 - **New:** You can now delete a GitLab custom app integration directly from the GitLab integration drawer in account settings. After confirming the deletion, the drawer closes and a confirmation banner appears.
 - **Enhancement:** On the environment settings page, the delete button now says **Delete environment**. The old label was **Delete**, which made it easier to remove the wrong thing.
-- **Enhancement:** The rollback version section in Account Settings now uses "dbt v2" instead of "Fusion" in all section headers, modal titles, button labels, and descriptive copy.
+- **Enhancement:** The rollback version section in **Account settings** now uses "dbt v2" instead of "Fusion" in all section headers, modal titles, button labels, and descriptive copy.
 - **Enhancement:** The "Preview" badge no longer appears next to dbt v2 Stable in job and environment version settings or the upgrade checklist for Databricks projects.
 - **Fix:** Model name search in the run step structured logs view is now case-insensitive and trims surrounding whitespace, so a search for `my_model` matches `My_Model`. Changing the search term also resets pagination to the first page, fixing an issue where narrowing results on a later page showed an empty list with no "No models found" message.
-- **Fix:** Untitled buffers switched to Markdown, JSON, or YAML via Change Language Mode now format with Prettier instead of the SQL formatter. The [Format](/docs/platform/studio-ide/lint-format#format-yaml-markdown-json) button is also no longer hidden for these buffers when SQLFluff is selected as the linter.
+- **Fix:** Untitled buffers switched to Markdown, JSON, or YAML using Change Language Mode now format with Prettier instead of the SQL formatter. The [Format](/docs/platform/studio-ide/lint-format#format-yaml-markdown-json) button is also no longer hidden for these buffers when SQLFluff is selected as the linter.
 - **Fix:** If you cancel connecting Slack, you return to the Integrations page with a cancellation message instead of an error.
 
 ## October 2026
@@ -313,7 +311,7 @@ Admins can check their settings and update the default as needed. This is availa
 - **Enhancement:** When a GitLab host is unreachable, affected API endpoints now return HTTP 503 with the message "GitLab is unavailable, please try again." instead of an unclear failure. This applies when you create a repository or list GitLab groups.
 - **Fix:** Cross-account write attempts now return HTTP 403 Forbidden instead of a generic 500 Internal Server Error, so you get a clear rejection when the account doesn't match.
 - **Fix:** The error for a missing Azure DevOps account link now shows the correct message: "Missing Azure user; link your Azure DevOps account in your personal profile."
-- **Behavior change:** Creating accounts via `POST /api/v2/accounts/` is now blocked for service tokens, account-scoped personal access tokens (PATs), and OAuth access tokens. Service tokens and account-scoped user API tokens receive HTTP 400; OAuth access tokens receive HTTP 403, with explicit error messages in each case.
+- **Behavior change:** Creating accounts using `POST /api/v2/accounts/` is now blocked for service tokens, account-scoped personal access tokens (PATs), and OAuth access tokens. Service tokens and account-scoped user API tokens receive HTTP 400; OAuth access tokens receive HTTP 403, with explicit error messages in each case.
 
 #### Cost Insights {#cost-insights-september-2026}
 
@@ -795,7 +793,7 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 
 - **Enhancement:** The Analyst permission now has the project-level access to read repositories. Review [Project access for project permissions](/docs/platform/manage-access/enterprise-permissions#project-access-for-project-permissions) for more information.
 - **Enhancement:** After a user accepts an email [invite](/docs/platform/manage-access/invite-users) to access an [SSO-protected](/docs/platform/manage-access/sso-overview) <Constant name="dbt_platform"/> account, the UI now prompts them to log in with SSO to complete the process. This replaces the previous "Joined successfully" message, helping avoid confusion when users accept an invite but do not complete the SSO login flow.
-- **Fix**: The user invite details now show more information in invite status, giving admins visibility into users who accepted an invite to an SSO-protected account but haven't yet logged in via SSO. Previously, these invites were hidden, making it appear as if the user hadn't been invited. 
+- **Fix**: The user invite details now show more information in invite status, giving admins visibility into users who accepted an invite to an SSO-protected account but haven't yet logged in using SSO. Previously, these invites were hidden, making it appear as if the user hadn't been invited. 
 The Invites endpoints of the dbt platform Admin v2 API now include these additional statuses:
   - `4` (PENDINGEMAIL_VERIFICATION)
   - `5` (EMAIL_VERIFIED_SSO).
