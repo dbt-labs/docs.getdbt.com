@@ -153,6 +153,20 @@ sources:
             warn_after: {count: 12, period: hour}
 ```
 
+:::note Databricks timestamp types
+
+On Databricks, `convert_timezone` returns `TIMESTAMP_NTZ`, even when you convert the value to UTC. Because this type does not retain timezone metadata, dbt v2 warns that it will interpret the freshness timestamp as UTC.
+
+To return a timezone-aware `TIMESTAMP` and avoid the warning, use `to_utc_timestamp`:
+
+```yaml
+loaded_at_field: "to_utc_timestamp(created_at_local, 'Australia/Sydney')"
+```
+
+For details about the return type, refer to the [Databricks `convert_timezone` function](https://docs.databricks.com/aws/en/sql/language-manual/functions/convert_timezone).
+
+:::
+
 #### Using `loaded_at_query`
 
 <VersionBlock firstVersion="1.10">
