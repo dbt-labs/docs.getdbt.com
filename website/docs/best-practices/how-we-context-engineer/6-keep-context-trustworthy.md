@@ -62,7 +62,7 @@ models:
   - name: incident_facts
     columns:
       - name: evidence
-        data_tests:
+        [data_tests](/reference/data-test-configs):
           - dbt_context_engineering.grounded:
               arguments:
                 source_text_column: chunk_text
