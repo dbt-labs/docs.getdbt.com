@@ -6,7 +6,7 @@ displayText: Keep context trustworthy
 hoverSnippet: Learn how to test AI output and keep every claim traceable.
 ---
 
-Like metrics, trusted context need to be tested in order to be trusted. In this section, you'll learn how to:
+Like metrics, trusted context needs to be tested in order to be trusted. In this section, you'll learn how to:
 
 - Test AI output with checks that need no LLM and cost nothing to run
 - Gate prompt and LLM changes so quality can't slip quietly
@@ -102,7 +102,7 @@ Our recommendations:
 
 ### Evaluation
 
-An evaluation test scores your predictions against a hand-labeled **golden set**: accuracy overall, plus precision and recall for each label. Set a threshold on a metric and you have a gate: if a prompt tweak or LLM upgrade drops accuracy below the bar, the build fails.
+An evaluation test scores your predictions against a hand-labeled set of expected answers (a golden set). It reports accuracy overall, plus precision and recall for each label. Set a threshold on a metric and you have a gate: if a prompt tweak or LLM upgrade drops accuracy below the bar, the build fails.
 
 The package's `eval` macro takes a table with a predicted column and an expected column, and returns one row per metric:
 
