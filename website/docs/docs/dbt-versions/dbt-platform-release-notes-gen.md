@@ -101,7 +101,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Case-insensitive model search in structured logs**: Model name search in the run step structured logs view is now case-insensitive and trims surrounding whitespace, so a search for `my_model` matches `My_Model`. Changing the search term also resets pagination to the first page, fixing an issue where narrowing results on a later page showed an empty list with no "No models found" message.
 
-- **Correct formatter for non-SQL language modes in Studio IDE**: Untitled buffers switched to Markdown, JSON, or YAML via Change Language Mode now format with Prettier instead of the SQL formatter. The [Format](/docs/platform/studio-ide/lint-format#format-yaml-markdown-json) button is also no longer hidden for these buffers when SQLFluff is selected as the linter.
+- **Correct formatter for non-SQL language modes in Studio IDE**: Untitled buffers switched to Markdown, JSON, or YAML using Change Language Mode now format with Prettier instead of the SQL formatter. The [Format](/docs/platform/studio-ide/lint-format#format-yaml-markdown-json) button is also no longer hidden for these buffers when SQLFluff is selected as the linter.
 
 - **Slack connection cancellation**: If you cancel connecting Slack, you return to the Integrations page with a cancellation message instead of an error.
 
@@ -191,7 +191,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Clearer errors for an invalid IP restriction**: Creating or updating an [IP restriction](/docs/platform/secure/ip-restrictions) with a missing or invalid `type` now returns a 400 error (the request was invalid) and a message that describes the problem, instead of a 500 server error. A missing `name` is rejected with a 400 error too. Before this fix, dbt saved that missing name as the word None.
 
-### Behavior changes
+### Behavior change
 
 #### dbt platform
 
@@ -261,7 +261,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **`dbt fmt` keeps a stable indentation**: [`dbt fmt`](/reference/commands/lint#dbt-format) no longer shifts a Jinja tag to the left when that same line ends with a SQL comment. It also settles on one indentation for Jinja tags inside a `for` loop, and for an `{% if %}...{%- else -%}` block whose condition looks up warehouse information, such as the columns on a table. Running `dbt fmt` again does not keep changing those lines.
 
-### Behavior changes
+### Behavior change
 
 #### Orchestration and run status
 
@@ -517,7 +517,7 @@ Release notes are grouped by date for single-tenant environments.
 
 #### APIs, Identity, and Administration
 
-- **Account creation blocked for service tokens and OAuth tokens**: Creating accounts via `POST /api/v2/accounts/` is now blocked for service tokens, account-scoped personal access tokens (PATs), and OAuth access tokens. Service tokens and account-scoped user API tokens receive HTTP 400; OAuth access tokens receive HTTP 403, with explicit error messages in each case.
+- **Account creation blocked for service tokens and OAuth tokens**: Creating accounts using `POST /api/v2/accounts/` is now blocked for service tokens, account-scoped personal access tokens (PATs), and OAuth access tokens. Service tokens and account-scoped user API tokens receive HTTP 400; OAuth access tokens receive HTTP 403, with explicit error messages in each case.
 
 #### Insights
 
@@ -826,7 +826,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Cost breakdown by job**: Cost Insights now includes a Jobs table view alongside the existing all-models view. Use the **All**/**Jobs** toggle to switch between a per-model breakdown and a per-job summary, and select **Download** to export the active view as a comma-separated values (CSV) file.
 
-#### Run Logs
+#### Run logs
 
 - **Download OpenTelemetry logs**: You can download OpenTelemetry (OTel) logs for individual dbt command steps in Fusion job runs.
 
@@ -980,7 +980,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Fixes
 
-#### Orchestration and Run Status
+#### Orchestration and run status
 
 - **Run list action buttons fixed and clickable**: Action buttons on the runs list (for example, "Debug with Copilot") no longer silently navigate to the run detail page instead of triggering the intended action.
 
@@ -1056,7 +1056,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Support for the`lastKnownResults` filter accepting `null` values**: The `lastKnownResults` filter on `TestAppliedFilter` now accepts `null` as a value, allowing you to match tests that have no recorded result status.
 
-- **OAuth client audit log entries include registration type**: Audit log entries for OAuth client registration now append `(manual)` or `(dynamic)` to the description, making it clear whether a client was registered via dynamic client registration or manually — for example, "ChatGPT was registered for this account (manual)".
+- **OAuth client audit log entries include registration type**: Audit log entries for OAuth client registration now append `(manual)` or `(dynamic)` to the description, making it clear whether a client was registered using dynamic client registration or manually — for example, "ChatGPT was registered for this account (manual)".
 
 #### Orchestration and run status
 
@@ -1196,7 +1196,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Single Sign-On configuration uses auto-generated slugs only**: The Single Sign-On (SSO) settings card now always uses server-assigned slugs. The manual slug input has been removed. All SSO configurations are created as drafts with an auto-generated slug before you fill in connection details.
 
-#### Deployment and Configuration
+#### Deployment and configuration
 
 - **Fusion version detection uses strict catalog membership**: `isFusionDbtVersion` now only returns `true` for version strings that are explicit members of the known Fusion versions catalog (`latest-fusion`, `fusion-stable`, and so on). Previously, any string containing the word "fusion" was treated as a Fusion version. Custom or unknown version strings that happen to include "fusion" are no longer treated as Fusion versions.
 
@@ -1463,7 +1463,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### New
 
-#### Orchestration and Run Status
+#### Orchestration and run status
 
 - **Fusion run error banner**: When a run using the dbt Fusion engine fails, a banner now appears on the run details page with options to debug the failure in Studio IDE. If dbt Copilot is enabled, you can also open a guided fix-with-Copilot workflow directly from the banner. Contact your account manager to enable.
 
@@ -1477,9 +1477,9 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Smarter bulk-edit file handling**: When Studio IDE applies multi-file edits (for example, from dbt Copilot agent tasks), it now only updates editor models for files that are already open. Previously, every edited file was opened in a new tab, which cluttered the editor.
 
-#### Deployment and Configuration
+#### Deployment and configuration
 
-- **Fusion migration enablement via project API**: You can now set `fusion_migration_enabled` on a project via the project update API. Enabling it requires the `fusion_readiness_write` permission, and the project must meet all readiness prerequisites (supported adapter, supported dbt version, a successful run, and eligible jobs).
+- **Fusion migration enablement using the project API**: You can now set `fusion_migration_enabled` on a project using the project update API. Enabling it requires the `fusion_readiness_write` permission, and the project must meet all readiness prerequisites (supported adapter, supported dbt version, a successful run, and eligible jobs).
 
 - **Filter jobs by Fusion readiness**: The jobs list endpoint (`GET /api/v2/accounts/{account_id}/jobs/`) now accepts an `is_fusion_ready` boolean query parameter. When `true`, it returns only conformant or override-ready jobs; when `false`, it returns only non-ready jobs. You can also include `fusion_readiness` in the `include_related` parameter to surface Fusion readiness details alongside the job response.
 
@@ -1491,7 +1491,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Accurate resource counts on environment switch**: Fixes a bug where resource counts in the navigation tree were not refreshed when switching environments. You should now see up-to-date counts after changing the active environment.
 
-#### Orchestration and Run Status
+#### Orchestration and run status
 
 - **Stuck runs are now cancelled**: A new cleanup job detects runs and run steps that have exceeded the maximum allowed duration and marks them as `CANCELLED`, preventing stale in-progress states from accumulating
 
@@ -1541,7 +1541,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Copilot entry stays available during lockouts:** If dbt Copilot is temporarily locked for your account, you can still open Copilot from Insights to see lock details.
 
-#### Orchestration and Run Status
+#### Orchestration and run status
 
 - **Run metadata includes triggering and canceling actors:** Run details now include who triggered or canceled a run (user or service token), which helps you audit run activity.
 
@@ -1551,11 +1551,11 @@ Release notes are grouped by date for single-tenant environments.
 
 - **More accurate command names for dbt Fusion runs:** Orchestration now reads the invocation name from `run_results.json` using `command` when `invocation_command` is missing, so you see the correct dbt command in run details.
 
-#### Run Logs
+#### Run logs
 
 - **More resilient run step history ingestion:** Run step history ingestion now drops invalid events and de-duplicates redundant step-start events before writing step data, improving step-level accuracy. Please contact your account manager to enable.
 
-#### Deployment and Configuration
+#### Deployment and configuration
 
 - **Longer project descriptions:** You can now add project descriptions of up to 1,024 characters.
 
@@ -1581,7 +1581,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **More reliable Single Sign-On (SSO) migration domain updates:** Domain updates during Single Sign-On (SSO) migration no longer rely on mutating existing provider data, which improves save reliability.
 
-#### Deployment and Configuration
+#### Deployment and configuration
 
 - **Clearer Bring Your Own Key (BYOK) credential errors:** If your OpenAI credentials include invalid characters, you now get a clearer error message so you can correct the configuration.
 
@@ -1589,7 +1589,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Correct connection details while editing environments:** You now see the correct connection details more consistently when you edit an environment that uses global connections and connection profiles.
 
-#### Orchestration and Run Status
+#### Orchestration and run status
 
 - **Run steps are available for ingestion runs:** You can now open and review run steps for ingestion-triggered runs.
 
@@ -1637,13 +1637,13 @@ Release notes are grouped by date for single-tenant environments.
 
 ### New
 
-#### Deployment and Configuration
+#### Deployment and configuration
 
 - **Self-serve Snowflake private endpoint requests:** You can request a new Snowflake private endpoint from account settings by pasting the output from `SELECT SYSTEM$GET_PRIVATELINK_CONFIG();`, then track request status in the private endpoints table. This is available for Enterprise Business Critical accounts only, and please contact your account manager to enable. For other connection types, contact support@dbtlabs.com.
 
 ### Enhancements
 
-#### Orchestration and Run Status
+#### Orchestration and run status
 
 - **Run retries support dbt Fusion runs:** You can now retry failed runs as long as your environment is on dbt Core version `1.6` or higher or dbt Fusion.
 
@@ -1659,7 +1659,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Fixes
 
-#### Orchestration and Run Status
+#### Orchestration and run status
 
 - **More reliable job search:** Searching jobs with numeric terms (for example, `12`) no longer triggers API validation errors, so you can load job lists reliably.
 
@@ -1673,13 +1673,13 @@ Release notes are grouped by date for single-tenant environments.
 
 - **More accurate error responses during permission checks:** You now receive more accurate errors from permission checks, and underlying service errors surface instead of being reported as authorization failures.
 
-#### Deployment and Configuration
+#### Deployment and configuration
 
 - **Clearer private endpoint validation errors:** Creating a private endpoint now returns a `400` error with a clear message when `snowflake_output` is malformed or not valid JSON.
 
 ### Behavior change
 
-#### Orchestration and Run Status
+#### Orchestration and run status
 
 - **Model timing unavailable for dbt Fusion runs:** You now see an informational notice instead of the Model timing chart for dbt Fusion runs because dbt Fusion handles threading differently.
 
@@ -1691,7 +1691,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Enhancements
 
-#### Orchestration and Run Status
+#### Orchestration and run status
 
 - **Clearer SAO description**: Job settings now describe state-aware orchestration (SAO) as only building models when data or code changes are detected.
 - **Direct links for cost optimization setup**: Fusion cost optimization settings now link to account-level Cost Insights settings and setup documentation so you can validate cost data and savings.
@@ -1728,7 +1728,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Behavior change
 
-#### Orchestration and Run Status
+#### Orchestration and run status
 
 - **`versionless` dbt version is no longer accepted**: dbt platform now treats `versionless` as deprecated and updates existing environments and jobs to use `latest`. If you set `dbt_version` in an API integration or automation, update it to send `latest` instead.
 
@@ -1764,7 +1764,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Reduced shortcut conflicts with VS Code search**: When Visual Studio Code (VS Code) search is enabled, Studio IDE avoids unregistering Quick Open and suppresses conflicting command palette shortcuts.
 
-#### Catalog and Insights Data
+#### Catalog and Insights data
 
 - **More accurate source freshness outdated status in Catalog**: Source freshness Outdated status can now be computed at query time, improving freshness status filtering consistency.
 
@@ -1786,7 +1786,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Optional source freshness expiration windows**: Source freshness expiration windows can optionally derive from each source's freshness criteria rather than a fixed window. You must enable in your deployment.
 
-#### Deployment and Configuration
+#### Deployment and configuration
 
 - **Source ingestion may skip sources for extremely large manifests in Catalog**: For very large `manifest.json` files, ingestion may strip sources above a configurable threshold to prevent out of memory failures. Set `SOURCE_INGESTION_THRESHOLD=0` if you must always ingest sources regardless of size.
 
@@ -1862,7 +1862,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Public model lineage across environments**: Fixes lineage resolution for public model parents when the producer model lives in a non-default environment.
 
-#### dbt Copilot And Agents
+#### dbt Copilot and agents
 
 - **Reduced resource growth under load**: Fixes an OpenAI connection pool leak that could lead to out-of-memory (OOM) conditions under sustained load. Users should see fewer slowdowns during high-traffic periods.
 
@@ -1876,7 +1876,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Resumable dbt command log streaming**: Improves dbt command log streaming reliability by resuming from the last known Command Line Interface (CLI) event offset. Contact your account manager to enable.
 
-#### Admin And APIs
+#### Admin and APIs
 
 - **Job Admin gains write access in Profiles API**: Job Admin now includes `profiles_write`, which can change what Job Admin users can do where Profiles are enabled.
 
@@ -1894,7 +1894,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Slack: Permission check aligned to job notification access**: Slack integration listing now uses job notifications read permission, reducing incorrect permission-denied scenarios.
 
-#### CLI Runtime
+#### CLI runtime
 
 - **Shorter default request timeouts**: Reduces default timeouts from 60 seconds to 5 seconds for Cloud Config and Cloud Artifact calls, causing requests to fail faster in high-latency environments unless overridden.
 
@@ -1928,7 +1928,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Improved Private Link endpoint management**: Private Endpoints can be sorted by status and connections, and endpoint details now show associated connections and environments.
 
-#### Run Logs
+#### Run logs
 
 - **More reliable invocation event streaming**: Invocation event streaming is more reliable for long running jobs by deriving totals from the latest stream event identifier.
 
@@ -1950,7 +1950,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **More reliable command log refresh and finalization**: Command logs for the dbt Cloud Command Line Interface (CLI) are refreshed and finalized more reliably.
 
-#### Run Automation
+#### Run automation
 
 - **Correct account attribution for automatically triggered runs**: Scheduler triggered runs now include account context, improving run attribution and preventing some downstream triggers from running without proper context.
 
@@ -1962,7 +1962,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Restored dual dispatch for some failure and completion triggers**: When both failure and completion triggers are configured, errored runs may generate two webhook deliveries to match legacy behavior.
 
-#### dbt Project Metadata
+#### dbt project metadata
 
 - **Manifest Ingestion: Accept functions section in manifest.json**: Ingestion now accepts the `functions` section (for example, Snowflake user defined functions (UDF)) to prevent parse failures on newer manifest schemas.
 
@@ -2018,9 +2018,9 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Studio IDE: Sidebar layout improvements for embedded panels**: Improves embedded panel sizing to reduce clipping and scrolling issues in the sidebar.
 
-- **Studio IDE: Fusion prompts reflect actual eligibility**: Improves Fusion banners and prompts by checking project eligibility via a Fusion status endpoint to reduce confusing prompts for ineligible projects.
+- **Studio IDE: Fusion prompts reflect actual eligibility**: Improves Fusion banners and prompts by checking project eligibility using a Fusion status endpoint to reduce confusing prompts for ineligible projects.
 
-#### Catalog and Discovery
+#### Catalog and discovery
 
 - **Catalog: Improved cross-project lineage for dbt Mesh**: Improves cross-project lineage ("public ancestors") computation to better match expected external lineage boundaries in dbt Mesh experiences.
 
@@ -2054,7 +2054,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Catalog: Search highlighting displays correctly with multiple matches**: Fixes search result highlighting when the backend returns multiple highlights per field, improving readability of matches. Updates search highlights to display as compact badges with counts for easier scanning of results.
 
-- **Catalog: Environment filtering more accurate in search results**: Improves environment-scoped Catalog search filtering by using merged environment identifiers and preserving warehouse-only assets via a dedicated sentinel value.
+- **Catalog: Environment filtering more accurate in search results**: Improves environment-scoped Catalog search filtering by using merged environment identifiers and preserving warehouse-only assets using a dedicated sentinel value.
 
 - **Catalog: Public models return empty list when none exist**: Improves behavior for environments with no public models by returning an empty list instead of falling into follow-on query logic.
 
@@ -2092,7 +2092,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Catalog: Rows per page selector removed from tables**: The rows-per-page selector was removed, and pagination now uses a fixed page size.
 
-#### Orchestration and Run Status
+#### Orchestration and run status
 
 - **Orchestration: Cached and stale outcome status mapping updated**: Cached nodes are now consistently surfaced as Reused with clearer reasons, and stale outcomes are treated as errors, which can change the statuses operators see in run output and telemetry.
 
@@ -2105,7 +2105,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Enhancements
 
-- **Catalog & Search**
+- **Catalog and search**
   - **Improved search relevance and highlighting**: Ranking now boosts results by modeling layer, and highlighting is more consistent (including support for multiple highlight snippets per field).
 - **dbt platform**
   - **Private endpoints details page**: The dbt platform now includes a Private Endpoint details view with endpoint properties, connectivity status, and associated projects.
@@ -2129,12 +2129,12 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Canvas**
   - **Clearer errors for duplicate uploaded-source names**: Creating an uploaded-source model with a duplicate name now returns HTTP 409 with an actionable message.
-  - **Failed uploads are now visible via file state**: Uploaded-source processing records failure state instead of deleting the file record, improving retry/resume workflows.
+  - **Failed uploads are now visible through file state**: Uploaded-source processing records failure state instead of deleting the file record, improving retry/resume workflows.
   - **Invocation status streaming reliability**: The invocation status SSE endpoint now correctly awaits the status stream.
 
-### Behavior changes
+### Behavior change
 
-- **Catalog & Search**
+- **Catalog and search**
   - **Search highlight fields deprecated and highlights shape expanded**: `AccountSearchHit.highlight` and `AccountSearchHit.matchedField` are deprecated. `AccountSearchHit.highlights` now supports multiple highlight snippets per field (arrays).
 
 - **dbt platform**
@@ -2161,7 +2161,7 @@ Release notes are grouped by date for single-tenant environments.
   - **Fusion onboarding completion card can be dismissed**: After completing the Fusion onboarding checklist, you can now dismiss the card and it will stay dismissed.
   - **Cross-project lineage is now generally available**: Cross-project lineage is now enabled for all applicable accounts.
 
-- **Catalog & Search**
+- **Catalog and search**
   - **Improved Catalog search relevance and performance**: Enhanced search scoring and matching provides more accurate results, with better column matching and highlighting for large catalogs.
   - **Search results are refreshed when column metadata changes**: Column name and description updates now automatically trigger re-indexing, ensuring search results stay current.
   - **Search typeahead includes "View all results"**: Quickly access full search results from the typeahead dropdown with the new footer link.
@@ -2176,7 +2176,7 @@ Release notes are grouped by date for single-tenant environments.
 - **AI-assisted workflows**
   - **Enhancement:** [dbt <Constant name="copilot" />](/docs/platform/wizard-platform) adds missing column descriptions more accurately. <Constant name="copilot" /> generated documentation now correctly detects column names across various `schema.yml` files, adds only missing descriptions, and preserves existing ones.
 
-- **Catalog & lineage**
+- **Catalog and lineage**
   - **Fixes missing auto-generated exposures in model lineage**: Auto-generated exposures now appear correctly in lineage views.
   - **Catalog search no longer errors when a warehouse connection name is missing**: Search now handles missing connection names gracefully without causing errors.
   - **Improved security: malformed identity headers are rejected cleanly**: Requests with invalid authentication tokens now fail safely with clear error messages.
@@ -2187,7 +2187,7 @@ Release notes are grouped by date for single-tenant environments.
 - **APIs**
   - **Jobs API deferral validation is stricter and clearer**: Job deferral settings are now validated to ensure the deferring job and environment exist within the same account, with improved error messages.
 
-### Behavior changes
+### Behavior change
 
 - **dbt platform**
   - **Account Insights default page size changed to 5 rows**: Tables in Account Insights now display 5 rows per page by default (previously 10).
@@ -2242,7 +2242,7 @@ Release notes are grouped by date for single-tenant environments.
   - **More reliable `show` and `compile`**: CLI flags to disable caching are now positioned correctly to avoid parsing issues.
   - **Canvas preview improvements**: Fixed argument ordering so `--no-defer` is interpreted consistently.
 
-### Behavior changes
+### Behavior change
 
 - **dbt platform**
   - **dbt v1.7 end-of-life**: dbt v1.7 is now labeled as end-of-life in version lifecycle messaging.
@@ -2273,7 +2273,7 @@ No changes of note this week.
   - **Better similar-model suggestions**: Attachment workflows now only recommend meaningfully related models.
 
 - **dbt platform**
-  - **Unified SSO & SCIM admin**: Settings consolidate SSO + SCIM, add an empty state for auto-generated slugs, and render read-only login URLs so admins can start configuration without touching slug fields.
+  - **Unified SSO and SCIM admin**: Settings consolidate SSO + SCIM, add an empty state for auto-generated slugs, and render read-only login URLs so admins can start configuration without touching slug fields.
   - **SCIM token management polish**: Token tables gain fixed pagination, inline search, consistent iconography, and clearer deletion warnings to avoid accidental cuts to live integrations.
   - **Twice the per-environment custom variables**: The v3 API/UI now allow up to 20 scoped environment variables before enforcing limits, giving larger projects more room for secrets.
 
@@ -2288,7 +2288,7 @@ No changes of note this week.
 - **Codex GraphQL**
   - **Exposure parents mirror the manifest**: `parentsModels` and `parentsSources` now derive from the manifest's `parents` list, so exposures with mixed upstreams display complete lineage in both the GraphQL API and UI.
 
-### Behavior changes
+### Behavior change
 
 - **dbt platform**
   - **Legacy Cost Management UI retired**: All cost management pages and hooks were removed, and platform metadata credentials now only expose catalog ingestion and Cost Insights toggles, eliminating dead-end controls.
@@ -2306,8 +2306,8 @@ No changes of note this week.
 - **dbt platform**
   - **Large list pagination**: Settings's Projects and Credentials now paginate after 25 rows (with search boxes and skeleton states), keeping navigation responsive for large deployments.
 - **Metadata Explorer**
-  - **Model context & lineage polish**: Model panels now show materialization type, lineage renders metadata strips only when content exists, and upstream public-model columns load automatically for better cross-project visibility.
-  - **Freshness clarity & Studio navigation**: Source tiles respect the `meta5161ExpiredUnconfiguredSources` flag (showing warn/error thresholds) and "Open in IDE" links now point at `/studio/{accountId}/projects/{projectId}` to drop users directly into dbt Studio.
+  - **Model context and lineage polish**: Model panels now show materialization type, lineage renders metadata strips only when content exists, and upstream public-model columns load automatically for better cross-project visibility.
+  - **Freshness clarity and Studio navigation**: Source tiles respect the `meta5161ExpiredUnconfiguredSources` flag (showing warn/error thresholds) and "Open in IDE" links now point at `/studio/{accountId}/projects/{projectId}` to drop users directly into dbt Studio.
 
 - **Insights UI**
   - **Copilot guardrails**: The Copilot listener now hydrates builder tabs only when a semantic-layer payload arrives, preventing plain-SQL replies from overwriting editor state.
@@ -2321,8 +2321,8 @@ No changes of note this week.
   - **Webhook auditability**: Outbound calls now persist the exact JSON body in webhook history, making allowlisting and troubleshooting easier.
 
 - **Studio**
-  - **Git sidebar & file refresh parity**: The file tree now mirrors Cloud VCS statuses (including conflicts) and automatically invalidates caches after `dbt deps`/`dbt clean`, so new or removed files appear without a reload.
-  - **Log viewers & Autofix UX**: Command and interactive query logs adopt the new accordion-based viewer, and Autofix sessions in Fusion treat plain `parse` commands as the trigger for deprecation summaries, keeping remediation flows consistent.
+  - **Git sidebar and file refresh parity**: The file tree now mirrors Cloud VCS statuses (including conflicts) and automatically invalidates caches after `dbt deps`/`dbt clean`, so new or removed files appear without a reload.
+  - **Log viewers and Autofix UX**: Command and interactive query logs adopt the new accordion-based viewer, and Autofix sessions in Fusion treat plain `parse` commands as the trigger for deprecation summaries, keeping remediation flows consistent.
 
 ### Fixes
 
@@ -2330,7 +2330,7 @@ No changes of note this week.
   - **Environment variable editor stability**: Editing one variable no longer backfills blank cells with previously edited values, preventing accidental overrides.
   - **Cost optimization indicator accuracy**: Job pages once again display "Cost optimization features" whenever Fusion actually runs (and gating conditions are met), so users see the right coverage status regardless of feature-flag permutations.
 
-### Behavior changes
+### Behavior change
 
 - **dbt platform**
   - **Stronger tenant identity enforcement**: Service/PAT calls without an active license now fail authentication, Slack Copilot sessions build a scoped identity JWT for the invoking user, and SSO providers enforce auto-generated slugs (draft configs can't be targeted), reducing misconfiguration risk.
@@ -2341,18 +2341,18 @@ No changes of note this week.
   - **Enhanced security for support-assisted sessions:** Support impersonation sessions now restrict the execution of `show`, `run`, `build`, and `test` commands. Artifacts generated by `dbt show` are also short-lived and will automatically expire after 15 minutes to limit unintended data retention.
 
 - **dbt Orchestration**
-  - **Fusion compare support & new dependency**: Fusion tracks now treat `dbt compare` as a supported command (no more target-path hacks).
+  - **Fusion compare support and new dependency**: Fusion tracks now treat `dbt compare` as a supported command (no more target-path hacks).
 
 ## December 10, 2025
 
 ### Enhancements
 
-- **AI codegen API**: Streaming middleware enforces request-scoped instrumentation across every AI endpoint, offload warehouse calls via threads, and expose human-readable tool names while gating keyword search behind feature flag for approved tenants.
+- **AI codegen API**: Streaming middleware enforces request-scoped instrumentation across every AI endpoint, offload warehouse calls using threads, and expose human-readable tool names while gating keyword search behind feature flag for approved tenants.
 
 - **dbt platform**
   - **Operations clarity**: Environment profile drawers link directly to connection settings and treat Snowflake fields as optional, while Compare Changes and run-step drawers now explain whether steps failed or were skipped so troubleshooting is faster.
-  - **Collaboration & notifications**: Slack Copilot mentions are now more reliable, with hardened workers, support for CSV attachments, and improved logging. Webhook channels now accept longer URLs, handle "warning-only" subscriptions correctly, and automatically clean up corrupted job IDs.
-  - **Profile & credential management**: Environment APIs accept `secondary_profile_ids`, run acquisition favors profile-backed credentials, and whoami/auth metrics are scrubbed so cross-platform profiles stay in sync.
+  - **Collaboration and notifications**: Slack Copilot mentions are now more reliable, with hardened workers, support for CSV attachments, and improved logging. Webhook channels now accept longer URLs, handle "warning-only" subscriptions correctly, and automatically clean up corrupted job IDs.
+  - **Profile and credential management**: Environment APIs accept `secondary_profile_ids`, run acquisition favors profile-backed credentials, and whoami/auth metrics are scrubbed so cross-platform profiles stay in sync.
 
 - **dbt CLI server**: Improved stability and performance for large projects.
 - **Studio IDE**: For dbt Fusion logging, node start and end times will now properly be displayed in command output.
@@ -2387,6 +2387,6 @@ No changes of note this week.
 
 - **dbt platform lineage and command pane stability**: Reliability improved by aligning with updated IDE and VS Code command APIs; eliminates intermittent skips.
 
-### Behavior changes
+### Behavior change
 
 - **dbt platform:** dbt Core "versionless" renamed to "latest" so it's consistent and clear across tenants.
