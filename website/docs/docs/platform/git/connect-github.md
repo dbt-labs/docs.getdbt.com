@@ -90,7 +90,9 @@ Then each developer on the account needs to [relink their GitHub profile](#relin
 
 :::note Repo availability
 
-dbt platform doesn’t support concurrent integrations with public and private GitHub repositories. To register a GitHub App, you need a private repository. Disconnect your configured public repository before you follow the steps in this section.
+All repos that use the GitHub App clone strategy must use the same GitHub App (and the same GitHub server). You can't mix the shared <Constant name="dbt" /> GitHub App and your own GitHub App, or connect repos from multiple GitHub servers. Repo visibility (public, internal, or private) doesn't matter because every request is authenticated.
+
+Repos that aren't covered by your one GitHub App need a different clone strategy, such as a [git URL with deploy keys](/docs/platform/git/import-a-project-by-git-url).
 
 :::
 
