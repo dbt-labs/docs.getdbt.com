@@ -5,7 +5,7 @@ id: "data-cloud-configs"
 unlisted: true
 ---
 
-# Salesforce Data 360 configurations<Lifecycle status="beta"/>
+# Salesforce Data 360 configurations <Lifecycle status="community_maintained"/>
 
 ## Supported materializations
 
