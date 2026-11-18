@@ -28,7 +28,7 @@ AI output fails in three ways:
 
 </SimpleTable>
 
-Ask for `pain_point`, `requirement`, or `objection`, and an LLM can still hand back `PROBLEM`. It's well formed and confident, and every ordinary test passes.
+Use the `dbt_context_engineering`'s [recommended tests](#recommended-tests) to minimize AI output failures. 
 
 <Lightbox src="/img/best-practices/context-engineering/meme-i-like-turtles.jpg" width="60%" title="Even an LLM can't escape the 'I like turtles' meme." />
 
