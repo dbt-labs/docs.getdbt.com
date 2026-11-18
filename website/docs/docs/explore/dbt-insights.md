@@ -20,7 +20,7 @@ Learn how to query data with <Constant name="insights" /> and view documentation
 
 <Constant name="insights" /> in <Constant name="dbt" /> empowers users to seamlessly explore and query data with an intuitive, context-rich interface. It bridges technical and business users by combining metadata, documentation, AI-assisted tools, and powerful querying capabilities into one unified experience. 
 
-<Constant name="insights" /> in <Constant name="dbt" /> integrates with [<Constant name="catalog" />](/docs/explore/explore-projects), [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), [dbt Copilot in Insights](/docs/explore/access-dbt-insights), and [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) to make it easier for you to perform exploratory data analysis, leverage AI-assisted tools, make faster decisions, and collaborate across teams.
+<Constant name="insights" /> in <Constant name="dbt" /> integrates with [<Constant name="catalog" />](/docs/explore/explore-projects), [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), and [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) to make it easier for you to perform exploratory data analysis, leverage AI-assisted tools, make faster decisions, and collaborate across teams.
 
 <Lightbox src="/img/docs/dbt-insights/insights-main.gif" title="Overview of the dbt Insights and its features" />
 
@@ -45,12 +45,8 @@ Key benefits include:
 - Quickly write, run, and iterate on SQL queries with tools like syntax highlighting, tabbed editors, and query history.
 - Leverage dbt metadata, trust signals, and lineage from <Constant name="catalog" /> for informed query construction.
 - Make data accessible to users of varied technical skill levels with SQL, <Constant name="semantic_layer" /> queries, and visual tools.
-- Use dbt Copilot in Insights to generate or edit SQL queries, descriptions, and more.
 
 Some example use cases include:
 - Analysts can quickly construct queries to analyze sales performance metrics across regions and view results.
 - All users have a rich development experience powered by <Constant name="catalog" />'s end-to-end exploration experience.
 
-import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
-
-<CopilotWizardDifferences/>

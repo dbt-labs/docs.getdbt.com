@@ -8,7 +8,7 @@ dbt Copilot supports fewer providers than <Constant name="wizard" />, including 
 
 Snowflake Cortex, AWS Bedrock, Azure AI Foundry, and Anthropic aren't supported for dbt Copilot.
 
-dbt Copilot is available for inline assistance in <Constant name="studio_ide" /> and <Constant name="insights" />. Configure it separately from <Constant name="wizard" /> if your team uses these inline AI experiences.
+dbt Copilot is available for inline assistance in <Constant name="studio_ide" />. Configure it separately from <Constant name="wizard" /> if your team uses this inline AI experience.
 
 **To configure a provider:**
 
