@@ -88,16 +88,14 @@ Then each developer on the account needs to [relink their GitHub profile](#relin
 
 ### Register a GitHub application
 
-:::note One app, one GitHub server
+:::note One GitHub app per account
 
-Think of the GitHub app as a single key. Your <Constant name="dbt" /> account gets one key, and it opens one GitHub server. Every repo that uses the GitHub app clone strategy has to use that same key.
+Each <Constant name="dbt" /> account connects to a single GitHub app on a single GitHub server. All repos that use the GitHub app clone strategy must go through that app, so you can't:
 
-That means:
-- You can use the shared <Constant name="dbt" /> app or your own custom app, but not both.
-- You can't connect repos from more than one GitHub server.
-- Repo visibility (public, internal, or private) doesn't matter.
+- Use both the shared <Constant name="dbt" /> app and your own custom app
+- Connect repos from more than one GitHub server
 
-Have a repo the app can't reach? Connect it with a [git URL and deploy key](/docs/platform/git/import-a-project-by-git-url) instead.
+Repo visibility (public, internal, or private) doesn't affect this. To connect a repo the app can't reach, use a [git URL and deploy key](/docs/platform/git/import-a-project-by-git-url) instead.
 
 :::
 
