@@ -40,7 +40,7 @@ Checking is far cheaper than producing:
 - To produce a correct label, you need an LLM. To check a label is allowed, you need set membership.
 - To score accuracy, you compare against a hand-labeled answer key.
 
-Every check is exact string, set, or arithmetic logic: no LLM, no spend, no randomness. So these tests run on every pull request like any other dbt test.
+Every check is a string match, a list check, or math. It doesn't need LLM or spend so you can run these tests on every pull request like any other dbt test.
 
 ## Recommended tests
 
