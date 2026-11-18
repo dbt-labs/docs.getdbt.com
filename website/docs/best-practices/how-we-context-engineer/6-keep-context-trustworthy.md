@@ -75,7 +75,7 @@ The test reads two columns from the context model it checks: `evidence` (the quo
 Our recommendations:
 
 - **Normalize case and whitespace by default:** Trivial formatting differences shouldn't fail a build.
-- **Let a missing quote be null:** If a quote legitimately doesn't exist, null is correct, and the test shouldn't flag it. This only works if the field is optional in your schema, as covered in [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai).
+- **Let a missing quote be null:** If a quote legitimately doesn’t exist, null is correct. Set `[allow_empty: true`](https://github.com/dbt-labs/dbt-context-engineering/blob/main/macros/evaluation/grounded.sql) so the test lets it pass. This only works if the field is optional in your schema, as covered in [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai).
 - **Know its limit:** A passing test proves the quote is real. It doesn't prove the LLM read it correctly.
 
 ### Conformance
