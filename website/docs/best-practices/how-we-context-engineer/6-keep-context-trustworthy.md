@@ -108,7 +108,7 @@ Our recommendations:
 
 An evaluation test scores your predictions against a hand-labeled set of expected answers (a golden set). It reports accuracy overall, plus precision and recall for each label. Set a threshold on a metric and you have a gate: if a prompt tweak or LLM upgrade drops accuracy below the bar, the build fails.
 
-The package's `eval` macro takes a table with a predicted column and an expected column, and returns one row per metric:
+The package’s `eval` macro takes a table with a predicted column and an expected column. It returns one row per metric and label, in `metric`, `label`, and `value` columns. The overall accuracy row uses `__overall__` as its label.
 
 <File name="models/eval_metrics.sql">
 
