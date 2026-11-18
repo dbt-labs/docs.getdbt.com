@@ -81,6 +81,7 @@ The full list lives in website/release-note-areas.json.
 
 #### Studio IDE {#studio-ide-november-2026}
 
+- **Fix:** A long error popup, such as a file path from a lint warning, now wraps onto the next line so you can still see the dismiss button.
 - **Behavior change:** dbt v2 runs in <Constant name="studio_ide" /> now follow the [`threads`](/docs/running-a-dbt-project/using-threads) value in your [user credentials](/docs/dbt-platform-environments#set-user-credentials) instead of the dbt v2 default (for example, 48 on Snowflake). The same change also applies to Canvas runs. Jobs, dbt v1 runs, and editor features such as autocomplete are unchanged.
 
 #### Catalog {#catalog-november-2026}
@@ -88,15 +89,25 @@ The full list lives in website/release-note-areas.json.
 - **Enhancement:** The [**Marts**](/docs/explore/explore-projects#catalog-overview) table on the Catalog project landing page now shows 20 rows per page by default, up from 5. The page size dropdown includes a **20 Rows** option, so you move through the list with fewer page turns.
 - **Fix:** In the [Discovery API](/docs/dbt-apis/discovery-api), a model's parents used to leave out models that live in another project ([Mesh](/docs/mesh/about-mesh)). Those parent models are included now. Lineage already listed these parents.
 
+#### Orchestration and run status {#orchestration-and-run-status-november-2026}
+
+- **Fix:** When a dbt v1 run is reusing results from an earlier run, the badge now says **dbt State**. It used to say **dbt State disabled** even though reuse was on. This applies to the **v1 Compatible**, **v1 Extended**, and **v1 Latest** release tracks.
+- **Fix:** On the [**Explain** tab](/docs/deploy/dbt-state-interface#explain-tab), the banner now says that the reuse decisions and their explanations are gone once that data expires. It used to suggest those decisions were still listed.
+
 #### APIs, Identity, and Administration {#apis-identity-and-administration-november-2026}
 
 - **New:** Set an expiration date when you create a [personal access token](/docs/dbt-apis/user-tokens#set-a-token-expiration) or [service token](/docs/dbt-apis/service-tokens#set-a-token-expiration). Choose 7, 14, 30, 90, or 365 days, or keep the default of no expiry. Existing tokens that don't have an expiration set won't expire.
 - **Enhancement:** The [Assign User to Groups API](/dbt-cloud/api-v3?version=2#/operations/Assign%20User%20to%20Groups) (`POST /api/v3/accounts/{account_id}/assign-groups/`) now accepts `add_group_ids` and `remove_group_ids`. Use these fields to add a user to groups, or remove them from groups, without replacing every group they belong to. Sending `desired_group_ids` still replaces the full list.
+- **Fix:** SCIM (System for Cross-domain Identity Management) lets an identity provider, such as Okta, manage groups in dbt. Previously, when the provider removed a group’s last member, dbt returned a success response but left the member in the group. dbt now clears the group when it receives an empty member list.
+- **Fix:** If a SCIM group request fails because a member has no license or isn’t on the account, the error is now [“All users must have licenses on the account.”](/docs/platform/manage-access/scim-faq#there-is-a-all-users-must-have-licenses-on-the-account-error) The message no longer lists email addresses, which could previously include users from other accounts.
+- **Fix:** Creating an OpenAI key when the account already has one now returns 409 and the message “This account already has an OpenAI key.” Creating the same SCIM user twice at the same time also returns 409. Requests to the v1 and v2 Admin API for something that doesn’t exist, or for an account you can’t access, now return 404 (not found). These requests used to return a server error (500).
 - **Fix:** Attempting to delete a System for Cross-domain Identity Management (SCIM)-managed user while manual updates are disabled now returns HTTP 400 with an actionable message directing you to enable "[Allow manual updates](/docs/platform/manage-access/scim-faq#what-does-allow-manual-updates-mean)" in SSO and SCIM settings, rather than a generic HTTP 500 error.
 - **Fix:** An API request that is nested too deeply, too large, or missing a content type now returns a client error instead of a server error.
 - **Fix:** When an account had more than 1,000 groups, some of a user's assigned [groups](/docs/platform/manage-access/about-user-access#groups) were missing from the user details view. All assigned groups now appear checked. Saving with `POST /api/v3/accounts/{id}/assign-groups/` also keeps the full list of groups.
 - **Fix:** Creating or updating an [IP restriction](/docs/platform/secure/ip-restrictions) with a missing or invalid `type` now returns a 400 error (the request was invalid) and a message that describes the problem, instead of a 500 server error. A missing `name` is rejected with a 400 error too. Before this fix, dbt saved that missing name as the word None.
 - **Fix:** Accounts on the usage plan can now complete the upgrade to [Starter](/docs/platform/billing/plans-and-billing#starter-plan-billing) without the checkout spinning indefinitely. The purchase button stays available when a card is already on file.
+- **Behavior change:** On [Admin API v2](/dbt-cloud/api-v2#/operations/List%20Repositories) and [Admin API v3](/dbt-cloud/api-v3#/operations/List%20Repositories) of the repositories API, `full_name` and `web_url` are now taken from the repository's web address. `full_name` is deprecated. The API no longer returns a custom `full_name` you set earlier.
+- **Behavior change:** When you filter the account users list by user ID (`pk` or `pk__in`), the API now returns only members of that account. Looking up someone who isn’t a member now succeeds with an empty list instead of returning “not found,” and an empty `pk__in` list returns no one instead of every member. If you send both `pk` and `pk__in` to the [v3 account users list](/dbt-cloud/api-v3#/operations/List%20Users), the API returns only IDs that appear in both. The same applies to `GET /api/v2/users/`: if `pk` is your own ID and pk__in lists other users, you get an empty list.
 
 #### dbt v2 {#dbt-v2-november-2026}
 
@@ -135,6 +146,7 @@ The full list lives in website/release-note-areas.json.
 
 - **New:** You can now delete your Azure DevOps Microsoft Entra (Entra) application integration directly from workspace Git Integration settings using a new delete button and confirmation dialog.
 - **New:** You can now delete a GitLab custom app integration directly from the GitLab integration drawer in account settings. After confirming the deletion, the drawer closes and a confirmation banner appears.
+- **Enhancement:** On the environment settings page, the delete button now says **Delete environment**. The old label was **Delete**, which made it easier to remove the wrong thing.
 - **Enhancement:** The rollback version section in Account Settings now uses "dbt v2" instead of "Fusion" in all section headers, modal titles, button labels, and descriptive copy.
 - **Enhancement:** The "Preview" badge no longer appears next to dbt v2 Stable in job and environment version settings or the upgrade checklist for Databricks projects.
 - **Fix:** Model name search in the run step structured logs view is now case-insensitive and trims surrounding whitespace, so a search for `my_model` matches `My_Model`. Changing the search term also resets pagination to the first page, fixing an issue where narrowing results on a later page showed an empty list with no "No models found" message.
