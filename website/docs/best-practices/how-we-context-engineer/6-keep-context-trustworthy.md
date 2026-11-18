@@ -66,6 +66,7 @@ models:
           - dbt_context_engineering.grounded:
               arguments:
                 source_text_column: chunk_text
+                allow_empty: true  # lets a null quote pass
 ```
 
 </File>
