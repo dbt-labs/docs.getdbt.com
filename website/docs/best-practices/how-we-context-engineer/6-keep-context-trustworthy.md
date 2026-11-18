@@ -89,7 +89,10 @@ You write it as a one-line singular test, a SQL file in your `tests/` folder tha
 
 ```sql
 {{ dbt_context_engineering.conforms_to_schema(
-    ref('call_transcripts_classify'), 'content_type', 'jaffle_content_type', 'v1'
+    relation=ref('call_transcripts_classify'),
+    column='content_type',
+    schema_name='jaffle_content_type',
+    schema_version='v1'
 ) }}
 ```
 
