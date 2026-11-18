@@ -100,7 +100,7 @@ You write it as a one-line singular test, a SQL file in your `tests/` folder tha
 
 Our recommendations:
 
-- **Test a flattened scalar:** Pull the field out of the structured result first, as described in [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) <Lifecycle status="beta" />. Then the test reads the same plain value on every engine.
+- **Test a flattened scalar:** Pull the field out of the structured result with `field()` <Lifecycle status="beta" /> before you test it, as described in [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai?version=2#extract). Then the test reads the same plain value on every engine.
 - **Read the allowed values from the schema:** Don't copy the label list into the test. One definition, many uses.
 - **Keep it a singular test:** Looking up a versioned schema by name can't be done in a generic test. Write down why, so the next person doesn't "tidy" it into a generic test and quietly break it.
 
