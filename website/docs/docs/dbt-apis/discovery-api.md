@@ -23,7 +23,7 @@ You can access the Discovery API through [ad hoc queries](/docs/dbt-apis/discove
 
 You can query the <Constant name="dbt" /> metadata:
 
-- At the [environment](/docs/environments-in-dbt) level for both the latest state (use the `environment` endpoint) and historical run results (use `modelHistoricalRuns`) of a <Constant name="dbt" /> project in production.
+- At the [environment](/docs/environments-in-dbt) level for both the latest state (use the `environment` endpoint) and historical run results (use `modelHistoricalRuns`) of a <Constant name="dbt" /> project in production. The latest applied state is the `applied` field. Refer to [Types of project state](#types-of-project-state).
 - At the job level for results on a specific <Constant name="dbt" /> job run for a given resource type, like `models` or `test`.
 
 <Snippet path="metadata-api-prerequisites" />
@@ -88,7 +88,9 @@ Use the API to review dataset changes and uses by examining exposures, lineage, 
 You can query these two types of [project state](/docs/dbt-apis/project-state) at the environment level:
 
 - **Definition** &mdash; The logical state of a dbt project’s [resources](/docs/build/projects) that update when the project is changed.
-- **Applied** &mdash; The output of successful dbt DAG execution that creates or describes the state of the database (for example: `dbt run`, `dbt test`, source freshness, and so on)
+- **Applied** &mdash; The output of successful dbt DAG execution that creates or describes the state of the database (for example: `dbt run`, `dbt test`, source freshness, and so on). In the Discovery API, this is the `applied` field on `environment`.
+
+[Deploy jobs](/docs/deploy/deploy-jobs) and [merge jobs](/docs/deploy/merge-jobs) update the applied state. A deploy job can run on a schedule or when you start it. A [CI job](/docs/deploy/ci-jobs) can succeed without updating that state, so the latest applied state stays on the last deploy or merge run. A successful CI run is not proof of what is applied in the environment. <Constant name="catalog" /> shows this same applied state.
 
 These states allow you to easily examine the difference between a model’s definition and its applied state so you can get answers to questions like, did the model run? or did the run fail? Applied models exist as a table/view in the data platform given their most recent successful run.
 
