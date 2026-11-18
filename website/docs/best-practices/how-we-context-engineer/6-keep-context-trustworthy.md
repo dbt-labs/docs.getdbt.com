@@ -172,7 +172,7 @@ Two granularities matter, and you need both:
 - **Row-level lineage** says _where_ a fact came from. It doesn't prove the fact is in that row, because an LLM can cite the right ticket and still invent the detail.
 - **Span-level evidence** says _what in the row_ supports it. Because it's literal text, you can machine-check it, which is what makes the groundedness test possible.
 
-Design lineage in on day one, because it can't be rebuilt later. Once a chunk forgets which sentences it packed, no later step can recover that. The cost is small: a few extra columns and an evidence field.
+Build lineage in on day one, because you can’t add it back later. Once a chunk loses its source rows, nothing downstream can recover them. It costs only a few extra columns and an evidence field.
 
 ## Adapter notes
 
