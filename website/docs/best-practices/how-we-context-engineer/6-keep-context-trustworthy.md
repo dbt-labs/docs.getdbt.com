@@ -154,10 +154,10 @@ Our core rule: **every piece of context carries enough identity, at every stage,
 
 | Stage | What carries lineage |
 |-------|----------------------|
-| Chunking | The ids of the source rows packed into each chunk |
+| Chunking | The ID of the source rows packed into each chunk |
 | Extraction | A required-or-optional `evidence` field with the verbatim quote |
 | Knowledge base | The source type and source id on every row |
-| Retrieval | Those ids carried into every result |
+| Retrieval | Those ID carried into every result |
 
 </SimpleTable>
 
