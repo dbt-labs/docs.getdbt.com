@@ -173,8 +173,27 @@ The app uses the same config as the CLI, so the skills, subagents, and MCP serve
 
 - [Skills](/docs/dbt-ai/wizard-skills)
 - [Subagents](/docs/dbt-ai/wizard-subagents)
-- [MCP servers](/docs/dbt-ai/wizard-mcp)
+- [MCP servers](#connect-mcp-servers)
 - [Config files](/docs/dbt-ai/wizard-config)
+
+## Connect MCP servers
+
+MCP servers give <Constant name="wizard" /> more tools and context, such as your orchestrator, BI tool, or GitHub. Adding them directly from the **Connectors** page in **Settings** is coming soon. Until then, set them up through the <Constant name="wizard" /> CLI and use them in Desktop right away, because both share the same config.
+
+To add a server:
+
+1. [Install the <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli?version=2#install-and-set-up-dbt-wizard-cli).
+2. Add a server with `wizard mcp add`. Refer to [Add an MCP server](/docs/dbt-ai/wizard-mcp#add-an-mcp-server).
+3. If the server uses OAuth, run `wizard mcp login SERVER_NAME`. Refer to [Authenticate a server](/docs/dbt-ai/wizard-mcp#authenticate-a-server).
+4. Open <Constant name="wizard" /> Desktop and start a new chat. <Constant name="wizard" /> loads MCP servers at the start of a session.
+
+You can also run the same commands directly in Desktop's built-in terminal:
+
+1. Start a new project-scoped chat and send your first message to start the terminal.
+2. To add a server, run `wizard mcp add`. Refer to [Add an MCP server](/docs/dbt-ai/wizard-mcp#add-an-mcp-server).
+3. To see servers you already added, run `wizard`, then run `/mcp`.
+
+For server types, config keys, and examples, refer to [Use MCP servers](/docs/dbt-ai/wizard-mcp).
 
 ## Chats and worktrees
 

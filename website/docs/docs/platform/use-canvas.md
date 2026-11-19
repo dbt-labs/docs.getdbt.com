@@ -4,7 +4,7 @@ id: use-canvas
 sidebar_label: "Edit and create dbt models" 
 description: "Access and use Canvas to create or edit dbt models through a visual, drag-and-drop experience inside of dbt." 
 pagination_prev: "docs/platform/canvas-interface"
-pagination_next: "docs/platform/build-canvas-copilot"
+pagination_next: null
 image: /img/docs/dbt-platform/canvas/canvas.png
 availability:
   surface: platform

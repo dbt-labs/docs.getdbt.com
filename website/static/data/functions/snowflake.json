@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "snowflake",
     "platform_name": "Snowflake",
-    "count": 1230
+    "count": 1231
   },
   "functions": [
     {
@@ -3117,6 +3117,13 @@
       "name": "BUILD_STAGE_FILE_URL",
       "category": "File",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/build_stage_file_url",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "FL_FILTER_PAGES",
+      "category": "File",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/fl_filter_pages",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
