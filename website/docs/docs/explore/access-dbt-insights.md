@@ -10,7 +10,11 @@ availability:
   minPlan: enterprise
 ---
 
-# Access the dbt Insights interface
+import InsightsLifecycle from '/snippets/_insights-lifecycle.md';
+
+# Access the dbt Insights interface <Lifecycle status="eol" />
+
+<InsightsLifecycle/>
 
 <IntroText>
 Learn how to access <Constant name="insights" />, run queries, and view results.
