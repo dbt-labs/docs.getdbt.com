@@ -25,7 +25,7 @@ Lake Compute supports two execution models:
 Adopt completely by running all of your models on Lake Compute.
 
 
-Some workloads, such as those that use warehouse-native AI functions, may still belong on your primary warehouse. Refer to [Public preview limitations](#private-beta-limitations) for what Lake Compute doesn't support yet.
+Some workloads, such as those that use warehouse-native AI functions, may still belong on your primary warehouse. Refer to [Public preview limitations](#public-preview-limitations) for what Lake Compute doesn't support yet.
 
 ## Why use Lake Compute
 
