@@ -69,6 +69,10 @@ Release notes are grouped by date for single-tenant environments.
 
 ### New
 
+#### dbt AI and agents
+
+- **dbt Wizard queries metrics**: In the <Constant name="studio_ide" />, <Constant name="wizard" /> Desktop, and the Wizard CLI, <Constant name="wizard" /> uses [MetricFlow](/docs/build/about-metricflow) to build the SQL for a metric from the metric definition, including its filters. In the <Constant name="wizard" /> CLI and Wizard Desktop, it runs that SQL in your warehouse. The SQL is written in that warehouse's syntax on Snowflake, BigQuery, Redshift, Databricks, and DuckDB. On other warehouses, such as Postgres, the SQL is written for DuckDB and may not run unchanged. Refer to [How dbt Wizard queries metrics](/docs/dbt-ai/wizard-how-it-works#how-dbt-wizard-queries-metrics) for more information.
+
 #### dbt platform
 
 - **Delete Azure DevOps Microsoft Entra application integration**: You can now delete your Azure DevOps Microsoft Entra (Entra) application integration directly from workspace Git Integration settings using a new delete button and confirmation dialog.
@@ -80,8 +84,6 @@ Release notes are grouped by date for single-tenant environments.
 - **BigQuery query reservation configuration**: You can now configure BigQuery query reservations at the model and connection levels.
 
 - **Single Sign-On authentication with `DBT_CLOUD_LOGIN_HOST`**: Two new environment variables, `DBT_CLOUD_LOGIN_HOST` and `DBT_CLOUD_LOGIN_ACCOUNT_ID`, let `dbt login` authenticate through an account host's `/oauth/authorize` endpoint instead of the registration page, enabling Single Sign-On (SSO) accounts that cannot route through the registration page.
-
-- **Metrics tool can show SQL without running it**: The metrics tool can show the SQL for a metric without running it. The SQL matches your warehouse instead of always using DuckDB.
 
 ### Enhancements
 

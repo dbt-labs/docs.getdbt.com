@@ -63,6 +63,7 @@ The full list lives in website/release-note-areas.json.
 ##### Wizard
 
 - **New:** <Constant name="wizard" /> chats in the home tab and <Constant name="studio_ide" /> now run in the background. Switch tabs, close the page, or walk away, and <Constant name="wizard" /> keeps working. Reopen the chat from your chat history to see the result. Each chat shows a status badge (running, waiting for input, done, or failed), and you can run several chats at once in Explore and Developer modes. Rolling out gradually; not yet available on single-tenant deployments. Refer to [Background chats](/docs/platform/wizard-home#background-chats).
+- **New:** In the <Constant name="studio_ide" />, <Constant name="wizard" /> Desktop, and the Wizard CLI, <Constant name="wizard" /> uses [MetricFlow](/docs/build/about-metricflow) to build the SQL for a metric from the metric definition, including its filters. In the <Constant name="wizard" /> CLI and Wizard Desktop, it runs that SQL in your warehouse. The SQL is written in that warehouse's syntax on Snowflake, BigQuery, Redshift, Databricks, and DuckDB. On other warehouses, such as Postgres, the SQL is written for DuckDB and may not run unchanged. Refer to [How dbt Wizard queries metrics](/docs/dbt-ai/wizard-how-it-works#how-dbt-wizard-queries-metrics).
 - **New:** Use Claude Haiku 5.5 and Claude Sonnet 5.5 through Databricks in <Constant name="wizard" />.
 - **New:** <Constant name="wizard" /> now automatically switches to AWS Bedrock if an AI model provider (OpenAI, Anthropic, or Fireworks) has an outage, so you can keep working. Available for <Constant name="dbt_platform" /> accounts hosted on AWS that use dbt <Term id="managed" /> models. Learn more about [automatic backup during outages](/docs/dbt-ai/pricing-billing/overview#automatic-backup-during-outages).
 - **Enhancement:** In the full-screen <Constant name="wizard" />, you can resize the conversation sidebar, collapse it with **Hide conversations**, and reopen it with **Show conversations**. Hover over a truncated chat title to see the full title. Older chats now load as you scroll, without reloading the whole list.
@@ -117,7 +118,6 @@ The full list lives in website/release-note-areas.json.
 
 - **New:** You can now configure BigQuery query reservations at the model and connection levels.
 - **New:** Two new environment variables, `DBT_CLOUD_LOGIN_HOST` and `DBT_CLOUD_LOGIN_ACCOUNT_ID`, let `dbt login` authenticate through an account host's `/oauth/authorize` endpoint instead of the registration page, enabling single sign-on (SSO) accounts that cannot route through the registration page.
-- **New:** The metrics tool can show the SQL for a metric without running it. The SQL matches your warehouse instead of always using DuckDB.
 - **Fix:** Snowflake seeds now honor the `transient` config instead of silently creating a permanent table.
 - **Fix:** Comparing changes in [Advanced CI](/docs/deploy/advanced-ci) no longer fails when a Snowflake table has a vector column.
 - **Fix:** Snowflake private keys saved with Windows line endings now decode correctly.
