@@ -15,7 +15,7 @@ To request access, fill out the [Lake Compute signup form](https://docs.google.c
 
 This page sets up a BigQuery project on Lake Compute. You create:
 
-- A managed data lake destination in Google Cloud Storage (GCS)
+- A managed data lake destination in Google Cloud Storage (GCS), in a Google Cloud Platform (GCP) project
 - A BigLake connection, so BigQuery can read the Iceberg metadata that Lake Compute writes
 - A dbt project where selected models run on Lake Compute and the rest stay on BigQuery
 
@@ -30,7 +30,7 @@ Set `REGION` to the region of the destination bucket, for example `us-east4`. Ev
 
 ### 1. A managed data lake destination with Lake Compute enabled
 
-Open an existing GCP managed data lake destination, or create one by following Fivetran's Managed Data Lake Service setup guide for GCS:
+Open an existing GCP managed data lake destination, or create one by following the [Managed Data Lake Service setup guide](https://fivetran.com/docs/managed-data-lake-service/setup-guide) for GCS on Fivetran's docs site:
 
 1. Add a destination in Fivetran and note the Fivetran service account it shows.
 2. Create the bucket and grant that service account access to it.
@@ -269,7 +269,7 @@ When the profile declares a `lakecompute` output, `dbt debug` runs these checks:
 
 - A connection test per output
 - A catalog attach check
-- A write and read-back probe against MDLS in the configured `database` and `schema`
+- A write and read-back probe against Fivetran Managed Data Lake Service (MDLS) in the configured `database` and `schema`
 - A BigQuery publication probe that writes a probe table, publishes it, and reads it back. dbt removes the probes afterward.
 
 On a passing run, the end of the output reads:
@@ -317,7 +317,7 @@ Seeds load into BigQuery through the default output. A seed can't be the direct 
 | `412: '604800' violates constraint 'constraints/storage.softDeletePolicySeconds'` | An organization policy caps the soft delete retention. | Add `--soft-delete-duration=0` to `gcloud storage buckets create`. |
 | `dbt debug` write test passes and the read-back fails | `database` or `schema` is missing, or resolves differently for the two outputs, so the write and the probe land in different namespaces. | Set both on the `lakecompute` output. |
 
-## Clean up
+## Cleaning up
 
 Remove the trial model's tables from the dataset the profile writes to:
 

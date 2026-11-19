@@ -46,7 +46,7 @@ After you complete setup, you need a dbt project running on **dbt v2**. You also
 
 ### Supported warehouses
 
-Snowflake and BigQuery are supported during private beta. Refer to [Lake Compute with Snowflake](/docs/lake-compute/compute-onboarding-snowflake) and [Lake Compute with BigQuery](/docs/lake-compute/compute-onboarding-bigquery) for setup. Early Databricks support is available to a limited number of design partners. To evaluate Lake Compute with Databricks, fill out the [Lake Compute signup form](https://docs.google.com/forms/d/e/1FAIpQLSdWXHU3VFqq1t8GVAA2BMfY_AfeVJH26OXJFlNwXiVv4pcuXQ/viewform) and name Databricks as your platform.
+Snowflake, BigQuery, and Databricks are supported during private beta. Refer to [Lake Compute with Snowflake](/docs/lake-compute/compute-onboarding-snowflake), [Lake Compute with BigQuery](/docs/lake-compute/compute-onboarding-bigquery), and [Lake Compute with Databricks](/docs/lake-compute/compute-onboarding-databricks) for setup. Databricks support covers AWS workspaces with Unity Catalog.
 
 In "sidecar" execution, Lake Compute runs alongside your warehouse, reading from and writing/propagating back to the warehouse’s managed Iceberg catalog (Snowflake Horizon or Databricks Unity) or, for BigQuery, publishing results to BigQuery as Iceberg tables through a BigLake connection.
 
@@ -125,4 +125,5 @@ Not yet supported:
 - [Lake Compute setup](/docs/lake-compute/compute-onboarding)
 - [Lake Compute with Snowflake](/docs/lake-compute/compute-onboarding-snowflake)
 - [Lake Compute with BigQuery](/docs/lake-compute/compute-onboarding-bigquery)
+- [Lake Compute with Databricks](/docs/lake-compute/compute-onboarding-databricks)
 - [Lake Compute FAQs](/docs/lake-compute/compute-faq)

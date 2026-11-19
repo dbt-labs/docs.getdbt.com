@@ -146,3 +146,4 @@ Start with the team that owns the component where the failure occurs:
 - [Lake Compute setup](/docs/lake-compute/compute-onboarding)
 - [Lake Compute with Snowflake](/docs/lake-compute/compute-onboarding-snowflake)
 - [Lake Compute with BigQuery](/docs/lake-compute/compute-onboarding-bigquery)
+- [Lake Compute with Databricks](/docs/lake-compute/compute-onboarding-databricks)

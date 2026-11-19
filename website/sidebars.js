@@ -1006,8 +1006,16 @@ const sidebarSettings = {
     },
     "docs/lake-compute/lake-compute",
     "docs/lake-compute/compute-onboarding",
-    "docs/lake-compute/compute-onboarding-snowflake",
-    "docs/lake-compute/compute-onboarding-bigquery",
+    {
+      type: "category",
+      label: "Warehouse configurations",
+      collapsed: true,
+      items: [
+        "docs/lake-compute/compute-onboarding-snowflake",
+        "docs/lake-compute/compute-onboarding-bigquery",
+        "docs/lake-compute/compute-onboarding-databricks",
+      ],
+    },
     "docs/lake-compute/lake-compute-migration",
     "docs/lake-compute/compute-faq",
     {

@@ -22,13 +22,14 @@ You can use Lake Compute in one of two ways:
 - **As a "sidecar" for an existing data warehouse:** Lake Compute runs selected models and publishes the results back to the warehouse, which stays your default adapter. Complete [Set up MDLS](#set-up-mdls) and [Opt in to multi-adapter invocations](#opt-in-to-multi-adapter-invocations) on this page, then follow the warehouse-specific page:
   - [Lake Compute with Snowflake](/docs/lake-compute/compute-onboarding-snowflake)
   - [Lake Compute with BigQuery](/docs/lake-compute/compute-onboarding-bigquery)
+  - [Lake Compute with Databricks](/docs/lake-compute/compute-onboarding-databricks)
 
 ## Set up MDLS
 
 MDLS is Fivetran's managed data lake product, including a hosted Iceberg catalog and compute service (Lake Compute). To start using Lake Compute, you need a Fivetran account and an MDLS instance.
 
 :::info BigQuery uses a GCS destination
-The steps below create an MDLS destination on AWS S3, which is what Lake Compute with Snowflake and Lake Compute as the only adapter use. For BigQuery, create the destination on Google Cloud Storage (GCS) instead, as described in [Lake Compute with BigQuery](/docs/lake-compute/compute-onboarding-bigquery#before-you-start).
+The steps below create an MDLS destination on AWS S3, which is what Lake Compute with Snowflake, Lake Compute with Databricks, and Lake Compute as the only adapter use. For BigQuery, create the destination on Google Cloud Storage (GCS) instead, as described in [Lake Compute with BigQuery](/docs/lake-compute/compute-onboarding-bigquery#before-you-start).
 :::
 
 ### 1. Create a Fivetran account (if you don't already have one)
@@ -55,9 +56,38 @@ On the destination page for your MDLS instance, go to the **Compute** tab and tu
 
 <Lightbox src="/img/docs/lake-compute/enable-lake-compute.png" title="Enable Lake Compute" width="80%" />
 
-Then generate a token (user-scoped or service account). Save this token in a password manager, because you need it for your dbt connection profile.
+Then generate a token (user-scoped or service account). The token starts with `dct_`, and Fivetran shows it only once. Save this token in a password manager, because you need it for your dbt connection profile.
 
 <Lightbox src="/img/docs/lake-compute/generate-token.png" title="Generate a Lake Compute token" width="80%" />
+
+Put the token in the environment rather than in your profile:
+
+```bash
+export LAKE_COMPUTE_TOKEN=dct_...
+```
+
+### 4. Point at a non-production deployment (if needed) {#non-production-deployment}
+
+Production needs no host configuration. `method: fivetran` exchanges your `dct_` token against Fivetran's public API, and the compute service defaults to `https://api.lake-compute.fivetran.com/`.
+
+If your token came from a non-production deployment, a production default rejects it with a `401` or `token exchange failed` on the first run. Set both endpoints to that deployment on the `lakecompute` output. Unlike production, that host isn't discoverable from the product, so take it from whoever runs the deployment. The values below are examples.
+
+```yaml
+# A Fivetran token exchanged against a non-production API and host
+- type: lakecompute
+  method: fivetran
+  base_url: https://api.dbt-compute.staging.fivetran.com/
+  fivetran_auth_url: https://api-staging.fivetran.com/
+  fivetran_credential: "{{ env_var('LAKE_COMPUTE_TOKEN') }}"
+
+# A token that the compute host issues directly, sent as-is
+- type: lakecompute
+  method: token
+  base_url: http://localhost:8080
+  token: "{{ env_var('LAKE_COMPUTE_TOKEN') }}"
+```
+
+Add `database` and `schema` to either variant, as described on the page for your warehouse.
 
 ## Opt in to multi-adapter invocations
 
@@ -148,4 +178,5 @@ This differs from running locally, where you set both `DBT_ENGINE_EXPERIMENTAL_M
 
 - [Lake Compute with Snowflake](/docs/lake-compute/compute-onboarding-snowflake)
 - [Lake Compute with BigQuery](/docs/lake-compute/compute-onboarding-bigquery)
+- [Lake Compute with Databricks](/docs/lake-compute/compute-onboarding-databricks)
 - [Lake Compute FAQs](/docs/lake-compute/compute-faq)
