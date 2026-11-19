@@ -12,7 +12,7 @@ availability: platform_usage
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
 import WizardTrialBilling from '/snippets/_wizard-trial-billing.md';
-import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
+import WizardVideoCourse from '/snippets/_wizard-video-course.md';
 
 # About dbt Wizard in dbt platform <Lifecycle status="preview" />
 
@@ -67,6 +67,7 @@ Most of the workflows in [How to use dbt Wizard in your dbt project](/best-pract
    - `add not_null and unique tests to the primary key of stg_customers`
 4. ..and that's it 🎉!
 
+
 <DocCarousel slidesPerView={1}>
 
 <Lightbox src="/img/docs/dbt-platform/wizard-ide-refactor-lineage.png" width="85%" title="dbt Wizard in the Studio IDE refactoring a model and displaying the lineage inside the chat interface."/>
@@ -78,6 +79,8 @@ Most of the workflows in [How to use dbt Wizard in your dbt project](/best-pract
 For more prompt ideas, refer to the [prompt cookbook](/guides/prompt-cookbook).
 
 If <Constant name="wizard" /> isn't available, confirm that your plan is eligible and that an admin has [enabled account access to AI features](/docs/platform/manage-dbt-ai#manage-ai-features).
+
+<WizardVideoCourse />
 
 ## Trial and usage credits
 
@@ -93,14 +96,7 @@ To choose a provider or bring your own key, refer to [Manage AI features](/docs/
 
 <Constant name="dbt_platform" /> also has AI features that work separately from <Constant name="wizard" />:
 
-- [dbt Copilot](/docs/dbt-ai/copilot-overview) generates SQL, documentation, tests, and semantic models in one click in <Constant name="studio_ide" />, <Constant name="canvas" />, and <Constant name="insights" />.
-- The [dbt Support Assistant](/docs/dbt-support?version=2#ask-dbt-support-assistant) answers product questions and helps you open a ticket. Contact the [dbt Support team](mailto:support@getdbt.com) for more info.
-
-<Expandable alt_header="What's the difference between dbt Wizard and dbt Copilot?">
-
-<CopilotWizardDifferences />
-
-</Expandable>
+The [dbt Support Assistant](/docs/dbt-support?version=2#ask-dbt-support-assistant) answers product questions and helps you open a ticket. Contact the [dbt Support team](mailto:support@getdbt.com) for more info.
 
 ## Related docs
 

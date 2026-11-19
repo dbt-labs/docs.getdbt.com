@@ -76,6 +76,10 @@ https://gitlab.com/<org>/<repo>/-/merge_requests/new?merge_request[source_branch
 https://bitbucket.org/<org>/<repo>/pull-requests/new?source={{source}}&dest={{destination}}
 ```
 
+:::note PR URL auto-populates
+The PR template stays as an `https://bitbucket.org/...` link even if your clone URL uses `ssh.bitbucket.org`. This is because dbt auto-populates it for [Bitbucket Git clone](/docs/platform/git/import-a-project-by-git-url#bitbucket) connections.
+:::
+
 If you're using BitBucket Server or Data Center your template may look something like:
 
 ```

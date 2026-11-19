@@ -67,11 +67,11 @@ You can connect your <Constant name="dbt" /> account to GitHub by installing the
 8. Ask your team members to individually authenticate by connecting their [personal GitHub profiles](#authenticate-your-personal-github-account).
 
 ## Limiting repository access in GitHub
+
 If you are your GitHub organization owner, you can also configure the <Constant name="dbt" /> GitHub application to have access to only select repositories. This configuration must be done in GitHub, but we provide an easy link in <Constant name="dbt" /> to start this process.
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/connecting-github/configure-github.png" title="Configuring the dbt app"/>
 
 ## Custom GitHub application <Lifecycle status="managed,managed_plus,private_beta" /> {#custom-github-application}
-
 
 :::info Available in private beta
 Configuring a custom GitHub app is available in private beta. To join, reach out to your account manager.
@@ -88,9 +88,20 @@ Then each developer on the account needs to [relink their GitHub profile](#relin
 
 ### Register a GitHub application
 
+:::note Use the same GitHub app for all repos
+
+All repos that use the GitHub app clone strategy must use the same GitHub app, on the same GitHub server. Each <Constant name="dbt" /> account supports only one, so you can't:
+
+- Use both the shared <Constant name="dbt" /> app and your own custom app
+- Connect repos from more than one GitHub server
+
+Repo visibility (public, internal, or private) doesn't affect this. To connect a repo that the app can't reach, use a [git URL and deploy key](/docs/platform/git/import-a-project-by-git-url) instead.
+
+:::
+
 We recommend creating the app in your GitHub organization instead of a personal account to ensure the connection doesn't break should a person leave. For the full walkthrough on the GitHub side, check out GitHub's guide to [registering a GitHub App](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app).
 
-1. In <Constant name="dbt" />, go to **Account settings** > **Integrations** > **Git** and expand the **GitHub** section. Select **Copy** next to **Redirect URL** &mdash; you need it in the next step. Leave this page open.
+1. In <Constant name="dbt" />, go to **Account settings** > **Integrations** > **Git** and expand the **GitHub** section. Select **Copy** next to **Redirect URL** &mdash; you need it in the next step.
 2. In your GitHub organization, go to **Settings** > **Developer settings** > **GitHub Apps** and select **New GitHub App**.
 3. Enter the following:
     <SimpleTable>
@@ -99,7 +110,7 @@ We recommend creating the app in your GitHub organization instead of a personal 
     | **GitHub App name** | Something recognizable, such as `dbt platform` |
     | **Homepage URL** | Your <Constant name="dbt" /> [access URL](/docs/platform/about-platform/access-regions-ip-addresses) |
     | **Redirect URL** | The **Redirect URL** you copied from <Constant name="dbt" /> |
-    | **Webhook** | Leave **Active** selected |
+    | **Webhook** | Leave **Active** selected and enter any placeholder URL (such as https://example.com) in the **Webhook URL** field.  dbt doesn't use it but GitHub requires it |
     </SimpleTable>
 4. Grant the app these repository permissions:
 

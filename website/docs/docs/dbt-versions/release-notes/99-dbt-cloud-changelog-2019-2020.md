@@ -18,7 +18,7 @@ Welcome to the 2019 and 2020 changelog for the <Constant name="dbt" /> applicati
 ## dbt Cloud v1.1.16 (December 23, 2020)
 
 This release adds preview support for Databricks Spark in <Constant name="dbt" />
-and adds two new permission sets for Enterprise acccounts.
+and adds two new permission sets for Enterprise accounts.
 
 #### Enhancements
 
@@ -71,7 +71,7 @@ This release adds a few new pieces of connective tissue, notably OAuth for BigQu
 
 ## dbt Cloud v1.1.13 (November 12, 2020)
 
-This release adds support for triggering runs with overriden attributes via the
+This release adds support for triggering runs with overridden attributes via the
 [triggerRun](/dbt-cloud/api-v2#) API endpoint. Additionally,
 a number of bugs have been squashed and performance improvements have been made.
 
@@ -79,7 +79,7 @@ a number of bugs have been squashed and performance improvements have been made.
 
 - Improve error handling for long-running queries in the <Constant name="studio_ide" />
 - Use S3 client caching to improve log download speed for scheduled runs
-- Support triggering jobs [with overriden attributes from the API](/dbt-cloud/api-v2#)
+- Support triggering jobs [with overridden attributes from the API](/dbt-cloud/api-v2#)
 - Clarify "upgrade" copy on the billing page
 
 #### Fixed

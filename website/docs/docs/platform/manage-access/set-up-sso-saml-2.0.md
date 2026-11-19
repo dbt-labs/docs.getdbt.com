@@ -486,7 +486,7 @@ To complete setup, follow the steps below in <Constant name="dbt" />:
         title="Configuring the application in dbt" />
 
 4. Click **Save** to complete setup for the SAML 2.0 integration.
-5. After completing the setup, you can navigate to the URL generated for your account's _slug_ to test logging in with your identity provider. Additionally, users added the the SAML 2.0 app will be able to log in to <Constant name="dbt" /> from the IdP directly.
+5. After completing the setup, you can navigate to the URL generated for your account's _slug_ to test logging in with your identity provider. Additionally, users added the SAML 2.0 app will be able to log in to <Constant name="dbt" /> from the IdP directly.
 
 ### Additional configuration options
 

@@ -1,7 +1,7 @@
 ---
-title: "Use MCP servers with the dbt Wizard CLI"
+title: "Use MCP servers with the dbt Wizard CLI and Desktop"
 id: "wizard-mcp"
-description: "Connect the dbt Wizard CLI to MCP servers to give it more tools and context."
+description: "Set up MCP servers in the dbt Wizard CLI, then use them in Wizard Desktop to give it more tools and context."
 sidebar_label: "Use MCP servers"
 tags: [AI, Wizard]
 availability: local_all
@@ -9,10 +9,12 @@ availability: local_all
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 
-# Use MCP servers with the <Constant name="wizard"/> CLI <Lifecycle status="beta"/>
+# Use MCP servers with the <Constant name="wizard"/> CLI and Desktop <Lifecycle status="beta"/>
 
 <IntroText>
 The Model Context Protocol (MCP) connects <Constant name="wizard" /> to external tools and context. Add an MCP server and <Constant name="wizard"/> can call its tools mid-session &mdash; query the dbt MCP server for governed project metadata, open a pull request through the GitHub MCP server, or pull in any other MCP-compatible service.
+
+Set servers up in the <Constant name="wizard" /> CLI, then use them in <Constant name="wizard" /> Desktop.
 </IntroText>
 
 <WizardFeedbackCallout />
@@ -49,8 +51,10 @@ Avoid defining the same MCP server name in more than one location unless you int
 
 The <Constant name="wizard"/> CLI lets you add, remove, authenticate, and customize MCP servers, including per-tool approvals, through the `config.toml` file.
 
-:::info MCP servers are a CLI feature
-You can configure MCP servers only in the <Constant name="wizard" /> CLI. You can't add your own MCP servers in <Constant name="dbt_platform" /> (<Constant name="studio_ide" /> and the home app), but <Constant name="wizard" /> includes built-in dbt tools, such as [dbt Agent skills](https://github.com/dbt-labs/dbt-agent-skills) and product documentation fetching through the dbt MCP server.
+:::info Add MCP servers from the CLI
+You add MCP servers through the <Constant name="wizard" /> CLI, which <Constant name="wizard" /> Desktop shares. Adding servers from the **Connectors** page in Desktop **Settings** is coming soon. Until then, refer to [Connect MCP servers](/docs/dbt-ai/wizard-desktop-use#connect-mcp-servers) for the Desktop steps.
+
+You can't add your own MCP servers in <Constant name="dbt_platform" /> (<Constant name="studio_ide" /> and the home app), but <Constant name="wizard" /> includes built-in dbt tools, such as [dbt Agent skills](https://github.com/dbt-labs/dbt-agent-skills) and product documentation fetching through the dbt MCP server.
 :::
 
 ## Supported MCP server types
@@ -302,3 +306,4 @@ new columns and confirm downstream refs still resolve.
 - [<Constant name="wizard" /> CLI config](/docs/dbt-ai/wizard-config): `config.toml` keys and precedence
 - [<Constant name="wizard" /> CLI command reference](/docs/dbt-ai/wizard-cli-reference): `wizard mcp` flags and subcommands
 - [How <Constant name="wizard" /> works](/docs/dbt-ai/wizard-how-it-works): Approvals and sandboxing
+- [Connect MCP servers in Wizard Desktop](/docs/dbt-ai/wizard-desktop-use#connect-mcp-servers): Use your servers in Desktop

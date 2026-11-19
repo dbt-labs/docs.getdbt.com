@@ -25,7 +25,7 @@ When a <Constant name="dbt" /> job finishes running, the integration will:
  - Post a brief summary of the run to a Slack channel
  - Create a threaded message attached to that post which contains any reasons that the job failed
 
-![Screenshot of a message in Slack showing a summary of a <Constant name="dbt" /> run which failed](/img/guides/orchestration/webhooks/zapier-slack/slack-thread-example.png)
+<Lightbox src="/img/guides/orchestration/webhooks/zapier-slack/slack-thread-example.png" title="Screenshot of a message in Slack showing a summary of a dbt run which failed" />
 
 ### Prerequisites
 
@@ -37,7 +37,7 @@ In order to set up the integration, you should have familiarity with:
 1. Use **Webhooks by Zapier** as the Trigger, and **Catch Raw Hook** as the Event. If you don't intend to [validate the authenticity of your webhook](/docs/deploy/webhooks#validate-a-webhook) (not recommended!) then you can choose **Catch Hook** instead. 
 2. Click **Continue**, then copy the webhook URL. 
 
-![Screenshot of the Zapier UI, showing the webhook URL ready to be copied](/img/guides/orchestration/webhooks/zapier-common/catch-raw-hook.png)
+<Lightbox src="/img/guides/orchestration/webhooks/zapier-common/catch-raw-hook.png" title="Screenshot of the Zapier UI, showing the webhook URL ready to be copied" />
 
 ## Configure a new webhook in dbt
 See [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subscription) for full instructions. Choose **Run completed** as the Event. You can alternatively choose **Run errored**, but you will need to account for the fact that the necessary metadata [might not be available immediately](/docs/deploy/webhooks#completed-errored-event-difference). 
@@ -61,7 +61,7 @@ Select **Code by Zapier** as the App, and **Run Python** as the Event.
 
 In the **Set up action** section, add two items to **Input Data**: `raw_body` and `auth_header`. Map those to the `1. Raw Body` and `1. Headers Http Authorization` fields from the previous **Catch Raw Hook** step.
 
-![Screenshot of the Zapier UI, showing the mappings of raw_body and auth_header](/img/guides/orchestration/webhooks/zapier-common/run-python.png)
+<Lightbox src="/img/guides/orchestration/webhooks/zapier-common/run-python.png" title="Screenshot of the Zapier UI, showing the mappings of raw_body and auth_header" />
 
 In the **Code** field, paste the following code, replacing `YOUR_SECRET_HERE` with the secret you created when setting up the Storage by Zapier integration. Remember that this is not your <Constant name="dbt" /> secret.
 
@@ -168,15 +168,15 @@ In the **Action** section, choose which **Channel** to post to. Set the **Messag
 
 Configure the other options as you prefer (for example, **Bot Name** and **Bot Icon**). 
 
-![Screenshot of the Zapier UI, showing the mappings of prior steps to a Slack message](/img/guides/orchestration/webhooks/zapier-slack/parent-slack-config.png)
+<Lightbox src="/img/guides/orchestration/webhooks/zapier-slack/parent-slack-config.png" title="Screenshot of the Zapier UI, showing the mappings of prior steps to a Slack message" />
 
 Add another step, **Filter**. In the **Filter setup and testing** section, set the **Field** to **2. Send Error Thread** and the **condition** to **(Boolean) Is true**. This prevents the Zap from failing if the job succeeded and you try to send an empty Slack message in the next step. 
 
-![Screenshot of the Zapier UI, showing the correctly configured Filter step](/img/guides/orchestration/webhooks/zapier-slack/filter-config.png)
+<Lightbox src="/img/guides/orchestration/webhooks/zapier-slack/filter-config.png" title="Screenshot of the Zapier UI, showing the correctly configured Filter step" />
 
 Add another **Send Channel Message in Slack** action. In the **Action** section, choose the same channel as last time, but set the **Message Text** to **2. Threaded Errors Post** from the same Run Python step. Set the **Thread** value to **3. Message Ts**, which is the timestamp of the post created by the first Slack action. This tells Zapier to add this post as a threaded reply to the main message, which prevents the full (potentially long) output from cluttering your channel. 
 
-![Screenshot of the Zapier UI, showing the mappings of prior steps to a Slack message](/img/guides/orchestration/webhooks/zapier-slack/thread-slack-config.png)
+<Lightbox src="/img/guides/orchestration/webhooks/zapier-slack/thread-slack-config.png" title="Screenshot of the Zapier UI, showing the mappings of prior steps to a Slack message" />
 
 ## Test and deploy
 
@@ -189,7 +189,7 @@ Instead of using a webhook as your trigger, you can keep the existing <Constant 
 ### 1. Create a new Zap in Zapier
 Use **Slack** as the initiating app, and **New Message Posted to Channel** as the Trigger. In the **Trigger** section, select the channel where your Slack alerts are being posted, and set **Trigger for Bot Messages?** to **Yes**.
 
-![Screenshot of the Zapier UI, showing the correctly configured Message trigger step](/img/guides/orchestration/webhooks/zapier-slack/message-trigger-config.png)
+<Lightbox src="/img/guides/orchestration/webhooks/zapier-slack/message-trigger-config.png" title="Screenshot of the Zapier UI, showing the correctly configured Message trigger step" />
 
 Test your Zap to find an example record. You might need to load additional samples until you get one that relates to a failed job, depending on whether you post all job events to Slack or not. 
 
@@ -199,12 +199,12 @@ Add a **Filter** step with the following conditions:
 - **1. User Is Bot Is true**
 - **1. User Name Exactly matches <Constant name="dbt" />**
 
-![Screenshot of the Zapier UI, showing the correctly configured Filter step](/img/guides/orchestration/webhooks/zapier-slack/message-trigger-filter.png)
+<Lightbox src="/img/guides/orchestration/webhooks/zapier-slack/message-trigger-filter.png" title="Screenshot of the Zapier UI, showing the correctly configured Filter step" />
 
 ### 3. Extract the run ID 
 Add a **Format** step with the **Event** of **Text**, and the Action **Extract Number**. For the **Input**, select **1. Text**. 
 
-![Screenshot of the Zapier UI, showing the Transform step configured to extract a number from the Slack message's Text property](/img/guides/orchestration/webhooks/zapier-slack/extract-number.png)
+<Lightbox src="/img/guides/orchestration/webhooks/zapier-slack/extract-number.png" title="Screenshot of the Zapier UI, showing the Transform step configured to extract a number from the Slack message's Text property" />
 
 Test your step and validate that the run ID has been correctly extracted.
 
@@ -241,7 +241,7 @@ This step is very similar to the one described in the main example, but you can 
 
 In the **Action** section, add two items to **Input Data**: `run_id` and `account_id`. Map those to the `3. Output` property and your hardcoded <Constant name="dbt" /> Account ID, respectively.
 
-![Screenshot of the Zapier UI, showing the mappings of raw_body and auth_header](/img/guides/orchestration/webhooks/zapier-slack/code-example-alternate.png)
+<Lightbox src="/img/guides/orchestration/webhooks/zapier-slack/code-example-alternate.png" title="Screenshot of the Zapier UI, showing the mappings of raw_body and auth_header" />
 
 
 In the **Code** field, paste the following code, replacing `YOUR_SECRET_HERE` with the secret you created when setting up the Storage by Zapier integration. Remember that this is not your <Constant name="dbt" /> secret.
@@ -305,7 +305,7 @@ Add a **Send Channel Message in Slack** action. In the **Action** section, set t
 
 Set the **Message Text** to **5. Threaded Errors Post** from the Run Python step. Set the **Thread** value to **1. Ts**, which is the timestamp of the triggering Slack post. This tells Zapier to add this post as a threaded reply to the main message, which prevents the full (potentially long) output from cluttering your channel. 
 
-![Screenshot of the Zapier UI, showing the mappings of prior steps to a Slack message](/img/guides/orchestration/webhooks/zapier-slack/thread-slack-config-alternate.png)
+<Lightbox src="/img/guides/orchestration/webhooks/zapier-slack/thread-slack-config-alternate.png" title="Screenshot of the Zapier UI, showing the mappings of prior steps to a Slack message" />
 
 ### 8. Test and deploy
 

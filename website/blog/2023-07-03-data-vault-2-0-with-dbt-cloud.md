@@ -56,7 +56,7 @@ Data Vault is a powerful modelling technique for middle-to-enterprise level data
 
 * Integration of multiple dynamic source systems;
 * Long-term project with agile delivery requirements;
-* Auditibilty and compliance needs;
+* Auditability and compliance needs;
 * Preference for template based project allowing automation needs;
 * High flexibility of the data model with minimal reengineering;
 * Load performance is important, parallel loading is a must.

@@ -72,7 +72,7 @@ To match SingleStore semantics, dbt-singlestore enforces:
 
 ### Keys
 
-SingleStore tables are [sharded](https://docs.singlestore.com/managed-service/en/getting-started-with-managed-service/about-managed-service/sharding.html) and can be created with various column definitions. The following options are supported by the dbt-singlestore adapter, each of them accepts `column_list` (a list of column names) as an option value. Please refer to [Creating a Columnstore Table](https://docs.singlestore.com/managed-service/en/create-a-database/physical-database-schema-design/procedures-for-physical-database-schema-design/creating-a-columnstore-table.html) for more informartion on various key types in SingleStore.
+SingleStore tables are [sharded](https://docs.singlestore.com/managed-service/en/getting-started-with-managed-service/about-managed-service/sharding.html) and can be created with various column definitions. The following options are supported by the dbt-singlestore adapter, each of them accepts `column_list` (a list of column names) as an option value. Please refer to [Creating a Columnstore Table](https://docs.singlestore.com/managed-service/en/create-a-database/physical-database-schema-design/procedures-for-physical-database-schema-design/creating-a-columnstore-table.html) for more information on various key types in SingleStore.
 - `primary_key` (translated to `PRIMARY KEY (column_list)`)
 - `sort_key` (translated to `KEY (column_list) USING CLUSTERED COLUMNSTORE`)
 - `shard_key` (translated to `SHARD KEY (column_list)`)
@@ -136,7 +136,7 @@ select ...
 
 ### Other options
 
-You can specify the character set and collation for the table using `charset` and/or `collation` options. Supported values for `charset` are `binary`, `utf8`, and `utf8mb4`.  Supported values for `collation` can be viewed as the output of `SHOW COLLATION` SQL query. Default collations for the corresponding charcter sets are `binary`, `utf8_general_ci`, and `utf8mb4_general_ci`.
+You can specify the character set and collation for the table using `charset` and/or `collation` options. Supported values for `charset` are `binary`, `utf8`, and `utf8mb4`.  Supported values for `collation` can be viewed as the output of `SHOW COLLATION` SQL query. Default collations for the corresponding character sets are `binary`, `utf8_general_ci`, and `utf8mb4_general_ci`.
 
 <File name='utf8mb4_model.sql'>
 

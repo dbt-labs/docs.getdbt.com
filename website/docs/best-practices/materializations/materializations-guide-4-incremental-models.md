@@ -76,7 +76,7 @@ So we’ve found a way to isolate the new rows we need to process. How then do w
 - 🌍  Lastly, if we’re building into a new environment and there’s **no previous run to reference**, or we need to **build the model from scratch.** Put another way, we’ll want a means to skip the incremental logic and transform all of our input data like a regular table if needed.
 - 😎 **Visualized below**, we’ve figured out how to get the red ‘new records’ portion selected, but we need to sort out the step to the right, where we stick those on to our model.
 
-![Diagram visualizing how incremental models work](/img/best-practices/materializations/incremental-diagram.png)
+<Lightbox src="/img/best-practices/materializations/incremental-diagram.png" title="Diagram visualizing how incremental models work" />
 
 :::info
 😌 Incremental models can be confusing at first, **take your time reviewing** this visual and the previous steps until you have a **clear mental model.** Be patient with yourself. This materialization will become second nature soon, but it’s tough at first. If you’re feeling confused the [dbt Community is here for you on the Forum and Slack](https://www.getdbt.com/community/join-the-community).

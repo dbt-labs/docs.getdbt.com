@@ -47,10 +47,10 @@ To go to your project dashboard, select your project in the main menu and click 
 
 The project dashboard displays the following metrics that summarize the overall cost and optimization impact for your project:
 
-- **Total cost reduction**
-- **Total % reduction**
-- **Total query run time reduction**
-- **Reused assets**
+- **Total cost reduction**: The amount you saved by reusing assets instead of rebuilding them in the selected environment. dbt multiplies each asset's reuse count by its average cost per build, then adds up the results.
+- **Total % reduction**: The percentage you saved compared to what you would have paid without reuse. dbt calculates this as `(cost without reuse − actual cost) / cost without reuse = total % reduction`.
+- **Total query run time reduction**: The overall query time you saved by reusing assets instead of rebuilding them. dbt multiplies each asset's reuse count by its average query time per build, then totals the results.
+- **Reused assets**: The total number of times dbt reused the selected asset types in the selected environment and time frame. By default, this includes models and tests.
 
 ### Filters
 
@@ -97,7 +97,7 @@ To access model performance data:
 1. From the main menu, go to **Catalog**.
 2. Click your project from the file tree.
 3. Navigate to the model whose cost data you want to view. You can search for it or click **Models** under **Project assets** in the sidebar to view all available models in the project.
-4. Go to the the **Performance** tab on the model's details page.
+4. Go to the **Performance** tab on the model's details page.
 
 import ModelPerformance from '/snippets/_model-performance.md';
 

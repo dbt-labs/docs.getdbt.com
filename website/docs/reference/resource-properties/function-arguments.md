@@ -45,6 +45,7 @@ The `data_type` values are warehouse-specific. Use the data type syntax that you
 - **BigQuery**: `STRING`, `INT64`, `BOOL`, `TIMESTAMP`, `ARRAY<STRING>`, etc.
 - **Redshift**: `VARCHAR`, `INTEGER`, `BOOLEAN`, `TIMESTAMP`, etc.
 - **Postgres**: `TEXT`, `INTEGER`, `BOOLEAN`, `TIMESTAMP`, etc.
+- **Starburst/Trino**: `VARCHAR`, `INTEGER`, `DOUBLE`, `BOOLEAN`, and other [Trino data types](https://trino.io/docs/current/language/types.html).
 
 Refer to your warehouse documentation for the complete list of supported data types.
 

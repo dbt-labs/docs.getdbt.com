@@ -16,6 +16,7 @@ import WizardCliInstall from '/snippets/_wizard-cli-install-by-version.md';
 import NewToTerminal from '/snippets/_new-to-terminal.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 import WizardTrialBilling from '/snippets/_wizard-trial-billing.md';
+import WizardVideoCourse from '/snippets/_wizard-video-course.md';
 
 # About dbt Wizard
 
@@ -23,11 +24,11 @@ import WizardTrialBilling from '/snippets/_wizard-trial-billing.md';
 Your personal dbt agent &mdash; wherever you work.
 </IntroText>
 
-<Constant name="wizard" /> is an AI agent purpose-built for governed data development in dbt. Unlike general-purpose coding agents, it understands your dbt project through a [native metadata engine](/docs/dbt-ai/wizard-how-it-works#native-metadata-engine) &mdash; a structured index of lineage, model health, tests, contracts, run results, and semantic definitions.
+<Constant name="wizard" /> is an AI agent purpose-built for governed data development in dbt. Unlike general-purpose coding agents, it understands your dbt project through the [dbt Information Schema](/docs/build/dbt-information-schema) &mdash; a structured view of lineage, model health, tests, contracts, run results, and semantic definitions.
 
 Think of it like a map of your city: <Constant name="wizard" /> knows how everything connects before it starts, rather than walking every street to figure out the layout. <Constant name="wizard"/> comes with:
 
-- **Project understanding:** A native dbt metadata engine for lineage, contracts, tests, and runtime context
+- **Project understanding:** The dbt Information Schema for lineage, contracts, tests, and runtime context
 - **Impact awareness:** Checks upstream and downstream dependencies before you change code
 - **Safe validation:** Compiles and builds changes before review
 - **Complete workflow:** Investigate, change, validate, and review in one place
@@ -48,44 +49,29 @@ The following table shows where <Constant name="wizard" /> is available, the AI 
 
 | Where | Status | AI access options |
 |---|---|---|
-| [<Constant name="dbt_platform" />: <Constant name="studio_ide" /> ](/docs/dbt-ai/wizard-ide) | Public preview | dbt <Term id="managed" /> or BYOK |
-| [<Constant name="dbt_platform" />: Wizard home tab](/docs/platform/wizard-home) | Public preview | dbt <Term id="managed" /> or BYOK |
+| [<Constant name="dbt_platform" />](/docs/platform/wizard-platform) | Public preview | dbt <Term id="managed" /> or BYOK |
+| [Locally: Wizard Desktop](/docs/dbt-ai/wizard-desktop) | Public beta | dbt <Term id="managed" />, BYOK, or OpenAI subscription |
 | [Locally: Wizard terminal (CLI)](/docs/dbt-ai/wizard-cli) | Public beta | dbt <Term id="managed" />, BYOK, or OpenAI subscription |
-| [Locally: Wizard Desktop](/docs/dbt-ai/wizard-desktop) | Private beta | dbt <Term id="managed" /> or BYOK |
-
 </SimpleTable>
+
+<WizardVideoCourse />
 
 ## Supported providers
 
 <WizardSupportedProviders />
 
-For pricing and how billing works, refer to [Models and pricing](/docs/dbt-ai/pricing-billing/overview).
+For pricing and how billing works, refer to [Models and pricing](/docs/dbt-ai/pricing-billing/overview). 
+
+If AI model provider (OpenAI, Anthropic, or Fireworks) has an outage, dbt <Term id="managed" /> traffic switches to a [backup provider](/docs/dbt-ai/pricing-billing/overview#automatic-backup-during-outages) in <Constant name="dbt_platform"/>, so <Constant name="wizard" /> keeps working.
 
 ## Get started
 
-You can get started with Wizard wherever you work, whether it's the terminal or <Constant name="dbt_platform" />:
-- [Wizard in the CLI](#wizard-in-the-cli)
+You can get started with Wizard wherever you work, whether it's the Desktop app, <Constant name="dbt_platform" />, or the terminal:
 - [Wizard in <Constant name="dbt_platform"/>](#wizard-in-dbt-platform)
+- [Wizard Desktop](#wizard-desktop)
+- [Wizard in the CLI](#wizard-in-the-cli)
 
 (Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.)
-
-### Wizard in the CLI <Lifecycle status="beta"/>
-
-A terminal-based agent for governed data development in dbt, whether your team uses <Constant name="dbt_platform" /> or self-hosts. Bring your own key to experience the full agentic analytics engineering loop.
-
-<WizardCliInstall />
-<NewToTerminal />
-
-### Wizard Desktop <Lifecycle status="private_beta"/>
-
-Wizard Desktop is Wizard as a native app. Wizard Desktop runs the same engine as the dbt Wizard CLI, but you get the full view: charts, tables, diffs, and lineage render right in the app, so you can see the work, steer it, and keep several chats moving at once, each on its own branch.
-
-:::info Available in Private beta 
-
-Wizard Desktop is in private beta. [Sign up to get an invite](https://www.getdbt.com/wizard-desktop-waitlist), and dbt Labs emails you the download page to get started!
-:::
-
-To learn more, refer to [Get started with Wizard Desktop](/docs/dbt-ai/wizard-desktop).
 
 ### Wizard in dbt platform <Lifecycle status="preview"/>
 
@@ -105,13 +91,36 @@ To get started:
 
 Refer to [Use cases and examples](/docs/dbt-ai/wizard-use-cases) for more prompts.
 
+### Wizard Desktop <Lifecycle status="beta"/>
+
+Wizard Desktop is Wizard as a native app. Wizard Desktop runs the same engine as the dbt Wizard CLI, but you get the full view: charts, tables, diffs, and lineage render right in the app, so you can see the work, steer it, and keep several chats moving at once, each on its own branch.
+
+What you get with Desktop:
+
+- **Parallel chats:** each chat gets its own <Constant name="git" /> <Term id="git-worktree" />, so several pieces of work run at once without conflicts.
+- **Visible validation:** see structured results, including a `dbt-compare` view of what your changes did to the data.
+- **Contextual comments:** hover almost anything to comment on that exact spot, then send several together.
+- **Charts and tables:** ask a question about your data and see the answer inline.
+- **Inline impact:** see which models <Constant name="wizard" />'s changes touch, with diffs you open inline.
+- **Lineage, file, and metrics browsing:** browse your project right alongside the chat.
+
+<DownloadCard />
+
+To learn more, refer to [Get started with Wizard Desktop](/docs/dbt-ai/wizard-desktop).
+
+### Wizard in the CLI <Lifecycle status="beta"/>
+
+A terminal-based agent for governed data development in dbt, whether your team uses <Constant name="dbt_platform" /> or self-hosts. Bring your own key to experience the full agentic analytics engineering loop.
+
+<WizardCliInstall />
+<NewToTerminal />
+
 ## Related docs
 
 - [dbt Wizard in Studio IDE](/docs/dbt-ai/wizard-ide) — generate docs, tests, semantic models, SQL, and delegate end-to-end model work
 - [Invite read-only users to dbt Wizard](/docs/platform/wizard-read-only-users) — let business users ask questions of production data in Explore mode, without development access
 - [Use skills in dbt platform](/docs/dbt-ai/wizard-platform-skills) — give dbt Wizard reusable instructions for your project
-- [Use MCP servers with dbt Wizard CLI](/docs/dbt-ai/wizard-mcp) — connect the dbt Wizard CLI to more tools and context
-- [Migrate to dbt Wizard](/docs/dbt-ai/wizard-migrate) — switch from Claude Code, Cursor, or another AI agent to dbt Wizard
+- [Use MCP servers with dbt Wizard CLI and Desktop](/docs/dbt-ai/wizard-mcp) — set up MCP servers in the dbt Wizard CLI and use them in Wizard Desktop for more tools and context
 - [Privacy and data FAQs](/docs/dbt-ai/dbt-ai-faqs#privacy-and-data) — understand how dbt Wizard handles privacy and data
 
 <WizardFeedbackCallout />

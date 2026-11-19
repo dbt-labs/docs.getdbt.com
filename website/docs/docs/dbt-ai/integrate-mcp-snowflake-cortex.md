@@ -159,25 +159,11 @@ Open your agent in Snowflake Intelligence and ask one of its sample questions, s
 
 ## Troubleshooting
 
-<Expandable alt_header="The connector won't authorize or the OAuth flow fails">
+<FAQ path="dbt-mcp/troubleshooting/snowflake-oauth-fails" />
 
-- Confirm your account has a [static subdomain](/docs/platform/about-platform/access-regions-ip-addresses). OAuth with MCP requires one.
-- Verify the host in `API_ALLOWED_PREFIXES`, `OAUTH_TOKEN_ENDPOINT`, `OAUTH_AUTHORIZATION_ENDPOINT`, and `OAUTH_RESOURCE_URL` all match your MCP URL host exactly, and that the integration `ENABLED = TRUE`.
-- AI features are enabled by default and admins can [turn them off or back on anytime](/docs/platform/manage-dbt-ai). 
-- Make sure remote MCP OAuth is available for your account tier.
-</Expandable>
+<FAQ path="dbt-mcp/troubleshooting/snowflake-empty-results" />
 
-<Expandable alt_header="The agent returns no metrics or empty results">
-
-- Confirm the project you authorized has a configured [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) with metrics and dimensions.
-- Check that the user who connected has at least read-only access to that project &mdash; the agent only sees what the user can see.
-- If you scoped the OAuth connection to a single project, make sure it's the project that contains your metrics.
-</Expandable>
-
-<Expandable alt_header="Permission errors when creating the integration or MCP server">
-
-`CREATE API INTEGRATION` and `CREATE EXTERNAL MCP SERVER` require `ACCOUNTADMIN` (or a role with account-level `CREATE INTEGRATION`). Run Steps 1–2 as `ACCOUNTADMIN`, then grant `USAGE` on the MCP server and integration to the role that runs the agent (Step 3).
-</Expandable>
+<FAQ path="dbt-mcp/troubleshooting/snowflake-permission-errors" />
 
 ## Related docs
 

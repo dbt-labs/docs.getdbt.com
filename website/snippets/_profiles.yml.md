@@ -94,7 +94,7 @@ To set up your profile, copy the correct sample profile for your warehouse into 
   - `schema`: The default schema that dbt will build objects in.
   - `threads`: The number of threads the dbt project will run on.
 
-The following example highlighs the format of the `profiles.yml` file. Note that many of the configs are adapter-specific and their syntax varies. 
+The following example highlights the format of the `profiles.yml` file. Note that many of the configs are adapter-specific and their syntax varies. 
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -146,13 +146,13 @@ my_profile:
   outputs:
     dev:
       type: ADAPTER_NAME
-      account: "{{ env_var("ADAPTER_ACCOUNT") }}"
-      user: "{{ env_var("ADAPTER_USER") }}"
-      password: "{{ env_var("ADAPTER_PASSWORD") }}"
-      database: "{{ env_var("ADAPTER_DATABASE") }}"
-      schema: "{{ env_var("ADAPTER_SCHEMA") }}"
-      warehouse: "{{ env_var("ADAPTER_WAREHOUSE") }}"
-      role: "{{ env_var("ADAPTER_ROLE") }}"
+      account: "{{ env_var('ADAPTER_ACCOUNT') }}"
+      user: "{{ env_var('ADAPTER_USER') }}"
+      password: "{{ env_var('ADAPTER_PASSWORD') }}"
+      database: "{{ env_var('ADAPTER_DATABASE') }}"
+      schema: "{{ env_var('ADAPTER_SCHEMA') }}"
+      warehouse: "{{ env_var('ADAPTER_WAREHOUSE') }}"
+      role: "{{ env_var('ADAPTER_ROLE') }}"
       threads: 4
 ```
 

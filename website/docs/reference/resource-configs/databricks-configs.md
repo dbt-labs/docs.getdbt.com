@@ -37,23 +37,23 @@ dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it 
 
 <sup>4</sup>  Do not use `liquid_clustered_by` and `auto_liquid_cluster` on the same model.
 
-<sup>5</sup> We do not yet have a PySpark API to set tblproperties at table creation, so this feature is primarily to allow users to anotate their python-derived tables with tblproperties.
+<sup>5</sup> We do not yet have a PySpark API to set tblproperties at table creation, so this feature is primarily to allow users to annotate their python-derived tables with tblproperties.
 
 <sup>6</sup> `databricks_tags` are applied via `ALTER` statements. Tags cannot be removed via dbt-databricks once applied. To remove tags, use Databricks directly or a post-hook. Starting in `dbt-databricks` v1.12, `databricks_tags` set at multiple config hierarchy levels [merge additively](#databricks_tags) instead of the lower (more specific) level fully replacing the higher one.
 
 <sup>7</sup> `skip_optimize` gives you per-model control over the post-materialization `OPTIMIZE` call. Because it's a standard dbt model config, you can also set it at the folder or project level through config inheritance. The run-wide `DATABRICKS_SKIP_OPTIMIZE` variable takes precedence over `skip_optimize`; if you set `DATABRICKS_SKIP_OPTIMIZE=true` (or `databricks_skip_optimize: true`), the variable skips `OPTIMIZE` for every model, and you can't re-enable it for an individual model with `skip_optimize: false`. Use `skip_optimize` when you want to keep `OPTIMIZE` on for most models but opt specific ones out &mdash; for example, if you delegate `OPTIMIZE` to [Predictive Optimization](https://docs.databricks.com/en/optimizations/predictive-optimization.html) or schedule it out of band. Refer to [issue #703](https://github.com/databricks/dbt-databricks/issues/703).
 
 
-In dbt-databricks v1.10, there are several new model configurations options gated behind the `use_materialization_v2` flag.
-For details, see the [documentation of Databricks behavior flags](/reference/global-configs/databricks-changes).
-In <Constant name="fusion" />, you can also [set `use_materialization_v2` per model](/reference/global-configs/databricks-changes#set-use_materialization_v2-per-model).
+Starting in `dbt-databricks` 1.10, some table and incremental model configs require the restructured materializations. See [Databricks behavior changes](/reference/global-configs/databricks-changes).
+
+Starting in `dbt-databricks` 1.13.1, you can choose the materialization path for individual table and incremental models. See [Set `use_materialization_v2` per model](/reference/global-configs/databricks-changes#set-use_materialization_v2-per-model).
 
 ### Python submission methods
 _Available in versions 1.9 or higher_
 
 In dbt-databricks v1.9 (try it now in [the <Constant name="dbt" /> **v1 Latest** release track](/docs/dbt-versions/dbt-release-tracks)), you can use these four options for `submission_method`: 
 
-* `all_purpose_cluster`: Executes the python model either directly using the [command api](https://docs.databricks.com/api/workspace/commandexecution) or by uploading a notebook and creating a one-off job run
+* `all_purpose_cluster`: Executes the python model either directly using the [command api](https://docs.databricks.com/api/command-execution/v2/execute) or by uploading a notebook and [creating a one-off job run](https://docs.databricks.com/api/jobs/v2/submit-run)
 * `job_cluster`: Creates a new job cluster to execute an uploaded notebook as a one-off job run
 * `serverless_cluster`: Uses a [serverless cluster](https://docs.databricks.com/en/jobs/run-serverless-jobs.html) to execute an uploaded notebook as a one-off job run
 * `workflow_job`: Creates/updates a reusable workflow and uploaded notebook, for execution on all-purpose, job, or serverless clusters.
@@ -63,14 +63,15 @@ In dbt-databricks v1.9 (try it now in [the <Constant name="dbt" /> **v1 Latest**
 
 We are currently in a transitionary period where there is a disconnect between old submission methods (which were grouped by compute), and the logically distinct submission methods (command, job run, workflow).
 
-As such, the supported config matrix is somewhat complicated:
+As such, the supported config matrix is somewhat complicated. In the **Default** column, `[]` means an empty list and `{}` means an empty dictionary (no values set yet).
 
 | Config                | Use                                                                  | Default            | `all_purpose_cluster`* | `job_cluster` | `serverless_cluster` | `workflow_job` |
 | --------------------- | -------------------------------------------------------------------- | ------------------ | ---------------------- | ------------- | -------------------- | -------------- |
 | `create_notebook`     | if false, use Command API, otherwise upload notebook and use job run | `false`            | ✅                     | ❌             | ❌                   | ❌             |
 | `timeout`             | maximum time to wait for command/job to run                          | `0` (No timeout)   | ✅                     | ✅             | ✅                   | ✅             |
 | `job_cluster_config`  | configures a [new cluster](https://docs.databricks.com/api/workspace/jobs/submit#tasks-new_cluster) for running the model | `{}` | ❌ | ✅ | ❌            | ✅             |
-| `access_control_list` | directly configures [access control](https://docs.databricks.com/api/workspace/jobs/submit#access_control_list) for the job | `{}` | ✅ | ✅ | ✅          | ✅             |
+| `access_control_list` | who can view or manage the Databricks [job](https://docs.databricks.com/api/workspace/jobs/submit#access_control_list) that runs this Python model | `[]` | ✅ | ✅ | ✅          | ✅             |
+| `notebook_access_control_list` | who can view, run, or edit the [notebook](https://docs.databricks.com/aws/en/security/auth/access-control/#notebook-acls) dbt creates in Databricks from this Python model | `[]` | ✅ | ✅ | ✅ | ✅ |
 | `packages`            | list of packages to install on the executing cluster                 | `[]`               | ✅                     | ✅             | ✅                   | ✅             |
 | `index_url`           | url to install `packages` from                                       | `None` (uses pypi) | ✅                     | ✅             | ✅                   | ✅             |
 | `additional_libs`     | directly configures [libraries](https://docs.databricks.com/api/workspace/jobs/submit#tasks-libraries) | `[]` | ✅ | ✅             | ✅                   | ✅             |
@@ -78,7 +79,16 @@ As such, the supported config matrix is somewhat complicated:
 | `cluster_id`          | id of existing all purpose cluster to execute against                | `None`             | ✅                     | ❌             | ❌                   | ✅             |
 | `http_path`           | path to existing all purpose cluster to execute against              | `None`             | ✅                     | ❌             | ❌                   | ❌             |
 
-\* Only `timeout` and `cluster_id`/`http_path` are supported when `create_notebook` is false
+\* Only `timeout` and `cluster_id`/`http_path` are supported when `create_notebook` is false. `notebook_access_control_list` applies only when dbt creates a notebook in Databricks.
+
+When dbt creates a notebook for a Python model, it copies the model's code into your Databricks workspace and runs that notebook as a job. The exception is the `all_purpose_cluster` submission method, which by default runs the code directly on an all-purpose cluster without creating a notebook or job.
+
+When dbt creates a notebook and job, you can control access to each:
+
+- `access_control_list` sets who can view or manage the job. Refer to [Job ACLs](https://docs.databricks.com/aws/en/security/auth/access-control/#job-acls) for permission levels.
+- `notebook_access_control_list` sets who can open the notebook, for example to inspect the code after a failed run. Refer to [Notebook ACLs](https://docs.databricks.com/aws/en/security/auth/access-control/#notebook-acls) for permission levels.
+
+We recommend you use the permission names the Databricks API expects, such as `CAN_READ` rather than the UI's CAN VIEW.
 
 With the introduction of the `workflow_job` submission method, we chose to segregate further configuration of the python model submission under a top level configuration named `python_job_config`. This keeps configuration options for jobs and workflows namespaced in such a way that they do not interfere with other model config, allowing us to be much more flexible with what is supported for job execution.
 
@@ -160,7 +170,7 @@ When materializing models of various types, you may include several optional col
 \* `using_columns` supports all parameter types listed in [Databricks column mask parameters](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-column-mask#parameters).
 
 
-† `databricks_tags` are applied via `ALTER` statements. Tags cannot be removed via dbt-databricks once applied. To remove tags, use Databricks directly or a post-hook. Starting in `dbt-databricks` v1.12, `databricks_tags` set at multiple config hierarchy levels [merge additively](#databricks_tags) instead of the lower (more specific) level fully replacing the higher one.
+† dbt applies column tags with `ALTER` statements. To remove tags from columns you keep, use Databricks directly or a post-hook. Starting in `dbt-databricks` 1.13.1, dbt unsets tags on columns it removes when replacing an existing Unity Catalog table in place during a table build or an incremental full refresh. This applies to the original SQL path and the direct restructured path. Starting in `dbt-databricks` v1.12, `databricks_tags` set at multiple config hierarchy levels [merge additively](#databricks_tags) instead of the lower (more specific) level fully replacing the higher one.
 
 This example uses the column-level configurations in the previous table:
 
@@ -307,7 +317,9 @@ When you set [`use_replace_on_for_insert_overwrite`](/reference/global-configs/d
 
 When you set [`use_replace_on_for_insert_overwrite`](/reference/global-configs/databricks-changes#use-replace-on-for-insert_overwrite-strategy) to `false` in SQL warehouses, dbt truncates (empties) the entire table before inserting new data. This replaces all rows in the table each time the model runs, which can increase run time and cost for large datasets
 
-If you don't specify `partition_by` or `liquid_clustered_by`, then the `insert_overwrite` strategy will atomically replace all contents of the table, overriding all existing data with only the new records. The column schema of the table remains the same, however. This can be desirable in some limited circumstances, since it minimizes downtime while the table contents are overwritten. The operation is comparable to running `truncate` and `insert` on other databases. For atomic replacement of Delta-formatted tables, use the `table` materialization (which runs `create or replace`) instead.
+If you don't specify `partition_by` or `liquid_clustered_by`, then the `insert_overwrite` strategy will atomically replace all contents of the table, overriding all existing data with only the new records. The column schema of the table remains the same, however. This can be desirable in some limited circumstances, since it minimizes downtime while the table contents are overwritten. The operation is comparable to running `truncate` and `insert` on other databases.
+
+For an atomic in-place replacement of a Delta table, use a SQL `table` model on the original materialization path. See [Set `use_materialization_v2` per model](/reference/global-configs/databricks-changes#set-use_materialization_v2-per-model).
 
 <Tabs
   defaultValue="source"
@@ -1450,13 +1462,22 @@ _Available in versions 1.12 or higher_
  
 | Materialization | Drop and recreate required? | Notes |
 |----------------|----------------------------|-------|
-| Materialized views | Yes, for all changes except schedule updates | Databricks SQL API limitation |
+| Materialized views | Depends on the change and rebuild method | Schedule changes can use `ALTER`. See [Compatibility Mode rebuilds](#compatibility-mode-rebuilds). |
 | Streaming tables | Only when `partition_by` changes | All other supported changes use `CREATE OR REFRESH` plus an `ALTER` for schedule changes |
  
 Note on streaming table query changes: there's currently no way for the adapter to detect if a streaming table query has changed. Regardless of `on_configuration_change` behavior, dbt uses `CREATE OR REFRESH`, which applies the updated query to future rows only &mdash; previously processed rows aren't reprocessed.
  
 To reprocess available source data with an updated query, run with `--full-refresh`.
- 
+
+#### Compatibility Mode rebuilds
+
+Starting in `dbt-databricks` 1.13.1, dbt replaces a materialized view in place when a rebuild keeps its Compatibility Mode location and `partition_by` unchanged. If the rebuild specifies a Compatibility Mode location, dbt stops before dropping the view when you change `partition_by` or move the view from its current Compatibility Mode location.
+
+Dropping a materialized view leaves its Compatibility Mode location reserved.
+
+- To move the view, drop it manually and rebuild it at a location that does not overlap the previous one.
+- To change partitions, remove the Compatibility Mode properties from `tblproperties` and change `partition_by` in the same run. In a second run, re-enable Compatibility Mode with a location that does not overlap the previous one.
+
 <VersionBlock firstVersion="1.12">
 
 ## Metric views

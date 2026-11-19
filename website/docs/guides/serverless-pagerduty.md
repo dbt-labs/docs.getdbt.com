@@ -18,7 +18,7 @@ This guide will teach you how to build and host a basic Python app which will mo
  - Check for any failed nodes (e.g. non-passing tests or errored models), and
  - create a PagerDuty alarm based on those nodes by calling the PagerDuty Events API. Events are deduplicated per run ID.
 
-![Screenshot of the PagerDuty UI, showing an alarm created by invalid SQL in a dbt model](/img/guides/orchestration/webhooks/serverless-pagerduty/pagerduty-example-alarm.png)
+<Lightbox src="/img/guides/orchestration/webhooks/serverless-pagerduty/pagerduty-example-alarm.png" title="Screenshot of the PagerDuty UI, showing an alarm created by invalid SQL in a dbt model" />
 
 In this example, we will use fly.io for hosting/running the service. fly.io is a platform for running full stack apps without provisioning servers etc. This level of usage should comfortably fit inside of the Free tier. You can also use an alternative tool such as [AWS Lambda](https://ademoverflow.com/en/posts/tutorial-fastapi-aws-lambda-serverless/) or [Google Cloud Run](https://github.com/sekR4/FastAPI-on-Google-Cloud-Run).
 
@@ -112,7 +112,7 @@ Make note of the Webhook Secret Key for later.
 
 ## Store secrets
 The application requires three secrets to be set, using these names:
-- `DBT_CLOUD_SERVICE_TOKEN`: a <Constant name="dbt" /> [personal access token](/docs/dbt-apis/user-tokens) or [service account token](/docs/dbt-apis/service-tokens) with at least the `Metdata Only` permission.
+- `DBT_CLOUD_SERVICE_TOKEN`: a <Constant name="dbt" /> [personal access token](/docs/dbt-apis/user-tokens) or [service account token](/docs/dbt-apis/service-tokens) with at least the `Metadata Only` permission.
 - `DBT_CLOUD_AUTH_TOKEN`: the Secret Key for the <Constant name="dbt" /> webhook you created earlier.
 - `PD_ROUTING_KEY`: the integration key for the PagerDuty integration you created earlier.
 

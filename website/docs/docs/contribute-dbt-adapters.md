@@ -34,3 +34,9 @@ v2 is a Rust-based rewrite of the dbt engine built around a single monorepo. Ins
 ADBC drivers handle connection management—pre-compiled binaries you register, not write. You build the warehouse-specific logic: credentials, relation naming, SQL macros, and catalog queries across roughly 13 files in total.
 
 Contributing a v2 adapter means opening a pull request directly against the monorepo. You'll register your warehouse in the `AdapterType` enum, implement credential and relation types in Rust, write Jinja macros for your SQL dialect, and wire up basic integration tests against a real warehouse. The Rust compiler's match exhaustiveness enforcement acts as your to-do list — every unhandled variant is a compile error until your adapter is complete. For a step-by-step walkthrough, see [Contribute a <Constant name="core_v2" /> adapter](/guides/adapter-creation-v2).
+
+<VersionBlock firstVersion="2.0">
+
+Every v2 adapter is labeled `first-party` or `community-maintained`. A new adapter that you contribute is `community-maintained`. To learn what each designation means, including how to get an adapter into the <Constant name="dbt_platform" />, refer to the [adapter designations FAQ](/docs/community-adapters?version=2#adapter-designations-faq).
+
+</VersionBlock>

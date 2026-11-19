@@ -364,6 +364,9 @@ const PLATFORMS = [
           [...article.querySelectorAll('a')]
             .map((a) => a.getAttribute('href'))
             .filter((href) => href && /\/sql\/functions\//.test(href) && !/overview/.test(href))
+            // The overview links some pages twice (plain and with a #fragment or .html).
+            // Strip both so each page is scraped once and its category name is clean.
+            .map((href) => href.split('#')[0].replace(/\.html$/, ''))
         ),
       ];
 
@@ -375,7 +378,10 @@ const PLATFORMS = [
         all.push(...scrapeDuckdbCategoryPage(html, pageUrl, category));
       }
 
-      return [...new Map(all.map((f) => [f.name, f])).values()];
+      // Dedupe per category, not per name: DuckDB documents some functions in
+      // more than one section (for example, GENERATE_SERIES and RANGE in both
+      // utility and timestamptz, UNNEST in both list and utility).
+      return [...new Map(all.map((f) => [`${f.category}::${f.name}`, f])).values()];
     },
   },
 ];

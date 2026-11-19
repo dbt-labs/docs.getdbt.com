@@ -35,7 +35,7 @@ The **State** tab also displays the following charts:
 
 ## Lag tolerance recommendations
 
-The **dbt State** page, which you can access from the left-side menu of the <Constant name="dbt_platform" />, includes a **Lag tolerance recommendations** section that identifies models that could safely tolerate more lag, letting dbt State skip more runs and save additional compute.
+The **dbt State** page, which you can access from the left-side menu of the <Constant name="dbt_platform" />, includes a **Lag tolerance recommendations** section that identifies models that could safely tolerate more lag, letting dbt State skip more runs and save additional compute. This is available to all dbt State users, including those running dbt locally, through CI/CD, or through an external orchestrator.
 
 The recommendations table displays the following columns:
 
@@ -72,16 +72,16 @@ A model doesn’t appear in the table if it’s a view or its current `lag_toler
 
 When you go to your **Account home**, you'll see a chart showing the number of models built and reused, giving you visibility into how dbt State is optimizing your data builds. You can also view the number of reused models per project on **Account home**.
 
-## Logs view of built models
+## Logs view of built resources
 
-When you run a job, or when you run `dbt run` or `dbt build` locally, a structured logs view shows which models were built, skipped, or reused.
+When you run a job, or when you run `dbt run` or `dbt build` locally, a structured logs view shows which resources were built, skipped, or reused.
 
-<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/sao-logs-view.png" title="Logs view of built models" />
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/sao-logs-view.png" title="Logs view of built resources" />
 
-1. Each model has an icon indicating its status.
-2. The **Reused** tab indicates the total number of reused models.
+1. Each resource has an icon indicating its status.
+2. The **Reused** tab indicates the total number of reused resources.
 3. You can use the search bar or filter the logs to show **All**, **Success**, **Warning**, **Failed**, **Running**, **Skipped**, **Reused**, or **Debugged** messages.
-4. Detailed log messages provide context on why models were built, reused, or skipped. These messages are highlighted in the logs.
+4. Detailed log messages provide context on why resources were built, reused, or skipped. These messages are highlighted in the logs.
 
 ## Reused tag in the Latest status lens
 

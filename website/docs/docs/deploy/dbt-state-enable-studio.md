@@ -9,7 +9,7 @@ availability: everywhere_usage
 
 # Enabling dbt State in Studio
 
-When you enable dbt State in the <Constant name="studio_ide" />, it runs automatically on every `dbt run` or `dbt build` during development &mdash; skipping unchanged models and reusing production results so your runs are _faster_.
+When you enable dbt State in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), it runs automatically on every `dbt run` or `dbt build` during development &mdash; skipping unchanged models and reusing production results so your runs are _faster_.
 
 You can [turn it on for your development environment](#enabling-dbt-state-on-a-development-environment) so it's the default for everyone, or you can [override that setting just for your own account](#overriding-dbt-state-setting-per-user).
 

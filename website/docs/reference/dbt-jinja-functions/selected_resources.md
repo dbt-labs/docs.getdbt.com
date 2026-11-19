@@ -56,7 +56,7 @@ is selected or not.
 
 /*
   Example output when running the code in on-run-start 
-  when doing `dbt build`, including all nodels
+  when doing `dbt build`, including all models
 ---------------------------------------------------------------
   model1 is included based on the current selection
 
