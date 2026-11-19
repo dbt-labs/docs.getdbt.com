@@ -10,7 +10,7 @@ availability: local_all
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 
-# Configure BYOK in Wizard Desktop <Lifecycle status="beta"/>
+# Configure BYOK in Wizard Desktop <Lifecycle status="public_preview"/>
 
 <IntroText>
 Bring your own key (BYOK) means you use credentials from your own AI provider instead of dbt Labs-managed models. Add them in <Constant name="wizard" /> Desktop under **Settings** &rarr; **AI providers**.

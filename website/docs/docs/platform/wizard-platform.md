@@ -14,7 +14,7 @@ import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
 import WizardTrialBilling from '/snippets/_wizard-trial-billing.md';
 import WizardVideoCourse from '/snippets/_wizard-video-course.md';
 
-# About dbt Wizard in dbt platform <Lifecycle status="preview" />
+# About dbt Wizard in dbt platform <Lifecycle status="beta" />
 
 <IntroText>
 <Constant name="wizard" /> is dbt's AI agent in <Constant name="dbt_platform" />, helping teams investigate, change, validate, and ship trusted dbt work with warehouse-aware grounding.

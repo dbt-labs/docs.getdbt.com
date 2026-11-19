@@ -87,7 +87,7 @@ The OAuth auth method permits <Constant name="dbt" /> to run queries on behalf o
 
 As an end user, if your organization has set up BigQuery OAuth, you can link a project with your personal BigQuery account in your Profile in <Constant name="dbt" />.
 
-### BigQuery Workload Identity Federation <Lifecycle status="managed, preview" />
+### BigQuery Workload Identity Federation <Lifecycle status="managed" />
 
 :::note
 

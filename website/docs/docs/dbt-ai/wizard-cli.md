@@ -15,7 +15,7 @@ import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
 import WizardTrialBilling from '/snippets/_wizard-trial-billing.md';
 import WizardVideoCourse from '/snippets/_wizard-video-course.md';
 
-# Install <Constant name="wizard" /> CLI <Lifecycle status="beta"/>
+# Install <Constant name="wizard" /> CLI <Lifecycle status="public_preview"/>
 
 <IntroText>
 Install the <Constant name="wizard" /> CLI from your terminal for agentic and governed data development in dbt.

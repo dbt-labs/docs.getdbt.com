@@ -66,7 +66,7 @@ The key idea is that dbt State only skips work when it can prove the existing ob
 
 </Expandable>
 
-### Use dbt State with state:* selectors <Lifecycle status="beta" />
+### Use dbt State with state:* selectors
 
 In self-managed deployments, you can also use dbt State with `state:*` selectors. Instead of comparing against a single `manifest.json`, these selectors use dbt State as the comparison source, with state tracked for each individual node. Refer to [dbt State-powered `state:*` selectors](/docs/deploy/dbt-state-deferral#dbt-state-powered-state-selectors) for more information.
 

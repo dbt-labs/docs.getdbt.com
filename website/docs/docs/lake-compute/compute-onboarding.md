@@ -4,7 +4,7 @@ description: "Steps to prepare your MDLS and Snowflake environments before your 
 id: compute-onboarding
 ---
 
-# Onboarding to Lake Compute <Lifecycle status="private_beta" />
+# Onboarding to Lake Compute <Lifecycle status="public_preview" />
 
 :::info Lake Compute is in private beta
 

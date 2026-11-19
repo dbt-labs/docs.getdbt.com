@@ -5,7 +5,7 @@ id: lake-compute
 slug: /docs/lake-compute
 ---
 
-# About Lake Compute <Lifecycle status="private_beta" />
+# About Lake Compute <Lifecycle status="public_preview" />
 
 :::info Lake Compute is in private beta
 

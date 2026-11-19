@@ -11,7 +11,7 @@ availability: local_all
 import CliGenerated from './_wizard-cli-full-generated.md';
 
 
-# <Constant name="wizard" /> command reference <Lifecycle status="beta"/>
+# <Constant name="wizard" /> command reference <Lifecycle status="public_preview"/>
 
 <IntroText>
 Full reference for all <code>wizard</code> subcommands and global flags.

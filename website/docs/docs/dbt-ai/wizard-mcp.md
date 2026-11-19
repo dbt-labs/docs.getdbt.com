@@ -9,7 +9,7 @@ availability: local_all
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 
-# Use MCP servers with the <Constant name="wizard"/> CLI and Desktop <Lifecycle status="beta"/>
+# Use MCP servers with the <Constant name="wizard"/> CLI and Desktop <Lifecycle status="public_preview"/>
 
 <IntroText>
 The Model Context Protocol (MCP) connects <Constant name="wizard" /> to external tools and context. Add an MCP server and <Constant name="wizard"/> can call its tools mid-session &mdash; query the dbt MCP server for governed project metadata, open a pull request through the GitHub MCP server, or pull in any other MCP-compatible service.

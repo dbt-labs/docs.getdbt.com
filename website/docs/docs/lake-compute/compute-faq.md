@@ -5,7 +5,7 @@ sidebar_label: "Lake Compute FAQs"
 description: "Answers to common questions about Lake Compute, including project configuration, SQL compatibility, pricing, and support during private beta."
 ---
 
-# Lake Compute FAQs <Lifecycle status="private_beta" />
+# Lake Compute FAQs <Lifecycle status="public_preview" />
 
 :::info Lake Compute is in private beta
 

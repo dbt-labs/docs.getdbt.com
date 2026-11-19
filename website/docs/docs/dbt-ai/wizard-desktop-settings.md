@@ -9,7 +9,7 @@ availability: local_all
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 
-# Wizard Desktop settings <Lifecycle status="beta"/>
+# Wizard Desktop settings <Lifecycle status="public_preview"/>
 
 <IntroText>
 Open **Settings** from the bottom left of the app to change how <Constant name="wizard" /> behaves. Settings are grouped into General, Account, AI providers, Connectors, Appearance, Shortcuts, and version control.

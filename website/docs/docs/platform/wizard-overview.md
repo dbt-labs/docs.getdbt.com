@@ -73,7 +73,7 @@ You can get started with Wizard wherever you work, whether it's the Desktop app,
 
 (Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.)
 
-### Wizard in dbt platform <Lifecycle status="preview"/>
+### Wizard in dbt platform <Lifecycle status="beta"/>
 
 Leverage agentic capabilities in the home app or [<Constant name="studio_ide" />](/docs/dbt-ai/wizard-ide) for governed data development in dbt.
 
@@ -91,7 +91,7 @@ To get started:
 
 Refer to [Use cases and examples](/docs/dbt-ai/wizard-use-cases) for more prompts.
 
-### Wizard Desktop <Lifecycle status="beta"/>
+### Wizard Desktop <Lifecycle status="public_preview"/>
 
 Wizard Desktop is Wizard as a native app. Wizard Desktop runs the same engine as the dbt Wizard CLI, but you get the full view: charts, tables, diffs, and lineage render right in the app, so you can see the work, steer it, and keep several chats moving at once, each on its own branch.
 
@@ -108,7 +108,7 @@ What you get with Desktop:
 
 To learn more, refer to [Get started with Wizard Desktop](/docs/dbt-ai/wizard-desktop).
 
-### Wizard in the CLI <Lifecycle status="beta"/>
+### Wizard in the CLI <Lifecycle status="public_preview"/>
 
 A terminal-based agent for governed data development in dbt, whether your team uses <Constant name="dbt_platform" /> or self-hosts. Bring your own key to experience the full agentic analytics engineering loop.
 

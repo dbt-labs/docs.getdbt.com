@@ -13,7 +13,7 @@ import WizardExploreUsage from '/snippets/_wizard-explore-usage.md';
 import WizardModelPicker from '/snippets/_wizard-model-picker.md';
 import WizardVideoCourse from '/snippets/_wizard-video-course.md';
 
-# dbt Wizard in Studio IDE <Lifecycle status="preview"/>
+# dbt Wizard in Studio IDE <Lifecycle status="beta" />
 
 <IntroText>
 Use <Constant name="wizard" /> in the <Constant name="studio_ide" /> to ship trusted dbt changes faster. It understands your project, answers context-grounded questions, generates models, tests, docs, and <Constant name="semantic_layer" /> definitions, and shows file diffs before changes are persisted.

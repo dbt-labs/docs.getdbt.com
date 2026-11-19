@@ -9,7 +9,7 @@ availability: local_all
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 
-# Use Wizard Desktop <Lifecycle status="beta"/>
+# Use Wizard Desktop <Lifecycle status="public_preview"/>
 
 <IntroText>
 Navigate Wizard Desktop and learn how to work in a session with dbt Wizard &mdash; with rich data visualizations, data diffs, lineage, and more rendered right in the app. Start with [Get started](/docs/dbt-ai/wizard-desktop).

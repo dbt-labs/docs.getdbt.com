@@ -60,7 +60,7 @@ For available permission sets, refer to [Enterprise permissions](/docs/platform/
 
 Service tokens with metadata read access can use `text_to_sql` to generate SQL. They can't use `execute_sql` to run it.
 
-## OAuth (remote MCP) <Lifecycle status="beta,self_service,managed,managed_plus" /> {#oauth-remote-mcp}
+## OAuth (remote MCP) <Lifecycle status="self_service,managed,managed_plus" /> {#oauth-remote-mcp}
 
 OAuth lets you connect to the remote MCP server without copying API tokens into your MCP client, when your client supports OAuth for HTTP-based MCP servers.
 

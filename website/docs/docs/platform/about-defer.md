@@ -36,7 +36,7 @@ There are several ways to configure deferral in dbt, depending on how your proje
 - **Self-managed deployments (`defer_to_target`)**: If you have [dbt State](/docs/deploy/dbt-state-about) enabled, set `defer_to_target` in `profiles.yml` to specify which environment dbt State defers to. Refer to [`defer_to_target`](/reference/resource-configs/defer-to-target) and [Configuring deferral in dbt State](/docs/deploy/dbt-state-deferral) for setup details.
 - **Manual defer (`--state`)**: Pass `--state` or `--defer-state` explicitly to point dbt to a specific `manifest.json`. Refer to [Defer](/reference/node-selection/defer) for usage details.
 
-:::tip Use dbt State for smarter deferral <Lifecycle status="beta" />
+:::tip Use dbt State for smarter deferral
 In self-managed deployments with [dbt State](/docs/deploy/dbt-state-about) enabled, `state:*` selectors can compare each node against its own last execution instead of a single `manifest.json` &mdash; no manifest management needed. Refer to [dbt State-powered `state:*` selectors](/docs/deploy/dbt-state-deferral#dbt-state-powered-state-selectors).
 :::
 
