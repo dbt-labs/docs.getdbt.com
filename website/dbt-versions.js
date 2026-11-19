@@ -16,12 +16,27 @@ const products = [
   {
     name: "v2",
     displayName: "",
-    subProducts: [
-      {
-        name: "v2",
-        version: "2.0",
-      },
-    ],
+    // List newest first; the first entry is treated as the current/latest track.
+    // `stage` drives the lifecycle tag shown in the menu: "alpha" | "rc" | "beta" | "Preview"
+    // (omit for a stable/GA release). Update as a version moves through its cycle.
+    get subProducts() {
+      const specific = [
+        {
+          name: "dbt v2.1",
+          version: "2.1",
+          stage: "beta",
+        },
+        {
+          name: "dbt v2.0",
+          version: "2.0",
+        },
+      ];
+      return [
+        // Group-level selection — always mirrors the latest specific entry above
+        { name: "v2", EOLDate: specific[0].EOLDate, version: specific[0].version },
+        ...specific,
+      ];
+    },
   },
   {
     name: "v1",
