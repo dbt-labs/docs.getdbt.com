@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 // Flags image references (markdown, <img>, <Lightbox>, etc.) that point to a
-// local /static asset that doesn't exist. Catches typo'd paths that
-// lychee-action / the docs link checker can't see because they're JSX props,
-// not real <a>/<img> tags in the rendered HTML.
+// /static asset that doesn't exist locally AND isn't served from the S3/
+// CloudFront image bucket that website/vercel.json proxies /img/* to in
+// production. Catches typo'd paths that lychee-action / the docs link
+// checker can't see because they're JSX props, not real <a>/<img> tags in
+// the rendered HTML.
 
 const fs = require("fs");
 const path = require("path");
@@ -16,6 +18,12 @@ const SCAN_DIRS = [
 ];
 
 const FILE_EXTENSIONS = new Set([".md", ".mdx"]);
+
+// Images now live behind the CloudFront distribution that website/vercel.json
+// rewrites "/img/:path*" to (see the "rewrites" entry there). A path missing
+// from website/static may still resolve in production if it's been migrated
+// there, so that's checked before failing.
+const IMAGE_CDN_ORIGIN = "https://d2z3qofvp275uy.cloudfront.net";
 
 // Matches src="..." / src='...' on any tag or component (<img>, <Lightbox>,
 // custom components, etc.) plus standard markdown image syntax ![alt](path).
@@ -49,7 +57,7 @@ function lineNumberAt(content, index) {
 	return content.slice(0, index).split("\n").length;
 }
 
-function checkFile(filePath, errors) {
+function findMissingRefs(filePath, missing) {
 	const content = fs.readFileSync(filePath, "utf8");
 	const relFile = path.relative(REPO_ROOT, filePath);
 
@@ -62,7 +70,7 @@ function checkFile(filePath, errors) {
 
 			const assetPath = path.join(STATIC_DIR, ref.replace(/^\//, ""));
 			if (!fs.existsSync(assetPath)) {
-				errors.push({
+				missing.push({
 					file: relFile,
 					line: lineNumberAt(content, match.index),
 					ref,
@@ -72,18 +80,41 @@ function checkFile(filePath, errors) {
 	}
 }
 
-function main() {
+// HEAD-checks a ref against the image CDN. Returns true if it resolves there
+// (in which case the missing local file isn't actually broken), false
+// otherwise. Network errors are treated as "not found" so a CDN hiccup still
+// surfaces as a failure rather than silently passing.
+async function existsOnImageCdn(ref) {
+	try {
+		const res = await fetch(`${IMAGE_CDN_ORIGIN}${ref}`, { method: "HEAD" });
+		return res.ok;
+	} catch {
+		return false;
+	}
+}
+
+async function main() {
 	const argFiles = process.argv.slice(2);
 	const files = argFiles.length
 		? argFiles
 				.map((f) => path.resolve(REPO_ROOT, f))
 				.filter((f) => FILE_EXTENSIONS.has(path.extname(f)) && fs.existsSync(f))
 		: SCAN_DIRS.flatMap((dir) => walk(dir));
-	const errors = [];
+	const missing = [];
 
 	for (const file of files) {
-		checkFile(file, errors);
+		findMissingRefs(file, missing);
 	}
+
+	const uniqueRefs = [...new Set(missing.map((m) => m.ref))];
+	const cdnResults = new Map();
+	await Promise.all(
+		uniqueRefs.map(async (ref) => {
+			cdnResults.set(ref, await existsOnImageCdn(ref));
+		}),
+	);
+
+	const errors = missing.filter((m) => !cdnResults.get(m.ref));
 
 	if (errors.length > 0) {
 		console.error(`Found ${errors.length} broken image path(s):\n`);
@@ -91,7 +122,7 @@ function main() {
 			console.error(`  ${file}:${line}  ->  ${ref}`);
 		}
 		console.error(
-			"\nFix the path above, or add the missing asset under website/static.",
+			`\nFix the path above, add the missing asset under website/static, or upload it to the image CDN (${IMAGE_CDN_ORIGIN}).`,
 		);
 		process.exit(1);
 	}
