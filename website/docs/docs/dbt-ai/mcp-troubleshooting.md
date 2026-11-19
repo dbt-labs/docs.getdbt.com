@@ -52,7 +52,7 @@ Yes. `execute_sql` runs a single read-only `SELECT` query, and rejects anything 
 
 Rejected queries return an error, for example `execute_sql accepts a single SELECT query only`.
 
-The check is best-effort, so don't treat it as your only safeguard. A `SELECT` can still call functions or read from views, and what those do depends on the permissions of the warehouse credentials the query runs with.
+se least-privilege warehouse roles for each user's development credentials. This is because s=a `SELECT` can still call functions or read from views, and what those do depends on the permissions of the warehouse credentials the query runs with. 
 
 To keep things safe:
 
