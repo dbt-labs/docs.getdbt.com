@@ -8,7 +8,7 @@ keywords: ["read-only users", "read-only license", "explore mode", "invite users
 availability: platform_usage
 ---
 
-# Invite read-only users to dbt Wizard <Lifecycle status="preview" />
+# Invite read-only users to dbt Wizard <Lifecycle status="beta" />
 
 <IntroText>
 Give the people who need answers a way to get them. With a few setup steps, read-only users can ask questions of governed production data in plain language &mdash; no developer license required.

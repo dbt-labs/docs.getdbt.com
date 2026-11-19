@@ -14,7 +14,7 @@ import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
 import WizardTrialBilling from '/snippets/_wizard-trial-billing.md';
 
-# Use <Constant name="wizard" /> locally <Lifecycle status="beta"/>
+# Use <Constant name="wizard" /> locally <Lifecycle status="public_preview"/>
 
 <IntroText>
 Install <Constant name="wizard" /> locally and start an agentic dbt development session from your terminal. 

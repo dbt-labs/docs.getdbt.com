@@ -7,7 +7,7 @@ tags: [AI, Wizard]
 availability: local_all
 ---
 
-# Use skills with <Constant name="wizard" /> CLI <Lifecycle status="beta"/>
+# Use skills with <Constant name="wizard" /> CLI <Lifecycle status="public_preview"/>
 
 <IntroText>
 Skills are reusable instructions that help <Constant name="wizard" /> follow your team's SQL conventions, naming rules, modeling patterns, and workflows without repeating them in every prompt.

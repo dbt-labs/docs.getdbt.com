@@ -11,7 +11,7 @@ availability:
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 
-# Configuring AWS PrivateLink for single-tenant ingress <Lifecycle status="beta"/>
+# Configuring AWS PrivateLink for single-tenant ingress <Lifecycle status="public_preview"/>
 
 <SetUpPages features={'/snippets/_available-tiers-enterprise-plus.md'}/>
 

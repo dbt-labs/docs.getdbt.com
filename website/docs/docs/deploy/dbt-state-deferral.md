@@ -50,7 +50,7 @@ You can also pass `--state` or `--defer-state` to explicitly point dbt State to 
 If you've overridden `generate_*_name()` macros with runtime values (such as environment variables, file paths, or dates), provide a `manifest.json` file so dbt State can locate objects correctly. Without one, it infers object locations from your macros and profile target, which may be incorrect in these cases. Refer to [Caveats to dbt State without a manifest](/reference/resource-configs/defer-to-target#caveats-to-dbt-state-without-a-manifest).
 :::
 
-## dbt State-powered `state:*` selectors <Lifecycle status="beta" /> {#dbt-state-powered-state-selectors}
+## dbt State-powered `state:*` selectors {#dbt-state-powered-state-selectors}
 
 When dbt State is enabled, [`state:*` selectors](/reference/node-selection/methods#state) can use dbt State as their comparison source instead of a single `manifest.json` from the most recent job run. Each node (models, snapshots, seeds, and tests) is compared against its own last execution in the [`defer_to_target`](/reference/resource-configs/defer-to-target) environment (default: `prod`), so a node is only selected as modified if its own logic changed, no matter which job last ran it.
 

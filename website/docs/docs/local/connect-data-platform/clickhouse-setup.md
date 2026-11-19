@@ -19,7 +19,7 @@ availability: local_free
 
 <VersionBlock firstVersion="2.0">
 
-# Connect ClickHouse to <Constant name="fusion" /> <Lifecycle status="beta" />
+# Connect ClickHouse to <Constant name="fusion" /> <Lifecycle status="private_preview" />
 
 The ClickHouse adapter for the <Constant name="fusion_engine" /> connects to [ClickHouse](https://clickhouse.com) over HTTP or HTTPS. It supports self-managed single-node ClickHouse and [ClickHouse Cloud](https://clickhouse.com/cloud).
 

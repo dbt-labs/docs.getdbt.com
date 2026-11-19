@@ -9,7 +9,7 @@ availability: local_all
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 
-# <Constant name="wizard" /> config reference <Lifecycle status="beta"/>
+# <Constant name="wizard" /> config reference <Lifecycle status="public_preview"/>
 
 <IntroText>
 

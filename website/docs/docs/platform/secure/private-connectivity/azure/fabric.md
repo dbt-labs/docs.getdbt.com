@@ -12,7 +12,7 @@ availability:
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
-# Configuring Private Link for Microsoft Fabric <Lifecycle status="beta"/>
+# Configuring Private Link for Microsoft Fabric <Lifecycle status="public_preview"/>
 
 <SetUpPages features={'/snippets/_available-tiers-enterprise-plus.md'}/>
 

@@ -11,7 +11,7 @@ availability: local_all
 import SlashGenerated from './_wizard-slash-commands-generated.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 
-# <Constant name="wizard" /> slash command reference <Lifecycle status="beta"/>
+# <Constant name="wizard" /> slash command reference <Lifecycle status="public_preview"/>
 
 <IntroText>
 Full reference for <Constant name="wizard" /> interactive TUI slash commands.

@@ -9,7 +9,7 @@ availability:
   minPlan: enterprise
 ---
 
-# External metadata ingestion <Lifecycle status="preview" />
+# External metadata ingestion <Lifecycle status="public_preview" />
 
 <IntroText>
 

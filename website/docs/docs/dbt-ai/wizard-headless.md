@@ -9,7 +9,7 @@ availability: local_all
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 
-# Headless mode <Lifecycle status="beta"/>
+# Headless mode <Lifecycle status="public_preview"/>
 
 <IntroText>
 <Constant name="wizard" /> can run without the interactive TUI — useful for scripts, CI pipelines, pre-commit hooks, and any workflow where you want a one-shot result without human-in-the-loop approval.

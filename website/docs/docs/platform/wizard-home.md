@@ -12,7 +12,7 @@ import WizardExploreUsage from '/snippets/_wizard-explore-usage.md';
 import WizardAgentModes from '/snippets/_wizard-agent-modes.md';
 import WizardModelPicker from '/snippets/_wizard-model-picker.md';
 
-# dbt Wizard home tab <Lifecycle status="preview" />
+# dbt Wizard home tab <Lifecycle status="beta" />
 
 <IntroText>
 The <Constant name="wizard" /> home tab is an agent-native development experience in <Constant name="dbt_platform" />. 

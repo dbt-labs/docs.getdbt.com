@@ -9,7 +9,7 @@ availability: local_all
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 
-# Use subagents with <Constant name="wizard"/> CLI <Lifecycle status="beta"/>
+# Use subagents with <Constant name="wizard"/> CLI <Lifecycle status="public_preview"/>
 
 <IntroText>
 Subagents let <Constant name="wizard" /> spin up focused, parallel agents to handle parts of a larger task &mdash; one to explore your project, one to make changes, one to review them. <Constant name="wizard"/> orchestrates them and consolidates the results back into your session.

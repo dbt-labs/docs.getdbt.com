@@ -4,7 +4,7 @@ description: "Use the built-in dbt tools to update your models to use Lake Compu
 sidebar_label: "Lake Compute migration"
 id: lake-compute-migration
 ---
-# Migrate models to Lake Compute <Lifecycle status="private_beta" />
+# Migrate models to Lake Compute <Lifecycle status="public_preview" />
 
 dbt offers a native tool to help you move your dbt models to Lake Compute. Take advantage of the costs savings by moving as few or as many supported models as you want. It's currently supported only for Snowflake, but support for more data warehouses will be enabled soon. 
 

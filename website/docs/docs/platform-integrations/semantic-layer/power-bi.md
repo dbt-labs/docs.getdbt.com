@@ -9,7 +9,7 @@ availability:
   minPlan: starter
 ---
 
-# Power BI <Lifecycle status="preview" />
+# Power BI <Lifecycle status="public_preview" />
 
 The Power BI integration enables you to query the <Constant name="semantic_layer" /> directly, allowing you to build dashboards with trusted, live data in Power BI. It provides a live connection to the <Constant name="semantic_layer" /> through Power BI Desktop or Power BI Service.
 

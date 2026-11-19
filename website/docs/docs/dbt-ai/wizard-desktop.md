@@ -11,7 +11,7 @@ availability: local_all
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 import WizardTrialBilling from '/snippets/_wizard-trial-billing.md';
 
-# Get started with Wizard Desktop <Lifecycle status="beta"/>
+# Get started with Wizard Desktop <Lifecycle status="public_preview"/>
 
 <IntroText>
 Wizard Desktop is <Constant name="wizard" /> as a native app. View rich data visualizations, data diffs, lineage, and more to get to your results faster than ever before.

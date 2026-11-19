@@ -14,7 +14,7 @@ These tables indicate whether private connectivity can be established to specifi
 
 ---
 
-### Connecting to the dbt platform (Ingress) <Lifecycle status="beta"/>
+### Connecting to the dbt platform (Ingress) <Lifecycle status="public_preview"/>
 
 Your services can connect to <Constant name="dbt" /> over private connectivity using the <Term id="dbt-provisioned">dbt-provisioned</Term> model. In this case, dbt is the <Term id="service-producer">service producer</Term> and you are the <Term id="consumer">consumer</Term>.
 
