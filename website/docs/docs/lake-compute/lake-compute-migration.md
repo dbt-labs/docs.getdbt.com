@@ -88,4 +88,4 @@ Take a baseline with `dbt init lakecompute --baseline` _before_ you switch, then
 These considerations apply whether you migrate with an agent or manually.
 
 - `--history-days` sets how much query history the Size step reads. In our testing, reading 30 days of history took about 15 minutes on a large account, so start with a smaller value, such as `--history-days 1`.
-- The tool works on the models it can move. It doesn't change models that use features Lake Compute doesn't support yet. Refer to [Public preview limitations](/docs/lake-compute#public-preview-limitations).
+- The tool works on the models it can move. It doesn't change models that use features Lake Compute doesn't support yet. Refer to [Public preview limitations](/docs/lake-compute#limitations).

@@ -284,7 +284,7 @@ select * from {{ ref('model_b') }}
 
 ### Use Lake Compute as your default adapter
 
-All your models run on Lake Compute by default and write to Iceberg tables in MDLS. Also check for existing `materialized: view` configs — Lake Compute doesn't support views (see [Public preview limitations](/docs/lake-compute#public-preview-limitations)), so switch any views to `table` or `ephemeral` before converting a project over.
+All your models run on Lake Compute by default and write to Iceberg tables in MDLS. Also check for existing `materialized: view` configs — Lake Compute doesn't support views (see [Public preview limitations](/docs/lake-compute#limitations)), so switch any views to `table` or `ephemeral` before converting a project over.
 
 For an existing project, convert models over in two steps rather than all at once:
 

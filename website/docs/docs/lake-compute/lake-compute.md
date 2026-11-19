@@ -25,7 +25,7 @@ Lake Compute supports two execution models:
 Adopt completely by running all of your models on Lake Compute.
 
 
-Some workloads, such as those that use warehouse-native AI functions, may still belong on your primary warehouse. Refer to [Public preview limitations](#public-preview-limitations) for what Lake Compute doesn't support yet.
+Some workloads, such as those that use warehouse-native AI functions, may still belong on your primary warehouse. Refer to [Public preview limitations](#limitations) for what Lake Compute doesn't support yet.
 
 ## Why use Lake Compute
 
@@ -81,7 +81,7 @@ One variable gates every surface that selects an adapter:
 
 For the <Constant name="dbt_platform" />, set this as an environment variable on the environment. Refer to [Onboarding to Lake Compute](/docs/lake-compute/compute-onboarding#dbt-platform).
 
-## Public preview limitations
+## Public preview limitations {#limitations}
 
 The following are not supported or are intentionally limited during public preview:
 
@@ -92,9 +92,7 @@ The following are not supported or are intentionally limited during public previ
 - Automatic SQL dialect translation.
 - Distributed or multi-node execution.
 - Large two-sided joins and other workloads that require distributed processing.
-- GCP and Azure storage.
-- BigQuery integration.
-- AWS regions other than the currently supported beta regions.
+- Azure regions and storage.
 
 Additional capabilities and regions may be introduced over time, but roadmap items and dates are not commitments.
 

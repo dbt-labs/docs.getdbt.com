@@ -113,7 +113,7 @@ No. Lake Compute is free during public preview.
 
 No. No service-level agreement (SLA) covers Lake Compute during public preview. Use Lake Compute for evaluation and feedback only, and expect limited technical support. Don't treat non GA workloads as production-critical unless your team has evaluated the risks and has a fallback plan.
 
-For the full list of what Lake Compute doesn't support during public preview, refer to [Public preview limitations](/docs/lake-compute?version=2#public-preview-limitations).
+For the full list of what Lake Compute doesn't support during public preview, refer to [Public preview limitations](/docs/lake-compute?version=2#limitations).
 
 </Expandable>
 
