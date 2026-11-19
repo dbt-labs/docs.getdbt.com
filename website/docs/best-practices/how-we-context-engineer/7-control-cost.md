@@ -31,7 +31,7 @@ A report the next morning only tells you what you already spent. The control has
 
 ## Use a circuit breaker and a meter
 
-Use two tools do the work:
+Use two tools to do the work:
 
 <SimpleTable>
 
