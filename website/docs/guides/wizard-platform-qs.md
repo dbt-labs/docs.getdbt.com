@@ -96,15 +96,24 @@ Don't have an account yet?
 **Goal:** prove the model works.
 
 1. Check the validation results. <Constant name="wizard" /> can run compile and build checks on the change and show them inline, so you know the new tests pass before anything is saved.
-2. If it doesn't run them, ask: *Build daily_revenue and run its tests.*
+2. Ask <Constant name="wizard" /> to build the project, so every model your new one depends on exists:
+
+    ```text
+    Run dbt build for daily_revenue and everything it depends on
+    ```
+
 3. Approve the change to save it to your branch.
 4. Ask: *Show me the lineage for daily_revenue.* Or open the model in the <Constant name="studio_ide" /> and use the lineage tab.
 
-{/* SCREENSHOT: dbt run output for daily_revenue in the home tab. */}
-{/* SCREENSHOT: dbt run output for daily_revenue in the Studio IDE. */}
-{/* SCREENSHOT: the daily_revenue table in the warehouse. */}
+{/* SCREENSHOT: dbt run output for daily_revenue in the home tab. Save as /img/guides/wizard-platform-qs/home-run.png */}
+{/* SCREENSHOT: dbt run output for daily_revenue in the Studio IDE. Save as /img/guides/wizard-platform-qs/studio-run.png */}
+{/* SCREENSHOT: the daily_revenue table in the warehouse. Save as /img/guides/wizard-platform-qs/warehouse-table.png */}
 
-{/* TODO(verify): confirm how lineage is shown in the home tab vs. the Studio IDE, and the exact steps to see dbt run output in each. Docs say the preview links out to Catalog for lineage (wizard-home.md). Capture the three screenshots above from a real run. */}
+{/* TODO(verify): confirm how lineage is shown in the home tab vs. the Studio IDE, and the exact steps to see dbt run output in each. The docs say the preview links out to Catalog for lineage (wizard-home.md). Capture the three screenshots above from a real run. */}
+
+Here's what the model looks like in the project's lineage. Select a model to trace it, and turn on **Show tests** to see the tests <Constant name="wizard" /> wrote.
+
+<LineageGraph graph="jaffleShopWithRevenue" focus="daily_revenue" />
 
 **You should see:**
 

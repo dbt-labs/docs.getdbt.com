@@ -112,25 +112,52 @@ Pick one:
 
 **Goal:** prove the model works, then see where it fits.
 
-1. Open the **Validation** pane. Generate a validation plan, then choose the **Medium** validation level. It builds your new model and runs its tests. Since the sample runs on DuckDB, everything stays on your computer.
-2. Select **Run validation**.
-3. When it finishes, expand the checks to see what ran. You should see the `daily_revenue` build and both tests pass.
-4. Open the **Lineage** pane. Find `daily_revenue` and look one step upstream.
+1. Ask <Constant name="wizard" /> to build the whole project, so every model your new one depends on exists:
 
-{/* SCREENSHOT: Validation pane with passing checks. */}
-{/* SCREENSHOT: Lineage pane with orders feeding daily_revenue. */}
+    ```text
+    Run dbt build and show me the results
+    ```
 
-{/* TODO(verify): confirm how Desktop shows dbt run output for the build (Validation pane vs. Commands pane), and that Medium builds into the chat's schema-suffixed DuckDB schema. Open question 4 in the audit. */}
+2. Open the **Validation** pane to check the change. Generate a validation plan, choose the **Medium** level, and select **Run validation**. Since the sample runs on DuckDB, everything stays on your computer.
+3. When it finishes, expand the checks to see what ran.
+4. Open the **Lineage** pane and find `daily_revenue`.
 
-Want to see the data itself? Ask: *Show me the first 10 rows of daily_revenue.*
+{/* SCREENSHOT: dbt build results for the jaffle shop project in Wizard Desktop. Save as /img/guides/wizard-desktop-qs/dbt-build.png */}
+{/* SCREENSHOT: Validation pane with passing checks. Save as /img/guides/wizard-desktop-qs/validation.png */}
+{/* SCREENSHOT: the daily_revenue table (first rows). Save as /img/guides/wizard-desktop-qs/daily-revenue-table.png */}
 
-{/* TODO(verify): confirm the table renders inline for the DuckDB sample. */}
+{/* TODO(verify): confirm how Desktop shows the dbt build output (chat vs. Commands pane), that Medium builds the upstream models (a build of only +daily_revenue fails the orders-to-customers relationship test until customers exists), and that the build lands in the chat's schema-suffixed DuckDB schema. */}
 
-**You should see:**
+**You should see** a successful build. The output looks like this:
 
-- Validation checks for `daily_revenue` marked as passed.
-- `orders` → `daily_revenue` in the lineage pane.
-- A table of dates, order counts, and revenue, if you asked for the rows.
+```text
+ Succeeded [  0.02s] seed  main.raw_payments
+ Succeeded [  0.02s] seed  main.raw_customers
+ Succeeded [  0.02s] seed  main.raw_orders
+ Succeeded [  0.01s] model main.stg_customers (view)
+ Succeeded [  0.01s] model main.stg_payments (view)
+ Succeeded [  0.01s] model main.stg_orders (view)
+ Succeeded [  0.01s] model main.customers (table)
+ Succeeded [  0.01s] model main.orders (table)
+ Succeeded [  0.01s] model main.daily_revenue (table)
+    Passed [  0.00s] test  not_null_daily_revenue_order_date
+    Passed [  0.00s] test  unique_daily_revenue_order_date
+...
+Processed: 6 models | 22 tests | 3 seeds
+Summary: 31 total | 31 success
+```
+
+Want to see the data itself? Ask:
+
+```text
+Show me the first 10 rows of daily_revenue
+```
+
+{/* TODO(verify): confirm the table renders inline for the DuckDB sample, then add the real output. */}
+
+Here's your new model in the project's lineage. Select `daily_revenue` or `orders` to trace them, and turn on **Show tests** to see the tests <Constant name="wizard" /> wrote.
+
+<LineageGraph graph="jaffleShopWithRevenue" focus="daily_revenue" />
 
 **What just happened:** <Constant name="wizard" /> built your new model, ran the tests it wrote, and showed you the result. Nothing was committed or deployed. All of it happened on a branch in a copy of your project.
 

@@ -1,0 +1,133 @@
+.card {
+  margin: 1.5rem 0;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 0.625rem;
+  background: var(--ifm-background-surface-color);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.title {
+  font-weight: 600;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.canvas {
+  position: relative;
+  background-color: var(--ifm-color-emphasis-100);
+  background-image: radial-gradient(var(--ifm-color-emphasis-300) 1px, transparent 1px);
+  background-size: 16px 16px;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.canvas:active {
+  cursor: grabbing;
+}
+
+.svg {
+  display: block;
+}
+
+.edge {
+  fill: none;
+  stroke: var(--ifm-color-emphasis-600);
+  stroke-width: 1.25;
+}
+
+.arrowHead {
+  fill: var(--ifm-color-emphasis-600);
+}
+
+.node {
+  cursor: pointer;
+}
+
+.dim {
+  opacity: 0.25;
+}
+
+.box {
+  fill: var(--ifm-background-surface-color);
+  stroke: var(--ifm-color-emphasis-400);
+  stroke-width: 1;
+}
+
+.focus {
+  stroke: #7c5cfc;
+  stroke-width: 2.5;
+}
+
+.selected {
+  stroke: var(--ifm-color-emphasis-900);
+  stroke-width: 2;
+}
+
+.badge_model {
+  fill: #dbeafe;
+}
+
+.badge_seed {
+  fill: #fde8cf;
+}
+
+.badge_test {
+  fill: #c9f7d3;
+}
+
+/* Badge fills stay light in dark mode, so the text stays dark too. */
+.badgeText {
+  font: 600 9px var(--ifm-font-family-monospace);
+  fill: #1f2937;
+}
+
+.label {
+  font: 13px var(--ifm-font-family-base);
+  fill: var(--ifm-font-color-base);
+}
+
+.controls {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  display: flex;
+  gap: 0.375rem;
+}
+
+.controls button {
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.625rem;
+  border: 1px solid var(--ifm-color-emphasis-400);
+  border-radius: 0.5rem;
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-font-color-base);
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.controls button:hover {
+  background: var(--ifm-color-emphasis-200);
+}
+
+.footer {
+  padding: 0.5rem 1rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.8125rem;
+}

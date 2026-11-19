@@ -4,11 +4,21 @@ Now make a small change and watch <Constant name="wizard" /> work out what it to
 Add an average_order_value column to daily_revenue, then check that nothing downstream breaks.
 ```
 
-**You should see:**
+**You should see** a small diff. One new column in `daily_revenue.sql`:
 
-- A small diff: one new column in `daily_revenue.sql`, and a matching entry in `schema.yml`.
-- A note that `daily_revenue` has no downstream models, so nothing else is affected.
+```sql
+        sum(amount) as total_order_amount,
+        count(*) as order_count,
+        sum(amount) / count(*) as average_order_value
+```
 
-**What just happened:** <Constant name="wizard" /> checked the lineage before it changed anything, then described the impact. That's the difference between an agent that knows your project and one that only sees files.
+And a matching entry in `schema.yml`:
 
-{/* TODO(verify): run this prompt end to end and confirm the impact summary wording. */}
+```yaml
+      - name: average_order_value
+        description: Average order amount on this date
+```
+
+Nothing else in the project references `daily_revenue`, so there's nothing downstream to break. <Constant name="wizard" /> checks that for you before it changes anything.
+
+**What just happened:** <Constant name="wizard" /> looked at the lineage first, then made the change. That's the difference between an agent that knows your project and one that only sees files.
