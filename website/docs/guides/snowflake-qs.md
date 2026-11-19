@@ -38,6 +38,8 @@ Snowflake also provides a quickstart for you to learn how to use <Constant name=
 - You have a [<Constant name="dbt" /> account](https://www.getdbt.com/signup/). 
 - You have a [trial Snowflake account](https://signup.snowflake.com/). During trial account creation, make sure to choose the **Enterprise** Snowflake edition so you have `ACCOUNTADMIN` access. For a full implementation, you should consider organizational questions when choosing a cloud provider. For more information, see [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms.html) in the Snowflake docs. For the purposes of this setup, all cloud providers and regions will work so choose whichever you’d like.
 
+<PlatformCta label="Create a dbt account" href="https://www.getdbt.com/signup" step="create-account" />
+
 ### Related content
 
 - Learn more with [dbt Learn courses](https://learn.getdbt.com)
@@ -124,6 +126,9 @@ You should now be logged into <Constant name="dbt" /> with a project that has a 
 </TabItem>
 <TabItem value="manual-connect" label="Connect manually">
 
+Sign in to <Constant name="dbt_platform" />, then follow these steps.
+
+<PlatformCta label="Open dbt platform" href="https://cloud.getdbt.com/" step="open-platform" />
 
 1. Create a new project in <Constant name="dbt" />. Navigate to **Account settings** (by clicking on your account name in the left side menu), and click **+ New Project**.
 2. Enter a project name and click **Continue**.
