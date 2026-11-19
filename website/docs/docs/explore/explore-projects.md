@@ -39,7 +39,7 @@ If your organization works in both <Constant name="core" /> and Cloud, you can u
 
 ## Catalog overview 
 
-:::info [Global navigation](/docs/explore/global-navigation) <Lifecycle status='self_service,managed,managed_plus' />
+:::info [Global navigation](/docs/explore/global-navigation)
 
 <Constant name="catalog" /> introduces the ability to widen your search by including dbt resources (models, seeds, snapshots, sources, exposures, and more) across your entire account. This broadens the results returned and gives you greater insight into all the assets across your dbt projects. Learn more in [Global navigation](/docs/explore/global-navigation) or in our [video overview](https://www.loom.com/share/ae93b3d241cd439fbe5f98f5e6872113?).
 
