@@ -12,7 +12,11 @@ availability:
   minPlan: enterprise
 ---
 
-# About dbt Insights <Lifecycle status="beta" />
+import InsightsLifecycle from '/snippets/_insights-lifecycle.md';
+
+# About dbt Insights <Lifecycle status="eol" />
+
+<InsightsLifecycle/>
 
 <IntroText>
 Learn how to query data with <Constant name="insights" /> and view documentation in <Constant name="catalog" />.
