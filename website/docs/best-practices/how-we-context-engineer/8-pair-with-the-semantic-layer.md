@@ -31,7 +31,7 @@ Both live in the same project, built by the same team. Both are reviewed in a pu
 
 ## Build the semantic layer first
 
-Metrics come first, then context. The order matters because metrics are the questions. A metric that moves is what sends someone looking for a reason, and context is where the reason lives.
+Metrics come first, then context. The order matters because metrics are the questions. A metric that changes is what sends someone looking for a reason, and context is where they can find that reason.
 
 1. Build your marts.
 2. Add [semantic models](/docs/build/semantic-models) and [metrics](/docs/build/metrics-overview) on top of them.
