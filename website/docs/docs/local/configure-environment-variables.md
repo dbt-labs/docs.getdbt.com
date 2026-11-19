@@ -58,7 +58,9 @@ When the same environment variable is defined in multiple places, <Constant name
 This means environment variables set in your shell always override values from the `.env` file.
 
 :::tip
-Add `.env` to your `.gitignore` file to prevent sensitive credentials from being committed to version control. The `dbtf init` command automatically includes `.env` in the generated `.gitignore` file.
+Add `.env` to your `.gitignore` file to prevent sensitive credentials from being committed to version control. The `dbt init` command automatically includes `.env` in the generated `.gitignore` file. Adding the file to `.gitignore` does not stop <Constant name="dbt" /> from reading a `.env` file that is already committed. Remove it from the repository so later commits do not include it.
 :::
+
+A `.env` file committed to your repository is also loaded on <Constant name="dbt_platform" /> job runs for <Constant name="core" /> and <Constant name="fusion" />. A value in `.env` can change what a job thinks its environment is when <Constant name="dbt_platform" /> left that variable empty. When <Constant name="dbt_platform" /> has already set the variable, that value wins. Refer to [special environment variables](/docs/build/environment-variables#special-environment-variables).
 
 For more details on managing environment variables locally, refer to [Configure your local environment](/docs/configure-dbt-extension#set-environment-variables-locally).
