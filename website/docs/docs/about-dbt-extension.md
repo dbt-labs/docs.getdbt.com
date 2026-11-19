@@ -140,13 +140,13 @@ To solve this issue, do one of the following:
 
 ## dbt Wizard
 
-The dbt VS Code extension and [dbt Wizard](/docs/dbt-ai/wizard-quickstart) are designed to work together. The extension gives you fast parsing, inline error detection, and IntelliSense. [dbt Wizard](/docs/dbt-ai/wizard-quickstart) adds an AI layer on top &mdash; one that works with a live understanding of your project through dbt's [native metadata engine](/docs/dbt-ai/about-dbt-ai), a structured index of your [lineage](/docs/explore/explore-projects), model health, test coverage, and semantic definitions.
+The dbt VS Code extension and [dbt Wizard](/docs/platform/wizard-overview#get-started) are designed to work together. The extension gives you fast parsing, inline error detection, and IntelliSense. dbt Wizard adds an AI layer on top &mdash; one that works with a live understanding of your project through the [dbt Information Schema](/docs/build/dbt-information-schema), a structured view of your [lineage](/docs/explore/explore-projects), model health, test coverage, and semantic definitions.
 
 - **Build and refactor from natural language**: Describe what you want, review the diff, approve or redirect before anything is saved.
 - **Validate changes before they land**: The agent compiles and runs against your warehouse in a tight loop — not just editor linting.
 - **Work with your full project map**: Traverse the [DAG](/docs/explore/explore-projects), understand downstream impact, and keep tests and YAML in sync as models change.
 
-For data practitioners, combining the extension's dbt-powered editor experience with dbt Wizard's project-aware agent means less manual YAML, fewer context switches, and faster iteration on complex modeling work. See [dbt Wizard quickstart](/docs/dbt-ai/wizard-quickstart) to get started.
+For data practitioners, combining the extension's dbt LSP-powered editor experience with dbt Wizard's project-aware agent means less manual YAML, fewer context switches, and faster iteration on complex modeling work. See [dbt Wizard quickstart](/docs/platform/wizard-overview#get-started) to get started.
 
 ## Support
 
@@ -156,7 +156,7 @@ For organizations that aren't customers of the dbt platform, the best place for 
 
 We welcome feedback as we work to continuously improve the extension, and would love to hear from you!
 
-The extension is available to all users and for more information, refer to the the [dbt Product License Agreement](https://www.getdbt.com/dbt-product-license-agreement).
+The extension is available to all users and for more information, refer to the [dbt Product License Agreement](https://www.getdbt.com/dbt-product-license-agreement).
 
 :::tip Developing locally as a <Constant name="dbt_platform"/> user?
 Refer to the [Hybrid development with <Constant name="dbt_platform"/> and dbt v2](/guides/dbt-platform-local-workflow) guide for how to keep credentials, environment variables, and v2 versions in sync between your local extension and <Constant name="dbt_platform"/>.

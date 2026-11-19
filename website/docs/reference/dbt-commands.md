@@ -53,7 +53,7 @@ Commands marked ❌ indicate write commands, commands marked ✅ indicate read c
 | [invocation](/reference/commands/invocation?version=2.0) | Enables users to debug long-running sessions by interacting with active invocations.|  N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions) |
 | [lint](/reference/commands/lint?version=2.0) | Lints SQL files in a project for style, correctness, and convention violations | ✅ | All tools <br /> <Constant name="fusion_engine" /> only |
 | [list](/reference/commands/list) | Lists resources defined in a dbt project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
-| [login](/reference/commands/login?version=2.0) | Logs in to your <Constant name="dbt_platform" /> account | N/A | v2 and later <br /> <Constant name="platform_cli" /> |
+| [login](/reference/commands/login?version=2.0) | Logs in to your <Constant name="dbt_platform" /> account | N/A | v1.13 and later <br /> <Constant name="platform_cli" /> |
 | [parse](/reference/commands/parse) | Parses a project and writes detailed timing info |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | reattach | Reattaches to the most recent invocation to retrieve logs and artifacts. |   N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions) |
 | [retry](/reference/commands/retry) | Retry the last run `dbt` command from the point of failure |  ✅ | All tools <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions) |

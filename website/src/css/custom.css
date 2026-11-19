@@ -3086,7 +3086,7 @@ html[data-theme="dark"] .theme-doc-sidebar-container>div>button.button:hover {
 h3.anchor a.hash-link:before,
 h2.anchor a.hash-link:before {
   content: "";
-  background-image: url('/img/copy.png');
+  background-image: /* webpackIgnore: true */ url('/img/copy.png');
   background-size: 18px 18px;
   height: 18px;
   width: 18px;
@@ -3101,7 +3101,7 @@ h2.anchor a.hash-link:before {
 
 h3.anchor.clicked a.hash-link:before,
 h2.anchor.clicked a.hash-link:before {
-  background-image: url('/img/check.png');
+  background-image: /* webpackIgnore: true */ url('/img/check.png');
   background-size: 18px 13px;
   height: 13px;
 }
@@ -3322,19 +3322,19 @@ iframe#q-messenger-frame:not(.qlfd-maximized) {
 }
 
 .baton-1::before {
-  background-image: url('/img/batons/baton-1.png');
+  background-image: /* webpackIgnore: true */ url('/img/batons/baton-1.png');
 }
 
 .baton-2::before {
-  background-image: url('/img/batons/baton-2.png');
+  background-image: /* webpackIgnore: true */ url('/img/batons/baton-2.png');
 }
 
 .baton-hero::before {
-  background-image: url('/img/batons/baton-hero.png');
+  background-image: /* webpackIgnore: true */ url('/img/batons/baton-hero.png');
 }
 
 [data-theme='dark'] .baton-hero::before {
-  background-image: url('/img/batons/baton-hero-dark.png');
+  background-image: /* webpackIgnore: true */ url('/img/batons/baton-hero-dark.png');
 }
 
 @media (min-width: 1460px) {
@@ -3450,7 +3450,7 @@ iframe#q-messenger-frame:not(.qlfd-maximized) {
 }
 
 .static-bg {
-  background-image: url('/img/static-bg.png');
+  background-image: /* webpackIgnore: true */ url('/img/static-bg.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: bottom;

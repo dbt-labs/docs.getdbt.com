@@ -18,7 +18,7 @@ So let’s say that you have a business question, you have the raw data in your 
 
 You’ve got three steps that stand between you and your finished curated dataset. *If you don’t have an analytics engineer*, then the work may be split up like this:
 
-![The in series development workflow](/img/blog/2022-09-28-analyst-to-ae/old_workflow.png)
+<Lightbox src="/img/blog/2022-09-28-analyst-to-ae/old_workflow.png" title="The in series development workflow" />
 
 The first step is that your analyst will start researching the stakeholder’s request and will try to boil it down to a high-impact question that will drive the business. What do they really want to know? For example, your stakeholder might come to you with the following:
 
@@ -42,11 +42,11 @@ From there, the analyst will build out the initial documentation and write down 
 
 The first time that a team of analysts and data engineers builds a curated dataset, they will often expect this process to be a straight line to completion. Expectations are that the process will look something like this:
 
-![The expectation](/img/blog/2022-09-28-analyst-to-ae/first_loop.png)
+<Lightbox src="/img/blog/2022-09-28-analyst-to-ae/first_loop.png" title="The expectation" />
 
 What quickly becomes apparent is that this push for a linear process often ends up creating three unanticipated “loops”:
 
-![The reality](/img/blog/2022-09-28-analyst-to-ae/multiple_loops.png)
+<Lightbox src="/img/blog/2022-09-28-analyst-to-ae/multiple_loops.png" title="The reality" />
 
 ## Loop 1: Reacting to findings in the raw data
 
@@ -144,7 +144,7 @@ In the second example, the documentation is written with the stakeholder and bus
 
 Teach your analyst to be an analytics engineer, so they can do their own model building for curated datasets. You’ll start to see their process evolve into multiple smaller iterations, as they add fields and test them as they build. No loops, no hand-offs, and no Telephone Game. Your new workflow will look a little like this:
 
-![Parallel development](/img/blog/2022-09-28-analyst-to-ae/new_workflow.png)
+<Lightbox src="/img/blog/2022-09-28-analyst-to-ae/new_workflow.png" title="Parallel development" />
 
 Instead of trying to define all the various groups of `Active Users` at once, an analytics engineer can be validating the `Group A` rows, while adding `Group B` to their local environment, while still working with the stakeholder on the definition of `Group C`.
 

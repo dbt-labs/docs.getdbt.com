@@ -60,7 +60,7 @@ In the past, I’ve used a framework I call *narrative modeling*, naming and str
 
 - Navigating an analytical database should be intuitive and educational
 - Traversing the underlying code for an analytical database should be intuitive and stakeholder-friendly
-- Adding to an analytical database should be intuitive and scaleable
+- Adding to an analytical database should be intuitive and scalable
 
 Out of those principles came three primary conventions: event tables, details tables, and entity schemas.
 
@@ -140,7 +140,7 @@ One of the most powerful ways for stakeholders to conceptualize the flow of data
 
 ### Dimensional modeling
 
-![Untitled](/img/blog/2022-08-22-narrative-modeling/dimensional-modeling-dag.png)
+<Lightbox src="/img/blog/2022-08-22-narrative-modeling/dimensional-modeling-dag.png" title="Untitled" />
 
 In this approach, we have the standard `fct` and `dim` tables and a clean DAG flow. Let’s consider some possible shortcomings:
 
@@ -151,7 +151,7 @@ In general, the dimensional DAG can begin to feel like it’s not for a user who
 
 ### Narrative modeling
 
-![Untitled](/img/blog/2022-08-22-narrative-modeling/narrative-modeling-dag.png)
+<Lightbox src="/img/blog/2022-08-22-narrative-modeling/narrative-modeling-dag.png" title="Untitled" />
 
 How does this compare to the above?
 

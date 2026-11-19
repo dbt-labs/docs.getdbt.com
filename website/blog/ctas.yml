@@ -59,3 +59,9 @@
   subheader: Release updates, the road to dbt Core v2.0, and Q&A. Join a global-friendly session on August 26 or 27.
   button_text: Register here
   url: https://www.getdbt.com/resources/webinars/dbt-core-v1-12-live/?utm_medium=internal&utm_source=docs&utm_campaign=q3-2027_dbt-core-v1.12-live_aw&utm_content=themed-webinar____&utm_term=all_all__
+
+- name: wizard_desktop_waitlist
+  header: Try Wizard Desktop
+  subheader: Run parallel agents, review data diffs and lineage next to the code, and validate changes against your warehouse.
+  button_text: Join the waitlist
+  url: https://www.getdbt.com/wizard-desktop-waitlist

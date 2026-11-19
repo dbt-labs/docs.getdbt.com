@@ -17,7 +17,7 @@ import FusionThreads from '/snippets/_v2-threads.md';
 import FusionPartialParseCliFlags from '/snippets/_v2-partial-parse-cli-flags.md';
 import SourceFreshnessLegacy from '/snippets/_source-freshness-legacy.md';
 
-v2 is the current era of dbt, delivered through <Constant name="fusion" />. When you install dbt, you get <Constant name="fusion" /> by default. This guide walks you through upgrading a v1 project to v2. 
+dbt v2 is the latest major version of the dbt framework. When you install dbt, you get <Constant name="fusion" /> by default. This guide walks you through upgrading a v1 project to v2. 
 
 v2 is faster and stricter, but your existing project language and DAG semantics carry over, so once you upgrade, your project works as before &mdash; just faster.
 
@@ -30,7 +30,7 @@ import AboutFusion from '/snippets/_about-v2.md';
 
 ## Install dbt
 
-Upgrading to v2 is an install step. Install dbt using `pip` to get <Constant name="fusion" /> for v2:
+dbt v2 has a new PyPI name: `dbt`. When installing with a package manager like `pip`, use the `dbt` namespace to get the free, fully-featured distribution:
 
 ```shell
 python -m pip install dbt
@@ -84,7 +84,7 @@ The v2 engine is a complete rewrite in Rust, delivering faster parse and compile
 
 Similar to a database's `INFORMATION_SCHEMA`, the [dbt Information Schema](/docs/build/dbt-information-schema) is a contracted interface into the metadata for all of the resources in your dbt project.
 
-When you use the [`--generate-info-schema`](#generating-the-information-schema) flag, dbt writes the Information Schema to `target/info_schema/` in a versioned subdirectory (for example, `target/info_schema/v1/`) as standard Parquet files. The metadata available in the schema grows with each step: parsing produces basic metadata, compiling adds column types and column-level lineage (with `--static-analysis strict`), and running or building populates runtime results.
+When you use the `--generate-info-schema` flag or set `DBT_ENGINE_GENERATE_INFO_SCHEMA=true`, dbt writes the Information Schema to `target/info_schema/` in a versioned subdirectory (for example, `target/info_schema/v1/`) as standard Parquet files. The metadata available in the schema grows with each step: parsing produces basic metadata, compiling adds model column types and column-level lineage (with `--static-analysis strict`), and running or building populates runtime results.
 
 For more information, refer to [dbt Information Schema](/docs/build/dbt-information-schema).
 
@@ -153,7 +153,7 @@ Or pass `--static-analysis baseline` on the CLI. For details, refer to [About st
 
 #### Strict static analysis
 
-Strict mode fully resolves column types and validates references across your entire project before execution begins; nothing runs until the project is proven valid. It is required to produce [column-level lineage](/docs/explore/column-level-lineage) and unlocks additional LSP features like column go-to-definition and type checking. Strict mode requires authentication through [`dbt login`](/reference/commands/login?version=2.0); unauthenticated runs fall back to baseline.
+Strict mode fully resolves column types and validates references across your entire project before execution begins; nothing runs until the project is proven valid. It is required to produce [column-level lineage](/docs/explore/column-level-lineage) and unlocks additional LSP features like column go-to-definition and type checking.
 
 Enable it per-model or project-wide:
 
@@ -193,7 +193,7 @@ v2 introduces [agent skills](/docs/dbt-ai/package-skills), which are reusable in
 To use agent skills, you need to:
 
 - Include skills in your project's `skills/` directory, use a package that ships skills, or both
-- Set the `ai_provider` flag in your root project to tell dbt which which coding agent you use. Supported values are `wizard`, `claude`, `openai`, `codex`, `cursor`, or `gemini` (case-insensitive).
+- Set the `ai_provider` flag in your root project to tell dbt which coding agent you use. Supported values are `wizard`, `claude`, `openai`, `codex`, `cursor`, or `gemini` (case-insensitive).
 
 Once both are in place, `dbt deps` installs those skills into the directory your agent reads from (such as `.claude/skills` or `.agents/skills`), and `dbt clean` removes them. If you're missing either piece, `dbt deps` installs your packages as usual and skips the skills.
 
@@ -222,6 +222,22 @@ Without this flag, dbt fails at parse time if any node in the project has an `ad
 When developing v2, there were opportunities to improve the dbt framework — failing earlier (when possible), fixing bugs, optimizing run order, and deprecating flags that are no longer relevant. The result is a handful of specific and nuanced changes to existing behavior.
 
 When upgrading to v2, you should expect the following changes in functionality:
+
+#### Calling project macros in YAML files
+
+You can call project macros directly in YAML files such as `sources.yml` and `schema.yml`:
+
+```yaml
+sources:
+  - name: raw_orders
+    database: "{{ get_environment() }}"
+```
+
+This is not supported in <Constant name="core_v1" />, because the two engines use different Jinja contexts when rendering YAML:
+- <Constant name="core_v2" /> registers project macros before rendering, so they're available to Jinja in the YAML.
+- In <Constant name="core_v1" />, YAML files are rendered using a separate, restricted context that doesn't include project macros &mdash; only built-in Jinja functions like `env_var()` and `doc()`.
+
+For more information, refer to [Jinja support by file type](/reference/jinja-file-support).
 
 #### Parse time printing of relations will print out the full qualified name, instead of an empty string
 
@@ -578,12 +594,23 @@ or config.meta_require('my_key') instead.
 
 Behavior when a key exists only in meta:
 
+<SimpleTable>
 | Method | Behavior |
 |--------|----------|
 | `config.get('my_key')` | Returns the default value and emits a warning. |
 | `config.require('my_key')` | Raises an error and emits a warning. |
+</SimpleTable>
 
-To access custom configurations stored under meta, use the explicit methods:
+In addition, accessing the `meta` dictionary itself (rather than a specific key) behaves differently across engines:
+
+<SimpleTable>
+| Engine | `config.get('meta', default={})` |
+|--------|-----------------------------------|
+| <Constant name="core_v1" /> | Does not work. |
+| <Constant name="core_v2" /> | Returns the full `meta` dictionary. |
+</SimpleTable>
+
+To access custom configurations stored under `meta`, use the explicit methods:
 
 ```jinja
 {% set owner = config.meta_get('owner') %}

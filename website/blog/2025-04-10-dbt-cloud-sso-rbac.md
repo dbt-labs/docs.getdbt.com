@@ -137,7 +137,7 @@ Easy enough, right? Just make sure these two conditions are checked for RBAC to 
 - Group names must be an exact match
 - Group names have the same casing
 
-<Lightbox src="/img/blog/2025-04-10-sso-and-rbac/7_okta_sso_group_mapping_example.png" title="Making a SSO group mapping work with your idenity provider" width="85%" />
+<Lightbox src="/img/blog/2025-04-10-sso-and-rbac/7_okta_sso_group_mapping_example.png" title="Making a SSO group mapping work with your identity provider" width="85%" />
 
 ## Automate SSO & RBAC: Introducing SCIM
 

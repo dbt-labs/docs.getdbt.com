@@ -1,6 +1,6 @@
 ---
 title: "Tackling the complexity of joining snapshots"
-description: "Tracking changes in your dataset over time by joining snapshots can be a complex proces. Learn how to tackle that complexity with Lauren Benezra"
+description: "Tracking changes in your dataset over time by joining snapshots can be a complex process. Learn how to tackle that complexity with Lauren Benezra"
 slug: joining-snapshot-complexity
 
 authors: [lauren_benezra]
@@ -89,7 +89,7 @@ This boils down to the following steps:
 
 So let’s dive in! Head first! Step 1 is outlined in this blog post: [How to deduplicate partial duplicates](https://docs.getdbt.com/blog/how-we-remove-partial-duplicates). It only needs to be implemented if you are dealing with dupes in your data. If you don’t have duplicates in your data (wow! send me the number of your Data Engineer *ASAP*), you can skip this step. 
 
-![backtothefuture.gif](/img/blog/2022-05-24-joining-snapshot-complexity/backtothefuture.gif)
+<Lightbox src="/img/blog/2022-05-24-joining-snapshot-complexity/backtothefuture.gif" title="backtothefuture.gif" />
 
 ## Step 1: Ensure your data tables are duplicate free
 
@@ -99,7 +99,7 @@ Step 1 walks you through how to build a surrogate key from column values using a
 
 Why is this step important? Because you’ll be joining so many rows on the same id, and the valid timestamps for each row will determine the exact place to join one table to another. We cannot do this accurately with duplicates! (But also, you should be checking for dupes anyway because we are analytics engineers, right?)
 
-![clean-data-meme.png](/img/blog/2022-05-24-joining-snapshot-complexity/clean-data-meme.png)
+<Lightbox src="/img/blog/2022-05-24-joining-snapshot-complexity/clean-data-meme.png" title="clean-data-meme.png" />
 
 See [this blog post for deduping partial duplicates](https://docs.getdbt.com/blog/how-we-remove-partial-duplicates)!
 

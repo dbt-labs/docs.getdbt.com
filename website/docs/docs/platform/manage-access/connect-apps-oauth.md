@@ -19,7 +19,7 @@ The **App integrations** section in <Constant name="dbt_platform" /> lets admins
 - Your own API integrations built against <Constant name="dbt_platform" /> APIs, when you want end users to sign in with their dbt identity instead of distributing tokens.
 - Third-party apps and IDE extensions that support OAuth for connecting to dbt.
 
-This feature is available to Account admins on Starter, Enterprise or Enterprise+ plans.
+This feature is available on Starter, Enterprise, or Enterprise+ plans to users with the Account Admin, Security admin, or Project creator permission set, or an IT license.
 
 To access this section, go to **Account settings** → **Integrations** → **App integrations**.
 

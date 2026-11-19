@@ -9,7 +9,7 @@ availability:
   access: free
 ---
 
-dbt v2 offers benefits beyond the speed and power of the framework. The dbt VS Code extension, <Constant name="studio_ide" />, and <Constant name="insights" /> all contain a powerful set of features backed by our Language Server Protocol (LSP) that enable fast, efficient development workflows. The following features are supported across these tools:
+dbt v2 offers benefits beyond the speed and power of the framework. The dbt VS Code extension and <Constant name="studio_ide" /> both contain a powerful set of features backed by our Language Server Protocol (LSP) that enable fast, efficient development workflows. The following features are supported across these tools:
 
 import LSPFeatures from '/snippets/_lsp-features.md';
 

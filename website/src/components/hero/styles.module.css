@@ -47,7 +47,7 @@
     max-width: 315px;
     height: 428px;
     background-size: contain;
-    background-image: url('/img/hero-graphic-2x.png');
+    background-image: /* webpackIgnore: true */ url('/img/hero-graphic-2x.png');
     background-repeat: no-repeat;
   }
 }

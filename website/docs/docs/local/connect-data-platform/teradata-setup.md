@@ -213,7 +213,7 @@ For using cross-DB macros, teradata-utils as a macro namespace will not be used,
   \{\{ dbt.date_trunc("DD", "'2018-01-05 12:00:00'") \}\}
 
   ##### <a name="datediff"></a>datediff
-  `datediff` macro in teradata supports difference between dates. Differece between timestamps is not supported.
+  `datediff` macro in teradata supports difference between dates. Difference between timestamps is not supported.
 
   ##### <a name="hash"></a>hash
 

@@ -6,7 +6,7 @@ Permissions:
 
 :::note
 
-Some permissions sets have read-only access to environment settings that can be overriden with more privileged access if the user is assigned to a group with [Environment write access](/docs/platform/manage-access/about-user-access#environment-write-access) configured.
+Some permissions sets have read-only access to environment settings that can be overridden with more privileged access if the user is assigned to a group with [Environment write access](/docs/platform/manage-access/about-user-access#environment-write-access) configured.
 
 :::
 
@@ -25,6 +25,7 @@ Key:
 | Account-level permission | Account Admin | Billing admin | Cost Insights Admin | Cost Insights Viewer | Manage marketplace apps | Notification Manager | Project creator | Security admin | Account Viewer |
 |:-------------------------|:-------------:|:-------------:|:-------------------:|:--------------------:|:-----------------------:|:--------------------:|:---------------:|:--------------:|:------:|
 | Account settings<sup>*</sup>        | W             | -             | -                   | -                    | -                       | -                    | R               | R              | R      |
+| App integrations (OAuth) | W             | -             | -                   | -                    | -                       | R                    | W               | W              | R      |
 | Audit logs               | R             | -             | -                   | -                    | -                       | -                    | -               | R              | R      |
 | Auth provider            | W             | -             | -                   | -                    | -                       | -                    | -               | W              | R      |
 | Billing                  | W             | W             | -                   | -                    | -                       | -                    | -               | -              | R      |
@@ -85,6 +86,7 @@ Key:
 | Account-level permission | Admin | Analyst | Analyst read | Cost Insights Admin | Cost Insights Viewer | Database admin | Developer | Git Admin | Job admin | Job creator | Job runner | Job viewer | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
 |--------------------------|:-----:|:-------:|:------------:|:-------------------:|:--------------------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:----------:|:----------:|:-----------------------------:|:--------------:|:---------------------:|:----------:|
 | Account settings         |   R   |    -    |      R       |          -          |          -           |       R        |     -     |     R     |     -     |      -      |     -      |     -      |               -               |       -        |           R           |     R      |
+| App integrations (OAuth) |   R   |    R    |      -       |          -          |          -           |       R        |     R     |     -     |     -     |      -      |     -      |     -      |               -               |       -        |           -           |     -      |
 | Auth provider            |   -   |    -    |      -       |          -          |          -           |       -        |     -     |     -     |     -     |      -      |     -      |     -      |               -               |       -        |           -           |     -      |
 | Billing                  |   -   |    -    |      -       |          -          |          -           |       -        |     -     |     -     |     -     |      -      |     -      |     -      |               -               |       -        |           -           |     -      |
 | Connections              |   R   |    R    |      R       |    R<sup>*</sup>    |          R           |       R        |     R     |     R     |     R     |      R      |     -      |     -      |               -               |       R        |           R           |     R      |
@@ -111,16 +113,16 @@ Key:
 | Develop (IDE or CLI)     |   W   |    W    |      -       |         -           |          -           |       -        |     W     |      -       |     -     |     -     |      -      |     -       |      -      |                  -                      |       -        |     -       |      -     |
 | Environments             |   W   |    R    |      R       |         -           |          -           |       R        |     R     |      -       |     R     |     W     |      R      |      -      |      R      |                  -                      |       -        |     R       |     R      |
 | dbt v2 upgrade           |   -   |    -    |      -       |         -           |          -           |       -        |     -     |      W       |     -     |     -     |      -      |     -       |      -      |                  -                      |        -       |      -      |     -      |
-| Jobs                     |   W   |    R<sup>*</sup>   |      -       |         R           |          R           |       R<sup>*</sup>       |     R<sup>*</sup>    |      -       |     R<sup>*</sup>    |     W     |      W      |      R      |      R      |                  -                      |       -        |     R       |     R<sup>*</sup>     |
+| Jobs                     |   W   |    R<sup>*</sup>   |      -       |         R           |          R           |       R<sup>*</sup>       |     R<sup>*</sup>    |      -       |     R<sup>*</sup>    |     W     |      R<sup>*</sup>      |      R      |      R      |                  -                      |       -        |     R       |     R<sup>*</sup>     |
 | Metadata GraphQL API access| R   |    R    |      R       |         R           |          R           |       R        |     R     |      -       |     R     |     R     |      R      |      -      |      R      |                  R                      |       -        |     R       |     R      |
 | Permissions              |   W   |    -    |      -       |         -           |          -           |       R        |     R     |      -       |     R     |     -     |      -      |      -      |      -      |                  -                      |       -        |     -       |     R      |
 | Projects                 |   W   |    R    |      R       |         R           |          R           |       W        |     R     |      -       |     W     |     R     |      R      |      -      |      R      |                  -                      |       -        |     R       |     W      |
 | Repositories             |   W   |    R    |      R       |         -           |          -           |       R        |     R     |      -       |     W     |     -     |      R      |      -      |      -      |                  -                      |       -        |     R       |     R      |
-| Runs                     |   W   |    R<sup>*</sup>   |      -       |         -           |          -           |       R<sup>*</sup>       |     R<sup>*</sup>    |      -       |     R<sup>*</sup>    |     W     |      W      |      W      |      R      |                  -                      |       -        |     R       |     R<sup>*</sup>     |
+| Runs                     |   W   |    R<sup>*</sup>   |      -       |         -           |          -           |       R<sup>*</sup>       |     R<sup>*</sup>    |      -       |     R<sup>*</sup>    |     W     |      R<sup>*</sup>      |      W      |      R      |                  -                      |       -        |     R       |     R<sup>*</sup>     |
 | Semantic Layer config    |   W   |    R    |      R       |         -           |          -           |       W        |     R     |      -       |     R     |     R     |      R      |      -      |      -      |                  -                      |        W       |     R       |     R      |
 
 
-<sup>*</sup>These permissions are `R`ead-only by default, but may be changed to `W`rite with [environment permissions](/docs/platform/manage-access/environment-permissions#environments-and-roles).
+<sup>*</sup>These permissions are `R`ead-only by default, but may be changed to `W`rite with [environment permissions](/docs/platform/manage-access/environment-permissions#environment-write-permissions). That setting lets those sets create, edit, and delete jobs and runs. It does not let them create or delete the environment. Write (`W`) on Environments is a different right. Admin and Job admin have it, and it includes creating and deleting environments.
 
 <sup>**</sup>Custom env. variables for the `Developer` and `Analyst` roles are set in the **Credentials** section of **Account settings**.
 
