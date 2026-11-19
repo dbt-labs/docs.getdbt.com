@@ -115,15 +115,15 @@ Use a separate chat for each discrete unit of work, such as building one model, 
 
 For Studio-specific behavior and availability, refer to [<Constant name="wizard" /> in Studio IDE](/docs/dbt-ai/wizard-ide).
 
+## How dbt Wizard queries metrics
+
+In the <Constant name="studio_ide" />, <Constant name="wizard" /> Desktop, and the Wizard CLI, [MetricFlow](/docs/build/about-metricflow) turns your questions about metrics into SQL. It uses the metric's definition and applies filters from both the definition and your question.
+
+On Snowflake, BigQuery, Redshift, Databricks, and DuckDB, the <Constant name="wizard" /> CLI and Wizard Desktop run that SQL in your warehouse. On other warehouses, such as Postgres, the SQL is written for DuckDB, so it may not run unchanged.
+
 ## Locally (CLI and Desktop)
 
 Use the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli) or [Wizard Desktop](/docs/dbt-ai/wizard-desktop) for local development. Everything in this section applies to both, since the app runs the same engine as the CLI.
-
-### How dbt Wizard queries metrics
-
-In the <Constant name="wizard" /> Desktop and Wizard CLI, [MetricFlow](/docs/build/about-metricflow) turns your questions about metrics into SQL. It uses the metric's definition and applies filters from both the definition and your question.
-
-On Snowflake, BigQuery, Redshift, Databricks, and DuckDB, <Constant name="wizard" /> runs that SQL in your warehouse. On other warehouses, such as Postgres, the SQL is written for DuckDB, so it may not run unchanged.
 
 ### Connections and authentication (MCP)
 
