@@ -1,4 +1,4 @@
-For token-based remote MCP, set these headers in your client's MCP config:
+For token-based remote MCP, configure these settings in your client's MCP:
 
 <SimpleTable>
 | Header | Required | Value |
