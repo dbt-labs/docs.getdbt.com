@@ -31,7 +31,7 @@ When materializing a model as `table`, you may include several optional configs 
 [^1]: If you configure `location_root`, dbt specifies a location path in the `create table` statement. This changes the table from "managed" to "external" in Spark/Databricks.
 
 ## Setting table properties
-[Table properties](https://spark.apache.org/docs/latest/sql-ref-syntax-ddl-create-table-datasource.html) can be set with your configuration for tables or views using `tblproperties`:
+Set [table properties](https://spark.apache.org/docs/latest/sql-ref-syntax-ddl-create-table-datasource.html) for tables using `tblproperties`:
  
 <File name='with_table_properties.sql'>
    
