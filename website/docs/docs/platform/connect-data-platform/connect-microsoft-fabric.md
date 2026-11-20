@@ -56,18 +56,18 @@ With OAuth, each developer signs in to Fabric with their own Microsoft Entra acc
 Before you begin, note the following:
 
 - OAuth works in development environments only. Deployment environments don't have a signed-in user, so jobs still need a service principal.
-- You need a <Constant name="dbt" /> account admin and a Microsoft Entra admin who can create [app registrations](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app). Setup goes faster if you keep both <Constant name="dbt" /> and the Azure portal open in separate browser tabs.
+- You need a <Constant name="dbt" /> account admin and a Microsoft Entra admin who can create [app registrations](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app).
 - Each developer needs access to the Fabric workspace and warehouse with their own Entra account.
 
 #### 1. Start the integration in dbt
-
+Set up a [custom OAuth](/docs/platform/account-integrations?version=1.12#oauth-integrations) integration for Entra ID.
 1. In <Constant name="dbt" />, go to **Account settings** and click **Integrations**.
 2. Scroll to **Custom integrations** and click **Add integrations**.
 3. Set the **Integration type** to **Entra ID**.
-4. Copy the **Redirect URI** at the bottom of the page. Leave this window open, you come back to it in step 3.
+4. Copy the **Redirect URI** at the bottom of the page. Leave this window open, you come back to it in [step 3](/docs/platform/connect-data-platform/connect-microsoft-fabric?version=2#3-finish-the-integration-in-dbt).
 
 #### 2. Register an app in Microsoft Entra
-
+Follow these steps to register an app in Microsoft Entra and refer to their [official docs](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app) for more detail.
 1. In the Azure portal, open **Microsoft Entra ID** and click **App registrations**, then **New registration**.
 2. Give the app a name that's easy to spot later, like `dbt Fabric OAuth`.
 3. Set **Supported account types** to **Accounts in this organizational directory only**.
