@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="672" viewBox="0 0 1000 420" role="img" aria-labelledby="title desc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <title id="title">Context and the semantic layer in one project</title>
+  <desc id="desc">Sources feed your marts. From the marts, two paths run in one dbt project. The top path is the semantic layer: semantic models and metrics, which hold a governed definition such as on_time_rate. The bottom path is context: context models that chunk, embed, and classify text and end in a knowledge base, which holds rows of text with a vector and a source. An agent splits a question in two, gets the number from the semantic layer and the cause from the knowledge base, then answers with both and cites both.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8b93a1"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1000" height="420" rx="14" fill="#FFFFFF"/>
+
+  <!-- Project boundary -->
+  <rect x="150" y="10" width="560" height="400" rx="14" fill="none" stroke="#9CA3AF" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="165" y="30" font-size="11" font-weight="700" letter-spacing="1" fill="#6B7280">ONE dbt PROJECT · SAME TEAM · SAME TESTS · SAME LINEAGE</text>
+
+  <!-- Sources panel -->
+  <rect x="15" y="60" width="115" height="300" rx="12" fill="#F9FAFB" stroke="#D1D5DB" stroke-width="2"/>
+  <text x="72" y="82" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="1" fill="#C2410C">START</text>
+  <text x="72" y="102" text-anchor="middle" font-size="16" font-weight="700" fill="#1F2937">Sources</text>
+  <g font-size="11" fill="#374151" text-anchor="middle">
+    <rect x="27" y="124" width="90" height="24" rx="6" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1.2"/><text x="72" y="140">Shipments</text>
+    <rect x="27" y="156" width="90" height="24" rx="6" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1.2"/><text x="72" y="172">Billing</text>
+    <rect x="27" y="200" width="90" height="24" rx="6" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1.2"/><text x="72" y="216">Tickets</text>
+    <rect x="27" y="232" width="90" height="24" rx="6" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1.2"/><text x="72" y="248">Calls</text>
+    <rect x="27" y="264" width="90" height="24" rx="6" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1.2"/><text x="72" y="280">Incidents</text>
+  </g>
+  <text x="72" y="318" text-anchor="middle" font-size="10" fill="#6B7280">Tables on top,</text>
+  <text x="72" y="331" text-anchor="middle" font-size="10" fill="#6B7280">text below</text>
+
+  <!-- Arrows: sources to the two paths -->
+  <g stroke="#8b93a1" stroke-width="2.5" marker-end="url(#arrow)" fill="none">
+    <path d="M132 150 L160 150"/>
+    <path d="M132 240 L160 240"/>
+  </g>
+
+  <!-- Semantic layer path (top) -->
+  <rect x="165" y="60" width="530" height="150" rx="12" fill="#F9FAFB" stroke="#D1D5DB" stroke-width="2"/>
+  <text x="180" y="82" font-size="11" font-weight="700" letter-spacing="1" fill="#C2410C">BUILD THIS FIRST</text>
+  <text x="180" y="102" font-size="16" font-weight="700" fill="#1F2937">Semantic layer</text>
+  <text x="180" y="117" font-size="11" fill="#4B5563">Metrics and how they're defined</text>
+
+  <g font-size="11" font-weight="600" fill="#1F2937" text-anchor="middle">
+    <rect x="180" y="135" width="78" height="26" rx="13" fill="#FFFFFF" stroke="#3B82F6" stroke-width="1.5"/><text x="219" y="152">marts</text>
+    <text x="266" y="152" font-size="12" fill="#8b93a1">›</text>
+    <rect x="274" y="135" width="112" height="26" rx="13" fill="#FFFFFF" stroke="#3B82F6" stroke-width="1.5"/><text x="330" y="152">semantic models</text>
+    <text x="394" y="152" font-size="12" fill="#8b93a1">›</text>
+    <rect x="402" y="135" width="78" height="26" rx="13" fill="#FFFFFF" stroke="#3B82F6" stroke-width="1.5"/><text x="441" y="152">metrics</text>
+  </g>
+  <rect x="500" y="124" width="182" height="74" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1.5"/>
+  <text x="510" y="141" font-size="10" font-weight="700" fill="#6B7280">A GOVERNED DEFINITION</text>
+  <text x="510" y="160" font-size="11" font-weight="700" fill="#1F2937" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">on_time_rate</text>
+  <text x="510" y="176" font-size="10" fill="#4B5563">on_time_shipments / shipments</text>
+  <text x="510" y="189" font-size="10" fill="#4B5563">by quarter, by city</text>
+  <text x="180" y="190" font-size="10" fill="#6B7280">Answers: what happened, and how much</text>
+
+  <!-- Context path (bottom) -->
+  <rect x="165" y="220" width="530" height="180" rx="12" fill="#F9FAFB" stroke="#D1D5DB" stroke-width="2"/>
+  <text x="180" y="242" font-size="11" font-weight="700" letter-spacing="1" fill="#C2410C">THEN ADD THIS</text>
+  <text x="180" y="262" font-size="16" font-weight="700" fill="#1F2937">Context</text>
+  <text x="180" y="277" font-size="11" fill="#4B5563">Your text, modeled so agents can find and cite it</text>
+
+  <g font-size="11" font-weight="600" fill="#1F2937" text-anchor="middle">
+    <rect x="180" y="295" width="56" height="26" rx="13" fill="#FFFFFF" stroke="#FF694A" stroke-width="1.5"/><text x="208" y="312">chunk</text>
+    <text x="243" y="312" font-size="12" fill="#8b93a1">›</text>
+    <rect x="250" y="295" width="56" height="26" rx="13" fill="#FFFFFF" stroke="#FF694A" stroke-width="1.5"/><text x="278" y="312">embed</text>
+    <text x="313" y="312" font-size="12" fill="#8b93a1">›</text>
+    <rect x="320" y="295" width="60" height="26" rx="13" fill="#FFFFFF" stroke="#FF694A" stroke-width="1.5" stroke-dasharray="4 3"/><text x="350" y="312">classify</text>
+    <text x="387" y="312" font-size="12" fill="#8b93a1">›</text>
+    <rect x="394" y="295" width="98" height="26" rx="13" fill="#FFE9E3" stroke="#FF694A" stroke-width="1.5"/><text x="443" y="312">knowledge base</text>
+  </g>
+  <rect x="500" y="284" width="182" height="96" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1.5"/>
+  <text x="510" y="301" font-size="10" font-weight="700" fill="#6B7280">A ROW OF TEXT WITH A VECTOR</text>
+  <g font-size="10" fill="#374151" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+    <text x="510" y="319">IR-9001::1 · CLI-0042</text>
+    <text x="510" y="334">weather_disruption</text>
+  </g>
+  <text x="510" y="351" font-size="10" fill="#1F2937">“Truck slid on ice during the</text>
+  <text x="510" y="364" font-size="10" fill="#1F2937">storm and missed the window.”</text>
+  <text x="180" y="380" font-size="10" fill="#6B7280">Answers: why, and what was said</text>
+
+  <!-- Arrows: layers to agent -->
+  <g stroke="#8b93a1" stroke-width="2.5" fill="none">
+    <path d="M697 160 L730 160 L730 200"/>
+    <path d="M697 330 L730 330 L730 290"/>
+  </g>
+  <line x1="730" y1="200" x2="730" y2="222" stroke="#8b93a1" stroke-width="2.5"/>
+  <line x1="730" y1="290" x2="730" y2="268" stroke="#8b93a1" stroke-width="2.5"/>
+  <line x1="730" y1="245" x2="748" y2="245" stroke="#8b93a1" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="730" y1="222" x2="730" y2="268" stroke="#8b93a1" stroke-width="2.5"/>
+  <text x="716" y="232" text-anchor="end" font-size="10" fill="#4B5563">the number</text>
+  <text x="716" y="264" text-anchor="end" font-size="10" fill="#4B5563">the cause</text>
+
+  <!-- Agent panel -->
+  <rect x="750" y="60" width="235" height="340" rx="12" fill="#F9FAFB" stroke="#D1D5DB" stroke-width="2"/>
+  <text x="867" y="82" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="1" fill="#C2410C">READS BOTH</text>
+  <text x="867" y="102" text-anchor="middle" font-size="16" font-weight="700" fill="#1F2937">Agent</text>
+  <text x="867" y="117" text-anchor="middle" font-size="11" fill="#4B5563">Splits the question in two</text>
+
+  <rect x="762" y="130" width="211" height="52" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1.5"/>
+  <text x="772" y="147" font-size="10" font-weight="700" fill="#6B7280">QUESTION</text>
+  <text x="772" y="163" font-size="10" fill="#1F2937">“What happened in Q1 that</text>
+  <text x="772" y="176" font-size="10" fill="#1F2937">caused on-time to go down?”</text>
+
+  <rect x="762" y="196" width="211" height="98" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1.5"/>
+  <text x="772" y="213" font-size="10" font-weight="700" fill="#6B7280">ANSWER</text>
+  <text x="772" y="230" font-size="10" fill="#1F2937">On-time fell in Q1. Paris was</text>
+  <text x="772" y="243" font-size="10" fill="#1F2937">the low point in January, when</text>
+  <text x="772" y="256" font-size="10" fill="#1F2937">a truck slid on ice in the storm</text>
+  <text x="772" y="269" font-size="10" fill="#1F2937">and missed its delivery window.</text>
+  <text x="772" y="286" font-size="10" fill="#4B5563" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">cites on_time_rate · IR-9001::1</text>
+
+  <rect x="772" y="312" width="190" height="24" rx="12" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="867" y="328" text-anchor="middle" font-size="11" font-weight="600" fill="#1D4ED8">Number from a metric</text>
+  <rect x="772" y="344" width="190" height="24" rx="12" fill="#FFE9E3" stroke="#FF694A" stroke-width="1.2"/>
+  <text x="867" y="360" text-anchor="middle" font-size="11" font-weight="600" fill="#C2410C">Reason from a source</text>
+</svg>
