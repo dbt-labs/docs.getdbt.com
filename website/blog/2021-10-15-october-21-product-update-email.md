@@ -25,9 +25,7 @@ We're leaving the rest of this post as is, so we can all remember how it used to
 
 Hello there,
 
-While I have a lot of fun things to share this month, I can't start with anything other than this:
-
-[![Screen Shot 2021-10-20 at 6.12.16 PM](https://hs-8698602.f.hubspotemail.net/hub/8698602/hubfs/Screen%20Shot%202021-10-20%20at%206.12.16%20PM.png?upscale=true&width=800&upscale=true&name=Screen%20Shot%202021-10-20%20at%206.12.16%20PM.png)](https://twitter.com/getdbt/status/1449090582865981442?s=20&utm_campaign=Monthly%20Product%20Updates&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-_wfy8vfjMjwQ7o8TXEOVz-oXI35iVcVP1HtAvriVHfJoAd1IcsP-MCww6vJUDlvAfiuQjZ)
+While I have a lot of fun things to share this month, I can't start with anything other than [this] (https://twitter.com/getdbt/status/1449090582865981442?s=20&utm_campaign=Monthly%20Product%20Updates&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-_wfy8vfjMjwQ7o8TXEOVz-oXI35iVcVP1HtAvriVHfJoAd1IcsP-MCww6vJUDlvAfiuQjZ)
 
 Yep, it's official:
 

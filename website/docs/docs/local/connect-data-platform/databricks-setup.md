@@ -30,6 +30,7 @@ The Databricks adapter for <Constant name="fusion" /> supports the following [au
 - Personal access token (for individual users)
 - Service Principal token (for service users)
 - OAuth
+- OAuth token federation using OIDC
 
 ## Warehouse permissions for <Constant name="fusion" />
 
@@ -71,7 +72,7 @@ Enter your personal access token (PAT) for the Databricks environment. For more 
 
 <File name="profiles.yml">
 
-```yml
+```yaml
 default:
   target: dev
   outputs:
@@ -98,7 +99,7 @@ Enter your Service Principal token for the Databricks environment. For more info
 
 <File name="profiles.yml">
 
-```yml
+```yaml
 default:
   target: dev
   outputs:
@@ -125,7 +126,7 @@ Selecting the OAuth option will create a connection to your Databricks environme
 
 <File name="profiles.yml">
 
-```yml
+```yaml
 default:
   target: dev
   outputs:
@@ -138,6 +139,60 @@ default:
       auth_type: oauth
       threads: 16
 ```
+</File>
+
+</TabItem>
+
+<TabItem value="OAuth token federation">
+
+To use OAuth token federation, you may provide an OIDC token either in an environment variable or a file.
+
+#### Example OIDC configuration using an environment variable
+
+To provide the OIDC token using an environment variable, set `auth_type: env-oidc` in `profiles.yml`, and provide the OIDC token in `DATABRICKS_OIDC_TOKEN`.
+
+<File name="profiles.yml">
+  
+```yaml
+  target: dev
+  outputs:
+    dev:
+      type: databricks
+      database: TRANSFORMING
+      schema: JANE_SMITH
+      host: YOUR.HOST.COM
+      http_path: YOUR/PATH/HERE
+      auth_type: env-oidc
+      client_id: CLIENT_ID
+      threads: 16
+```
+
+</File>
+
+#### Example OIDC configuration using a token file
+
+To provide the OIDC token using a token file, set `auth_type: file-oidc` in `profiles.yml` and provide the file path in `oidc_token_filepath`.
+
+You can instead leave `oidc_token_filepath` out of `profiles.yml` and set the path in the `DATABRICKS_OIDC_TOKEN_FILE` or `DATABRICKS_OIDC_TOKEN_FILEPATH` environment variable. dbt uses the environment variable only when `oidc_token_filepath` isn't in `profiles.yml`. When both are set, dbt only uses the `profiles.yml` setting and never falls back to the environment variable. We recommend setting the path in `profiles.yml`.
+
+<File name="profiles.yml">
+
+```yaml
+default:
+  target: dev
+  outputs:
+    dev:
+      type: databricks
+      database: TRANSFORMING
+      schema: JANE_SMITH
+      host: YOUR.HOST.COM
+      http_path: YOUR/PATH/HERE
+      auth_type: file-oidc
+      client_id: CLIENT_ID
+      oidc_token_filepath: PATH/TO/TOKEN/FILE
+      threads: 16
+```
+
 </File>
 
 </TabItem>
@@ -162,7 +217,7 @@ The following example sets `connect_timeout` to `600` (10 minutes) so dbt can wa
 
 <File name="profiles.yml">
 
-```yml
+```yaml
 outputs:
   dev:
     type: databricks
@@ -205,7 +260,7 @@ Refer to the [Databricks docs](https://docs.databricks.com/dev-tools/dbt.html#) 
 
 ### Examples {#examples}
 
-You can use either token-based authentication or OAuth client-based authentication to connect to Databricks. Refer to the following examples for more on how to configure your profile for each type of authentication.
+You can use token-based authentication, OAuth client-based authentication, or OAuth Token Federation using OIDC to connect to Databricks. Refer to the following examples for more on how to configure your profile for each type of authentication.
 
 The default OAuth app for dbt-databricks is auto-enabled in every account with expected settings.  You can find the adapter app in [Account Console](https://accounts.cloud.databricks.com) > [Settings](https://accounts.cloud.databricks.com/settings) > [App Connections](https://accounts.cloud.databricks.com/settings/app-integrations) > dbt adapter for Databricks. If you cannot find the adapter app, dbt may be disabled in your account, please refer to this [guide](https://docs.databricks.com/en/integrations/enable-disable-oauth.html) to re-enable dbt-databricks as an OAuth app.
 
@@ -273,6 +328,59 @@ your_profile_name:
       host: YOUR_ORG.databrickshost.com # Required
       http_path: /SQL/YOUR/HTTP/PATH # Required
       auth_type: oauth # Required if using OAuth-based authentication
+      threads: 1_OR_MORE  # Optional, default 1
+```
+</File>
+
+</TabItem>
+
+<TabItem value="oauth-token-federation" label="OAuth token federation">
+
+To use OAuth token federation, you may provide an OIDC token either in an environment variable or a file.
+
+#### Example OIDC configuration using an environment variable
+
+To provide the OIDC token using an environment variable, set `auth_type: env-oidc` in `profiles.yml`, and provide the OIDC token in `DATABRICKS_OIDC_TOKEN`.
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: databricks
+      catalog: CATALOG_NAME # optional catalog name if you are using Unity Catalog
+      schema: SCHEMA_NAME # Required
+      host: YOUR_ORG.databrickshost.com # Required
+      http_path: /SQL/YOUR/HTTP/PATH # Required
+      auth_type: env-oidc # Required if using environment variable OIDC authentication
+      client_id: CLIENT_ID # The client ID of your service principal. Required if using OIDC authentication.
+      threads: 1_OR_MORE  # Optional, default 1
+```
+</File>
+
+#### Example OIDC configuration using a token file
+
+To provide the OIDC token using a token file, set `auth_type: file-oidc` in `profiles.yml` and provide the file path in `oidc_token_filepath`.
+
+You can instead leave `oidc_token_filepath` out of `profiles.yml` and set the path in the `DATABRICKS_OIDC_TOKEN_FILE` or `DATABRICKS_OIDC_TOKEN_FILEPATH` environment variable. dbt uses the environment variable only when `oidc_token_filepath` isn't in `profiles.yml`. When both are set, dbt only uses the `profiles.yml` setting and never falls back to the environment variable. We recommend setting the path in `profiles.yml`.
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: databricks
+      catalog: CATALOG_NAME #optional catalog name if you are using Unity Catalog
+      schema: SCHEMA_NAME # Required
+      host: YOUR_ORG.databrickshost.com # Required
+      http_path: /SQL/YOUR/HTTP/PATH # Required
+      auth_type: file-oidc # Required if using file OIDC authentication
+      client_id: CLIENT_ID # The client ID of your service principal. Required if using OIDC authentication.
+      oidc_token_filepath: /PATH/TO/TOKEN/FILE # Path to the file that contains the OIDC token
       threads: 1_OR_MORE  # Optional, default 1
 ```
 </File>

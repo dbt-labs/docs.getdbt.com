@@ -85,7 +85,7 @@ Many of us define roles like [data engineer](https://www.getdbt.com/data-teams/h
 
 So instead of getting bogged down in defining roles, let’s focus on hard skills I’ve seen in practice.
 
-![airflow and dbt skills required](/img/blog/airflow-dbt-skills.png "airflow and dbt skills required")
+<Lightbox src="/img/blog/airflow-dbt-skills.png" title="Airflow and dbt skills required" />
 
 The common skills needed for implementing any flavor of dbt (Core or Cloud) are:
 
@@ -115,7 +115,7 @@ If your team’s dbt users are analysts rather than engineers, they still may ne
 
 Having your upstream extract + load jobs configured in Airflow means that analysts can pop open the Airflow UI to monitor for issues (as they would a GUI-based <Term id="etl">ETL tool</Term>), rather than opening a ticket or bugging an engineer in Slack. The Airflow UI provides the common interface that analysts need to self-serve, up to the point of action needing to be taken.
 
-![airflow dashboard](/img/blog/airflow-dbt-dashboard.png "airflow dashboard")
+<Lightbox src="/img/blog/airflow-dbt-dashboard.png" title="Airflow dashboard" />
 
 ### Transformation observability for engineers
 
@@ -181,11 +181,11 @@ You can see more examples [here](https://docs.getdbt.com/docs/best-practices#run
 
 This means that whether you’re actively developing or you simply want to rerun a scheduled job (because of, say, permission errors or timeouts in your database), you now have a unified approach to doing both.
 
-![airflow dbt run select](/img/blog/2021-11-29-dbt-airflow-spiritual-alignment/airflow-dbt-run-select.png)
+<Lightbox src="/img/blog/2021-11-29-dbt-airflow-spiritual-alignment/airflow-dbt-run-select.png" title="Airflow dbt run select" />
 
 [In an Airflow context](https://registry.astronomer.io/dags/dbt-core-run-from-failure-pattern), you can use this command with TriggerRules to make it so that, in the event that your initial model fails, you can keep rerunning it from the point of failure without leaving the Airflow UI. This can be especially convenient when the reason your model fails isn't related to the model code itself (permissions for certain schemas, bad data, etc.)
 
-![airflow dbt run select](/img/blog/2021-11-29-dbt-airflow-spiritual-alignment/dbt-airflow-tree-graph.png)
+<Lightbox src="/img/blog/2021-11-29-dbt-airflow-spiritual-alignment/dbt-airflow-tree-graph.png" title="Airflow dbt run select" />
 
 ### dbt Cloud + Airflow
 

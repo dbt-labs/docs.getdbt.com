@@ -115,11 +115,17 @@ These are the read-only specifics. For the full invite flow, seat management, an
 
 To run a query, Explore mode needs warehouse credentials. Most read-only users don't have their own, so an admin sets up an **analytics credential**: a shared, project-level warehouse credential that read-only users fall back to when they haven't configured personal credentials. Read-only users that have their own credentials can use the [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set.
 
-At query time, <Constant name="wizard" /> resolves credentials in this order:
+The analytics credential also works with the [remote dbt MCP server](/docs/dbt-ai/setup-remote-mcp#read-only-users-and-warehouse-credentials). Once an admin sets it up, read-only users can query metrics through their MCP client without logging in to <Constant name="dbt_platform" /> to set up their own credentials.
+
+At query time, <Constant name="wizard" /> and remote MCP resolve credentials in this order:
 
 1. The user's personal warehouse credentials if they have them.
 2. The project's analytics credential, if an admin has [set one up](/docs/platform/wizard-read-only-users#add-an-analytics-credential-to-a-connection).
-3. If neither exists, <Constant name="wizard" /> returns an error asking the user to set up personal credentials or contact an admin.
+3. If neither exists, the query returns an error asking the user to set up personal credentials or contact an admin.
+
+:::note
+Only an admin can set up the analytics credential. End users can't set it up themselves.
+:::
 
 ### Prerequisites
 

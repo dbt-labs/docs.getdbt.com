@@ -72,7 +72,7 @@ One of our main objectives was to refactor the Alteryx workflows that the market
 
 Below we provide a high-level framework with the steps we followed to refactor the Alteryx workflows into dbt:
 
-![Figure 4 — Steps followed for Alteryx to dbt model refactoring](/img/blog/2023-04-24-framework-refactor-alteryx-dbt/Figure4.png)
+<Lightbox src="/img/blog/2023-04-24-framework-refactor-alteryx-dbt/Figure4.png" title="Figure 4 — Steps followed for Alteryx to dbt model refactoring" />
 *<center>Figure 4 — Steps followed for Alteryx to dbt model refactoring</center>*
 
 #### Step 1: Start by refactoring smaller Alteryx workflows and then move on to more complex ones

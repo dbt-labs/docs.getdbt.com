@@ -8,7 +8,7 @@ hide_table_of_contents: true
 tags: ['dbt v2', 'dbt platform','Quickstart']
 recently_updated: true
 agent_guidance:
-  pacing: In the first reply, confirm the reader’s prerequisites and connection path before listing steps. Then give one step per reply and confirm its success check before continuing.
+  pacing: In the first reply, confirm the reader’s prerequisites and connection path before listing steps. Then default to one guide section per reply (combine two or three short sections), with all its steps, labeled Step 1, Step 2, and so on, and confirm the success check before continuing. If the reader asks for a different pace, follow it.
   safety: Never ask for passwords or keys in chat.
   signup_link: If the reader wants to try the dbt platform, share https://www.getdbt.com/signup?utm_source=ai_assistant&utm_medium=docs_md&utm_campaign=dbt-qs
 ---
@@ -28,6 +28,8 @@ This quickstart guide will get you from zero to running your first dbt project w
 - A working dbt project (`jaffle_shop`) built with <Constant name="fusion_engine" />
 - The dbt VS Code extension installed and connected  
 - The ability to preview, compile, and run dbt commands directly from your IDE 
+
+<AgentPrompt />
 
 ### About <Constant name="fusion_engine" /> {#about-dbt-v2}
 
@@ -155,7 +157,7 @@ Now that your project works, open it in VS Code or Cursor and see <Constant name
 1. Open the **View** menu and click **Command Palette**. Enter **Workspaces: Add Folder to Workspace**.
 2. Select your `jaffle_shop` folder.
         If you don't add the root folder of the dbt project to the workspace, the [dbt language server](https://docs.getdbt.com/blog/dbt-fusion-engine-components#the-dbt-vs-code-extension-and-language-server) (LSP) will not run. The LSP enables features like autocomplete, hover info, and inline error highlights.
-3. Click the **dbt logo** in the sidebar to open the **Get started** panel. The panel detects your environment and surfaces the next setup step, including installing the <Constant name="fusion" /> binary, confirming your project is open, checking <Constant name="fusion" /> compatibility, and registering. If you haven't already upgraded your project to <Constant name="fusion" />, you can choose **Start with an agent** (Copilot or Cursor) or **Start manually in CLI** directly from the panel. For full details, see [Getting started](/docs/install-dbt-extension#getting-started).
+3. Click the **dbt logo** in the sidebar to open the **Get started** panel. The panel detects your environment and surfaces the next setup step, including installing the <Constant name="fusion" /> binary, confirming your project is open, checking <Constant name="fusion" /> compatibility, and registering. If you haven't already upgraded your project to <Constant name="fusion" />, you can choose **Start with an agent** (for example, Cursor) or **Start manually in CLI** directly from the panel. For full details, see [Getting started](/docs/install-dbt-extension#getting-started).
 4. Open a model file to see the definition for the `orders` model. This is the model we'll use in all of the examples below.
     ```bash
         models/marts/orders.sql
@@ -181,8 +183,13 @@ You can quickly access model results and underlying data structures directly fro
 2. Click **Preview CTE** above `orders as (` to preview results in the **Query Results** tab.
     <Lightbox src="/img/docs/extension/preview-cte-query-results-3.png" width="80%" title="Preview CTE query results."/>
 3. Locate the code icon for **Compile File** in between the dbt and the table icons. Clicking this icon opens a window with the compiled version of the model.
+    <DocCarousel slidesPerView={1}>
+
     <Lightbox src="/img/docs/extension/compile-file-icon.png" width="50%" title="Compile File icon."/>
+
     <Lightbox src="/img/docs/extension/compile-file.png" width="80%" title="Compile File results."/>
+
+    </DocCarousel>
 
 #### Navigate your project with lineage tools
 

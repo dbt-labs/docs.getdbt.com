@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import clsx from "clsx";
 import { ThemeClassNames } from "@docusaurus/theme-common";
 import { useDoc } from "@docusaurus/plugin-content-docs/client";
@@ -11,6 +11,7 @@ import { Feedback } from "../../../components/feedback";
 import Availability from "@site/src/components/availability";
 import AvailabilityContext from "@site/src/components/availabilityContext";
 import AgentGuidance from "@site/src/components/agentGuidance";
+import VersionContext from "@site/src/stores/VersionContext";
 
 function useSyntheticTitle() {
   const { metadata, frontMatter, contentTitle } = useDoc();
@@ -32,6 +33,7 @@ export default function DocItemContent({ children }) {
 
   const { metadata, frontMatter } = useDoc();
   const isQuickstartGuide = metadata?.id?.startsWith("guides/");
+  const { version } = useContext(VersionContext);
 
   const availabilityContext = {
     availability: frontMatter.availability,
@@ -67,7 +69,11 @@ export default function DocItemContent({ children }) {
       {isQuickstartGuide ? (
         <>
           <QuickstartGuideTitle frontMatter={frontMatter} />
-          <div className={clsx("quickstart-container")}>
+          {/* QuickstartTOC moves rendered nodes into step wrappers outside of
+              React. Keying on the version remounts the subtree when the version
+              changes, so <VersionBlock> content React adds or removes doesn't
+              reference nodes that were moved (insertBefore/removeChild errors). */}
+          <div className={clsx("quickstart-container")} key={version}>
             <QuickstartTOC />
             <div className={clsx("step-container")}>
               <MDXContent>{children}</MDXContent>

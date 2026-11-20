@@ -12,8 +12,11 @@ availability:
 
 import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
 import CopilotConfigureAiProvider from '/snippets/_copilot-configure-ai-provider.md';
+import CopilotLifecycle from '/snippets/_copilot-lifecycle.md';
 
-# dbt Copilot
+# dbt Copilot <Lifecycle status="eol" />
+
+<CopilotLifecycle/>
 
 <IntroText>
 dbt Copilot helps you generate SQL, documentation, tests, and semantic models in the <Constant name="dbt_platform" />.
@@ -23,13 +26,6 @@ dbt Copilot helps you generate SQL, documentation, tests, and semantic models in
 
 
 _The earlier version of dbt Copilot in the Studio IDE is available only to a limited set of accounts. dbt Wizard is available to all accounts and is the recommended way to develop with AI in the Studio IDE &mdash; it covers everything dbt Copilot's quick actions did, plus multi-step changes with built-in validation._
-
-## Where to access dbt Copilot
-
-dbt Copilot is available across the following experiences in the <Constant name="dbt_platform" />. Refer to the links for more info on how to use each experience.
-
-- [dbt Copilot in Canvas](/docs/platform/build-canvas-copilot): Build visual models using natural language prompts in <Constant name="canvas" />
-- [dbt Copilot in Insights](/docs/dbt-ai/analyst-agent): Chat with your data and get answers powered by the dbt Semantic Layer in <Constant name="insights" />
 
 ## Action limits by plan
 

@@ -57,7 +57,7 @@ There is some prior art on this topic -  the foundational post[ How We Structure
 
 I am elated to stand on the shoulders of giants to write a follow up to this post, with the caveat that this is aimed at a different audience. The above discourse is usually read or linked in 101 courses, where the focus is on initial project setup. In this series of posts you will see how our approach has shifted after working with and implementing these practices at scale.
 
-![example marts folder structure](/img/blog/on_the_importance_of_naming_image_0.png)
+<Lightbox src="/img/blog/on_the_importance_of_naming_image_0.png" title="Example marts folder structure" />
 
 If you follow the advice from ‘How We Structure Our dbt Projects', you will end up with a project which is fairly easy to read when viewing within the folder hierarchy (from the Analytics Engineer perspective), but the same is not true when viewing in the DAG or the database itself. For the analyst or stakeholder who simply has access to the output database objects and not the hierarchy and flow with which they were developed, it can be at best slightly overwhelming, and at worst, unmanageable. With that in mind, I set out to help answer some of the outstanding questions around model naming and organization:
 
@@ -83,7 +83,7 @@ Let’s take a look at a real life example of an (admittedly rather complex)  DA
 
 * Meaning, all the descendants needed to build the `users` model
 
-![zoomed out screenshot of a DAG](/img/blog/on_the_importance_of_naming_image_1.png)
+<Lightbox src="/img/blog/on_the_importance_of_naming_image_1.png" title="Zoomed out screenshot of a DAG" />
 
 `users+`
 
@@ -91,7 +91,7 @@ Let’s take a look at a real life example of an (admittedly rather complex)  DA
 
 * Meaning, all the ancestor references that depend on the `users` model once created
 
-![zoomed out screenshot of the right of a dag](/img/blog/on_the_importance_of_naming_image_2.png)
+<Lightbox src="/img/blog/on_the_importance_of_naming_image_2.png" title="Zoomed out screenshot of the right of a dag" />
 
 Imagine trying to mentally internalize this after reading through countless SQL files, without looking at the DAG!
 
@@ -99,7 +99,7 @@ Imagine trying to mentally internalize this after reading through countless SQL 
 
 You're not actually supposed to be able to read those DAGs, as they are notoriously hard to grok when zoomed out. Let's pick a random zoom in point to show the "spider web", aka uncontrollable references to other models with no clear movement from left to right in a logical fashion.
 
-![zoomed in picture of a DAG](/img/blog/on_the_importance_of_naming_image_3.png)
+<Lightbox src="/img/blog/on_the_importance_of_naming_image_3.png" title="Zoomed in picture of a DAG" />
 
 In my utopia, when you zoom into a DAG and you  would see  a swimlane, or etymology, such that you would be able to understand the purpose of a given model. This real world example gives us a view into what happens when we don’t have that.
 

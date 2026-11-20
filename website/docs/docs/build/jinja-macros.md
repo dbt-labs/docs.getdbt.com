@@ -6,6 +6,7 @@ availability: all_users
 ---
 
 ## Related reference docs
+* [Jinja support by file type](/reference/jinja-file-support)
 * [Jinja Template Designer Documentation](https://jinja.palletsprojects.com/page/templates/) (external link)
 * [dbt Jinja context](/reference/dbt-jinja-functions-context-variables)
 * [Macro properties](/reference/macro-properties)
@@ -152,6 +153,7 @@ from my_table
 ```
 
 You can also qualify a macro in your own project by prefixing it with your [package name](/reference/dbt-jinja-functions/project_name) (this is mainly useful for package authors).
+
 
 ## FAQs
 

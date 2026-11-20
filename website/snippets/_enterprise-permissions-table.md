@@ -25,6 +25,7 @@ Key:
 | Account-level permission | Account Admin | Billing admin | Cost Insights Admin | Cost Insights Viewer | Manage marketplace apps | Notification Manager | Project creator | Security admin | Account Viewer |
 |:-------------------------|:-------------:|:-------------:|:-------------------:|:--------------------:|:-----------------------:|:--------------------:|:---------------:|:--------------:|:------:|
 | Account settings<sup>*</sup>        | W             | -             | -                   | -                    | -                       | -                    | R               | R              | R      |
+| App integrations (OAuth) | W             | -             | -                   | -                    | -                       | R                    | W               | W              | R      |
 | Audit logs               | R             | -             | -                   | -                    | -                       | -                    | -               | R              | R      |
 | Auth provider            | W             | -             | -                   | -                    | -                       | -                    | -               | W              | R      |
 | Billing                  | W             | W             | -                   | -                    | -                       | -                    | -               | -              | R      |
@@ -85,6 +86,7 @@ Key:
 | Account-level permission | Admin | Analyst | Analyst read | Cost Insights Admin | Cost Insights Viewer | Database admin | Developer | Git Admin | Job admin | Job creator | Job runner | Job viewer | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
 |--------------------------|:-----:|:-------:|:------------:|:-------------------:|:--------------------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:----------:|:----------:|:-----------------------------:|:--------------:|:---------------------:|:----------:|
 | Account settings         |   R   |    -    |      R       |          -          |          -           |       R        |     -     |     R     |     -     |      -      |     -      |     -      |               -               |       -        |           R           |     R      |
+| App integrations (OAuth) |   R   |    R    |      -       |          -          |          -           |       R        |     R     |     -     |     -     |      -      |     -      |     -      |               -               |       -        |           -           |     -      |
 | Auth provider            |   -   |    -    |      -       |          -          |          -           |       -        |     -     |     -     |     -     |      -      |     -      |     -      |               -               |       -        |           -           |     -      |
 | Billing                  |   -   |    -    |      -       |          -          |          -           |       -        |     -     |     -     |     -     |      -      |     -      |     -      |               -               |       -        |           -           |     -      |
 | Connections              |   R   |    R    |      R       |    R<sup>*</sup>    |          R           |       R        |     R     |     R     |     R     |      R      |     -      |     -      |               -               |       R        |           R           |     R      |
@@ -120,7 +122,7 @@ Key:
 | Semantic Layer config    |   W   |    R    |      R       |         -           |          -           |       W        |     R     |      -       |     R     |     R     |      R      |      -      |      -      |                  -                      |        W       |     R       |     R      |
 
 
-<sup>*</sup>These permissions are `R`ead-only by default, but may be changed to `W`rite with [environment permissions](/docs/platform/manage-access/environment-permissions#environments-and-roles).
+<sup>*</sup>These permissions are `R`ead-only by default, but may be changed to `W`rite with [environment permissions](/docs/platform/manage-access/environment-permissions#environment-write-permissions). That setting lets those sets create, edit, and delete jobs and runs. It does not let them create or delete the environment. Write (`W`) on Environments is a different right. Admin and Job admin have it, and it includes creating and deleting environments.
 
 <sup>**</sup>Custom env. variables for the `Developer` and `Analyst` roles are set in the **Credentials** section of **Account settings**.
 

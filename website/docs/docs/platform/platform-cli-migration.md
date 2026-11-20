@@ -38,4 +38,4 @@ This keeps working indefinitely, but won't receive further <Constant name="platf
 
 - **Will my pinned <Constant name="platform_cli" /> version stop working?** No. Pinned installs keep working. They just won't get new <Constant name="platform_cli" /> releases through pip after September 14. For that, reinstall using a currently supported method.
 
-- **How do I tell which one I have installed?** `dbt --version`. The <Constant name="platform_cli" /> prints a version like `0.40.20`; the corresponding version on PyPI is `1.0.0.40.20`. dbt v2's version string needs reconfirming post-update. At the time this article was published, v2's binary still internally identifies as `dbt-fusion X.Y.Z`, which may change.
+- **How do I tell which one I have installed?** `dbt --version`. The <Constant name="platform_cli" /> prints a version like `0.40.20`; the corresponding version on PyPI is `1.0.0.40.20`. dbt v2's version string needs reconfirming post-update.

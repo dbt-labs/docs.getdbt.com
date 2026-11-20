@@ -201,6 +201,7 @@ Job admin is an administrative permission set for users who create, run, and man
 
 Notable features:
 - Job admin is a project-level set.
+- Job admins can create and delete environments.
 - Job admins can create and edit jobs, runs, environment variables, and data warehouse configs. 
 - Job admins can set up project integrations, including [Tableau lineage](/docs/platform-integrations/semantic-layer/tableau).
 - Read-only access to project configs. 
