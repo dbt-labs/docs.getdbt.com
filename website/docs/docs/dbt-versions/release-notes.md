@@ -120,12 +120,12 @@ The full list lives in website/release-note-areas.json.
 
 #### dbt v2 {#dbt-v2-november-2026}
 
+- **New:** You can now configure BigQuery query reservations at the model and connection levels.
+- **New:** Two new environment variables, `DBT_CLOUD_LOGIN_HOST` and `DBT_CLOUD_LOGIN_ACCOUNT_ID`, let `dbt login` authenticate through an account host's `/oauth/authorize` endpoint instead of the registration page, enabling single sign-on (SSO) accounts that cannot route through the registration page.
 - **Fix:** Several gaps in the [columns available for checks](/reference/info-schema#columns-available-for-checks) have been resolved:
   - The `exposures` view now includes `meta` and `config` columns. Previously these were always `NULL`, preventing checks from reading exposure `meta` or config values.
   - The `unit_tests`, `saved_queries`, `semantic_models`, `semantic_entities`, `semantic_measures`, and `semantic_dimensions` views now include `config`. The `node_columns` view now includes `meta`.
 - **Fix:** `models.config` in the [dbt Information Schema](/reference/info-schema) is now correctly encoded, so `json_extract` and `json_extract_string` return the correct values in [checks](/docs/build/checks). Previously, `models.config` was double-encoded, causing these functions to return `NULL` silently and preventing checks from reading config values such as `config.enabled` or `config.meta`.
-- **New:** You can now configure BigQuery query reservations at the model and connection levels.
-- **New:** Two new environment variables, `DBT_CLOUD_LOGIN_HOST` and `DBT_CLOUD_LOGIN_ACCOUNT_ID`, let `dbt login` authenticate through an account host's `/oauth/authorize` endpoint instead of the registration page, enabling single sign-on (SSO) accounts that cannot route through the registration page.
 - **Fix:** Snowflake seeds now honor the `transient` config instead of silently creating a permanent table.
 - **Fix:** Comparing changes in [Advanced CI](/docs/deploy/advanced-ci) no longer fails when a Snowflake table has a vector column.
 - **Fix:** Snowflake private keys saved with Windows line endings now decode correctly.
