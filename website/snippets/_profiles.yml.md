@@ -58,7 +58,7 @@ The current working directory is the directory you run dbt from, not the directo
 
 </VersionBlock>
 
-Note: <Constant name="core"/> supports using the <VersionBlock lastVersion="1.10">`DBT_PROFILES_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROFILES_DIR`</VersionBlock> environment variable. This option isn't currently supported in <Constant name="fusion"/>.
+Note: <Constant name="core"/> supports using the <VersionBlock lastVersion="1.10">`DBT_PROFILES_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROFILES_DIR`</VersionBlock> environment variable.
 
 </TabItem>
 </Tabs>
