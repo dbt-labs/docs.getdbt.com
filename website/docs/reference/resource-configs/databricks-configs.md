@@ -44,9 +44,7 @@ dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it 
 <sup>7</sup> `skip_optimize` gives you per-model control over the post-materialization `OPTIMIZE` call. Because it's a standard dbt model config, you can also set it at the folder or project level through config inheritance. The run-wide `DATABRICKS_SKIP_OPTIMIZE` variable takes precedence over `skip_optimize`; if you set `DATABRICKS_SKIP_OPTIMIZE=true` (or `databricks_skip_optimize: true`), the variable skips `OPTIMIZE` for every model, and you can't re-enable it for an individual model with `skip_optimize: false`. Use `skip_optimize` when you want to keep `OPTIMIZE` on for most models but opt specific ones out &mdash; for example, if you delegate `OPTIMIZE` to [Predictive Optimization](https://docs.databricks.com/en/optimizations/predictive-optimization.html) or schedule it out of band. Refer to [issue #703](https://github.com/databricks/dbt-databricks/issues/703).
 
 
-Starting in `dbt-databricks` 1.10, some table and incremental model configs require the restructured materializations. See [Databricks behavior changes](/reference/global-configs/databricks-changes).
-
-Starting in `dbt-databricks` 1.13.1, you can choose the materialization path for individual table and incremental models. See [Set `use_materialization_v2` per model](/reference/global-configs/databricks-changes#set-use_materialization_v2-per-model).
+Starting in `dbt-databricks` 1.10, some table and incremental model configs require the restructured materializations; starting in 1.13.1, you can choose the path per model. See [Databricks behavior changes](/reference/global-configs/databricks-changes) and [Set `use_materialization_v2` per model](/reference/global-configs/databricks-changes#set-use_materialization_v2-per-model).
 
 ### Python submission methods
 _Available in versions 1.9 or higher_
@@ -170,7 +168,7 @@ When materializing models of various types, you may include several optional col
 \* `using_columns` supports all parameter types listed in [Databricks column mask parameters](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-column-mask#parameters).
 
 
-† dbt applies column tags with `ALTER` statements. To remove tags from columns you keep, use Databricks directly or a post-hook. Starting in `dbt-databricks` 1.13.1, dbt unsets tags on columns it removes when replacing an existing Unity Catalog table in place during a table build or an incremental full refresh. This applies to the original SQL path and the direct restructured path. Starting in `dbt-databricks` v1.12, `databricks_tags` set at multiple config hierarchy levels [merge additively](#databricks_tags) instead of the lower (more specific) level fully replacing the higher one.
+† dbt applies column tags with `ALTER` statements. To remove tags from columns you keep, use Databricks directly or a post-hook. Starting in `dbt-databricks` 1.13.1, dbt automatically unsets tags on dropped columns during in-place table replacements (SQL `table` models and incremental `--full-refresh` runs). Starting in `dbt-databricks` 1.12, `databricks_tags` set at multiple config hierarchy levels [merge additively](#databricks_tags) instead of the lower (more specific) level fully replacing the higher one.
 
 This example uses the column-level configurations in the previous table:
 
@@ -1462,7 +1460,7 @@ _Available in versions 1.12 or higher_
  
 | Materialization | Drop and recreate required? | Notes |
 |----------------|----------------------------|-------|
-| Materialized views | Depends on the change and rebuild method | Schedule changes can use `ALTER`. See [Compatibility Mode rebuilds](#compatibility-mode-rebuilds). |
+| Materialized views | Yes, except schedule updates and in-place [Compatibility Mode rebuilds](#compatibility-mode-rebuilds) | Schedule changes can use `ALTER` |
 | Streaming tables | Only when `partition_by` changes | All other supported changes use `CREATE OR REFRESH` plus an `ALTER` for schedule changes |
  
 Note on streaming table query changes: there's currently no way for the adapter to detect if a streaming table query has changed. Regardless of `on_configuration_change` behavior, dbt uses `CREATE OR REFRESH`, which applies the updated query to future rows only &mdash; previously processed rows aren't reprocessed.
@@ -1471,12 +1469,15 @@ To reprocess available source data with an updated query, run with `--full-refre
 
 #### Compatibility Mode rebuilds
 
-Starting in `dbt-databricks` 1.13.1, dbt replaces a materialized view in place when a rebuild keeps its Compatibility Mode location and `partition_by` unchanged. If the rebuild specifies a Compatibility Mode location, dbt stops before dropping the view when you change `partition_by` or move the view from its current Compatibility Mode location.
+Starting in `dbt-databricks` 1.13.1, dbt avoids dropping a materialized view that sets a Compatibility Mode location (`delta.universalFormat.compatibility.location`), because dropping the view leaves that location reserved and causes recreation to fail.
 
-Dropping a materialized view leaves its Compatibility Mode location reserved.
+- If the location and `partition_by` are unchanged, dbt replaces the view in place.
+- If you change the location or `partition_by`, dbt stops with an error before dropping the view.
 
-- To move the view, drop it manually and rebuild it at a location that does not overlap the previous one.
-- To change partitions, remove the Compatibility Mode properties from `tblproperties` and change `partition_by` in the same run. In a second run, re-enable Compatibility Mode with a location that does not overlap the previous one.
+To make those changes:
+
+- **Move the view:** drop it manually, then rebuild it at a non-overlapping location.
+- **Change `partition_by`:** remove the Compatibility Mode properties from `tblproperties` and update `partition_by` in one run, then re-enable Compatibility Mode at a non-overlapping location in a second run.
 
 <VersionBlock firstVersion="1.12">
 

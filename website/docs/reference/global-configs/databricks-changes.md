@@ -68,17 +68,13 @@ The `use_materialization_v2` flag defaults to `false`. Set it to `true` under `f
 
 _Available in `dbt-databricks` 1.13.1 or higher._
 
-Set `use_materialization_v2` on a `table` or `incremental` model to choose its materialization path.
+Set `use_materialization_v2` on a `table` or `incremental` model to override the project flag (`true` for the restructured path, `false` for the original path). Omit the config or set it to `null` to inherit the project flag. Views and seeds ignore it.
 
-- Explicit `true` selects the restructured path and explicit `false` selects the original path. Either value overrides the project flag for that model.
-- If the model has no value for the config or sets it to `null`, it follows the project flag.
-- Views and seeds ignore the model config.
-
-For SQL models that replace a Delta table in place, the original path uses a single atomic `CREATE OR REPLACE TABLE ... AS SELECT` statement. A direct rebuild on the restructured path creates the target and inserts rows in separate statements. Readers can see an empty target between those statements, even during a successful rebuild. The restructured path lets you apply column masks before loading rows. See [Configuring columns](/reference/resource-configs/databricks-configs#configuring-columns).
+This lets you trade off atomicity against create-time features per model: the original path replaces Delta tables atomically with a single `CREATE OR REPLACE TABLE ... AS SELECT`, while the restructured path creates the table before inserting rows &mdash; allowing column masks before data loads (see [Configuring columns](/reference/resource-configs/databricks-configs#configuring-columns)), at the cost of briefly exposing an empty table during direct rebuilds.
 
 Set the config in a model's `config()` block, in its properties YAML, or for a folder with `+use_materialization_v2` in `dbt_project.yml`. See [Config inheritance](/reference/define-configs#config-inheritance).
 
-This example keeps the original path as the project default and opts the table and incremental models in one folder into the restructured path.
+Keep the original path as the project default and opt one folder into the restructured path:
 
 <File name='dbt_project.yml'>
 
@@ -94,7 +90,7 @@ models:
 
 </File>
 
-Set the config on a model in that folder to opt it back out.
+Opt a specific model in that folder back out:
 
 <File name='models/governed/schema.yml'>
 
@@ -113,7 +109,7 @@ Starting in `dbt-databricks` 1.12.7, seeds use a single materialization. In earl
 
 ### Changes to the View materialization
 
-Starting in `dbt-databricks` 1.13.0, views use one materialization with either value of the project flag. Set `view_update_via_alter` to `true` to apply eligible changes to an existing Unity Catalog view in place and keep its history. Full refreshes use the replacement path. When dbt replaces an existing view with another view, it uses `CREATE OR REPLACE VIEW` with either value of `use_safer_relation_operations`.
+Starting in `dbt-databricks` 1.13.0, views use a single materialization regardless of `use_materialization_v2`. Set `view_update_via_alter: true` to update an existing Unity Catalog view in place (preserving its history) for eligible changes; `--full-refresh` always replaces the view. Replacing a view with another view always uses `CREATE OR REPLACE VIEW`, regardless of `use_safer_relation_operations`.
 
 This example enables in-place updates for a Unity Catalog view.
 
@@ -145,7 +141,7 @@ As such, we must replace the view whenever you change its description
 
 #### View replacement before dbt-databricks 1.13.0
 
-In adapter versions 1.10 through 1.12, set the project flag to `true` to use `view_update_via_alter` or `use_safer_relation_operations` for views. With `view_update_via_alter: false`, `use_safer_relation_operations: true` can build a staged view and swap it with the existing view if both can be renamed.
+In `dbt-databricks` 1.10&ndash;1.12, set the project flag to `true` to use `view_update_via_alter` or `use_safer_relation_operations` for views. With `view_update_via_alter: false`, `use_safer_relation_operations: true` can build a staged view and swap it with the existing view if both can be renamed.
 
  <File name="schema.yml">
  
@@ -194,7 +190,7 @@ The restructured materialization applies enforced constraints before inserting r
 
 #### `use_safer_relation_operations`
 
-Set `use_safer_relation_operations` to `true` for a restructured rebuild of a table that dbt can rename. dbt builds and loads a staging table before swapping it with the existing table. If the load fails before the swap, the existing table stays available.
+When set to `true` on a table that dbt can rename, dbt builds and loads a staging table before swapping it with the existing table. If the load fails before the swap, the existing table stays available.
 
 With the default `false`, or when dbt cannot rename the existing table, dbt rebuilds the target directly. If the insert fails, the target can remain empty.
 
