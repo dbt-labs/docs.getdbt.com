@@ -20,7 +20,7 @@ This guide is for creating adapters for the Python-based <Constant name="core_v1
 
 ## Introduction
 
-Adapters are an essential component of dbt. At their most basic level, they are how dbt connects with the various supported data platforms. At a higher-level, <Constant name="core_v1" /> adapters strive to give analytics engineers more transferrable skills as well as standardize how analytics projects are structured. Gone are the days where you have to learn a new language or flavor of SQL when you move to a new job that has a different data platform. That is the power of adapters in <Constant name="core_v1" />.
+Adapters are an essential component of dbt. At their most basic level, they are how dbt connects with the various supported data platforms. At a higher-level, <Constant name="core_v1" /> adapters strive to give analytics engineers more transferable skills as well as standardize how analytics projects are structured. Gone are the days where you have to learn a new language or flavor of SQL when you move to a new job that has a different data platform. That is the power of adapters in <Constant name="core_v1" />.
  
  Navigating and developing around the nuances of different databases can be daunting, but you are not alone. Visit [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel for additional help beyond the documentation.
 
@@ -879,7 +879,7 @@ In the course of creating and maintaining your adapter, it's likely that you wil
 
 2. **Optional tests**, for second-order functionality that is common across plugins, but not required for basic use. Your plugin can opt into these test cases by inheriting existing ones, or reimplementing them with adjustments. For now, this category includes all tests located outside the `basic` subdirectory. More tests will be added as we convert older tests defined on dbt-core and mature plugins to use the standard framework.
 
-3. **Custom tests**, for behavior that is specific to your adapter / data platform. Each <Term id="data-warehouse" /> has its own specialties and idiosyncracies. We encourage you to use the same `pytest`-based framework, utilities, and fixtures to write your own custom tests for functionality that is unique to your adapter.
+3. **Custom tests**, for behavior that is specific to your adapter / data platform. Each <Term id="data-warehouse" /> has its own specialties and idiosyncrasies. We encourage you to use the same `pytest`-based framework, utilities, and fixtures to write your own custom tests for functionality that is unique to your adapter.
 
 If you run into an issue with the core framework, or the basic/optional test cases—or if you've written a custom test that you believe would be relevant and useful for other adapter plugin developers—please open an issue or PR in the `dbt-labs/dbt` repository on GitHub.
 
@@ -1187,7 +1187,7 @@ Many community members maintain their adapter plugins under open source licenses
 
 - Hosting on a public git provider (for example, GitHub or Gitlab)
 - Publishing to [PyPI](https://pypi.org/)
-- Adding your adapter to the [community adapters](/docs/community-adapters) list (refer to [Topics and pages to cover](#topics-and-pages-to-cover))
+- Adding your adapter to the [available adapters](/docs/community-adapters) list (refer to [Topics and pages to cover](#topics-and-pages-to-cover))
 
 ### General Guidelines
 
@@ -1210,7 +1210,7 @@ We ask our adapter maintainers to use the [docs.getdbt.com repo](https://github.
 
 ### Assumed Knowledge
 
-To simplify things, assume the reader of this documentation already knows how both dbt and your data platform works. There's already great material for how to learn dbt and the data platform out there. The documentation we're asking you to add should be what a user who is already profiecient in both dbt and your data platform would need to know in order to use both. Effectively that boils down to two things: how to connect, and how to configure.
+To simplify things, assume the reader of this documentation already knows how both dbt and your data platform works. There's already great material for how to learn dbt and the data platform out there. The documentation we're asking you to add should be what a user who is already proficient in both dbt and your data platform would need to know in order to use both. Effectively that boils down to two things: how to connect, and how to configure.
 
 ### Topics and Pages to Cover
 
@@ -1222,7 +1222,7 @@ To contribute, all you will have to do make the changes listed in the table belo
 |--------------|--------------------------------------------|--------|-------------------------|
 | Connect              | `/docs/local/connect-data-platform/{MY-DATA-PLATFORM}-setup.md` | Create | Give all information needed to define a target in `~/.dbt/profiles.yml` and get `dbt debug` to connect to the database successfully. All possible configurations should be mentioned.             |
 | Configure            | `reference/resource-configs/{MY-DATA-PLATFORM}-configs.md`   | Create | What options and configuration specific to your data platform do users need to know? for example, table distribution and indexing options, column_quoting policy, which incremental strategies are supported |
-| Discover and Install | `docs/community-adapters.md`                                 | Modify | Add the adapter to the community adapters list. Include how to install the Python adapter package, ideally with pip and a PyPI package, or a `git+` link to the GitHub repo.                             |
+| Discover and Install | `docs/community-adapters.md`                                 | Modify | Add the adapter to the available adapters list. Include how to install the Python adapter package, ideally with pip and a PyPI package, or a `git+` link to the GitHub repo.                             |
 | Add link to sidebar  | `website/sidebars.js`                                        | Modify | Add the document id to the correct location in the sidebar menu                                                                                                                                      |
 
 For example say I want to document my new adapter: `dbt-ders`. For the "Connect" page, I will make a new Markdown file, `ders-setup.md` and add it to the `/website/docs/local/connect-data-platform/` directory.
@@ -1368,7 +1368,7 @@ We’d recommend _against_ boilerplate announcements and encourage finding a uni
 - A summary of the value prop of your database / technology for users who aren’t familiar.
 - The personas that might be interested in this news.
 - A description of what the adapter _is_.  For example:
-  > With the release of our new dbt adapter, you’ll be able to to use dbt to model and transform your data in [name-of-your-org]
+  > With the release of our new dbt adapter, you’ll be able to use dbt to model and transform your data in [name-of-your-org]
 - Particular or unique use cases or functionality unlocked by the adapter.
 - Plans for future / ongoing support / development.
 - The link to the documentation for using the adapter on the dbt Labs docs site.
@@ -1378,7 +1378,7 @@ We’d recommend _against_ boilerplate announcements and encourage finding a uni
 
 This can vary substantially depending on the nature of the release but a good baseline is the types of release messages that [we put out in the #dbt-releases](https://getdbt.slack.com/archives/C37J8BQEL/p1651242161526509) channel.
 
-![Full Release Post](/img/adapter-guide/0-full-release-notes.png)
+<Lightbox src="/img/adapter-guide/0-full-release-notes.png" title="Full release post" />
 
 Breaking this down:
 

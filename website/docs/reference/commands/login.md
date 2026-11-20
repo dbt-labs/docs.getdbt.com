@@ -2,8 +2,8 @@
 title: "About dbt login"
 sidebar_label: "login"
 id: "login"
-description: "Use dbt login to authenticate and unlock advanced features across dbt tools."
-intro_text: "Use dbt login to authenticate once and unlock advanced features across dbt tools."
+description: "Use dbt login to authenticate and access dbt platform-based capabilities across dbt tools."
+intro_text: "Use dbt login to authenticate once and access dbt platform-based capabilities across dbt tools."
 availability: local_free
 ---
 
@@ -11,17 +11,16 @@ availability: local_free
 Available in <Constant name="dbt" /> v1.13 and later.
 :::
 
-Run `dbt login` from the command line to unlock advanced dbt features. It'll open browser-based authentication where you can sign in to your existing <Constant name="dbt_platform" /> account or create a free one &mdash; no credit card required!
+Run `dbt login` from the command line to access dbt platform-based capabilities. It'll open browser-based authentication where you can sign in to your existing <Constant name="dbt_platform" /> account or create a free one &mdash; no credit card required!
 
 Run [`dbt login status`](#dbt-login-status) to view your current authentication status.
 
 ## When to use dbt login
 
-`dbt login` is an interactive, browser-based sign-in flow for development on macOS, Linux, and Windows. Use `dbt login` to unlock advanced features including:
+`dbt login` is an interactive, browser-based sign-in flow for development on macOS, Linux, and Windows. Use `dbt login` to access dbt platform-based capabilities including:
 
 - <Constant name="dbt_platform" /> capabilities in the [dbt VS Code extension](/docs/about-dbt-extension), such as the **Catalog** tab
 - [dbt State](/docs/deploy/dbt-state-setup#setting-up-dbt-state) in supported versions
-- advanced features in v2.0 CLI
 
 Refer to [VS Code extension features](/docs/dbt-extension-features#feature-availability) for the full list of features and their availability.
 
@@ -31,7 +30,7 @@ Refer to [VS Code extension features](/docs/dbt-extension-features#feature-avail
 
 A free <Constant name="dbt_platform" /> account carries your access across all your dbt tools &mdash; the CLI, the VS Code extension, and dbt State &mdash; so you only log in once. No credit card required.
 
-Run `dbt login` to create a free account, or log in to an existing one. Logging in is simply how dbt confirms your access to advanced features in your local development environment.
+Run `dbt login` to create a free account, or log in to an existing one. Logging in is simply how dbt confirms your access to dbt platform-based capabilities in your local development environment.
 
 Note that this is separate from [<Constant name="dbt_platform"/> user license types](/docs/platform/manage-access/seats-and-users?version=2.0) (such as Developer or Analyst), which controls what you can do _inside_ <Constant name="dbt_platform" />.
 
@@ -77,7 +76,7 @@ You can log into dbt either using [interactive](#interactive-authentication) or 
 Use `dbt login` when you're developing locally in a terminal or IDE and can complete sign-in in a browser.
 
 - When you run `dbt login`, dbt opens a browser-based authentication flow. After you complete authentication, dbt stores your login state locally and confirms that you're signed in.
-- After you sign in, dbt can use your login state to unlock advanced features across the dbt CLI, VS Code extension, and dbt State.
+- After you sign in, dbt can use your login state to access dbt platform-based capabilities across the dbt CLI, VS Code extension, and dbt State.
 - Your session stays active across terminal sessions, and dbt refreshes it automatically while you're active. As long as you use dbt at least once every 7 days, you stay signed in. If you're inactive for longer, dbt prompts you to run `dbt login` again. Refer to [Staying signed in](#staying-signed-in) for details.
 
 Run `dbt login` from your **local terminal** (not in the <Constant name="dbt_platform" /> UI).
@@ -101,11 +100,11 @@ If you are new to dbt, start with [interactive authentication](#interactive-auth
 
 In non-interactive environments (such as CI/CD jobs, scheduled jobs, or external orchestrators like Airflow), use a [service token](/docs/dbt-apis/service-tokens) instead of `dbt login`. The service token does two jobs:
 - authenticates the run 
-- unlocks access to advanced features, so they work in your pipeline the same way they do locally.
+- gives access to dbt platform-based capabilities, so they work in your pipeline the same way they do locally.
 
 Unlike interactive `dbt login`, service tokens don't expire, so there's nothing to refresh. Rotate them yourself in <Constant name="dbt_platform" /> when you need to.
 
-Set the following [environment variables](/docs/build/environment-variables#special-environment-variables) so dbt can authenticate and unlock that access:
+Set the following [environment variables](/docs/build/environment-variables#special-environment-variables) so dbt can authenticate and provide that access:
 
 <SimpleTable>
 
@@ -175,7 +174,7 @@ The only number that matters to you is 7 days: use dbt at least once a week and 
 
 Once you've logged in, dbt keeps two short-lived credentials fresh for you, automatically and in the background &mdash; you don't need to do anything:
 
-- A 24-hour access token validates your access to advanced features. dbt renews it about once an hour whenever it can reach <Constant name="dbt_platform" />, so it never actually runs out while you're working &mdash; you won't hit the 24-hour limit in practice.
+- A 24-hour access token validates your access to dbt platform-based capabilities. dbt renews it about once an hour whenever it can reach <Constant name="dbt_platform" />, so it never actually runs out while you're working &mdash; you won't hit the 24-hour limit in practice.
 - A 7-day sign-in backs those renewals. Any dbt activity resets the 7-day clock, so the only way to get signed out is to not use dbt for more than 7 days straight.
 
 If you go offline, your current access keeps working until it expires, and dbt retries the next time you run a command.
@@ -264,7 +263,7 @@ Status: unauthenticated
 
 ### dbt license info
 
-dbt uses local licenses to cache your logged-in state and give you access to advanced features. Run `dbt license info` as an additional check to verify the status of the license used by <Constant name="fusion" />. This is useful when an advanced feature isn't working and `dbt login status` tells you you're authenticated:
+dbt uses local licenses to cache your logged-in state and give you access to dbt platform-based capabilities. Run `dbt license info` as an additional check to verify the status of the license used by <Constant name="fusion" />. This is useful when a dbt platform-based capability isn't working and `dbt login status` tells you you're authenticated:
 
 ```shell
 dbt license info
@@ -292,7 +291,7 @@ For how to interpret each status, refer to [Troubleshooting](#troubleshooting).
 
 ## Troubleshooting
 
-If an advanced feature isn't working, or you're not sure whether you're still signed in, run `dbt license info` to check your access:
+If a dbt platform-based capability isn't working, or you're not sure whether you're still signed in, run `dbt license info` to check your access:
 
 ```shell
 dbt license info
@@ -317,7 +316,7 @@ The output shows your current status. Use the following table to interpret it:
 :::note If you just registered a new account
 If you created a new <Constant name="dbt_platform" /> account but haven't verified your email yet, dbt warns you on each run during a short grace period.
 
-After the grace period ends, advanced features stop working until you verify. You can still use the vast majority of features like code error diagnostics and Jinja LSP go-to ref definition, [and more](/docs/dbt-extension-features#feature-availability).
+After the grace period ends, dbt platform-based capabilities stop working until you verify. You can still use the vast majority of features like code error diagnostics and Jinja LSP go-to ref definition, [and more](/docs/dbt-extension-features#feature-availability).
 
 Check your inbox for the verification email, or [contact dbt Support](/docs/dbt-support) if you need it resent.
 :::
@@ -326,6 +325,6 @@ Check your inbox for the verification email, or [contact dbt Support](/docs/dbt-
 
 - [`dbt login status`](#dbt-login-status) &mdash; Shows your current dbt authentication status.
 - [`dbt license info`](#dbt-license-info) &mdash; Shows your current access status and helps diagnose feature availability.
-- [`dbt init`](/reference/commands/init) &mdash; Use during first-time project setup; prompts you to run `dbt login` to unlock authenticated features.
+- [`dbt init`](/reference/commands/init) &mdash; Use during first-time project setup; prompts you to run `dbt login` to access authenticated dbt platform-based capabilities.
 - [`dbt deps`](/reference/commands/deps) &mdash; Installs packages for a dbt project.
 - [`dbt debug`](/reference/commands/debug) &mdash; Tests your dbt project and connection configuration.

@@ -8,17 +8,14 @@ availability: local_all
 ---
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
-import WizardDesktopPrivatePreview from '/snippets/_wizard-desktop-private-preview.md';
 
-# Use Wizard Desktop <Lifecycle status="private_beta"/>
+# Use Wizard Desktop <Lifecycle status="beta"/>
 
 <IntroText>
 Navigate Wizard Desktop and learn how to work in a session with dbt Wizard &mdash; with rich data visualizations, data diffs, lineage, and more rendered right in the app. Start with [Get started](/docs/dbt-ai/wizard-desktop).
 </IntroText>
 
 This page is your map of the app: where everything lives, how a session works, what to do when <Constant name="wizard" /> proposes a change, and how it <WizardPopcorn>conjures its magic</WizardPopcorn>.
-
-<WizardDesktopPrivatePreview />
 
 ## Tour the app
 
@@ -38,8 +35,8 @@ When you open Wizard Desktop, everything you need is in one window &mdash; you'l
 | Chat area (middle) | Your conversation. Replies, charts, tables, and diffs all render here |
 | Wayfinder bar | Above the chat composer box: your project, branch, connection · environment, plus **Validation** and **Create PR** |
 | Chat composer | Where you ask. Press <kbd>⌘</kbd> + <kbd>L</kbd> to jump to it. **+** attaches files, and the two pickers set your permission mode and AI model |
-| Side pane (right) | Whichever pane you've opened, with a terminal underneath. The Explorer is read-only, so browse your files here but edit them in your own editor |
-| Pane rail (far right) | Switch panes: Explorer, Lineage, Changes, Queries, Commands, Validation, Summary, Checks, Metrics, and Insights. A badge means something needs a look |
+| Side pane (right) | Whichever pane you've opened, with a terminal underneath. You can edit text files in the Explorer |
+| Pane rail (far right) | Switch panes: Explorer, Lineage, Changes, Queries, Commands, Validation, Summary, CI checks, Metrics, and Insights. A badge means something needs a look |
 
 </SimpleTable>
 
@@ -58,11 +55,11 @@ Select an icon in the right hand pane rail to open a pane in the side panel:
 | Summary | A summary of the work in this chat |
 | Changes | Diffs waiting for review |
 | Validation | Your validation plan and its results &mdash; what passed, what failed, and what needs a look. Refer to [Validation](#validation) |
-| Explorer | Your project files. Select a file path in the chat to open it here. The Explorer is read-only, so edit files in your own editor |
+| Explorer |  View and edit your project files here or by clicking file paths in chat. Save changes with Save or <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>S</kbd>.  Edits stay isolated to the chat environment, unsaved drafts remain intact if you navigate away or restart, and if you make external changes &mdash; it won't be overwritten.|
 | Lineage | How your dbt models connect |
 | Queries | Write and run ad hoc SQL against your connection. Refer to [Explore your data](#explore-your-data) |
 | Commands | Queries you run and commands <Constant name="wizard" /> executes, scoped to this chat |
-| Checks | The checks <Constant name="wizard" /> ran and their results |
+| CI checks | The CI checks <Constant name="wizard" /> ran and their results |
 | Insights | Analysis of your project and data |
 | Metrics | The metrics in your project |
 | Terminal | Run commands without leaving the app. Sits underneath whichever pane you've opened |
@@ -176,8 +173,27 @@ The app uses the same config as the CLI, so the skills, subagents, and MCP serve
 
 - [Skills](/docs/dbt-ai/wizard-skills)
 - [Subagents](/docs/dbt-ai/wizard-subagents)
-- [MCP servers](/docs/dbt-ai/wizard-mcp)
+- [MCP servers](#connect-mcp-servers)
 - [Config files](/docs/dbt-ai/wizard-config)
+
+## Connect MCP servers
+
+MCP servers give <Constant name="wizard" /> more tools and context, such as your orchestrator, BI tool, or GitHub. Adding them directly from the **Connectors** page in **Settings** is coming soon. Until then, set them up through the <Constant name="wizard" /> CLI and use them in Desktop right away, because both share the same config.
+
+To add a server:
+
+1. [Install the <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli?version=2#install-and-set-up-dbt-wizard-cli).
+2. Add a server with `wizard mcp add`. Refer to [Add an MCP server](/docs/dbt-ai/wizard-mcp#add-an-mcp-server).
+3. If the server uses OAuth, run `wizard mcp login SERVER_NAME`. Refer to [Authenticate a server](/docs/dbt-ai/wizard-mcp#authenticate-a-server).
+4. Open <Constant name="wizard" /> Desktop and start a new chat. <Constant name="wizard" /> loads MCP servers at the start of a session.
+
+You can also run the same commands directly in Desktop's built-in terminal:
+
+1. Start a new project-scoped chat and send your first message to start the terminal.
+2. To add a server, run `wizard mcp add`. Refer to [Add an MCP server](/docs/dbt-ai/wizard-mcp#add-an-mcp-server).
+3. To see servers you already added, run `wizard`, then run `/mcp`.
+
+For server types, config keys, and examples, refer to [Use MCP servers](/docs/dbt-ai/wizard-mcp).
 
 ## Chats and worktrees
 
@@ -232,7 +248,7 @@ The app only scans <Constant name="git" /> repos in your home folder. If your pr
 
 - [Get started with Wizard Desktop](/docs/dbt-ai/wizard-desktop)
 - [Wizard Desktop settings](/docs/dbt-ai/wizard-desktop-settings)
-- [Use <Constant name="wizard" /> locally (CLI)](/docs/dbt-ai/wizard-quickstart)
+- [Use <Constant name="wizard" /> locally (CLI)](/docs/dbt-ai/wizard-cli)
 - [<Constant name="wizard" /> config reference](/docs/dbt-ai/wizard-config)
 - [Data use and telemetry](/docs/dbt-ai/wizard-telemetry)
 

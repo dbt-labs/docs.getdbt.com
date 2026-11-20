@@ -61,7 +61,7 @@ Remember, you know more about this PR **right now** than you will in a couple of
 
 This is where we add the relevant sections from our DAG! This is one of my favorite features of dbt, as I’m a very visual learner. So when I open a PR, I take a quick look at the relevant sections of the DAG (aka dependency graph) to help me conceptualize the modeling.
 
-![dbt dag check](/img/blog/pr-template-dag-check.png "dbt DAG check")
+<Lightbox src="/img/blog/pr-template-dag-check.png" title="dbt dag check" />
 
 Checking for things like modularity and 1:1 relationships between sources and staging models is much easier done visually via the DAG than trying to look at code and visualize the relationships. 
 
@@ -72,7 +72,7 @@ Checking for things like modularity and 1:1 relationships between sources and st
 
 This section should show something to confirm that your model is doing what you intended it to do. This could be a [dbt test](/docs/build/data-tests) like uniqueness or not null, or could be an ad-hoc query that you wrote to validate your data. Here is a screenshot from a test run on a local development branch:
 
-![test validation](/img/blog/pr-template-test-validation.png "dbt test validation")
+<Lightbox src="/img/blog/pr-template-test-validation.png" title="Test validation" />
 
 Adding uniqueness tests shows that you have put thought into the <Term id="grain" /> of each of your models, and then ensures that those assumptions hold true over time. 
 
@@ -99,7 +99,7 @@ This also makes things much easier on your reviewer. Reviewing a PR with multipl
 
 Think of yourself! What if you need to roll back a change, but in a moment of post-coding fogginess, you made a massive commit of unrelated concepts that “updated all the things”. Woof.
 
-![woof](/img/blog/pr-template-woof.gif "woof")
+<Lightbox src="/img/blog/pr-template-woof.gif" title="Woof" />
 
 **My SQL follows the [dbt Labs style guide](https://github.com/dbt-labs/corp/blob/master/dbt_style_guide.md).**
 
@@ -115,7 +115,7 @@ Documentation follows the same reasoning as the PR description. You will know mo
 
 This is all about performance. Our ultimate goal is to model data such that end users can easily and efficiently query the resulting database objects.
 
-![choose your materializations wisely](/img/blog/pr-template-fct-meme.jpeg "choose your materializations wisely")
+<Lightbox src="/img/blog/pr-template-fct-meme.jpeg" title="Choose your materializations wisely" />
 
 
 **I have updated the README file.**  

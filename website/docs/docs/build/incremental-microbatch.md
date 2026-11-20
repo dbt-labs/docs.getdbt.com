@@ -48,7 +48,9 @@ dbt's microbatch strategy uses the most efficient mechanism available for "full 
 - `dbt-snowflake`: Uses the `delete+insert` strategy, which "inserts" or "replaces."
 - `dbt-bigquery`: Uses the `insert_overwrite` strategy, which "inserts" or "replaces."
 - `dbt-spark`: Uses the `insert_overwrite` strategy, which "inserts" or "replaces."
-- `dbt-databricks`: Uses the `replace_where` strategy, which "inserts" or "replaces." 
+- `dbt-databricks`: Uses the `replace_where` strategy, which "inserts" or "replaces."
+- `dbt-athena` (Hive): Uses the `insert_overwrite` strategy, which "inserts" or "replaces."
+- `dbt-athena` (Iceberg): Uses the `merge` strategy, which performs "update" or "insert" operations. 
 
 Check out the [supported incremental strategies by adapter](/docs/build/incremental-strategy#supported-incremental-strategies-by-adapter) for more info.
 

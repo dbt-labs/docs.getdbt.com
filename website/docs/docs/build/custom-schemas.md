@@ -182,6 +182,8 @@ Development/CI Environment (`target.name != 'prod'`)
 
 Similar to the regular macro, this approach guarantees that schemas from different environments will not collide.
 
+<Lightbox src="/img/docs/building-a-dbt-project/custom-schemas-diagram.png" width="85%" alt="A flowchart showing how dbt chooses a schema name based on whether a custom schema is set and which environment is running." title="How dbt picks a schema in dev, CI, and production." />
+
 dbt ships with a macro for this use case &mdash; called `generate_schema_name_for_env` &mdash; which is disabled by default. To enable it, add a custom `generate_schema_name` macro to your project that contains the following code:
 
 <File name='macros/generate_schema_name.sql'>
@@ -212,6 +214,7 @@ For more information, consult the [managing environments in <Constant name="dbt"
 
 ## Related docs
 
+- [Mapping project folders to warehouse schemas](/best-practices/how-we-structure/6-mapping-folders-to-warehouse) to map staging, intermediate, and marts folders to warehouse schemas
 - [Customize dbt models database, schema, and alias](/guides/customize-schema-alias?step=1) to learn how to customize dbt models database, schema, and alias
 - [Custom database](/docs/build/custom-databases) to learn how to customize dbt model database
 - [Custom aliases](/docs/build/custom-aliases) to learn how to customize dbt model alias name

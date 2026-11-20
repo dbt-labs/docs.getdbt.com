@@ -281,33 +281,33 @@ After you finish creating the YAML files, commit and push your code to trigger y
 
 In your repository, click the _Actions_ tab
 
-![Image showing the GitHub action for lint on push](/img/guides/orchestration/custom-cicd-pipelines/lint-on-push-github.png)
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/lint-on-push-github.png" title="Image showing the GitHub action for lint on push" />
 
 Sample output from SQLFluff in the `Run SQLFluff linter` job:
 
-![Image showing the logs in GitHub for the SQLFluff run](/img/guides/orchestration/custom-cicd-pipelines/lint-on-push-logs-github.png)
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/lint-on-push-logs-github.png" title="Image showing the logs in GitHub for the SQLFluff run" />
 
 </TabItem>
 <TabItem value="gitlab">
 
 In the menu option go to *CI/CD > Pipelines*
 
-![Image showing the GitLab action for lint on push](/img/guides/orchestration/custom-cicd-pipelines/lint-on-push-gitlab.png)
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/lint-on-push-gitlab.png" title="Image showing the GitLab action for lint on push" />
 
 Sample output from SQLFluff in the `Run SQLFluff linter` job:
 
-![Image showing the logs in GitLab for the SQLFluff run](/img/guides/orchestration/custom-cicd-pipelines/lint-on-push-logs-gitlab.png)
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/lint-on-push-logs-gitlab.png" title="Image showing the logs in GitLab for the SQLFluff run" />
 
 </TabItem>
 <TabItem value="bitbucket">
 
 In the left menu pane, click on *Pipelines*
 
-![Image showing the Bitbucket action for lint on push](/img/guides/orchestration/custom-cicd-pipelines/lint-on-push-bitbucket.png)
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/lint-on-push-bitbucket.png" title="Image showing the Bitbucket action for lint on push" />
 
 Sample output from SQLFluff in the `Run SQLFluff linter` job:
 
-![Image showing the logs in Bitbucket for the SQLFluff run](/img/guides/orchestration/custom-cicd-pipelines/lint-on-push-logs-bitbucket.png)
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/lint-on-push-logs-bitbucket.png" title="Image showing the logs in Bitbucket for the SQLFluff run" />
 
 </TabItem>
 </Tabs>

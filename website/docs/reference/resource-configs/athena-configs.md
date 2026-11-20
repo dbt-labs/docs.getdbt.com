@@ -139,13 +139,15 @@ Note: If you're using a workgroup with a default output location configured, `s3
 
 The following [incremental models](/docs/build/incremental-models) strategies are supported:
 
-- `insert_overwrite` (default): The insert-overwrite strategy deletes the overlapping partitions from the destination table and then inserts the new records from the source. This strategy depends on the `partitioned_by` keyword! dbt will fall back to the `append` strategy if no partitions are defined.
+- `insert_overwrite` (default): The insert-overwrite strategy deletes the overlapping partitions from the destination table and then inserts the new records from the source. This strategy depends on the `partitioned_by` keyword! dbt will fall back to the `append` strategy if no partitions are defined. This strategy is only available for Hive tables.
 - `append`: Insert new records without updating, deleting or overwriting any existing data. There might be duplicate data (great for log or historical data).
-- `merge`: Conditionally updates, deletes, or inserts rows into an Iceberg table. Used in combination with `unique_key`.It is only available when using Iceberg.
+- `merge`: Conditionally updates, deletes, or inserts rows into an Iceberg table. Used in combination with `unique_key`. It is only available when using Iceberg.
+- `microbatch`: Process large time-series datasets in batches. Refer to [About microbatch incremental models](/docs/build/incremental-microbatch).
 
-Consider this limitation when using Iceberg models:
+Consider these limitations when using Iceberg models:
 
-- Incremental Iceberg models &mdash; Sync all columns on schema change. You can't remove columns used for partitioning with an incremental refresh; you must fully refresh the model.
+- Incremental Iceberg models don't support the `insert_overwrite` strategy. They support `append`, `merge`, and `microbatch`.
+- Incremental Iceberg models sync all columns on schema change. You can't remove columns used for partitioning with an incremental refresh; you must fully refresh the model.
 
 ### On schema change
 
@@ -263,6 +265,7 @@ The following are the supported strategies for using Iceberg incrementally:
   - `delete_condition` (optional): SQL condition that identifies records that should be deleted.
   - `update_condition` (optional): SQL condition that identifies records that should be updated.
   - `insert_condition` (optional): SQL condition that identifies records that should be inserted.
+- `microbatch`: Process large time-series datasets in batches. Refer to [About microbatch incremental models](/docs/build/incremental-microbatch).
 
 `incremental_predicates`, `delete_condition`, `update_condition` and `insert_condition` can include any column of the incremental table (`src`) or the final table (`target`). Column names must be prefixed by either `src` or `target` to prevent a `Column is ambiguous` error.
 

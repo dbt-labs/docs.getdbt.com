@@ -171,14 +171,8 @@ Setting a model to `strict` does not automatically set `strict` for downstream m
 The following values are available for `static_analysis`:
 
 - `baseline` (default): Statically analyze SQL. This is the recommended starting point for users transitioning from <Constant name="core" />, providing a smooth migration experience while still catching most SQL errors. You can incrementally opt-in to stricter analysis over time.
-- `strict` (previously `on`): Statically analyze all SQL before execution begins. Use this for maximum validation guarantees &mdash; nothing runs until the entire project is proven valid.
+- `strict`: Statically analyze all SQL before execution begins. Use this for maximum validation guarantees &mdash; nothing runs until the entire project is proven valid.
 - `off`: Skip SQL analysis for this model and its descendants.
-
-:::caution Deprecated values
-
-The `on` and `unsafe` values are deprecated and will be removed in May 2026. Use `strict` instead.
-
-:::
 
 ### User-defined functions (UDFs) in `strict` mode
 

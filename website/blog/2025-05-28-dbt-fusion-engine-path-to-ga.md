@@ -33,7 +33,7 @@ The most popular dbt Labs packages (`dbt_utils`, `audit_helper`, `dbt_external_t
 
 So when is Fusion going to be GA? We're targeting later this year for full feature parity, but we're also hoping to approach it asymptotically — meaning that many existing dbt users ca start adopting Fusion much sooner.
 
-During the beta period, you may run into unanticipated (and anticipated) issues when trying to run your project on Fusion. Please share any issues in the [dbt-fusion](https://github.com/dbt-labs/dbt-fusion) repository or on Slack in [#dbt-fusion-engine](https://getdbt.slack.com/archives/C088YCAB6GH), and we'll do our best to to unblock you.
+During the beta period, you may run into unanticipated (and anticipated) issues when trying to run your project on Fusion. Please share any issues in the [dbt-fusion](https://github.com/dbt-labs/dbt-fusion) repository or on Slack in [#dbt-fusion-engine](https://getdbt.slack.com/archives/C088YCAB6GH), and we'll do our best to unblock you.
 
 ## Can I use Fusion for my dbt project today?
 

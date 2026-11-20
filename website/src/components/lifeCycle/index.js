@@ -3,8 +3,10 @@
 // This component renders two unrelated token families as pills:
 //   - plan tokens (developer, self_service, managed, managed_plus) signal which
 //     dbt platform plan a feature requires.
-//   - status tokens (new, beta, preview, ga, private_beta, private_preview) signal
+//   - status tokens (new, beta, preview, ga, private_beta, private_preview, eol, deprecated, retired) signal
 //     feature maturity/lifecycle stage.
+//   - community_maintained marks a community-maintained v2 adapter. Those adapters
+//     don't move through lifecycle stages, so this token takes the place of one.
 // These are intentionally styled differently (see styles.module.css: .lifecycle vs
 // .planPill) so a plan requirement is never visually confused with a lifecycle status.
 // Don't reuse status colors/shapes for plan tokens or vice versa.
@@ -41,7 +43,12 @@ const statusColors = {
   private_beta: '#bab2ff',
   ga: '#ff9e5f',
   preview: '#FE6703',
+  public_preview: '#FE6703',
   private_preview: '#FE6703',
+  eol: '#99A1AF',
+  deprecated: '#99A1AF',
+  retired: '#99A1AF',
+  community_maintained: '#A7F3D0',
   // new_constant: '#99A1AF', use this gray color if you want a new color.
 };
 
@@ -51,12 +58,17 @@ const fontColors = {
   [SELF_SERVICE]: "#030711",
   [DEVELOPER]: "#030711",
   preview: "#030711",
+  public_preview: "#030711",
   ga: "#030711",
   new: "#030711",
   beta: "#030711",
   private: "#030711",
   private_beta: "#030711",
   private_preview: "#030711",
+  eol: "#030711",
+  deprecated: "#030711",
+  retired: "#030711",
+  community_maintained: "#030711",
 };
 
 // Display names for status values
@@ -67,10 +79,15 @@ const statusDisplayNames = {
   [DEVELOPER]: DEVELOPER,
   new: 'New',
   beta: 'Beta',
-  private_beta: 'Private beta',
-  ga: 'Generally available (GA)',
+  private_beta: 'Private Beta',
+  ga: 'Generally Available (GA)',
   preview: 'Preview',
-  private_preview: 'Private preview',
+  public_preview: 'Public Preview',
+  private_preview: 'Private Preview',
+  eol: 'No longer sold',
+  deprecated: 'Deprecated',
+  retired: 'Retired',
+  community_maintained: 'Community-maintained',
 };
 
 // URL mapping for predefined lifecycle statuses. urls defined in ../lifeCycle/lifecycle-urls.js file so we can update them in one place

@@ -6,7 +6,7 @@ The operating model clarifies how to work with us and shows how we function, and
 
 1. Our Why? Define our strategy. Clearly define the goals that will drive the rest of the planning process. This is our mission statement, our voice and tone, and our statement of purpose.
 2. How we work. Tease out the internal team parts of our operating model. This part translates strategic intent into operational capabilities. Provides a foundation for action, and a clear guide for those who join our team, but also a window for others to better understand us. Includes who we are, our culture, our stakeholders.
-3. How to work with us. Define our external facing operations and processes. This will provide a clear guide for other teams so they understand what is expected of them, adn what to expect of us. Examples might take shape as: Process Maps, procedures, guidelines, work instructions, standards, tools, and more.
+3. How to work with us. Define our external facing operations and processes. This will provide a clear guide for other teams so they understand what is expected of them, and what to expect of us. Examples might take shape as: Process Maps, procedures, guidelines, work instructions, standards, tools, and more.
 
 ## Shaping our **Operating model**
 

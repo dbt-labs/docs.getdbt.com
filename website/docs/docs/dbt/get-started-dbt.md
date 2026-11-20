@@ -27,7 +27,7 @@ Once you've caught up on everything [dbt has to offer](/docs/introduction), star
 
 <Card
     title="Sign up for the dbt platform"
-    body="Create a dbt platform account to unlock the full dbt feature set."
+    body="Create a dbt platform account to access dbt platform-based capabilities."
     link="https://www.getdbt.com/signup"
     icon="dbt-bit"/>
 

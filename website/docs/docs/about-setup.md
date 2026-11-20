@@ -35,5 +35,5 @@ To begin configuring dbt now, select the option that is right for you.
 </div>
 
 :::tip Pair your setup with AI
-Whichever option you choose, you can pair it with <Constant name="wizard" /> to build models faster. [Get started with <Constant name="wizard" />](/docs/dbt-ai/wizard-quickstart).
+Whichever option you choose, you can pair it with <Constant name="wizard" /> to build models faster. [Get started with <Constant name="wizard" />](/docs/platform/wizard-overview#get-started).
 :::

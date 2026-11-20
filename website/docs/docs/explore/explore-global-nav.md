@@ -9,7 +9,7 @@ availability:
   minPlan: starter
 ---
 
-# Global navigation <Lifecycle status="preview" />
+# Global navigation
 
 <IntroText>Search, explore, and analyze data assets across all your dbt projects and connected metadata sources. Discover cross-project lineage, data discovery, and unified analytics governance.</IntroText>
 

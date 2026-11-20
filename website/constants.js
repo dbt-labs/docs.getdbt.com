@@ -24,6 +24,6 @@ export const CONSTANTS = {
   orchestrator: 'Orchestrator',
   wizard: 'dbt Wizard',
   semantic_layer: 'Semantic Layer',
-  legacy_deprecation_date: 'January 31, 2027'
+  legacy_deprecation_date: 'February 28, 2027'
 
 }
