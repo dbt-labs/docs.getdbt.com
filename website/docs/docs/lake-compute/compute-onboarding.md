@@ -4,11 +4,11 @@ description: "Steps to prepare your MDLS and Snowflake environments before your 
 id: compute-onboarding
 ---
 
-# Onboarding to Lake Compute <Lifecycle status="private_beta" />
+# Onboarding to Lake Compute <Lifecycle status="public_preview" />
 
-:::info Lake Compute is in private beta
+:::info Lake Compute uses Fivetran release phases
 
-To request access, fill out the [Lake Compute signup form](https://docs.google.com/forms/d/e/1FAIpQLSdWXHU3VFqq1t8GVAA2BMfY_AfeVJH26OXJFlNwXiVv4pcuXQ/viewform). Lake Compute is in active development and likely to change. Breaking changes may occur, documentation may be incomplete, technical support may be limited, and no service-level agreement covers it during beta. Refer to [Private beta limitations](/docs/lake-compute#private-beta-limitations) before you plan real work around it.
+These docs use the [Fivetran release phases](https://fivetran.com/docs/core-concepts#releasephases). Lake Compute is in Public Preview.
 
 :::
 
@@ -217,7 +217,7 @@ This means:
 
 #### Use Lake Compute as a "sidecar"
 
-As a temporary workaround during private beta, you can set Lake Compute configurations using [Extended Attributes](/docs/dbt-platform-environments#extended-attributes), by adding a key named `lakecompute`:
+As a temporary workaround during public preview, you can set Lake Compute configurations using [Extended Attributes](/docs/dbt-platform-environments#extended-attributes), by adding a key named `lakecompute`:
 
 ```yaml
 lakecompute:
@@ -284,7 +284,7 @@ select * from {{ ref('model_b') }}
 
 ### Use Lake Compute as your default adapter
 
-All your models run on Lake Compute by default and write to Iceberg tables in MDLS. Also check for existing `materialized: view` configs — Lake Compute doesn't support views (see [Private beta limitations](/docs/lake-compute#private-beta-limitations)), so switch any views to `table` or `ephemeral` before converting a project over.
+All your models run on Lake Compute by default and write to Iceberg tables in MDLS. Also check for existing `materialized: view` configs — Lake Compute doesn't support views (see [Public preview limitations](/docs/lake-compute#limitations)), so switch any views to `table` or `ephemeral` before converting a project over.
 
 For an existing project, convert models over in two steps rather than all at once:
 
