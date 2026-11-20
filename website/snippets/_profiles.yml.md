@@ -26,9 +26,11 @@ Only one `profiles.yml` file is required and it can manage multiple projects and
 
 <Constant name="fusion"/> searches for the parent directory of `profiles.yml` in the following order and uses the first location it finds:
 
-1. `--profiles-dir` flag &mdash; Override for CI/CD or testing. 
+1. `--profiles-dir` flag &mdash; Override for CI/CD or testing.
 2. Current working directory &mdash; Project-specific credentials.
 3. `~/.dbt/profiles.yml` (Recommended location) &mdash; Shared across all projects.
+
+The current working directory is the directory you run dbt from, not the directory set by `--project-dir`. For example, if you run `dbt debug --project-dir subdir_project` from `root_dir`, dbt uses `root_dir/profiles.yml` and ignores `subdir_project/profiles.yml`.
 
 </TabItem>
 <TabItem value="core" label="dbt v1">
@@ -40,7 +42,7 @@ Only one `profiles.yml` file is required and it can manage multiple projects and
 1. `--profiles-dir` flag
 2. `DBT_PROFILES_DIR` environment variable
 3. Current working directory
-4. `~/.dbt/` directory (Recommended location)
+4. `~/.dbt/profiles.yml` (Recommended location)
 
 </VersionBlock>
 
@@ -50,13 +52,13 @@ Only one `profiles.yml` file is required and it can manage multiple projects and
 2. `DBT_ENGINE_PROFILES_DIR` environment variable
 3. `DBT_PROFILES_DIR` environment variable (legacy variable but supported for backward compatibility)
 4. Current working directory
-5. `~/.dbt/` directory (Recommended location)
+5. `~/.dbt/profiles.yml` (Recommended location)
 
 **Note:** <Constant name="core"/> prefers `DBT_ENGINE_PROFILES_DIR` for the profiles directory, which aligns with the `DBT_ENGINE_*` env var naming in v1.11. Use `DBT_ENGINE_PROFILES_DIR` going forward; `DBT_PROFILES_DIR` remains supported for compatibility.
 
 </VersionBlock>
 
-Note: <Constant name="core"/> supports using the <VersionBlock lastVersion="1.10">`DBT_PROFILES_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROFILES_DIR`</VersionBlock> environment variable or a `profiles.yml` file in the current working directory. These options aren't currently supported in <Constant name="fusion"/>.
+Note: <Constant name="core"/> supports using the <VersionBlock lastVersion="1.10">`DBT_PROFILES_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROFILES_DIR`</VersionBlock> environment variable. This option isn't currently supported in <Constant name="fusion"/>.
 
 </TabItem>
 </Tabs>
@@ -67,9 +69,9 @@ Note: <Constant name="core"/> supports using the <VersionBlock lastVersion="1.10
 - **Reusability** &mdash; A single file for all dbt projects on the machine.
 - **Separation** &mdash; Connection details don't travel with project code.
 
-#### When should I use project root?
+#### When should I use the current working directory?
 
-Place your `profiles.yml` file in the project root directory for:
+Place your `profiles.yml` file in the directory you run dbt from (typically the project root) for:
 
 - Self-contained demo or tutorial projects.
 - Docker containers with baked-in credentials.

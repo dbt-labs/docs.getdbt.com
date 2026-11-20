@@ -172,10 +172,10 @@ For more information, check out [using threads](/docs/running-a-dbt-project/usin
 <Constant name="fusion"/> determines the parent directory for `profiles.yml` using the following precedence:
 
 1. `--profiles-dir` option
-2. Project root directory
+2. Current working directory
 3. `~/.dbt/` directory
 
-Note that <Constant name="fusion"/> doesn't currently support the <VersionBlock lastVersion="1.10">`DBT_PROFILES_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROFILES_DIR`</VersionBlock> environment variable or setting the `profiles.yml` in the current working directory. 
+Note that <Constant name="fusion"/> doesn't currently support the <VersionBlock lastVersion="1.10">`DBT_PROFILES_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROFILES_DIR`</VersionBlock> environment variable. 
 
 </TabItem>
 <TabItem value="core" label="dbt v1">
