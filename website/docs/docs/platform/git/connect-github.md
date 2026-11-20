@@ -37,7 +37,7 @@ When specifying a GitHub repository in the <Constant name="dbt_platform" /> usin
 <Constant name="dbt" /> connects to GitHub through a GitHub App. You have two options:
 
 - [Shared <Constant name="dbt" /> application (default)](#installing-dbt-in-your-github-account), available to any org connecting to `github.com`. 
-- Your own [custom GitHub application](#custom-github-application), available in private beta to Enterprise and Enterprise+ accounts on MT or ST using GitHub Enterprise Server or GitHub with EU data residency. Reach out to your account manager to join the beta.  <Lifecycle status="private_beta"/>
+- Your own [custom GitHub application](#custom-github-application), available in beta to Enterprise and Enterprise+ accounts on MT or ST using GitHub Enterprise Server or GitHub with EU data residency. <Lifecycle status="beta"/>
 
 You can use one GitHub application per <Constant name="dbt" /> account, not one per project.
 
@@ -71,10 +71,12 @@ You can connect your <Constant name="dbt" /> account to GitHub by installing the
 If you are your GitHub organization owner, you can also configure the <Constant name="dbt" /> GitHub application to have access to only select repositories. This configuration must be done in GitHub, but we provide an easy link in <Constant name="dbt" /> to start this process.
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/connecting-github/configure-github.png" title="Configuring the dbt app"/>
 
-## Custom GitHub application <Lifecycle status="managed,managed_plus,private_beta" /> {#custom-github-application}
+## Custom GitHub application <Lifecycle status="managed,managed_plus,beta" /> {#custom-github-application}
 
-:::info Available in private beta
-Configuring a custom GitHub app is available in private beta. To join, reach out to your account manager.
+:::info Custom GitHub applications use Fivetran release phases
+
+Custom GitHub application is in Beta and uses the [Fivetran release phases](https://fivetran.com/docs/core-concepts#releasephases).
+
 :::
 
 The shared <Constant name="dbt" /> GitHub App is hosted per [region](/docs/platform/about-platform/access-regions-ip-addresses), so it can only reach repositories on `github.com`. If your organization runs [GitHub Enterprise Server](https://docs.github.com/en/enterprise-server@3.14/admin/overview/about-github-enterprise-server) or [GitHub with EU data residency](https://github.com/enterprise/data-residency), register your own GitHub application and point <Constant name="dbt" /> at it. 
