@@ -42,7 +42,7 @@ The following are the required fields for setting up a connection with a Microso
 | **User** | The Microsoft Entra username. |
 | **Password** | The Microsoft Entra password. |
 
-### Microsoft Entra ID OAuth
+### Microsoft Entra ID OAuth <Lifecycle status="managed,managed_plus" /> {#microsoft-entra-id-oauth}
 
 With OAuth, each developer signs in to Fabric with their own Microsoft Entra account (including multi-factor authentication) instead of sharing a password or service principal. Queries in the <Constant name="studio_ide" /> and <Constant name="platform_cli" /> then run as that developer.
 
