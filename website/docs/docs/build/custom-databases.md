@@ -53,6 +53,19 @@ select * from ...
 
 </File>
 
+### Database precedence
+
+You can set the `database` config in more than one place. When you do, dbt follows the standard [config inheritance](/reference/define-configs#config-inheritance) rules and uses the most specific value. From highest to lowest precedence:
+
+1. A `config()` block in the model's SQL file.
+2. A `config` property for that model in a properties YAML file, such as `models/schema.yml`.
+3. A `+database` config in `dbt_project.yml`. Within the project file, the most specific resource path wins, so a config applied to a `marketing` subdirectory takes precedence over one applied to the entire project.
+4. The `database` of the active target in your `profiles.yml` file. dbt uses this when no `database` config is set anywhere else.
+
+Configs in your root project take precedence over configs in an installed package, so you can override a package's `database` config from your own project.
+
+Whichever value wins is passed to `generate_database_name` as the `custom_database_name` argument. If you override that macro, its return value determines the final database name, no matter which config supplied the input.
+
 ### generate_database_name
 
 The database name generated for a model is controlled by a macro called `generate_database_name`. This macro can be overridden in a dbt project to change how dbt generates model database names. This macro works similarly to the [generate_schema_name](/docs/build/custom-schemas#advanced-custom-schema-configuration) macro.
