@@ -128,8 +128,9 @@ Choose how you want to connect:
 </TabItem>
 
 <TabItem value="oauth" label="Microsoft Entra ID OAuth">
+_Available on Enterprise and Enterprise+ plans_
 
-Sign in with your own Microsoft Entra account instead of a service principal. You get multi-factor authentication (MFA), and queries run with your own Fabric permissions. This option is available on Enterprise and Enterprise+ plans.
+Sign in with your own Microsoft Entra account instead of a service principal. You get multi-factor authentication (MFA), and queries run with your own Fabric permissions. 
 
 Before you start, an admin needs to [set up the Microsoft Entra ID OAuth integration](/docs/platform/connect-data-platform/connect-microsoft-fabric#microsoft-entra-id-oauth) in your <Constant name="dbt" /> account. This is a one-time step. You also need access to the Fabric workspace and warehouse with your own Entra account.
 
