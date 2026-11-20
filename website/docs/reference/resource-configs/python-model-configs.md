@@ -80,7 +80,7 @@ Not every parameter works with every submission method. For more details and a m
 | `dataproc_region` | `<string>` | none | Google Cloud region where Dataproc is enabled. |
 | `gcs_bucket` | `<string>` | none | Cloud Storage bucket for job artifacts. |
 | `compute_region` | `<string>` | none | Region of the job. |
-| `notebook_template_id` | `<integer>` | none | Colab Enterprise runtime template. |
+| `notebook_template_id` | `<string>` | none | Colab Enterprise runtime template ID. |
 | `packages` | `<list>` | none | Packages to `pip install`. `bigframes` only. |
 | `timeout` | `<integer>` | none | Maximum run time in seconds. |
 | `enable_list_inference` | `<boolean>` | `True` | Let PySpark read multiple records in one operation. |
