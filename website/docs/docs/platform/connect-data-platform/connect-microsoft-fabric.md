@@ -51,11 +51,11 @@ The following are the required fields for setting up a connection with a Microso
 
 ### Microsoft Entra ID OAuth <Lifecycle status="managed,managed_plus" /> {#microsoft-entra-id-oauth}
 
-With OAuth, each developer signs in to Fabric with their own Microsoft Entra account instead of using a password or shared service principal. Queries in the <Constant name="studio_ide" /> and <Constant name="platform_cli" /> then run as that developer. This gets you:
+With OAuth, each developer signs in to Fabric with their own Microsoft Entra account instead of using a password or shared service principal. Queries in the <Constant name="studio_ide" /> and <Constant name="platform_cli" /> then run as that developer. This provides:
 
-- **Multi-factor authentication (MFA):** Developers sign in the same way they do everywhere else in your organization. Password and service principal connections can't prompt for MFA.
-- **Individual access:** Queries run with each developer's own Fabric permissions, so you don't need to create a service principal for each developer.
-- **No passwords in dbt:** Developers don't store a Microsoft password in their credentials.
+- Multi-factor authentication (MFA): Developers sign in the same way they do everywhere else in your org. Password and service principal connections can't prompt for MFA.
+- Individual access: Queries run with each developer's own Fabric permissions, so you don't need to create a service principal for each developer.
+- No passwords in dbt: Developers don't need to store a Microsoft password in their credentials.
 
 Before you begin, note the following:
 
