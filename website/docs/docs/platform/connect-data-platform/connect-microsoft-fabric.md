@@ -18,6 +18,8 @@ SQL password (LDAP) is not supported in Microsoft Fabric Data Warehouse so you m
 ### Microsoft Entra service principal 
 The following are the required fields for setting up a connection with a Microsoft Fabric using Microsoft Entra service principal authentication. 
 
+<SimpleTable>
+
 | Field | Description |
 | --- | --- |
 | **Server** | The service principal's **host** value for the Fabric test endpoint. |
@@ -28,10 +30,13 @@ The following are the required fields for setting up a connection with a Microso
 | **Client ID** | The service principal's **application (client) ID**. |
 | **Client secret** | The service principal's **client secret** (not the **client secret id**). |  
 
+</SimpleTable>
 
 ### Microsoft Entra password 
 
 The following are the required fields for setting up a connection with a Microsoft Fabric using Microsoft Entra password authentication. 
+
+<SimpleTable>
 
 | Field | Description |
 | --- | --- |
@@ -42,13 +47,14 @@ The following are the required fields for setting up a connection with a Microso
 | **User** | The Microsoft Entra username. |
 | **Password** | The Microsoft Entra password. |
 
+</SimpleTable>
+
 ### Microsoft Entra ID OAuth <Lifecycle status="managed,managed_plus" /> {#microsoft-entra-id-oauth}
 
 With OAuth, each developer signs in to Fabric with their own Microsoft Entra account (including multi-factor authentication) instead of sharing a password or service principal. Queries in the <Constant name="studio_ide" /> and <Constant name="platform_cli" /> then run as that developer.
 
 Before you begin, note the following:
 
-- OAuth for Fabric is available on Enterprise and Enterprise+ plans.
 - OAuth works in development environments only. Deployment environments don't have a signed-in user, so jobs still need a service principal.
 - You need a <Constant name="dbt" /> account admin and a Microsoft Entra admin who can create [app registrations](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app). Setup goes faster if you keep both <Constant name="dbt" /> and the Azure portal open in separate browser tabs.
 - Each developer needs access to the Fabric workspace and warehouse with their own Entra account.
@@ -77,6 +83,8 @@ Client secrets expire (the maximum is two years). Note the expiration date so yo
 
 Back on the **Integrations** page in <Constant name="dbt" />, fill out the fields and click **Save**:
 
+<SimpleTable>
+
 | Field | Description |
 | --- | --- |
 | **Integration name** | A descriptive name, so future admins know which Entra tenant it belongs to. |
@@ -84,6 +92,8 @@ Back on the **Integrations** page in <Constant name="dbt" />, fill out the field
 | **Client secret** | The secret **Value** you copied in the previous step. |
 | **Authorize URL** | The **OAuth 2.0 authorization endpoint (v2)** from the app's **Endpoints** tab. |
 | **Token URL** | The **OAuth 2.0 token endpoint (v2)** from the app's **Endpoints** tab. |
+
+</SimpleTable>
 
 #### 4. Add the integration to your Fabric connection
 
