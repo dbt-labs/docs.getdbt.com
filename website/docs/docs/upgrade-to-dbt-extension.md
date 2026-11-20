@@ -18,8 +18,8 @@ If you are already running <Constant name="fusion_engine" />, you must be on ver
 
 The dbt extension provides two ways to upgrade your project to <Constant name="fusion" /> from the **Get started** panel:
 
-- [**Agentic migration**:](#agentic-migration) Runs the <Constant name="core" />-to-<Constant name="fusion" /> migration with <Constant name="copilot" /> or AI agents. Select this option in the **Check dbt v2 compatibility** step. Requires <Constant name="copilot" /> or AI agents.
-- [**Manual CLI onboarding**:](#manual-cli-onboarding) Walks you through the upgrade in your terminal. Use this if you prefer the CLI or don't use <Constant name="copilot" /> or AI agents.
+- [**Agentic migration**:](#agentic-migration) Runs the <Constant name="core" />-to-<Constant name="fusion" /> migration with AI agents. Select this option in the **Check dbt v2 compatibility** step. Requires AI agents.
+- [**Manual CLI onboarding**:](#manual-cli-onboarding) Walks you through the upgrade in your terminal. Use this if you prefer the CLI or don't use AI agents.
 
 ## Agentic migration
 

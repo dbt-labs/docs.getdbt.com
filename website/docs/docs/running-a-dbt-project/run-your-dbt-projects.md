@@ -37,7 +37,6 @@ import DbtFramework from '/snippets/_dbt-framework.md';
 The <Constant name="dbt_platform" /> is a fully managed service that gives you a complete environment to build, test, deploy, and collaborate on dbt projects. You can develop in the browser or with a self-hosted dbt installation.
 
 - [Develop in your browser using the <Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio)
-- [Seamless drag-and-drop development with <Constant name="canvas" />](/docs/platform/canvas)
 - [Run dbt commands from your local command line](#dbt-local-development) using dbt VS Code extension or <Constant name="platform_cli" /> (both which integrate seamlessly with the <Constant name="dbt_platform" /> project(s)).
 
 For more details, see [About dbt plans](https://www.getdbt.com/pricing).

@@ -47,6 +47,17 @@ To set up the Databricks connection, supply the following fields:
 | ----- | ----------- | -------- |
 | Server Hostname | The hostname of the Databricks account to connect to | dbc-a2c61234-1234.cloud.databricks.com |
 | HTTP Path | The HTTP path of the Databricks cluster or SQL warehouse | /sql/1.0/warehouses/1a23b4596cd7e8fg |
-| Catalog | Name of Databricks Catalog (optional) | Production |
 
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/dbt-databricks.png" title="Configuring a Databricks connection using the dbt-databricks adapter"/>
+
+## Optional settings
+
+The following configurations are optional and you can save the connection without filling them in.
+
+- **Catalog:** The Unity Catalog name this connection builds into, such as `dev` or `prod`. dbt puts that name in front of the schema and model, for example `prod.analytics.orders`.
+- **OAuth Client ID:** The client ID from your Databricks OAuth app.
+- **OAuth Client Secret:** The client secret from that same app.
+
+**OAuth Client ID** and **OAuth Client Secret** are available on Enterprise and Enterprise+ plans and applicable only to Development environments. Once you set them, each developer signs in with Databricks to use the <Constant name="studio_ide" />.  For jobs, configure token-based credentials in the [deployment connection profile](/docs/platform/about-profiles).
+
+For setup steps, refer to [Set up Databricks OAuth](/docs/platform/manage-access/set-up-databricks-oauth).

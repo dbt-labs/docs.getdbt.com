@@ -297,9 +297,13 @@ Euclid is now logged in to their account. They only have access to the `Jaffle S
 
 The `Production` environment is visible, but it is `read-only`, and they have full access in the `Staging` environment. 
 
+<DocCarousel slidesPerView={1}>
+
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/production-restricted.png" width="60%" title="The Production environment landing page with read-only access." />
 
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/staging-access.png" width="60%" title="The Staging environment landing page with full access." />
+
+</DocCarousel>
 
 </Expandable>
 
@@ -322,6 +326,8 @@ Group memberships are updated whenever a user logs into <Constant name="dbt" /> 
 Yes. If a group has no [SSO mappings](#sso-mappings), it stays unmanaged &mdash; <Constant name="dbt" /> won't change its membership when users log in through your IdP. Admins add and remove those users manually from the **Groups & Licenses** section of **Account settings**.
 
 Add an SSO mapping to an unmanaged group and it becomes managed: from then on, <Constant name="dbt" /> adjusts membership at sign-in based on the user's IdP groups.
+
+SSO mappings apply per group, so you can mix mapped and manually managed groups in the same account. Any manual change to a mapped group is overridden the next time the user signs in.
 
 </Expandable>
 

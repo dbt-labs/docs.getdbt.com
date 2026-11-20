@@ -4,8 +4,7 @@ id: "canvas"
 level: 'Beginner'
 icon: 'dbt'
 hide_table_of_contents: true
-tags: ['Canvas', 'Analyst', 'dbt platform', 'Model']
-recently_updated: true
+unlisted: true
 ---
 
 <div style={{maxWidth: '900px'}}>
