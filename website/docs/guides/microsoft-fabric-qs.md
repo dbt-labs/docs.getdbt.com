@@ -106,6 +106,7 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [
 1. Create a new project in <Constant name="dbt" />. Navigate to **Account settings** (by clicking on your account name in the left side menu), and click **+ New Project**.
 2. Enter a project name and click **Continue**.
 3. Choose **Fabric** as your connection and click **Next**.
+
 Choose how you want to connect:
 
 <Tabs>
