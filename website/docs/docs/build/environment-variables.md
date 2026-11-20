@@ -110,11 +110,11 @@ Environment variables prefixed with `DBT_ENV_SECRET_` are protected with additio
 
 For <Constant name="core" /> and <Constant name="fusion" />, <Constant name="dbt_platform" /> job runs also load a `.env` file that's committed to your repository. This can change what a job thinks its environment is, even if you haven't set the variable in the <Constant name="dbt_platform" /> UI.
 
-Here's how it works: <Constant name="dbt" /> loads the committed `.env` file when the job runs. If <Constant name="dbt_platform" /> has already set a variable, its value takes precedence. If it hasn't, <Constant name="dbt" /> uses the value from `.env`. On a <Constant name="core" /> job, a value you set for the deployment environment or the job takes precedence over the same variable in `.env`, and the job override wins over the environment value.
+Here's how it works: <Constant name="dbt" /> loads the committed `.env` file when the job runs. If <Constant name="dbt_platform" /> has already set a variable, its value takes precedence. If it hasn't, <Constant name="dbt" /> uses the value from `.env`. On a <Constant name="core" /> job, for custom variables you define yourself, a value set for the deployment environment or the job takes precedence over the same variable in `.env`, and the job override wins over the environment value.
 
 For example, `DBT_CLOUD_ENVIRONMENT_TYPE` is empty in a [general deployment environment](/docs/dbt-platform-environments#types-of-environments). If your committed `.env` file sets it to `dev`, the job uses `dev`. In a production environment, <Constant name="dbt_platform" /> sets it to `prod`, so the job uses `prod` even if `.env` contains a different value.
 
-Adding `.env` to `.gitignore` stops it from being included in new commits. It doesn't remove a file that's already committed, though, and <Constant name="dbt" /> will still load that file. To stop the job from loading it, remove `.env` from the repository and commit the change.
+Adding `.env` to `.gitignore` only stops an untracked `.env` file from being committed. If `.env` is already committed, <Constant name="git" /> keeps tracking it in later commits and <Constant name="dbt" /> will still load it. To stop the job from loading it, remove `.env` from the repository and commit the removal.
 
 </VersionBlock>
 
