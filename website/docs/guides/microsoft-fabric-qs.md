@@ -137,7 +137,7 @@ Before you start, an admin needs to [set up the Microsoft Entra ID OAuth integra
 4. In the **Configure your environment** section, enter the **Settings** for your new project:
     - **Server**: Use the **SQL connection string** of your Fabric warehouse.
     - **Port**: 1433 (which is the default).
-    - **Database** &mdash; Use the name of your Fabric warehouse.
+    - **Database**: Use the name of your Fabric warehouse.
     - **OAuth method**: Select the Entra ID integration your admin created.
 5. Enter the **User credentials** for your new project:
     - **Authentication**: Choose **External OAuth** from the dropdown.
