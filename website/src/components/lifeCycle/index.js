@@ -157,3 +157,6 @@ export default function Lifecycle(props) {
     </>
   );
 }
+
+// Rendered inline, so VersionBlock never boxes it as block content.
+Lifecycle.isInline = true

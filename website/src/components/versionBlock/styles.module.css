@@ -1,0 +1,34 @@
+/* Matches the .tabs-container border (see custom.css) */
+.outline {
+  border: 1px solid var(--border-neutral-tertiary);
+  border-radius: 8px;
+  margin: 1.5rem 0 1rem;
+  min-width: 0;
+  padding: 0.25rem 1rem 0.5rem;
+}
+
+[data-theme='dark'] .outline {
+  border-color: var(--bg-inverse-primary-subtle);
+}
+
+.outline > :last-child {
+  margin-bottom: 0;
+}
+
+.legend {
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-left: -0.25rem;
+  padding: 0 0.5rem;
+  width: auto;
+}
+
+/* A tab set that is the block's only content: drop the tabs' own border so
+   only the version outline shows. */
+.outline[data-tabs-only] > :global(.tabs-container),
+[data-theme='dark'] .outline[data-tabs-only] > :global(.tabs-container) {
+  border: 0;
+  margin-top: 0;
+  padding: 0;
+}
