@@ -48,7 +48,7 @@ The currently supported data warehouses are:
 - BigQuery
 - Databricks
 
-In "sidecar" execution, Lake Compute runs alongside your warehouse, reading from and writing/propagating back to the warehouse’s managed Iceberg catalog (Snowflake Horizon or Databricks Unity).
+In "sidecar" execution, Lake Compute runs alongside your warehouse, reading from and writing/propagating back to the warehouse’s managed Iceberg catalog (Snowflake Horizon or Databricks Unity) or, for BigQuery, publishing results to BigQuery as Iceberg tables through a BigLake connection.
 
 ### Required permissions
 
@@ -63,7 +63,7 @@ Depending on your data warehouse, you may also need to:
 - Configure key-pair or other required programmatic authentication
 - Allow Lake Compute egress if your warehouse account enforces network policies
 
-For Snowflake, some setup steps require `ACCOUNTADMIN` or equivalent delegated privileges, such as `NETWORK_ADMIN` for network policy changes. Always refer to the [latest setup guide](/docs/lake-compute/compute-onboarding), which may have changed since you initially set up Lake Compute.
+For Snowflake, some setup steps require `ACCOUNTADMIN` or equivalent delegated privileges, such as `NETWORK_ADMIN` for network policy changes. Always refer to the [latest setup guide](/docs/lake-compute/compute-onboarding-snowflake), which may have changed since you initially set up Lake Compute.
 
 ### Required environment variable
 
@@ -94,6 +94,7 @@ The following are not supported or are intentionally limited during public previ
 - Automatic SQL dialect translation.
 - Distributed or multi-node execution.
 - Large two-sided joins and other workloads that require distributed processing.
+- Azure storage. GCS storage is supported only for [Lake Compute with BigQuery](/docs/lake-compute/compute-onboarding-bigquery).
 - Azure regions and storage.
 
 Additional capabilities and regions may be introduced over time, but roadmap items and dates are not commitments.
@@ -122,4 +123,7 @@ Not yet supported:
 ## Related docs
 
 - [Lake Compute setup](/docs/lake-compute/compute-onboarding)
+- [Lake Compute with Snowflake](/docs/lake-compute/compute-onboarding-snowflake)
+- [Lake Compute with BigQuery](/docs/lake-compute/compute-onboarding-bigquery)
+- [Lake Compute with Databricks](/docs/lake-compute/compute-onboarding-databricks)
 - [Lake Compute FAQs](/docs/lake-compute/compute-faq)
