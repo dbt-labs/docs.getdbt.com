@@ -587,6 +587,7 @@ const sidebarSettings = {
       items: [
         "docs/build/projects",
         "docs/build/about-static-analysis",
+        "docs/build/local-compute-introspection",
         "docs/build/dbt-information-schema",
         "docs/build/dbt-tips",
         {
