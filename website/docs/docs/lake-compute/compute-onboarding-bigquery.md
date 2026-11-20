@@ -5,11 +5,11 @@ id: compute-onboarding-bigquery
 sidebar_label: "Lake Compute with BigQuery"
 ---
 
-# Lake Compute with BigQuery <Lifecycle status="private_beta" />
+# Lake Compute with BigQuery <Lifecycle status="public_preview" />
 
-:::info Lake Compute is in private beta
+:::info Lake Compute uses Fivetran release phases
 
-To request access, fill out the [Lake Compute signup form](https://docs.google.com/forms/d/e/1FAIpQLSdWXHU3VFqq1t8GVAA2BMfY_AfeVJH26OXJFlNwXiVv4pcuXQ/viewform). Refer to [Private beta limitations](/docs/lake-compute#private-beta-limitations) before you plan real work around it.
+These docs use the [Fivetran release phases](https://fivetran.com/docs/core-concepts#releasephases). Lake Compute is in Public Preview.
 
 :::
 
