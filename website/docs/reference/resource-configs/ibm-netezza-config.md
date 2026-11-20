@@ -4,6 +4,8 @@ description: "Configure IBM Netezza-specific settings for dbt models, including 
 id: "ibm-netezza-config"
 ---
 
+This page covers what your IBM Netezza instance needs before you run <Constant name="dbt" />, and how to set column types for seeds.
+
 ## Instance requirements
 
 To use IBM Netezza with `dbt-ibm-netezza` adapter, ensure the instance has an attached catalog that supports creating, renaming, altering, and dropping objects such as tables and views. The user connecting to the instance via the `dbt-ibm-netezza` adapter must have the necessary permissions for the target database.

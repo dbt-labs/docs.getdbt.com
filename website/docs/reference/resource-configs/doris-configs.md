@@ -4,6 +4,10 @@ description: "Doris/SelectDB Configurations - Read this in-depth guide to learn 
 id: "doris-configs"
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="Doris and SelectDB" summary="view, table, and incremental materializations." />
+
 ## Models
 
 | Type                        | Supported? | Details                                                                                                                                             |

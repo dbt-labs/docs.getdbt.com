@@ -4,6 +4,10 @@ id: "fabricspark-configs"
 description: "Microsoft Fabric Spark Configurations - Read this in-depth guide to learn about configurations in dbt."
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="Microsoft Fabric Spark" summary="file format, partitions, incremental strategies, and persisting model descriptions." />
+
 ## Configuring tables
 
 When materializing a model as `table`, you may include several optional configs that are specific to the dbt-spark plugin, in addition to the standard [model configs](/reference/model-configs).

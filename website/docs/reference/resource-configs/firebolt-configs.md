@@ -4,6 +4,9 @@ description: "Configure Firebolt-specific settings for dbt models, including quo
 id: "firebolt-configs"
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="Firebolt" summary="fact and dimension tables, aggregating indexes, external tables, incremental models, and seeds." />
 
 ## Setting `quote_columns`
 

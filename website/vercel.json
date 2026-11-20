@@ -70,6 +70,11 @@
       "permanent": true
     },
     {
+      "source": "/reference/resource-configs/infer-configs",
+      "destination": "/docs/local/connect-data-platform/infer-setup?version=1",
+      "permanent": true
+    },
+    {
       "source": "/docs/fusion/about-core",
       "destination": "/docs/introduction",
       "permanent": true

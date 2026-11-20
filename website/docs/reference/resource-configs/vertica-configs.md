@@ -3,6 +3,11 @@ title: "Vertica configurations"
 description: "Configure Vertica-specific settings for dbt models, including incremental model configurations and supported on_schema_change options."
 id: "vertica-configs"
 ---
+
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="Vertica" summary="incremental strategies, segmentation, and partitioning." />
+
 ## Configuration of Incremental Models
 
 ### Using the on_schema_change config parameter

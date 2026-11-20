@@ -5,6 +5,10 @@ id: "databricks-configs"
 tags: ['Databricks', 'dbt v2', 'dbt v1']
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="Databricks" connectionNote={<>Compute and <code>query_tags</code> can be set in <code>profiles.yml</code> and on a model.</>} summary="tables, columns, row filters, incremental models, Python models, compute, query tags, file formats, materialized views, streaming tables, and metric views." />
+
 ## Configuring tables
 
 When materializing a model as `table`, you may include several optional configs that are specific to the dbt-databricks plugin, in addition to the standard [model configs](/reference/model-configs).

@@ -4,6 +4,10 @@ description: "Configure Starburst/Trino-specific settings for dbt models, includ
 id: "trino-configs"
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="Starburst/Trino" connectionNote={<><code>session_properties</code>, <code>client_tags</code>, and <code>http_headers</code> can be set in <code>profiles.yml</code>. Set <code>client_tags</code> or <code>http_headers</code> on a model to override them. Use a pre-hook to change session properties for one model.</>} summary="cluster requirements, session and connector properties, file formats, seeds, materializations, snapshots, grants, persisting model descriptions, user-defined functions, model contracts, and query routing." />
+
 ## Cluster requirements
 
 The designated cluster must have an attached catalog where objects such as tables and views can be created, renamed, altered, and dropped. Any user connecting to the cluster with dbt must also have these same permissions for the target catalog.

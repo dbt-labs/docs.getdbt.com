@@ -365,6 +365,19 @@ h3 {
   font-size: var(--text-4xl);
 }
 
+.markdown a.card,
+.markdown a.card:hover {
+  font-size: 1rem;
+  line-height: 1.65;
+  text-decoration: none;
+}
+
+.markdown a.card h2 {
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
 .markdown h3 {
   font-size: var(--text-3xl);
 }

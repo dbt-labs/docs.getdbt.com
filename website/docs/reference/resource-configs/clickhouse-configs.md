@@ -4,6 +4,10 @@ description: "Read this guide to understand ClickHouse configurations in dbt."
 id: "clickhouse-configs"
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="ClickHouse" summary="view, table, and incremental materializations, and snapshots." />
+
 ## ClickHouse configurations
 
 ### View materialization

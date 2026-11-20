@@ -7,6 +7,9 @@ tags: ['Snowflake', 'dbt v2', 'dbt v1']
 
 import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 import SnowflakePythonParams from '/snippets/_snowflake-python-config-params.md';
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="Snowflake" connectionNote={<>The default warehouse is set in <code>profiles.yml</code>. Set <code>snowflake_warehouse</code> on a model to override it.</>} summary="dynamic and interactive tables, transient and temporary tables, query tags, clustering, incremental merge behavior, Python models, virtual warehouses, grants and access policies, semantic views, table tags, and secure views." />
 
 <SnowflakeColumn />
 

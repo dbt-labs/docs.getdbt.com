@@ -4,6 +4,10 @@ id: "starrocks-configs"
 description: "Starrocks Configurations - Read this in-depth guide to learn about configurations in dbt."
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="StarRocks" summary="table keys, table type, and reading from a catalog." />
+
 ## Model Configuration
 
 A dbt model can be configured using the following syntax:
