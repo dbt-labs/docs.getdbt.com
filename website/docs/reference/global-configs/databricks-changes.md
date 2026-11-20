@@ -64,7 +64,7 @@ flags:
 
 The `use_materialization_v2` flag is `false` by default and guards significant rewrites of the core materializations in `dbt-databricks` while they are still in an experimental stage.
 
-When set to `true`, `dbt-databricks` uses the updated logic for views, tables, and incremental models. It also enables additional, optional config options for more fine-tuned control:
+When set to `true`, `dbt-databricks` uses the updated logic for views, tables, and incremental models. It also enables optional configs for more fine-tuned control:
 * `view_update_via_alter` &mdash; When enabled, this config attempts to update the view in place using alter view, instead of using create or replace to replace it.
 * `use_safer_relation_operation` &mdash; When enabled (and if `view_update_via_alter` isn't set), this config makes dbt model updates more safe by staging relations and using rename operations to ensure the live version of the table or view is not disrupted by failures.
 
