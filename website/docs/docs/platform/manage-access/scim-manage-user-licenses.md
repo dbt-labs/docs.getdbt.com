@@ -22,7 +22,7 @@ You can manage user license assignments using System for Cross-Domain Identity M
 
 ## Prerequisites 
 Before you enable SCIM license mapping:
-- **Default license**: New users are assigned a Developer license unless you change it manually using [SSO license mappings](/docs/platform/manage-access/seats-and-users#mapped-configuration), or using SCIM.
+- **Default license**: New users receive your account's [default license](/docs/platform/manage-access/seats-and-users#default-license-for-new-users) unless they're assigned a license through [SSO license mappings](/docs/platform/manage-access/seats-and-users#mapped-configuration) or SCIM. Check the default and update it as needed.
 - **Best practice**: Use one source of truth for license assignment (either <Constant name="dbt_platform" /> or SCIM). Don't mix SCIM license management with manual or single sign-on (SSO) mapping changes.
 - **Analyst license**: Only available on [select plans](/docs/platform/manage-access/seats-and-users). Assigning this license using SCIM will return an error if that license type isn't available for your account. The [Analyst license type](/docs/platform/manage-access/about-user-access?version=1.12#licenses) is not available for new purchase.
 
@@ -46,7 +46,7 @@ On the Enterprise licensing page, the following default groups are available. Th
 | Group | Access permissions |
 |-------|---------------------|
 | **Owner** | Full access to account features and billing. |
-| **Member** | Robust access to the account with restrictions on billing and security settings. Users in the Member group are assigned a Developer license by default. |
+| **Member** | Robust access to the account with restrictions on billing and security settings. Users in the Member group receive your account's [default license](/docs/platform/manage-access/seats-and-users#default-license-for-new-users) unless they're assigned a different license. |
 | **Everyone** | A catch-all group for all users. This group does not have permission assignments beyond the user's profile. Users must be assigned to the Member or Owner group to work in dbt. |
 
 :::tip Best practice
@@ -67,7 +67,7 @@ A common strategy involves defining two primary groups in your IdP, for example:
 
 Understanding these rules will help you plan your group structure in Okta:
 
-- **Default assignment:** When someone new is added to your account, they automatically receive a Developer license unless you configure otherwise.
+- **Default assignment:** When someone new is added to your account, they automatically receive your account's [default license](/docs/platform/manage-access/seats-and-users#default-license-for-new-users) unless you configure otherwise.
 - **Mapping basis:** The license someone receives is determined by which groups they belong to in your identity provider (Okta) &mdash; not by groups you create in <Constant name="dbt_platform" />. In other words, your Okta groups are the source of truth. When you add or remove someone from a group in Okta, their license in <Constant name="dbt_platform" /> updates automatically to match.
 
 #### Mapping logic and precedence
@@ -76,12 +76,12 @@ With SSO license mapping, the Developer license takes precedence over all other 
 
 When you use groups like `dbt_developers` and `dbt_read_only`, a user might be in one group, both groups, or neither. The following table shows one common scenario (group-based mapping) and can be useful when you're deciding how to structure your groups or troubleshooting why someone received a particular license.
 
-Users in the Enterprise default group **Member** are assigned a **Developer** license by default. Until you remove users from **Member** (per the [best practice](#enterprise-default-groups) earlier), that default applies when they're not in any IdP license-mapping groups. Once you enable SCIM license mapping, the IdP group mapping overrides the Member default.
+Users in the Enterprise default group **Member** receive your account's [default license](/docs/platform/manage-access/seats-and-users#default-license-for-new-users). Until you remove users from **Member** (per the [best practice](#enterprise-default-groups) earlier), that default applies when they're not in any IdP license-mapping groups. Once you enable SCIM license mapping, the IdP group mapping overrides the account default.
 
 **SSO license mapping (IdP group-based):**
 | In `dbt_developers` group? | In `dbt_read_only` group? | License assigned |
 |----------------------|---------------------|------------------|
-| No | No | Developer (Member default or default for new users) |
+| No | No | Account default license |
 | No | Yes | Read-Only |
 | Yes | No | Developer |
 | Yes | Yes | Developer (Developer takes precedence) |
