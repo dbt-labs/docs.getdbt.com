@@ -69,3 +69,6 @@ export default function Term({ id, children = undefined }) {
     </>
   );
 }
+
+// Rendered inline, so VersionBlock never boxes it as block content.
+Term.isInline = true
