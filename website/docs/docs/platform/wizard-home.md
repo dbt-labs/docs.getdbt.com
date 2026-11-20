@@ -11,6 +11,7 @@ image: /img/docs/dbt-platform/wizard-home-empty.png
 import WizardExploreUsage from '/snippets/_wizard-explore-usage.md';
 import WizardAgentModes from '/snippets/_wizard-agent-modes.md';
 import WizardModelPicker from '/snippets/_wizard-model-picker.md';
+import WizardBackgroundChats from '/snippets/_wizard-background-chats.md';
 
 # dbt Wizard home tab <Lifecycle status="preview" />
 
@@ -104,6 +105,10 @@ The home tab and <Constant name="studio_ide" /> support different parts of the d
 </SimpleTable>
 
 For most development workflows, you can move between the two surfaces freely. Use the home tab to investigate and generate, and drop into <Constant name="studio_ide" /> when you need direct control.
+
+## Background chats
+
+<WizardBackgroundChats />
 
 ## Choose a model
 
