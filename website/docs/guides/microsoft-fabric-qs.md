@@ -135,13 +135,13 @@ Sign in with your own Microsoft Entra account instead of a service principal. Yo
 Before you start, an admin needs to [set up the Microsoft Entra ID OAuth integration](/docs/platform/connect-data-platform/connect-microsoft-fabric#microsoft-entra-id-oauth) in your <Constant name="dbt" /> account. This is a one-time step. You also need access to the Fabric workspace and warehouse with your own Entra account.
 
 4. In the **Configure your environment** section, enter the **Settings** for your new project:
-    - **Server** &mdash; Use the **SQL connection string** of your Fabric warehouse.
-    - **Port** &mdash; 1433 (which is the default).
+    - **Server**: Use the **SQL connection string** of your Fabric warehouse.
+    - **Port**: 1433 (which is the default).
     - **Database** &mdash; Use the name of your Fabric warehouse.
-    - **OAuth method** &mdash; Select the Entra ID integration your admin created.
+    - **OAuth method**: Select the Entra ID integration your admin created.
 5. Enter the **User credentials** for your new project:
-    - **Authentication** &mdash; Choose **External OAuth** from the dropdown.
-    - **Schema** &mdash; Enter the schema where your dbt models are built.
+    - **Authentication**: Choose **External OAuth** from the dropdown.
+    - **Schema**: Enter the schema where your dbt models are built.
 6. Follow the prompt to sign in with your Microsoft account and approve the access request. <Constant name="dbt" /> checks the connection for you after you link your account, so **Test connection** isn't available.
 7. Click **Next** when the connection check succeeds.
 
