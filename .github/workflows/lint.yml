@@ -29,3 +29,6 @@ jobs:
       
     - name: Run ESLint
       run: cd website && npm run lintAll
+
+    - name: Lint docs
+      run: cd website && npm run lint:docs
