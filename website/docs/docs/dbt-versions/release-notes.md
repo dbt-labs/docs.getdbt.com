@@ -120,9 +120,9 @@ The full list lives in website/release-note-areas.json.
 
 #### dbt v2 {#dbt-v2-november-2026}
 
-- **Enhancement:** You can use the `--limit` flag with [`dbt check`](/reference/commands/check#--limit) to control how many violation rows are shown per check.
 - **New:** You can now configure BigQuery query reservations at the model and connection levels.
 - **New:** Two new environment variables, `DBT_CLOUD_LOGIN_HOST` and `DBT_CLOUD_LOGIN_ACCOUNT_ID`, let `dbt login` authenticate through an account host's `/oauth/authorize` endpoint instead of the registration page, enabling single sign-on (SSO) accounts that cannot route through the registration page.
+- **Enhancement:** You can use the `--limit` flag with [`dbt check`](/reference/commands/check#--limit) to control how many violation rows are shown per check.
 - **Fix:** Snowflake seeds now honor the `transient` config instead of silently creating a permanent table.
 - **Fix:** Comparing changes in [Advanced CI](/docs/deploy/advanced-ci) no longer fails when a Snowflake table has a vector column.
 - **Fix:** Snowflake private keys saved with Windows line endings now decode correctly.
