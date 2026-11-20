@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "snowflake",
     "platform_name": "Snowflake",
-    "count": 1225
+    "count": 1231
   },
   "functions": [
     {
@@ -2694,6 +2694,13 @@
       "fusion_typecheck": false
     },
     {
+      "name": "SECONDS_SINCE_ROW_COUNT_CHANGE (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_seconds_since_row_count_change",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SKEW (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_skew",
@@ -3110,6 +3117,13 @@
       "name": "BUILD_STAGE_FILE_URL",
       "category": "File",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/build_stage_file_url",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "FL_FILTER_PAGES",
+      "category": "File",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/fl_filter_pages",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -7020,6 +7034,13 @@
       "fusion_typecheck": false
     },
     {
+      "name": "SYSTEM$GET_COLUMN_COMMENT_PROPAGATION_SOURCE",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_get_column_comment_propagation_source",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$GET_COMPUTE_POOL_PENDING_MAINTENANCE",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_get_compute_pool_pending_maintenance",
@@ -7909,6 +7930,20 @@
       "fusion_typecheck": false
     },
     {
+      "name": "SYSTEM$TAG_VALUE_CONTAINS_ON_CURRENT_COLUMN",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_tag_value_contains_on_current_column",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$TAG_VALUE_CONTAINS_ON_CURRENT_TABLE",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_tag_value_contains_on_current_table",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$TASK_COMPLETION_STATE",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_task_completion_state",
@@ -8033,6 +8068,13 @@
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_user_task_cancel_ongoing_executions",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "SYSTEM$VALIDATE_ACCOUNT_DELETION",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_validate_account_deletion",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "SYSTEM$VALIDATE_STORAGE_INTEGRATION",
