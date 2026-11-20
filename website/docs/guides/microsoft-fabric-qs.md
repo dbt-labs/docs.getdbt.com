@@ -145,7 +145,7 @@ Before you start, an admin needs to [set up the Microsoft Entra ID OAuth integra
 6. Follow the prompt to sign in with your Microsoft account and approve the access request. <Constant name="dbt" /> checks the connection for you after you link your account, so **Test connection** isn't available.
 7. Click **Next** when the connection check succeeds.
 
-:::note
+:::note OAuth in development environments only
 OAuth works in development environments only. When you set up deployment jobs later, you need a service principal.
 :::
 
