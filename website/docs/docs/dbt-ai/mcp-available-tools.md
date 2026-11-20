@@ -75,7 +75,7 @@ Here's what happens when your assistant calls it:
 
 1. The assistant writes a SQL query and calls `execute_sql`.
 2. The dbt MCP server forwards the request to <Constant name="dbt_platform" />, along with your token, development environment ID, and user ID.
-3. <Constant name="dbt_platform" /> compiles the SQL (including any Jinja, such as `ref()`) and runs it in your warehouse using your development credentials.
+3. <Constant name="dbt_platform" /> compiles the SQL (including any `ref()` calls) and runs it in your warehouse using your development credentials.
 4. The results come back to your assistant as a table.
 
 <Lightbox src="/img/docs/dbt-ai/mcp-execute-sql-flow.svg" title="The AI assistant calls execute_sql. The dbt MCP server forwards the request to dbt platform, which compiles the SQL, runs it in the warehouse with your development credentials, and returns the results to the assistant." />
@@ -84,7 +84,15 @@ Here's what happens when your assistant calls it:
 
 <Expandable alt_header="Is execute_sql read-only?">
 
-No. `execute_sql` doesn't block write statements. What a query can do depends on the permissions of the warehouse credentials it runs with. Use least-privilege warehouse roles for each user's development credentials.
+Yes. `execute_sql` runs a single read-only `SELECT` query, and rejects anything else before it reaches your warehouse. It doesn't accept:
+
+- Statements that change data, objects, or permissions, such as `CREATE`, `DROP`, `INSERT`, `UPDATE`, `DELETE`, and `GRANT`.
+- More than one statement in a single call, even if each one is a `SELECT`.
+- Jinja other than literal `ref()` calls, such as `{{ ref('orders') }}`.
+
+Rejected queries return an error, for example `execute_sql accepts a single SELECT query only`.
+
+Use the least-privileged warehouse role for each user's development credentials. A `SELECT` statement can still call functions or read from views, and the permissions of the warehouse credentials running the query determine what those functions and views can do.
 
 </Expandable>
 
