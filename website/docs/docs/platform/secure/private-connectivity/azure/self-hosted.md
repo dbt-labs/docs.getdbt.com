@@ -89,8 +89,13 @@ Before you begin, make sure to review the following requirements:
 
     j. Click **Add** to create the subnet.
 
+<DocCarousel slidesPerView={1}>
+
 <Lightbox src="/img/docs/dbt-platform/az-self-hosted-privatelink/vnet-search.png" width="90%" title="Screenshot of step 3: Search for VNet of self-hosted service" />
+
 <Lightbox src="/img/docs/dbt-platform/az-self-hosted-privatelink/nat-subnet-creation.png" width="90%" title="Screenshot of steps 4-5: NAT Subnet creation for Private Link Service" />
+
+</DocCarousel>
 
 ### Create a Private Link service
 6. After the subnet creation has completed, in the search field at the top-middle of the portal, search for **Private link services**, and click on its page.

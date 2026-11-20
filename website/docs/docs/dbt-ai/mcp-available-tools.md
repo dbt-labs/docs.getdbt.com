@@ -25,7 +25,9 @@ The following sections list every tool by category, along with which server type
 | [Product Docs Tools](#product-docs) |  ✅ | ✅ |
 | [MCP Server Metadata Tools](#mcp-server-metadata) | ✅ | ✅ |
 
-Note that access to the Discovery API and the Semantic Layer API is limited depending on your [plan type](https://www.getdbt.com/pricing).
+Note that access to the Discovery API and the <Constant name="semantic_layer" /> API is limited depending on your [plan type](https://www.getdbt.com/pricing).
+
+Remote MCP tools can change without notice or a deprecation period. Refer to [Tool changes on the remote MCP server](#tool-changes-on-the-remote-mcp-server).
 
 ### Tools that require AI features
 
@@ -56,6 +58,13 @@ Once you query your assistant, it will typically:
 
 You don't have to call the tools yourself. Try a prompt like: "List jobs in this project, find the UAT, staging, or CI job, and trigger it."
 
+## Tool changes on the remote MCP server
+
+dbt MCP tools are generally built for AI agents, so their structure can change without notice or a deprecation period. Don't treat them as a contract.
+
+- We aim not to remove existing features or rename tools, because some clients use tool names for auto-approve or allow/reject lists.
+- If you need a frozen set of tools and inputs/outputs, we recommend pinning a version of the [self-hosted MCP server](/docs/dbt-ai/setup-local-mcp) and running it yourself. Refer to the [dbt-mcp examples](https://github.com/dbt-labs/dbt-mcp/tree/main/examples).
+
 ## FAQs
 
 <Expandable alt_header="What does execute_sql do?">
@@ -66,7 +75,7 @@ Here's what happens when your assistant calls it:
 
 1. The assistant writes a SQL query and calls `execute_sql`.
 2. The dbt MCP server forwards the request to <Constant name="dbt_platform" />, along with your token, development environment ID, and user ID.
-3. <Constant name="dbt_platform" /> compiles the SQL (including any Jinja, such as `ref()`) and runs it in your warehouse using your development credentials.
+3. <Constant name="dbt_platform" /> compiles the SQL (including any `ref()` calls) and runs it in your warehouse using your development credentials.
 4. The results come back to your assistant as a table.
 
 <Lightbox src="/img/docs/dbt-ai/mcp-execute-sql-flow.svg" title="The AI assistant calls execute_sql. The dbt MCP server forwards the request to dbt platform, which compiles the SQL, runs it in the warehouse with your development credentials, and returns the results to the assistant." />
@@ -75,7 +84,15 @@ Here's what happens when your assistant calls it:
 
 <Expandable alt_header="Is execute_sql read-only?">
 
-No. `execute_sql` doesn't block write statements. What a query can do depends on the permissions of the warehouse credentials it runs with. Use least-privilege warehouse roles for each user's development credentials.
+Yes. `execute_sql` runs a single read-only `SELECT` query, and rejects anything else before it reaches your warehouse. It doesn't accept:
+
+- Statements that change data, objects, or permissions, such as `CREATE`, `DROP`, `INSERT`, `UPDATE`, `DELETE`, and `GRANT`.
+- More than one statement in a single call, even if each one is a `SELECT`.
+- Jinja other than literal `ref()` calls, such as `{{ ref('orders') }}`.
+
+Rejected queries return an error, for example `execute_sql accepts a single SELECT query only`.
+
+Use the least-privileged warehouse role for each user's development credentials. A `SELECT` statement can still call functions or read from views, and the permissions of the warehouse credentials running the query determine what those functions and views can do.
 
 </Expandable>
 

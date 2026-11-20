@@ -16,7 +16,7 @@ import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 You can use the <Constant name="wizard" /> CLI with bring-your-own-key (BYOK), which means you supply your own credentials from a supported AI provider instead of using dbt Labs' infrastructure.
 </IntroText>
 
-The following BYOK instructions on this page apply to the CLI only. For <Constant name="dbt_platform" /> BYOK setup, refer to [Configure BYOK for dbt Wizard in dbt platform](/docs/platform/wizard-byok-platform). 
+The following BYOK instructions on this page apply to the CLI only. For <Constant name="wizard" /> Desktop, refer to [Configure BYOK in Wizard Desktop](/docs/dbt-ai/wizard-desktop-byok). For <Constant name="dbt_platform" /> BYOK setup, refer to [Configure BYOK for dbt Wizard in dbt platform](/docs/platform/wizard-byok-platform).
 
 If you'd rather skip that upkeep, the [dbt Labs-<Term id="managed" /> option](/docs/platform/manage-dbt-ai#configure-ai-provider) is ready to use with no setup, and comes with [trial and monthly usage credits](/docs/dbt-ai/pricing-billing/trial-and-billing).
 

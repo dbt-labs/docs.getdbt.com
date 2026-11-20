@@ -17,7 +17,7 @@ Skills are reusable instructions that help <Constant name="wizard" /> follow you
 
 <Constant name="wizard" /> also includes built-in skills from [dbt Agent skills](https://github.com/dbt-labs/dbt-agent-skills), maintained by dbt Labs. These are always available, no setup needed.
 
-For general project context (`AGENTS.md`, `CLAUDE.md`), refer to [Migrate to dbt Wizard](/docs/dbt-ai/wizard-migrate) — <Constant name="wizard" /> reads those instruction files out of the box.
+You don't need a skill for general project context. <Constant name="wizard" /> reads `AGENTS.md` and `CLAUDE.md` out of the box.
 
 ## How skills work
 
