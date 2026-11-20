@@ -1714,6 +1714,7 @@ const sidebarSettings = {
                     "reference/global-configs/behavior-flags/require_all_warnings_handled_by_warn_error",
                     "reference/global-configs/behavior-flags/require_batched_execution_for_custom_microbatch_strategy",
                     "reference/global-configs/behavior-flags/require_corrected_analysis_fqns",
+                    "reference/global-configs/behavior-flags/require_empty_sql_rewrite",
                     "reference/global-configs/behavior-flags/require_explicit_package_overrides_for_builtin_materializations",
                     "reference/global-configs/behavior-flags/require_generic_test_arguments_property",
                     "reference/global-configs/behavior-flags/require_nested_cumulative_type_params",
