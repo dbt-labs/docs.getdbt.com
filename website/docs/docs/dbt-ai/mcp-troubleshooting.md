@@ -52,7 +52,7 @@ Yes. `execute_sql` runs a single read-only `SELECT` query, and rejects anything 
 
 Rejected queries return an error, for example `execute_sql accepts a single SELECT query only`.
 
-se least-privilege warehouse roles for each user's development credentials. This is because s=a `SELECT` can still call functions or read from views, and what those do depends on the permissions of the warehouse credentials the query runs with. 
+Use the least-privileged warehouse role for each user's development credentials. A `SELECT` statement can still call functions or read from views, and the permissions of the warehouse credentials running the query determine what those functions and views can do.
 
 To keep things safe:
 
