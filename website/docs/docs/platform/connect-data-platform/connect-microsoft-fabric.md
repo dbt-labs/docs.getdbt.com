@@ -11,11 +11,14 @@ availability:
 The supported authentication methods are: 
 - Microsoft Entra service principal
 - Microsoft Entra password
+- Microsoft Entra ID OAuth (development environments only)
 
-SQL password (LDAP) is not supported in Microsoft Fabric Data Warehouse so you must use Microsoft Entra ID. This means that to use [Microsoft Fabric](https://www.microsoft.com/en-us/microsoft-fabric) in <Constant name="dbt" />, you will need at least one Microsoft Entra service principal to connect <Constant name="dbt" /> to Fabric, ideally one service principal for each user.
+SQL password (LDAP) is not supported in Microsoft Fabric Data Warehouse so you must use Microsoft Entra ID. This means that to use [Microsoft Fabric](https://www.microsoft.com/en-us/microsoft-fabric) in <Constant name="dbt" />, you need at least one Microsoft Entra service principal to connect <Constant name="dbt" /> to Fabric for deployment environments. For development, each user can use their own service principal or sign in with [OAuth](#microsoft-entra-id-oauth).
 
 ### Microsoft Entra service principal 
 The following are the required fields for setting up a connection with a Microsoft Fabric using Microsoft Entra service principal authentication. 
+
+<SimpleTable>
 
 | Field | Description |
 | --- | --- |
@@ -27,10 +30,13 @@ The following are the required fields for setting up a connection with a Microso
 | **Client ID** | The service principal's **application (client) ID**. |
 | **Client secret** | The service principal's **client secret** (not the **client secret id**). |  
 
+</SimpleTable>
 
 ### Microsoft Entra password 
 
 The following are the required fields for setting up a connection with a Microsoft Fabric using Microsoft Entra password authentication. 
+
+<SimpleTable>
 
 | Field | Description |
 | --- | --- |
@@ -40,6 +46,77 @@ The following are the required fields for setting up a connection with a Microso
 | **Authentication** | Choose **Active Directory Password** from the dropdown. | 
 | **User** | The Microsoft Entra username. |
 | **Password** | The Microsoft Entra password. |
+
+</SimpleTable>
+
+### Microsoft Entra ID OAuth <Lifecycle status="managed,managed_plus" /> {#microsoft-entra-id-oauth}
+
+With OAuth, each developer signs in to Fabric with their own Microsoft Entra account instead of using a password or shared service principal. Queries in the <Constant name="studio_ide" /> and <Constant name="platform_cli" /> then run as that developer. This provides:
+
+- Multi-factor authentication (MFA): Developers sign in the same way they do everywhere else in your org. Password and service principal connections can't prompt for MFA.
+- Individual access: Queries run with each developer's own Fabric permissions, so you don't need to create a service principal for each developer.
+- No passwords in dbt: Developers don't need to store a Microsoft password in their credentials.
+
+Before you begin, note the following:
+
+- OAuth works in development environments only. Deployment environments don't have a signed-in user, so jobs still need a service principal.
+- You need a <Constant name="dbt" /> account admin and a Microsoft Entra admin who can create [app registrations](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app).
+- Each developer needs access to the Fabric workspace and warehouse with their own Entra account.
+
+#### 1. Start the integration in dbt
+Set up a [custom OAuth](/docs/platform/account-integrations?version=1.12#oauth-integrations) integration for Entra ID.
+1. In <Constant name="dbt" />, go to **Account settings** and click **Integrations**.
+2. Scroll to **Custom integrations** and click **Add integrations**.
+3. Set the **Integration type** to **Entra ID**.
+4. Copy the **Redirect URI** at the bottom of the page. Leave this window open, you come back to it in [step 3](/docs/platform/connect-data-platform/connect-microsoft-fabric?version=2#3-finish-the-integration-in-dbt).
+
+#### 2. Register an app in Microsoft Entra
+Follow these steps to register an app in Microsoft Entra and refer to their [official docs](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app) for more detail.
+1. In the Azure portal, open **Microsoft Entra ID** and click **App registrations**, then **New registration**.
+2. Give the app a name that's easy to spot later, like `dbt Fabric OAuth`.
+3. Set **Supported account types** to **Accounts in this organizational directory only**.
+4. Under **Redirect URI**, select **Web** and paste the redirect URI you copied from <Constant name="dbt" />.
+5. Click **Register**.
+6. Click **API permissions**, then **Add a permission**. Under **APIs my organization uses**, search for **Azure SQL Database** and add the delegated `user_impersonation` permission. Fabric only accepts tokens issued for its SQL endpoint, and this permission is what lets <Constant name="dbt" /> request one.
+7. Click **Certificates & secrets**, then **New client secret**. Name the secret, set an expiration, and click **Add**.
+8. Copy the secret's **Value** right away. Microsoft hides it after you leave the page.
+
+Client secrets expire (the maximum is two years). Note the expiration date so you can rotate the secret before developers lose access.
+
+#### 3. Finish the integration in dbt
+
+Back on the **Integrations** page in <Constant name="dbt" />, fill out the fields and click **Save**:
+
+<SimpleTable>
+
+| Field | Description |
+| --- | --- |
+| **Integration name** | A descriptive name, so future admins know which Entra tenant it belongs to. |
+| **Client ID** | The **Application (client) ID** from the app's **Overview** page. |
+| **Client secret** | The secret **Value** you copied in the previous step. |
+| **Authorize URL** | The **OAuth 2.0 authorization endpoint (v2)** from the app's **Endpoints** tab. |
+| **Token URL** | The **OAuth 2.0 token endpoint (v2)** from the app's **Endpoints** tab. |
+
+</SimpleTable>
+
+#### 4. Add the integration to your Fabric connection
+
+1. Go to **Account settings** and click **Connections**.
+2. Select your Fabric connection (or click **New connection** and enter the **Server**, **Port**, and **Database** as usual).
+3. For the **OAuth method**, select the integration you created.
+4. Click **Save**.
+
+#### 5. Link developer accounts
+
+Each developer links their Microsoft account once:
+
+1. Go to **Account settings**. Under **Your profile**, select **Credentials** and choose the project.
+2. Set **Authentication** to **External OAuth**.
+3. Follow the prompt to sign in with your Microsoft account and approve the access request.
+
+**Test connection** isn't available while **External OAuth** is selected. <Constant name="dbt" /> checks the connection for you after you link your account.
+
+After you link your account, <Constant name="dbt" /> refreshes your access in the background. If your sign-in stops working (for example, after a password reset or a policy change), link your account again.
 
 ## Configuration 
 

@@ -118,6 +118,10 @@ The full list lives in website/release-note-areas.json.
 - **Fix:** Accounts on the usage plan can now complete the upgrade to [Starter](/docs/platform/billing/plans-and-billing#starter-plan-billing) without the checkout spinning indefinitely. The purchase button stays available when a card is already on file.
 - **Behavior change:** On [Admin API v2](/dbt-cloud/api-v2#/operations/List%20Repositories) and [Admin API v3](/dbt-cloud/api-v3#/operations/List%20Repositories) of the repositories API, `full_name` and `web_url` are now taken from the repository's web address. `full_name` is deprecated. The API no longer returns a custom `full_name` you set earlier.
 
+#### Integrations {#integrations-november-2026}
+
+- **New:** Developers on Enterprise and Enterprise+ plans can now sign in to Microsoft Fabric with their own Microsoft Entra account using OAuth, instead of a service principal or password. OAuth works in development environments. Refer to [Microsoft Entra ID OAuth](/docs/platform/connect-data-platform/connect-microsoft-fabric#microsoft-entra-id-oauth).
+
 #### dbt v2 {#dbt-v2-november-2026}
 
 - **New:** You can now configure BigQuery query reservations at the model and connection levels.
