@@ -4,11 +4,11 @@ description: "Set up Fivetran MDLS, generate a Lake Compute token, and run dbt o
 id: compute-onboarding
 ---
 
-# Onboarding to Lake Compute <Lifecycle status="private_beta" />
+# Onboarding to Lake Compute <Lifecycle status="public_preview" />
 
-:::info Lake Compute is in private beta
+:::info Lake Compute uses Fivetran release phases
 
-To request access, fill out the [Lake Compute signup form](https://docs.google.com/forms/d/e/1FAIpQLSdWXHU3VFqq1t8GVAA2BMfY_AfeVJH26OXJFlNwXiVv4pcuXQ/viewform). Lake Compute is in active development and likely to change. Breaking changes may occur, documentation may be incomplete, technical support may be limited, and no service-level agreement covers it during beta. Refer to [Private beta limitations](/docs/lake-compute#private-beta-limitations) before you plan real work around it.
+These docs use the [Fivetran release phases](https://fivetran.com/docs/core-concepts#releasephases). Lake Compute is in Public Preview.
 
 :::
 
@@ -180,3 +180,44 @@ This differs from running locally, where you set both `DBT_ENGINE_EXPERIMENTAL_M
 - [Lake Compute with BigQuery](/docs/lake-compute/compute-onboarding-bigquery)
 - [Lake Compute with Databricks](/docs/lake-compute/compute-onboarding-databricks)
 - [Lake Compute FAQs](/docs/lake-compute/compute-faq)
+### Use Lake Compute as a "sidecar"
+
+Given a dbt DAG of `model_a -> model_b -> model_c`, you can configure:
+
+- `model_a` to run on Snowflake and materialize an Iceberg table in Snowflake Horizon, using Snowflake-managed storage
+- `model_b` to run on Lake Compute
+- `model_c` to run on Snowflake
+
+```sql
+-- models/model_a.sql
+{{ config(
+    table_format = 'iceberg',
+    materialized = 'table'
+) }}
+
+select 1 as id
+```
+
+```sql
+-- models/model_b.sql
+{{ config(
+    adapter = 'lakecompute'
+) }}
+
+select * from {{ ref('model_a') }}
+```
+
+```sql
+-- models/model_c.sql
+select * from {{ ref('model_b') }}
+```
+
+### Use Lake Compute as your default adapter
+
+All your models run on Lake Compute by default and write to Iceberg tables in MDLS. Also check for existing `materialized: view` configs — Lake Compute doesn't support views (see [Public preview limitations](/docs/lake-compute#limitations)), so switch any views to `table` or `ephemeral` before converting a project over.
+
+For an existing project, convert models over in two steps rather than all at once:
+
+1. Identify the model you want to run on Lake Compute and its direct upstream dependencies.
+2. Add `{{ config(materialized='table', table_format='iceberg') }}` to the target model and its upstream dependencies. Run the project and verify it works. Any runtime errors at this stage are due to Iceberg/Snowflake type incompatibilities and require casting.
+3. On the target model, add `{{ config(adapter='lakecompute') }}` and look for any Snowflake-specific functions. If you find any, rewrite the query using the corresponding DuckDB function. Run the project again to verify.

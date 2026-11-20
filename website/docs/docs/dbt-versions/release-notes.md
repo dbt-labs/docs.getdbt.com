@@ -62,11 +62,23 @@ The full list lives in website/release-note-areas.json.
 
 ##### Wizard
 
+- **New:** <Constant name="wizard" /> chats in the home tab and <Constant name="studio_ide" /> now run in the background. Switch tabs or close the page and <Constant name="wizard" /> keeps working. Reopen the chat from your chat history to see the result. Each chat shows a status indicator (running, unread, idle, done, waiting for input, or failed), so you can run several chats at once in any mode. Refer to [Background chats](/docs/platform/wizard-home#background-chats).
+- **New:** In the <Constant name="studio_ide" />, <Constant name="wizard" /> Desktop, and the Wizard CLI, <Constant name="wizard" /> uses [MetricFlow](/docs/build/about-metricflow) to build the SQL for a metric from the metric definition, including its filters. In the <Constant name="wizard" /> CLI and Wizard Desktop, it runs that SQL in your warehouse. The SQL is written in that warehouse's syntax on Snowflake, BigQuery, Redshift, Databricks, and DuckDB. On other warehouses, such as Postgres, the SQL is written for DuckDB and may not run unchanged. Refer to [How dbt Wizard queries metrics](/docs/dbt-ai/wizard-how-it-works#how-dbt-wizard-queries-metrics).
+- **New:** Use the **Legacy dbt versions** dashboard in **Account settings** to find every project, environment, and job still on a legacy dbt version, upgrade a project's code with **Upgrade with dbt Wizard** when <Constant name="wizard" /> is available to you, and move environments and jobs to the **v1 Latest** release track. You can also export the environment list as a CSV file and see when each environment and job last ran. Refer to [Migrate off legacy dbt versions](/guides/migrate-off-legacy-dbt-versions).
 - **New:** Use Claude Haiku 5.5 and Claude Sonnet 5.5 through Databricks in <Constant name="wizard" />.
 - **New:** <Constant name="wizard" /> now automatically switches to AWS Bedrock if an AI model provider (OpenAI, Anthropic, or Fireworks) has an outage, so you can keep working. Available for <Constant name="dbt_platform" /> accounts hosted on AWS that use dbt <Term id="managed" /> models. Learn more about [automatic backup during outages](/docs/dbt-ai/pricing-billing/overview#automatic-backup-during-outages).
+- **Enhancement:** In the full-screen <Constant name="wizard" />, you can resize the conversation sidebar, collapse it with **Hide conversations**, and reopen it with **Show conversations**. Hover over a truncated chat title to see the full title. Older chats now load as you scroll, without reloading the whole list.
+- **Enhancement:** <Constant name="wizard" /> now uses the built-in [dbt information schema](/docs/build/dbt-information-schema) skill to answer questions about your project, instead of reading product docs. Refer to [Built-in dbt skills](/docs/dbt-ai/wizard-platform-skills#built-in-dbt-skills).
+- **Fix:** In the full-screen <Constant name="wizard" />, a long conversation history no longer pushes the message box off the screen. History scrolls in place, and older chats load only when you scroll down the conversation list.
+- **Fix:** When you allow a command for the session, <Constant name="wizard" /> no longer asks you to approve it again later in the same response.
+- **Fix:** When <Constant name="wizard" /> switches to AWS Bedrock during a provider outage, requests in an ongoing conversation no longer fail because of reasoning data from the original provider. Learn more about [automatic backup during outages](/docs/dbt-ai/pricing-billing/overview#automatic-backup-during-outages).
+- **Fix:** Conversations that switched to AWS Bedrock during a provider outage no longer fail on later messages. Conversations already affected work again on your next message. Learn more about [automatic backup during outages](/docs/dbt-ai/pricing-billing/overview#automatic-backup-during-outages).
+- **Fix:** You can now [bring your own Azure OpenAI key](/docs/platform/wizard-byok-platform) with the endpoint the Azure portal gives you, even when it includes `api-version=v1`. Previously, setup failed with "Could not complete the AI request."
+- **Fix:** When <Constant name="wizard" /> can't compare results, for example because no compare results exist yet, the chat now shows the actual reason, instead of "Could not parse compare results."
 - **Fix:** <Constant name="wizard" /> validation now works with Azure, Snowflake, Gemini, and Databricks models.
 - **Fix:** <Constant name="wizard" /> no longer adds a stray file to new environments or your commits. Creating and restoring environments also works in repositories that already track that file.
 - **Fix:** When <Constant name="wizard" /> prepares validation, fatal <Constant name="platform_cli" /> errors now show as readable messages instead of raw JSON.
+- **Behavior change:** `execute_sql` in <Constant name="wizard" /> and the remote dbt MCP server now runs only a single read-only `SELECT` query. It rejects queries that write data, contain more than one statement, or use Jinja other than literal `ref()` calls. Warehouse permissions still govern what views and functions in a query can do.
 
 ##### Wizard Desktop
 
@@ -81,6 +93,7 @@ The full list lives in website/release-note-areas.json.
 
 #### Studio IDE {#studio-ide-november-2026}
 
+- **Fix:** A long error popup, such as a file path from a lint warning, now wraps onto the next line so you can still see the dismiss button.
 - **Behavior change:** dbt v2 runs in <Constant name="studio_ide" /> now follow the [`threads`](/docs/running-a-dbt-project/using-threads) value in your [user credentials](/docs/dbt-platform-environments#set-user-credentials) instead of the dbt v2 default (for example, 48 on Snowflake). The same change also applies to Canvas runs. Jobs, dbt v1 runs, and editor features such as autocomplete are unchanged.
 
 #### Catalog {#catalog-november-2026}
@@ -88,21 +101,28 @@ The full list lives in website/release-note-areas.json.
 - **Enhancement:** The [**Marts**](/docs/explore/explore-projects#catalog-overview) table on the Catalog project landing page now shows 20 rows per page by default, up from 5. The page size dropdown includes a **20 Rows** option, so you move through the list with fewer page turns.
 - **Fix:** In the [Discovery API](/docs/dbt-apis/discovery-api), a model's parents used to leave out models that live in another project ([Mesh](/docs/mesh/about-mesh)). Those parent models are included now. Lineage already listed these parents.
 
+#### Orchestration and run status {#orchestration-and-run-status-november-2026}
+
+- **Fix:** When a dbt v1 run is reusing results from an earlier run, the badge now says **dbt State**. It used to say **dbt State disabled** even though reuse was on. This applies to the **v1 Compatible**, **v1 Extended**, and **v1 Latest** release tracks.
+- **Fix:** On the [**Explain** tab](/docs/deploy/dbt-state-interface#explain-tab), the banner now says that the reuse decisions and their explanations are gone once that data expires. It used to suggest those decisions were still listed.
+
 #### APIs, Identity, and Administration {#apis-identity-and-administration-november-2026}
 
 - **New:** Set an expiration date when you create a [personal access token](/docs/dbt-apis/user-tokens#set-a-token-expiration) or [service token](/docs/dbt-apis/service-tokens#set-a-token-expiration). Choose 7, 14, 30, 90, or 365 days, or keep the default of no expiry. Existing tokens that don't have an expiration set won't expire.
 - **Enhancement:** The [Assign User to Groups API](/dbt-cloud/api-v3?version=2#/operations/Assign%20User%20to%20Groups) (`POST /api/v3/accounts/{account_id}/assign-groups/`) now accepts `add_group_ids` and `remove_group_ids`. Use these fields to add a user to groups, or remove them from groups, without replacing every group they belong to. Sending `desired_group_ids` still replaces the full list.
+- **Fix:** SCIM (System for Cross-domain Identity Management) lets an identity provider, such as Okta, manage groups in dbt. Previously, when the provider removed a group’s last member, dbt returned a success response but left the member in the group. dbt now clears the group when it receives an empty member list.
+- **Fix:** Creating an OpenAI key when the account already has one now returns 409 and the message “This account already has an OpenAI key.” Creating the same SCIM user twice at the same time also returns 409. Requests to the v1 and v2 Admin API for something that doesn’t exist, or for an account you can’t access, now return 404 (not found). These requests used to return a server error (500).
 - **Fix:** Attempting to delete a System for Cross-domain Identity Management (SCIM)-managed user while manual updates are disabled now returns HTTP 400 with an actionable message directing you to enable "[Allow manual updates](/docs/platform/manage-access/scim-faq#what-does-allow-manual-updates-mean)" in SSO and SCIM settings, rather than a generic HTTP 500 error.
 - **Fix:** An API request that is nested too deeply, too large, or missing a content type now returns a client error instead of a server error.
 - **Fix:** When an account had more than 1,000 groups, some of a user's assigned [groups](/docs/platform/manage-access/about-user-access#groups) were missing from the user details view. All assigned groups now appear checked. Saving with `POST /api/v3/accounts/{id}/assign-groups/` also keeps the full list of groups.
 - **Fix:** Creating or updating an [IP restriction](/docs/platform/secure/ip-restrictions) with a missing or invalid `type` now returns a 400 error (the request was invalid) and a message that describes the problem, instead of a 500 server error. A missing `name` is rejected with a 400 error too. Before this fix, dbt saved that missing name as the word None.
 - **Fix:** Accounts on the usage plan can now complete the upgrade to [Starter](/docs/platform/billing/plans-and-billing#starter-plan-billing) without the checkout spinning indefinitely. The purchase button stays available when a card is already on file.
+- **Behavior change:** On [Admin API v2](/dbt-cloud/api-v2#/operations/List%20Repositories) and [Admin API v3](/dbt-cloud/api-v3#/operations/List%20Repositories) of the repositories API, `full_name` and `web_url` are now taken from the repository's web address. `full_name` is deprecated. The API no longer returns a custom `full_name` you set earlier.
 
 #### dbt v2 {#dbt-v2-november-2026}
 
 - **New:** You can now configure BigQuery query reservations at the model and connection levels.
-- **New:** Two new environment variables, `DBT_CLOUD_LOGIN_HOST` and `DBT_CLOUD_LOGIN_ACCOUNT_ID`, let `dbt login` authenticate through an account host's `/oauth/authorize` endpoint instead of the registration page, enabling Single Sign-On (SSO) accounts that cannot route through the registration page.
-- **New:** The metrics tool can show the SQL for a metric without running it. The SQL matches your warehouse instead of always using DuckDB.
+- **New:** Two new environment variables, `DBT_CLOUD_LOGIN_HOST` and `DBT_CLOUD_LOGIN_ACCOUNT_ID`, let `dbt login` authenticate through an account host's `/oauth/authorize` endpoint instead of the registration page, enabling single sign-on (SSO) accounts that cannot route through the registration page.
 - **Fix:** Snowflake seeds now honor the `transient` config instead of silently creating a permanent table.
 - **Fix:** Comparing changes in [Advanced CI](/docs/deploy/advanced-ci) no longer fails when a Snowflake table has a vector column.
 - **Fix:** Snowflake private keys saved with Windows line endings now decode correctly.
@@ -133,12 +153,13 @@ The full list lives in website/release-note-areas.json.
 
 #### dbt platform {#dbt-platform-november-2026}
 
-- **New:** You can now delete your Azure DevOps Microsoft Entra (Entra) application integration directly from workspace Git Integration settings using a new delete button and confirmation dialog.
+- **New:** You can now delete your Azure DevOps Microsoft Entra (Entra) application integration directly from workspace Git integration settings using a new delete button and confirmation dialog.
 - **New:** You can now delete a GitLab custom app integration directly from the GitLab integration drawer in account settings. After confirming the deletion, the drawer closes and a confirmation banner appears.
-- **Enhancement:** The rollback version section in Account Settings now uses "dbt v2" instead of "Fusion" in all section headers, modal titles, button labels, and descriptive copy.
+- **Enhancement:** On the environment settings page, the delete button now says **Delete environment**. The old label was **Delete**, which made it easier to remove the wrong thing.
+- **Enhancement:** The rollback version section in **Account settings** now uses "dbt v2" instead of "Fusion" in all section headers, modal titles, button labels, and descriptive copy.
 - **Enhancement:** The "Preview" badge no longer appears next to dbt v2 Stable in job and environment version settings or the upgrade checklist for Databricks projects.
 - **Fix:** Model name search in the run step structured logs view is now case-insensitive and trims surrounding whitespace, so a search for `my_model` matches `My_Model`. Changing the search term also resets pagination to the first page, fixing an issue where narrowing results on a later page showed an empty list with no "No models found" message.
-- **Fix:** Untitled buffers switched to Markdown, JSON, or YAML via Change Language Mode now format with Prettier instead of the SQL formatter. The [Format](/docs/platform/studio-ide/lint-format#format-yaml-markdown-json) button is also no longer hidden for these buffers when SQLFluff is selected as the linter.
+- **Fix:** Untitled buffers switched to Markdown, JSON, or YAML using Change Language Mode now format with Prettier instead of the SQL formatter. The [Format](/docs/platform/studio-ide/lint-format#format-yaml-markdown-json) button is also no longer hidden for these buffers when SQLFluff is selected as the linter.
 - **Fix:** If you cancel connecting Slack, you return to the Integrations page with a cancellation message instead of an error.
 
 ## October 2026
@@ -191,7 +212,7 @@ The full list lives in website/release-note-areas.json.
 
 - **New:** Billing admins now receive proactive email notifications about dbt State usage, including a warning at 80% of the monthly allowance (with a projected run-out date), a notification when the allowance is fully used and State is paused, and a reminder 7 days before a trial expires. All emails include plan-specific messaging and calls to action.
 - **New:** dbt State trial and DATT allowance updates:
-  - **New:** Self-hosted dbt users using dbt State now get a free plan after their trial ends, with 1,000 daily active target tables (DATT) per month at no cost. Developer and paid <Constant name="dbt_platform" /> accounts also receive a monthly DATT allowance, with amounts and availability varying by plan. For more information, refer to [dbt State usage](/docs/platform/billing/dbt-state-usage).
+  - **New:** Self-hosted dbt users using dbt State now get a free plan after their trial ends, with 1,000 daily active target tables (DATT) per month at no cost. [All dbt plans](https://www.getdbt.com/pricing) also receive a monthly DATT allowance, with amounts and availability varying by plan. For more information, refer to [dbt State usage](/docs/platform/billing/dbt-state-usage).
   - **New:** When your dbt State trial ends, you’ll receive an email confirming your plan, monthly DATT allowance, and allowance end date if your plan has one.
   - **New:** If your dbt State trial has ended, dbt State is now active again on your account with your plan’s free monthly DATT allowance. No action is required.
 - **Enhancement:** The dbt State usage graph now includes a dropdown to select the reporting period: this month, previous month, last 30 days, last 60 days, or last 90 days. The chart x-axis also shows month abbreviations when the selected range spans multiple months.
@@ -296,7 +317,7 @@ Admins can check their settings and update the default as needed. This is availa
 - **Enhancement:** When a GitLab host is unreachable, affected API endpoints now return HTTP 503 with the message "GitLab is unavailable, please try again." instead of an unclear failure. This applies when you create a repository or list GitLab groups.
 - **Fix:** Cross-account write attempts now return HTTP 403 Forbidden instead of a generic 500 Internal Server Error, so you get a clear rejection when the account doesn't match.
 - **Fix:** The error for a missing Azure DevOps account link now shows the correct message: "Missing Azure user; link your Azure DevOps account in your personal profile."
-- **Behavior change:** Creating accounts via `POST /api/v2/accounts/` is now blocked for service tokens, account-scoped personal access tokens (PATs), and OAuth access tokens. Service tokens and account-scoped user API tokens receive HTTP 400; OAuth access tokens receive HTTP 403, with explicit error messages in each case.
+- **Behavior change:** Creating accounts using `POST /api/v2/accounts/` is now blocked for service tokens, account-scoped personal access tokens (PATs), and OAuth access tokens. Service tokens and account-scoped user API tokens receive HTTP 400; OAuth access tokens receive HTTP 403, with explicit error messages in each case.
 
 #### Cost Insights {#cost-insights-september-2026}
 
@@ -778,7 +799,7 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 
 - **Enhancement:** The Analyst permission now has the project-level access to read repositories. Review [Project access for project permissions](/docs/platform/manage-access/enterprise-permissions#project-access-for-project-permissions) for more information.
 - **Enhancement:** After a user accepts an email [invite](/docs/platform/manage-access/invite-users) to access an [SSO-protected](/docs/platform/manage-access/sso-overview) <Constant name="dbt_platform"/> account, the UI now prompts them to log in with SSO to complete the process. This replaces the previous "Joined successfully" message, helping avoid confusion when users accept an invite but do not complete the SSO login flow.
-- **Fix**: The user invite details now show more information in invite status, giving admins visibility into users who accepted an invite to an SSO-protected account but haven't yet logged in via SSO. Previously, these invites were hidden, making it appear as if the user hadn't been invited. 
+- **Fix**: The user invite details now show more information in invite status, giving admins visibility into users who accepted an invite to an SSO-protected account but haven't yet logged in using SSO. Previously, these invites were hidden, making it appear as if the user hadn't been invited. 
 The Invites endpoints of the dbt platform Admin v2 API now include these additional statuses:
   - `4` (PENDINGEMAIL_VERIFICATION)
   - `5` (EMAIL_VERIFIED_SSO).

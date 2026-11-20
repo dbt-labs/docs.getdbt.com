@@ -12,8 +12,11 @@ availability:
 
 import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
 import CopilotConfigureAiProvider from '/snippets/_copilot-configure-ai-provider.md';
+import CopilotLifecycle from '/snippets/_copilot-lifecycle.md';
 
-# dbt Copilot
+# dbt Copilot <Lifecycle status="eol" />
+
+<CopilotLifecycle/>
 
 <IntroText>
 dbt Copilot helps you generate SQL, documentation, tests, and semantic models in the <Constant name="dbt_platform" />.
