@@ -118,8 +118,8 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [
 6. Click **Test connection**. This verifies that <Constant name="dbt" /> can access your Microsoft Fabric account.
 7. Click **Next** when the test succeeds. If it failed, you might need to check your Microsoft service principal. Ensure that the principal has `CONNECT` privileges to the database in the warehouse. 
 
-:::tip Sign in with your own Microsoft account
-On Enterprise and Enterprise+ plans, developers can use OAuth to sign in to Fabric with their own Microsoft Entra account instead of a service principal. Finish this quickstart with the service principal first, then refer to [Microsoft Entra ID OAuth](/docs/platform/connect-data-platform/connect-microsoft-fabric#microsoft-entra-id-oauth) to set it up.
+:::tip Prefer to sign in with your own Microsoft account?
+On Enterprise and Enterprise+ plans, developers can use [Microsoft Entra ID OAuth](/docs/platform/connect-data-platform/connect-microsoft-fabric#microsoft-entra-id-oauth) instead of a service principal. You get multi-factor authentication (MFA), and queries run with your own Fabric permissions. An admin sets up the integration once, then each developer links their account. Finish this quickstart with the service principal first, then follow the OAuth steps.
 :::
 
 ## Set up a dbt managed repository 
