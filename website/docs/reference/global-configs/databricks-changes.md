@@ -76,7 +76,7 @@ Instead, we will be investigating new ways to provide the same benefits while ma
 
 ### Changes to the Seed materialization
 
-Starting in `dbt-databricks` v1.12.7, seeds use a single materialization and `use_materialization_v2` no longer affects them. Seeds behave the same for either flag value. If your project overrides the `create_seed_v1` or `create_seed_v2` macros, or relies on seeds calling `create_indexes`, those overrides are no longer called.
+Starting in `dbt-databricks` v1.12.7, seeds use a single materialization, so they behave the same whether `use_materialization_v2` is `true` or `false`. If your project overrides the `create_seed_v1` or `create_seed_v2` macros, or overrides `create_indexes` for seeds, those overrides are no longer called.
 
 In earlier versions, the seeds materialization had the smallest difference between the old and new materialization, as the primary difference was removing calls to methods that are not supported by Databricks, such as transaction operations.
 
