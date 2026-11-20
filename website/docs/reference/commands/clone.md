@@ -5,12 +5,12 @@ id: "clone"
 ---
 
 The `dbt clone` command clones selected nodes from the [specified state](/reference/node-selection/syntax#establishing-state) to the target schema(s). This command makes use of the `clone` materialization:
-- If your data platform supports zero-copy cloning of tables (Snowflake, Databricks, or BigQuery), and this model exists as a table in the source environment, dbt will create it in your target environment as a clone. For Databricks tables with policies, see the exception below.
+- If your data platform supports zero-copy cloning of tables (Snowflake, Databricks, or BigQuery), and this model exists as a table in the source environment, dbt will create it in your target environment as a clone (for Databricks tables with row filters or column masks, see below).
 - Otherwise, dbt will create a simple pointer view (`select * from` the source object)
 - By default, `dbt clone` will not recreate pre-existing relations in the current target. To override this, use the `--full-refresh` flag. 
 - You may want to specify a higher number of [threads](/docs/running-a-dbt-project/using-threads) to decrease execution time since individual clone statements are independent of one another.
 
-In dbt-databricks v1.13.1 and later, Unity Catalog tables with a row filter or column mask are cloned as pointer views. The source table applies its policies for the user querying the view, and must remain available while you use the clone.
+In `dbt-databricks` 1.13.1 and later, Unity Catalog tables with a row filter or column mask are cloned as pointer views. Source policies still apply to whoever queries the view, and the source table must remain available.
 
 The `clone` command is useful for:
 - blue/green continuous deployment (on data warehouses that support zero-copy cloning tables)
