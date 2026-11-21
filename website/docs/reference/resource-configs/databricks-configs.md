@@ -235,7 +235,7 @@ If you're using an older runtime:
 - Pin your `dbt-databricks` version to `1.10.x` 
 - Or upgrade to DBR 12.2 LTS or higher
 
-This breaking change affects `append`, `insert_overwrite`, `delete+insert`, and `merge` (through intermediate table creation). The `replace_where` strategy inserts by column name starting in v1.11.7. See [The `replace_where` strategy](#the-replace_where-strategy).
+This breaking change affects `append`, `insert_overwrite`, `delete+insert`, and `merge` (through intermediate table creation). The `replace_where` strategy first added name-based insertion in v1.11.7, but its behavior depends on the adapter version and runtime. See [The `replace_where` strategy](#the-replace_where-strategy).
 
 For more details on v1.11.0 changes, see the [dbt-databricks v1.11.0 changelog](https://github.com/databricks/dbt-databricks/blob/main/CHANGELOG.md).
 
