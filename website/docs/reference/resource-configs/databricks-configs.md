@@ -235,7 +235,7 @@ If you're using an older runtime:
 - Pin your `dbt-databricks` version to `1.10.x` 
 - Or upgrade to DBR 12.2 LTS or higher
 
-This breaking change affects `append`, `insert_overwrite`, `delete+insert`, and `merge` (via intermediate table creation). The `replace_where` strategy inserts by column name starting in v1.11.7. See [The `replace_where` strategy](#the-replace_where-strategy).
+This breaking change affects `append`, `insert_overwrite`, `delete+insert`, and `merge` (through intermediate table creation). The `replace_where` strategy inserts by column name starting in v1.11.7. See [The `replace_where` strategy](#the-replace_where-strategy).
 
 For more details on v1.11.0 changes, see the [dbt-databricks v1.11.0 changelog](https://github.com/databricks/dbt-databricks/blob/main/CHANGELOG.md).
 
@@ -607,9 +607,7 @@ dbt will run an [atomic `replace where` statement](https://docs.databricks.com/e
 
 :::caution
 
-In dbt-databricks v1.12.2 and later, `replace_where` inserts data by column name on SQL warehouses and Databricks Runtime 18.0 and above. On older runtimes, and in dbt-databricks v1.11.6 and earlier, `replace_where` inserts data by column position. If you reorder columns and the data is compatible with the existing schema, you may silently insert values into an unexpected column. If the data is incompatible, you'll get an error instead.
-
-dbt-databricks v1.11.7 through v1.12.1 insert data by column name on all runtimes, but return a syntax error on runtimes below 18.0.
+In `dbt-databricks` v1.12.2 and later, `replace_where` inserts data by column name on SQL warehouses and Databricks Runtime 18.0 and above. On older runtimes, and in `dbt-databricks` v1.11.6 and earlier, `replace_where` inserts data by column position. If you reorder columns and the data is compatible with the existing schema, you may silently insert values into an unexpected column. If the data is incompatible, you'll get an error instead.
 
 :::
 
