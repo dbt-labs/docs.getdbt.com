@@ -145,9 +145,9 @@ Either way, Copilot Actions are metered separately on an actions-based model and
 
 ### Tracking usage & spend limits
 
-<Expandable alt_header="Do I need a paid dbt plan or credit card to try dbt Wizard?">
+<Expandable alt_header="Do I need a specific dbt plan or a credit card to try dbt Wizard?">
 
-No. You need a free <Constant name="dbt" /> account to manage usage, billing, and spend limits, but you don't need a paid <Constant name="dbt_platform" /> plan or credit card to start the trial. If you don't have an account, you can [create one](https://www.getdbt.com/signup) during setup.
+No. All <Constant name="dbt" /> plans can manage usage, billing, and spend limits. You don't need a credit card to start the trial. If you don't have an account, you can [create one](https://www.getdbt.com/signup) during setup.
 
 </Expandable>
 
