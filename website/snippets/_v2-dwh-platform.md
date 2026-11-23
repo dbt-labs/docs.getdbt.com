@@ -1,8 +1,7 @@
    <Expandable alt_header="BigQuery">  
     - Service Account / User Token
     - Native OAuth
-    - External OAuth 
-      - [Workload Identity Federation](/docs/platform/manage-access/set-up-bigquery-oauth#set-up-bigquery-workload-identity-federation) (Microsoft Entra)
+    - [Workload Identity Federation](/docs/platform/manage-access/set-up-bigquery-oauth#set-up-bigquery-workload-identity-federation) (service-to-service OAuth with Microsoft Entra ID)
     - [Required permissions](/docs/local/connect-data-platform/bigquery-setup#required-permissions)
   </Expandable>
 
@@ -13,6 +12,7 @@
 
   <Expandable alt_header="Redshift">  
     - Username / Password
+    - [External OAuth](/docs/platform/manage-access/redshift-external-oauth)
     - IAM profile
   </Expandable>
   
