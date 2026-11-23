@@ -138,6 +138,10 @@ The full list lives in website/release-note-areas.json.
 - **Fix:** Accounts on the usage plan can now complete the upgrade to [Starter](/docs/platform/billing/plans-and-billing#starter-plan-billing) without the checkout spinning indefinitely. The purchase button stays available when a card is already on file.
 - **Behavior change:** On [Admin API v2](/dbt-cloud/api-v2#/operations/List%20Repositories) and [Admin API v3](/dbt-cloud/api-v3#/operations/List%20Repositories) of the repositories API, `full_name` and `web_url` are now taken from the repository's web address. `full_name` is deprecated. The API no longer returns a custom `full_name` you set earlier.
 
+#### Integrations {#integrations-november-2026}
+
+- **Beta:** Bringing your own [custom GitHub application](/docs/platform/git/connect-github#custom-github-application) is now in beta and available to all Enterprise and Enterprise+ accounts. You no longer need to contact your account manager for access. Use it to natively connect GitHub Enterprise Server or GitHub with EU data residency, instead of a git URL and SSH.
+
 #### dbt v2 {#dbt-v2-november-2026}
 
 - **New:** You can now configure BigQuery query reservations at the model and connection levels.
