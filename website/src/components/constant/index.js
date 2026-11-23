@@ -14,3 +14,6 @@ export default function Constant({ name }) {
 
   return <span>{ currentConstant }</span>
 }
+
+// Rendered inline, so VersionBlock never boxes it as block content.
+Constant.isInline = true
