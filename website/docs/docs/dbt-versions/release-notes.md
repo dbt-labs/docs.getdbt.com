@@ -81,7 +81,7 @@ The full list lives in website/release-note-areas.json.
 - **Enhancement:** In <Constant name="wizard" /> Desktop, `/model` now explains that it lists your enabled models and adds a **Manage enabled models** option. The option opens the provider's model editor and returns you to `/model` without changing your active model.
 - **Enhancement:** If your dbt account can't use dbt-managed models, <Constant name="wizard" /> Desktop onboarding now tells you why and links to account settings. You can still continue or use your own API key.
 - **Enhancement:** In <Constant name="wizard" /> Desktop, lineage controls now sit in a toolbar on the graph, and the no-AI-access banner shrinks to a short resolved note once your access is restored.
-- **Enhancement:** Interrupted <Constant name="wizard" /> Desktop update downloads now retry up to three times. Signature checks are unchanged.
+- **Enhancement:** <Constant name="wizard" /> Desktop now retries interrupted update downloads up to three times. Signature checks are unchanged.
 - **Enhancement:** In <Constant name="wizard" /> Desktop, multi-question cards now open as a single paged card. Go back to change your answers, and submit multiple-choice responses with clearer inline controls.
 - **Enhancement:** In <Constant name="wizard" /> Desktop, the Inspector's **Checks** tab is now **CI checks**, so it's easier to tell apart from [dbt checks](/docs/build/checks).
 - **Fix:** With the <Constant name="platform_cli" />, the Catalog view in <Constant name="wizard" /> Desktop no longer re-runs its queries in a loop. The loop tied up the dbt session, blocked agent compiles and validation, and caused "Session occupied" errors. Catalog still refreshes after builds.
