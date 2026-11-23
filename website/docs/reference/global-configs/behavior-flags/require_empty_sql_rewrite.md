@@ -17,7 +17,7 @@ select my_table.col_a
 from {{ ref('my_table') }}
 ```
 
-By default, the [`--empty` flag](/docs/build/empty-flag) replaces every `ref()` and `source()` with an anonymous zero-row subquery, which drops the implicit alias. This produces invalid compiled SQL; the query fails at runtime because `my_table` no longer exists as a named relation.
+By default, the [`--empty` flag](/docs/build/empty-flag) replaces every `ref()` and `source()` with an anonymous zero-row subquery, which drops the implicit alias. The query then fails at runtime because `my_table` no longer exists as a named relation.
 
 When you set `require_empty_sql_rewrite` to `true`, dbt rewrites each `ref()`, `source()`, and `{{ this }}` into a named zero-row subquery that preserves the alias:
 
@@ -31,7 +31,7 @@ from (select * from my_table where false limit 0) as my_table
 
 If you write an explicit alias after the `ref()`, dbt preserves that instead.
 
-This flag works with all [v2 supported adapters](/docs/supported-data-platforms) except ClickHouse.
+This flag works with all [v2 supported adapters](/docs/supported-data-platforms) except ClickHouse. In a multi-adapter project, if the default adapter supports the rewrite but a model targets an unsupported adapter, dbt raises an `EmptyRewriteFailed` error.
 
 ## Limitations
 

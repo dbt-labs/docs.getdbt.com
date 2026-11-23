@@ -19,11 +19,13 @@ During dbt development, you might want to validate that your models are semantic
 
 The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
 
+<VersionBlock firstVersion="2.1">
+
 ### Implicit table aliases
 
 If your model references columns using the relation name (for example, `my_table.col_a`) without writing an explicit alias after the `ref()`, the default `--empty` behavior can cause a runtime error. This is because `--empty` wraps every `ref()` and `source()` in an anonymous subquery, which drops the implicit alias.
 
-Starting in <Constant name="fusion" /> v2.1, you can resolve this by enabling the [`require_empty_sql_rewrite`](/reference/global-configs/behavior-flags/require_empty_sql_rewrite) behavior flag in `dbt_project.yml`:
+You can resolve this by enabling the [`require_empty_sql_rewrite`](/reference/global-configs/behavior-flags/require_empty_sql_rewrite) behavior flag in `dbt_project.yml`:
 
 ```yaml
 flags:
@@ -31,6 +33,8 @@ flags:
 ```
 
 When you enable this flag, dbt rewrites each `ref()`, `source()`, and `{{ this }}` into a named zero-row subquery that preserves the alias. Refer to the [flag reference](/reference/global-configs/behavior-flags/require_empty_sql_rewrite) for more information.
+
+</VersionBlock>
 
 ### Examples
 
