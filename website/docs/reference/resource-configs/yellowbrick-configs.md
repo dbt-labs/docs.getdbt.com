@@ -4,6 +4,10 @@ description: "Yellowbrick Configurations: Read this in-depth guide to learn abou
 id: "yellowbrick-configs"
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="Yellowbrick" summary="incremental strategies, distribution and sort keys, and cross-database materializations." />
+
 ## Incremental materialization strategies
 
 The dbt-yellowbrick adapter supports the following incremental materialization strategies:

@@ -4,6 +4,8 @@ description: "Configure MindsDB-specific settings for dbt models, including auth
 id: "mindsdb-configs"
 ---
 
+This page covers how to connect to MindsDB in `profiles.yml`, and how to create a predictor in a model's `config()` block.
+
 ## Authentication
 
 To successfully connect dbt to MindsDB, you will need to provide the following configuration from the MindsDB instance.

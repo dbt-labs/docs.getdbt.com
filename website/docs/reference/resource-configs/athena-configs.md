@@ -4,6 +4,10 @@ description: "Reference article for the Amazon Athena adapter for dbt v1 and the
 id: "athena-configs"
 ---
 
+import PlatformConfigIntro from '/snippets/_platform-config-intro.md';
+
+<PlatformConfigIntro platform="Amazon Athena" summary="table storage, partitions, Iceberg, snapshots, Lake Formation tags, Python models, and contracts." />
+
 ## Models
 
 ### Table configuration
