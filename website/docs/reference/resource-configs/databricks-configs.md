@@ -607,7 +607,13 @@ dbt will run an [atomic `replace where` statement](https://docs.databricks.com/e
 
 :::caution
 
-In `dbt-databricks` v1.12.2 and later, `replace_where` inserts data by column name on SQL warehouses and Databricks Runtime 18.0 and above. On older runtimes, and in `dbt-databricks` v1.11.6 and earlier, `replace_where` inserts data by column position. If you reorder columns and the data is compatible with the existing schema, you may silently insert values into an unexpected column. If the incoming data is incompatible with the existing schema, you will instead receive an error.
+How `replace_where` matches columns depends on your `dbt-databricks` version and runtime:
+
+- v1.11.6 and earlier: Inserts data by column position.
+- v1.11.7 through v1.12.1: Inserts data by column name on SQL warehouses and Databricks Runtime 12.2 and above. On clusters running Databricks Runtime 12.2 to below 18.0, this fails with a syntax error when `incremental_predicates` are set. Upgrade to v1.12.2 or later.
+- v1.12.2 and later: Inserts data by column name on SQL warehouses and Databricks Runtime 18.0 and above. On older runtimes, inserts data by column position.
+
+When `replace_where` inserts by position, if you reorder columns and the data is compatible with the existing schema, you may silently insert values into an unexpected column. If the incoming data is incompatible with the existing schema, you will instead receive an error.
 
 :::
 
