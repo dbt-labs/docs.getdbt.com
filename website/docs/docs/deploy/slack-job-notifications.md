@@ -8,7 +8,7 @@ availability: platform_login
 
 Get job run updates from <Constant name="dbt_platform" /> in Slack. Choose which jobs to follow and send alerts to the public channels where your team works. Alerts show what happened and link to the run in <Constant name="dbt" />.
 
-<Lightbox src="/assets/slack-job-alert.jpg" title="The dbt platform app reports a successful daily revenue refresh in Slack and links to the job run." width="100%" />
+<Lightbox src="/assets/slack-job-alert.jpg" title="The dbt platform app reports a successful daily revenue refresh in Slack and links to the job run." width="592px" />
 
 ## Connect your Slack workspace
 
