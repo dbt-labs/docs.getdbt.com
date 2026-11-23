@@ -107,7 +107,7 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [
 2. Enter a project name and click **Continue**.
 3. Choose **Fabric** as your connection and click **Next**.
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock firstVersion="2.0">
 
 Choose how you want to connect:
 
@@ -157,7 +157,7 @@ OAuth works in development environments only. When you set up deployment jobs la
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock lastVersion="1.99">
 
 4. In the **Configure your environment** section, enter the **Settings** for your new project:
     - **Server** &mdash; Use the service principal's **host** value for the Fabric test endpoint. 
