@@ -13,7 +13,7 @@ In a non-interactive environment, dbt runs without a person available to complet
 
 dbt State automatically detects when it's running in a non-interactive environment. If valid credentials are not provided, dbt State disables itself and displays a warning, allowing your dbt commands to continue without caching.
 
-Running dbt in a non-interactive environment requires a service account token for authentication. A <Constant name="dbt_platform" /> account is required to generate a service token; if you don't have one yet, refer to [Set up dbt State](/docs/deploy/dbt-state-setup) to create a free account before proceeding.
+Running dbt in a non-interactive environment requires a service account token for authentication. A <Constant name="dbt_platform" /> account is required to generate a service token; if you don't have one yet, refer to [Set up dbt State](/docs/deploy/dbt-state-setup) to create an account before proceeding. All [dbt plans](https://www.getdbt.com/pricing) are supported.
 
 If you previously signed up for dbt State through the standalone app (`app.state.dbt.com`) and haven't migrated to <Constant name="dbt_platform" /> yet, refer to [OAuth client credentials](/docs/deploy/dbt-state-oauth).
 

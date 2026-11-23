@@ -11,6 +11,7 @@ import CopilotResources from '/snippets/_use-copilot-resources.md';
 import WizardIde from '/snippets/_wizard-ide.md';
 import WizardExploreUsage from '/snippets/_wizard-explore-usage.md';
 import WizardModelPicker from '/snippets/_wizard-model-picker.md';
+import WizardBackgroundChats from '/snippets/_wizard-background-chats.md';
 import WizardVideoCourse from '/snippets/_wizard-video-course.md';
 
 # dbt Wizard in Studio IDE <Lifecycle status="preview"/>
@@ -62,6 +63,10 @@ Explore mode queries with your personal warehouse credentials.
 In the <Constant name="studio_ide" />, the answer and its visualization appear inline in the <Constant name="wizard" /> panel alongside your project.
 
 <Lightbox src="/img/docs/dbt-platform/wizard-ide-explore-viz.png" width="100%" title="Explore mode in the Studio IDE, showing a chart and Chart/Table/SQL toggles in the dbt Wizard panel." />
+
+## Background chats
+
+<WizardBackgroundChats />
 
 ## Choose a model
 
