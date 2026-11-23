@@ -1,5 +1,5 @@
 - Eligible new organizations receive 30 days of free use with no usage limit.
-- To start a dbt State trial, you need a dbt account so you can manage dbt State usage, billing, and spend limits from one dashboard. A paid <Constant name="dbt_platform" /> plan is _not_ required to use dbt State locally. To start your trial, refer to the instructions in [Setting up dbt State](/docs/deploy/dbt-state-setup).
+- To start a dbt State trial, you need a dbt account so you can manage dbt State usage, billing, and spend limits from one dashboard. dbt State can be used locally across [all dbt plans](https://www.getdbt.com/pricing). To start your trial, refer to the instructions in [Setting up dbt State](/docs/deploy/dbt-state-setup).
 - Once started, you cannot pause the trial.
 - Seven days before your trial ends, your admin gets an email with what's coming: the trial end date, the monthly DATT allowance your account will receive, and how to upgrade if needed.
 - The [free monthly DATT allowance](#free-monthly-datt-allowance) includes a set amount of daily active target tables for your account. The allowance amount and what happens when you reach the limit depend on your plan.

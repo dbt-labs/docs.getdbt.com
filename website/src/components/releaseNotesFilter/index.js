@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useHistory, useLocation } from '@docusaurus/router';
 import areaList from '@site/release-note-areas.json';
 import styles from './styles.module.css';
 
@@ -21,6 +22,20 @@ const byName = (a, b) => a.localeCompare(b, 'en', { sensitivity: 'base' });
 const ALL = 'All';
 const ANNOUNCEMENTS = 'Announcements';
 const OTHER = 'Other';
+
+// The selected area is kept in the URL (`?area=studio-ide`), so the browser's
+// Back button, a reload, or a shared link returns to the same filter.
+const AREA_PARAM = 'area';
+const toSlug = (name) =>
+  name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+const areaFromSearch = (search, areas) => {
+  const slug = new URLSearchParams(search).get(AREA_PARAM);
+  if (!slug) return null;
+  return [...areas, OTHER].find((area) => toSlug(area) === slug.toLowerCase()) || null;
+};
 
 // Weekly layout (single-tenant page): other headings that mean the same area.
 const AREA_LOOKUP = areaList.areas.reduce((lookup, area) => {
@@ -207,6 +222,15 @@ export default function ReleaseNotesFilter({
   const [present, setPresent] = useState([]);
   const [moreOpen, setMoreOpen] = useState(false);
   const moreRef = useRef(null);
+  const history = useHistory();
+  const location = useLocation();
+
+  // Read the selected area from the URL. This runs after the first render, so
+  // the server-rendered HTML (which has no query string) still matches.
+  useEffect(() => {
+    const area = areaFromSearch(location.search, areas);
+    setSelected(area ? [area] : []);
+  }, [location.search, areas]);
 
   // Close the Filters menu on an outside click or Escape.
   useEffect(() => {
@@ -264,10 +288,18 @@ export default function ReleaseNotesFilter({
     return () => root && apply(root, []);
   }, [areas, weekly]);
 
-  // One area at a time. "All" clears the selection.
+  // One area at a time. "All" clears the selection. The choice goes in the URL
+  // with `replace`, so each click doesn't add a step to the Back button.
   const pick = (name) => {
     setSelected(name === ALL ? [] : [name]);
     setMoreOpen(false);
+    // Start from the browser's URL, not the router's: other scripts add their
+    // own parameters (such as `version`) that the router doesn't know about.
+    const { pathname, search, hash } = window.location;
+    const params = new URLSearchParams(search);
+    if (name === ALL) params.delete(AREA_PARAM);
+    else params.set(AREA_PARAM, toSlug(name));
+    history.replace({ pathname, search: params.toString(), hash });
   };
   const isOn = (name) => (name === ALL ? selected.length === 0 : selected.includes(name));
 
