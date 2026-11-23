@@ -121,7 +121,7 @@ The full list lives in website/release-note-areas.json.
 
 #### Integrations {#integrations-november-2026}
 
-- **New:** Developers on Enterprise and Enterprise+ plans can now sign in to Microsoft Fabric with their own Microsoft Entra account using OAuth, instead of a service principal or password. OAuth works in development environments. Refer to [Microsoft Entra ID OAuth](/docs/platform/connect-data-platform/connect-microsoft-fabric#microsoft-entra-id-oauth).
+- **New:** Developers on Enterprise and Enterprise+ plans can now sign in to Microsoft Fabric with their own Microsoft Entra account using OAuth, instead of a service principal or password. OAuth works in development environments on dbt v1. Refer to [Microsoft Entra ID OAuth](/docs/platform/connect-data-platform/connect-microsoft-fabric?version=1.12#microsoft-entra-id-oauth).
 
 #### dbt v2 {#dbt-v2-november-2026}
 
