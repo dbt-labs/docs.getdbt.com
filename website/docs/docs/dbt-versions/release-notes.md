@@ -62,6 +62,7 @@ The full list lives in website/release-note-areas.json.
 
 ##### Wizard
 
+- **New:** <Constant name="wizard" /> chats in the home tab and <Constant name="studio_ide" /> now run in the background. Switch tabs or close the page and <Constant name="wizard" /> keeps working. Reopen the chat from your chat history to see the result. Each chat shows a status indicator (running, unread, idle, done, waiting for input, or failed), so you can run several chats at once in any mode. Refer to [Background chats](/docs/platform/wizard-home#background-chats).
 - **New:** In the <Constant name="studio_ide" />, <Constant name="wizard" /> Desktop, and the Wizard CLI, <Constant name="wizard" /> uses [MetricFlow](/docs/build/about-metricflow) to build the SQL for a metric from the metric definition, including its filters. In the <Constant name="wizard" /> CLI and Wizard Desktop, it runs that SQL in your warehouse. The SQL is written in that warehouse's syntax on Snowflake, BigQuery, Redshift, Databricks, and DuckDB. On other warehouses, such as Postgres, the SQL is written for DuckDB and may not run unchanged. Refer to [How dbt Wizard queries metrics](/docs/dbt-ai/wizard-how-it-works#how-dbt-wizard-queries-metrics).
 - **New:** Use the **Legacy dbt versions** dashboard in **Account settings** to find every project, environment, and job still on a legacy dbt version, upgrade a project's code with **Upgrade with dbt Wizard** when <Constant name="wizard" /> is available to you, and move environments and jobs to the **v1 Latest** release track. You can also export the environment list as a CSV file and see when each environment and job last ran. Refer to [Migrate off legacy dbt versions](/guides/migrate-off-legacy-dbt-versions).
 - **New:** Use Claude Haiku 5.5 and Claude Sonnet 5.5 through Databricks in <Constant name="wizard" />.
@@ -81,14 +82,33 @@ The full list lives in website/release-note-areas.json.
 
 ##### Wizard Desktop
 
+- **New:** <Constant name="wizard" /> Desktop now names the git branch and environment for a new chat after the task, like `fix-orders-test`, instead of a random two-word name. Refer to [Worktree and schema names](/docs/dbt-ai/wizard-desktop-use#worktree-and-schema-names).
+- **New:** In <Constant name="wizard" /> Desktop, set a default base branch for each project in project settings. Choose a local or remote branch, and every new chat environment starts from it and compares against it. If that branch is no longer available, <Constant name="wizard" /> stops and shows recovery steps instead of quietly using another branch.
+- **New:** In <Constant name="wizard" /> Desktop, use the chat menu and click the ellipsis to copy a session ID or export the conversation as JSON, including its available tool details. You review the export before you choose where to save it.
+- **New:** In <Constant name="wizard" /> Desktop, filter the Inspector lineage graph with dbt [selectors](/reference/node-selection/syntax), show test resources on demand, and send column-lineage questions to chat.
 - **New:** In <Constant name="wizard" /> Desktop, you can edit existing text files in the [Explorer](/docs/dbt-ai/wizard-desktop-use). Select **Save** or press <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>S</kbd>. Edits save to a separate copy of your project, not your original files, and unsaved drafts persist after you navigate away or restart.
 - **New:** In <Constant name="wizard" /> Desktop, switch between local dbt profiles and the <Constant name="platform_cli" /> from the connection menu. <Constant name="wizard" /> remembers your choice, even for projects linked to <Constant name="dbt_platform" />.
 - **New:** In the <Constant name="wizard" /> Desktop lineage view, right-click a model to copy its name, add it to chat, open its code, or view its diff. The actions you see depend on the model and the view you're in.
+- **Enhancement:** New chats in <Constant name="wizard" /> Desktop start faster. <Constant name="wizard" /> prepares the chat's environment as soon as you open it, so setup finishes while you're still typing. New environments also reuse the dbt packages already installed in your main checkout, so the first parse needs no download. Turn this on or off in **Settings** → [**General**](/docs/dbt-ai/wizard-desktop-settings#general).
+- **Enhancement:** In <Constant name="wizard" /> Desktop, `/model` now explains that it lists your enabled models and adds a **Manage enabled models** option. The option opens the provider's model editor and returns you to `/model` without changing your active model.
+- **Enhancement:** If your dbt account can't use dbt-managed models, <Constant name="wizard" /> Desktop onboarding now tells you why and links to account settings. You can still continue or use your own API key.
+- **Enhancement:** In <Constant name="wizard" /> Desktop, lineage controls now sit in a toolbar on the graph, and the no-AI-access banner shrinks to a short resolved note once your access is restored.
+- **Enhancement:** <Constant name="wizard" /> Desktop now retries interrupted update downloads up to three times. Signature checks are unchanged.
 - **Enhancement:** In <Constant name="wizard" /> Desktop, multi-question cards now open as a single paged card. Go back to change your answers, and submit multiple-choice responses with clearer inline controls.
 - **Enhancement:** In <Constant name="wizard" /> Desktop, the Inspector's **Checks** tab is now **CI checks**, so it's easier to tell apart from [dbt checks](/docs/build/checks).
+- **Fix:** With the <Constant name="platform_cli" />, the Catalog view in <Constant name="wizard" /> Desktop no longer re-runs its queries in a loop. The loop tied up the dbt session, blocked agent compiles and validation, and caused "Session occupied" errors. Catalog still refreshes after builds.
+- **Fix:** Automatic deferral in <Constant name="wizard" /> Desktop now matches the dbt executable you select, including a manually chosen <Constant name="platform_cli" /> path. It also keeps deferral settings you change while a chat is starting.
+- **Fix:** Renaming and restoring environments in <Constant name="wizard" /> Desktop keeps them on their original schema after project deferral changes. This includes quoted or unquoted Jinja schemas and targets without a schema.
+- **Fix:** When you or the agent rename a branch in the terminal, <Constant name="wizard" /> Desktop updates the environment's name and stored branch to match.
+- **Fix:** <Constant name="wizard" /> Desktop setup now uses your working copy, so files like `requirements.txt` reflect your local, uncommitted changes.
+- **Fix:** In <Constant name="wizard" /> Desktop, MCP servers such as Atlassian v2 now sign you in through the correct authorization server, and custom MCP headers are no longer sent to separate OAuth providers. If a server keeps asking you to sign in, sign out of it once and sign in again.
+- **Fix:** Valid Snowflake Cortex credentials no longer fail the credential check in <Constant name="wizard" /> Desktop with an HTTP 400 error.
+- **Fix:** In <Constant name="wizard" /> Desktop, CLI warehouse queries that return mixed numeric results no longer fail with Arrow buffer alignment errors.
+- **Fix:** Lineage nodes in <Constant name="wizard" /> Desktop stay clickable in compact Inspector panes.
 - **Fix:** Signing out of your AI model account in <Constant name="wizard" /> Desktop no longer switches you to another account. Pick a replacement, or sign out without switching. Your other signed-in accounts still work for your profile and dbt tools.
 - **Fix:** Failed Explorer saves in <Constant name="wizard" /> Desktop keep your draft, and a save no longer overwrites changes made outside <Constant name="wizard" />. Existing chats also keep working after you switch environments.
 - **Fix:** The lineage graph in <Constant name="wizard" /> Desktop no longer jumps around when your project refreshes, and model actions and right-click menus are more reliable.
+- **Behavior change:** In <Constant name="wizard" /> Desktop, package installs no longer wait on setup. The agent runs `dbt deps` when a task needs it, without asking for approval. Every other dbt command still asks.
 
 #### Studio IDE {#studio-ide-november-2026}
 
@@ -116,7 +136,12 @@ The full list lives in website/release-note-areas.json.
 - **Fix:** When an account had more than 1,000 groups, some of a user's assigned [groups](/docs/platform/manage-access/about-user-access#groups) were missing from the user details view. All assigned groups now appear checked. Saving with `POST /api/v3/accounts/{id}/assign-groups/` also keeps the full list of groups.
 - **Fix:** Creating or updating an [IP restriction](/docs/platform/secure/ip-restrictions) with a missing or invalid `type` now returns a 400 error (the request was invalid) and a message that describes the problem, instead of a 500 server error. A missing `name` is rejected with a 400 error too. Before this fix, dbt saved that missing name as the word None.
 - **Fix:** Accounts on the usage plan can now complete the upgrade to [Starter](/docs/platform/billing/plans-and-billing#starter-plan-billing) without the checkout spinning indefinitely. The purchase button stays available when a card is already on file.
+- **Behavior change:** When creating a personal access token (PAT) using the [Create Account Scoped PAT](/dbt-cloud/api-v3#/operations/Create%20Account%20Scoped%20PAT) endpoint, you can now choose between two token types in the optional `type` field: `1` for a CLI token or `2` for a general token. Values other than `1` or `2` will return a `400` error, and no token will be created. Validation error messages now appear in `data` instead of `status.user_message`.
 - **Behavior change:** On [Admin API v2](/dbt-cloud/api-v2#/operations/List%20Repositories) and [Admin API v3](/dbt-cloud/api-v3#/operations/List%20Repositories) of the repositories API, `full_name` and `web_url` are now taken from the repository's web address. `full_name` is deprecated. The API no longer returns a custom `full_name` you set earlier.
+
+#### Integrations {#integrations-november-2026}
+
+- **Beta:** Bringing your own [custom GitHub application](/docs/platform/git/connect-github#custom-github-application) is now in beta and available to all Enterprise and Enterprise+ accounts. You no longer need to contact your account manager for access. Use it to natively connect GitHub Enterprise Server or GitHub with EU data residency, instead of a git URL and SSH.
 
 #### dbt v2 {#dbt-v2-november-2026}
 
@@ -211,7 +236,7 @@ The full list lives in website/release-note-areas.json.
 
 - **New:** Billing admins now receive proactive email notifications about dbt State usage, including a warning at 80% of the monthly allowance (with a projected run-out date), a notification when the allowance is fully used and State is paused, and a reminder 7 days before a trial expires. All emails include plan-specific messaging and calls to action.
 - **New:** dbt State trial and DATT allowance updates:
-  - **New:** Self-hosted dbt users using dbt State now get a free plan after their trial ends, with 1,000 daily active target tables (DATT) per month at no cost. Developer and paid <Constant name="dbt_platform" /> accounts also receive a monthly DATT allowance, with amounts and availability varying by plan. For more information, refer to [dbt State usage](/docs/platform/billing/dbt-state-usage).
+  - **New:** Self-hosted dbt users using dbt State now get a free plan after their trial ends, with 1,000 daily active target tables (DATT) per month at no cost. [All dbt plans](https://www.getdbt.com/pricing) also receive a monthly DATT allowance, with amounts and availability varying by plan. For more information, refer to [dbt State usage](/docs/platform/billing/dbt-state-usage).
   - **New:** When your dbt State trial ends, you’ll receive an email confirming your plan, monthly DATT allowance, and allowance end date if your plan has one.
   - **New:** If your dbt State trial has ended, dbt State is now active again on your account with your plan’s free monthly DATT allowance. No action is required.
 - **Enhancement:** The dbt State usage graph now includes a dropdown to select the reporting period: this month, previous month, last 30 days, last 60 days, or last 90 days. The chart x-axis also shows month abbreviations when the selected range spans multiple months.
