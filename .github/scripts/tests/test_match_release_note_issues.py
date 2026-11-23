@@ -18,6 +18,7 @@ from match_release_note_issues import (  # noqa: E402
     DocsCommitInfo,
     extract_source_pr,
     is_release_note_issue,
+    load_st_pr_map,
     parse_mt_bullets,
     parse_st_patch_entries,
     score_issue,
@@ -297,6 +298,53 @@ class ReleaseNoteMatcherTest(unittest.TestCase):
 
         self.assertEqual(res_invite.match, "none")
         self.assertNotEqual(res_page.match, "high")
+
+    def test_load_st_pr_map_paginates_beyond_first_page(self):
+        page_1_files = [{"filename": f"docs/other-{idx}.md", "patch": "@@ -1 +1 @@\n+noop"} for idx in range(100)]
+        page_2_files = [{"filename": "docs/single-tenant/release-notes-v2.md", "patch": ST_PATCH_SAMPLE}]
+
+        def fake_gh_api(_token: str, path: str):
+            if "/pulls?state=all" in path:
+                return [{"number": 2879, "head": {"ref": "st-release-notes-v2-2026-11-23"}}]
+            if "&page=1" in path:
+                return page_1_files
+            if "&page=2" in path:
+                return page_2_files
+            return []
+
+        with patch("match_release_note_issues.gh_api", side_effect=fake_gh_api):
+            st_map = load_st_pr_map("fake-token", "dbt-labs/docs-internal", st_pr_limit=5)
+
+        self.assertIn("https://github.com/dbt-labs/dbt-cloud/pull/19870", st_map)
+
+    def test_st_bridge_continues_after_older_month_candidate_rejected(self):
+        issue = _make_issue(
+            number=2881,
+            title="Release Note: Changes from dbt-cloud PR #19870",
+            repo="dbt-labs/dbt-cloud",
+            pr_number=19870,
+            summary=(
+                "Repository API responses now consistently populate `full_name` and `web_url` "
+                "from `remote_url` across all Git providers instead of only when legacy "
+                "provider metadata objects exist, and `full_name` is now marked deprecated."
+            ),
+            created_at="2026-11-17T06:00:00Z",
+        )
+        # First ST candidate matches the September 2026 invite bullet (predates Nov issue),
+        # while the issue itself genuinely matches the November 2026 Repository API bullet.
+        stale_first_map = {
+            "https://github.com/dbt-labs/dbt-cloud/pull/19870": [
+                (
+                    2600,
+                    "POST /api/v2/accounts/{account_id}/invites/ and POST /api/v3/accounts/{account_id}/invites/ are now blocked for service tokens and account-scoped personal access tokens, returning HTTP 403.",
+                ),
+            ]
+        }
+        with patch("match_release_note_issues.find_docs_commit", return_value=self.nov_commit):
+            res = score_issue(issue, self.bullets, Path("release-notes.md"), st_pr_map=stale_first_map)
+
+        self.assertEqual(res.match, "high")
+        self.assertIn("full_name", res.snippet)
 
 
 if __name__ == "__main__":

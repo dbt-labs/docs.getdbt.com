@@ -726,11 +726,25 @@ def load_st_pr_map(token: str, issues_repo: str, st_pr_limit: int) -> dict[str, 
         pr_number = pr.get("number")
         if not pr_number:
             continue
-        try:
-            files = gh_api(token, f"/repos/{owner}/{name}/pulls/{pr_number}/files?per_page=10")
-        except RuntimeError:
-            continue
-        if not isinstance(files, list):
+        files: list[dict] = []
+        page = 1
+        fetch_failed = False
+        while page <= 10:
+            try:
+                page_files = gh_api(
+                    token,
+                    f"/repos/{owner}/{name}/pulls/{pr_number}/files?per_page=100&page={page}",
+                )
+            except RuntimeError:
+                fetch_failed = True
+                break
+            if not isinstance(page_files, list) or not page_files:
+                break
+            files.extend(page_files)
+            if len(page_files) < 100:
+                break
+            page += 1
+        if fetch_failed and not files:
             continue
         for file_obj in files:
             patch = file_obj.get("patch") or ""
@@ -742,30 +756,37 @@ def load_st_pr_map(token: str, issues_repo: str, st_pr_limit: int) -> dict[str, 
     return combined
 
 
-def match_st_entry_to_mt(st_body: str, bullets: list[ReleaseNoteBullet]) -> ReleaseNoteBullet | None:
+def match_st_candidates_to_mt(st_body: str, bullets: list[ReleaseNoteBullet]) -> list[ReleaseNoteBullet]:
     st_plain = normalize_plain(st_body)
     st_words = tokenize_content(st_plain)
     if len(st_words) < 4:
-        return None
+        return []
     st_word_set = set(st_words)
 
-    best_bullet: ReleaseNoteBullet | None = None
-    best_ratio = 0.0
-    for bullet in bullets:
+    exact_hits: list[ReleaseNoteBullet] = []
+    fuzzy_hits: list[tuple[float, int, ReleaseNoteBullet]] = []
+    for idx, bullet in enumerate(bullets):
         if len(st_plain) >= 30 and st_plain in bullet.plain:
-            return bullet
+            exact_hits.append(bullet)
+            continue
         # Check tail substring in case only the opening subject changed during ST->MT sync
         if len(st_plain) >= 50 and st_plain[20:] in bullet.plain:
-            return bullet
+            exact_hits.append(bullet)
+            continue
         mt_word_set = set(bullet.content_words)
         shared = st_word_set & mt_word_set
         if len(shared) < min(5, len(st_word_set)):
             continue
         ratio = len(shared) / max(1, len(st_word_set))
-        if ratio >= 0.65 and ratio > best_ratio:
-            best_ratio = ratio
-            best_bullet = bullet
-    return best_bullet
+        if ratio >= 0.65:
+            fuzzy_hits.append((ratio, -idx, bullet))
+    fuzzy_hits.sort(reverse=True)
+    return exact_hits + [bullet for _, _, bullet in fuzzy_hits]
+
+
+def match_st_entry_to_mt(st_body: str, bullets: list[ReleaseNoteBullet]) -> ReleaseNoteBullet | None:
+    candidates = match_st_candidates_to_mt(st_body, bullets)
+    return candidates[0] if candidates else None
 
 
 def candidate_clauses(summary: str | None, customer_visible: str | None, key_changes: list[str]) -> list[str]:
@@ -996,15 +1017,16 @@ def score_issue(
     # Layer 1: Exact source PR link via st-release-notes-v2-* PRs, verified in MT file.
     source_pr = extract_source_pr(issue, parsed)
     if source_pr and st_pr_map and source_pr in st_pr_map:
+        short_pr = source_pr.replace("https://github.com/dbt-labs/", "")
         for st_pr_num, st_body in st_pr_map[source_pr]:
-            mt_bullet = match_st_entry_to_mt(st_body, bullets)
-            if mt_bullet is not None:
-                short_pr = source_pr.replace("https://github.com/dbt-labs/", "")
-                return finalize(
+            for mt_bullet in match_st_candidates_to_mt(st_body, bullets):
+                res = finalize(
                     "high",
                     mt_bullet,
                     f"matched {short_pr} via ST release notes PR #{st_pr_num}",
                 )
+                if res.match != "none":
+                    return res
 
     # Layer 2: Known phrases, normalized clauses (>= 35 chars), and 6-word content n-grams.
     issue_texts = [t for t in [summary, customer_visible, *key_changes] if t]
@@ -1046,10 +1068,10 @@ def score_issue(
     primary_stems = distinctive_stems(primary_plain)
     all_stems = distinctive_stems(all_plain)
 
-    best_high: tuple[float, ReleaseNoteBullet, str] | None = None
-    best_medium: tuple[float, ReleaseNoteBullet, str] | None = None
+    high_candidates: list[tuple[float, int, ReleaseNoteBullet, str]] = []
+    medium_candidates: list[tuple[float, int, ReleaseNoteBullet, str]] = []
 
-    for bullet in bullets:
+    for idx, bullet in enumerate(bullets):
         if bullet_predates_issue_month(issue, bullet):
             continue
         shared_code = issue_code & bullet.code_tokens
@@ -1068,8 +1090,7 @@ def score_issue(
             score = len(shared_code) * 3 + len(shared_all)
             code_list = ", ".join(sorted(shared_code)[:3])
             reason = f"matched code identifiers ({code_list}) + {len(shared_all)} shared terms"
-            if best_high is None or score > best_high[0]:
-                best_high = (score, bullet, reason)
+            high_candidates.append((score, -idx, bullet, reason))
             continue
 
         # High 3b: 1 shared distinctive code token + strong plain-English context overlap
@@ -1077,8 +1098,7 @@ def score_issue(
             code_tok = next(iter(shared_code))
             score = 4 + len(shared_all) + overlap_ratio
             reason = f"matched `{code_tok}` + {len(shared_all)} shared terms"
-            if best_high is None or score > best_high[0]:
-                best_high = (score, bullet, reason)
+            high_candidates.append((score, -idx, bullet, reason))
             continue
 
         # High 3c: Plain-English rewrite without backticked code overlap (for example UI copy fixes).
@@ -1094,8 +1114,7 @@ def score_issue(
             score = len(shared_all) + overlap_ratio
             sample = ", ".join(sorted(shared_all)[:5])
             reason = f"plain-English overlap ({len(shared_all)} terms: {sample})"
-            if best_high is None or score > best_high[0]:
-                best_high = (score, bullet, reason)
+            high_candidates.append((score, -idx, bullet, reason))
             continue
 
         # Medium candidates for human review
@@ -1103,22 +1122,22 @@ def score_issue(
             code_list = ", ".join(sorted(shared_code)[:2])
             score = len(shared_code) * 2 + len(shared_all)
             reason = f"partial overlap `{code_list}` ({len(shared_all)} shared terms)"
-            if best_medium is None or score > best_medium[0]:
-                best_medium = (score, bullet, reason)
+            medium_candidates.append((score, -idx, bullet, reason))
         elif len(shared_all) >= 5 and overlap_ratio >= 0.40:
             sample = ", ".join(sorted(shared_all)[:4])
             score = len(shared_all) + overlap_ratio
             reason = f"partial plain-English overlap ({len(shared_all)} terms: {sample})"
-            if best_medium is None or score > best_medium[0]:
-                best_medium = (score, bullet, reason)
+            medium_candidates.append((score, -idx, bullet, reason))
 
-    if best_high is not None:
-        res = finalize("high", best_high[1], best_high[2])
+    high_candidates.sort(reverse=True)
+    for _, _, cand_bullet, cand_reason in high_candidates:
+        res = finalize("high", cand_bullet, cand_reason)
         if res.match != "none":
             return res
 
-    if best_medium is not None:
-        res = finalize("medium", best_medium[1], best_medium[2])
+    medium_candidates.sort(reverse=True)
+    for _, _, cand_bullet, cand_reason in medium_candidates:
+        res = finalize("medium", cand_bullet, cand_reason)
         if res.match != "none":
             return res
 
