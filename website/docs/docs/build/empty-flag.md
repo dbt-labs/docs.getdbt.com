@@ -25,14 +25,14 @@ The `--empty` flag limits the refs and sources to zero rows. dbt will still exec
 
 If your model references columns using the relation name (for example, `my_table.col_a`) without writing an explicit alias after the `ref()`, the default `--empty` behavior can cause a runtime error. This is because `--empty` wraps every `ref()` and `source()` in an anonymous subquery, which drops the implicit alias.
 
-You can resolve this by enabling the [`require_empty_sql_rewrite`](/reference/global-configs/behavior-flags/require_empty_sql_rewrite) behavior flag in `dbt_project.yml`:
+You can resolve this by enabling the [`use_v2_empty_sql_rewrite`](/reference/global-configs/behavior-flags/use_v2_empty_sql_rewrite) behavior flag in `dbt_project.yml`:
 
 ```yaml
 flags:
-  require_empty_sql_rewrite: true
+  use_v2_empty_sql_rewrite: true
 ```
 
-When you enable this flag, dbt rewrites each `ref()`, `source()`, and `{{ this }}` into a named zero-row subquery that preserves the alias. Refer to the [flag reference](/reference/global-configs/behavior-flags/require_empty_sql_rewrite) for more information.
+When you enable this flag, dbt rewrites each `ref()`, `source()`, and `{{ this }}` into a named zero-row subquery that preserves the alias. Refer to the [flag reference](/reference/global-configs/behavior-flags/use_v2_empty_sql_rewrite) for more information.
 
 </VersionBlock>
 

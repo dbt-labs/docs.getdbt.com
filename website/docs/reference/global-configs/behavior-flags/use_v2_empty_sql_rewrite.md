@@ -1,10 +1,10 @@
 ---
 title: "Implicit table alias rewrite for --empty"
-id: "require_empty_sql_rewrite"
-sidebar_label: "require empty SQL rewrite"
+id: "use_v2_empty_sql_rewrite"
+sidebar_label: "use v2 empty SQL rewrite"
 ---
 
-| require_empty_sql_rewrite | <Constant name="fusion" /> |
+| use_v2_empty_sql_rewrite | <Constant name="fusion" /> |
 |---|---|
 | Introduced | TBD |
 | Matured (default → `true`) | — |
@@ -19,13 +19,13 @@ from {{ ref('my_table') }}
 
 By default, the [`--empty` flag](/docs/build/empty-flag) replaces every `ref()` and `source()` with an anonymous zero-row subquery, which drops the implicit alias. The query then fails at runtime because `my_table` no longer exists as a named relation.
 
-When you set `require_empty_sql_rewrite` to `true`, dbt rewrites each `ref()`, `source()`, and `{{ this }}` into a named zero-row subquery that preserves the alias:
+When you set `use_v2_empty_sql_rewrite` to `true`, dbt rewrites each `ref()`, `source()`, and `{{ this }}` into a named zero-row subquery that preserves the alias:
 
 ```sql
 -- before rewrite (default --empty behavior)
 from (select * from my_table where false limit 0)
 
--- after rewrite (require_empty_sql_rewrite: true)
+-- after rewrite (use_v2_empty_sql_rewrite: true)
 from (select * from my_table where false limit 0) as my_table
 ```
 
