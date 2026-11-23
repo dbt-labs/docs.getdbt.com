@@ -70,7 +70,7 @@ How you update the redirect URI depends on your Git provider:
 - **GitLab:** Account admins can update an existing GitLab application to your new access URL in <Constant name="dbt_platform" />. See [Update redirect URIs in dbt platform](#update-redirect-uris-in-dbt-platform).
 - **Azure DevOps:** You can't yet update an existing integration's redirect URI in <Constant name="dbt_platform" />. Instead, recreate the integration to generate a redirect URI based on your new access URL. Recreating the integration disconnects your existing project repository connections, and every developer needs to reauthenticate with Azure DevOps.
 
-For Azure DevOps, add these **Web** redirect URIs to your Microsoft Entra ID app registration, alongside the existing ones. Replace `YOUR_ACCESS_URL` with your new access URL:
+For Azure DevOps, add these **Web** redirect URIs to your Microsoft Entra ID app registration, alongside the existing ones. Replace `YOUR_ACCESS_URL` with your new access URL. To find it, see [Accessing your account](/docs/platform/about-platform/access-regions-ip-addresses#accessing-your-account):
 
 - `https://YOUR_ACCESS_URL/complete/azure_active_directory`
 - `https://YOUR_ACCESS_URL/complete/azure_active_directory_service_user`
