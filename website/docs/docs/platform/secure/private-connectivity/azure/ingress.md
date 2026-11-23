@@ -32,23 +32,23 @@ This guide uses two roles, matching the Azure Private Link model:
 
 ## Access URL naming convention
 
-Single-tenant ingress uses an access URL of the form `<account_prefix>.<routing>.dbt.com`, where `<account_prefix>` identifies your account and `<routing>` is the routing label for your instance. <Constant name="dbt" /> gives you both values. The same access URL works over the public internet and over Private Link: inside the virtual network that has your private DNS zone, it resolves to your private endpoint, and everywhere else it resolves publicly.
+Single-tenant ingress uses an access URL of the form `<account_prefix>.<instance_label>.dbt.com`, where `<account_prefix>` identifies your account and `<instance_label>` identifies your single-tenant instance. <Constant name="dbt" /> gives you both values. The same access URL works over the public internet and over Private Link: inside the virtual network that has your private DNS zone, it resolves to your private endpoint, and everywhere else it resolves publicly.
 
-Product subdomains sit to the left of the routing label, so each account has three hostnames:
+Product subdomains sit to the left of the instance label, so each account has three hostnames:
 
 | Hostname | Used for |
 |----------|----------|
-| `<account_prefix>.<routing>.dbt.com` | The <Constant name="dbt_platform" /> application and APIs |
-| `<account_prefix>.metadata.<routing>.dbt.com` | The Discovery (metadata) API |
-| `<account_prefix>.semantic-layer.<routing>.dbt.com` | The Semantic Layer |
+| `<account_prefix>.<instance_label>.dbt.com` | The <Constant name="dbt_platform" /> application and APIs |
+| `<account_prefix>.metadata.<instance_label>.dbt.com` | The Discovery (metadata) API |
+| `<account_prefix>.semantic-layer.<instance_label>.dbt.com` | The Semantic Layer |
 
-Unlike some Private Link services, Azure doesn't create DNS records for a custom domain automatically. You create a private DNS zone named `<routing>.dbt.com` and add one record per hostname (see [Step 4](#step-4-create-the-private-dns-zone) and [Step 5](#step-5-add-a-record-for-each-hostname)).
+Unlike some Private Link services, Azure doesn't create DNS records for a custom domain automatically. You create a private DNS zone named `<instance_label>.dbt.com` and add one record per hostname (see [Step 4](#step-4-create-the-private-dns-zone) and [Step 5](#step-5-add-a-record-for-each-hostname)).
 
 ## Prerequisites
 
 - A single-tenant <Constant name="dbt_platform" /> instance with ingress Private Link enabled by <Constant name="dbt" />.
 - The **Private Link service resource ID or alias** for your instance, provided by dbt (for example, `<service_name>.<guid>.<region>.azure.privatelinkservice`).
-- Your **access URL** (`<account_prefix>.<routing>.dbt.com`).
+- Your **access URL** (`<account_prefix>.<instance_label>.dbt.com`).
 - The **Azure subscription ID** where you create the private endpoint, shared with your dbt Labs account team beforehand. <Constant name="dbt" /> must allow your subscription to connect to the service before you can create the endpoint; if it isn't allowed, Azure rejects the request with a message that the Private Link service doesn't exist or isn't visible.
 - An Azure virtual network and subnet where workloads that call <Constant name="dbt" /> run (or that your on-premises network can reach).
 - Permissions in your subscription to create private endpoints, private DNS zones, virtual network links and DNS records.
@@ -95,7 +95,7 @@ The endpoint's **Connection status** shows **Pending** until <Constant name="dbt
 ### Step 4: Create the private DNS zone
 
 1. In the Azure portal, go to **Private DNS zones** and select **Create**.
-2. Enter `<routing>.dbt.com` as the zone **Name**, using the routing label <Constant name="dbt" /> gave you. Don't include the account prefix.
+2. Enter `<instance_label>.dbt.com` as the zone **Name**, using the instance label <Constant name="dbt" /> gave you. Don't include the account prefix.
 3. After the zone is created, open it and go to **DNS Management → Virtual Network Links**.
 4. Select **Add**, choose the virtual network that contains your endpoint and workloads, and leave **Enable auto registration** cleared.
 
@@ -116,7 +116,7 @@ In the zone, go to **DNS Management → Recordsets** and add three **A** records
 <Lightbox src="/img/docs/dbt-platform/azure-ingress-privatelink/zone-recordsets.png" title="Recordsets page showing three A records for the account prefix, metadata and semantic-layer hostnames"/>
 
 :::warning Add a record for every hostname you use
-A private DNS zone takes over resolution for its whole name inside the linked virtual network. Azure doesn't fall back to public DNS for a name under `<routing>.dbt.com` that has no record in the zone, so that name fails to resolve. Create explicit records for each hostname your workloads call, as shown above.
+A private DNS zone takes over resolution for its whole name inside the linked virtual network. Azure doesn't fall back to public DNS for a name under `<instance_label>.dbt.com` that has no record in the zone, so that name fails to resolve. Create explicit records for each hostname your workloads call, as shown above.
 :::
 
 ### Step 6: (Optional) Configure DNS for on-premises access
@@ -134,15 +134,15 @@ From a machine inside a linked virtual network, confirm that:
 1. Your access URL resolves to the endpoint's _private_ IP address, not a public address.
 
    ```shell
-   nslookup <account_prefix>.<routing>.dbt.com
+   nslookup <account_prefix>.<instance_label>.dbt.com
    ```
 
 2. The TLS handshake succeeds and the certificate verifies for your access URL.
 
    ```shell
-   openssl s_client -connect <account_prefix>.<routing>.dbt.com:443 \
-     -servername <account_prefix>.<routing>.dbt.com \
-     -verify_hostname <account_prefix>.<routing>.dbt.com </dev/null | grep "Verify return code"
+   openssl s_client -connect <account_prefix>.<instance_label>.dbt.com:443 \
+     -servername <account_prefix>.<instance_label>.dbt.com \
+     -verify_hostname <account_prefix>.<instance_label>.dbt.com </dev/null | grep "Verify return code"
    ```
 
    A healthy handshake prints `Verify return code: 0 (ok)`.
