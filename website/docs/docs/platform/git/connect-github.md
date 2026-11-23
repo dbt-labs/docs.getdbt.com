@@ -75,7 +75,7 @@ If you are your GitHub organization owner, you can also configure the <Constant 
 
 :::info Custom GitHub applications use Fivetran release phases
 
-Custom GitHub application is in Beta and uses the [Fivetran release phases](https://fivetran.com/docs/core-concepts#releasephases).
+Custom GitHub application is in beta and uses the [Fivetran release phases](https://fivetran.com/docs/core-concepts#releasephases).
 
 :::
 
