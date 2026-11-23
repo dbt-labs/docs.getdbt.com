@@ -19,7 +19,7 @@
   <Expandable alt_header="Snowflake">
     - Username / Password
     - Native OAuth
-    - External OAuth
+    - [External OAuth](/docs/platform/manage-access/snowflake-external-oauth)
     - Key pair using a modern PKCS#8 method
     - MFA
   </Expandable>
