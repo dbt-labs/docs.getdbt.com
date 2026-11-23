@@ -71,7 +71,7 @@ For GitLab, account admins can update an existing GitLab application to your new
 |---|---|
 | [GitLab (managed app)](/docs/platform/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Add the new redirect URI to your GitLab group application, then [update it in <Constant name="dbt_platform" />](#update-redirect-uris-in-dbt-platform) |
 | [GitLab (bring-your-own app)](/docs/platform/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Add the new redirect URI to your GitLab group application, then [update it in <Constant name="dbt_platform" />](#update-redirect-uris-in-dbt-platform) |
-| [Azure DevOps (service principal)](/docs/platform/git/setup-service-principal) | Update or add an app registration |
+| [Azure DevOps (service principal)](/docs/platform/git/setup-service-principal) | In your Microsoft Entra ID app registration, add these **Web** redirect URIs alongside the existing ones: `https://YOUR_ACCESS_URL/complete/azure_active_directory` and `https://YOUR_ACCESS_URL/complete/azure_active_directory_service_user` |
 | GitHub Enterprise (self-managed app) | Before your assignment date, add the callback URL from your assignment notification email to your GitHub app. Update webhook URLs to your new access URL before the end-of-support date. |
 
 ### Data platform connections
