@@ -65,7 +65,7 @@ The managed <Constant name="dbt" /> GitHub application, the Slack application, a
 
 GitLab and Azure DevOps repositories connected before your account had an account-specific access URL keep using your legacy region URL for OAuth until you update them. Repositories connected after that already use your new access URL.
 
-For GitLab, account admins can update an existing GitLab application to your new account access URL in <Constant name="dbt_platform" />. See [Update redirect URIs in dbt platform](#update-redirect-uris-in-dbt-platform). You can't yet update an existing Azure DevOps repository. Instead, recreate the repository to generate a redirect URI based on your new account access URL.
+For GitLab, account admins can update an existing GitLab application to your new account access URL in <Constant name="dbt_platform" />. See [Update redirect URIs in dbt platform](#update-redirect-uris-in-dbt-platform). You can't yet update an existing Azure DevOps integration's redirect URI. Instead, recreate the integration to generate a redirect URI based on your new account access URL.
 
 | Integration | Action required |
 |---|---|
