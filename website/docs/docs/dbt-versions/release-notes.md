@@ -141,6 +141,7 @@ The full list lives in website/release-note-areas.json.
 #### Integrations {#integrations-november-2026}
 
 - **New:** Developers on Enterprise and Enterprise+ plans can now sign in to Microsoft Fabric with their own Microsoft Entra account using OAuth, instead of a service principal or password. OAuth works in development environments on dbt v1. Refer to [Microsoft Entra ID OAuth](/docs/platform/connect-data-platform/connect-microsoft-fabric?version=1.12#microsoft-entra-id-oauth).
+- **Beta:** Bringing your own [custom GitHub application](/docs/platform/git/connect-github#custom-github-application) is now in beta and available to all Enterprise and Enterprise+ accounts. You no longer need to contact your account manager for access. Use it to natively connect GitHub Enterprise Server or GitHub with EU data residency, instead of a git URL and SSH.
 
 #### dbt v2 {#dbt-v2-november-2026}
 
