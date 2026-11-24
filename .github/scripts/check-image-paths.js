@@ -17,6 +17,10 @@ const SCAN_DIRS = [
 
 const FILE_EXTENSIONS = new Set([".md", ".mdx"]);
 
+// Images under /img/ are served from S3 via CloudFront (see website/vercel.json
+// and website/plugins/s3-img-proxy), so they aren't in website/static anymore.
+const IMG_CDN = "https://d2z3qofvp275uy.cloudfront.net";
+
 // Matches src="..." / src='...' on any tag or component (<img>, <Lightbox>,
 // custom components, etc.) plus standard markdown image syntax ![alt](path).
 const SRC_ATTR_RE = /\bsrc\s*=\s*["']([^"']+)["']/g;
@@ -72,7 +76,24 @@ function checkFile(filePath, errors) {
 	}
 }
 
-function main() {
+const cdnCache = new Map();
+
+// True if the asset exists on the CDN. Network errors count as "exists" so a
+// flaky request doesn't fail a PR; only a definite 403/404 is a broken path.
+async function existsOnCdn(ref) {
+	if (!ref.startsWith("/img/")) return false;
+	if (!cdnCache.has(ref)) {
+		cdnCache.set(
+			ref,
+			fetch(IMG_CDN + encodeURI(ref), { method: "HEAD" })
+				.then((res) => res.ok || ![403, 404].includes(res.status))
+				.catch(() => true),
+		);
+	}
+	return cdnCache.get(ref);
+}
+
+async function main() {
 	const argFiles = process.argv.slice(2);
 	const files = argFiles.length
 		? argFiles
@@ -85,13 +106,20 @@ function main() {
 		checkFile(file, errors);
 	}
 
+	const broken = [];
+	for (const err of errors) {
+		if (!(await existsOnCdn(err.ref))) broken.push(err);
+	}
+	errors.length = 0;
+	errors.push(...broken);
+
 	if (errors.length > 0) {
 		console.error(`Found ${errors.length} broken image path(s):\n`);
 		for (const { file, line, ref } of errors) {
 			console.error(`  ${file}:${line}  ->  ${ref}`);
 		}
 		console.error(
-			"\nFix the path above, or add the missing asset under website/static.",
+			"\nFix the path above, or upload the missing asset to the S3 image bucket.",
 		);
 		process.exit(1);
 	}
@@ -99,4 +127,7 @@ function main() {
 	console.log(`Checked ${files.length} files. No broken image paths found.`);
 }
 
-main();
+main().catch((err) => {
+	console.error(err);
+	process.exit(1);
+});
