@@ -58,12 +58,14 @@ When the same environment variable is defined in multiple places, <Constant name
 This means environment variables set in your shell always override values from the `.env` file.
 
 :::tip
-Add `.env` to your `.gitignore` file to prevent sensitive credentials from being committed to version control. The `dbt init` command automatically includes `.env` in the generated `.gitignore` file. Adding the file to `.gitignore` only ignores an untracked `.env` file and does not stop <Constant name="dbt" /> from reading one that is already committed. Remove it from the repository and commit that removal so later commits do not include it.
+Add `.env` to your `.gitignore` file to prevent sensitive credentials from being committed to version control. The `dbt init` command automatically includes `.env` in the generated `.gitignore` file.
+
+`.gitignore` only applies to files that <Constant name="git" /> isn't tracking yet. If `.env` is already committed, <Constant name="git" /> keeps tracking it and <Constant name="dbt" /> still reads it. To stop that, delete `.env` from your repo and commit the deletion.
 :::
 
 <VersionBlock firstVersion="1.12">
 
-A `.env` file committed to your repository is also loaded on <Constant name="dbt_platform" /> job runs. A value in `.env` can change what a job thinks its environment is when <Constant name="dbt_platform" /> left that variable empty. When <Constant name="dbt_platform" /> has already set the variable, that value wins. Refer to [special environment variables](/docs/build/environment-variables#special-environment-variables).
+<Constant name="dbt_platform" /> job runs also load a `.env` file that's already committed to your repo. If <Constant name="dbt_platform" /> sets a variable, its value wins over `.env`. If it leaves the variable empty, <Constant name="dbt_platform" /> uses the value from the `.env` file. Refer to [special environment variables](/docs/build/environment-variables#special-environment-variables).
 
 </VersionBlock>
 

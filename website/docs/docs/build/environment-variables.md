@@ -104,17 +104,24 @@ Environment variables prefixed with `DBT_ENV_SECRET_` are protected with additio
 
 ### Special environment variables
 
-<Constant name="dbt" /> includes a number of built-in variables. <Constant name="dbt_platform" /> sets these for you, and you can't change them. The order of precedence on this page doesn't apply to these variables at the project, environment, or job level.
+<Constant name="dbt" /> includes built-in environment variables that <Constant name="dbt_platform" /> sets for you. You can't change them in <Constant name="dbt_platform" />, and the order of precedence on this page doesn't apply to them at the project, environment, or job level.
 
 <VersionBlock firstVersion="1.12">
 
-<Constant name="dbt_platform" /> job runs also load a `.env` file that's committed to your repository. This can change what a job thinks its environment is, even if you haven't set the variable in the <Constant name="dbt_platform" /> UI.
+#### Committed `.env` files
 
-Here's how it works: <Constant name="dbt" /> loads the committed `.env` file when the job runs. If <Constant name="dbt_platform" /> has already set a variable, its value takes precedence. If it hasn't, <Constant name="dbt" /> uses the value from `.env`. On a <Constant name="core" /> job, for custom variables you define yourself, a value set for the deployment environment or the job takes precedence over the same variable in `.env`, and the job override wins over the environment value.
+If your repo contains a committed `.env` file, <Constant name="dbt_platform" /> job runs load it. A `.env` file can fill in a built-in variable that <Constant name="dbt_platform" /> leaves empty, which can change how your job behaves.
 
-For example, `DBT_CLOUD_ENVIRONMENT_TYPE` is empty in a [general deployment environment](/docs/dbt-platform-environments#types-of-environments). If your committed `.env` file sets it to `dev`, the job uses `dev`. In a production environment, <Constant name="dbt_platform" /> sets it to `prod`, so the job uses `prod` even if `.env` contains a different value.
+How precedence works when a variable is set in more than one place:
 
-Adding `.env` to `.gitignore` only stops an untracked `.env` file from being committed. If `.env` is already committed, <Constant name="git" /> keeps tracking it in later commits and <Constant name="dbt" /> will still load it. To stop the job from loading it, remove `.env` from the repository and commit the removal.
+- Built-in variables: If <Constant name="dbt_platform" /> sets the variable, <Constant name="dbt" /> uses that value and ignores `.env`. If <Constant name="dbt_platform" /> leaves it empty, <Constant name="dbt" /> uses the value from `.env`.
+<VersionBlock firstVersion="1.12" lastVersion="1.99">
+- Custom variables: A job override wins over an environment value, and an environment value wins over `.env`.
+</VersionBlock>
+
+For example, `DBT_CLOUD_ENVIRONMENT_TYPE` is empty in a [general deployment environment](/docs/dbt-platform-environments#types-of-environments). If your committed `.env` sets it to `dev`, the job uses `dev`. In a production environment, <Constant name="dbt_platform" /> sets it to `prod`, so the job uses `prod` even if `.env` says something else.
+
+Adding `.env` to `.gitignore` doesn't remove a file that's already committed. <Constant name="git" /> keeps tracking it and <Constant name="dbt" /> still loads it. To stop job runs from loading it, delete `.env` from your repo and commit the deletion.
 
 </VersionBlock>
 
@@ -122,7 +129,7 @@ Adding `.env` to `.gitignore` only stops an untracked `.env` file from being com
 
 <VersionBlock firstVersion="1.12">
 
-A compile or preview in the <Constant name="studio_ide" /> does not load a `.env` file from your project. A variable set only in that file is unset.
+The <Constant name="studio_ide" /> doesn't load your project's `.env` file when you compile or preview, so a variable that's set only in `.env` has no value there.
 
 </VersionBlock>
 
@@ -141,7 +148,7 @@ The following environment variables are set automatically:
 
 - `DBT_ENV` &mdash; This key is reserved for the <Constant name="dbt" /> application and will always resolve to 'prod'. For deployment runs only.
 - `DBT_CLOUD_ENVIRONMENT_NAME` &mdash; The name of the <Constant name="dbt" /> environment in which `dbt` is running. 
-- `DBT_CLOUD_ENVIRONMENT_TYPE` &mdash; The type of <Constant name="dbt" /> environment in which `dbt` is running. The valid values are `dev`, `staging`, or `prod`. The value will be empty for [General deployment environments](/docs/dbt-platform-environments#types-of-environments), so use a default like `{{ env_var('DBT_CLOUD_ENVIRONMENT_TYPE', '') }}`.<VersionBlock firstVersion="1.12"> A committed `.env` file can set this variable when it is empty. In a production environment, <Constant name="dbt_platform" /> sets `prod`, and that value is used instead.</VersionBlock>
+- `DBT_CLOUD_ENVIRONMENT_TYPE` &mdash; The type of <Constant name="dbt" /> environment in which `dbt` is running. The valid values are `dev`, `staging`, or `prod`. The value will be empty for [General deployment environments](/docs/dbt-platform-environments#types-of-environments), so use a default like `{{ env_var('DBT_CLOUD_ENVIRONMENT_TYPE', '') }}`.<VersionBlock firstVersion="1.12"> If <Constant name="dbt_platform" /> leaves this variable empty, a committed `.env` file can set it. In a production environment, <Constant name="dbt_platform" /> sets it to `prod`, and `.env` can't override that.</VersionBlock>
 - `DBT_CLOUD_INVOCATION_CONTEXT` &mdash; The context type in which `dbt` is invoked. The values are `dev`, `staging`, `prod`, or `ci`. 
     - Additionally, use `DBT_CLOUD_INVOCATION_CONTEXT` in the `generate_schema_name()` macro to define explicit guidelines to use the default schema only (with the `dbt_cloud_pr prefix`) in CI job runs, even if those CI jobs run in the same environment as production jobs.
 
