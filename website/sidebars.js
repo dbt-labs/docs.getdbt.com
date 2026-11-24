@@ -1007,6 +1007,16 @@ const sidebarSettings = {
     },
     "docs/lake-compute/lake-compute",
     "docs/lake-compute/compute-onboarding",
+    {
+      type: "category",
+      label: "Warehouse configurations",
+      collapsed: true,
+      items: [
+        "docs/lake-compute/compute-onboarding-snowflake",
+        "docs/lake-compute/compute-onboarding-bigquery",
+        "docs/lake-compute/compute-onboarding-databricks",
+      ],
+    },
     "docs/lake-compute/lake-compute-migration",
     "docs/lake-compute/compute-faq",
     {
@@ -1631,6 +1641,7 @@ const sidebarSettings = {
             "reference/commands/debug",
             "reference/commands/deps",
             "reference/commands/dbt-environment",
+            "reference/commands/format",
             "reference/commands/freshness",
             "reference/commands/init",
             "reference/commands/invocation",

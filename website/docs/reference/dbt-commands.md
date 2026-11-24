@@ -47,6 +47,7 @@ Commands marked ❌ indicate write commands, commands marked ✅ indicate read c
 | [deps](/reference/commands/deps) | Downloads dependencies for a project |  ✅ |  All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [docs](/reference/commands/cmd-docs) | Generates documentation for a project |   ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [environment](/reference/commands/dbt-environment?version=2.0) | Enables you to interact with your <Constant name="dbt_platform" /> environment. |   N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions) |
+| [format](/reference/commands/format?version=2.0) | Formats SQL files in a project according to the layout rules in your `.sqlfluff` config. Also available as `fmt` | ✅ | All tools <br /> <Constant name="fusion_engine" /> only |
 | [freshness](/reference/commands/freshness) | Checks whether sources and models with freshness configured meet your staleness thresholds | ✅ | All tools <br /> Requires [dbt v2.0 or higher](/docs/dbt-versions) |
 | help | Displays help information for any command | N/A | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [init](/reference/commands/init) | Initializes a new dbt project |   ✅ | <Constant name="fusion" /> <br /> <Constant name="core" /><br /> All [supported versions](/docs/dbt-versions) |
