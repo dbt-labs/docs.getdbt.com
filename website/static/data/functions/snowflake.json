@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "snowflake",
     "platform_name": "Snowflake",
-    "count": 1231
+    "count": 1367
   },
   "functions": [
     {
@@ -178,14 +178,14 @@
       "category": "Aggregate",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/bitmap_and",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "BITMAP_AND_AGG",
       "category": "Aggregate",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/bitmap_and_agg",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "BITMAP_BIT_POSITION",
@@ -311,28 +311,28 @@
       "category": "Aggregate",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/datasketches_hll",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "DATASKETCHES_HLL_ACCUMULATE",
       "category": "Aggregate",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/datasketches_hll_accumulate",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "DATASKETCHES_HLL_COMBINE",
       "category": "Aggregate",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/datasketches_hll_combine",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "DATASKETCHES_HLL_ESTIMATE",
       "category": "Aggregate",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/datasketches_hll_estimate",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "GROUPING",
@@ -1602,6 +1602,62 @@
       "fusion_typecheck": true
     },
     {
+      "name": "AVG_CHANGE_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_avg_change_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "AVG_CHANGE_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_avg_change_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "AVG_CHANGE_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_avg_change_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "AVG_CHANGE_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_avg_change_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "AVG_CHANGE_PERCENT_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_avg_change_percent_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "AVG_CHANGE_PERCENT_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_avg_change_percent_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "AVG_CHANGE_PERCENT_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_avg_change_percent_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "AVG_CHANGE_PERCENT_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_avg_change_percent_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "BLANK_COUNT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_blank_count",
@@ -2246,6 +2302,62 @@
       "fusion_typecheck": false
     },
     {
+      "name": "JS_DIVERGENCE_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_js_divergence_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "JS_DIVERGENCE_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_js_divergence_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "JS_DIVERGENCE_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_js_divergence_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "JS_DIVERGENCE_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_js_divergence_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "KS_TEST_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_ks_test_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "KS_TEST_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_ks_test_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "KS_TEST_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_ks_test_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "KS_TEST_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_ks_test_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "KURTOSIS (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_kurtosis",
@@ -2274,6 +2386,62 @@
       "fusion_typecheck": true
     },
     {
+      "name": "MAX_CHANGE_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_max_change_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MAX_CHANGE_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_max_change_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MAX_CHANGE_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_max_change_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MAX_CHANGE_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_max_change_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MAX_CHANGE_PERCENT_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_max_change_percent_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MAX_CHANGE_PERCENT_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_max_change_percent_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MAX_CHANGE_PERCENT_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_max_change_percent_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MAX_CHANGE_PERCENT_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_max_change_percent_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "MEAN_ERROR (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_mean_error",
@@ -2288,11 +2456,151 @@
       "fusion_typecheck": true
     },
     {
+      "name": "MEDIAN_CHANGE_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_median_change_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MEDIAN_CHANGE_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_median_change_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MEDIAN_CHANGE_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_median_change_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MEDIAN_CHANGE_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_median_change_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MEDIAN_CHANGE_PERCENT_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_median_change_percent_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MEDIAN_CHANGE_PERCENT_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_median_change_percent_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MEDIAN_CHANGE_PERCENT_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_median_change_percent_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MEDIAN_CHANGE_PERCENT_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_median_change_percent_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "MIN (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_min",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "MIN_CHANGE_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_min_change_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MIN_CHANGE_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_min_change_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MIN_CHANGE_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_min_change_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MIN_CHANGE_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_min_change_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MIN_CHANGE_PERCENT_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_min_change_percent_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MIN_CHANGE_PERCENT_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_min_change_percent_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MIN_CHANGE_PERCENT_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_min_change_percent_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MIN_CHANGE_PERCENT_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_min_change_percent_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MISSING_VALUE_COUNT_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_missing_value_count_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MISSING_VALUE_COUNT_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_missing_value_count_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MISSING_VALUE_COUNT_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_missing_value_count_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MISSING_VALUE_COUNT_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_missing_value_count_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "NAN_COUNT (SYSTEM DATA METRIC FUNCTION)",
@@ -2316,9 +2624,149 @@
       "fusion_typecheck": false
     },
     {
+      "name": "NEGATIVE_COUNT_CHANGE_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_negative_count_change_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NEGATIVE_COUNT_CHANGE_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_negative_count_change_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NEGATIVE_COUNT_CHANGE_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_negative_count_change_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NEGATIVE_COUNT_CHANGE_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_negative_count_change_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NEGATIVE_COUNT_CHANGE_PERCENT_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_negative_count_change_percent_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NEGATIVE_COUNT_CHANGE_PERCENT_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_negative_count_change_percent_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NEGATIVE_COUNT_CHANGE_PERCENT_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_negative_count_change_percent_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NEGATIVE_COUNT_CHANGE_PERCENT_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_negative_count_change_percent_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "NEGATIVE_PERCENT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_negative_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NEGATIVE_PERCENT_CHANGE_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_negative_percent_change_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NEGATIVE_PERCENT_CHANGE_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_negative_percent_change_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NEGATIVE_PERCENT_CHANGE_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_negative_percent_change_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NEGATIVE_PERCENT_CHANGE_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_negative_percent_change_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NEGATIVE_PERCENT_CHANGE_PERCENT_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_negative_percent_change_percent_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NEGATIVE_PERCENT_CHANGE_PERCENT_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_negative_percent_change_percent_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NEGATIVE_PERCENT_CHANGE_PERCENT_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_negative_percent_change_percent_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NEGATIVE_PERCENT_CHANGE_PERCENT_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_negative_percent_change_percent_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NEW_VALUE_COUNT_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_new_value_count_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NEW_VALUE_COUNT_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_new_value_count_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NEW_VALUE_COUNT_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_new_value_count_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NEW_VALUE_COUNT_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_new_value_count_last_two_periods",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -2498,6 +2946,62 @@
       "fusion_typecheck": false
     },
     {
+      "name": "NULL_COUNT_CHANGE_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_null_count_change_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NULL_COUNT_CHANGE_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_null_count_change_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NULL_COUNT_CHANGE_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_null_count_change_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NULL_COUNT_CHANGE_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_null_count_change_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NULL_COUNT_CHANGE_PERCENT_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_null_count_change_percent_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NULL_COUNT_CHANGE_PERCENT_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_null_count_change_percent_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NULL_COUNT_CHANGE_PERCENT_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_null_count_change_percent_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NULL_COUNT_CHANGE_PERCENT_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_null_count_change_percent_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "NULL_KEYWORD_COUNT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_null_keyword_count",
@@ -2515,6 +3019,62 @@
       "name": "NULL_PERCENT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_null_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NULL_PERCENT_CHANGE_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_null_percent_change_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NULL_PERCENT_CHANGE_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_null_percent_change_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NULL_PERCENT_CHANGE_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_null_percent_change_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NULL_PERCENT_CHANGE_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_null_percent_change_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NULL_PERCENT_CHANGE_PERCENT_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_null_percent_change_percent_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NULL_PERCENT_CHANGE_PERCENT_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_null_percent_change_percent_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NULL_PERCENT_CHANGE_PERCENT_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_null_percent_change_percent_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NULL_PERCENT_CHANGE_PERCENT_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_null_percent_change_percent_last_two_periods",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -2561,6 +3121,34 @@
       "fusion_typecheck": false
     },
     {
+      "name": "PSI_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_psi_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PSI_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_psi_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PSI_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_psi_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PSI_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_psi_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "R_SQUARED (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_r_squared",
@@ -2585,6 +3173,62 @@
       "name": "ROW_COUNT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_row_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ROW_COUNT_CHANGE_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_row_count_change_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ROW_COUNT_CHANGE_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_row_count_change_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ROW_COUNT_CHANGE_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_row_count_change_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ROW_COUNT_CHANGE_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_row_count_change_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ROW_COUNT_CHANGE_PERCENT_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_row_count_change_percent_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ROW_COUNT_CHANGE_PERCENT_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_row_count_change_percent_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ROW_COUNT_CHANGE_PERCENT_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_row_count_change_percent_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ROW_COUNT_CHANGE_PERCENT_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_row_count_change_percent_last_two_periods",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -2736,6 +3380,62 @@
       "fusion_typecheck": true
     },
     {
+      "name": "STDDEV_CHANGE_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_stddev_change_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "STDDEV_CHANGE_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_stddev_change_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "STDDEV_CHANGE_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_stddev_change_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "STDDEV_CHANGE_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_stddev_change_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "STDDEV_CHANGE_PERCENT_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_stddev_change_percent_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "STDDEV_CHANGE_PERCENT_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_stddev_change_percent_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "STDDEV_CHANGE_PERCENT_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_stddev_change_percent_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "STDDEV_CHANGE_PERCENT_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_stddev_change_percent_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "STRING_LENGTH_AVG (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_string_length_avg",
@@ -2771,6 +3471,62 @@
       "fusion_typecheck": true
     },
     {
+      "name": "SUM_CHANGE_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_sum_change_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SUM_CHANGE_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_sum_change_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SUM_CHANGE_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_sum_change_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SUM_CHANGE_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_sum_change_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SUM_CHANGE_PERCENT_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_sum_change_percent_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SUM_CHANGE_PERCENT_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_sum_change_percent_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SUM_CHANGE_PERCENT_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_sum_change_percent_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SUM_CHANGE_PERCENT_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_sum_change_percent_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "TABLE_SIZE_BYTES (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_table_size_bytes",
@@ -2795,6 +3551,62 @@
       "name": "UNIQUE_COUNT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_unique_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "UNIQUE_COUNT_CHANGE_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_unique_count_change_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "UNIQUE_COUNT_CHANGE_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_unique_count_change_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "UNIQUE_COUNT_CHANGE_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_unique_count_change_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "UNIQUE_COUNT_CHANGE_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_unique_count_change_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "UNIQUE_COUNT_CHANGE_PERCENT_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_unique_count_change_percent_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "UNIQUE_COUNT_CHANGE_PERCENT_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_unique_count_change_percent_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "UNIQUE_COUNT_CHANGE_PERCENT_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_unique_count_change_percent_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "UNIQUE_COUNT_CHANGE_PERCENT_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_unique_count_change_percent_last_two_periods",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -2848,9 +3660,121 @@
       "fusion_typecheck": false
     },
     {
+      "name": "ZERO_COUNT_CHANGE_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_zero_count_change_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ZERO_COUNT_CHANGE_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_zero_count_change_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ZERO_COUNT_CHANGE_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_zero_count_change_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ZERO_COUNT_CHANGE_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_zero_count_change_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ZERO_COUNT_CHANGE_PERCENT_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_zero_count_change_percent_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ZERO_COUNT_CHANGE_PERCENT_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_zero_count_change_percent_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ZERO_COUNT_CHANGE_PERCENT_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_zero_count_change_percent_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ZERO_COUNT_CHANGE_PERCENT_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_zero_count_change_percent_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "ZERO_PERCENT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_zero_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ZERO_PERCENT_CHANGE_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_zero_percent_change_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ZERO_PERCENT_CHANGE_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_zero_percent_change_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ZERO_PERCENT_CHANGE_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_zero_percent_change_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ZERO_PERCENT_CHANGE_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_zero_percent_change_last_two_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ZERO_PERCENT_CHANGE_PERCENT_LAST_EIGHT_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_zero_percent_change_percent_last_eight_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ZERO_PERCENT_CHANGE_PERCENT_LAST_FOUR_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_zero_percent_change_percent_last_four_periods",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ZERO_PERCENT_CHANGE_PERCENT_LAST_PERIOD (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_zero_percent_change_percent_last_period",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ZERO_PERCENT_CHANGE_PERCENT_LAST_TWO_PERIODS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_zero_percent_change_percent_last_two_periods",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -3699,14 +4623,14 @@
       "category": "Geospatial",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/st_geomfromgeohash",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "ST_GEOMPOINTFROMGEOHASH",
       "category": "Geospatial",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/st_geompointfromgeohash",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "ST_HAUSDORFFDISTANCE",
@@ -3734,7 +4658,7 @@
       "category": "Geospatial",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/st_intersection_agg",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "ST_INTERSECTS",
@@ -4006,6 +4930,13 @@
       "name": "BIND_VALUES",
       "category": "Information Schema",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/bind_values",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "CODE_BUNDLE_HISTORY",
+      "category": "Information Schema",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/code_bundle_history",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -4693,98 +5624,98 @@
       "category": "Period",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_begin",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "PERIOD_CONSTRUCT",
       "category": "Period",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_construct",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "PERIOD_CONTAINS",
       "category": "Period",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_contains",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "PERIOD_END",
       "category": "Period",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_end",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "PERIOD_EQUALS",
       "category": "Period",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_equals",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "PERIOD_IMMEDIATELY_PRECEDES",
       "category": "Period",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_immediately_precedes",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "PERIOD_IMMEDIATELY_SUCCEEDS",
       "category": "Period",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_immediately_succeeds",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "PERIOD_INTERSECT",
       "category": "Period",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_intersect",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "PERIOD_LDIFF",
       "category": "Period",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_ldiff",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "PERIOD_MEETS",
       "category": "Period",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_meets",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "PERIOD_OVERLAPS",
       "category": "Period",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_overlaps",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "PERIOD_PRECEDES",
       "category": "Period",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_precedes",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "PERIOD_RDIFF",
       "category": "Period",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_rdiff",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "PERIOD_SUCCEEDS",
       "category": "Period",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_succeeds",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "ARRAY_APPEND",
@@ -5211,7 +6142,7 @@
       "category": "Semi-structured and structured data",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/map_construct",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "MAP_CONTAINS_KEY",
@@ -5232,7 +6163,7 @@
       "category": "Semi-structured and structured data",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/map_entries",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "MAP_INSERT",
@@ -5424,7 +6355,7 @@
       "fusion_typecheck": true
     },
     {
-      "name": "AI_COMPLETE (SINGLE IMAGE)",
+      "name": "AI_COMPLETE (SINGLE FILE)",
       "category": "String & binary",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/ai_complete-single-file",
       "preview_status": "GA",
@@ -5988,7 +6919,7 @@
       "category": "String & binary",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/search_ip",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "SEARCH_PREVIEW (SNOWFLAKE.CORTEX)",
@@ -7587,6 +8518,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "SYSTEM$READ_ICEBERG_TABLE_PROPERTY",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_read_iceberg_table_property",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$READ_OSI_YAML_FROM_SEMANTIC_VIEW",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_read_osi_yaml_from_semantic_view",
@@ -8077,6 +9015,13 @@
       "fusion_typecheck": false
     },
     {
+      "name": "SYSTEM$VALIDATE_CONSUMER_ACCOUNT",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_validate_consumer_account",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$VALIDATE_STORAGE_INTEGRATION",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_validate_storage_integration",
@@ -8343,6 +9288,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "GET_SPARK_APPLICATION_HISTORY",
+      "category": "Table",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/get_spark_application_history",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "GET_TABLE_VERSION_REFS",
       "category": "Table",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/get_table_version_refs",
@@ -8501,7 +9453,7 @@
       "category": "Vector",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/vector_normalize",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "VECTOR_SUM",
@@ -8515,7 +9467,7 @@
       "category": "Vector",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/vector_truncate",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "CONDITIONAL_CHANGE_EVENT",
@@ -8543,7 +9495,7 @@
       "category": "Window",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/interpolate_bfill",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "PERCENT_RANK",
