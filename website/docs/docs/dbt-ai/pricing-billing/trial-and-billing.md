@@ -24,7 +24,7 @@ Billing and spend controls are shared across the <Constant name="dbt_platform" /
 
 - Account admin or billing admin permissions to start a trial or change a spend limit.
 - A <Constant name="dbt" /> account to manage usage, billing, spend limits, and more.
-    - If you don't have one, you can create one during setup. No paid <Constant name="dbt_platform" /> plan required. This is generally useful for users on self-hosted <Constant name="dbt" /> running the CLI.
+    - If you don't have one, you can create one during setup. Features are available across [all dbt plans](https://www.getdbt.com/pricing). This is generally useful for users on self-hosted <Constant name="dbt" /> running the CLI.
 - A business email address. Personal domains such as Gmail aren't eligible for a trial.
 
 ## What you get by plan
