@@ -80,7 +80,7 @@ Custom GitHub application is in beta and uses the [Fivetran release phases](http
 
 :::
 
-The shared <Constant name="dbt" /> GitHub App is hosted per [region](/docs/platform/about-platform/access-regions-ip-addresses), so it can only reach repositories on `github.com`. If your organization runs [GitHub Enterprise Server](https://docs.github.com/en/enterprise-server@3.14/admin/overview/about-github-enterprise-server) or [GitHub with EU data residency](https://github.com/enterprise/data-residency), register your own GitHub application and point <Constant name="dbt" /> at it. 
+The shared <Constant name="dbt" /> GitHub App is hosted per [region](/docs/platform/about-platform/access-regions-ip-addresses), so it can only reach repositories on `github.com`. If your organization runs [GitHub Enterprise Server](https://docs.github.com/en/enterprise-server@3.14/admin/overview/about-github-enterprise-server), GitHub Enterprise Cloud with a `ghe.com` domain, or [GitHub with EU data residency](https://github.com/enterprise/data-residency) &mdash; register your own GitHub application and point <Constant name="dbt" /> at it. 
 
 An account admin (or security admin) can set this up once:
 
