@@ -78,11 +78,11 @@ For example, suppose a fix is first released in a prerelease of a minor version.
 
 | Channel | Description | Stability |
 |---------|-------------|-----------|
-| `latest` | The stable, "known good" version | ✅ Recommended for most users |
-| `canary` | The latest officially released version | ⚠️ Most recent stable version but still undergoing thorough testing |
-| `dev` | The latest development build | ❌ May not have passed all tests |
+| `stable` | The latest generally available (GA) release | ✅ Recommended for most users |
+| `preview` | The latest prerelease (alpha, beta, or release candidate) of the next minor version | ⚠️ Passed release testing, but behavior can still change before GA. See [Prerelease stages](#prerelease-stages) |
+| `nightly` | The latest nightly build from the main branch | ❌ For testing upcoming changes only. Not covered by prerelease or regression testing |
 
-Run `dbt system update` to get the latest stable release, or specify a channel with `dbt system update --version canary`.
+Run `dbt system update` to get the latest stable release, or specify a channel with `dbt system update --version preview`.
 
 For current versions and release history, see [<Constant name="fusion"/> releases](/docs/dbt/dbt-releases).
 
