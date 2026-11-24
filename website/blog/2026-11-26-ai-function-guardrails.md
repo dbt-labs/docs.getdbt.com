@@ -23,7 +23,7 @@ Someone on the Jaffle Shop Games data team has a good idea: use an AI function f
 
 This post covers four patterns that set up guardrails when you use AI functions on your data, using plain dbt features you already have. It assumes your source table has a column recording when each row was loaded or last updated, such as `updated_at` or a timestamp added by your data loading tool (for example, `_fivetran_synced` in [Fivetran](https://www.fivetran.com/)). If it doesn't, you'll need additional logic inside your `is_incremental()` block to avoid reprocessing old rows. If your warehouse can track changes for you, such as [Snowflake streams](https://docs.snowflake.com/en/user-guide/streams-intro) or the [Databricks change data feed](https://www.databricks.com/blog/2021/06/09/how-to-simplify-cdc-with-delta-lakes-change-data-feed.html), you can use those instead. Refer to [Change data capture in dbt](/best-practices/how-we-handle-cdc/1-intro) for more options.
 
-<Lightbox src="/img/blog/2026-11-26-ai-function-guardrails/jaffle-shop-games-storefront.webp" width="85%" title="The Jaffle Shop Games storefront on launch day" />
+<Lightbox src="/img/blog/2026-11-26-ai-function-guardrails/jaffle-shop-games-storefront.webp" width="85%" title="The Jaffle Shop Games storefront on a nice, sunny day!" />
 
 <!-- truncate -->
 
@@ -81,7 +81,7 @@ from {{ ref('stg_reviews') }}
 - The dbt platform sets the [environment variable](/docs/build/environment-variables#special-environment-variables) `DBT_CLOUD_ENVIRONMENT_TYPE` to `prod` in production environments only. Everywhere else, including CI jobs and your laptop, the cap applies.
 - The empty default (`''`) matters. If the variable isn't set at all, the model stays capped. You have to prove you're in production to spend real money.
 
-:::caution
+:::caution Setting production environment to **Production**
 Your production environment must be set to the **Production** type in the dbt platform. A general deployment environment leaves this variable empty, so the cap stays on.
 :::
 
@@ -309,7 +309,7 @@ The sign covers the basics, and more scenarios need more. Rows can change after 
 
 So the Jaffle Shop Games data team made it through the first rush of GTA VI launch week, with every review tagged and the AI function bill under control 👏. But launch week isn't over. The review topic list was written by hand, and launch-day reviews are full of things nobody predicted.
 
-<Lightbox src="/img/blog/2026-11-26-ai-function-guardrails/chuck-norris-meme.png" width="40%" title="Chuck Norris doesn't predict the future. He tells it what to do" />
+<Lightbox src="/img/blog/2026-11-26-ai-function-guardrails/chuck-norris-meme.png" width="40%" title="Launch-day reviews were full of things nobody predicted" />
 
 In part 2 of this series, we'll let an AI function suggest the topics itself and show how to reuse these guardrails so it can't run twice on the same review.
 
