@@ -21,7 +21,7 @@ availability: local_free
 
 # Connect ClickHouse to <Constant name="fusion" /> <Lifecycle status="beta" />
 
-The ClickHouse adapter for the <Constant name="fusion_engine" /> connects to [ClickHouse](https://clickhouse.com) over HTTP or HTTPS. It supports self-managed single-node ClickHouse and [ClickHouse Cloud](https://clickhouse.com/cloud).
+The ClickHouse adapter for the <Constant name="fusion_engine" /> connects to [ClickHouse](https://clickhouse.com) over HTTP or HTTPS. It supports [ClickHouse Cloud](https://clickhouse.com/cloud) and self-managed ClickHouse.
 
 ## Installing dbt
 
@@ -41,25 +41,15 @@ import FusionClickHouseWarehousePerms from '/snippets/_v2-warehouse-permissions-
 
 ## Limitations
 
-The ClickHouse adapter for <Constant name="fusion" /> is in beta. Expect some minor bugs, and avoid using it in production environments for now. Some features available in the `dbt-clickhouse` adapter for <Constant name="core" /> are not yet supported.
+The ClickHouse adapter for <Constant name="fusion" /> is in beta. It's at feature parity with version 1.10.3 of the `dbt-clickhouse` adapter for <Constant name="core" />, on ClickHouse Cloud and on self-managed ClickHouse, with a few exceptions:
+
+- The new SQL comprehension features (static analysis and the rest of dbt's SQL intelligence) aren't available yet.
+- Some <Constant name="dbt_platform" /> functionality, like the <Constant name="semantic_layer" />, isn't supported yet.
+- Small gaps remain in general ClickHouse functionality.
+
+For the full feature-by-feature status, refer to the [ClickHouse documentation](https://clickhouse.com/docs/integrations/dbt/dbt-core-v2-fusion-and-platform).
 
 The ClickHouse adapter is under active development. If you encounter an issue, please [open it in dbt-core](https://github.com/dbt-labs/dbt-core/issues/new) and add the `adapter:clickhouse` label.
-
-### What works today
-
-On single-node ClickHouse and on ClickHouse Cloud (compatible with multi-node clusters):
-
-- All materializations: table, view, incremental (all strategies and `on_schema_change`), materialized view (including refreshable), dictionary, snapshot, seed, and ephemeral
-- Contracts and constraints, model and query `settings`, projections and indexes
-- Data tests, unit tests, catalog generation, and the `s3` table function
-
-### Not yet supported
-
-- Self-managed clusters that set `cluster:` in the profile aren't supported yet. `ON CLUSTER` isn't emitted in the data definition language (DDL) instructions, so Replicated engines and the `distributed_table` and `distributed_incremental` materializations don't work.
-- The `grants` config, and the `dbt clone` and `dbt source freshness` commands, aren't supported yet.
-- Smaller gaps remain: `query-comment: null` isn't honored, run results don't include the ClickHouse `query_id`, and `persist_docs` descriptions that contain `;` fail.
-- SQL comprehension features (static analysis and the rest of dbt's SQL intelligence) aren't available yet. Support is coming soon.
-- Minor issues may still be present in general ClickHouse functionality.
 
 </VersionBlock>
 

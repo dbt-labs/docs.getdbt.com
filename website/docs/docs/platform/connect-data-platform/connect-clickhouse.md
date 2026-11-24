@@ -11,10 +11,10 @@ availability:
 
 # Connect ClickHouse <Lifecycle status="private_beta" /> <ProductCard text="dbt v2 compatible" />
 
-The <Constant name="fusion_engine" /> in <Constant name="dbt_platform" /> supports connecting to [ClickHouse Cloud](https://clickhouse.com/cloud) and to self-managed single-node ClickHouse. Use a <Constant name="fusion" /> release track for the environment that uses this connection.
+The <Constant name="fusion_engine" /> in <Constant name="dbt_platform" /> supports connecting to [ClickHouse Cloud](https://clickhouse.com/cloud) and to self-managed ClickHouse. Use a <Constant name="fusion" /> release track for the environment that uses this connection.
 
 :::caution ClickHouse private beta
-ClickHouse connections on v2 are in private beta and not production-ready. To request access, contact your account representative. Expect some minor bugs, and avoid using them in production environments for now. Refer to [Limitations](#limitations) before you connect.
+ClickHouse connections on v2 are in private beta. To request access, contact your account representative. Refer to [Limitations](#limitations) before you connect.
 :::
 
 ## Warehouse permissions for <Constant name="fusion" />
@@ -81,4 +81,4 @@ The ClickHouse connection is in private beta. On the <Constant name="dbt_platfor
 - The dbt <Constant name="semantic_layer" /> isn't supported for ClickHouse connections yet.
 - Only username and password authentication is available. OAuth, key pair authentication, SSH tunneling, and private connectivity aren't supported for ClickHouse yet.
 
-The <Constant name="fusion" /> ClickHouse adapter limitations apply here too, including the gaps in clusters, grants, `dbt clone`, `dbt source freshness`, and SQL comprehension. For the complete picture, refer to [ClickHouse limitations](/docs/local/connect-data-platform/clickhouse-setup#limitations).
+The <Constant name="fusion" /> ClickHouse adapter limitations apply here too. For the full feature-by-feature status, refer to the [ClickHouse documentation](https://clickhouse.com/docs/integrations/dbt/dbt-core-v2-fusion-and-platform).
