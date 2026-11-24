@@ -15,9 +15,9 @@ Connecting your GitHub account to <Constant name="dbt" /> provides convenience a
 - Trigger [Continuous integration](/docs/deploy/continuous-integration)(CI) builds when pull requests are opened in GitHub.
 
 :::note GitHub Enterprise Cloud (`ghe.com`) domains
-If your organization uses GitHub Enterprise Cloud, hosted on a `ghe.com` domain, the shared <Constant name="dbt" /> GitHub App can't reach it. Note that `ghe.com` accounts are cloud-managed (not on-premises), but this limitation still applies. <There is a customer Github app now in Beta that allows native integration. Could you please change the wording here to reflect that. Thank you so much!>
+If your organization uses GitHub Enterprise Cloud, hosted on a `ghe.com` domain, you can connect by registering your own [custom GitHub application](#custom-github-application), available in beta. Although `ghe.com` accounts are cloud-managed (not on-premises), the shared <Constant name="dbt" /> GitHub App can't reach `ghe.com` domains.
 
-Enterprise and Enterprise+ accounts can connect by registering a [custom GitHub application](#custom-github-application) instead. On other plans, use [importing a project by git URL](/docs/platform/git/import-a-project-by-git-url) with SSH/deploy keys. Your organization's SSH URL configuration may require additional steps, and some native integration features are unavailable with the git URL method.
+The custom GitHub application is available in beta on Enterprise and Enterprise+ plans. On other plans, use [importing a project by git URL](/docs/platform/git/import-a-project-by-git-url) with SSH/deploy keys. Your organization's SSH URL configuration may require additional steps, and some native integration features aren't available with the git URL method.
 
 For additional help with your specific setup, contact [dbt Support](mailto:support@getdbt.com) or your <Constant name="dbt" /> account team.
 :::
@@ -27,6 +27,7 @@ For additional help with your specific setup, contact [dbt Support](mailto:suppo
 - **GitHub permissions**: You must be a GitHub organization owner to [install the application](/docs/platform/git/connect-github#installing-dbt-in-your-github-account). Learn more about [GitHub organization](https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/roles-in-an-organization) roles.
 - **dbt permissions**: Your GitHub organization owner also needs [_Owner_](/docs/platform/manage-access/self-service-permissions) or [_Account Admin_](/docs/platform/manage-access/enterprise-permissions) permissions in <Constant name="dbt_platform"/>. If needed, create a temporary account with these [permissions](/docs/platform/manage-access/enterprise-permissions) for the installation.
 - **On-premises GitHub or EU-hosted GitHub**: On Enterprise and Enterprise+ plans, you can use the native integration by registering a [custom GitHub application](#custom-github-application). On other plans, [connect using a Git URL](/docs/platform/git/import-a-project-by-git-url), which supports [fewer](/docs/platform/git/import-a-project-by-git-url#limited-integration) Git features.
+- Your own [custom GitHub application](#custom-github-application), available to Enterprise and Enterprise+ accounts on MT or ST using GitHub Enterprise Server, GitHub Enterprise Cloud with a `ghe.com` domain, or GitHub with EU data residency. <Lifecycle status="beta"/>
 
 :::important Case-sensitive repository names
 When specifying a GitHub repository in the <Constant name="dbt_platform" /> using the UI, API, or Terraform provider, the repository name must exactly match the case used in the GitHub URL to avoid cloning errors or job failures. For example, if the URL of your repository is `github.com/my-org/MyRepo`, enter the name as `MyRepo`, not `myrepo`.
@@ -37,7 +38,7 @@ When specifying a GitHub repository in the <Constant name="dbt_platform" /> usin
 <Constant name="dbt" /> connects to GitHub through a GitHub App. You have two options:
 
 - [Shared <Constant name="dbt" /> application (default)](#installing-dbt-in-your-github-account), available to any org connecting to `github.com`. 
-- Your own [custom GitHub application](#custom-github-application), available in private beta to Enterprise and Enterprise+ accounts on MT or ST using GitHub Enterprise Server or GitHub with EU data residency. Reach out to your account manager to join the beta.  <Lifecycle status="private_beta"/>
+- Your own [custom GitHub application](#custom-github-application), available to Enterprise and Enterprise+ accounts on MT or ST using GitHub Enterprise Server, GitHub Enterprise Cloud with a `ghe.com` domain, or GitHub with EU data residency. <Lifecycle status="beta"/>
 
 You can use one GitHub application per <Constant name="dbt" /> account, not one per project.
 
