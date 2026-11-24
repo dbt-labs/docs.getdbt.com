@@ -72,7 +72,7 @@ Unlike some Private Link services, Azure doesn't create DNS records for a custom
 
 <Lightbox src="/img/docs/dbt-platform/azure-ingress-privatelink/create-endpoint-vnet.png" title="Virtual Network tab with the virtual network and subnet selected"/>
 
-7. On the **DNS** tab, don't integrate the endpoint with a private DNS zone. You create your own zone in [Step 4](#step-4-create-the-private-dns-zone).
+7. On the **DNS** tab, leave **Integrate with private DNS zone** set to **No**. The portal doesn't offer integration when you connect by resource ID or alias, so you create your own zone in [Step 4](#step-4-create-the-private-dns-zone).
 8. Select **Review + create**, then **Create**.
 
 ### Step 2: Wait for dbt to approve the connection
