@@ -2,7 +2,7 @@
 title: "Quickstart for the dbt Semantic Layer"
 id: sl-qs
 description: "Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using Google Sheets."
-sidebar_label: "Quickstart with the dbt Semantic Layer"
+sidebar_label: "Quickstart for the dbt Semantic Layer"
 meta:
   api_name: dbt Semantic Layer APIs
 icon: 'guides'

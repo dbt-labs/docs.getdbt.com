@@ -5,7 +5,6 @@ description: "Seamlessly set up the credentials and tokens to start querying the
 sidebar_label: "Administer the Semantic Layer"
 tags: [Semantic Layer]
 pagination_next: "docs/use-dbt-semantic-layer/sl-architecture"
-pagination_prev: "guides/sl-qs"
 availability:
   surface: platform
   access: paid_plan
