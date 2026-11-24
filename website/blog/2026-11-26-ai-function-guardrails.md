@@ -309,7 +309,7 @@ The sign covers the basics, and more scenarios need more. Rows can change after 
 
 So the Jaffle Shop Games data team made it through the first rush of GTA VI launch week, with every review tagged and the AI function bill under control 👏. But launch week isn't over. The review topic list was written by hand, and launch-day reviews are full of things nobody predicted.
 
-<Lightbox src="/img/blog/2026-11-26-ai-function-guardrails/chuck-norris-meme.png" width="40%" title="Launch-day reviews were full of things nobody predicted" />
+<Lightbox src="/img/blog/2026-11-26-ai-function-guardrails/chuck-norris-meme.png" width="80%" title="Launch-day reviews were full of things nobody predicted" />
 
 In part 2 of this series, we'll let an AI function suggest the topics itself and show how to reuse these guardrails so it can't run twice on the same review.
 
