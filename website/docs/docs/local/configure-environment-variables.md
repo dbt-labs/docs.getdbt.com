@@ -57,7 +57,7 @@ When the same environment variable is defined in multiple places, <Constant name
 
 This means environment variables set in your shell always override values from the `.env` file.
 
-:::tip
+:::tip Committing `.env` to your `.gitignore` file 
 Add `.env` to your `.gitignore` file to prevent sensitive credentials from being committed to version control. The `dbt init` command automatically includes `.env` in the generated `.gitignore` file.
 
 `.gitignore` only applies to files that <Constant name="git" /> isn't tracking yet. If `.env` is already committed, <Constant name="git" /> keeps tracking it and <Constant name="dbt" /> still reads it. To stop that, delete `.env` from your repo and commit the deletion.
