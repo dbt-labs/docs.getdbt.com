@@ -72,10 +72,12 @@ You can connect your <Constant name="dbt" /> account to GitHub by installing the
 If you are your GitHub organization owner, you can also configure the <Constant name="dbt" /> GitHub application to have access to only select repositories. This configuration must be done in GitHub, but we provide an easy link in <Constant name="dbt" /> to start this process.
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/connecting-github/configure-github.png" title="Configuring the dbt app"/>
 
-## Custom GitHub application <Lifecycle status="managed,managed_plus,private_beta" /> {#custom-github-application}
+## Custom GitHub application <Lifecycle status="managed,managed_plus,beta" /> {#custom-github-application}
 
-:::info Available in private beta
-Configuring a custom GitHub app is available in private beta. To join, reach out to your account manager.
+:::info Custom GitHub applications use Fivetran release phases
+
+Custom GitHub application is in beta and uses the [Fivetran release phases](https://fivetran.com/docs/core-concepts#releasephases).
+
 :::
 
 The shared <Constant name="dbt" /> GitHub App is hosted per [region](/docs/platform/about-platform/access-regions-ip-addresses), so it can only reach repositories on `github.com`. If your organization runs [GitHub Enterprise Server](https://docs.github.com/en/enterprise-server@3.14/admin/overview/about-github-enterprise-server) or [GitHub with EU data residency](https://github.com/enterprise/data-residency), register your own GitHub application and point <Constant name="dbt" /> at it. 
@@ -89,9 +91,14 @@ Then each developer on the account needs to [relink their GitHub profile](#relin
 
 ### Register a GitHub application
 
-:::note Repo availability
+:::note Use the same GitHub app for all repos
 
-dbt platform doesn’t support concurrent integrations with public and private GitHub repositories. To register a GitHub App, you need a private repository. Disconnect your configured public repository before you follow the steps in this section.
+All repos that use the GitHub app clone strategy must use the same GitHub app, on the same GitHub server. Each <Constant name="dbt" /> account supports only one, so you can't:
+
+- Use both the shared <Constant name="dbt" /> app and your own custom app
+- Connect repos from more than one GitHub server
+
+Repo visibility (public, internal, or private) doesn't affect this. To connect a repo that the app can't reach, use a [git URL and deploy key](/docs/platform/git/import-a-project-by-git-url) instead.
 
 :::
 

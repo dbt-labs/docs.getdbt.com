@@ -32,7 +32,6 @@ The following surfaces are on by default:
 
 - <Constant name="wizard" /> in <Constant name="studio_ide" />
 - <Constant name="wizard" /> home tab
-- dbt Copilot in <Constant name="dbt_platform"/>.
 - Any future dbt AI features will automatically become available as well.           
 </Expandable>
 
@@ -50,7 +49,7 @@ No. If your organization already opted out of AI features contractually or had t
 
 <Expandable alt_header="Can I opt out of AI features?">
 
-Yes. An account admin can turn AI off at any time in **Account settings**. Refer to [Manage AI features in dbt platform](/docs/platform/manage-dbt-ai) for the steps &mdash; the same toggle controls both <Constant name="wizard" /> and dbt Copilot.
+Yes. An account admin can turn AI off at any time in **Account settings**. Refer to [Manage AI features in dbt platform](/docs/platform/manage-dbt-ai) for the steps.
 
 </Expandable>
 
@@ -69,7 +68,7 @@ If you keep AI disabled, you incur no AI charges after September 1, 2026.
 
 <Expandable alt_header="Which AI features use consumption-based billing?">
 
-Only <Constant name="wizard" /> with dbt-<Term id="managed" /> <Term id="inference"/>, across <Constant name="wizard" /> in <Constant name="dbt_platform" /> and the <Constant name="wizard" /> CLI. dbt Copilot stays on its existing actions-based model and isn't moving to consumption-based billing.
+Only <Constant name="wizard" /> with dbt-<Term id="managed" /> <Term id="inference"/>, across <Constant name="wizard" /> in <Constant name="dbt_platform" /> and the <Constant name="wizard" /> CLI.
 
 </Expandable>
 

@@ -8,7 +8,7 @@ intro_text: "Develop dbt projects using the dbt platform, a faster and more reli
 hide_table_of_contents: true
 ---
 
-You can develop in your browser using a <Constant name="dbt" />-powered command line interface (CLI), an integrated development environment (<Constant name="studio_ide" />), or <Constant name="canvas" />.
+You can develop in your browser using a <Constant name="dbt" />-powered command line interface (CLI) or an integrated development environment (<Constant name="studio_ide" />).
 
 ## Getting started
 
@@ -37,12 +37,6 @@ Choose the option that best fits your needs:
     body="Develop dbt projects directly in your browser with seamless SQL compilation and an intuitive, visual workflow."
     link="/docs/platform/studio-ide/develop-in-studio"
     icon="dashboard"/>
-
-   <Card
-    title="dbt Canvas"
-    body="Develop with Canvas, a seamless drag-and-drop experience that helps analysts quickly create and visualize dbt models in dbt."
-    link="/docs/platform/canvas"
-    icon="canvas"/>
 
 
 

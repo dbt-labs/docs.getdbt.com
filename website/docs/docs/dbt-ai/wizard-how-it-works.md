@@ -107,13 +107,21 @@ In the platform, a session is a saved conversation in the <Constant name="wizard
 - Continue an earlier investigation, refactor, or validation task
 - Review prior prompts, responses, and proposed changes in the conversation list
 
-Start a new session with **Start new dbt Wizard chat** in the panel. Chat history is retained for 90 days. Refreshing the same browser tab keeps your active session; opening a new tab starts empty.
+Start a new session by clicking **New chat** in the panel. Chat history is retained for 90 days. Chats keep running in the background, so you can refresh, switch tabs, or close the page and pick the chat back up from your chat history.
+
+Each chat in your history shows a status badge: running, waiting for input, idle, unread, done, or failed. Refer to [Background chats](/docs/platform/wizard-home#background-chats).
 
 :::tip Start a new chat for each task
 Use a separate chat for each discrete unit of work, such as building one model, debugging one job failure, or reviewing a change. A focused conversation keeps the context relevant to the task, so <Constant name="wizard" /> doesn't carry over assumptions from unrelated work. Return to an existing chat only when you're continuing that same task.
 :::
 
 For Studio-specific behavior and availability, refer to [<Constant name="wizard" /> in Studio IDE](/docs/dbt-ai/wizard-ide).
+
+## How dbt Wizard queries metrics
+
+In the <Constant name="studio_ide" />, <Constant name="wizard" /> Desktop, and the Wizard CLI, [MetricFlow](/docs/build/about-metricflow) turns your questions about metrics into SQL. It uses the metric's definition and applies filters from both the definition and your question.
+
+On Snowflake, BigQuery, Redshift, Databricks, and DuckDB, the <Constant name="wizard" /> CLI and Wizard Desktop run that SQL in your warehouse. On other warehouses, such as Postgres, the SQL is written for DuckDB, so it may not run unchanged.
 
 ## Locally (CLI and Desktop)
 
