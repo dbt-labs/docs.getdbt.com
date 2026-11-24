@@ -116,7 +116,7 @@ The easiest global switch is the `DBT_ENGINE_MANAGE_STATE=0` environment variabl
 
 <TabItem value="dbt-platform" label="dbt platform">
 
-Disable dbt State by unticking the Enable dbt State checkbox on an environment, or setting dbt State to Off on an individual job ([full docs](/docs/deploy/dbt-state-enable-env-jobs)).
+Disable dbt State by unticking the Enable dbt State checkbox on an environment (assuming each job uses the Inherit from environment setting), or setting dbt State to Off on an individual job ([full docs](/docs/deploy/dbt-state-enable-env-jobs)).
 
 </TabItem>
 
@@ -174,10 +174,12 @@ If you need to prevent models from being cloned into a given environment, set th
 dbt State is conservative, and will prioritize accuracy over reuse rate when a model's eligibility is ambiguous. If your reuse rate is lower than you'd expect, here are some common causes and the ways to resolve them ([this FAQ page](/faqs/State/views-rebuilt) has more in-depth explanations).
 
 - **Views that `select *`.** If the expected columns from an upstream table aren't enumerated in the query, views will be rebuilt to protect against schema drift causing a failing query. Fix this by listing the column names.
-- **Non-deterministic Jinja.** Jinja variables like `{{ invocation_id }}` will prevent reuse unless `compare_unrendered_code` is set to true. We recommend you change this setting to true _unless_ you use Jinja variables to change the logic in your model (such as adding or removing a `limit 0` for dry run purposes).
+- **Non-deterministic Jinja.** Jinja variables like `{{ invocation_id }}` will prevent reuse unless `compare_unrendered_code` is set to true. We recommend you change this setting to true, with these exceptions:
+  - If you use Jinja variables to change the logic in your model (such as adding or removing a `limit 0` for dry run purposes), `compare_unrendered_code` should stay false to capture those logic changes
+  - If you use `evaluate_volatile_sql`, the volatile SQL will only be checked if there is also a change to the raw model file, because the unrendered code is checked and excluded first.
 - **Inaccurate or missing freshness data.** External sources such as files stored in S3 or as Google Sheets do not provide native freshness metadata, so you need to specify `loaded_at_field` or `loaded_at_query` for best results.
 - **Unnecessarily short `lag_tolerance`.** Increasing lag tolerance is the most effective way to reduce build rates. The default is 45 minutes, but we recommend specifying a [different option in development and production](/reference/resource-configs/lag-tolerance#use-different-tolerances-per-environment) instead of keeping the same default everywhere.
-- **Rebuilding on fresh data from `any` parent table.** The `requre_fresh_data_from` config defaults to `any`. Switching to `all` will increase reuse rate by preventing executions until all input tables have received new data.
+- **Rebuilding on fresh data from `any` parent table.** The `require_fresh_data_from` config defaults to `any`. Switching to `all` will increase reuse rate by preventing executions until all input tables have received new data.
 
 ## 7. Enable reuse in production 
 
@@ -193,7 +195,7 @@ Unexpected rebuilds stand out easily in logs, but make sure you also check for u
 </TabItem>
 
 <TabItem value="dbt-platform" label="dbt platform">
-Enable dbt State by turning it on at the [environment level](/docs/deploy/dbt-state-enable-env-jobs#enabling-dbt-state-on-environments) or on [individual jobs](/docs/deploy/dbt-state-enable-env-jobs#enabling-dbt-state-on-individual-jobs). 
+Enable dbt State on [individual jobs](/docs/deploy/dbt-state-enable-env-jobs#enabling-dbt-state-on-individual-jobs) or by turning it on at the [environment level](/docs/deploy/dbt-state-enable-env-jobs#enabling-dbt-state-on-environments). Existing jobs default to having dbt State off, so also update them to **Inherited from environment**.
 
 Unexpected rebuilds stand out easily in logs, but make sure you also check for unexpected reuses. If a model is not rebuilt when you expect it to be, use the [Explain tab](/docs/deploy/dbt-state-interface#explain-tab) to work out why.
 
@@ -211,6 +213,16 @@ Alongside the conceptual simplicity, this also increases reuse potential because
 
 ## Closing advice
 
+<Tabs queryString="orchestrator">
+
+<TabItem value="self-hosted" label="Self-hosted">
 The best way to get started is with a 30 day unlimited trial. After the trial ends, you will not be charged; instead you will switch over to a free plan which includes 1000 DATTs per month. Additional invocations will return to standard dbt behaviour, where all selected models execute from scratch every time. 
+</TabItem>
+
+<TabItem value="dbt-platform" label="dbt platform">
+The best way to get started is with a 30 day unlimited trial. After the trial ends, you will not be charged unless you have an existing paid platform account; instead you will switch over to a free plan which includes at least 1000 DATTs per month. Additional invocations will return to standard dbt behaviour, where all selected models execute from scratch every time. 
+</TabItem>
+
+</Tabs>
 
 If you run into questions or have your own advice to share, feel free to leave a comment below or in the `#dbt-state` channel on the dbt Community Slack.
