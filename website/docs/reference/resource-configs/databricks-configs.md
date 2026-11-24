@@ -235,7 +235,7 @@ If you're using an older runtime:
 - Pin your `dbt-databricks` version to `1.10.x` 
 - Or upgrade to DBR 12.2 LTS or higher
 
-This breaking change affects all incremental strategies: `append`, `insert_overwrite`, `replace_where`, `delete+insert`, and `merge` (via intermediate table creation).
+This breaking change affects `append`, `insert_overwrite`, `delete+insert`, and `merge` (via intermediate table creation). The `replace_where` strategy first added name-based insertion in v1.11.7, but its behavior depends on the adapter version and runtime. See [The `replace_where` strategy](#the-replace_where-strategy).
 
 For more details on v1.11.0 changes, see the [dbt-databricks v1.11.0 changelog](https://github.com/databricks/dbt-databricks/blob/main/CHANGELOG.md).
 
@@ -607,7 +607,13 @@ dbt will run an [atomic `replace where` statement](https://docs.databricks.com/e
 
 :::caution
 
-`replace_where` inserts data into columns in the order provided, rather than by column name.  If you reorder columns and the data is compatible with the existing schema, you may silently insert values into an unexpected column.  If the incoming data is incompatible with the existing schema, you will instead receive an error.
+How `replace_where` matches columns depends on your `dbt-databricks` version and runtime:
+
+- v1.11.6 and earlier: Inserts data by column position.
+- v1.11.7 through v1.12.1: Inserts data by column name on SQL warehouses and Databricks Runtime 12.2 and above. On clusters running Databricks Runtime 12.2 to below 18.0, this fails with a syntax error when `incremental_predicates` are set. Upgrade to v1.12.2 or later.
+- v1.12.2 and later: Inserts data by column name on SQL warehouses and Databricks Runtime 18.0 and above. On older runtimes, inserts data by column position.
+
+When `replace_where` inserts by position, if you reorder columns and the data is compatible with the existing schema, you may silently insert values into an unexpected column. If the incoming data is incompatible with the existing schema, you will instead receive an error.
 
 :::
 

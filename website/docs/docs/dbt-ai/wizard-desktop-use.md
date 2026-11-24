@@ -173,8 +173,27 @@ The app uses the same config as the CLI, so the skills, subagents, and MCP serve
 
 - [Skills](/docs/dbt-ai/wizard-skills)
 - [Subagents](/docs/dbt-ai/wizard-subagents)
-- [MCP servers](/docs/dbt-ai/wizard-mcp)
+- [MCP servers](#connect-mcp-servers)
 - [Config files](/docs/dbt-ai/wizard-config)
+
+## Connect MCP servers
+
+MCP servers give <Constant name="wizard" /> more tools and context, such as your orchestrator, BI tool, or GitHub. Adding them directly from the **Connectors** page in **Settings** is coming soon. Until then, set them up through the <Constant name="wizard" /> CLI and use them in Desktop right away, because both share the same config.
+
+To add a server:
+
+1. [Install the <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli?version=2#install-and-set-up-dbt-wizard-cli).
+2. Add a server with `wizard mcp add`. Refer to [Add an MCP server](/docs/dbt-ai/wizard-mcp#add-an-mcp-server).
+3. If the server uses OAuth, run `wizard mcp login SERVER_NAME`. Refer to [Authenticate a server](/docs/dbt-ai/wizard-mcp#authenticate-a-server).
+4. Open <Constant name="wizard" /> Desktop and start a new chat. <Constant name="wizard" /> loads MCP servers at the start of a session.
+
+You can also run the same commands directly in Desktop's built-in terminal:
+
+1. Start a new project-scoped chat and send your first message to start the terminal.
+2. To add a server, run `wizard mcp add`. Refer to [Add an MCP server](/docs/dbt-ai/wizard-mcp#add-an-mcp-server).
+3. To see servers you already added, run `wizard`, then run `/mcp`.
+
+For server types, config keys, and examples, refer to [Use MCP servers](/docs/dbt-ai/wizard-mcp).
 
 ## Chats and worktrees
 
@@ -190,15 +209,15 @@ For more info on how worktrees work, refer to [git worktree](https://git-scm.com
 
 ### Worktree and schema names
 
-<Constant name="wizard" /> names each chat's worktree for you by pairing a random adjective with a random animal, like `docs-fox`. The name has nothing to do with your project or your data, so you won't recognize it. The branch and schema for that chat are then built from the worktree name:
+<Constant name="wizard" /> names each chat's worktree for you after the task you give it, like `fix-orders-test`, so you can tell your chats apart at a glance. The branch and schema for that chat are then built from the worktree name:
 
 <SimpleTable>
 
 | What you see | Example | Where it comes from |
 |---|---|---|
-| Worktree name, which is also the chat name | `docs-fox` | Generated when the chat starts |
-| Branch | `oz/docs-fox` | Your `github.user` git config value, or `feature` if you haven't set one |
-| Target in the worktree's `profiles.yml` | `docs-fox` | The worktree name, with hyphens swapped for underscores |
+| Worktree name, which is also the chat name | `fix-orders-test` | Generated from the task when the chat starts |
+| Branch | `name/fix-orders-test` | Your `github.user` git config value, or `feature` if you haven't set one |
+| Target in the worktree's `profiles.yml` | `fix-orders-test` | The worktree name, with hyphens swapped for underscores |
 | Schema | `dbt_oz_a1b2` | Your project's schema plus a random four-character suffix |
 
 </SimpleTable>

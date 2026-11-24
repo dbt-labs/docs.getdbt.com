@@ -714,7 +714,7 @@ mutation {
 
 #### Query records
 
-Use this endpoint to view all the queries made in your project. This covers both Insights and <Constant name="semantic_layer" /> queries.
+Use this endpoint to view all <Constant name="semantic_layer" /> queries made in your project.
 
 ```graphql
 {

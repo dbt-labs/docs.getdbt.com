@@ -2,24 +2,24 @@
 title: "Lake Compute FAQs"
 id: compute-faq
 sidebar_label: "Lake Compute FAQs"
-description: "Answers to common questions about Lake Compute, including project configuration, SQL compatibility, pricing, and support during private beta."
+description: "Answers to common questions about Lake Compute, including project configuration, SQL compatibility, pricing, and support during public preview."
 ---
 
-# Lake Compute FAQs <Lifecycle status="private_beta" />
+# Lake Compute FAQs <Lifecycle status="public_preview" />
 
-:::info Lake Compute is in private beta
+:::info Lake Compute follows Fivetran release phases
 
-To request access, fill out the [Lake Compute signup form](https://docs.google.com/forms/d/e/1FAIpQLSdWXHU3VFqq1t8GVAA2BMfY_AfeVJH26OXJFlNwXiVv4pcuXQ/viewform). Lake Compute is in active development and likely to change. Breaking changes may occur, documentation may be incomplete, technical support may be limited, and no service-level agreement covers it during beta. Refer to [Private beta limitations](/docs/lake-compute#private-beta-limitations) before you plan real work around it.
+Lake Compute is in Public Preview under the [Fivetran release phases](https://fivetran.com/docs/core-concepts#releasephases).
 
 :::
 
-These questions cover how Lake Compute fits into an existing dbt project during private beta. For an introduction to the product and its requirements, refer to [About Lake Compute](/docs/lake-compute).
+These questions cover how Lake Compute fits into an existing dbt project during public preview. For an introduction to the product and its requirements, refer to [About Lake Compute](/docs/lake-compute).
 
 ## Setup and requirements
 
 <Expandable alt_header="Do I need to migrate my ingestion pipelines to Fivetran or MDLS?">
 
-No. You don't need to migrate your existing ingestion pipelines or configure Fivetran connectors to load into an MDLS destination. During private beta, Lake Compute uses a Fivetran account and an MDLS destination to provision and authenticate access. Your existing ingestion pipelines stay in place.
+No. You don't need to migrate your existing ingestion pipelines or configure Fivetran connectors to load into an MDLS destination. During public preview, Lake Compute uses a Fivetran account and an MDLS destination to provision and authenticate access. Your existing ingestion pipelines stay in place.
 
 </Expandable>
 
@@ -101,19 +101,19 @@ Reconfigure the model to run on your primary data warehouse. All the data remain
 
 ## Pricing
 
-<Expandable alt_header="Does Lake Compute cost anything during private beta?">
+<Expandable alt_header="Does Lake Compute cost anything during public preview?">
 
-No. Lake Compute is free during private beta.
+No. Lake Compute is free during public preview.
 
 </Expandable>
 
 ## Support
 
-<Expandable alt_header="Is Lake Compute covered by a service-level agreement during private beta?">
+<Expandable alt_header="Is Lake Compute covered by a service-level agreement during public preview?">
 
-No. No service-level agreement (SLA) covers Lake Compute during private beta. Use Lake Compute for evaluation and feedback only, and expect limited technical support. Don't treat beta workloads as production-critical unless your team has evaluated the risks and has a fallback plan.
+No. No service-level agreement (SLA) covers Lake Compute during public preview. Use Lake Compute for evaluation and feedback only, and expect limited technical support. Don't treat non GA workloads as production-critical unless your team has evaluated the risks and has a fallback plan.
 
-For the full list of what Lake Compute doesn't support during private beta, refer to [Private beta limitations](/docs/lake-compute#private-beta-limitations).
+For the full list of what Lake Compute doesn't support during public preview, refer to [Public preview limitations](/docs/lake-compute?version=2#limitations).
 
 </Expandable>
 
@@ -121,7 +121,7 @@ For the full list of what Lake Compute doesn't support during private beta, refe
 
 Include enough detail for the support team to reproduce and route the issue:
 
-- State that the issue involves **Lake Compute private beta**.
+- State that the issue involves **Lake Compute public preview**.
 - Your MDLS destination name and cloud region. Don't include secrets, private keys, or access tokens.
 - Whether the same model succeeds when you run it on your warehouse.
 - Minimal SQL or a reproducible example, with sensitive values removed.
@@ -136,7 +136,7 @@ Start with the team that owns the component where the failure occurs:
 |---------|----------|
 | **dbt Support** | dbt project parsing or compilation; dbt v2 or Fusion behavior; model selection; DAG or `ref` behavior; job orchestration; dbt-side connection or model configuration; a model runs on the warehouse, but dbt doesn't route it to Lake Compute as expected. |
 | **Fivetran Support** | Fivetran account or MDLS setup; MDLS destination health; write credentials; the MDLS-managed catalog; storage or catalog provisioning performed through Fivetran; a Fivetran service error. |
-| **Either team, if ownership is unclear** | Lake Compute execution, authentication, networking, or a failure at the boundary between dbt, Lake Compute, MDLS, and the warehouse. Identify the ticket as a Lake Compute private beta issue and include both account IDs so support can route it. Don't open duplicate tickets unless support asks you to. |
+| **Either team, if ownership is unclear** | Lake Compute execution, authentication, networking, or a failure at the boundary between dbt, Lake Compute, MDLS, and the warehouse. Identify the ticket as a Lake Compute public preview issue and include both account IDs so support can route it. Don't open duplicate tickets unless support asks you to. |
 
 </Expandable>
 
@@ -144,3 +144,6 @@ Start with the team that owns the component where the failure occurs:
 
 - [About Lake Compute](/docs/lake-compute)
 - [Lake Compute setup](/docs/lake-compute/compute-onboarding)
+- [Lake Compute with Snowflake](/docs/lake-compute/compute-onboarding-snowflake)
+- [Lake Compute with BigQuery](/docs/lake-compute/compute-onboarding-bigquery)
+- [Lake Compute with Databricks](/docs/lake-compute/compute-onboarding-databricks)

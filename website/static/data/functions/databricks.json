@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "databricks",
     "platform_name": "Databricks",
-    "count": 813
+    "count": 825
   },
   "functions": [
     {
@@ -1082,6 +1082,13 @@
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/current_version",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "DATA_SKIPPING_SUMMARY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/data_skipping_summary",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "DATE",
@@ -2172,6 +2179,13 @@
       "name": "ISTRUE",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/istrue",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "JARO_WINKLER_SIMILARITY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/jaro_winkler_similarity",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -5151,11 +5165,32 @@
       "fusion_typecheck": true
     },
     {
+      "name": "TRY_VARIANT_ARRAY_APPEND",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_variant_array_append",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "TRY_VARIANT_GET",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_variant_get",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_VARIANT_INSERT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_variant_insert",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TRY_VARIANT_SET",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_variant_set",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "TRY_ZSTD_DECOMPRESS",
@@ -5438,6 +5473,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "USER_IDENTITY_ATTRIBUTE_VALUES",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/user_identity_attribute_values",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "UUID",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/uuid",
@@ -5473,6 +5515,20 @@
       "fusion_typecheck": true
     },
     {
+      "name": "VARIANT_ARRAY_APPEND",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/variant_array_append",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "VARIANT_DELETE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/variant_delete",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "VARIANT_EXPLODE",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/variant_explode",
@@ -5492,6 +5548,34 @@
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/variant_get",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "VARIANT_INSERT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/variant_insert",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "VARIANT_PICK",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/variant_pick",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "VARIANT_SET",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/variant_set",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "VARIANT_STRIP_NULLS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/variant_strip_nulls",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "VECTOR_AVG",
