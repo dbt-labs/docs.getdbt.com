@@ -49,7 +49,7 @@ The ClickHouse adapter for <Constant name="fusion" /> is in beta. It's at featur
 
 For the full feature-by-feature status, refer to the [ClickHouse documentation](https://clickhouse.com/docs/integrations/connectors/data-ingestion/etl-tools/dbt/dbt-core-v2-fusion-and-platform).
 
-The ClickHouse adapter is under active development. If you encounter an issue, please [open it in dbt-core](https://github.com/dbt-labs/dbt-core/issues/new) and add the `adapter:clickhouse` label.
+The ClickHouse adapter is under active development. If you encounter an issue, open it in the [`dbt-labs/dbt` repository](https://github.com/dbt-labs/dbt/issues/new) and add the `adapter:clickhouse` label.
 
 </VersionBlock>
 
