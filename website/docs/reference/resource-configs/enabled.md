@@ -51,6 +51,21 @@ select ...
 
 </File>
 
+<VersionBlock firstVersion="1.9">
+
+<File name='models/properties.yml'>
+
+```yaml
+models:
+  - name: <model_name>
+    [config](/reference/resource-properties/config):
+      enabled: true | false
+```
+
+</File>
+
+</VersionBlock>
+
 </TabItem>
 
 
@@ -66,6 +81,21 @@ seeds:
 ```
 
 </File>
+
+<VersionBlock firstVersion="1.9">
+
+<File name='seeds/properties.yml'>
+
+```yaml
+seeds:
+  - name: <seed_name>
+    [config](/reference/resource-properties/config):
+      enabled: true | false
+```
+
+</File>
+
+</VersionBlock>
 
 </TabItem>
 
@@ -84,7 +114,7 @@ snapshots:
 
 <VersionBlock firstVersion="1.9">
 
-<File name='snapshots/snapshot_name.yml'>
+<File name='snapshots/properties.yml'>
 
 ```yaml
 
@@ -158,6 +188,21 @@ select ...
 
 </File>
 
+<File name='models/properties.yml'>
+
+```yaml
+models:
+  - name: <model_name>
+    columns:
+      - name: <column_name>
+        data_tests:
+          - <test_name>:
+              [config](/reference/resource-properties/config):
+                enabled: true | false
+```
+
+</File>
+
 </TabItem>
 
 <TabItem value="unit tests">
@@ -175,7 +220,7 @@ select ...
 
 </File>
 
-<File name='models/<filename>.yml'>
+<File name='models/properties.yml'>
 
 ```yaml
 unit_tests:
@@ -225,7 +270,7 @@ sources:
 
 <TabItem value="analyses">
 
-<File name='analyses/<filename>.yml'>
+<File name='analyses/properties.yml'>
 
 ```yaml
 analyses:
@@ -264,7 +309,7 @@ metrics:
 
 </File>
 
-<File name='models/metrics.yml'>
+<File name='models/properties.yml'>
 
 ```yaml
 
@@ -290,7 +335,7 @@ exposures:
 
 </File>
 
-<File name='models/exposures.yml'>
+<File name='models/properties.yml'>
 
 ```yaml
 
@@ -317,7 +362,7 @@ semantic-models:
 </File>
 
 <VersionBlock lastVersion="1.11">
-<File name='models/semantic_models.yml'>
+<File name='models/properties.yml'>
 
 ```yaml
 semantic_models:
@@ -330,7 +375,7 @@ semantic_models:
 </VersionBlock>
 
 <VersionBlock firstVersion="1.12">
-<File name='models/file_name.yml'>
+<File name='models/properties.yml'>
 
 ```yaml
 models:
@@ -356,7 +401,7 @@ saved-queries:
 
 </File>
 
-<File name='models/semantic_models.yml'>
+<File name='models/properties.yml'>
 
 ```yaml
 saved_queries:
