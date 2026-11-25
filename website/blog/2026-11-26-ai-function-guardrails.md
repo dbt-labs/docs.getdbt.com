@@ -38,7 +38,7 @@ At Jaffle Shop Games, customers write reviews in the store's review tool. Fivetr
 2. A second model, `reviews_classified`, calls an AI function once for each review. You give the function a review and a list of topics, and it answers with the topic that fits best. For example, "My download code never arrived!" comes back as "order problems".
 dbt then saves those answers in a table, so every review ends up with its topic next to it. That also means every call costs money.
 
-<Lightbox src="/img/blog/2026-11-26-ai-function-guardrails/reviews-flow.webp" width="100%" title="Reviews flow from the store's review tool into your warehouse, through stg_reviews and reviews_classified, and end up as a table with a topic next to each review" />
+<Lightbox src="/img/blog/2026-11-26-ai-function-guardrails/reviews-flow.webp" width="100%" title="The reviews DAG: raw.reviews flows into stg_reviews, which flows into reviews_classified" />
 
 The examples in this post use Snowflake Cortex functions, but the underlying dbt patterns are consistent regardless of the platform you're using.
 
