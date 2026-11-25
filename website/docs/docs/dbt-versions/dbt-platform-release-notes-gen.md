@@ -70,6 +70,7 @@ Release notes are grouped by date for single-tenant environments.
 - **Clearer errors for deleted or conflicting account subdomains**: API requests to a deleted account subdomain now return HTTP 404. Requests to a subdomain that matches two live accounts also return HTTP 404. Related auth checks return HTTP 403. Before, these cases could continue without a clear error.
 
 - **Creating a personal access token rejects unsupported token types**: `POST /api/v3/accounts/{account_id}/users/{user_id}/account-apikeys/` now returns HTTP 400 for `type` values of `SCIM`, `NATIVE_APP_USER_LINK`, or empty values. Accepted types are `CLOUD_CLI` and `GENERAL`. Validation errors now appear in the `data` field instead of `status.user_message`.
+
 ## November 18, 2026
 
 ### New
