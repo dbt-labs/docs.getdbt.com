@@ -132,7 +132,7 @@ Before putting dbt State into production, test it in a development environment. 
 
 <TabItem value="self-hosted" label="Self-hosted">
 
-Install (for dbt v1.7-1.12) or enable (dbt v1.13 and v2.0+) [dbt State locally](/docs/deploy/dbt-state-setup). Then activate your dbt State trial by creating a new dbt platform account. The easiest way to enter this flow is to invoke a dbt command like `dbt run`, which will trigger an authentication prompt.
+Install (for dbt v1.7-1.12) or enable (dbt v1.13 and v2.0+) [dbt State locally](/docs/deploy/dbt-state-setup). Then activate your dbt State trial by creating a new dbt platform account. The easiest way to enter this flow is to invoke a dbt command like `dbt run` (dbt v1.7-1.12) or `dbt login` (dbt v1.13+), which will trigger an authentication prompt.
 
 :::tip Remember
 dbt State isn't a seat-based product and doesn't require a subscription to the rest of the dbt platform's features.
@@ -216,11 +216,11 @@ Alongside the conceptual simplicity, this also increases reuse potential because
 <Tabs queryString="orchestrator">
 
 <TabItem value="self-hosted" label="Self-hosted">
-The best way to get started is with a 30 day unlimited trial. After the trial ends, you will not be charged; instead you will switch over to a free plan which includes 1000 DATTs per month. Additional invocations will return to standard dbt behaviour, where all selected models execute from scratch every time. 
+The best way to get started is with a 30-day unlimited usage trial. After the trial ends, you will not be charged; you will switch over to a [free plan](/docs/deploy/dbt-state-trial#free-monthly-datt-allowance) which includes 1000 DATTs per month. Additional invocations will return to standard dbt behavior, where all selected models execute from scratch every time.
 </TabItem>
 
 <TabItem value="dbt-platform" label="dbt platform">
-The best way to get started is with a 30 day unlimited trial. After the trial ends, you will not be charged unless you have an existing paid platform account; instead you will switch over to a free plan which includes at least 1000 DATTs per month. Additional invocations will return to standard dbt behaviour, where all selected models execute from scratch every time. 
+The best way to get started is with a 30-day unlimited usage trial. After the trial ends, you will switch over to your [plan's free monthly allowance](/docs/deploy/dbt-state-trial#free-monthly-datt-allowance), which includes at least 1000 DATTs per month. You will not be charged unless you have an existing paid platform account and exceed that allowance. Additional invocations will return to standard dbt behavior, where all selected models execute from scratch every time. 
 </TabItem>
 
 </Tabs>
