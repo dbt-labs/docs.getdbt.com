@@ -3,16 +3,12 @@ title: "How to cost-effectively use warehouse AI functions in your dbt project"
 description: "AI functions in SQL are easy to write and equally easy to overspend on. Here are four strategies to keep the bill under control."
 slug: ai-function-guardrails
 image: /img/blog/2026-11-26-ai-function-guardrails/jaffle-games-shop-storefront.webp
-
 authors: [benoit_perigaud, doug_beatty, mirna_wong, joel_labes]
-
 tags: [ai]
 hide_table_of_contents: false
-
 date: 2026-11-26
 is_featured: false
 ---
-
 
 It's GTA VI launch time at Jaffle Games Shop, an online game store. Orders are flying and customer reviews are pouring in, and it's getting hard to keep up!
 
@@ -65,7 +61,6 @@ from {{ ref('stg_reviews') }}
 ```
 
 dbt platform [automatically sets](/docs/build/environment-variables#special-environment-variables) `DBT_CLOUD_ENVIRONMENT_TYPE`. You can choose a different environment variable or filter on `target.name` – anything that differentiates one environment from another is fine. Specifying a default value `''` prevents the dbt invocation from failing if it's not set.
-
 
 ## 2. Check the price on a small sample first
 
