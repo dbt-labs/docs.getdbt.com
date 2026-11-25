@@ -80,15 +80,15 @@ Seeds are configured in your `dbt_project.yml`, check out the [seed configuratio
 <VersionBlock firstVersion="2.0">
 
 ## Column type inference
-When you don't set [`column_types`](/reference/resource-configs/column_types), dbt infers each column's type from your CSV data.
+dbt infers each column's type from your CSV data when you don't set [`column_types`](/reference/resource-configs/column_types).
 
-Inference differs between versions for dates and timestamps:
-
+dbt inferring differs between versions for dates and timestamps:
+<SimpleTable>
 | Version | A value like `2022-10-01 00:00:00` loads as |
 | ------- | ------------------------------------------- |
 | <Constant name="core_v1" /> | Text (`varchar`) |
 | v2 | A date or timestamp type |
-
+</SimpleTable>
 If a model parses a seed's date column as text, for example with `to_date(col, 'format')`, it can fail on v2. Remove the text parsing, or set `column_types` to keep the column as text and run `dbt seed --full-refresh`. Refer to [Upgrading to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2#seeds-infer-date-and-timestamp-columns) for an example.
 
 :::tip
