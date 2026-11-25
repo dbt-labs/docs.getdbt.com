@@ -464,14 +464,14 @@ In v2, it will not produce this extra column in the table resulting from `dbt se
 
 #### Seeds infer date and timestamp columns
 
-In <Constant name="core_v1" />, `dbt seed` loads a date or timestamp value from your CSV as text (`varchar`). In v2, dbt infers the column as a date or timestamp type.
+In <Constant name="core_v1" />, `dbt seed` loads dates and timestamps from your CSV as text. In v2, dbt infers a date or timestamp type instead.
 
-This can break models that still parse the column as text. For example, on Snowflake, a model that runs `to_date(reportingdate, 'YYYY-MM-DD HH24:MI:SS.FF')` on an inferred timestamp column fails with `Can't parse '2022-10-01T00:00:00' as date`.
+Models that still parse these columns as text can fail. For example, on Snowflake, `to_date(reportingdate, 'YYYY-MM-DD HH24:MI:SS.FF')` fails with `Can't parse '2022-10-01T00:00:00' as date`.
 
-To fix this, either:
+To fix it, choose one:
 
-- Remove the `to_date` call, or any other text parsing, from models that read the seed. For example, use `reportingdate::date`.
-- Keep the column as text by setting [`column_types`](/reference/resource-configs/column_types) on the seed, then run `dbt seed --full-refresh` once.
+- Remove the text parsing from the model. For example, use `reportingdate::date`.
+- Keep the column as text with [`column_types`](/reference/resource-configs/column_types), then run `dbt seed --full-refresh` once.
 
 ```yaml
 # dbt_project.yml
@@ -482,7 +482,9 @@ seeds:
         reportingdate: varchar
 ```
 
-Before you upgrade, set `column_types` on any seed where you need a specific type. For more information, refer to [Column type inference](/docs/build/seeds#column-type-inference).
+:::tip
+Set `column_types` on your seeds before you upgrade so their types don't change.
+:::
 
 #### Move standalone anchors under `anchors:` key
 

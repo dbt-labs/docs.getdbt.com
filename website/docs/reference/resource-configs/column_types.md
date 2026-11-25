@@ -82,7 +82,7 @@ Use this configuration when type inference doesn't give you the type you want. O
 
 <VersionBlock firstVersion="2.0">
 
-Set it explicitly before you upgrade to v2, which infers date and timestamp columns that <Constant name="core_v1" /> loads as text. Changing `column_types` on an existing seed requires `dbt seed --full-refresh`. Refer to [Column type inference](/docs/build/seeds#column-type-inference).
+Set it before you upgrade to v2, which infers dates and timestamps that <Constant name="core_v1" /> loads as text. To change `column_types` on an existing seed, run `dbt seed --full-refresh`. Refer to [Column type inference](/docs/build/seeds#column-type-inference).
 
 </VersionBlock>
 
