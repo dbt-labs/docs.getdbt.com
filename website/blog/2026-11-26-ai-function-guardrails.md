@@ -277,15 +277,15 @@ The [`full_refresh` config](/reference/resource-configs/full_refresh) has three 
 | 1. Sample a handful of rows | Dev and CI runs paying for the full table | `env_var()` with a safe default |
 | 2. Check the price first | Finding out the cost after you've spent it | Your warehouse's usage view |
 | 3. Never pay twice | Re-tagging rows you already tagged | Incremental models |
-| 4. Lock the rebuild | Accidental full rebuilds that re-tag every row | `full_refresh` config set by a variable |
+| 4. Prevent accidental full refreshes | Accidental full rebuilds that re-tag every row | `full_refresh` config set by a variable |
 
-<Lightbox src="/img/blog/2026-11-26-ai-function-guardrails/four-guardrail-patterns.png" width="100%" title="The four guardrails in order: sample a handful of rows, lock the rebuild, never pay twice, and check the price first" />
+<Lightbox src="/img/blog/2026-11-26-ai-function-guardrails/four-guardrail-patterns.png" width="100%" title="The four guardrails in order: sample a handful of rows, prevent accidental full refreshes, never pay twice, and check the price first" />
 
-{/* TODO: this diagram still shows the old order. Regenerate as sample, check the price, never pay twice, lock the rebuild, then update the title. */}
+{/* TODO: this diagram still shows the old order. Regenerate as sample, check the price, never pay twice, prevent accidental full refreshes, then update the title. */}
 
 ## What's next
 
-Remember the arcade machine from earlier, where every question costs a coin and dbt asks one question per review? It now has a sign taped to it: "One coin per review. Please don't feed me twice." The four guardrails are the tape. Sampling keeps the number of coins down, the price check tells you how many coins a full run will take, and incremental models and the rebuild lock stop the same review being asked twice.
+Remember the arcade machine from earlier, where every question costs a coin and dbt asks one question per review? It now has a sign taped to it: "One coin per review. Please don't feed me twice." The four guardrails are the tape. Sampling keeps the number of coins down, the price check tells you how many coins a full run will take, and incremental models and protection from accidental full refreshes stop the same review being asked twice.
 
 The sign covers the basics, and more scenarios need more. Rows can change after they've been processed, and changing your model or prompt makes earlier results out of date. [dbt-context-engineering](https://github.com/dbt-labs/dbt-context-engineering) has patterns for both, such as comparing a hash of each row's input and stamping each row with the model or prompt version. Check out those examples and share what worked (or didn't) in the dbt Community Slack.
 
