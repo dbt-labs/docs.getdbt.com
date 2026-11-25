@@ -462,6 +462,28 @@ In v2, it will not produce this extra column in the table resulting from `dbt se
 | cat    |  
 | bear   |  
 
+#### Seeds infer date and timestamp columns
+
+In <Constant name="core_v1" />, `dbt seed` loads a date or timestamp value from your CSV as text (`varchar`). In v2, dbt infers the column as a date or timestamp type.
+
+This can break models that still parse the column as text. For example, on Snowflake, a model that runs `to_date(reportingdate, 'YYYY-MM-DD HH24:MI:SS.FF')` on an inferred timestamp column fails with `Can't parse '2022-10-01T00:00:00' as date`.
+
+To fix this, either:
+
+- Remove the `to_date` call, or any other text parsing, from models that read the seed. For example, use `reportingdate::date`.
+- Keep the column as text by setting [`column_types`](/reference/resource-configs/column_types) on the seed, then run `dbt seed --full-refresh` once.
+
+```yaml
+# dbt_project.yml
+seeds:
+  my_project:
+    my_seed:
+      +column_types:
+        reportingdate: varchar
+```
+
+Before you upgrade, set `column_types` on any seed where you need a specific type. For more information, refer to [Column type inference](/docs/build/seeds#column-type-inference).
+
 #### Move standalone anchors under `anchors:` key
 
 As part of the ongoing process of making the dbt authoring language more precise, unexpected top-level keys in a YAML file will result in errors. A common use case behind these unexpected keys is standalone anchor definitions at the top level of a YAML file. You can use the new top-level `anchors:` key as a container for these reusable configuration blocks.
