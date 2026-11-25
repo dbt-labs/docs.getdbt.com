@@ -89,7 +89,7 @@ If you need to reuse the operation across environments or share it with your tea
 This syntax describes an unreleased feature in <Constant name="fusion" />.
 :::
 
-Use `--per-node` with `--select` or a named YAML `--selector` to call a macro once for each selected source table. dbt passes the source as the `node` argument and runs the SQL that the macro returns. Use `--threads` to limit how many source operations run at once.
+Use `--per-node` with `--select` or a named YAML `--selector` to call a macro once for each selected source table. dbt passes the source metadata as the `node` argument, sets `this` to the selected source relation, and runs the SQL that the macro returns. Use `--threads` to limit how many source operations run at once.
 
 The following macro runs a small read against each selected source table. Add it to your project and replace `source:snowplow` with a source selector that matches your project.
 
@@ -98,7 +98,7 @@ The following macro runs a small read against each selected source table. Add it
 ```jinja
 {% macro probe_source(node) %}
   {% set sql %}
-    select 1 from {{ source(node.source_name, node.name) }} limit 1
+    select 1 from {{ this }} limit 1
   {% endset %}
   {% do return(sql) %}
 {% endmacro %}
