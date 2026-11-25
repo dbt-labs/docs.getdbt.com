@@ -21,6 +21,7 @@ If you're using the <Constant name="dbt_platform" /> (including the <Constant na
 
 | dbt v2 | Initial release | Support level and end date |
 |:---:|:---:|:---:|
+| [**v2.1**](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2.1) | (coming soon) | Beta |
 | [**v2.0**](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) | Sept 14, 2026 | **Active support &mdash; Sept 13, 2027** |
 
 ### Semantic versioning
