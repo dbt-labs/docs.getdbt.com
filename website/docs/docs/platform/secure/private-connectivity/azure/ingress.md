@@ -53,7 +53,7 @@ Unlike some Private Link services, Azure doesn't create DNS records for a custom
 - Your **access URL** (`<account_prefix>.<instance_label>.dbt.com`).
 - The **Azure subscription ID** where you create the private endpoint, shared with your dbt Labs account team beforehand. <Constant name="dbt" /> must allow your subscription to connect to the service before you can create the endpoint; if it isn't allowed, Azure rejects the request with a message that the Private Link service doesn't exist or isn't visible. Once your subscription is allowed, connection requests from it are approved automatically.
 - An Azure virtual network and subnet where workloads that call <Constant name="dbt" /> run (or that your on-premises network can reach).
-- Permissions in your subscription to create private endpoints, private DNS zones, virtual network links and DNS records.
+- Permissions in your subscription to create private endpoints, private DNS zones, virtual network links, and DNS records.
 
 ## Create the private endpoint
 
