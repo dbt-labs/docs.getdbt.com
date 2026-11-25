@@ -61,7 +61,7 @@ The full list lives in website/release-note-areas.json.
 - **Behavior change:** Remote MCP calls without the required permissions can now fail earlier, and invalid arguments or conflicting project and environment selections return clearer errors. If a call fails, check the permissions on the resource and your configured IDs. For help, refer to [remote MCP troubleshooting](/docs/dbt-ai/mcp-troubleshooting#troubleshooting).
 
 #### dbt State {#dbt-state-november-2026}
-- **New:** Use [`ignore_external_modifications`](/reference/resource-configs/ignore-external-modifications) to control whether dbt State forces a rebuild when it detects that a node was modified outside of dbt (for example, by a direct change to the table in your warehouse). When set to `true`, dbt State reuses the node even if it was modified externally. When set to `false`, dbt State forces a rebuild when it detects an external change. This applies to views, tables, incremental models, and snapshots.
+- **New:** Use [`ignore_external_modifications`](/reference/resource-configs/ignore-external-modifications) to control whether dbt State forces a rebuild when it detects that a node was modified outside of dbt (for example, by a direct change to the table in your warehouse). When set to `true`, dbt State reuses the node even if it was modified externally. When set to `false`, dbt State forces a rebuild when it detects an external change.
 
   The default value of this config is `true` in dbt v1 and `false` in dbt v2. The v2 default will change to `true` in a future release.
 
