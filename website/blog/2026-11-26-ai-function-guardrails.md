@@ -1,6 +1,6 @@
 ---
-title: "Grand theft AI: guardrails for AI functions in dbt"
-description: "AI functions in SQL are easy enough to write and equally easy to overspend on. Four plain dbt patterns keep the bill under control."
+title: "How to cost-effectively use warehouse AI functions in your dbt project"
+description: "AI functions in SQL are easy to write and equally easy to overspend on. Here are four strategies to keep the bill under control."
 slug: ai-function-guardrails
 image: /img/blog/2026-11-26-ai-function-guardrails/jaffle-shop-games-storefront.webp
 
@@ -19,7 +19,7 @@ Let's take GTA VI launch time at Jaffle Shop Games, an online game store. Orders
 
 Someone on the Jaffle Shop Games data team has a good idea: use an AI function from the data platform to tag every review with a topic, so the team can see what customers are talking about. So they write the model, run it once to check it works, and then head out to play GTA for lunch. However, AI functions in SQL are _easy_ enough to write and equally easy to _overspend_ on:
 
-That one test run called the AI function on every review in the table. It cost hundreds of dollars. Then the CI job ran it again.
+Warehouse-provided SQL functions are easy to write – they feel just like normal SQL! But their cost structure makes it easy to overspend, especially if you re-process every record in dev, then CI, then every day once it reaches production.
 
 This post covers four patterns that set up guardrails when you use AI functions on your data, using plain dbt features you already have. It assumes your source table has a column recording when each row was loaded or last updated, such as `updated_at` or a timestamp added by your data loading tool (for example, `_fivetran_synced` in [Fivetran](https://www.fivetran.com/)). If it doesn't, you'll need additional logic inside your `is_incremental()` block to avoid reprocessing old rows. If your warehouse can track changes for you, such as [Snowflake streams](https://docs.snowflake.com/en/user-guide/streams-intro) or the [Databricks change data feed](https://www.databricks.com/blog/2021/06/09/how-to-simplify-cdc-with-delta-lakes-change-data-feed.html), you can use those instead. Refer to [Change data capture in dbt](/best-practices/how-we-handle-cdc/1-intro) for more options.
 
