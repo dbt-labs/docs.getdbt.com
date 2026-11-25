@@ -110,21 +110,25 @@ dbt run-operation inspect_node --per-node --select tag:nightly source:snowplow -
 
 Replace `tag:nightly source:snowplow` with selectors that match your project.
 
-Declare `node` on the macro and pass any additional arguments with `--args`. dbt reserves `node` for the selected resource. For nodes that represent warehouse relations, such as source tables and persisted models, use `{{ this }}` to reference the selected relation in SQL. For nodes without a relation, `this` is `none`.
+Declare `node` as a macro parameter. Every key you pass with `--args` must match a declared macro parameter. dbt reserves `node` for the selected resource. For nodes that represent warehouse relations, such as source tables and persisted models, use `{{ this }}` to reference the selected relation in SQL. For nodes without a relation, `this` is `none`.
 
 The macro can render a non-empty SQL string or return a non-empty SQL string or a list of non-empty SQL strings. dbt executes the SQL in the order you provide it. Keep statements that depend on the same session or transaction in one SQL string because adapters can release the session between strings.
 
-Return an empty list with `{% do return([]) %}` to skip SQL execution. Empty or whitespace-only output, `none`, and unsupported types are errors for that node. Each node operation should be independent because operations on different nodes can run concurrently.
+Return an empty list with `{% do return([]) %}` when dbt has no SQL to execute after the macro. dbt records the operation as `skipped` in `run_results.json`, even if the macro already ran a query or logged output. Empty or whitespace-only output, `none`, and unsupported types are errors for that node. Each node operation should be independent because operations on different nodes can run concurrently.
 
 By default, selecting a model or source doesn't also select its tests. Select tests explicitly with a selector such as `--select test_type:data`, or choose an [indirect selection mode](/reference/node-selection/test-selection-examples#indirect-selection) such as `--indirect-selection=eager` to include associated tests.
+
+For per-node operations, `--indirect-selection` takes precedence over the `indirect_selection` setting in `selectors.yml`. The default is `empty`, even when the YAML selector sets another mode.
 
 Use `--exclude` to narrow the selection. You can use a [state selector](/reference/node-selection/methods#state) with `--state` pointing to a local directory containing `manifest.json`. `--per-node` requires a named macro and cannot be combined with `--sql`, `--defer`, `--defer-state`, or `--favor-state`.
 
 dbt reports each macro operation by the selected node's unique ID in `run_results.json`, including operations on test nodes. If a node operation fails, dbt finishes the other operations and exits with an error. Add `--fail-fast` to skip operations that have yet to start while allowing active operations to finish.
 
+dbt emits a warning when the selection matches no enabled nodes. Use `--warn-error` to make that warning fail the command.
+
 ### Package examples
 
-Use a project macro to adapt an existing package macro to the `node` argument. For macros that log a result or use `run_query()` to read rows, return `[]` after handling the output. dbt records these operations as skipped in `run_results.json` because they don't return SQL for dbt to execute.
+Use a project macro to adapt an existing package macro to the `node` argument. For macros that log a result or use `run_query()` to read rows, return `[]` after handling the output.
 
 #### Stage Snowflake external tables
 
