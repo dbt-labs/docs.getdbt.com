@@ -27,6 +27,49 @@ Release notes are grouped by date for single-tenant environments.
 
 <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](https://docs.getdbt.com/feeds/release-notes-st-rss.xml), [Atom](https://docs.getdbt.com/feeds/release-notes-st-atom.xml), or [JSON Feed](https://docs.getdbt.com/feeds/release-notes-st-rss.json).</span>
 
+## November 25, 2026
+
+### New
+
+#### Studio IDE
+
+- **Confirmation before pushing to a protected branch**: When your environment uses a [custom protected primary branch](/faqs/Environments/custom-branch-settings), Studio IDE and dbt Wizard now ask you to confirm before you push to that branch. That helps stop accidental pushes that skip your branch protection rules.
+
+### Fixes
+
+#### Studio IDE
+
+- **Reused models show the right status in Studio IDE**: When a dbt v2 run reuses a model from an earlier run, Studio IDE now shows **Reused**. It used to show **Skip**.
+
+#### Catalog
+
+- **Catalog stays open when an accepted values test uses Jinja**: If an `accepted_values` test uses a Jinja expression in `values` (for example, `{{ var('x') }}`), the [test details panel](/docs/explore/explore-projects#view-resource-details) and lineage drawer no longer crash. Catalog now shows the Jinja text as written.
+
+#### dbt platform
+
+- **Sources now appear in the run Lineage tab**: Sources and the links from those sources to models now appear in the run [**Lineage** tab](/docs/deploy/run-visibility#lineage-tab), even when the source has no recorded run duration.
+
+- **Settings explain when a default license type is unavailable**: If your account moves to a plan that doesn't include the saved [default license type](/docs/platform/manage-access/seats-and-users#default-license-for-new-users), that type now shows as disabled in settings with the label **Not available on your plan.** Users who sign in with Single Sign-On (SSO) or just-in-time (JIT) provisioning now see a message asking an admin to update the default license. Previously the sign in failed without explanation.
+
+- **History tabs show recent changes again**: On [job](/docs/deploy/deploy-jobs#job-settings-history), [environment](/docs/dbt-platform-environments#environment-settings-history), project, and connection pages, the **History** tab now shows recent changes correctly. Previously, accounts with a lot of activity could see **No recorded history** even after a recent change.
+
+#### Cost Insights
+
+- **Scheduled Redshift Cost Insights runs no longer fail the connection test**: Scheduled Cost Insights runs for Redshift now use the connection’s [platform metadata credentials](/docs/explore/set-up-cost-insights#configure-platform-metadata-credentials), the same credentials a manual retest uses. Before, the connection badge could turn red every day and cost data was skipped without a clear warning.
+
+#### APIs, Identity, and Administration
+
+- **Clearer API error when the default license type is not on your plan**: Setting `default_license_type` to a license type that isn't on the account’s plan now returns HTTP 400 with a field error. SSO, SCIM (System for Cross-domain Identity Management), and JIT provisioning also return an error instead of failing silently.
+
+### Behavior change
+
+#### APIs, Identity, and Administration
+
+- **Mismatched account ID query parameters now return an error**: If an API request includes `?account_id=` and that value doesn't match the token or subdomain, the API now returns 403, 404, or 400. Invalid values (for example, it's not an integer, it's duplicated, or it conflicts with another value) return HTTP 400. Before, the parameter could be ignored.
+
+- **Clearer errors for deleted or conflicting account subdomains**: API requests to a deleted account subdomain now return HTTP 404. Requests to a subdomain that matches two live accounts also return HTTP 404. Related auth checks return HTTP 403. Before, these cases could continue without a clear error.
+
+- **Creating a personal access token rejects unsupported token types**: `POST /api/v3/accounts/{account_id}/users/{user_id}/account-apikeys/` now returns HTTP 400 for `type` values of `SCIM`, `NATIVE_APP_USER_LINK`, or empty values. Accepted types are `CLOUD_CLI` and `GENERAL`. Validation errors now appear in the `data` field instead of `status.user_message`.
 ## November 18, 2026
 
 ### New
