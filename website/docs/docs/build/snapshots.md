@@ -253,7 +253,7 @@ Snapshot "strategies" define how dbt knows if a row has changed. There are two s
 ### Timestamp strategy (recommended)
 The `timestamp` strategy uses an `updated_at` field to determine if a row has changed. If the configured `updated_at` column for a row is more recent than the last time the snapshot ran, then dbt will invalidate the old record and record the new one. If the timestamps are unchanged, then dbt will not take any action.
 
-Because the `timestamp` strategy relies on the value of `updated_at` at run time, it may not capture multiple changes that occur between snapshot runs. If a row changes several times between runs, the snapshot will record at most one new version per run (based on the row state it can observe at run time and the latest `updated_at` value), but it will not record each intermediate transition.
+Because the `timestamp` strategy relies on the value of `updated_at` at run time, it does not capture multiple changes that occur between snapshot runs. If a row changes several times between runs, the snapshot records at most one new version per run (the row's state at run time) and does not record each intermediate transition. A row that is deleted and re-inserted between runs can also go unnoticed, depending on your [`hard_deletes`](/reference/resource-configs/hard-deletes) configuration.
 
 Why timestamp is recommended?
 
@@ -288,6 +288,8 @@ snapshots:
 
 ### Check strategy
 The `check` strategy is useful for tables which do not have a reliable `updated_at` column. This strategy works by comparing a list of columns between their current and historical values. If any of these columns have changed, then dbt will invalidate the old record and record the new one. If the column values are identical, then dbt will not take any action.
+
+Like the `timestamp` strategy, `check` only compares the row state at run time, so it also does not capture intermediate changes between snapshot runs.
 
 The `check` strategy requires the following configurations:
 
