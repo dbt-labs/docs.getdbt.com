@@ -894,6 +894,7 @@ const sidebarSettings = {
             "docs/deploy/orchestrate-exposures",
             "docs/deploy/artifacts",
             "docs/deploy/job-notifications",
+            "docs/deploy/slack-job-notifications",
             "docs/deploy/model-notifications",
             "docs/deploy/run-visibility",
             "docs/deploy/retry-jobs",
