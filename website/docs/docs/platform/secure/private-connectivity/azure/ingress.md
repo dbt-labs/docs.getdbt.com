@@ -113,7 +113,7 @@ In the zone, go to **DNS Management → Recordsets** and add one **A** record th
 
 <Lightbox src="/img/docs/dbt-platform/azure-ingress-privatelink/zone-recordsets-wildcard.png" title="Recordsets page of the private DNS zone with a single wildcard A record pointing to the endpoint's private IP address"/>
 
-The wildcard covers every hostname under your instance label, so it resolves the application, the Discovery (metadata) API and the Semantic Layer for every account prefix, as well as the OAuth relay host (`oauth.<instance_label>.dbt.com`) if it's enabled for your instance.
+The wildcard covers every hostname under your instance label, so it resolves the application, the Discovery (metadata) API and the <Constant name="semantic_layer"/> for every account prefix, as well as the OAuth relay host (`oauth.<instance_label>.dbt.com`) if it's enabled for your instance.
 
 :::info Each instance label is unique
 This approach relies on `<instance_label>` being unique to each single-tenant instance. If you have more than one instance, create a separate private zone for each instance label.
