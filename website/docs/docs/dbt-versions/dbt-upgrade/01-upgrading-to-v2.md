@@ -468,7 +468,7 @@ In <Constant name="core_v1" />, `dbt seed` loads dates and timestamps from your 
 
 Models that still parse these columns as text can fail. For example, on Snowflake, `to_date(reportingdate, 'YYYY-MM-DD HH24:MI:SS.FF')` fails with `Can't parse '2022-10-01T00:00:00' as date`.
 
-To fix it, choose one:
+If you run into this, you can choose one of the options to fix it:
 
 - Remove the text parsing from the model. For example, use `reportingdate::date`.
 - Keep the column as text with [`column_types`](/reference/resource-configs/column_types), then run `dbt seed --full-refresh` once.
@@ -482,7 +482,7 @@ seeds:
         reportingdate: varchar
 ```
 
-:::tip
+:::tip Before you upgrade
 Set `column_types` on your seeds before you upgrade so their types don't change.
 :::
 
