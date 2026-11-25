@@ -464,7 +464,7 @@ In v2, it will not produce this extra column in the table resulting from `dbt se
 
 #### Seeds infer date and timestamp columns
 
-In <Constant name="core_v1" />, `dbt seed` loads dates and timestamps from your CSV as text. In v2, dbt infers a date or timestamp type instead.
+In v2, dbt infers a date or timestamp type. In <Constant name="core_v1" />, `dbt seed` loads dates and timestamps from your CSV as text. 
 
 Models that still parse these columns as text can fail. For example, on Snowflake, `to_date(reportingdate, 'YYYY-MM-DD HH24:MI:SS.FF')` fails with `Can't parse '2022-10-01T00:00:00' as date`.
 
