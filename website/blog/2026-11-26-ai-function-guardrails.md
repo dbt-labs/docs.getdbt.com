@@ -67,87 +67,7 @@ from {{ ref('stg_reviews') }}
 dbt platform [automatically sets](/docs/build/environment-variables#special-environment-variables) `DBT_CLOUD_ENVIRONMENT_TYPE`. You can choose a different environment variable or filter on `target.name` – anything that differentiates one environment from another is fine. Specifying a default value `''` prevents the dbt invocation from failing if it's not set.
 
 
-## 2. Prevent accidental full refreshes
-
-A week later, the team refines the list of topics: adding new themes and removing others. The incremental model will use these new rules on future records, but they also want to re-process the existing reviews with the `--full-refresh` flag.
-
-The risk is that the `--full-refresh` flag is a blunt instrument, regenerating all models in its path. To protect the `reviews_classified` model from being inadvertently rebuilt, the team adds an extra layer of protection with one line of config:
-
-```sql
-{{
-    config(
-        materialized = 'incremental',
-        unique_key = 'review_id',
-        full_refresh = var('refresh_review_tags', false)
-    )
-}}
-```
-
-This says: don't rebuild this incremental model, regardless of the `--full-refresh` flag. Think of it as a safety cover on a big red button – bumping the button does nothing. To rebuild on purpose, you lift the cover by removing the override:
-
-
-| What you run | `is_incremental()` | What happens |
-| --- | --- | --- |
-| First ever run (no table yet) | `false` | The `AI_CLASSIFY` call runs on the reviews (a sample of 50 outside production) |
-| A normal `dbt run` | `true` | Only new reviews are tagged |
-| `dbt run-operation generate_new_source_rows --args '{count: 20}'` | n/a (not a model run) | 20 new reviews land in the raw reviews table, like a Fivetran sync would bring them. Nothing is tagged yet: the next `dbt run` tags only those 20 |
-| `dbt run --full-refresh` | `true` (table not dropped) | The table isn't rebuilt. Existing tags are kept |
-| `dbt run --full-refresh --vars '{"refresh_review_tags": true}'` | `false` (table dropped and rebuilt) | The table is rebuilt and every review is tagged again |
-| `dbt run --vars '{"refresh_review_tags": true}'` (no `--full-refresh`) | `false` (table dropped and rebuilt) | The table is rebuilt and every review is tagged again, even without `--full-refresh` |
-
-{/* TODO: the run-operation row is still untested. Confirm before publishing. */}
-
-To re-tag everything on purpose, set the variable to `true` and keep `--full-refresh` in the command too, so it reads as the rebuild it is:
-
-```shell
-dbt run \
-  -s reviews_classified \
-  --full-refresh \
-  --vars '{"refresh_review_tags": true}'
-```
-
-Running `--full-refresh` on its own doesn't rebuild the table: dbt doesn't drop it, so no `AI_CLASSIFY` calls are made on old reviews. Rebuilding takes a deliberate, typed-out decision, which is _exactly_ how spending money should work.
-
-:::caution
-The [`full_refresh` config](/reference/resource-configs/full_refresh) has three states. When set to true, it will force a refresh whether or not the `--full-refresh` flag is present. Passing `--vars '{"refresh_review_tags": null}'` as a YAML dictionary is safer because it evaluates to `none` and requires the `--full-refresh` flag to also be present.
-:::
-
-## 3. Use incremental to avoid re-classifying existing rows
-
-New reviews arrive all day, but yesterday's reviews are already tagged. Tagging a review costs the same today as it did yesterday, so the team wants to tag each review once and keep the answer. For models that call `AI_CLASSIFY` on every row, make them incremental so already-classified rows are never touched again.
-
-Here's the full `reviews_classified` model, with patterns 1 and 2 included:
-
-```sql
-{{
-    config(
-        materialized = 'incremental',
-        unique_key = 'review_id',
-        full_refresh = var('refresh_review_tags', false)
-    )
-}}
-
-select
-    review_id,
-    ai_classify(
-        review_text,
-        ['delivery', 'download codes', 'price', 'gameplay', 'bugs']
-    ) as classification_raw
-
-from {{ ref('stg_reviews') }}
-
-{% if is_incremental() %}
-    where review_id not in (select review_id from {{ this }})
-{% endif %}
-
-{% if env_var('DBT_CLOUD_ENVIRONMENT_TYPE', '') != 'prod' %}
-    qualify row_number() over (order by random()) <= 50
-{% endif %}
-```
-
-Each Fivetran sync brings in new reviews, and the model runs the AI function only on those. On GTA VI launch week, that's the difference between paying for 500 new reviews an hour and paying for every review since midnight, every hour. Without the incremental guard, every `dbt run` re-classifies the entire history.
-
-## 4. Check the price on a small sample first
+## 2. Check the price on a small sample first
 
 Before the first production run, the team wants to know what tagging the full reviews table will cost. Pattern 1 already gives them a 50-row sample run, so they use it to check what it spent.
 
@@ -271,20 +191,101 @@ Then do the math before committing to a full dataset run:
 
 For example, if 50 rows used 0.02 credits, 60,000 rows will use about 24 credits. Multiply by what your account pays per credit and decide if it's worth it.
 
+## 3. Use incremental to avoid re-classifying existing rows
+
+New reviews arrive all day, but yesterday's reviews are already tagged. Tagging a review costs the same today as it did yesterday, so the team wants to tag each review once and keep the answer. For models that call `AI_CLASSIFY` on every row, make them incremental so already-classified rows are never touched again.
+
+Here's the `reviews_classified` model as an incremental model, with pattern 1 included:
+
+```sql
+{{
+    config(
+        materialized = 'incremental',
+        unique_key = 'review_id'
+    )
+}}
+
+select
+    review_id,
+    ai_classify(
+        review_text,
+        ['delivery', 'download codes', 'price', 'gameplay', 'bugs']
+    ) as classification_raw
+
+from {{ ref('stg_reviews') }}
+
+{% if is_incremental() %}
+    where review_id not in (select review_id from {{ this }})
+{% endif %}
+
+{% if env_var('DBT_CLOUD_ENVIRONMENT_TYPE', '') != 'prod' %}
+    qualify row_number() over (order by random()) <= 50
+{% endif %}
+```
+
+Each Fivetran sync brings in new reviews, and the model runs the AI function only on those. On GTA VI launch week, that's the difference between paying for 500 new reviews an hour and paying for every review since midnight, every hour. Without the incremental guard, every `dbt run` re-classifies the entire history.
+
+## 4. Prevent accidental full refreshes
+
+A week later, the team refines the list of topics: adding new themes and removing others. The incremental model will use these new rules on future records, but they also want to re-process the existing reviews with the `--full-refresh` flag.
+
+The risk is that the `--full-refresh` flag is a blunt instrument, regenerating all models in its path. To protect the `reviews_classified` model from being inadvertently rebuilt, the team adds an extra layer of protection with one line of config:
+
+```sql
+{{
+    config(
+        materialized = 'incremental',
+        unique_key = 'review_id',
+        full_refresh = var('refresh_review_tags', false)
+    )
+}}
+```
+
+This says: don't rebuild this incremental model, regardless of the `--full-refresh` flag. Think of it as a safety cover on a big red button – bumping the button does nothing. To rebuild on purpose, you lift the cover by removing the override:
+
+
+| What you run | `is_incremental()` | What happens |
+| --- | --- | --- |
+| First ever run (no table yet) | `false` | The `AI_CLASSIFY` call runs on the reviews (a sample of 50 outside production) |
+| A normal `dbt run` | `true` | Only new reviews are tagged |
+| `dbt run-operation generate_new_source_rows --args '{count: 20}'` | n/a (not a model run) | 20 new reviews land in the raw reviews table, like a Fivetran sync would bring them. Nothing is tagged yet: the next `dbt run` tags only those 20 |
+| `dbt run --full-refresh` | `true` (table not dropped) | The table isn't rebuilt. Existing tags are kept |
+| `dbt run --full-refresh --vars '{"refresh_review_tags": true}'` | `false` (table dropped and rebuilt) | The table is rebuilt and every review is tagged again |
+| `dbt run --vars '{"refresh_review_tags": true}'` (no `--full-refresh`) | `false` (table dropped and rebuilt) | The table is rebuilt and every review is tagged again, even without `--full-refresh` |
+
+{/* TODO: the run-operation row is still untested. Confirm before publishing. */}
+
+To re-tag everything on purpose, set the variable to `true` and keep `--full-refresh` in the command too, so it reads as the rebuild it is:
+
+```shell
+dbt run \
+  -s reviews_classified \
+  --full-refresh \
+  --vars '{"refresh_review_tags": true}'
+```
+
+Running `--full-refresh` on its own doesn't rebuild the table: dbt doesn't drop it, so no `AI_CLASSIFY` calls are made on old reviews. Rebuilding takes a deliberate, typed-out decision, which is _exactly_ how spending money should work.
+
+:::caution
+The [`full_refresh` config](/reference/resource-configs/full_refresh) has three states. When set to true, it will force a refresh whether or not the `--full-refresh` flag is present. Passing `--vars '{"refresh_review_tags": null}'` as a YAML dictionary is safer because it evaluates to `none` and requires the `--full-refresh` flag to also be present.
+:::
+
 ## The four patterns at a glance
 
 | Rule | What it stops | dbt feature |
 | --- | --- | --- |
 | 1. Sample a handful of rows | Dev and CI runs paying for the full table | `env_var()` with a safe default |
-| 2. Lock the rebuild | Accidental full rebuilds that re-tag every row | `full_refresh` config set by a variable |
+| 2. Check the price first | Finding out the cost after you've spent it | Your warehouse's usage view |
 | 3. Never pay twice | Re-tagging rows you already tagged | Incremental models |
-| 4. Check the price first | Finding out the cost after you've spent it | Your warehouse's usage view |
+| 4. Lock the rebuild | Accidental full rebuilds that re-tag every row | `full_refresh` config set by a variable |
 
 <Lightbox src="/img/blog/2026-11-26-ai-function-guardrails/four-guardrail-patterns.png" width="100%" title="The four guardrails in order: sample a handful of rows, lock the rebuild, never pay twice, and check the price first" />
 
+{/* TODO: this diagram still shows the old order. Regenerate as sample, check the price, never pay twice, lock the rebuild, then update the title. */}
+
 ## What's next
 
-Remember the arcade machine from earlier, where every question costs a coin and dbt asks one question per review? It now has a sign taped to it: "One coin per review. Please don't feed me twice." The four guardrails are the tape. Sampling keeps the number of coins down, the rebuild lock and incremental models stop the same review being asked twice, and the price check tells you how many coins you spent.
+Remember the arcade machine from earlier, where every question costs a coin and dbt asks one question per review? It now has a sign taped to it: "One coin per review. Please don't feed me twice." The four guardrails are the tape. Sampling keeps the number of coins down, the price check tells you how many coins a full run will take, and incremental models and the rebuild lock stop the same review being asked twice.
 
 The sign covers the basics, and more scenarios need more. Rows can change after they've been processed, and changing your model or prompt makes earlier results out of date. [dbt-context-engineering](https://github.com/dbt-labs/dbt-context-engineering) has patterns for both, such as comparing a hash of each row's input and stamping each row with the model or prompt version. Check out those examples and share what worked (or didn't) in the dbt Community Slack.
 
