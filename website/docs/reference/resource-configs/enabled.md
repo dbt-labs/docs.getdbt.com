@@ -84,7 +84,7 @@ snapshots:
 
 <VersionBlock firstVersion="1.9">
 
-<File name='snapshots/properties.yml'>
+<File name='snapshots/snapshot_name.yml'>
 
 ```yaml
 
@@ -175,7 +175,7 @@ select ...
 
 </File>
 
-<File name='models/properties.yml'>
+<File name='models/<filename>.yml'>
 
 ```yaml
 unit_tests:
@@ -225,7 +225,7 @@ sources:
 
 <TabItem value="analyses">
 
-<File name='analyses/properties.yml'>
+<File name='analyses/<filename>.yml'>
 
 ```yaml
 analyses:
@@ -264,7 +264,7 @@ metrics:
 
 </File>
 
-<File name='models/properties.yml'>
+<File name='models/metrics.yml'>
 
 ```yaml
 
@@ -290,7 +290,7 @@ exposures:
 
 </File>
 
-<File name='models/properties.yml'>
+<File name='models/exposures.yml'>
 
 ```yaml
 
@@ -317,7 +317,7 @@ semantic-models:
 </File>
 
 <VersionBlock lastVersion="1.11">
-<File name='models/properties.yml'>
+<File name='models/semantic_models.yml'>
 
 ```yaml
 semantic_models:
@@ -330,7 +330,7 @@ semantic_models:
 </VersionBlock>
 
 <VersionBlock firstVersion="1.12">
-<File name='models/properties.yml'>
+<File name='models/file_name.yml'>
 
 ```yaml
 models:
@@ -356,7 +356,7 @@ saved-queries:
 
 </File>
 
-<File name='models/properties.yml'>
+<File name='models/semantic_models.yml'>
 
 ```yaml
 saved_queries:
