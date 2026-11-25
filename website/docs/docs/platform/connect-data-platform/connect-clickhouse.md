@@ -11,7 +11,7 @@ availability:
 
 # Connect ClickHouse <Lifecycle status="private_beta" /> <ProductCard text="dbt v2 compatible" />
 
-The <Constant name="fusion_engine" /> in <Constant name="dbt_platform" /> supports connecting to [ClickHouse Cloud](https://clickhouse.com/cloud) and to self-managed ClickHouse. Use a <Constant name="fusion" /> release track for the environment that uses this connection.
+The <Constant name="fusion_engine" /> in <Constant name="dbt_platform" /> supports connecting to [ClickHouse Cloud](https://clickhouse.com/cloud). Use a <Constant name="fusion" /> release track for the environment that uses this connection.
 
 :::caution ClickHouse private beta
 ClickHouse connections on v2 are in private beta and not production-ready. To request access, contact your account representative. Expect some minor bugs, and avoid using them in production environments for now. Refer to [Limitations](#limitations) before you connect.
