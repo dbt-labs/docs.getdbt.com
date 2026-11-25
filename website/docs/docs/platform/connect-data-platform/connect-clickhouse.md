@@ -9,12 +9,12 @@ availability:
   engine: v2
 ---
 
-# Connect ClickHouse <Lifecycle status="private_beta" /> <ProductCard text="dbt v2 compatible" />
+# Connect ClickHouse <Lifecycle status="beta" /> <ProductCard text="dbt v2 compatible" />
 
 The <Constant name="fusion_engine" /> in <Constant name="dbt_platform" /> supports connecting to [ClickHouse Cloud](https://clickhouse.com/cloud) and to self-managed single-node ClickHouse. Use a <Constant name="fusion" /> release track for the environment that uses this connection.
 
-:::caution ClickHouse private beta
-ClickHouse connections on v2 are in private beta and not production-ready. To request access, contact your account representative. Expect some minor bugs, and avoid using them in production environments for now. Refer to [Limitations](#limitations) before you connect.
+:::caution ClickHouse beta
+ClickHouse connections on v2 are in beta. Expect some minor bugs, and avoid using them in production environments for now. Refer to [Limitations](#limitations) before you connect.
 :::
 
 ## Warehouse permissions for <Constant name="fusion" />
@@ -76,7 +76,7 @@ For a description of the ClickHouse profile fields that the connection maps to, 
 
 ## Limitations
 
-The ClickHouse connection is in private beta. On the <Constant name="dbt_platform" /> specifically:
+The ClickHouse connection is in beta. On the <Constant name="dbt_platform" /> specifically:
 
 - The dbt <Constant name="semantic_layer" /> isn't supported for ClickHouse connections yet.
 - Only username and password authentication is available. OAuth, key pair authentication, SSH tunneling, and private connectivity aren't supported for ClickHouse yet.
