@@ -83,40 +83,42 @@ If you need to reuse the operation across environments or share it with your tea
 
 <VersionBlock firstVersion="2.0">
 
-## Running a macro for each selected source
+## Running a macro for each selected node
 
 :::note Draft for review
 This syntax describes an unreleased feature in <Constant name="fusion" />.
 :::
 
-Use `--per-node` with `--select` or a named YAML `--selector` to call a macro once for each selected source table. dbt passes the source metadata as the `node` argument, sets `this` to the selected source relation, and runs the SQL that the macro returns. Use `--threads` to limit how many source operations run at once.
+Use `--per-node` with `--select` or a named YAML `--selector` to call a macro once for each selected node. dbt passes the selected resource's metadata as the `node` argument. Use `--threads` to limit how many node operations run at once.
 
-The following macro runs a small read against each selected source table. Add it to your project and replace `source:snowplow` with a source selector that matches your project.
+The following macro logs each selected node's unique ID and returns an empty list to skip SQL execution for that node.
 
-<File name="macros/probe_source.sql">
+<File name="macros/inspect_node.sql">
 
 ```jinja
-{% macro probe_source(node) %}
-  {% set sql %}
-    select 1 from {{ this }} limit 1
-  {% endset %}
-  {% do return(sql) %}
+{% macro inspect_node(node) %}
+  {% do log(node.unique_id, info=true) %}
+  {% do return([]) %}
 {% endmacro %}
 ```
 
 </File>
 
 ```bash
-dbt run-operation probe_source --per-node --select source:snowplow --threads 4
+dbt run-operation inspect_node --per-node --select tag:nightly source:snowplow --threads 4
 ```
 
-Declare `node` on the macro and pass any additional arguments with `--args`. dbt reserves `node` for the selected source. The macro can render a non-empty SQL string, or return a non-empty SQL string or a list of non-empty SQL strings. dbt executes the SQL in the order you provide it. Keep statements that depend on the same session or transaction in one SQL string because adapters can release the session between strings.
+Replace `tag:nightly source:snowplow` with selectors that match your project.
 
-Return an empty list with `{% do return([]) %}` to explicitly skip a source. Empty or whitespace-only output, `none`, and unsupported types are errors for that source. Each source operation should be independent because operations on different sources can run concurrently.
+Declare `node` on the macro and pass any additional arguments with `--args`. dbt reserves `node` for the selected resource. For nodes that represent warehouse relations, such as source tables and persisted models, use `{{ this }}` to reference the selected relation in SQL. For nodes without a relation, `this` is `none`.
 
-Use `--exclude` to narrow the selection. You can also use a [state selector](/reference/node-selection/methods#state) with `--state` pointing to a local directory containing `manifest.json`. `--per-node` requires a named macro and cannot be combined with `--sql`, `--defer`, `--defer-state`, or `--favor-state`.
+The macro can render a non-empty SQL string or return a non-empty SQL string or a list of non-empty SQL strings. dbt executes the SQL in the order you provide it. Keep statements that depend on the same session or transaction in one SQL string because adapters can release the session between strings.
 
-dbt reports each source by its unique ID in `run_results.json`. If a source operation fails, dbt finishes the other operations and exits with an error. Add `--fail-fast` to skip operations that have yet to start while allowing active operations to finish.
+Return an empty list with `{% do return([]) %}` to skip SQL execution. Empty or whitespace-only output, `none`, and unsupported types are errors for that node. Each node operation should be independent because operations on different nodes can run concurrently.
+
+Use `--exclude` to narrow the selection. Select tests explicitly, for example with `--select test_type:data`. By default, selecting a model or source doesn't also select its tests. You can use a [state selector](/reference/node-selection/methods#state) with `--state` pointing to a local directory containing `manifest.json`. `--per-node` requires a named macro and cannot be combined with `--sql`, `--defer`, `--defer-state`, or `--favor-state`.
+
+dbt reports each macro operation by the selected node's unique ID in `run_results.json`, including operations on test nodes. If a node operation fails, dbt finishes the other operations and exits with an error. Add `--fail-fast` to skip operations that have yet to start while allowing active operations to finish.
 
 </VersionBlock>
 
