@@ -81,6 +81,43 @@ Note that you cannot combine the `--sql` flag with a macro name or `--args`.
 
 If you need to reuse the operation across environments or share it with your team, write a [macro](/docs/build/jinja-macros) instead so it's version-controlled and testable.
 
+<VersionBlock firstVersion="2.0">
+
+## Running a macro for each selected source
+
+:::note Draft for review
+This syntax describes an unreleased feature in <Constant name="fusion" />.
+:::
+
+Use `--per-node` with `--select` or a named YAML `--selector` to call a macro once for each selected source table. dbt passes the source as the `node` argument and runs the SQL that the macro returns. Use `--threads` to limit how many source operations run at once.
+
+The following macro runs a small read against each selected source table. Add it to your project and replace `source:snowplow` with a source selector that matches your project.
+
+<File name="macros/probe_source.sql">
+
+```jinja
+{% macro probe_source(node) %}
+  {% set sql %}
+    select 1 from {{ source(node.source_name, node.name) }} limit 1
+  {% endset %}
+  {% do return(sql) %}
+{% endmacro %}
+```
+
+</File>
+
+```bash
+dbt run-operation probe_source --per-node --select source:snowplow --threads 4
+```
+
+Declare `node` on the macro and pass any additional arguments with `--args`. dbt reserves `node` for the selected source. Return a SQL string or a list of SQL strings. dbt executes each list in order on the same connection. Return an empty list with `{% do return([]) %}` to explicitly skip a source. A missing or invalid return is an error for that source. Each source operation should be independent because operations on different sources can run concurrently.
+
+Use `--exclude` to narrow the selection. You can also use a [state selector](/reference/node-selection/methods#state) with a local `--state` manifest. `--per-node` requires a named macro and cannot be combined with `--sql` or `--defer`.
+
+dbt reports each source by its unique ID in `run_results.json`. If a source operation fails, dbt finishes the other operations and exits with an error. Add `--fail-fast` to skip operations that have yet to start while allowing active operations to finish.
+
+</VersionBlock>
+
 ## Command line examples
 
 - Invoke a macro:
