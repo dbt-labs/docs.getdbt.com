@@ -47,7 +47,7 @@ The ClickHouse adapter for <Constant name="fusion" /> is in beta. It's at featur
 - Some <Constant name="dbt_platform" /> functionality, like the <Constant name="semantic_layer" />, isn't supported yet.
 - Small gaps remain in general ClickHouse functionality.
 
-For the full feature-by-feature status, refer to the [ClickHouse documentation](https://clickhouse.com/docs/integrations/dbt/dbt-core-v2-fusion-and-platform).
+For the full feature-by-feature status, refer to the [ClickHouse documentation](https://clickhouse.com/docs/integrations/connectors/data-ingestion/etl-tools/dbt/dbt-core-v2-fusion-and-platform).
 
 The ClickHouse adapter is under active development. If you encounter an issue, please [open it in dbt-core](https://github.com/dbt-labs/dbt-core/issues/new) and add the `adapter:clickhouse` label.
 
