@@ -279,9 +279,7 @@ The [`full_refresh` config](/reference/resource-configs/full_refresh) has three 
 | 3. Never pay twice | Re-tagging rows you already tagged | Incremental models |
 | 4. Prevent accidental full refreshes | Accidental full rebuilds that re-tag every row | `full_refresh` config set by a variable |
 
-<Lightbox src="/img/blog/2026-11-26-ai-function-guardrails/four-guardrail-patterns.png" width="100%" title="The four guardrails in order: sample a handful of rows, prevent accidental full refreshes, never pay twice, and check the price first" />
-
-{/* TODO: this diagram still shows the old order. Regenerate as sample, check the price, never pay twice, prevent accidental full refreshes, then update the title. */}
+<Lightbox src="/img/blog/2026-11-26-ai-function-guardrails/four-guardrail-patterns.png" width="100%" title="The four guardrails in order: sample a handful of rows, check the price first, never pay twice, and prevent accidental full refreshes" />
 
 ## What's next
 
