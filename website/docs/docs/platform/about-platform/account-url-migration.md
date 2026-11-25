@@ -63,15 +63,27 @@ The managed <Constant name="dbt" /> GitHub application, the Slack application, a
 
 ### Git providers
 
-GitLab and Azure DevOps repositories connected before your account had an account-specific access URL keep using your legacy region URL for OAuth until you update them. Repositories connected after that already use your new access URL.
+GitLab and Azure DevOps integrations set up before your account had an account-specific access URL keep using your legacy region URL for OAuth until you update them. The redirect URI belongs to the integration, not to individual repositories, so repositories you connect through an older integration use the legacy region URL too.
 
-For GitLab, account admins can update an existing GitLab application to your new account access URL in <Constant name="dbt_platform" />. See [Update redirect URIs in dbt platform](#update-redirect-uris-in-dbt-platform). You can't yet update an existing Azure DevOps repository. Instead, recreate the repository to generate a redirect URI based on your new account access URL.
+How you update the redirect URI depends on your Git provider:
+
+- **GitLab:** Account admins can update an existing GitLab application to your new access URL in <Constant name="dbt_platform" />. See [Update redirect URIs in dbt platform](#update-redirect-uris-in-dbt-platform).
+- **Azure DevOps:** You can't yet update an existing integration's redirect URI in <Constant name="dbt_platform" />. Instead, delete the integration and create it again in <Constant name="dbt_platform" /> to generate a redirect URI based on your new access URL.
+  - Your existing repositories and project connections use the new integration automatically, so you don't need to reconnect them.
+  - Between deleting the old integration and creating the new one, Azure DevOps operations such as job runs, CI, and Git actions in the <Constant name="studio_ide" /> fail, so do this outside your scheduled job windows and create the new integration right away.
+  - If you create it with the same Microsoft Entra ID app registration, it doesn't interrupt developers' linked Azure DevOps accounts. The new redirect URI takes effect the next time a developer links their profile to Azure DevOps.
+  - If you use a different app registration, each developer needs to [link their profile to Azure DevOps](/docs/platform/git/authenticate-azure#link-your-dbt-profile-to-azure-devops) again.
+
+For Azure DevOps, add these **Web** redirect URIs to your Microsoft Entra ID app registration, alongside the existing ones. Replace `YOUR_ACCESS_URL` with your new access URL. To find it, see [Accessing your account](/docs/platform/about-platform/access-regions-ip-addresses#accessing-your-account):
+
+- `https://YOUR_ACCESS_URL/complete/azure_active_directory`
+- `https://YOUR_ACCESS_URL/complete/azure_active_directory_service_user`
 
 | Integration | Action required |
 |---|---|
 | [GitLab (managed app)](/docs/platform/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Add the new redirect URI to your GitLab group application, then [update it in <Constant name="dbt_platform" />](#update-redirect-uris-in-dbt-platform) |
 | [GitLab (bring-your-own app)](/docs/platform/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Add the new redirect URI to your GitLab group application, then [update it in <Constant name="dbt_platform" />](#update-redirect-uris-in-dbt-platform) |
-| [Azure DevOps (service principal)](/docs/platform/git/setup-service-principal) | Update or add an app registration |
+| [Azure DevOps (service principal)](/docs/platform/git/setup-service-principal) | Add the new redirect URIs to your Microsoft Entra ID app registration, then delete the integration in <Constant name="dbt_platform" /> and create it again using the same app registration |
 | GitHub Enterprise (self-managed app) | Before your assignment date, add the callback URL from your assignment notification email to your GitHub app. Update webhook URLs to your new access URL before the end-of-support date. |
 
 ### Data platform connections
