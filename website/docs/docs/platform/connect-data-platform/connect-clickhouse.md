@@ -14,7 +14,7 @@ availability:
 The <Constant name="fusion_engine" /> in <Constant name="dbt_platform" /> supports connecting to [ClickHouse Cloud](https://clickhouse.com/cloud) and to self-managed single-node ClickHouse. Use a <Constant name="fusion" /> release track for the environment that uses this connection.
 
 :::caution ClickHouse beta
-ClickHouse connections on v2 are in beta. Expect some minor bugs, and avoid using them in production environments for now. Refer to [Limitations](#limitations) before you connect.
+ClickHouse connections on v2 are in beta. Make sure you read the [Limitations](#limitations) section before you connect.
 :::
 
 ## Warehouse permissions for <Constant name="fusion" />

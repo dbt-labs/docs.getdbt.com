@@ -153,7 +153,7 @@ The full list lives in website/release-note-areas.json.
 #### Integrations {#integrations-november-2026}
 
 - **Beta:** Bringing your own [custom GitHub application](/docs/platform/git/connect-github#custom-github-application) is now in beta and available to all Enterprise and Enterprise+ accounts. You no longer need to contact your account manager for access. Use it to natively connect GitHub Enterprise Server or GitHub with EU data residency, instead of a git URL and SSH.
-- **Beta:** [ClickHouse](/docs/platform/connect-data-platform/connect-clickhouse?version=2.0) connections for dbt v2.0 on the <Constant name="dbt_platform" /> are now in beta, up from private beta. You no longer need to contact your account representative for access.
+- **Beta:** [ClickHouse](/docs/platform/connect-data-platform/connect-clickhouse?version=2.0) connections for dbt v2 on the <Constant name="dbt_platform" /> are now in beta. Select **ClickHouse** as a warehouse connection option when managing a project in <Constant name="dbt_platform" />.
 
 #### dbt v2 {#dbt-v2-november-2026}
 
