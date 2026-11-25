@@ -6,7 +6,7 @@ Before connecting, these objects must exist or be accessible:
 
 | Object | Purpose |
 | --- | --- |
-| Service (ClickHouse Cloud) or server (self-managed, single node) | Compute resource |
+| Service (ClickHouse Cloud) or server (self-managed) | Compute resource |
 | Database | Target database. ClickHouse has no separate schema level, so the dbt `schema` maps to a database |
 | User | Database user for authentication |
 
