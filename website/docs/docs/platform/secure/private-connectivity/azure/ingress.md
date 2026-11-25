@@ -42,7 +42,7 @@ Product subdomains sit to the left of the instance label, so each account has th
 |----------|----------|
 | `<account_prefix>.<instance_label>.dbt.com` | The <Constant name="dbt_platform" /> application and APIs |
 | `<account_prefix>.metadata.<instance_label>.dbt.com` | The Discovery (metadata) API |
-| `<account_prefix>.semantic-layer.<instance_label>.dbt.com` | The Semantic Layer |
+| `<account_prefix>.semantic-layer.<instance_label>.dbt.com` | The <Constant name="semantic_layer" /> |
 
 Unlike some Private Link services, Azure doesn't create DNS records for a custom domain automatically. You create a private DNS zone named `<instance_label>.dbt.com` and add a wildcard record that covers every hostname (see [Step 4](#step-4-create-the-private-dns-zone) and [Step 5](#step-5-add-a-wildcard-record)).
 
@@ -151,7 +151,7 @@ From a machine inside a linked virtual network, confirm that:
 
    A healthy handshake prints `Verify return code: 0 (ok)`.
 
-3. The metadata and Semantic Layer hostnames behave the same way.
+3. The metadata and <Constant name="semantic_layer" /> hostnames behave the same way.
 
 :::warning Clients must send the correct TLS SNI
 The endpoint selects its certificate by TLS **Server Name Indication (SNI)**. Clients must send your access URL as the SNI. Some Private Link clients and libraries don't set SNI by default; without it, the endpoint returns a default certificate that doesn't match your access URL and the handshake fails.
