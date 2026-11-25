@@ -58,7 +58,6 @@ Plan tiers (capitalize): Developer, Starter, Enterprise, Enterprise+
 
 **Capitalize these product names:**
 - Studio IDE
-- Canvas
 - Insights
 - Catalog
 - dbt Mesh
@@ -70,6 +69,7 @@ Plan tiers (capitalize): Developer, Starter, Enterprise, Enterprise+
 - dbt Charts
 - Lake Compute
 - dbt Information Schema
+- Wizard Desktop
 
 **Do not capitalize these features:**
 - dbt platform

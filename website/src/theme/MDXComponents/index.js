@@ -46,12 +46,14 @@ import Expandable from '@site/src/components/expandable';
 import Steps, { Step } from '@site/src/components/steps';
 import ConfettiTrigger from '@site/src/components/confetti/';
 import WizardPopcorn from '@site/src/components/wizardPopcorn/';
+import DownloadCard from '@site/src/components/downloadCard';
 import VersionCallout from '@site/src/components/versionCallout';
 import IntroText from '@site/src/components/IntroText';
 import Constant from '@site/src/components/constant';
 import Availability from '@site/src/components/availability';
 import AvailabilityContext from '@site/src/components/availabilityContext';
 import AvailabilityMatrix from '@site/src/components/availabilityMatrix';
+import ReleaseNotesFilter from '@site/src/components/releaseNotesFilter';
 
 function H1WithAvailability(props) {
   const { availability, renderAfterH1 } = useContext(AvailabilityContext);
@@ -117,6 +119,7 @@ const MDXComponents = {
   Step: Step,
   ConfettiTrigger: ConfettiTrigger,
   WizardPopcorn: WizardPopcorn,
+  DownloadCard: DownloadCard,
   SortableTable: SortableTable,
   FilterableTable: FilterableTable,
   SimpleTable: SimpleTable,
@@ -124,6 +127,7 @@ const MDXComponents = {
   IntroText: IntroText,
   Constant: Constant,
   AvailabilityMatrix: AvailabilityMatrix,
+  ReleaseNotesFilter: ReleaseNotesFilter,
   AgentPrompt: AgentPrompt,
 };
 export default MDXComponents;

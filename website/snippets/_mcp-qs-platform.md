@@ -3,7 +3,7 @@ import StaticSubdomainRequired from '/snippets/_static-subdomain-required.md';
 
 This quickstart uses the local MCP server: it runs on your machine using `uvx dbt-mcp`, connects to your <Constant name="dbt_platform"/> for <Constant name="semantic_layer"/>, Discovery, and SQL, and optionally runs local dbt. 
 
-For self-hosted CLI only (with or without a <Constant name="dbt_platform"/> account), see [Run self-hosted dbt](/docs/dbt-ai/mcp-quickstart-cli) or [Run self-hosted dbt Wizard](/docs/dbt-ai/wizard-quickstart).
+For self-hosted CLI only (with or without a <Constant name="dbt_platform"/> account), see [Run self-hosted dbt](/docs/dbt-ai/mcp-quickstart-cli) or [Run self-hosted dbt Wizard](/docs/platform/wizard-overview#get-started).
 
  To configure or disable specific tools, see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables). 
 

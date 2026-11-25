@@ -24,6 +24,8 @@ by comparing code in the current project against the state manifest.
 
 Together, the [`state`](/reference/node-selection/methods#state) selector and deferral enable ["slim CI"](/best-practices/best-practice-workflows#run-only-modified-models-to-test-changes-slim-ci). We expect to add more features in future releases that can leverage artifacts passed to the `--state` flag.
 
+<Lightbox src="/img/docs/reference/state-modified-diagram.png" width="85%" alt="A project graph where one edited model and its downstream models are highlighted, and all other models are greyed out." title="dbt compares your project to a production manifest, then builds only the changed models and everything downstream." />
+
 ## Related docs
 - [Configure state selection](/reference/node-selection/configure-state)
 - [State comparison caveats](/reference/node-selection/state-comparison-caveats)

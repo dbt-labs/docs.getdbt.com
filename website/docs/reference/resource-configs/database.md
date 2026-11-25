@@ -1,6 +1,6 @@
 ---
 sidebar_label: "database"
-resource_types: [models, seeds, tests]
+resource_types: [models, seeds, tests, functions]
 datatype: string
 description: "Override the default database when dbt creates resources in your data platform."
 ---
@@ -102,6 +102,38 @@ data_tests:
 
 This would result in the test results being stored in the `test_results` database.
 </File>
+</TabItem>
+
+<TabItem value="functions" label="Functions">
+
+Specify a custom database for a function in your `dbt_project.yml` or a properties YAML file.
+
+For example, to create a function in a database called `analytics` instead of the target database:
+
+<File name='dbt_project.yml'>
+
+```yml
+functions:
+  your_project:
+    calculate_tax:
+      +database: analytics
+```
+
+</File>
+
+<File name='functions/properties.yml'>
+
+```yaml
+functions:
+  - name: calculate_tax
+    config:
+      database: analytics
+```
+
+</File>
+
+This results in the function being located in the `analytics` database, so the full relation name would be `analytics.finance.calculate_tax` instead of the default target database.
+
 </TabItem>
 </Tabs>
 

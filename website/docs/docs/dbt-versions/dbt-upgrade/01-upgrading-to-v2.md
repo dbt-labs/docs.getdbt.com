@@ -153,7 +153,7 @@ Or pass `--static-analysis baseline` on the CLI. For details, refer to [About st
 
 #### Strict static analysis
 
-Strict mode fully resolves column types and validates references across your entire project before execution begins; nothing runs until the project is proven valid. It is required to produce [column-level lineage](/docs/explore/column-level-lineage) and unlocks additional LSP features like column go-to-definition and type checking. Strict mode requires authentication through [`dbt login`](/reference/commands/login?version=2.0); unauthenticated runs fall back to baseline.
+Strict mode fully resolves column types and validates references across your entire project before execution begins; nothing runs until the project is proven valid. It is required to produce [column-level lineage](/docs/explore/column-level-lineage) and unlocks additional LSP features like column go-to-definition and type checking.
 
 Enable it per-model or project-wide:
 
@@ -624,7 +624,7 @@ For more information, see [config.meta_get()](/reference/dbt-jinja-functions/con
 
 - v2 supports exporting traces and logs in JSONL, Parquet, and OTLP formats. For details, refer to [dbt v2 telemetry and observability](/reference/telemetry-observability).
 - The v2 compiler parses and type-checks [Snowflake model function](https://docs.snowflake.com/en/guides-overview-ml-functions) calls (`model!method(...)`), accepting any arguments and treating results as `VARIANT`. Cast the result to the type you need (for example, `model!predict(col)::float`).
-- In <Constant name="dbt" /> v2, [`dbt login`](/reference/commands/login?version=2.0) opens your browser to sign in to <Constant name="dbt_platform" /> or create a free account. Run [`dbt login status`](/reference/commands/login?version=2.0#dbt-login-status) to view your current authentication status.
+- In <Constant name="dbt" /> v2, [`dbt login`](/reference/commands/login?version=2.0) opens your browser to sign in to <Constant name="dbt_platform" /> or create an account. [All dbt plans](https://www.getdbt.com/pricing) support v2. Run [`dbt login status`](/reference/commands/login?version=2.0#dbt-login-status) to view your current authentication status.
 
 ## Package support
 

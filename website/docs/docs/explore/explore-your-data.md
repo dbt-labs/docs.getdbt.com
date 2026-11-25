@@ -24,12 +24,6 @@ availability: platform_login
     icon="dbt-bit"/>
 
 <Card
-    title="dbt Insights"
-    body="Query data and perform exploratory data analysis using dbt Insights."
-    link="/docs/explore/dbt-insights"
-    icon="dbt-bit"/>
-
-<Card
     title="Documentation"
     body="Document your dbt projects so stakeholders, engineers, and analysts can understand your resources and lineage from start to finish."
     link="/docs/explore/build-and-view-your-docs"
