@@ -16,7 +16,7 @@ is_featured: false
 
 It's GTA VI launch time at Jaffle Games Shop, an online game store. Orders are flying and customer reviews are pouring in, and it's getting hard to keep up!
 
-Someone on the Jaffle Games Shop data team has a good idea: categorize reviews into common themes,  so the team can see what customers are talking about. So they add an `AI_CLASSIFY()` function to the reviews model, run it once to check it works, and then head out to play GTA over lunch.
+Someone on the Jaffle Games Shop data team has a good idea: categorize reviews into common themes, so the team can see what customers are talking about. So they call an `AI_CLASSIFY()` function to the reviews model, run it once to check it works, and then head out to play GTA over lunch.
 
 Warehouse-provided SQL functions are easy to write – they feel just like normal SQL! But their cost structure makes it easy to overspend, especially if you re-process every record in dev, then CI, then every day once it reaches production.
 
