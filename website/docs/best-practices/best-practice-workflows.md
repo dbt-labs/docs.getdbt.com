@@ -12,7 +12,7 @@ All dbt projects should be managed in version control. Git branches should be cr
 
 :::info <Constant name="git" /> guide
 
-We've codified our best practices in <Constant name="git" />, in our [<Constant name="git" /> guide](https://github.com/dbt-labs/corp/blob/main/git-guide.md).
+If you host your dbt project on GitHub, the [GitHub flow guide](https://docs.github.com/en/get-started/using-github/github-flow) shows how to create a branch, open a pull request, and review changes before merging.
 
 :::
 
