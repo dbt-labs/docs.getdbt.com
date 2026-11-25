@@ -466,7 +466,9 @@ In v2, it will not produce this extra column in the table resulting from `dbt se
 
 In v2, dbt infers a date or timestamp type. In <Constant name="core_v1" />, `dbt seed` loads dates and timestamps from your CSV as text. 
 
-Models that still parse these columns as text can fail. For example, on Snowflake, `to_date(reportingdate, 'YYYY-MM-DD HH24:MI:SS.FF')` fails with `Can't parse '2022-10-01T00:00:00' as date`.
+This can also change values you already stored. If you reseed into a table with an existing `varchar` column, dbt can rewrite timestamp-like text in the process. For example, on Snowflake, `2022-10-01 00:00:00.00` becomes `2022-10-01T00:00:00`.
+
+Models that still parse these columns as text can then fail. For example, on Snowflake, `to_date(reportingdate, 'YYYY-MM-DD HH24:MI:SS.FF')` fails with `Can't parse '2022-10-01T00:00:00' as date`.
 
 If you run into this, you can choose one of the options to fix it:
 
