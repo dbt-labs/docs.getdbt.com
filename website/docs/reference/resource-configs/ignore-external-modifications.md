@@ -64,7 +64,7 @@ Set `ignore_external_modifications: false` if you want dbt State to force a rebu
 | Value | Behavior |
 |-------|----------|
 | `true` (default) | dbt State reuses a node even if it was modified outside of dbt. |
-| `false` | dbt State forces a rebuild when the target's last-modified time is newer than what dbt State recorded. |
+| `false` | dbt State forces a rebuild when the target's last-modified time is newer than what dbt State recorded, or if the warehouse timestamp or dbt State's recorded timestamp is unavailable. |
 
 </VersionBlock>
 
@@ -77,11 +77,11 @@ Set `ignore_external_modifications: true` if you want dbt State to reuse a node 
 | Value | Behavior |
 |-------|----------|
 | `true` | dbt State reuses a node even if it was modified outside of dbt. |
-| `false` (default) | dbt State forces a rebuild when the target's last-modified time is newer than what dbt State recorded. |
+| `false` (default) | dbt State forces a rebuild when the target's last-modified time is newer than what dbt State recorded, or if the warehouse timestamp or dbt State's recorded timestamp is unavailable. |
 
 </VersionBlock>
 
-If dbt State decides to clone a node from the deferred environment, it clones regardless of whether an external modification is detected.
+With `ignore_external_modifications: true`, dbt State clones the node even if the clone source was modified after the last run. With `false`, dbt State builds the node instead.
 
 ## Interactions with other configs
 
@@ -109,7 +109,7 @@ models:
 
 </File>
 
-With this config set, dbt State triggers a rebuild the next time `fct_orders` runs if its last-modified timestamp in the warehouse is newer than what dbt State recorded.
+With this config set, dbt State triggers a rebuild the next time `fct_orders` runs if its last-modified timestamp in the warehouse is newer than what dbt State recorded, or if the warehouse timestamp or dbt State's recorded timestamp is unavailable.
 
 
 ## Related docs
