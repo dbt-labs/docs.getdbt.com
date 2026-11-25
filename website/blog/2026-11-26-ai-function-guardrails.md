@@ -71,7 +71,7 @@ dbt platform [automatically sets](/docs/build/environment-variables#special-envi
 
 Before the first production run, the team wants to know what tagging the full reviews table will cost. Pattern 1 already gives them a 50-row sample run, so they use it to check what it spent.
 
-Pick your warehouse:
+The following tabs some sql query examples using AI functions for some of the common warehouses used today. Make sure to double check the query and your warehouse's syntax:
 
 <Tabs>
 
