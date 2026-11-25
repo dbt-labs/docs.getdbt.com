@@ -1,10 +1,10 @@
 ---
 title: Does dbt State support incremental models?
-description: "Learn how dbt State works with incremental models."
-sidebar_label: 'Does this support incremental models?'
+description: "dbt State can pre-clone incremental models or fetch from another schema during a full refresh."
+sidebar_label: 'Does dbt State support incremental models?'
 id: incremental-models
 ---
 
-dbt State works with incremental models. When you make a change to an incremental model and run it in development, dbt State automatically clones the model from production if it exists, then runs the new model logic on top of the clone.
+dbt State works with incremental models. When you make a change to an incremental model and run it in development, dbt State automatically clones the existing model from production if it exists, then runs the new model logic on top of the clone. Use the [`pre_clone` config](/reference/resource-configs/pre-clone) to change if and how incremental models and snapshots are populated before a run.
 
-If you want to revert to the original dbt behavior and fully refresh the incremental model, pass the [`--full-refresh` flag](/reference/commands/run#refresh-incremental-models).
+If you use the [`--full-refresh` flag](/reference/commands/run#refresh-incremental-models), dbt State will ignore any `always` and `if_missing` `pre_clone` configurations. However, if another schema already contains an equivalent version of the requested table, dbt State will still clone that instead of truly building from scratch.
