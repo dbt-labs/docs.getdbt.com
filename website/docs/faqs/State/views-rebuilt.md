@@ -85,7 +85,7 @@ Models using custom materializations can be skipped as unchanged, but are inelig
 
 ## Python models
 
-Python models will always be rebuilt, because dbt State only analyzes SQL models. The rebuild moves that model's last updated date forward, which will trigger a rebuild in any downstream SQL models after their `lag_tolerance` is exceeded. To minimize the effects of this, reduce the number of models that depend on a Python table or set a higher `lag_tolerance` on its immediate children.
+Python models are always rebuilt because dbt State only analyzes SQL models. The rebuild moves that model's last updated date forward, which triggers a rebuild in any downstream SQL models after their `lag_tolerance` is exceeded. To minimize the effects of this, reduce the number of models that depend on a Python table or set a higher `lag_tolerance` on its immediate children.
 
 ## How to diagnose
 

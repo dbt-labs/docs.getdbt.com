@@ -18,7 +18,7 @@ This article is for the teams who want a bit more guidance on best practices, es
 
 I'll help you evaluate whether your dbt project and your goals are a good fit for dbt State, how to capture your baseline performance, and provide a structured process for gradually rolling dbt State across your project and team. 
 
-_Note: most of this advice is the same whether your orchestrate on the dbt platform or on your own systems - the parts that differ have toggles to let you choose your own adventure._
+_Note: Most of this advice is the same whether you orchestrate on the dbt platform or on your own systems &mdash; the parts that differ have toggles to let you choose your own adventure._
 
 <!-- truncate -->
 
@@ -36,7 +36,7 @@ Here are some indicators that normally lead to big benefits:
 
 On the other hand, here are some scenarios which reduce the potential cost savings:
 
-- **Heavy use of Python models and custom materializations.** Python models can't be reused at all, and custom materializations can be skipped but not cloned from another location.
+- **Heavy use of Python models and custom materializations.** dbt State can't reuse Python models, and it can skip custom materializations but not clone them from another location.
 - **Near-realtime batch processing.** dbt State fetches additional metadata at the start of an invocation to decide whether models can be reused or not. This overhead could negate any performance benefits for models that are already triggered on a very tight loop (every few minutes) and execute very quickly.
 
 ### Developer experience and speed
@@ -44,7 +44,7 @@ On the other hand, here are some scenarios which reduce the potential cost savin
 Teams who see significant improvements to their development loop tend to have these characteristics:
 
 - **Colleagues collaborating on the same models.** If you have multiple people collaborating on a single development branch, dbt State is particularly useful compared to standard deferral. It can find models to clone from any environment, so anyone checking out a git branch won't need to rebuild from scratch.
-- **Agent-heavy development loops.** When working on multiple git worktrees in parallel, dbt's default behavior would be to rebuild all models from scratch for each worktree. dbt State can populate as many standalone development environments as are necessary, without the time or cost implications.
+- **Agent-heavy development loops.** When working on multiple git worktrees in parallel, dbt's default behavior would be to rebuild all models from scratch for each worktree. dbt State can populate as many standalone development environments as necessary, without the time or cost implications.
 - **Rapidly-evolving schema.** Deferral reads from the live version of a production table, even if that diverges from the version on a developer's machine. dbt State will zero-copy clone from production which preserves the schema shape and content as expected, instead of getting bogged down in unrelated schema drift.
 - **A lot of incremental models.** In development, dbt State can automatically clone incremental models from another environment to prevent slow and costly full refreshes.
 - **Many sporadic project contributors.** I don't work in dbt all day every day, so when I go to change our internal analytics project I normally find that my dev schema has been dropped by a cleanup script, or that it's out of sync with production. dbt State lets me get straight back to a development-ready environment.
@@ -63,7 +63,7 @@ To precisely track which models were reused or rebuilt, check `run_results.json`
 
 <VersionBlock lastVersion="1.99">
 
-The run results file produced by <Constant name="core" /> will show models' `status` as `"success"` and specific information in the `message` field:
+The run results file produced by <Constant name="core" /> will show models' `status` as `success` and specific information in the `message` field:
 
 | Outcome | `status` | `message` |
 | --- | --- | --- |
@@ -75,7 +75,7 @@ The run results file produced by <Constant name="core" /> will show models' `sta
 
 <VersionBlock firstVersion="2.0">
 
-The run results file produced by <Constant name="fusion" /> will show models' `status` as `"success"` or `"reused"` and specific information in the `message` field:
+The run results file produced by <Constant name="fusion" /> will show models' `status` as `success` or `reused` and specific information in the `message` field:
 
 | Outcome | `status` | `message` |
 | --- | --- | --- |
@@ -85,7 +85,7 @@ The run results file produced by <Constant name="fusion" /> will show models' `s
 
 Follow [dbt#17226](https://github.com/dbt-labs/dbt/issues/17226) for discussion of different message values in future.
 
-The `run_results.json` file is overwritten on every local invocation, so check the dbt information schema's `dbt_rt.run_results` view instead to see all invocations over time.
+The `run_results.json` file is overwritten on every local invocation, so check the dbt Information Schema's `dbt_rt.run_results` view instead to see all invocations over time.
 
 </VersionBlock>
 
@@ -116,7 +116,7 @@ The easiest global switch is the `DBT_ENGINE_MANAGE_STATE=0` environment variabl
 
 <TabItem value="dbt-platform" label="dbt platform">
 
-Disable dbt State by unticking the Enable dbt State checkbox on an environment (assuming each job uses the Inherit from environment setting), or setting dbt State to Off on an individual job ([full docs](/docs/deploy/dbt-state-enable-env-jobs)).
+Disable dbt State by clearing the **Enable dbt State** option on an environment (assuming each job uses the Inherit from environment setting), or setting the **dbt State** dropdown to **Off** on an individual job ([full docs](/docs/deploy/dbt-state-enable-env-jobs)).
 
 </TabItem>
 
@@ -154,10 +154,10 @@ Enable dbt State in the dbt Studio IDE by [following these directions](/docs/dep
 
 ### Workflows to test
 
-1. **Model reuse** – run a model, then immediately run it again. The model should be reused because there are no changes.
-2. **Detecting changed logic** – add a comment to the model and run it again. It should still be reused, because comments don't impact the logic of a query. Make a more significant change (such as reordering columns) and try again: this time the model should be executed to apply the changes.
-3. **Reuse across users and branches** – commit the change to a new branch, then have a colleague run the checked-out branch themselves. They should get a clone of your table instead of rebuilding it themselves. If they don't, check that their permissions allow them to see your development schema.
-4. **Detecting changed data** – change an upstream source and see how the configured `lag_tolerance` prevents or triggers a rebuild. If you don't want to actually load fresh data, the easiest way to simulate it is to specify a custom `loaded_at_field` which is just `current_timestamp()`.
+1. **Model reuse**: Run a model, then immediately run it again. The model should be reused because there are no changes.
+2. **Detecting changed logic**: Add a comment to the model and run it again. It should still be reused, because comments don't impact the logic of a query. Make a more significant change (such as reordering columns) and try again: this time the model should be executed to apply the changes.
+3. **Reuse across users and branches**: Commit the change to a new branch, then have a colleague run the checked-out branch themselves. They should get a clone of your table instead of rebuilding it themselves. If they don't, check that their permissions allow them to see your development schema.
+4. **Detecting changed data**: Change an upstream source and see how the configured `lag_tolerance` prevents or triggers a rebuild. If you don't want to actually load fresh data, the easiest way to simulate it is to specify a custom `loaded_at_field` which is just `current_timestamp()`.
 
 If you get unexpected results from any of these experiments, use [the `explain` command](/reference/commands/state-explain).
 
