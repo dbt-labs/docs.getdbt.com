@@ -183,10 +183,14 @@ We haven't confirmed whether Redshift calls can be told apart from other Bedrock
 Then do the math before committing to a full dataset run:
 
 ```txt
-(credits used / rows tested) x total rows = units of cost/credits for the full run
+(cost of the test run / rows tested) x total rows = estimated cost of the full run
 ```
 
-For example, if 50 rows used 0.02 credits, 60,000 rows will use about 24 credits. Multiply by what your account pays per credit and decide if it's worth it.
+Your warehouse might report usage in dollars, credits, or another unit, so convert it to dollars using what your account pays. For example, if 50 rows cost $0.04, 60,000 rows will cost about $48. Then decide if it's worth it.
+
+:::tip
+Add the estimated total cost to your pull request description. It helps reviewers decide whether the change is worth merging.
+:::
 
 ## 3. Use incremental to avoid re-classifying existing rows
 
@@ -263,7 +267,7 @@ The [`full_refresh` config](/reference/resource-configs/full_refresh) has three 
 ## The four patterns at a glance
 
 <SimpleTable>
-| Rule | What it stops | dbt feature |
+| Rule | What it stops | How |
 | --- | --- | --- |
 | 1. Sample a handful of rows | Dev and CI runs paying for the full table | `env_var()` with a safe default |
 | 2. Check the price first | Finding out the cost after you've spent it | Your warehouse's usage view |
