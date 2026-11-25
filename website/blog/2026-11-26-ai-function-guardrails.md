@@ -6,7 +6,7 @@ image: /img/blog/2026-11-26-ai-function-guardrails/jaffle-games-shop-storefront.
 authors: [benoit_perigaud, doug_beatty, mirna_wong, joel_labes]
 tags: [ai]
 hide_table_of_contents: false
-date: 2026-11-26
+date: 2026-12-04
 is_featured: false
 ---
 
