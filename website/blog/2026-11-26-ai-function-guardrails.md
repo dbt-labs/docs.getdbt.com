@@ -2,7 +2,7 @@
 title: "How to cost-effectively use warehouse AI functions in your dbt project"
 description: "AI functions in SQL are easy to write and equally easy to overspend on. Here are four strategies to keep the bill under control."
 slug: ai-function-guardrails
-image: /img/blog/2026-11-26-ai-function-guardrails/jaffle-shop-games-storefront.webp
+image: /img/blog/2026-11-26-ai-function-guardrails/jaffle-games-shop-storefront.webp
 
 authors: [benoit_perigaud, doug_beatty, mirna_wong]
 
@@ -16,13 +16,13 @@ is_featured: false
 
 It's GTA VI launch time at Jaffle Games Shop, an online game store. Orders are flying and customer reviews are pouring in, and it's getting hard to keep up!
 
-Someone on the Jaffle Shop Games data team has a good idea: categorize reviews into common themes,  so the team can see what customers are talking about. So they add an `AI_CLASSIFY()` function to the reviews model, run it once to check it works, and then head out to play GTA over lunch.
+Someone on the Jaffle Games Shop data team has a good idea: categorize reviews into common themes,  so the team can see what customers are talking about. So they add an `AI_CLASSIFY()` function to the reviews model, run it once to check it works, and then head out to play GTA over lunch.
 
 Warehouse-provided SQL functions are easy to write – they feel just like normal SQL! But their cost structure makes it easy to overspend, especially if you re-process every record in dev, then CI, then every day once it reaches production.
 
 This post covers four patterns for cost-effectively using AI functions on your data, powered by standard dbt features: sampling in dev and CI, estimating total cost before deploying, building incrementally, and protecting against full refreshes.
 
-<Lightbox src="/img/blog/2026-11-26-ai-function-guardrails/jaffle-shop-games-storefront.webp" width="85%" title="The Jaffle Shop Games storefront on a nice, sunny day!" />
+<Lightbox src="/img/blog/2026-11-26-ai-function-guardrails/jaffle-games-shop-storefront.webp" width="85%" title="The Jaffle Games Shop storefront on a nice, sunny day!" />
 
 <!-- truncate -->
 
@@ -32,7 +32,7 @@ Think of an AI function as an arcade machine that answers questions. Every quest
 
 AI functions (like Cortex's `AI_COMPLETE` and `AI_CLASSIFY`) are usually billed by the token, which is roughly the amount of text you send and get back. A table with tens of thousands of customer reviews adds up fast: a single run can cost hundreds of dollars. Dev runs, CI jobs, and full refreshes each pay that again.
 
-At Jaffle Shop Games, customers write reviews in the store's review tool. Fivetran ingests them into the warehouse, where they land as raw data. From there, dbt takes over:
+At Jaffle Games Shop, customers write reviews in the store's review tool. Fivetran ingests them into the warehouse, where they land as raw data. From there, dbt takes over:
 
 1. A staging model, `stg_reviews`, tidies them up.
 2. A second model, `reviews_classified`, calls an AI function once for each review. You give the function a review and a list of topics, and it answers with the topic that fits best. For example, "My download code never arrived!" comes back as "order problems".
@@ -45,7 +45,7 @@ The examples in this post use Snowflake Cortex functions, but the underlying dbt
 
 ## 1. Sample a handful of rows
 
-During development and CI, it's unnecessary to classify every single record on every single `dbt run`, when you just need to check that the system is working as expected. The data team at Jaffle Shop Games changed their `reviews_classified` model to only classify 50 random reviews outside of production environments. Here's how it looks now:
+During development and CI, it's unnecessary to classify every single record on every single `dbt run`, when you just need to check that the system is working as expected. The data team at Jaffle Games Shop changed their `reviews_classified` model to only classify 50 random reviews outside of production environments. Here's how it looks now:
 
 ```sql
 select
@@ -287,7 +287,7 @@ Remember the arcade machine from earlier, where every question costs a coin and 
 
 The sign covers the basics, and more scenarios need more. Rows can change after they've been processed, and changing your model or prompt makes earlier results out of date. [dbt-context-engineering](https://github.com/dbt-labs/dbt-context-engineering) has patterns for both, such as comparing a hash of each row's input and stamping each row with the model or prompt version. Check out those examples and share what worked (or didn't) in the dbt Community Slack.
 
-So the Jaffle Shop Games data team made it through the first rush of GTA VI launch week, with every review tagged and the AI function bill under control 👏. But launch week isn't over. The review topic list was written by hand, and launch-day reviews are full of things nobody predicted.
+So the Jaffle Games Shop data team made it through the first rush of GTA VI launch week, with every review tagged and the AI function bill under control 👏. But launch week isn't over. The review topic list was written by hand, and launch-day reviews are full of things nobody predicted.
 
 <Lightbox src="/img/blog/2026-11-26-ai-function-guardrails/chuck-norris-meme.png" width="80%" title="Launch-day reviews were full of things nobody predicted" />
 
