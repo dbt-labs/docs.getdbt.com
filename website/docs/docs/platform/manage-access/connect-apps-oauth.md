@@ -3,11 +3,15 @@ title: "Connect apps with OAuth"
 description: "Manage OAuth 2.0 client registrations to connect AI tools and third-party apps to dbt."
 id: "connect-apps-oauth"
 sidebar_label: "Connect apps with OAuth"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
 import MCPCustomConnectorOauth from '/snippets/_mcp-custom-connector-oauth.md';
 
-# Connect apps with OAuth <Lifecycle status="beta,self_service,managed,managed_plus" />
+# Connect apps with OAuth <Lifecycle status="beta" />
 
 The **App integrations** section in <Constant name="dbt_platform" /> lets admins manage OAuth 2.0 client registrations &mdash; a standard that lets external apps connect to dbt securely without sharing API tokens. Use it for:
 
@@ -15,7 +19,7 @@ The **App integrations** section in <Constant name="dbt_platform" /> lets admins
 - Your own API integrations built against <Constant name="dbt_platform" /> APIs, when you want end users to sign in with their dbt identity instead of distributing tokens.
 - Third-party apps and IDE extensions that support OAuth for connecting to dbt.
 
-This feature is available to Account admins on Starter, Enterprise or Enterprise+ plans.
+This feature is available on Starter, Enterprise, or Enterprise+ plans to users with the Account Admin, Security admin, or Project creator permission set, or an IT license.
 
 To access this section, go to **Account settings** → **Integrations** → **App integrations**.
 
@@ -102,7 +106,7 @@ When a user unchecks one or more scopes on the consent screen, the access token 
 - Handle `403` responses gracefully and surface a clear message if a required scope was not granted.
 - Avoid assuming the full set of requested scopes was approved; always check the `scope` field in the token response.
 
-To select the scopes your client should request, choose from the list above. For clients registered via [Dynamic Client Registration](#dynamic-registration), scopes are declared in the registration request. For [manually registered clients](#manual-registration), scopes are configured as part of the registration form.
+To select the scopes your client should request, choose from the list above. Request scopes during the authorization request (`/oauth/authorize`). Scopes are not set during client registration.
 
 ## Sessions and refresh tokens
 

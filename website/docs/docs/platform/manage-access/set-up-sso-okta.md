@@ -1,9 +1,13 @@
 ---
 title: "Set up SSO with Okta"
 id: "set-up-sso-okta"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# Set up SSO with Okta <Lifecycle status="managed, managed_plus" />
+# Set up SSO with Okta
 
 <Constant name="dbt" /> Enterprise-tier plans support single-sign on via Okta (using SAML).
 

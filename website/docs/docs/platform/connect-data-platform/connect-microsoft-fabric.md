@@ -2,6 +2,9 @@
 title: "Connect Microsoft Fabric"
 description: "Configure Microsoft Fabric connection."
 sidebar_label: "Connect Microsoft Fabric"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 ## Supported authentication methods
@@ -21,7 +24,7 @@ The following are the required fields for setting up a connection with a Microso
 | **Database** | The service principal's **database** value for the Fabric test endpoint. |
 | **Authentication** | Choose **Service Principal** from the dropdown. | 
 | **Tenant ID** | The service principal's **Directory (tenant) ID**. |
-| **Client ID** | The service principal's **application (client) ID id**. |
+| **Client ID** | The service principal's **application (client) ID**. |
 | **Client secret** | The service principal's **client secret** (not the **client secret id**). |  
 
 

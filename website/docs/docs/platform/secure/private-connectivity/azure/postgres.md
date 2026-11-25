@@ -3,6 +3,10 @@ title: "Configuring Private Link for Azure Database for Postgres Flexible Server
 id: azure-postgres
 description: "Configuring Private Link for Azure Database for Postgres Flexible Server."
 sidebar_label: "Azure Database for PostgreSQL Flexible Server"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise_plus
 ---
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';

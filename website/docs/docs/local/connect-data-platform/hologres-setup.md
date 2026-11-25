@@ -1,5 +1,5 @@
 ---
-title: "Connect Hologres to dbt Core"
+title: "Connect Hologres to dbt v1"
 sidebar_label: "Hologres"
 description: "Read this guide to learn about the Alibaba Cloud Hologres setup in dbt."
 meta:
@@ -11,6 +11,7 @@ meta:
   cloud_support: Not Supported
   platform_name: "Hologres"
   config_page: "/reference/resource-configs/no-configs"
+availability: local_free
 ---
 
 

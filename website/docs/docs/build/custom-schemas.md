@@ -3,9 +3,10 @@ title: "Custom schemas"
 description: "Configure custom schemas for your dbt model's tables and views in the database."
 id: "custom-schemas"
 pagination_next: "docs/build/custom-databases"
+availability: all_users
 ---
 
-By default, all dbt models are built in the schema specified in your [environment](/docs/dbt-platform-environments) (<Constant name="dbt_platform" />) or [profile's target](/docs/local/dbt-core-environments) (<Constant name="core" />). This default schema is called your _target schema_.
+By default, all dbt models are built in the schema specified in your [environment](/docs/dbt-platform-environments) (<Constant name="dbt_platform" />) or [profile's target](/docs/local/dbt-environments) (<Constant name="core" />). This default schema is called your _target schema_.
 
 For projects with many models, it's common to organize them across multiple schemas. For example, you might want to:
 
@@ -181,6 +182,8 @@ Development/CI Environment (`target.name != 'prod'`)
 
 Similar to the regular macro, this approach guarantees that schemas from different environments will not collide.
 
+<Lightbox src="/img/docs/building-a-dbt-project/custom-schemas-diagram.png" width="85%" alt="A flowchart showing how dbt chooses a schema name based on whether a custom schema is set and which environment is running." title="How dbt picks a schema in dev, CI, and production." />
+
 dbt ships with a macro for this use case &mdash; called `generate_schema_name_for_env` &mdash; which is disabled by default. To enable it, add a custom `generate_schema_name` macro to your project that contains the following code:
 
 <File name='macros/generate_schema_name.sql'>
@@ -207,10 +210,11 @@ In the `generate_schema_name` macro examples shown in the [built-in alternative 
 
 If your schema names are being generated incorrectly, double-check your target name in the relevant environment.
 
-For more information, consult the [managing environments in <Constant name="core" />](/docs/local/dbt-core-environments) guide.
+For more information, consult the [managing environments in <Constant name="dbt" />](/docs/local/dbt-environments) guide.
 
 ## Related docs
 
+- [Mapping project folders to warehouse schemas](/best-practices/how-we-structure/6-mapping-folders-to-warehouse) to map staging, intermediate, and marts folders to warehouse schemas
 - [Customize dbt models database, schema, and alias](/guides/customize-schema-alias?step=1) to learn how to customize dbt models database, schema, and alias
 - [Custom database](/docs/build/custom-databases) to learn how to customize dbt model database
 - [Custom aliases](/docs/build/custom-aliases) to learn how to customize dbt model alias name

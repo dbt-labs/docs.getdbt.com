@@ -15,6 +15,7 @@ datatype: string | [string]
     { label: 'Sources', value: 'sources', },
     { label: 'Exposures', value: 'exposures', },
     { label: 'Tests', value: 'tests', },
+    { label: 'Functions', value: 'functions', },
   ]
 }>
 <TabItem value="models">
@@ -304,6 +305,41 @@ select ...
 
 </TabItem>
 
+<TabItem value="functions">
+
+<File name='dbt_project.yml'>
+
+```yml
+functions:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)tags: <string> | [<string>]
+```
+
+</File>
+
+<File name='functions/properties.yml'>
+
+```yaml
+functions:
+  - name: function_name
+    config:
+      tags: <string> | [<string>]
+```
+
+</File>
+
+<File name='functions/<filename>.sql'>
+
+```sql
+{{ config(
+    tags="<string>" | ["<string>"]
+) }}
+```
+
+</File>
+
+</TabItem>
+
 </Tabs>
 
 ## Definition
@@ -315,6 +351,10 @@ These tags can be used as part of the [resource selection syntax](/reference/nod
 - `dbt seed --select tag:my_tag` &mdash; Seed all resources tagged with a specific tag.
 - `dbt snapshot --select tag:my_tag` &mdash; Snapshot all resources tagged with a specific tag.
 - `dbt test --select tag:my_tag` &mdash; Indirectly runs all tests associated with the models that are tagged.
+
+:::note Effect on state comparison
+Changes to `tags`, including at the column level, don't trigger [`state:modified`](/reference/node-selection/methods#state). dbt treats `tags` (and `meta`) as metadata only, since they don't affect how a resource is materialized. Refer to [caveats to state comparison](/reference/node-selection/state-comparison-caveats#tags-and-meta) for more detail.
+:::
 
 #### Using tags with the `+` operator
 You can use the [`+` operator](/reference/node-selection/graph-operators#the-plus-operator) to include upstream or downstream dependencies in your `tag` selection:

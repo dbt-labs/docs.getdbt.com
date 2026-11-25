@@ -1,10 +1,13 @@
 ---
 title: "Billing FAQs"
 sidebar_label: "Billing FAQs"
-description: "Answers to common questions about dbt plans, billing, usage, and the Semantic Layer trial."
+description: "Answers to common questions about dbt plans, billing, and usage."
 id: billing-faqs
 pagination_next: null
 pagination_prev: null
+availability:
+  surface: platform
+  access: login_required
 ---
 
 import DevToStarterUpgradeBody from '/snippets/_dev-to-starter-upgrade-body.md';
@@ -43,14 +46,8 @@ The best option is to consult with our sales team. They'll help you figure out w
 
 </Expandable>
 
-<Expandable alt_header="What are the Semantic Layer trial terms?">
+## dbt Wizard
 
-Starter and Enterprise-tier customers can sign up for a free trial of the <Constant name="semantic_layer" />, powered by MetricFlow, for use of up to 1,000 Queried Metrics per month. The trial will be available at least through January 2024. dbt Labs may extend the trial period in its sole discretion. During the trial period, we may reach out to discuss pricing options or ask for feedback. At the end of the trial, free access may be removed and a purchase may be required to continue use. dbt Labs reserves the right to change limits in a free trial or institute pricing when required or at any time in its sole discretion.
+<Constant name="wizard" /> is billed on usage: metered per token and drawn from your consumption pool. Enterprise and Enterprise+ accounts get a monthly pool; all other plans start with a 30-day trial and a $100 pool.
 
-</Expandable>
-
-<Expandable alt_header="What is the reasonable use limitation for the Semantic Layer powered by MetricFlow during the trial?">
-
-Each account will be limited to 1,000 Queried Metrics per month during the trial period and may be changed at the sole discretion of dbt Labs.
-
-</Expandable>
+For trials, consumption pools, spend limits, and BYOK billing, refer to [<Constant name="wizard" /> billing FAQs](/docs/dbt-ai/wizard-billing-faqs).

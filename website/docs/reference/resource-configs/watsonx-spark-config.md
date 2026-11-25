@@ -1,5 +1,6 @@
 ---
 title: "IBM watsonx.data Spark configurations"
+description: "Configure IBM watsonx.data Spark-specific settings for dbt models, including instance requirements and catalog permissions."
 id: "watsonx-spark-config"
 ---
 

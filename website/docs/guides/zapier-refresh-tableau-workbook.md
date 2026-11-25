@@ -37,7 +37,7 @@ To trigger an action with the delivery of a webhook in Zapier, you'll want to cr
 
 Press **Continue**, then copy the webhook URL. 
 
-![Screenshot of the Zapier UI, showing the webhook URL ready to be copied](/img/guides/orchestration/webhooks/zapier-common/catch-raw-hook.png)
+<Lightbox src="/img/guides/orchestration/webhooks/zapier-common/catch-raw-hook.png" title="Screenshot of the Zapier UI, showing the webhook URL ready to be copied" />
 
 ## Configure a new webhook in dbt
 To set up a webhook subscription for <Constant name="dbt" />, follow the instructions in [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subscription). For the event, choose **Run completed** and modify the **Jobs** list to include only the jobs that should trigger a report refresh.
@@ -67,7 +67,7 @@ Choose **Run Python** as the Event and input the following code:
 
 ```python 
 store = StoreClient('abc123') #replace with your UUID secret
-store.set('DBT_WEBHOOK_KEY', 'abc123') #replace with your <Constant name="dbt" /> Webhook key
+store.set('DBT_WEBHOOK_KEY', 'abc123') #replace with your dbt Webhook key
 store.set('TABLEAU_SITE_URL', 'abc123') #replace with your Tableau Site URL, inclusive of https:// and .com
 store.set('TABLEAU_SITE_NAME', 'abc123') #replace with your Tableau Site/Server Name
 store.set('TABLEAU_API_TOKEN_NAME', 'abc123') #replace with your Tableau API Token Name
@@ -81,7 +81,7 @@ Select **Code by Zapier** as the App, and **Run Python** as the Event.
 
 In the **Set up action** area, add two items to **Input Data**: `raw_body` and `auth_header`. Map those to the `1. Raw Body` and `1. Headers Http Authorization` fields from the **Catch Raw Hook** step above.
 
-![Screenshot of the Zapier UI, showing the mappings of raw_body and auth_header](/img/guides/orchestration/webhooks/zapier-common/run-python.png)
+<Lightbox src="/img/guides/orchestration/webhooks/zapier-common/run-python.png" title="Screenshot of the Zapier UI, showing the mappings of raw_body and auth_header" />
 
 In the **Code** field, paste the following code, replacing `YOUR_STORAGE_SECRET_HERE` in the StoreClient constructor with the UUID secret you created when setting up the Storage by Zapier integration, and replacing the `workbook_name` and `api_version` variables to actual values.
 
@@ -105,14 +105,14 @@ pat_secret = secret_store.get('TABLEAU_API_TOKEN_SECRET')
 workbook_name = "YOUR_WORKBOOK_NAME"
 api_version = "ENTER_COMPATIBLE_VERSION"
 
-#Validate authenticity of webhook coming from <Constant name="dbt" />
+#Validate authenticity of webhook coming from dbt
 auth_header = input_data['auth_header']
 raw_body = input_data['raw_body']
 
 signature = hmac.new(hook_secret.encode('utf-8'), raw_body.encode('utf-8'), hashlib.sha256).hexdigest()
 
 if signature != auth_header:
-raise Exception("Calculated signature doesn't match contents of the Authorization header. This webhook may not have been sent from <Constant name="dbt" />.")
+raise Exception("Calculated signature doesn't match contents of the Authorization header. This webhook may not have been sent from dbt.")
 
 full_body = json.loads(raw_body)
 hook_data = full_body['data'] 

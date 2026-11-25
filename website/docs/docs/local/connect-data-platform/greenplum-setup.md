@@ -1,5 +1,5 @@
 ---
-title: "Connect Greenplum to dbt Core"
+title: "Connect Greenplum to dbt v1"
 sidebar_label: "Greenplum"
 description: "Read this guide to learn about the Greenplum warehouse setup in dbt."
 id: "greenplum-setup"
@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://www.getdbt.com/community'
   platform_name: 'Greenplum'
   config_page: '/reference/resource-configs/greenplum-configs'
+availability: local_free
 ---
 
 

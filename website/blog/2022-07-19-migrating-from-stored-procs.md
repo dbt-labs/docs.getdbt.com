@@ -44,7 +44,7 @@ Some of the drawbacks to using stored procedures may not have been apparent hist
 
 We might visualize this situation as something like this: 
 
-![Diagram of what a stored procedure data flow would look like. Hint: it's complicated](/img/blog/2022-07-19-migrating-from-stored-procs/stored-procs-diagram.png)
+<Lightbox src="/img/blog/2022-07-19-migrating-from-stored-procs/stored-procs-diagram.png" title="Diagram of what a stored procedure data flow would look like. Hint: it's complicated" />
 
 ## Why consider dbt as an alternative?
 
@@ -52,7 +52,7 @@ dbt offers an approach that is self-documenting, testable, and encourages code r
 
 With dbt, we work towards creating simpler, more transparent data pipelines like this:
 
-![Diagram of what data flows look like with dbt. It's easier to trace lineage in this setup.](/img/blog/2022-07-19-migrating-from-stored-procs/dbt-diagram.png)
+<Lightbox src="/img/blog/2022-07-19-migrating-from-stored-procs/dbt-diagram.png" title="Diagram of what data flows look like with dbt. It's easier to trace lineage in this setup." />
 
 Tight [version control integration](https://docs.getdbt.com/docs/best-practices#version-control-your-dbt-project) is an added benefit of working with dbt. By leveraging the power of git-based tools, dbt enables you to integrate and test changes to transformation pipelines much faster than you can with other approaches. We often see teams who work in stored procedures making changes to their code without any notion of tracking those changes over time. While that’s more of an issue with the team’s chosen workflow than a problem with stored procedures per se, it does reflect how legacy tooling makes analytics work harder than necessary.
 
@@ -201,7 +201,7 @@ select * from unioned
 
 We’ve just created a modular, documentable, and testable approach to manage the same transformations as an alternative. 
 
-![A dbt DAG that shows the output of the code you just implemented](/img/blog/2022-07-19-migrating-from-stored-procs/dbt-approach-model.png)
+<Lightbox src="/img/blog/2022-07-19-migrating-from-stored-procs/dbt-approach-model.png" title="A dbt DAG that shows the output of the code you just implemented" />
 
 ### Step 4: Audit your results
 
@@ -213,7 +213,7 @@ We’ve highlighted several of the pain points of working with stored procedures
 
 Over time, this approach is much more extensible than continuing to stack code on top of an unwieldy process. It’s also automatically documented, and using tests ensures the pipeline is resilient to changes over time. We continue mapping the data flow from the existing stored procedure to the dbt data pipeline, iterating until we achieve the same outputs as before. 
 
-We’d love to hear your feedback! You can find us on [slack](https://www.getdbt.com/community/), [github](https://github.com/dbt-labs/dbt-core), or [reach out](https://www.getdbt.com/contact/) to our sales team. 
+We’d love to hear your feedback! You can find us on [slack](https://www.getdbt.com/community/), [github](https://github.com/dbt-labs/dbt), or [reach out](https://www.getdbt.com/contact/) to our sales team. 
 
 ## Appendix
 

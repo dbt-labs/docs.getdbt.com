@@ -4,9 +4,13 @@ id: excel
 description: "Integrate with Excel to query your metrics in a spreadsheet."
 tags: [Semantic Layer]
 sidebar_label: "Microsoft Excel"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
-# Microsoft Excel <Lifecycle status="self_service,managed,managed_plus" />
+# Microsoft Excel
 
 The <Constant name="semantic_layer" /> offers a seamless integration with Excel Online and Desktop through a custom menu. This add-on allows you to build <Constant name="semantic_layer" /> queries and return data on your metrics directly within Excel.
 

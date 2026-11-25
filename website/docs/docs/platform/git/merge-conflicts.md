@@ -2,6 +2,9 @@
 title: "Merge conflicts"
 id: "merge-conflicts"
 pagination_next: null
+availability:
+  surface: platform
+  access: login_required
 ---
 
 [Merge conflicts](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/about-merge-conflicts) in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) often occur when multiple users are simultaneously making edits to the same section in the same file. This makes it difficult for <Constant name="git" /> to decide what changes to incorporate in the final merge.  
@@ -35,9 +38,13 @@ The <Constant name="studio_ide" /> will display:
 - The file name colored in red in the **Changes** section, with a warning icon.
 - If you press commit without resolving the conflict, the <Constant name="studio_ide" /> will prompt a pop up box with a list which files need to be resolved.
 
+<DocCarousel slidesPerView={1}>
+
 <Lightbox src="/img/docs/dbt-platform/platform-ide/merge-conflict.png" title="Conflicting section that needs resolution will be highlighted"/>
 
 <Lightbox src="/img/docs/dbt-platform/platform-ide/commit-without-resolve.png" title="Pop up box when you commit without resolving the conflict"/>
+
+</DocCarousel>
 
 
 ## Resolve merge conflicts
@@ -67,6 +74,10 @@ When you've resolved all the merge conflicts, the last step would be to commit t
 3. The <Constant name="studio_ide" /> will return to its normal state and you can continue developing! 
 
 
+<DocCarousel slidesPerView={1}>
+
 <Lightbox src="/img/docs/dbt-platform/platform-ide/commit-resolve.png" title="Conflict has been resolved"/>
 
 <Lightbox src="/img/docs/dbt-platform/platform-ide/commit-changes.png" title="Commit Changes pop up box to commit your changes"/>
+
+</DocCarousel>

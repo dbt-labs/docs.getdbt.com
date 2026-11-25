@@ -3,6 +3,7 @@ title: "dbt Model Context Protocol server"
 sidebar_label: "dbt MCP server"
 description: "Learn about the dbt MCP server"
 id: "about-mcp"
+availability: all_users
 ---
 
 import McpToolsFromReadme from '/snippets/_mcp-tools-from-readme.md';
@@ -111,6 +112,8 @@ The dbt MCP server integrates with any [MCP client](https://modelcontextprotocol
 - [Cursor](/docs/dbt-ai/integrate-mcp-cursor)
 - [VS Code](/docs/dbt-ai/integrate-mcp-vscode)
 - [Snowflake Cortex](/docs/dbt-ai/integrate-mcp-snowflake-cortex)
+- [Databricks](/docs/dbt-ai/integrate-mcp-databricks)
+- [Gemini Enterprise](/docs/dbt-ai/integrate-mcp-gemini-enterprise)
 
 ## Data retention
 

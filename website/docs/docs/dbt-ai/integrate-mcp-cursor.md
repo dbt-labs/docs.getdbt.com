@@ -3,9 +3,11 @@ title: "Integrate Cursor with dbt MCP"
 sidebar_label: "Integrate Cursor with MCP"
 description: "Guide to set up Cursor with dbt-mcp"
 id: "integrate-mcp-cursor"
+availability: all_users
 ---
 
 import MCPOauthPreflight from '/snippets/_mcp-oauth-preflight.md';
+import MCPRemoteReadOnlyCredentials from '/snippets/_mcp-remote-read-only-credentials.md';
 
 [Cursor](https://docs.cursor.com/context/model-context-protocol) is an AI-powered code editor, powered by Microsoft Visual Studio Code (VS Code). 
 
@@ -15,7 +17,7 @@ After setting up your MCP server, you connect it to Cursor. Log in to Cursor and
 
 Choose your setup based on your workflow:
 - OAuth for <Constant name="dbt_platform" /> connections
-- CLI only if using <Constant name="core" /> or the <Constant name="fusion_engine" /> locally. 
+- CLI only if using <Constant name="core" /> or <Constant name="fusion_engine" /> locally. 
 - Configure environment variables if you're using them in your <Constant name="dbt_platform" /> account.
 
 ### OAuth or CLI
@@ -24,11 +26,11 @@ Click one of the following application links with Cursor open to automatically c
 
 <Tabs>
 
-<TabItem value="CLI only (dbt Core and Fusion)">
+<TabItem value="CLI only (dbt v1 and dbt v2)">
 
 Self-hosted configuration for users who only want to use dbt commands with <Constant name="core" /> or <Constant name="fusion_engine" /> (no <Constant name="dbt_platform" /> features).
 
-[Add dbt Core or Fusion to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJlbnYiOnsiREJUX1BST0pFQ1RfRElSIjoiL3BhdGgvdG8veW91ci9kYnQvcHJvamVjdCIsIkRCVF9QQVRIIjoiL3BhdGgvdG8veW91ci9kYnQvZXhlY3V0YWJsZSJ9LCJjb21tYW5kIjoidXZ4IiwiYXJncyI6WyJkYnQtbWNwIl19)
+[Add <Constant name="core" /> or <Constant name="fusion" /> to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJlbnYiOnsiREJUX1BST0pFQ1RfRElSIjoiL3BhdGgvdG8veW91ci9kYnQvcHJvamVjdCIsIkRCVF9QQVRIIjoiL3BhdGgvdG8veW91ci9kYnQvZXhlY3V0YWJsZSJ9LCJjb21tYW5kIjoidXZ4IiwiYXJncyI6WyJkYnQtbWNwIl19)
 
 After clicking:
 1. Update <VersionBlock lastVersion="1.10">`DBT_PROJECT_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROJECT_DIR`</VersionBlock> with the full path to your dbt project (the folder containing `dbt_project.yml`).
@@ -45,7 +47,7 @@ _OAuth with the self-hosted dbt MCP server is available for Starter, Enterprise,
 
 Configuration settings for users who want OAuth authentication with the <Constant name="dbt_platform" />.
 
-Before you begin, make sure your account admin has enabled AI features on your <Constant name="dbt_platform"/> account. Refer to [Enable dbt AI](/docs/platform/enable-dbt-ai) for more info.
+AI features are enabled by default. Admins can [turn them off or back on anytime](/docs/platform/manage-dbt-ai).
 
 - [<Constant name="dbt_platform"/> only](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJlbnYiOnsiREJUX0hPU1QiOiJodHRwczovLzx5b3VyLWRidC1ob3N0LXdpdGgtY3VzdG9tLXN1YmRvbWFpbj4iLCJESVNBQkxFX0RCVF9DTEkiOiJ0cnVlIn0sImNvbW1hbmQiOiJ1dngiLCJhcmdzIjpbImRidC1tY3AiXX0%3D)
 - [<Constant name="dbt_platform"/> + CLI](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJlbnYiOnsiREJUX0hPU1QiOiJodHRwczovLzx5b3VyLWRidC1ob3N0LXdpdGgtY3VzdG9tLXN1YmRvbWFpbj4iLCJEQlRfUFJPSkVDVF9ESVIiOiIvcGF0aC90by9wcm9qZWN0IiwiREJUX1BBVEgiOiJwYXRoL3RvL2RidC9leGVjdXRhYmxlIn0sImNvbW1hbmQiOiJ1dngiLCJhcmdzIjpbImRidC1tY3AiXX0%3D)
@@ -85,6 +87,7 @@ Remote MCP supports **OAuth** or **token-based** headers.
 
 - _Remote MCP OAuth is available in public beta for Starter, Enterprise, and Enterprise+ accounts._
 - For either method, the MCP URL is `https://<Access URL>/api/ai/v1/mcp`. You can find the URL in <Constant name="dbt_platform"/> under **Account settings** &rarr; **Access URLs** &rarr; **MCP Endpoint URL**.
+- <MCPRemoteReadOnlyCredentials />
 
 <MCPOauthPreflight />
 

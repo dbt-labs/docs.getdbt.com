@@ -5,9 +5,10 @@ description: "Learn how to develop your dbt projects using dbt."
 sidebar_label: "Develop with dbt" 
 pagination_next: "docs/platform/about-defer"
 intro_text: "Develop dbt projects using the dbt platform, a faster and more reliable way to deploy dbt and manage your project in a single, web-based UI."
+hide_table_of_contents: true
 ---
 
-You can develop in your browser using a <Constant name="dbt" />-powered command line interface (CLI), an integrated development environment (<Constant name="studio_ide" />), or <Constant name="canvas" />.
+You can develop in your browser using a <Constant name="dbt" />-powered command line interface (CLI) or an integrated development environment (<Constant name="studio_ide" />).
 
 ## Getting started
 
@@ -18,14 +19,14 @@ Choose the option that best fits your needs:
 <div className="grid--2-col" >
 
   <Card
-    title="dbt CLI"
+    title="dbt platform CLI"
     body="Allows you to develop and run dbt commands from your local command line or code editor against your dbt development environment."
     link="/docs/platform/dbt-cli-installation"
     icon="dbt-bit"/>
 
   <Card
     title="dbt VS Code extension"
-    body="Bring the speed and intelligence of the dbt Fusion engine to VS Code for a seamless development experience."
+    body="Bring the speed and intelligence of dbt v2 to VS Code for a seamless development experience."
     link="/docs/about-dbt-extension"
     icon="vsce"
     showBorderBeam
@@ -36,12 +37,6 @@ Choose the option that best fits your needs:
     body="Develop dbt projects directly in your browser with seamless SQL compilation and an intuitive, visual workflow."
     link="/docs/platform/studio-ide/develop-in-studio"
     icon="dashboard"/>
-
-   <Card
-    title="dbt Canvas"
-    body="Develop with Canvas, a seamless drag-and-drop experience that helps analysts quickly create and visualize dbt models in dbt."
-    link="/docs/platform/canvas"
-    icon="canvas"/>
 
 
 

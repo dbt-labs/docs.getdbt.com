@@ -1,5 +1,16 @@
 /* eslint-disable */
 
+// This component renders two unrelated token families as pills:
+//   - plan tokens (developer, self_service, managed, managed_plus) signal which
+//     dbt platform plan a feature requires.
+//   - status tokens (new, beta, preview, ga, private_beta, private_preview, eol, deprecated, retired) signal
+//     feature maturity/lifecycle stage.
+//   - community_maintained marks a community-maintained v2 adapter. Those adapters
+//     don't move through lifecycle stages, so this token takes the place of one.
+// These are intentionally styled differently (see styles.module.css: .lifecycle vs
+// .planPill) so a plan requirement is never visually confused with a lifecycle status.
+// Don't reuse status colors/shapes for plan tokens or vice versa.
+
 import React from 'react';
 import styles from './styles.module.css';
 import { STATUS_URLS, MANAGED_PLUS,MANAGED, SELF_SERVICE, DEVELOPER } from './lifecycle-urls.js';
@@ -18,6 +29,10 @@ const PLAN_VARIABLES = {
   'developer': DEVELOPER,
 };
 
+// Resolved plan values (as opposed to lifecycle-status values) — used to pick the
+// plan-pill style instead of the status-pill style.
+const PLAN_TOKENS = new Set([MANAGED_PLUS, MANAGED, SELF_SERVICE, DEVELOPER]);
+
 const statusColors = {
   [MANAGED_PLUS]: '#E5E7EB',
   [MANAGED]: '#E5E7EB',
@@ -28,7 +43,12 @@ const statusColors = {
   private_beta: '#bab2ff',
   ga: '#ff9e5f',
   preview: '#FE6703',
+  public_preview: '#FE6703',
   private_preview: '#FE6703',
+  eol: '#99A1AF',
+  deprecated: '#99A1AF',
+  retired: '#99A1AF',
+  community_maintained: '#A7F3D0',
   // new_constant: '#99A1AF', use this gray color if you want a new color.
 };
 
@@ -38,12 +58,17 @@ const fontColors = {
   [SELF_SERVICE]: "#030711",
   [DEVELOPER]: "#030711",
   preview: "#030711",
+  public_preview: "#030711",
   ga: "#030711",
   new: "#030711",
   beta: "#030711",
   private: "#030711",
   private_beta: "#030711",
   private_preview: "#030711",
+  eol: "#030711",
+  deprecated: "#030711",
+  retired: "#030711",
+  community_maintained: "#030711",
 };
 
 // Display names for status values
@@ -54,10 +79,15 @@ const statusDisplayNames = {
   [DEVELOPER]: DEVELOPER,
   new: 'New',
   beta: 'Beta',
-  private_beta: 'Private beta',
-  ga: 'GA',
+  private_beta: 'Private Beta',
+  ga: 'Generally Available (GA)',
   preview: 'Preview',
-  private_preview: 'Private preview',
+  public_preview: 'Public Preview',
+  private_preview: 'Private Preview',
+  eol: 'No longer sold',
+  deprecated: 'Deprecated',
+  retired: 'Retired',
+  community_maintained: 'Community-maintained',
 };
 
 // URL mapping for predefined lifecycle statuses. urls defined in ../lifeCycle/lifecycle-urls.js file so we can update them in one place
@@ -68,7 +98,7 @@ export default function Lifecycle(props) {
     return null;
   }
 
-  const sizePercent = props.size !== undefined ? parseFloat(props.size) / 100 : 1;
+  const sizePercent = props.size !== undefined ? parseFloat(props.size) / 100 : 0.82;
 
   const statuses = props.status.split(',').map(s => {
     const trimmedStatus = s.trim();
@@ -80,6 +110,9 @@ export default function Lifecycle(props) {
       {statuses.map((status, index) => {
         const isKnownStatus = Object.prototype.hasOwnProperty.call(statusColors, status);
         const url = isKnownStatus ? statusUrls[status] || props.customUrl || null : null;
+        const isPlanToken = PLAN_TOKENS.has(status);
+        const pillClass = isPlanToken ? styles.planPill : styles.lifecycle;
+        const pillModifier = isPlanToken ? 'plan-pill' : 'lifecycle';
 
         const style = {
           backgroundColor: props.backgroundColor || statusColors[status] || '#d3d3d3', // Default gray for unknown status
@@ -101,7 +134,7 @@ export default function Lifecycle(props) {
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${styles.lifecycle} lifecycle`}
+              className={`${pillClass} ${pillModifier}`}
               style={style}
               title={`Go to ${url}`} // optional tooltip for better UX
             >
@@ -114,7 +147,7 @@ export default function Lifecycle(props) {
         return (
           <span
             key={index}
-            className={`${styles.lifecycle} lifecycle`}
+            className={`${pillClass} ${pillModifier}`}
             style={style}
           >
             {displayName}

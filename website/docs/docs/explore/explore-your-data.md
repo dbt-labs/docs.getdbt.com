@@ -4,6 +4,7 @@ id: "explore-your-data"
 sidebar_label: "Explore your data"
 description: "Explore your data, models, and other resources in dbt"
 hide_table_of_contents: true
+availability: platform_login
 ---
 
 <Constant name="dbt" /> provides a variety of tools for you to explore your data, models, and other resources. Many of the features you'd traditionally use your data warehouse services to explore are at your fingertips in your <Constant name="dbt" /> account.
@@ -20,12 +21,6 @@ hide_table_of_contents: true
     title="dbt Catalog"
     body="Interact with dbt Catalog to understand, improve, and leverage your dbt projects."
     link="/docs/explore/explore-projects"
-    icon="dbt-bit"/>
-
-<Card
-    title="dbt Insights"
-    body="Query data and perform exploratory data analysis using dbt Insights."
-    link="/docs/explore/dbt-insights"
     icon="dbt-bit"/>
 
 <Card

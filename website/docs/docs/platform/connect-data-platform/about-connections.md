@@ -5,23 +5,56 @@ description: "Information about data platform connections"
 sidebar_label: "About data platform connections"
 pagination_next: "docs/platform/connect-data-platform/connect-apache-spark"
 pagination_prev: null
+availability: platform_login
 ---
-The <Constant name="dbt_platform" /> can connect with a variety of data platform providers. Expand the sections below to know the supported data platforms for <Constant name="core" /> and the <Constant name="fusion_engine" />: 
 
-| Connection | Available on Latest   | Available on Fusion|
-|------------|:---------------------:|:---------------------:|
-| [AlloyDB](/docs/platform/connect-data-platform/connect-postgresql-alloydb) | ✅ | ❌ |
-| [Amazon Athena](/docs/platform/connect-data-platform/connect-amazon-athena) | ✅ | ❌ |
-| [Amazon Redshift](/docs/platform/connect-data-platform/connect-redshift) | ✅ | Preview |
-| [Apache Spark](/docs/platform/connect-data-platform/connect-apache-spark) | ✅ | ❌ |
-| [Azure Synapse Analytics](/docs/platform/connect-data-platform/connect-azure-synapse-analytics) | ✅ | ❌ |
-| [Databricks](/docs/platform/connect-data-platform/connect-databricks) | ✅ | Private preview |
-| [Google BigQuery](/docs/platform/connect-data-platform/connect-bigquery) | ✅ | Preview |
-| [Microsoft Fabric](/docs/platform/connect-data-platform/connect-microsoft-fabric) | ✅ | ❌ |
-| [PostgreSQL](/docs/platform/connect-data-platform/connect-postgresql-alloydb) | ✅ | ❌ |
-| [Snowflake](/docs/platform/connect-data-platform/connect-snowflake) | ✅ | ✅ |
-| [Starburst or Trino](/docs/platform/connect-data-platform/connect-starburst-trino) | ✅ | ❌ |
-| [Teradata](/docs/platform/connect-data-platform/connect-teradata) <Lifecycle status="preview" /> | ✅ | ❌ |
+The <Constant name="dbt_platform" /> can connect with a variety of data platform providers. 
+
+<VersionBlock firstVersion="2.0">
+
+For most supported data platforms, we recommend the v2 experience, which supports the following data platforms:
+
+<SimpleTable>
+
+| Connection | Available on v2  |
+|------------|:---------------------:|
+| [Snowflake](/docs/platform/connect-data-platform/connect-snowflake) | ✅ |
+| [Amazon Redshift](/docs/platform/connect-data-platform/connect-redshift) | ✅ |
+| [Databricks](/docs/platform/connect-data-platform/connect-databricks) | ✅ |
+| [Google BigQuery](/docs/platform/connect-data-platform/connect-bigquery) | ✅ |
+| [ClickHouse](/docs/platform/connect-data-platform/connect-clickhouse) | Private beta |
+</SimpleTable>
+
+<small> _Adapter lifecycle can differ between the <Constant name="dbt_platform" /> and local development &mdash; an adapter can reach GA in the dbt platform before it reaches GA for local use._ </small> <br /><br />
+
+If your data platform isn’t listed yet, support for more data platforms will roll out over time. You can continue using v1 for that project in the meantime.
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.99">
+
+For projects still on v1, dbt supports the following data platforms:
+
+
+| Connection | Available on v1 |
+|------------|:---------------------:|
+| [AlloyDB](/docs/platform/connect-data-platform/connect-postgresql-alloydb) | ✅ |
+| [Amazon Athena](/docs/platform/connect-data-platform/connect-amazon-athena) | ✅ |
+| [Amazon Redshift](/docs/platform/connect-data-platform/connect-redshift) | ✅ |
+| [Apache Spark](/docs/platform/connect-data-platform/connect-apache-spark) | ✅ |
+| [Azure Synapse Analytics](/docs/platform/connect-data-platform/connect-azure-synapse-analytics) | ✅ |
+| [Databricks](/docs/platform/connect-data-platform/connect-databricks) | ✅ |
+| [Google BigQuery](/docs/platform/connect-data-platform/connect-bigquery) | ✅ |
+| [Microsoft Fabric](/docs/platform/connect-data-platform/connect-microsoft-fabric) | ✅ |
+| [PostgreSQL](/docs/platform/connect-data-platform/connect-postgresql-alloydb) | ✅ |
+| [Snowflake](/docs/platform/connect-data-platform/connect-snowflake) | ✅ |
+| [Starburst or Trino](/docs/platform/connect-data-platform/connect-starburst-trino) | ✅ |
+| [Teradata](/docs/platform/connect-data-platform/connect-teradata) | ✅ |
+
+</VersionBlock>
+
+
+## Connect your data platform in dbt
 
 To connect to your database in <Constant name="dbt" />:
 
@@ -36,23 +69,21 @@ These connection instructions provide the basic fields required for configuring 
 
 The following tables show which authentication types are supported for each connection available on the <Constant name="dbt_platform" />:
 
-<Tabs>
+<VersionBlock firstVersion="2.0">
 
-<TabItem value="dbt Core">
+import AuthTypesFusion from '/snippets/_dbt_connection_support_v2.md';
+
+<AuthTypesFusion />
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.99">
 
 import AuthTypes from '/snippets/_dbt_connection_support.md';
 
 <AuthTypes />
-</TabItem>
 
-<TabItem value="dbt Fusion">
-import AuthTypesFusion from '/snippets/_dbt_connection_support_fusion.md';
-
-<AuthTypesFusion />
-
-</TabItem>
-
-</Tabs>
+</VersionBlock>
 
 ## Connection management
 
@@ -101,7 +132,7 @@ Please consider the following actions, as the steps you take will depend on the 
 
 - Normalization
   - Understand how new connections should be created to avoid local overrides. If you currently use extended attributes to override the warehouse instance in your production environment - you should instead create a new connection for that instance, and wire your production environment to it, removing the need for the local overrides
-  - Create new connections, update relevant environments to target these connections, removing now unecessary local overrides (which may not be all of them!)
+  - Create new connections, update relevant environments to target these connections, removing now unnecessary local overrides (which may not be all of them!)
   - Test the new wiring by triggering jobs or starting <Constant name="studio_ide" /> sessions
 
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/connections-post-rollout-5.png" width="60%" title="Connections normalized"/>

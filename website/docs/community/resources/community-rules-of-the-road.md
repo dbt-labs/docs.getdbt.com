@@ -4,7 +4,7 @@ id: "community-rules-of-the-road"
 description: "This community is filled with smart, kind, and helpful people who share our commitment to elevating the analytics profession. These rules help everyone understand how to best participate."
 ---
 
-As of June 2023, the dbt Community includes over 50,000 data professionals and is still growing. People genuinely love this community. It's filled with smart, kind, and helpful people who share our commitment to elevating the analytics profession.
+The dbt Community includes over 100,000 data professionals and is still growing. People genuinely love this community. It's filled with smart, kind, and helpful people who share our commitment to elevating the analytics profession.
 
 We are committed to maintaining the spirit of this community, and have written these rules alongside its members to help everyone understand how to best participate. We appreciate your support in continuing to build a community we're all proud of.
 

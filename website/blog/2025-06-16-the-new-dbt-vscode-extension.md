@@ -45,7 +45,7 @@ That’s why this new release is such a big deal. It solves all the problems abo
 
 ## The new era of dbt development
 
-With the acquisition of SDF Labs and a renewed focus on developer experience, dbt Labs announced its new engine, [Fusion](/docs/fusion/about-fusion). This engine was built from zero with Rust, and its intelligence will power up dbt, no matter where you run it. There are different ways you can use the Fusion engine, and the best one is with the also announced VS Code extension.
+With the acquisition of SDF Labs and a renewed focus on developer experience, dbt Labs announced its new engine, [Fusion](/docs/introduction). This engine was built from zero with Rust, and its intelligence will power up dbt, no matter where you run it. There are different ways you can use the Fusion engine, and the best one is with the also announced VS Code extension.
 
 The Fusion engine with the VS Code extension is how folks will want to develop with dbt moving forward. I can say this feels like the experience we’ve all been waiting for.
 

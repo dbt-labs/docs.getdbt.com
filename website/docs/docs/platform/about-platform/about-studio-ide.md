@@ -3,6 +3,9 @@ title: "About Studio IDE"
 id: about-studio-ide
 description: "about dbt Studio Integrated Development Environment"
 sidebar_label: About dbt Studio IDE
+availability:
+  surface: platform
+  access: login_required
 ---
 
 The <Constant name="dbt" /> integrated development environment (<Constant name="studio_ide" />) is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the Cloud <Constant name="studio_ide" />, you can compile dbt code into SQL and run it against your database directly.

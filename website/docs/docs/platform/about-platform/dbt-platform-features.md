@@ -6,6 +6,9 @@ description: "Explore dbt's features and learn why the dbt platform is the faste
 hide_table_of_contents: true
 pagination_next: "docs/platform/about-platform/architecture"
 pagination_prev: null
+availability:
+  surface: platform
+  access: login_required
 ---
 
 <Constant name="dbt_platform" /> is the fastest and most reliable way to deploy dbt. Develop, test, schedule, document, and investigate data models all in one browser-based UI.
@@ -17,7 +20,7 @@ In addition to providing a hosted architecture for running dbt across your organ
 <div className="grid--3-col">
 
 <Card
-    title="dbt CLI"
+    title="dbt platform CLI"
     body="Use the CLI for the dbt platform to develop, test, run, and version control dbt projects and commands, directly from the command line."
     link="/docs/platform/dbt-cli-installation"
     icon="dbt-bit"/>
@@ -26,12 +29,6 @@ In addition to providing a hosted architecture for running dbt across your organ
     title="dbt Studio IDE"
     body="The IDE is the easiest and most efficient way to develop dbt models, allowing you to build, test, run, and version control your dbt projects directly from your browser."
     link="/docs/platform/studio-ide/develop-in-studio"
-    icon="dbt-bit"/>
-
-<Card
-    title="dbt Canvas"
-    body="Develop with Canvas, a seamless drag-and-drop experience that helps analysts quickly create and visualize dbt models in dbt."
-    link="/docs/platform/canvas"
     icon="dbt-bit"/>
 
 <Card
@@ -110,12 +107,6 @@ In addition to providing a hosted architecture for running dbt across your organ
     title="dbt Catalog*"
     body="Learn about dbt Catalog and how to interact with it to understand, improve, and leverage your data pipelines."
     link="/docs/explore/explore-projects"
-    icon="dbt-bit"/>
-
-  <Card
-    title="dbt Insights*"
-    body="Learn how to query data and perform exploratory data analysis using dbt Insights."
-    link="/docs/explore/dbt-insights"
     icon="dbt-bit"/>
 
   <Card

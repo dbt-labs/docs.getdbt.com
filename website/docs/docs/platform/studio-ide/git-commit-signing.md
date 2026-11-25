@@ -2,9 +2,13 @@
 title: "Git commit signing"
 description: "Learn how to sign your Git commits when using the IDE for development."
 sidebar_label: Git commit signing
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# Git commit signing <Lifecycle status="managed,managed_plus" />
+# Git commit signing
 
 To prevent impersonation and enhance security, you can sign your <Constant name="git" /> commits before pushing them to your repository. Using your signature, a <Constant name="git" /> provider can cryptographically verify a commit and mark it as "verified", providing increased confidence about its origin.
 

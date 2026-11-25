@@ -16,7 +16,7 @@ When building a dbt project, you start with the simplest strategy and only add c
 
 dbt State provides more speed, reduced cost, and less complexity all in one. It works wherever you do: dbt Core or Fusion, locally or on any orchestrator you choose. Since it's backed by a new paid service (with a 30 day free trial), you don't need to adopt the whole dbt platform to get these savings. dbt State supersedes state-aware orchestration, which required a dbt platform subscription and moving to Fusion.
 
-The most technically interesting part of this is the query normalization process[^1] which means running the new [`dbt lint` command](/reference/commands/lint) doesn't instantly sign you up for a full rebuild. But before getting into the depths of syntax trees, let's recap what dbt State actually does for an end user.
+The most technically interesting part of this is the query normalization process[^1] which means running the new [`dbt lint` command](/reference/commands/lint?version=2.0) doesn't instantly sign you up for a full rebuild. But before getting into the depths of syntax trees, let's recap what dbt State actually does for an end user.
 
 ## The basic dbt State workflow
 

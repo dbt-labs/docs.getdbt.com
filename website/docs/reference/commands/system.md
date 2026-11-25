@@ -2,12 +2,12 @@
 title: "About dbt system command"
 sidebar_label: "system"
 id: "system"
-description: "Use dbt system to update or uninstall the Fusion engine using the CLI, or pre-install supported ADBC adapter drivers."
+description: "Use dbt system to update or uninstall dbt v2 using the CLI, or pre-install supported ADBC adapter drivers."
 ---
 
 # About dbt system command
 
-`dbt system` provides commands for managing the <Constant name="fusion" /> CLI installation. The <Constant name="fusion_engine" /> is a single compiled binary with no dependencies on other libraries. Once installed, `dbt system` lets you update, uninstall, and manage drivers directly without pip, brew, or a Python environment. 
+`dbt system` provides commands for managing your dbt installation. v2 is a single compiled binary with no dependencies on other libraries. Once installed, `dbt system` lets you update, uninstall, and manage drivers directly without pip, brew, or a Python environment. 
 
 `dbt system update` and `dbt system uninstall` are only supported for [CDN installations](/docs/local/install-dbt) of <Constant name="fusion" />. If you installed <Constant name="fusion" /> via Pip, Homebrew, or Winget, you'll need to update or uninstall dbt from those tools.
 
@@ -23,7 +23,7 @@ dbt system <subcommand> [flags]
 
 | Subcommand | Description |
 |---|---|
-| `dbt system update` | Update <Constant name="fusion" /> CLI to the latest (or a specified) version |
+| `dbt system update` | Update dbt to the latest (or a specified) version |
 | `dbt system uninstall` | Remove <Constant name="fusion" />  from your system |
 | `dbt system install-drivers` | Pre-install all supported ADBC adapter drivers |
 
@@ -39,7 +39,7 @@ dbt system update [flags]
 
 | Flag | Description |
 |---|---|
-| `--version VERSION` | Update to a specific version (for example, `2.0.0-preview.190`) or a named channel (`canary`, `dev`). Defaults to the latest stable release. |
+| `--version VERSION` | Update to a specific version (for example, `2.0.1`) or a named channel (`canary`, `dev`). Defaults to the latest stable release. |
 | `--package PACKAGE` | Which package to update. Accepts `dbt` or `all`. Defaults to `dbt`. |
 
 ### Version channels
@@ -61,7 +61,7 @@ dbt system update
 Update to a specific version:
 
 ```shell
-dbt system update --version 2.0.0-preview.188
+dbt system update --version 2.0.1
 ```
 
 Update to the canary channel:
@@ -91,10 +91,10 @@ dbt system install-drivers
 This command takes no additional flags.
 
 :::tip Networking note
-`dbt system install-drivers` downloads files from `https://public.cdn.getdbt.com`. If your environment restricts outbound network access, make sure this endpoint is allowlisted. See [Fusion networking requirements](/docs/fusion/fusion-networking) for the full list of endpoints.
+`dbt system install-drivers` downloads files from `https://public.cdn.getdbt.com`. If your environment restricts outbound network access, make sure this endpoint is allowlisted. See [dbt v2 networking requirements](/docs/local/dbt-networking-requirements) for the full list of endpoints.
 :::
 
 ## Related commands
 
 - [`dbt debug`](/reference/commands/debug) &mdash; Test your dbt project and connection configuration.
-- [Fusion networking requirements](/docs/fusion/fusion-networking) &mdash; Review outbound endpoints required by the <Constant name="fusion_engine" />.
+- [dbt v2 networking requirements](/docs/local/dbt-networking-requirements) &mdash; Review outbound endpoints required by <Constant name="fusion_engine" />.

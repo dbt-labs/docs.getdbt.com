@@ -4,6 +4,9 @@ id: connect-onehouse
 sidebar_label: "Connect Onehouse"
 description: "Setup instructions for connecting Onehouse to dbt"
 pagination_next: null
+availability:
+  surface: platform
+  access: login_required
 ---
 
 

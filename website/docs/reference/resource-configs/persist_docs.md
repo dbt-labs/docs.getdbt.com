@@ -137,6 +137,7 @@ The `persist_docs` config is supported on the most widely used dbt adapters:
 - BigQuery
 - Databricks 
 - Apache Spark
+- Starburst Galaxy (`dbt-trino`)
 
 However, some databases limit where and how descriptions can be added to database objects. Those database adapters might not support `persist_docs`, or might offer only partial support.
 
@@ -193,6 +194,13 @@ Some known issues and limitations:
         alter table analytics.<schema>.<modelname> alter
             "ca_net_ht_N" COMMENT $$This should be the description of the column$$;
         ```
+
+</div>
+
+<div warehouse="Starburst Galaxy (dbt-trino)">
+
+- To sync descriptions to Data Discovery Catalog, configure the [Starburst/Trino metadata profile fields](/reference/resource-configs/trino-configs#persist_docs).
+
 
 </div>
 

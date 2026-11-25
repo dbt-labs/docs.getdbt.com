@@ -1,6 +1,10 @@
 ---
 title: "Use cases and examples for the Discovery API"
 sidebar_label: "Uses and examples"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
 With the Discovery API, you can query the metadata in <Constant name="dbt" /> to learn more about your dbt deployments and the data it generates to analyze them and make improvements.
@@ -158,10 +162,13 @@ plt.show()
 
 Plotting examples:
 
+<DocCarousel slidesPerView={1}>
+
 <Lightbox src="/img/docs/dbt-platform/discovery-api/plot-of-runelapsedtime.png" width="80%" title="The plot of runElapsedTime over time"/>
 
-
 <Lightbox src="/img/docs/dbt-platform/discovery-api/plot-of-executiontime.png" width="80%" title="The plot of executionTime over time"/>
+
+</DocCarousel>
 
 </details>
 

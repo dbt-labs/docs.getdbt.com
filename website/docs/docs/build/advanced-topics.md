@@ -2,6 +2,7 @@
 title: "Advanced data modeling"
 description: "Learn about advanced topics for dbt Semantic Layer and MetricFlow, such as modeling workflows and more."
 pagination_prev: null
+availability: all_users
 ---
 
 

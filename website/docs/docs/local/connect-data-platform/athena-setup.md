@@ -1,5 +1,5 @@
 ---
-title: "Connect Athena to dbt Core"
+title: "Connect Athena to dbt v1"
 sidebar_label: "Athena"
 description: "Read this guide to learn about the Athena warehouse setup in dbt."
 meta:
@@ -14,6 +14,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C013MLFR7BQ'
   platform_name: 'Athena'
   config_page: '/reference/resource-configs/athena-configs'
+availability: local_free
 ---
 
 <!--The following code uses a component and the built-in docusaurus markdown partials file, which contains reusable content assigned in the meta frontmatter. For this page, the partial file is _setup-pages-intro.md. You have to include the 'import' code and then assign the component as needed.  -->

@@ -15,23 +15,21 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
   platform_name: 'Snowflake'
   config_page: '/reference/resource-configs/snowflake-configs'
+availability: local_free
 ---
-
-import SnowflakeAuth from '/snippets/_snowflake-auth.md';
 
 <VersionBlock firstVersion="2.0">
 
-# Connect Snowflake to Fusion <Lifecycle status='preview' />
-
-<SnowflakeAuth />
+# Connect Snowflake to <Constant name="fusion" />
 
 You can configure the Snowflake adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type. To check out which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support).
 
-The Snowflake adapter for Fusion supports the following [authentication methods](#supported-authentication-types):
+The Snowflake adapter for <Constant name="fusion" /> supports the following [authentication methods](#supported-authentication-types):
 - Password 
 - Key pair
 - Single sign-on (SSO)
 - Password with MFA
+- Workload Identity Federation
 
 :::note
 [Snowflake is deprecating single-access password login](https://docs.snowflake.com/en/user-guide/security-mfa-rollout). Individual developers should use MFA or SSO instead of password authentication. Password-based login remains supported for service users (Snowflake user type: `LEGACY_SERVICE`).
@@ -39,7 +37,7 @@ The Snowflake adapter for Fusion supports the following [authentication methods]
 
 ## Warehouse permissions
 
-import FusionSnowflakeWarehousePerms from '/snippets/_fusion-warehouse-permissions-snowflake.md';
+import FusionSnowflakeWarehousePerms from '/snippets/_v2-warehouse-permissions-snowflake.md';
 
 <FusionSnowflakeWarehousePerms />
 
@@ -53,9 +51,9 @@ The information required for configuring the Snowflake adapter can be found conv
 3. In the field with your account name, click **View account details**.
 4. Click **Config file** and select the appropriate **Warehouse** and **Database**. 
 
-<Lightbox src="/img/fusion/connect-adapters/snowflake-account-details.png" width="60%" title="Sample config file in Snowflake." />
+<Lightbox src="/img/v2/connect-adapters/snowflake-account-details.png" width="60%" title="Sample config file in Snowflake." />
 
-## Configure Fusion
+## Configure <Constant name="fusion" />
 
 Executing `dbt init` in your CLI will prompt for the following fields:
 
@@ -64,7 +62,7 @@ Executing `dbt init` in your CLI will prompt for the following fields:
 - **Database:** The database within your Snowflake account to connect to your project
 - **Warehouse:** The compute warehouse that will handle the tasks for your project
 - **Schema:** The development/staging/deployment schema for the project
-- **Role (Optional):** The role dbt should assume when connnecting to the warehouse
+- **Role (Optional):** The role dbt should assume when connecting to the warehouse
 
 
 Alternatively, you can manually create the `profiles.yml` file and configure the fields. See examples in [authentication](#supported-authentication-types) section for formatting. If there is an existing `profiles.yml` file, you are given the option to retain the existing fields or overwrite them. 
@@ -117,7 +115,7 @@ default:
       account: ABC123
       user: JANE.SMITH@YOURCOMPANY.COM
       database: JAFFLE_SHOP
-      warehouse: TRANFORM
+      warehouse: TRANSFORM
       schema: JANE_SMITH
 ```
 
@@ -131,11 +129,11 @@ Key pair authentication gives you the option to:
 - Define the path to the key. 
 - Provide the plain-text PEM format key inline.
 
-import FusionKeyPair from '/snippets/_fusion-key-pair.md';
+import FusionKeyPair from '/snippets/_v2-key-pair.md';
 
 <FusionKeyPair />
 
-  Once the key is configuted, you will be given the option to provide a passphrase, if required. 
+  Once the key is configured, you will be given the option to provide a passphrase, if required. 
 
 #### Example key pair configuration
 
@@ -191,6 +189,57 @@ default:
 
 </TabItem>
 
+<TabItem value="Workload Identity Federation">
+
+Workload Identity Federation (WIF) lets you authenticate to Snowflake from a cloud workload using that platform's identity. Snowflake maps that identity to a service user, so you don't store a password or key. You can use an OpenID Connect (OIDC) token, such as one issued to a GitHub Actions workflow, or a native identity from AWS, Azure, or GCP.
+
+Before you configure dbt, create a Snowflake service user with workload identity. For that setup, refer to the [Snowflake documentation](https://docs.snowflake.com/en/user-guide/workload-identity-federation).
+
+To authenticate with WIF, configure the following fields in your `profiles.yml` file:
+
+<SimpleTable>
+
+| Config | Required? | Description |
+| ------ | --------- | ----------- |
+| `method` | Yes | Set to `workload_identity`. |
+| `workload_identity_provider` | Yes | The identity provider. Must be one of `OIDC`, `AWS`, `AZURE`, or `GCP`. |
+| `token` | No | Required for OIDC; pass it with `env_var()`. Omit this field for AWS, Azure, or GCP. |
+| `workload_identity_entra_resource` | No | Azure only. Leave this unset unless Snowflake expects a custom Entra app as the token audience. Set it to that app's application ID URI (for example `api://APPLICATION_ID`). |
+
+</SimpleTable>
+
+Do not set the `authenticator` field. Setting both `method` and `authenticator` will prevent the profile from working.
+
+The `user` field is optional. Snowflake uses the service user mapped to this cloud identity.
+
+The following example uses OIDC:
+
+<File name="profiles.yml">
+
+```yml
+default:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      threads: 16
+      account: ACCOUNT_ID  # Snowflake account identifier
+      role: USER_ROLE  # Snowflake role to assume
+      database: DATABASE_NAME  # Snowflake database
+      warehouse: WAREHOUSE_NAME  # Snowflake warehouse
+      schema: SCHEMA_NAME  # dbt schema
+
+      method: workload_identity
+      workload_identity_provider: OIDC  # Or AWS, AZURE, or GCP
+      token: "{{ env_var('SNOWFLAKE_TOKEN') }}"  # OIDC token
+```
+
+</File>
+
+For AWS, Azure, or GCP, use the same configuration, but change the `workload_identity_provider` value and omit `token`. AWS, Azure, and GCP only work when dbt is running in that cloud environment.
+
+</TabItem>
+
 </Tabs>
 
 ## More information
@@ -201,11 +250,9 @@ Find Snowflake-specific configuration information in the [Snowflake adapter refe
 
 <VersionBlock lastVersion="1.99">
 
-# Connect Snowflake to dbt Core
+# Connect Snowflake to <Constant name="core" />
 
-<SnowflakeAuth />
-
-<ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/snowflake-setup?version=2" /> connection also available.
+<ProductCard text="dbt v2 compatible" url="/docs/local/connect-data-platform/snowflake-setup?version=2" /> connection also available.
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
@@ -294,7 +341,7 @@ my-snowflake-db:
 
 ### Key pair authentication
 
-To use key pair authentication, specify the `private_key_path` in your configuration, avoiding the use of a `password`. If needed, you can add a `private_key_passphrase`. **Note**: Unencrypted private keys are accepted, so add a passphrase only if necessary. However, for dbt Core versions 1.5 and 1.6, configurations using a private key in PEM format (for example, keys enclosed with BEGIN and END tags) are not supported. In these versions, you must use the `private_key_path` to reference the location of your private key file.
+To use key pair authentication, specify the `private_key_path` in your configuration, avoiding the use of a `password`. If needed, you can add a `private_key_passphrase`. **Note**: Unencrypted private keys are accepted, so add a passphrase only if necessary. However, for dbt v1.5 and v1.6, configurations using a private key in PEM format (for example, keys enclosed with BEGIN and END tags) are not supported. In these versions, you must use the `private_key_path` to reference the location of your private key file.
 
 dbt can specify a `private_key` directly as a string instead of a `private_key_path`. This `private_key` string can be in either Base64-encoded DER format, representing the key bytes, or in plain-text PEM format. Refer to [Snowflake documentation](https://docs.snowflake.com/en/user-guide/key-pair-auth) for more info on how they generate the key.
 
@@ -313,7 +360,7 @@ my-snowflake-db:
       role: [user role]
 
       # Keypair config
-      # For dbt Fusion engine, make sure to read requirements about using PKCS#8 format with AES-256 encryption in the following section.
+      # For dbt v2, make sure to read requirements about using PKCS#8 format with AES-256 encryption in the following section.
       private_key_path: [path/to/private.key]
       # or private_key instead of private_key_path
       private_key_passphrase: [passphrase for the private key, if key is encrypted]
@@ -335,9 +382,9 @@ my-snowflake-db:
 
 </File>
 
-#### dbt Fusion engine key formats
+#### <Constant name="fusion_engine" /> key formats
 
-Fusion requires modern key formats and doesn't support legacy 3DES encryption or headerless keys.  We recommend using PKCS#8 format with AES-256 encryption for key pair authentication with Fusion. Using older key formats may cause authentication failures.
+<Constant name="fusion" /> requires modern key formats and doesn't support legacy 3DES encryption or headerless keys.  We recommend using PKCS#8 format with AES-256 encryption for key pair authentication with <Constant name="fusion" />. Using older key formats may cause authentication failures.
 
 If you encounter the `Key is PKCS#1 (RSA private key). Snowflake requires PKCS#8` error, then your private key is in the wrong format. You have two options:
 
@@ -425,6 +472,58 @@ my-snowflake-db:
       token: [OAuth refresh token]
 ```
 
+<VersionBlock firstVersion="1.12">
+
+### Workload Identity Federation
+
+Workload Identity Federation (WIF) lets you authenticate to Snowflake from a cloud workload using that platform's identity. Snowflake maps that identity to a service user, so you don't store a password or key. You can use an OpenID Connect (OIDC) token, such as one issued to a GitHub Actions workflow, or a native identity from AWS, Azure, or GCP.
+
+Before you configure dbt, create a Snowflake service user with workload identity. For that setup, refer to the [Snowflake documentation](https://docs.snowflake.com/en/user-guide/workload-identity-federation).
+
+To authenticate with WIF, configure the following fields in your `profiles.yml` file:
+
+<SimpleTable>
+
+| Config | Required? | Description |
+| ------ | --------- | ----------- |
+| `authenticator` | Yes | Set to `workload_identity`. |
+| `workload_identity_provider` | Yes | The identity provider. Must be one of `OIDC`, `AWS`, `AZURE`, or `GCP`. |
+| `token` | No | Required for OIDC; pass it with `env_var()`. Omit this field for AWS, Azure, or GCP. |
+| `workload_identity_entra_resource` | No | Azure only. Leave this unset unless Snowflake expects a custom Entra app as the token audience. Set it to that app's application ID URI (for example `api://APPLICATION_ID`). |
+| `platform_detection_timeout_seconds` | No | Set to a positive value when you use AWS, Azure, or GCP so the connector can detect the cloud environment. Defaults to `0.0`, which skips detection. |
+
+</SimpleTable>
+
+The `user` field is optional. Snowflake uses the service user mapped to this cloud identity.
+
+The following example uses OIDC:
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+my-snowflake-db:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: ACCOUNT_ID  # Snowflake account identifier
+      role: USER_ROLE  # Snowflake role to assume
+      database: DATABASE_NAME  # Snowflake database
+      warehouse: WAREHOUSE_NAME  # Snowflake warehouse
+      schema: SCHEMA_NAME  # dbt schema
+      threads: 1
+
+      authenticator: workload_identity
+      workload_identity_provider: OIDC  # Or AWS, AZURE, or GCP
+      token: "{{ env_var('SNOWFLAKE_TOKEN') }}"  # OIDC token
+```
+
+</File>
+
+For AWS, Azure, or GCP, use the same configuration, but change the `workload_identity_provider` value and omit `token`.
+
+</VersionBlock>
+
 ## Configurations
 
 The "base" configs for Snowflake targets are shown below. Note that you should also specify auth-related configs specific to the authentication method you are using as described above.
@@ -434,7 +533,7 @@ The "base" configs for Snowflake targets are shown below. Note that you should a
 | Config | Required? | Description |
 | ------ | --------- | ----------- |
 | account | Yes | The account to connect to as per [Snowflake's documentation](https://docs.snowflake.com/en/user-guide/intro-regions.html#specifying-region-information-in-your-account-hostname). See notes [below](#account) |
-| user | Yes | The user to log in as |
+| user | Yes | The user to log in as. Optional for Workload Identity Federation. |
 | database | Yes | The database that dbt should create models in |
 | warehouse | Yes | The warehouse to use when building models |
 | schema | Yes | The schema to build models into by default. Can be overridden with [custom schemas](/docs/build/custom-schemas) |
@@ -458,15 +557,15 @@ Please also note that the Snowflake account name should only be the `account_nam
 
 ### client_session_keep_alive
 
-The `client_session_keep_alive` feature is intended to keep Snowflake sessions alive beyond the typical 4 hour timeout limit. The snowflake-connector-python implementation of this feature can prevent processes that use it (read: dbt) from exiting in specific scenarios. If you encounter this in your deployment of dbt, please let us know in [the GitHub issue](https://github.com/dbt-labs/dbt-core/issues/1271), and work around it by disabling the keepalive.
+The `client_session_keep_alive` feature is intended to keep Snowflake sessions alive beyond the typical 4 hour timeout limit. The snowflake-connector-python implementation of this feature can prevent processes that use it (read: dbt) from exiting in specific scenarios. If you encounter this in your deployment of dbt, please let us know in [the GitHub issue](https://github.com/dbt-labs/dbt/issues/1271), and work around it by disabling the keepalive.
 
 ### platform_detection_timeout_seconds
 
-The Snowflake connector uses the `platform_detection_timeout_seconds` parameter to determine how long it waits to detect the cloud platform for a connection. This parameter is available starting in <Constant name="core"/> v1.10.
+The Snowflake connector uses the `platform_detection_timeout_seconds` parameter to determine how long it waits to detect the cloud platform for a connection. This parameter is available starting in <Constant name="dbt"/> v1.10.
 
 
 - Set to `0.0` (default) to disable cloud platform detection for faster connections.
-- Set to a positive value only if you're using WIF authentication, which requires the connector to detect the cloud environment.
+- Set to a positive value if you're using WIF with AWS, Azure, or GCP, which requires the connector to detect the cloud environment.
 
 ### query_tag
 

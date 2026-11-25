@@ -3,11 +3,18 @@ title: "Set up SCIM with Entra ID"
 description: "Configure SCIM for Microsoft Entra ID to automate user and group provisioning."
 id: "scim-entra-id"
 sidebar_label: "Set up SCIM with Entra ID"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
 import ScimLicenseMappingCallout from '/snippets/_scim-license-mapping-callout.md';
+import ScimAssignGroupPermissions from '/snippets/_scim-assign-group-permissions.md';
+import ScimAdminGroupPrereq from '/snippets/_scim-admin-group-prereq.md';
 
-# Set up SCIM with Entra ID <Lifecycle status="managed, managed_plus" />
+
+# Set up SCIM with Entra ID
 
 <Constant name="dbt_platform" /> supports System for Cross-Domain Identity Management (SCIM) with Microsoft Entra ID for user and group provisioning and profile updates.
 
@@ -19,6 +26,7 @@ import ScimLicenseMappingCallout from '/snippets/_scim-license-mapping-callout.m
 - You must have [permissions](/docs/platform/manage-access/enterprise-permissions) to configure the account settings in <Constant name="dbt_platform" />.
 - Complete [setup SSO with Entra ID](/docs/platform/manage-access/set-up-sso-microsoft-entra-id) before configuring SCIM settings.
 - Complete the [Set up SCIM](/docs/platform/manage-access/scim#set-up-dbt) to get your SCIM base URL and token.
+- <ScimAdminGroupPrereq />
 
 ## Set up Entra ID
 
@@ -102,6 +110,8 @@ The following steps go over how to assign users/groups to the SCIM app. Refer to
     - By enabling provisioning, you immediately trigger the initial Microsoft Entra ID sync. Subsequent syncs are triggered every 20-40 minutes, depending on the number of users and groups in the application. Refer to Microsoft Entra ID's [Provisioning tips](https://learn.microsoft.com/en-us/azure/databricks/admin/users-groups/scim/aad#provisioning-tips) documentation for more information.
     - You can also prompt a manual provisioning outside of the cycle by clicking **Restart provisioning**.
     <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/scim-entraid-manual.png" width="80%" title="Prompt manual provisioning." />
+
+<ScimAssignGroupPermissions />
 
 ## FAQ and troubleshooting
 

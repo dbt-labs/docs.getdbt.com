@@ -2,7 +2,7 @@
 <rss version="2.0">
   <channel>
     <title>dbt platform release notes</title>
-    <link>https://docs.getdbt.com/docs/dbt-versions/dbt-cloud-release-notes</link>
+    <link>https://docs.getdbt.com/docs/dbt-versions/release-notes</link>
     <description>dbt provides release notes for the dbt platform so you can see recent and historical changes.</description>
   </channel>
 </rss>

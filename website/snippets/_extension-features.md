@@ -1,26 +1,28 @@
-## dbt VS Code extension features
+## Feature availability
 
-The dbt VS Code extension gives you a powerful set of features to level up your development workflows. To access the full set, register with your email address or sign in with your <Constant name="dbt_platform" /> account. The following table shows which features are available to all users and which require registration:
+The dbt VS Code extension is free to install, and its editor features are available to all users. What's available depends on your project's [static analysis](/docs/build/about-static-analysis) mode rather than your account:
 
-| Feature          | Available to all | Available to registered users |
-|------------------|:----------------:|:---------------------:|
-| Error diagnostics for Jinja, YAML, and SQL syntax errors | ✅ | ✅ |
-| Jinja LSP go-to ref definition | ✅ | ✅ |
-| Jinja LSP go-to source definition | ✅ | ✅ |
-| Jinja LSP go-to macro definition | ✅ | ✅ |
-| Diagnostics for linter warnings | ✅ | ✅ |
-| Table-level lineage visualization | ✅ | ✅ |
-| Basic dbt command UI <br /> (Run, Build, Test + Query Results Tab) | ✅ | ✅ |
-| Ref autocomplete | ✅ | ✅ |
-| Autorefactor ref names | ✅ | ✅ |
-| Autorefactor column names on change | ✅ | ✅ |
-| Dialect-aware function autocomplete | ✅ | ✅ |
-| Error diagnostics for SQL types, schema errors, and more | - | ✅ |
-| Preview CTE | - | ✅ |
-| Query cache for faster incremental compiles | - | ✅ |
-| Model docs tab with platform metadata hydration | - | ✅ |
-| Column-level lineage visualization | - | ✅ |
-| Compare changes | - | ✅ |
-| SQL LSP go-to Column definition | - | ✅ |
-| SQL LSP go-to CTE definition | - | ✅ |
-| SQL LSP hover to see schema for select * | - | ✅ |
+| Feature | Availability |
+|---------|--------------|
+| Error diagnostics for Jinja, YAML, and SQL syntax | All users |
+| Jinja <Term id="lsp" /> go-to ref, source, and macro | All users |
+| Linter warning diagnostics | All users |
+| Table-level lineage | All users |
+| Basic dbt command UI (run, build, test, and query results) | All users |
+| Ref autocomplete | All users |
+| Refactor ref names | All users |
+| Dialect-aware function autocomplete | All users |
+| Query cache for faster incremental compiles | All users |
+| Preview CTE | `baseline` (the default) or `strict` |
+| SQL type and schema error diagnostics | `static_analysis: strict` |
+| Refactor column names | `static_analysis: strict` |
+| Column-level lineage | `static_analysis: strict` |
+| SQL <Term id="lsp" /> go-to column and CTE | `static_analysis: strict` |
+| SQL <Term id="lsp" /> hover to see the schema for `select *` | `static_analysis: strict` |
+
+These features need you to [sign in](/docs/sign-in-dbt-extension) so the extension can read data from your <Constant name="dbt_platform" /> account:
+
+| Feature | Why it needs a <Constant name="dbt_platform" /> account |
+|---------|--------------------------------------------------------|
+| Model docs tab with platform metadata | Reads build status, descriptions, and test results from your <Constant name="dbt_platform" /> account. |
+| [Compare changes](/docs/dbt/vs-compare-changes) with <Constant name="dbt_platform" /> deferral | Fetches the deferred manifest from your <Constant name="dbt_platform" /> environment. You can also point it at a local `manifest.json` instead, with no account. |

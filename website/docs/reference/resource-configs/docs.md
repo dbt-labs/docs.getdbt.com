@@ -212,7 +212,7 @@ The `docs` attribute supports `node_color` to customize the display color of som
 - `node_color` hierarchy:
   - `<example-sql-file.sql>` overrides `schema.yml` overrides `dbt_project.yml`
 
-Note, you need to run or re-run the `dbt docs generate` command (<Constant name="core_v1" /> only) to apply and view the customized colors.
+Note, you need to run or re-run the `dbt docs generate` command to apply and view the customized colors.
 
 :::info Custom node colors not applicable in <Constant name="catalog" />
 
@@ -224,7 +224,7 @@ The custom `node_color` attribute isn't applicable in <Constant name="catalog" /
 
 Add custom `node_colors` to models that support it within subdirectories based on hex codes or a plain color name.
 
-![Example](../../../../website/static/img/node_color_example.png)
+<Lightbox src="/img/node_color_example.png" title="Example" />
 
 `marts/core/fct_orders.sql` with `node_color: red` overrides `dbt_project.yml` with `node_color: gold`
 

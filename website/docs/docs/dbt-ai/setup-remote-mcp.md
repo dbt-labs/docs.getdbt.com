@@ -3,6 +3,9 @@ title: "Set up remote MCP"
 sidebar_label: "Set up remote MCP"
 description: "Learn how to set up the remote dbt-mcp server"
 id: "setup-remote-mcp"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
@@ -24,16 +27,38 @@ The remote MCP server is the ideal choice when:
 
 ## Choose your auth method
 
+<SimpleTable>
 | If you need... | Use... |
 | --- | --- |
-| Fastest first-time setup and your MCP client supports OAuth for HTTP servers | **OAuth (remote)** <br /> Available in public beta for Starter, Enterprise, and Enterprise+ accounts |
-| `execute_sql` with a PAT, automation, shared setup, or clients without OAuth | **Token-based** (PAT or service token) |
+| Fastest first-time setup and your MCP client supports OAuth for HTTP servers (including `execute_sql`) | **[OAuth (remote)](#oauth-remote-mcp)** <br /> Available in public beta for Starter, Enterprise, and Enterprise+ accounts |
+| `execute_sql` with token-based auth, automation, shared setup, or clients without OAuth | **Token-based** with a [personal access token (PAT)](/docs/dbt-apis/user-tokens) |
 | Shared or team setup | **Service token** (token-based) |
 | CI or automation | **Service token** (token-based) |
+</SimpleTable>
 
-:::warning `execute_sql` requires a PAT
-The `execute_sql` tool does **not** work with service tokens. You must use a [Personal Access Token (PAT)](/docs/dbt-apis/user-tokens) in the `Authorization` header when using this tool.
+:::warning Service tokens do not work for `execute_sql`
+If you connect with a token instead of OAuth, `execute_sql` only works with a [personal access token (PAT)](/docs/dbt-apis/user-tokens). Service tokens won't work. To run SQL without creating a PAT, use [OAuth (remote MCP)](#oauth-remote-mcp) instead.
 :::
+
+## Permissions for remote MCP {#permissions}
+
+Remote MCP checks your access when you connect and authorizes each tool call against the project, environment, job, or run it targets. These checks apply to OAuth, personal access tokens (PATs), and service tokens. A successful connection or a tool appearing in your client doesn't mean you can use that tool on every resource.
+
+You don't need the `Developer` permission set just to connect. Ask your admin to grant the permissions needed for your workflow:
+
+<SimpleTable>
+| Workflow | Required access |
+| --- | --- |
+| Explore models and lineage, or generate SQL with `text_to_sql` | Metadata read access on the selected project. `text_to_sql` also requires AI features to be enabled. |
+| Use Semantic Layer tools | Semantic Layer configuration read access on the selected project. |
+| Run plain SQL with `execute_sql` | Semantic Layer configuration read access on the project, a development environment, and warehouse credentials. Connect with OAuth or a PAT. |
+| Run SQL containing `ref()` calls with `execute_sql` | The requirements for plain SQL, plus develop access. Production deferral also requires metadata read access. |
+| Read or manage jobs and runs | The corresponding jobs or runs read or write permission for the target resource. Unfiltered account-wide listings require account-wide access. |
+</SimpleTable>
+
+For available permission sets, refer to [Enterprise permissions](/docs/platform/manage-access/enterprise-permissions) and [Service tokens](/docs/dbt-apis/service-tokens#permissions-for-service-account-tokens). PATs inherit the permissions of the user who created them. OAuth also restricts access to the scopes and projects you consented to.
+
+Service tokens with metadata read access can use `text_to_sql` to generate SQL. They can't use `execute_sql` to run it.
 
 ## OAuth (remote MCP) <Lifecycle status="beta,self_service,managed,managed_plus" /> {#oauth-remote-mcp}
 
@@ -41,10 +66,11 @@ OAuth lets you connect to the remote MCP server without copying API tokens into 
 
 ### Prerequisites
 
-- [AI features](https://docs.getdbt.com/docs/cloud/enable-dbt-copilot) enabled for your account.
 - Starter, Enterprise, or Enterprise+ account
 - An MCP client that supports OAuth for remote (HTTP) MCP servers.
 - Your **MCP URL** from **Account settings** &rarr; **Access URLs** &rarr; **MCP Endpoint URL** in <Constant name="dbt_platform"/>. Check out the next section [MCP URL](#mcp-url) for more information.
+
+AI features are enabled by default. Admins can [turn them off or back on anytime](/docs/platform/manage-dbt-ai). Turning them off doesn't disable remote MCP &mdash; it only hides the [`text_to_sql` tool](/docs/dbt-ai/mcp-available-tools#tools-that-require-ai-features).
 
 ### MCP URL {#mcp-url}
 
@@ -52,19 +78,21 @@ OAuth lets you connect to the remote MCP server without copying API tokens into 
 
 ### How it works
 
-1. In your MCP client, navigate to the connector or integrations settings and add your MCP URL (see [MCP URL](#mcp-url)). For example, if you used Claude or ChatGPT, you would go to:
+1. In your MCP client, navigate to the connector or integrations settings and add your MCP URL (refer to [MCP URL](#mcp-url)). For example, if you used Claude or ChatGPT, you would go to:
    - **Claude (web)**: **Customize** &rarr; **Connectors** &rarr; **+** &rarr; **Add custom connector**
    - **ChatGPT**: **Settings** &rarr; **Apps** &rarr; **Create App**
-   - For Claude Desktop and Claude Code, see [Integrate Claude with dbt MCP](/docs/dbt-ai/integrate-mcp-claude).
+   - For Claude Desktop and Claude Code, refer to [Integrate Claude with dbt MCP](/docs/dbt-ai/integrate-mcp-claude).
 2. When prompted in your MCP client, complete sign-in in the browser and approve the requested scopes on the consent screen.
 3. Return to your MCP client; subsequent requests use the OAuth session according to your client's behavior.
+
+You can use `execute_sql` with OAuth. Add your MCP URL to your client and sign in when your MCP client prompts you. You don't need a personal access token or extra headers.
 
 ### Register your MCP client
 
 OAuth requires every client to be registered with <Constant name="dbt_platform" />. There are two paths:
 
 - **Dynamic registration (default)** &mdash; Clients that implement [Dynamic Client Registration (RFC 7591)](/docs/platform/manage-access/connect-apps-oauth#dynamic-registration) self-register the first time a user connects. No admin action required. Most modern MCP clients (such as Claude Desktop, Claude Code, Cursor, and VS Code) support this.
-- **Manual registration** &mdash; For clients that don't support dynamic registration, an account admin registers the client in **Account settings → Integrations → App integrations**. Manually registered clients use [PKCE (RFC 7636)](/docs/platform/manage-access/connect-apps-oauth#manual-registration) instead of a client secret. See [Manual registration](/docs/platform/manage-access/connect-apps-oauth#manual-registration) for the admin walkthrough.
+- **Manual registration** &mdash; For clients that don't support dynamic registration, an account admin registers the client in **Account settings → Integrations → App integrations**. Manually registered clients use [PKCE (RFC 7636)](/docs/platform/manage-access/connect-apps-oauth#manual-registration) instead of a client secret. Refer to [Manual registration](/docs/platform/manage-access/connect-apps-oauth#manual-registration) for the admin walkthrough.
 
 Both types appear in **App integrations** in <Constant name="dbt_platform" />, where admins can review and audit each connected client.
 
@@ -72,68 +100,122 @@ Both types appear in **App integrations** in <Constant name="dbt_platform" />, w
 
 The first time you connect, dbt shows a consent screen listing the scopes (the specific permissions the client is allowed to use) the MCP client is requesting. Scopes act as a **filter on your existing permissions** &mdash; they don't grant new access. You can also choose whether the client gets access to all projects or only selected projects.
 
-For the full list of scopes and what each one allows, see [Scopes and consent](/docs/platform/manage-access/connect-apps-oauth#scopes-and-consent). For sessions, refresh tokens, revoking access, and audit logging, see [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth).
+For the full list of scopes and what each one allows, refer to [Scopes and consent](/docs/platform/manage-access/connect-apps-oauth#scopes-and-consent). For sessions, refresh tokens, revoking access, and audit logging, refer to [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth).
+
+### Read-only users and warehouse credentials {#read-only-users-and-warehouse-credentials}
+
+Read-only users need warehouse credentials to run queries, such as `query_metrics`, through remote MCP. They have two options:
+
+- **Analytics credential (recommended):** An admin sets up one shared [analytics credential](/docs/platform/wizard-read-only-users#set-up-analytics-credentials) on the connection. Read-only users who haven't set up personal credentials use it automatically, so they never need to log in to <Constant name="dbt_platform" />.
+- **Personal credentials:** Users with the [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set can add their own on **Your profile** &rarr; **Credentials**. If they have personal credentials, those take priority.
+
+If a user has neither, the query fails and asks them to set up credentials or contact an admin.
 
 ### Limitations
 
 - Remote MCP doesn't support self-hosted dbt CLI commands (like `dbt run`, `dbt build`, `dbt test`, and more) or local project access; use the [self-hosted MCP server](/docs/dbt-ai/setup-local-mcp) for those workflows.
 
-For client-specific steps, see [Integrate Claude with MCP](/docs/dbt-ai/integrate-mcp-claude), [Integrate Cursor with MCP](/docs/dbt-ai/integrate-mcp-cursor), [INtegrate Snowflake Cortex with MCP](/docs/dbt-ai/integrate-mcp-snowflake-cortex), or [Integrate VS Code with MCP](/docs/dbt-ai/integrate-mcp-vscode).
+For client-specific steps, refer to [Integrate Claude with MCP](/docs/dbt-ai/integrate-mcp-claude), [Integrate Cursor with MCP](/docs/dbt-ai/integrate-mcp-cursor), [Integrate Snowflake Cortex with MCP](/docs/dbt-ai/integrate-mcp-snowflake-cortex), or [Integrate VS Code with MCP](/docs/dbt-ai/integrate-mcp-vscode).
 
 ## Token-based authentication {#token-based-authentication}
 
-Token-based authentication lets you connect to the remote MCP server without OAuth by passing a PAT or service token in your MCP client config. Use it when your client doesn't support OAuth for HTTP-based MCP servers, when you need a shared or CI setup, or when you need `execute_sql`, which requires a PAT.
+Token-based authentication lets you connect to the remote MCP server without OAuth by passing a PAT or service token in your MCP client config. Use it when your client doesn't support OAuth for HTTP-based MCP servers or when you need a shared or CI setup. To use `execute_sql` with token-based authentication, use a PAT.
+
+Each tool call must satisfy the [permissions for its target](#permissions). Token-based connections can show tools that your token can't use; those calls fail individually. OAuth can also filter the tool list based on its granted permissions.
 
 ### Setup instructions
 
-1. Ensure that you have [AI features](https://docs.getdbt.com/docs/platform/enable-dbt-ai) turned on.
-2. Obtain the following information from <Constant name="dbt_platform"/>:
+AI features are enabled by default. Admins can [turn them off or back on anytime](/docs/platform/manage-dbt-ai). Turning them off doesn't disable remote MCP &mdash; it only hides the [`text_to_sql` tool](/docs/dbt-ai/mcp-available-tools#tools-that-require-ai-features).
 
+1. Obtain the following information from <Constant name="dbt_platform"/>:
   - **<Constant name="dbt_platform"/> host**: Use this to form the full URL. For example, replace `YOUR_DBT_HOST_URL` here: `https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/`. It may look like: `https://cloud.getdbt.com/api/ai/v1/mcp/`. If you have a multi-cell account, the host URL will be in the `ACCOUNT_PREFIX.us1.dbt.com` format. For more information, refer to [Access, Regions, & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses).
-  - **Production environment ID**: You can find this on the **Orchestration** page in the <Constant name="dbt_platform"/>. Use this to set an `x-dbt-prod-environment-id` header.
-  - **Token**: Generate either a personal access token or a service token. To fully utilize remote MCP, the token must have Semantic Layer and Developer permissions. 
+  - **Production environment ID**: From **Orchestration** → **Environments** in <Constant name="dbt_platform"/>. Use this to set an `x-dbt-prod-environment-id` header. Refer to [How to find your dbt MCP IDs](/docs/dbt-ai/mcp-find-ids#dbt-prod-env-id) for step-by-step instructions.
+  - **Token**: Generate either a personal access token (PAT) or a service token with the [permissions for the tools and resources you need](#permissions). For a service token, assign the appropriate permission sets. PATs inherit the permissions of the user who created them.
   - If you plan to use `execute_sql`, you must use a [Personal Access Token (PAT)](/docs/dbt-apis/user-tokens). Service tokens _do not_ work for this tool. For other tools that require `x-dbt-user-id`, a PAT is also required.
 
-3. For the remote MCP, you will pass on headers through the JSON blob to configure required fields:
+2. For the remote MCP, you will pass on headers through the JSON blob to configure required fields:
 
   #### Configuration for APIs and SQL tools
-
+  
+  <SimpleTable>
   | Header | Required | Description |
   | --- | --- | --- |
-  | Authorization | Required | Your [personal access token (PAT)](/docs/dbt-apis/user-tokens) or [service token](/docs/dbt-apis/service-tokens) from the <Constant name="dbt_platform"/>. <br/> **Note**: When using the Semantic Layer, we recommended to use a PAT. If you're using a service token, make sure that it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. <br /><br /> The value must be in the format `Token YOUR_DBT_ACCESS_TOKEN` or `Bearer YOUR_DBT_ACCESS_TOKEN`, replacing `YOUR_DBT_ACCESS_TOKEN` with your actual token.  |
-  | x-dbt-prod-environment-id | Required | Your <Constant name="dbt_platform"/> production environment ID |
-
+  | Authorization | Required | Your [personal access token (PAT)](/docs/dbt-apis/user-tokens) or [service token](/docs/dbt-apis/service-tokens) from the <Constant name="dbt_platform"/> with the [required permissions](#permissions). When using the <Constant name="semantic_layer" />, we recommend using a PAT. <br /><br /> The value must be in the format `Token YOUR_DBT_ACCESS_TOKEN` or `Bearer YOUR_DBT_ACCESS_TOKEN`, replacing `YOUR_DBT_ACCESS_TOKEN` with your actual token.  |
+  | x-dbt-prod-environment-id | Required | Your <Constant name="dbt_platform"/> production environment ID. Refer to [How to find your dbt MCP IDs](/docs/dbt-ai/mcp-find-ids#dbt-prod-env-id) for step-by-step instructions. |
+  </SimpleTable>
+    
   #### Additional configuration for SQL tools
+  <SimpleTable>
   | Header | Required | Description |
   | --- | --- | --- |
-  | x-dbt-dev-environment-id | Required for `execute_sql` | Your <Constant name="dbt_platform"/> development environment ID |
-  | x-dbt-user-id | Required for `execute_sql` | Your <Constant name="dbt_platform"/> user ID ([see docs](/faqs/Accounts/find-user-id)) |
+  | x-dbt-dev-environment-id | Required for `execute_sql` | Your <Constant name="dbt_platform"/> development environment ID. Refer to [How to find your dbt MCP IDs](/docs/dbt-ai/mcp-find-ids#dbt-dev-env-id) for step-by-step instructions. |
+  | x-dbt-user-id | Required for `execute_sql` | Your <Constant name="dbt_platform"/> user ID. Refer to [Where can I find my user ID?](/faqs/Accounts/find-user-id) for details. |
+  </SimpleTable>
+    
+  Use positive numeric IDs in project and environment headers. Development and production environment headers must identify environments of the corresponding type in the same project. If a tool accepts a project or environment argument, it must agree with the configured target. `list_jobs` preserves its existing behavior: an explicit `project_id` overrides the configured environment filter.
 
-  #### Additional configuration for Fusion tools
+  #### Additional configuration for dbt v2 tools
 
-Fusion tools, by default, defer to the environment provided via `x-dbt-prod-environment-id` for model and table metadata.
-
+By default, <Constant name="fusion"/> tools use the environment you set in `x-dbt-prod-environment-id` for model and table metadata.
+  <SimpleTable>
   | Header | Required | Description |
   | --- | --- | --- |
-  | x-dbt-dev-environment-id | Required| Your <Constant name="dbt_platform"/> development environment ID |
-  | x-dbt-user-id | Required | Your <Constant name="dbt_platform"/> user ID ([see docs](/faqs/Accounts/find-user-id)) |
+  | x-dbt-dev-environment-id | Required| Your <Constant name="dbt_platform"/> development environment ID. Refer to [How to find your dbt MCP IDs](/docs/dbt-ai/mcp-find-ids#dbt-dev-env-id) for step-by-step instructions. |
+  | x-dbt-user-id | Required | Your <Constant name="dbt_platform"/> user ID. Refer to [Where can I find my user ID?](/faqs/Accounts/find-user-id) for details. |
   | x-dbt-fusion-disable-defer | Optional | Default: `false`. When set to `true`, <Constant name="fusion"/> tools will not defer to the production environment and use the models and table metadata from the development environment (`x-dbt-dev-environment-id`) instead. |
-
+ </SimpleTable>
 
   #### Configuration to disable tools
+  <SimpleTable>
   | Header | Required  | Description |
   | --- | --- | --- |
   | x-dbt-disable-tools | Optional | A comma-separated list of tools to disable. For instance: `get_all_models,text_to_sql,list_entities` |
   | x-dbt-disable-toolsets | Optional | A comma-separated list of toolsets to disable. For instance: `semantic_layer,sql,discovery` |
-
-4. After establishing which headers you need, you can follow the [examples](https://github.com/dbt-labs/dbt-mcp/tree/main/examples) to create your own agent. 
+  </SimpleTable>
+3. After establishing which headers you need, you can follow the [examples](https://github.com/dbt-labs/dbt-mcp/tree/main/examples) to create your own agent. 
 
 ## Examples
 
-The MCP protocol is programming language and framework agnostic, so use whatever helps you build agents. Alternatively, you can connect the remote dbt MCP server to MCP clients that support header-based authentication. Configuration varies by client — select your tool in the following tabs and replace the placeholder values with your own:
+The MCP protocol is programming language and framework agnostic, so use whatever helps you build agents. If you use [OAuth (remote MCP)](#oauth-remote-mcp) in Beta, you only need your MCP URL. If you use token-based authentication, add the headers in the examples below. Configuration varies by client — select your tool in the following tabs and replace the placeholder values with your own:
 
 
-<Tabs>
+<Tabs groupId="auth-method">
+<TabItem value="oauth" label="OAuth">
+
+<Tabs groupId="client">
+<TabItem value="claude" label="Claude Code">
+
+```json
+{
+  "mcpServers": {
+    "dbt": {
+      "type": "http",
+      "url": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/"
+    }
+  }
+}
+```
+
+</TabItem>
+<TabItem value="cursor" label="Cursor">
+
+```json
+{
+  "mcpServers": {
+    "dbt": {
+      "url": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/"
+    }
+  }
+}
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+<TabItem value="token" label="Token-based">
+
+<Tabs groupId="client">
 <TabItem value="claude" label="Claude Code">
 
 ```json
@@ -194,6 +276,9 @@ The MCP protocol is programming language and framework agnostic, so use whatever
 </TabItem>
 </Tabs>
 
+</TabItem>
+</Tabs>
+
 
 :::warning Use numeric IDs, not full URLs
 Header values like `x-dbt-prod-environment-id` and `x-dbt-user-id` expect numeric IDs, not full URLs. The host in the `url` field should include `https://`, but ID headers must be integers only:
@@ -212,7 +297,7 @@ Header values like `x-dbt-prod-environment-id` and `x-dbt-user-id` expect numeri
 
 For other MCP clients (Codex, Windsurf, and so on), refer to your client's MCP configuration docs for the correct key format.
 
-For self-hosted MCP, configuration is done via environment variables; see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).
+For self-hosted MCP, use environment variables to configure your setup; refer to the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).
 
 ## Related docs
 

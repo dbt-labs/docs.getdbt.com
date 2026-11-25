@@ -5,9 +5,13 @@ description: "Integrate and query metrics and dimensions in downstream tools usi
 tags: [Semantic Layer, API]
 hide_table_of_contents: true
 pagination_next: "docs/dbt-apis/sl-jdbc"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
-# Semantic Layer APIs <Lifecycle status="self_service,managed,managed_plus" />
+# Semantic Layer APIs
  
 The rapid growth of different tools in the modern data stack has helped data professionals address the diverse needs of different teams. The downside of this growth is the fragmentation of business logic across teams, tools, and workloads.<br /><br />
 
@@ -20,6 +24,10 @@ You can use the <Constant name="semantic_layer" /> for a variety of tools and ap
 * Governance and privacy
 * Data discovery and cataloging
 * Machine learning and data science
+
+## Rate limits
+
+Semantic Layer APIs have their own rate limits, which are shared across clients and users and are separate from the Discovery API limit that applies to the `metadata` GraphQL endpoint. Refer to [API rate limits](/docs/dbt-apis/rate-limits#semantic-layer-apis) for details.
 
 <!-- this partial lives here: https://github.com/dbt-labs/docs.getdbt.com/website/snippets/_sl-plan-info. Use it on diff pages and to tailor the message depending which instance can access the SL and what product lifecycle we're in. -->
 

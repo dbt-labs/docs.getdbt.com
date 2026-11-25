@@ -5,6 +5,7 @@ id: "incremental-models-overview"
 intro_text: "This is an introduction on incremental models, when to use them, and how they work in dbt."
 pagination_next: "docs/build/incremental-models"
 pagination_prev: null
+availability: all_users
 ---
 
 Incremental models in dbt is a [materialization](/docs/build/materializations) strategy designed to efficiently update your data warehouse tables by only transforming and loading new or changed data since the last run. Instead of processing your entire dataset every time, incremental models append or update only the new rows, significantly reducing the time and resources required for your data transformations.
@@ -54,3 +55,4 @@ Transaction management, a process used in certain data platforms, ensures that a
 - [Incremental strategies](/docs/build/incremental-strategy) to understand how dbt implements incremental models on different databases.
 - [Microbatch](/docs/build/incremental-microbatch) to understand a new incremental strategy intended for efficient and resilient processing of very large time-series datasets.
 - [Materializations best practices](/best-practices/materializations/1-guide-overview) to learn about the best practices for using materializations in dbt.
+- [Choosing incremental models or snapshots](/best-practices/how-we-handle-cdc/2-choosing-incremental-or-snapshots) to decide when an incremental model is the right CDC pattern.

@@ -3,13 +3,14 @@ title: "Plans and billing"
 id: plans-and-billing
 description: "Learn how billing works for each dbt plan."
 sidebar_label: "Plans"
+availability: platform
 ---
 
 <Constant name="dbt" /> offers several [plans](https://www.getdbt.com/pricing) with different features that meet your needs. We may make changes to our plan details from time to time. We'll always let you know in advance, so you can be prepared. The following section explains how billing works in each plan.
 
 ### Developer plan billing
 
-Developer plans are free and include one Developer license and 3,000 models each month. Models are refreshed at the beginning of each calendar month. If you exceed 3,000 models, any subsequent runs will be canceled until models are refreshed or until you upgrade to a paid plan. The rest of the <Constant name="dbt" /> platform is still accessible, and no work will be lost.
+Developer plans are free and include one Developer license and 3,000 models each month. Models are refreshed at the beginning of each calendar month. If you exceed 3,000 models, any subsequent runs will be canceled until models are refreshed or until you upgrade to a Starter or Enterprise plan. The rest of the <Constant name="dbt" /> platform is still accessible, and no work will be lost.
 
 Included model entitlements may differ from what's shown here, depending on the terms when you signed up.
 

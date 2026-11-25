@@ -3,6 +3,9 @@ title: "About network security"
 id: about-network-security
 description: "Configure network security for dbt Cloud"
 sidebar_label: "About network security"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 Network security in <Constant name="dbt" /> gives you control over how traffic flows between dbt and your infrastructure. Choose the approach that best fits your security requirements.

@@ -3,9 +3,13 @@ title: "Configuring Azure Private Link to your self-hosted service"
 id: azure-self-hosted
 description: "Setting up an Azure Private Link connection between dbt and your self-hosted service."
 sidebar_label: "Self-hosted services"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise_plus
 ---
 
-# Configuring Azure Private Link for a self-hosted service <Lifecycle status="managed_plus" />
+# Configuring Azure Private Link for a self-hosted service
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 
@@ -85,8 +89,13 @@ Before you begin, make sure to review the following requirements:
 
     j. Click **Add** to create the subnet.
 
+<DocCarousel slidesPerView={1}>
+
 <Lightbox src="/img/docs/dbt-platform/az-self-hosted-privatelink/vnet-search.png" width="90%" title="Screenshot of step 3: Search for VNet of self-hosted service" />
+
 <Lightbox src="/img/docs/dbt-platform/az-self-hosted-privatelink/nat-subnet-creation.png" width="90%" title="Screenshot of steps 4-5: NAT Subnet creation for Private Link Service" />
+
+</DocCarousel>
 
 ### Create a Private Link service
 6. After the subnet creation has completed, in the search field at the top-middle of the portal, search for **Private link services**, and click on its page.

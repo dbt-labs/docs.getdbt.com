@@ -5,6 +5,8 @@ description: "Configure environment variables"
 sidebar_label: "Environment variables"
 pagination_next: "docs/local/profiles.yml"
 pagination_prev: "docs/local/install-dbt"
+availability:
+  surface: local
 ---
 
 <Constant name="fusion"/> automatically loads environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal). This helps you manage credentials and settings without hardcoding them in your `profiles.yml` or exposing them in your shell history.
@@ -55,8 +57,16 @@ When the same environment variable is defined in multiple places, <Constant name
 
 This means environment variables set in your shell always override values from the `.env` file.
 
-:::tip
-Add `.env` to your `.gitignore` file to prevent sensitive credentials from being committed to version control. The `dbtf init` command automatically includes `.env` in the generated `.gitignore` file.
+:::tip Committing `.env` to your `.gitignore` file 
+Add `.env` to your `.gitignore` file to prevent sensitive credentials from being committed to version control. The `dbt init` command automatically includes `.env` in the generated `.gitignore` file.
+
+`.gitignore` only applies to files that <Constant name="git" /> isn't tracking yet. If `.env` is already committed, <Constant name="git" /> keeps tracking it and <Constant name="dbt" /> still reads it. To stop that, delete `.env` from your repo and commit the deletion.
 :::
+
+<VersionBlock firstVersion="1.12">
+
+<Constant name="dbt_platform" /> job runs also load a `.env` file that's already committed to your repo. If <Constant name="dbt_platform" /> sets a variable, its value wins over `.env`. If it leaves the variable empty, <Constant name="dbt_platform" /> uses the value from the `.env` file. Refer to [special environment variables](/docs/build/environment-variables#special-environment-variables).
+
+</VersionBlock>
 
 For more details on managing environment variables locally, refer to [Configure your local environment](/docs/configure-dbt-extension#set-environment-variables-locally).

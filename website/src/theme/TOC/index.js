@@ -23,7 +23,7 @@ export default function TOC({className, featured_cta, editUrl, ...props}) {
       />
 
       {editUrl && (
-        <div className="col margin-top--sm">
+        <div className={clsx('col margin-top--sm', styles.editThisPage)}>
           <EditThisPage editUrl={editUrl} />
         </div>)}
 

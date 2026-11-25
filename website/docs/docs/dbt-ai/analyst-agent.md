@@ -4,15 +4,19 @@ id: "analyst-agent"
 description: "Chat with your data using the Analyst agent powered by the dbt Semantic Layer"
 sidebar_label: "Copilot in Insights"
 tags: [AI, Agents, Semantic Layer]
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# dbt Copilot in Insights  <Lifecycle status="beta,managed,managed_plus"/>
+import CopilotLifecycle from '/snippets/_copilot-lifecycle.md';
+
+# dbt Copilot in Insights <Lifecycle status="eol" />
+
+<CopilotLifecycle/>
 
 dbt Copilot in Insights lets you chat with your data and get accurate answers powered by the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). Unlike generic AI chat interfaces, <Constant name="wizard" /> in <Constant name="insights" /> provides consistent, explainable results with transparent SQL, lineage, and data policies.
-
-import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
-
-<CopilotWizardDifferences/>
 
 
 ## Prerequisites 

@@ -4,6 +4,9 @@ description: "Learn how dbt administrators can use dbt's permissioning model to 
 id: "about-user-access"
 pagination_next: "docs/platform/manage-access/seats-and-users"
 pagination_prev: null
+availability:
+  surface: platform
+  access: login_required
 ---
 
 import LicenseTypes from '/snippets/_cloud-license-types.md';
@@ -91,7 +94,7 @@ The **Access & Permissions** section of a group is where you can assign users th
 
 * Projects the group can access
 * Roles that the group members are assigned for each
-* Environments the group can edit
+* Jobs and runs the group can edit in defined environments
 
 This setup provides you with the flexibility to determine the level of access users in any given group will have. For example, you might allow one group of analysts to edit jobs in their project, but only let them view related projects, or you could grant admin-level access to a team that owns a specific project while keeping others restricted to read-only.
 
@@ -99,13 +102,26 @@ This setup provides you with the flexibility to determine the level of access us
 
 #### Environment write access
 
-Some permission sets grant users read-only access to environment settings that can be overridden if you assign them to a group with **Environment write access**. They will then be able to create, edit, and delete environment settings such as jobs and runs, bypassing the read-only restriction. This elevated access doesn't grant users the ability to create or delete environments.
+Some permission sets grant users read-only access to jobs and runs. You can override that if you assign them to a group with **Environment write access**. They can then create, edit, and delete jobs and runs in the environment types you choose.
+
+This setting applies to the permission sets marked with an asterisk in the [project permission sets table](/docs/platform/manage-access/enterprise-permissions#project-access-for-project-permissions):
+
+- Analyst
+- Database admin
+- Developer
+- Git admin
+- Job creator
+- Team admin
+
+It does not let them create or delete the environment itself.
+
+**Environment write access** does not grant permission to create or delete environments. Users require an elevated permission set (like Admin and Job admin) to take those actions.
 
 In the following example, the `analyst` permission set, which by default has read-only access to jobs, is assigned to the group across all projects; however, the **Environment write access** is set to `All Environments`.  This grants all users in this group the ability to create, edit, and delete jobs across all environments and projects. 
 
-<Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/environment-write.png" width="60%" title="Users assigned environment write access will be able to edit environment settings." />
+<Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/environment-write.png" width="60%" title="Users assigned environment write access can edit jobs and runs." />
 
-Only use **Environment write access** settings when you intend to grant users the ability to edit environments. To grant users only the permissions inherent to their set, leave this setting blank (all boxes unchecked).
+Only use **Environment write access** when you intend to let users create, edit, and delete jobs and runs in those environments. To grant users only the permissions inherent to their set, leave this setting blank (all boxes unchecked).
 
 ### SSO mappings <Lifecycle status="managed,managed_plus" />
 
@@ -146,6 +162,25 @@ import LicenseOverrideNote from '/snippets/_license-override-note.md';
 
 <LicenseOverrideNote />
 
+#### Enable granular permissions for Read-Only users <Lifecycle status="managed,managed_plus"/>
+
+Granular permissions let you restrict which projects Read-Only users can access, allowing you to set permissions by group rather than applying the default permissions for Read-Only licenses.
+
+Note that new accounts don't need this setting as Read-Only users on new accounts get granular permissions by default.
+
+Key things to know before enabling:
+- This setting is only available on Enterprise and Enterprise+ plans.
+- Access stays Read-Only: This setting controls access to projects, not permissions (users remain Read-Only).
+- It's permanent: Enabling this setting is a one-time, irreversible change.
+- Prepare first: Read-Only users keep their project access only if they're in a group with a Read-Only permission set that covers all projects. If a user isn't in a group, or their group's permission set only covers some projects, they'll lose access to the projects that aren't covered.
+
+To turn on granular permissions:
+
+1. Go to **Account settings** &rarr; **Groups & Licenses**.
+2. Click **Enable granular permissions**.
+3. Select the checkbox acknowledging that this setting can't be reversed once enabled.
+4. Click **Enable** to confirm, or **Cancel** to go back without making changes.
+
 ### Permissions
 
 Permissions determine what users can do in your <Constant name="dbt" /> account. By default, members of the `Owner` and `Member` groups have full access to all areas and features. When you want to restrict access to features, assign users to groups with stricter permission sets. Keep in mind that if a user belongs to multiple groups, the most permissive group will take precedence.
@@ -160,13 +195,13 @@ Some permissions (those that don't grant full access, like admins) allow groups 
 
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/environment-access-control.png" width="60%" title="Example environment access control for a group with Git admin assigned." />
 
-### Set up read-only user access <Lifecycle status="private_beta" />
+### Set up read-only user access
 
 To give users read-only access to analyze dbt models and project resources, assign them the [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set through a group. Users won't have access until they're added to a group that's assigned the permission set.
 
 :::info Availability
 
-The OAuth integration that lets read-only users connect to analysis features (such as the [dbt MCP server](/docs/dbt-ai/about-mcp)) is available to use. The **Analyst read** permission set and the read-only permission changes described here are in **private beta**. To enable it, contact your account manager.
+The OAuth integration that lets read-only users connect to analysis features (such as the [dbt MCP server](/docs/dbt-ai/about-mcp)) is available to use.
 
 :::
 
@@ -262,9 +297,13 @@ Euclid is now logged in to their account. They only have access to the `Jaffle S
 
 The `Production` environment is visible, but it is `read-only`, and they have full access in the `Staging` environment. 
 
+<DocCarousel slidesPerView={1}>
+
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/production-restricted.png" width="60%" title="The Production environment landing page with read-only access." />
 
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/staging-access.png" width="60%" title="The Staging environment landing page with full access." />
+
+</DocCarousel>
 
 </Expandable>
 
@@ -284,7 +323,11 @@ Group memberships are updated whenever a user logs into <Constant name="dbt" /> 
 
 <Expandable alt_header="Can I set up SSO without RBAC?">
 
-Yes, see the documentation on [Manual Assignment](#manual-assignment) above for more information on using SSO without RBAC.
+Yes. If a group has no [SSO mappings](#sso-mappings), it stays unmanaged &mdash; <Constant name="dbt" /> won't change its membership when users log in through your IdP. Admins add and remove those users manually from the **Groups & Licenses** section of **Account settings**.
+
+Add an SSO mapping to an unmanaged group and it becomes managed: from then on, <Constant name="dbt" /> adjusts membership at sign-in based on the user's IdP groups.
+
+SSO mappings apply per group, so you can mix mapped and manually managed groups in the same account. Any manual change to a mapped group is overridden the next time the user signs in.
 
 </Expandable>
 

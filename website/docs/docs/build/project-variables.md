@@ -3,6 +3,7 @@ title: "Project variables"
 description: "Use dbt project variables to configure conditional or reusable logic across models and other resources." 
 id: "project-variables"
 pagination_next: "docs/build/environment-variables"
+availability: all_users
 ---
 
 dbt provides a mechanism called [variables](/reference/dbt-jinja-functions/var) to provide data to models for compilation. Variables allow you to define configurable values for your project instead of hardcoding them in SQL.

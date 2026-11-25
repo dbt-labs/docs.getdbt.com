@@ -1,5 +1,5 @@
 ---
-title: "Connect Exasol to dbt Core"
+title: "Connect Exasol to dbt v1"
 sidebar_label: "Exasol"
 description: "Read this guide to learn about the Exasol warehouse setup in dbt."
 meta:
@@ -15,6 +15,7 @@ meta:
   slack_channel_link:
   platform_name: 'Exasol'
   config_page: '/reference/resource-configs/exasol-configs'
+availability: local_free
 ---
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 

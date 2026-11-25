@@ -4,6 +4,7 @@ id: join-logic
 description: "Joins allow you to combine data from different tables and create new metrics"
 sidebar_label: "Joins"
 tags: [Metrics, Semantic Layer]
+availability: all_users
 ---
 
 Joins are a powerful part of MetricFlow and simplify the process of making all valid dimensions available for your metrics at query time, regardless of where they are defined in different semantic models. With Joins, you can also create metrics using <VersionBlock lastVersion="1.11">measures</VersionBlock><VersionBlock firstVersion="1.12">simple metrics</VersionBlock> from different semantic models.
@@ -150,7 +151,7 @@ dbt sl query --metrics average_purchase_price --group-by metric_time,user_id__ty
 ```
 
 ```yaml 
-mf query --metrics average_purchase_price --group-by metric_time,user_id__type # In dbt Core
+mf query --metrics average_purchase_price --group-by metric_time,user_id__type # In dbt v1
 ```
 
 #### SQL examples
@@ -209,7 +210,7 @@ While direct three-hop paths are limited to prevent confusion from multiple rout
 
 For example, if you have two models, `country` and `region`, where customers are linked to countries, which in turn are linked to regions, you can join all of them in a single SQL query and can dissect `orders` by `customer__country_country_name` but not by `customer__country__region_name`.
 
-![Multi-Hop-Join](/img/docs/building-a-dbt-project/multihop-diagram.png "Example schema for reference")
+<Lightbox src="/img/docs/building-a-dbt-project/multihop-diagram.png" title="Multi-Hop-Join" />
 
 <VersionBlock lastVersion="1.11">
 

@@ -2,6 +2,7 @@
 title: "SQL models"
 description: "SQL models are the building blocks of your dbt project."
 id: "sql-models"
+availability: all_users
 ---
 
 ## Related reference docs
@@ -26,11 +27,11 @@ A SQL model is a `select` statement. Models are defined in `.sql` files (typical
 - The model name is inherited from the filename and must match the _filename_ of a model &mdash; including case sensitivity. Any mismatched casing can prevent dbt from applying configurations correctly and may affect metadata in [<Constant name="catalog" />](/docs/explore/explore-projects).
 - We strongly recommend using underscores for model names, not dots. For example, use `models/my_model.sql` instead of `models/my.model.sql`.
 - Models can be nested in subdirectories within the `models` directory.
-- Starting in <Constant name="core" /> v1.12, you can use Jinja-style suffixes (`.j2`, `.jinja`, `.jinja2`) on `.sql` files (for example, `my_model.sql.j2`) by enabling the [`allow_jinja_file_extensions`](/reference/global-configs/behavior-flags/allow_jinja_file_extensions) flag.
+- Starting in <Constant name="dbt" /> v1.12, you can use Jinja-style suffixes (`.j2`, `.jinja`, `.jinja2`) on `.sql` files (for example, `my_model.sql.j2`) by enabling the [`allow_jinja_file_extensions`](/reference/global-configs/behavior-flags/allow_jinja_file_extensions) flag.
 
 Refer to [How we style our dbt models](/best-practices/how-we-style/1-how-we-style-our-dbt-models) for details on how we recommend you name your models.
 
-When you execute the [`dbt run` command](/reference/commands/run), dbt will build this model <Term id="data-warehouse" /> by wrapping it in a `create view as` or `create table as` statement.
+When you execute the [`dbt run` command](/reference/commands/run), dbt will build this model in your <Term id="data-warehouse" /> by wrapping it in a `create view as` or `create table as` statement.
 
 For example, consider this `customers` model:
 
@@ -134,12 +135,12 @@ config-version: 2
 ...
 
 models:
-  jaffle_shop: # this matches the `name:`` config
+  jaffle_shop: # this matches the `name:` config
     +materialized: view # this applies to all models in the current project
     marts:
       +materialized: table # this applies to all models in the `marts/` directory
       marketing:
-        +schema: marketing # this applies to all models in the `marts/marketing/`` directory
+        +schema: marketing # this applies to all models in the `marts/marketing/` directory
 
 ```
 

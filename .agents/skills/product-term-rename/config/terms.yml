@@ -1,0 +1,73 @@
+# Product-term rename mappings.
+#
+# CORE PRINCIPLE: render the SPECIFIC product, don't collapse to bare "dbt".
+#   Fusion / dbt Fusion engine -> dbt v2
+#   dbt Core                    -> dbt v1
+#   genuinely product-agnostic  -> dbt   (applied deliberately, not by default)
+#
+# ORDER MATTERS: within each group, phrases are listed longest-first so the
+# longest match wins.
+#
+# `to` is the MECHANICAL target for auto_safe:true occurrences. Position-sensitive
+# trimming to bare "v1"/"v2" inline (rule 4) and the specific-vs-generic decision
+# (rule 3) are LLM prose-pass work — see references/grammar-rules.md.
+
+# ---------------------------------------------------------------------------
+# Fusion / v2 engine  ->  dbt v2
+# ---------------------------------------------------------------------------
+fusion:
+  - from: "the dbt Fusion engine"
+    to: "dbt v2"
+  - from: "dbt Fusion engine"
+    to: "dbt v2"
+  - from: "the Fusion engine"
+    to: "dbt v2"
+  - from: "Fusion engine"
+    to: "dbt v2"
+  - from: "dbt Fusion"
+    to: "dbt v2"
+  - from: "Fusion"                # word-boundary, case-insensitive match
+    to: "dbt v2"
+    word_boundary: true
+
+# ---------------------------------------------------------------------------
+# dbt Core 2.0 / Core v2  ->  dbt v2
+# ---------------------------------------------------------------------------
+core_v2:
+  - from: "dbt Core v2.0"
+    to: "dbt v2"
+  - from: "dbt Core 2.0"
+    to: "dbt v2"
+  - from: "dbt Core v2"
+    to: "dbt v2"
+  - from: "Core 2.0"
+    to: "dbt v2"
+  - from: "Core v2"
+    to: "dbt v2"
+
+# ---------------------------------------------------------------------------
+# dbt Core (bare / v1)  ->  dbt v1  (DEFAULT).
+# Switch an occurrence to bare "dbt" (generic) ONLY when the statement is truly
+# product-agnostic — that is judgment (auto_safe:false), handled in the prose pass.
+# ---------------------------------------------------------------------------
+core:
+  - from: "dbt Core v1.x"
+    to: "dbt v1"
+  - from: "dbt Core v1"
+    to: "dbt v1"
+  - from: "dbt Core"
+    to: "dbt v1"
+  # bare "Core" as shorthand for dbt Core (e.g. "your current Core deployment") — judgment
+  - from: "Core"
+    to: "dbt v1"
+    word_boundary: true
+    judgment_only: true          # never mechanical; too many false positives (CPU core, etc.)
+
+# ---------------------------------------------------------------------------
+# Mechanical cleanup — runs after every pass.
+# ---------------------------------------------------------------------------
+cleanup:
+  - from: "the dbt v2 is"        # from "the dbt Fusion engine is"
+    to: "dbt v2 is"
+  - from: "dbt dbt"
+    to: "dbt"

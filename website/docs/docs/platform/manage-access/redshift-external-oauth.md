@@ -5,9 +5,13 @@ description: "Configuration instructions for dbt and external OAuth connections 
 sidebar_label: "Set up external OAuth with Redshift"
 pagination_next: null
 pagination_prev: null
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# Set up external OAuth with Redshift <Lifecycle status="managed, managed_plus" />
+# Set up external OAuth with Redshift
 
 import AboutExternal from '/snippets/_about-external-oauth.md';
 
@@ -69,9 +73,13 @@ Select a supported identity provider (IdP) for instructions on configuring exter
 
 3. On the authorization server config screen, open the **Metadata URI** in a new tab. You’ll need information from this screen in later steps.
 
+<DocCarousel slidesPerView={1}>
+
 <Lightbox src="/img/docs/dbt-platform/metadata-uri.png" width="60%" title="The Okta API settings page with the metadata URI highlighted." />
 
 <Lightbox src="/img/docs/dbt-platform/metadata-example.png" width="60%" title="Sample output of the metadata URI." />
+
+</DocCarousel>
 
 4. Click on the **Scopes** tab and **Add scope**. In the **Name** field, add `session:role-any`. (Optional) Configure **Display phrase** and **Description** and click **Create**.
 

@@ -1,5 +1,5 @@
 ---
-title: "Connect Databricks Lakebase to dbt Core"
+title: "Connect Databricks Lakebase to dbt v1"
 sidebar_label: "Databricks Lakebase"
 meta:
   maintained_by: dbt Labs
@@ -13,6 +13,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C0172G2E273'
   platform_name: 'Lakebase'
   config_page: '/reference/resource-configs/postgres-configs'
+availability: local_free
 ---
 
 

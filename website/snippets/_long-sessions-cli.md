@@ -2,6 +2,6 @@ If you're receiving a `Session occupied` error in the <Constant name="platform_c
 
 To cancel an active session, use the `Ctrl + Z` shortcut.
 
-To learn more about the `dbt invocation` command, see the [dbt invocation command reference](/reference/commands/invocation).
+To learn more about the `dbt invocation` command, see the [dbt invocation command reference](/reference/commands/invocation?version=2.0).
 
 Alternatively, you can reattach to your existing session with <code>dbt reattach</code> and then press <code>Control-C</code> and choose to cancel the invocation.

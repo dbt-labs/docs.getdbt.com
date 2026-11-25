@@ -1,11 +1,15 @@
 ---
 title: "Set up SSO with SAML 2.0"
 id: "set-up-sso-saml-2.0"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
 import LoginSlug from '/snippets/_login-slug.md';
 
-# Set up SSO with SAML 2.0 <Lifecycle status="managed, managed_plus" />
+# Set up SSO with SAML 2.0
 
 <Constant name="dbt" /> Enterprise-tier plans support single-sign on (SSO) for any SAML 2.0-compliant identity provider (IdP).
 Currently supported features include:
@@ -482,7 +486,7 @@ To complete setup, follow the steps below in <Constant name="dbt" />:
         title="Configuring the application in dbt" />
 
 4. Click **Save** to complete setup for the SAML 2.0 integration.
-5. After completing the setup, you can navigate to the URL generated for your account's _slug_ to test logging in with your identity provider. Additionally, users added the the SAML 2.0 app will be able to log in to <Constant name="dbt" /> from the IdP directly.
+5. After completing the setup, you can navigate to the URL generated for your account's _slug_ to test logging in with your identity provider. Additionally, users added the SAML 2.0 app will be able to log in to <Constant name="dbt" /> from the IdP directly.
 
 ### Additional configuration options
 

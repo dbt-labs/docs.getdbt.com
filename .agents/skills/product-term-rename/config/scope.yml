@@ -1,0 +1,38 @@
+# What the rename runs over. Paths are relative to the repo root.
+#
+# Req 5: exclude blogs AND release notes; INCLUDE upgrade guides;
+#        everything else in docs is in scope.
+
+root: "website"
+
+include:
+  - "website/docs/**/*.md"
+  - "website/docs/**/*.mdx"
+  - "website/snippets/**/*.md"
+  - "website/snippets/**/*.mdx"
+
+exclude:
+  # req 5 — blogs out
+  - "website/blog/**"
+  # req 5 — release notes out (but dbt-upgrade/ stays IN, see note below).
+  # Release notes live in TWO places: a release-notes/ subdir AND top-level
+  # *-release-notes.md files directly under dbt-versions/. Exclude both.
+  - "website/docs/docs/dbt-versions/release-notes/**"
+  - "website/docs/docs/dbt-versions/*release-note*.md"
+  - "website/docs/docs/dbt-versions/*release-notes*.md"
+  # never rewrite generated / vendored / asset trees
+  - "**/node_modules/**"
+  - "website/.docusaurus/**"
+  - "website/static/**"
+
+# Upgrade guides are explicitly IN scope (req 5). They live at
+# website/docs/docs/dbt-versions/dbt-upgrade/** and are matched by the
+# include globs above; they are deliberately NOT in the exclude list.
+
+# Layer-1 constants file (edited directly, not scanned as prose).
+constants_file: "website/constants.js"
+
+# Terminology sources to update FIRST so the term can't regenerate (Notion §"Considerations").
+terminology_sources:
+  - "AGENTS.md"
+  - "contributing/content-style-guide.md"

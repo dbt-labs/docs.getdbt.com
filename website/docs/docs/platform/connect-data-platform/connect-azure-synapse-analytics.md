@@ -2,6 +2,9 @@
 title: "Connect Azure Synapse Analytics"
 description: "Configure Azure Synapse Analytics connection."
 sidebar_label: "Connect Azure Synapse Analytics"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 # Connect Azure Synapse Analytics
@@ -22,7 +25,7 @@ The following are the required fields for setting up a connection with Azure Syn
 | **Database** | The service principal's **database** value for the Synapse test endpoint. |
 | **Authentication** | Choose **Service Principal** from the dropdown. | 
 | **Tenant ID** | The service principal's **Directory (tenant) ID**. |
-| **Client ID** | The service principal's **application (client) ID id**. |
+| **Client ID** | The service principal's **application (client) ID**. |
 | **Client secret** | The service principal's **client secret** (not the **client secret id**). |  
 
 

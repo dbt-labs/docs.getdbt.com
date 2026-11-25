@@ -3,6 +3,7 @@ title: "Enhance your models"
 description: "Learn how you can enhance your models"
 pagination_next: "docs/build/materializations"
 pagination_prev: null
+availability: all_users
 ---
 
 <div className="grid--2-col">

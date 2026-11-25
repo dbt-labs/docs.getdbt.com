@@ -1,11 +1,9 @@
-import MCPFaqUvx from '/snippets/_mcp-faq-uvx.md';
-import MCPFaqServerNotStarting from '/snippets/_mcp-faq-server-not-starting.md';
 
 This quickstart walks you through connecting dbt MCP server to your local dbt project. This setup gives you dbt command tools (`run`, `build`, `test`, `compile`, and more) inside your AI assistant. 
 
 If you'd like to connect to <Constant name="dbt_platform"/> with the CLI, see the [OAuth quickstart](/docs/dbt-ai/mcp-quickstart-oauth).
 
-To connect to <Constant name="wizard" />, see the [dbt Wizard quickstart](/docs/dbt-ai/wizard-quickstart).
+To connect to <Constant name="wizard" />, see the [dbt Wizard overview](/docs/platform/wizard-overview#get-started).
 
 :::tip No clone required
 You don't need to clone the dbt-mcp repository. Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp` — it fetches and runs dbt-mcp for you.
@@ -15,7 +13,7 @@ You don't need to clone the dbt-mcp repository. Install [uv](https://docs.astral
 
 - [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
 - A local dbt project (the folder containing your `dbt_project.yml` file)
-- dbt installed locally (<Constant name="dbt_core"/>, <Constant name="fusion_engine"/>, or <Constant name="platform_cli"/>)
+- dbt installed and available locally
 
 For the full list of environment variables and how to enable or disable toolsets, see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).
 
@@ -110,7 +108,7 @@ claude mcp add dbt \
 
 Click the link below with Cursor open to auto-configure:
 
-[Add <Constant name="dbt_core"/> or <Constant name="fusion"/> to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJlbnYiOnsiREJUX1BST0pFQ1RfRElSIjoiL3BhdGgvdG8veW91ci9kYnQvcHJvamVjdCIsIkRCVF9QQVRIIjoiL3BhdGgvdG8veW91ci9kYnQvZXhlY3V0YWJsZSJ9LCJjb21tYW5kIjoidXZ4IiwiYXJncyI6WyJkYnQtbWNwIl19)
+[Add <Constant name="core"/> or <Constant name="fusion"/> to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJlbnYiOnsiREJUX1BST0pFQ1RfRElSIjoiL3BhdGgvdG8veW91ci9kYnQvcHJvamVjdCIsIkRCVF9QQVRIIjoiL3BhdGgvdG8veW91ci9kYnQvZXhlY3V0YWJsZSJ9LCJjb21tYW5kIjoidXZ4IiwiYXJncyI6WyJkYnQtbWNwIl19)
 
 After clicking:
 1. Update `DBT_PROJECT_DIR` with the full path to your dbt project.
@@ -174,19 +172,11 @@ Platform features like <Constant name="semantic_layer" />, Discovery API, and me
 
 ## Troubleshooting
 
-<Expandable alt_header="Can't find the uvx executable">
+<FAQ path="dbt-mcp/troubleshooting/uvx" />
 
-<MCPFaqUvx />
+<FAQ path="dbt-mcp/troubleshooting/server-not-starting" />
 
-</Expandable>
-
-<Expandable alt_header="Server not starting">
-
-<MCPFaqServerNotStarting />
-
-</Expandable>
-
-For all troubleshooting topics, see [MCP troubleshooting](/docs/dbt-ai/mcp-troubleshooting).
+For all troubleshooting topics, see [dbt MCP FAQs and troubleshooting](/docs/dbt-ai/mcp-troubleshooting).
 
 ## Next steps
 

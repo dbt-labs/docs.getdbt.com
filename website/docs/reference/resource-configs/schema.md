@@ -1,6 +1,6 @@
 ---
 sidebar_label: "schema"
-resource_types: [models, seeds, tests]
+resource_types: [models, seeds, tests, snapshots, saved queries, functions]
 description: "Override the default schema when dbt creates resources in your data platform."
 datatype: string
 ---
@@ -8,7 +8,7 @@ datatype: string
 <Tabs>
 <TabItem value="model" label="Model">
 
-Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a group of models in your project YAML file (`dbt_project.yml`) or in a [SQL file config](/reference/resource-configs/schema#models).
+Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a group of models in your project YAML file (`dbt_project.yml`), in a [SQL file config](/reference/resource-configs/schema#models), or in a property YAML file.
  
 For example, if you have a group of marketing-related models and want to place them in a separate schema called `marketing`, you can configure it like this:
 
@@ -19,6 +19,18 @@ models:
   your_project:
     marketing: #  Grouping or folder for set of models
       +schema: marketing
+```
+</File>
+
+You can also set the schema for an individual model in its property file:
+
+<File name='models/properties.yml'>
+
+```yml
+models:
+  - name: my_model
+    config:
+      schema: marketing
 ```
 </File>
 
@@ -119,6 +131,38 @@ data_tests:
 This would result in the test results being stored in the `test_results` schema.
 </File>
 </TabItem>
+
+<TabItem value="functions" label="Functions">
+
+Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a function in your `dbt_project.yml` or properties file.
+
+For example, if you want to place a function in a schema called `finance` instead of the target schema, you can configure it in the `dbt_project.yml` or `properties.yml` file:
+
+<File name='dbt_project.yml'>
+
+```yml
+functions:
+  your_project:
+    calculate_tax:
+      +schema: finance
+```
+
+</File>
+
+<File name='functions/properties.yml'>
+
+```yaml
+functions:
+  - name: calculate_tax
+    config:
+      schema: finance
+```
+
+</File>
+
+This results in the function being located in the `target_schema_finance` schema, so the full relation name would be `analytics.target_schema_finance.calculate_tax`.
+
+</TabItem>
 </Tabs>
 
 Refer to [Usage](#usage) for more examples.
@@ -161,6 +205,19 @@ Configure individual models using a config block:
 {{ config(
     schema='marketing'
 ) }}
+```
+
+</File>
+
+Or configure individual models in a property file:
+
+<File name='models/properties.yml'>
+
+```yml
+models:
+  - name: my_model
+    config:
+      schema: marketing
 ```
 
 </File>

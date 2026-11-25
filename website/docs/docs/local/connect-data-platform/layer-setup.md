@@ -1,5 +1,5 @@
 ---
-title: "Connect Layer to dbt Core"
+title: "Connect Layer to dbt v1"
 sidebar_label: "Layer"
 description: "Read this guide to learn about the Layer warehouse setup in dbt."
 id: "layer-setup"
@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C03STA39TFE'
   platform_name: 'Layer'
   config_page: '/reference/resource-configs/no-configs'
+availability: local_free
 ---
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';

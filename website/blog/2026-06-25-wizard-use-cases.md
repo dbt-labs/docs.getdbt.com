@@ -37,7 +37,7 @@ The repo is public, so you can read the prs that Wizard authored:
 
 ## Project background
 
-The project is an economic data platform. The Federal Reserve, Bureau of Labor Statistics, Historical stock, ETF commodity prices, and Treasury data come in through Dagster assets, get transformed by dbt, and feed a set of analysis agents. DuckDB and MotherDuck worked fantastically, but I wanted to test out the developer ergonomics and cost of Iceberg, and the [dbt Fusion engine](/docs/fusion).
+The project is an economic data platform. The Federal Reserve, Bureau of Labor Statistics, Historical stock, ETF commodity prices, and Treasury data come in through Dagster assets, get transformed by dbt, and feed a set of analysis agents. DuckDB and MotherDuck worked fantastically, but I wanted to test out the developer ergonomics and cost of Iceberg, and the [dbt Fusion engine](/docs/introduction).
 
 The primary interface that I use to consume this data is via a Claude plugin where I ask questions about market state, where we are in the economic cycle, running backtests, that type of thing. It helps me test new investment and trade ideas and going back and forth with an AI is pretty ergonomic for this type of thing. I had some issues with data quality in the [past](https://noonanlabs.substack.com/p/so-i-looked-at-the-data) so improving accuracy and repeatability is important. I also had Wizard build out the initial [Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and metrics. 
 
@@ -106,7 +106,7 @@ For this process, I didn't have to look up any documentation and only had to go 
 
 Three things made that work, some of them can be replicated with other harnesses using skills, MCPs, hooks and other automation but these came out of the box.
 
-**It knew the graph before it started.** Wizard has a [native metadata engine](/docs/dbt-ai/wizard-how-it-works#native-metadata-engine), a structured index of lineage, models, tests, and metric definitions, built before the first prompt. When it wrote `std_diff_1yr` and `current_price` into that `expr`, it didn't have to grep through the sql files to find the right name it was able to quickly know what field was the right ones. 
+**It knew the graph before it started.** Wizard uses the [dbt Information Schema](/docs/build/dbt-information-schema), a structured view of lineage, models, tests, and metric definitions, built before the first prompt. When it wrote `std_diff_1yr` and `current_price` into that `expr`, it didn't have to grep through the sql files to find the right name it was able to quickly know what field was the right ones. 
 
 **Validation was the default.** I never said "check that it compiles." The loop runs on write operations whether you ask or not. You can turn this feature off if it isn't interesting to you. 
 

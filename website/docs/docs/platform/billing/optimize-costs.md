@@ -3,6 +3,7 @@ title: "Optimize costs in dbt"
 id: optimize-costs
 description: "Best practices to optimize model build usage and warehouse costs in dbt."
 sidebar_label: "Optimize costs"
+availability: everywhere_usage
 ---
 
 <Constant name="dbt" /> offers ways to optimize your model’s built usage and warehouse costs. 
@@ -80,7 +81,7 @@ Running tests for views in every job run can help keep data quality intact and s
     ```
     
 4. Save the file and commit it to your project.
-5. Modify your dbt jobs to include <VersionBlock lastVersion="1.11">`dbt run --selector skip_views_but_test_views`</VersionBlock><VersionBlock firstVersion="1.12">`dbt run --select selector:skip_views_but_test_views`</VersionBlock>.
+5. Modify your dbt jobs to include <VersionBlock lastVersion="1.11">`dbt build --selector skip_views_but_test_views`</VersionBlock><VersionBlock firstVersion="1.12">`dbt build --select selector:skip_views_but_test_views`</VersionBlock>.
 
 #### Build only changed views
 

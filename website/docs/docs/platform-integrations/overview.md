@@ -4,6 +4,7 @@ sidebar_label: "About dbt integrations"
 pagination_prev: null
 pagination_next: "docs/platform-integrations/downstream-exposures"
 hide_table_of_contents: true
+availability: all_users
 ---
 
 Many data applications integrate with <Constant name="dbt" />, enabling you to leverage the power of dbt for a variety of use cases and workflows.
@@ -14,7 +15,7 @@ Many data applications integrate with <Constant name="dbt" />, enabling you to l
 
 <Card
     title="dbt VS Code extension"
-    body="The dbt extension brings a hyper-fast, intelligent, and cost-efficient dbt development experience to VS Code. The best way to experience all the power of the new dbt Fusion engine while developing locally."
+    body="The dbt extension brings a hyper-fast, intelligent, and cost-efficient dbt development experience to VS Code. The best way to experience all the power of the new dbt v2 while developing locally."
     link="/docs/about-dbt-extension"
     icon="vsce"
     showBorderBeam

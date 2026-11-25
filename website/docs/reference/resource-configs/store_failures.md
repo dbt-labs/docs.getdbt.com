@@ -1,4 +1,5 @@
 ---
+description: "Set whether a data test always or never stores its failing records in the database."
 resource_types: [tests]
 datatype: boolean
 ---

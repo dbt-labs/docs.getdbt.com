@@ -2,6 +2,9 @@
 title: "dbt Architecture"
 id: "architecture"
 description: "Information about the architecture, communication, and security of dbt"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 This page helps practitioners and those interested in <Constant name="dbt" />'s architecture and data flow.
@@ -10,7 +13,7 @@ This page helps practitioners and those interested in <Constant name="dbt" />'s 
 
 The <Constant name="dbt" /> application has two types of components: static and dynamic. The static components are always running to serve highly available <Constant name="dbt" /> functions, like the <Constant name="dbt" /> web application. On the other hand, the dynamic components are created ad-hoc to handle tasks such as background jobs or requests to use the <Constant name="studio_ide" />.
 
-<Constant name="dbt" /> is available in most regions around the world in both [single tenant](/docs/platform/about-platform/tenancy#single-tenant) (AWS and Azure) and [multi-tenant](/docs/platform/about-platform/tenancy#multi-tenant) configurations.  
+<Constant name="dbt" /> is available in most regions around the world in both [single tenant](/docs/platform/about-platform/tenancy#single-tenant) (AWS, Azure, and GCP) and [multi-tenant](/docs/platform/about-platform/tenancy#multi-tenant) configurations.  
 
 <Constant name="dbt" /> uses PostgreSQL for its backend, S3-compatible Object Storage systems for logs and artifacts, and a Kubernetes storage solution for creating dynamic, persistent volumes. 
 
@@ -37,7 +40,7 @@ For more detailed information on our security practices, read our [Security page
 <Constant name="dbt" />'s primary role is as a data processor, not a data store. The <Constant name="dbt" /> application enables users to dispatch SQL to the warehouse for transformation. However, users can post SQL that returns customer data into the <Constant name="dbt" /> application. This data never persists and will only exist in memory on the instance for the duration of the session. To lock down customer data correctly, proper <Term id="data-warehouse" /> permissions must be applied to prevent improper access or storage of sensitive data.
 
 
-Some data warehouse providers offer advanced security features that can be leveraged in <Constant name="dbt" />. [Private connections](/docs/platform/secure/private-connectivity/private-connectivity) allows supported data platforms on AWS to communicate with <Constant name="dbt" /> without the traffic traversing the public internet. [Snowflake](/docs/platform/manage-access/set-up-snowflake-oauth) and [BigQuery](/docs/platform/manage-access/set-up-bigquery-oauth) offer Oauth integration which adds a layer of security for the data platforms (Enterprise-tier plan only).
+Some data warehouse providers offer advanced security features that can be leveraged in <Constant name="dbt" />. [Private connections](/docs/platform/secure/private-connectivity/private-connectivity) allows supported data platforms to communicate with <Constant name="dbt" /> without the traffic traversing the public internet. [Snowflake](/docs/platform/manage-access/set-up-snowflake-oauth) and [BigQuery](/docs/platform/manage-access/set-up-bigquery-oauth) offer Oauth integration which adds a layer of security for the data platforms (Enterprise-tier plan only).
 
 ### Git sync
 

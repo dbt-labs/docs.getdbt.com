@@ -5,6 +5,7 @@ description: "Full reference for all wizard subcommands and global flags."
 sidebar_label: "Command reference"
 tags: [AI, Wizard, Reference]
 image: /img/docs/wizard-cli-intro.png
+availability: local_all
 ---
 
 import CliGenerated from './_wizard-cli-full-generated.md';
@@ -32,11 +33,16 @@ Most people use a handful of commands to get started. View the following table a
 | I want to... | Command | What it does |
 | --- | --- | --- |
 | Start an interactive session | `wizard` | Opens the interactive TUI where you chat with the agent. |
+| Start a session seeded with a prompt | `wizard "summarize what this project does"` | Opens the TUI with your prompt already sent. |
 | Run a one-off task without the TUI | `wizard exec "add tests to my staging models"` | Runs the agent once, prints the result, and exits. Good for scripts and CI. |
 | Review my uncommitted changes | `wizard review --uncommitted` | Runs a code review on your staged, unstaged, and untracked changes. |
+| Review my branch against a base branch | `wizard review --base main` | Runs a code review on the diff between your branch and the base branch. |
 | Pick up where I left off | `wizard resume --last` | Reopens your most recent session with its full history. |
 | Check that my install is healthy | `wizard doctor` | Diagnoses your install, config, auth, runtime health |
-| Update to the latest version | `wizard update` | Updates wizard to the newest release. |
+| Update to the latest version | `wizard update` | Updates Wizard to the newest release. |
+| Apply the latest Wizard diff | `wizard apply TASK_ID` | Applies the latest Wizard diff to your working directory. |
+| Sign in or out | `wizard login` / `wizard logout` | Authenticates into or signs out of your dbt account. |
+| Connect to MCP servers | `wizard mcp add dbt` | Connects to MCP server connections. |
 </SimpleTable>
 
 <CliGenerated />
@@ -97,4 +103,4 @@ Here are some examples and commands that you might use. Replace the example prom
 - [Slash command reference](/docs/dbt-ai/wizard-slash-commands) for interactive TUI slash commands
 - [Headless mode](/docs/dbt-ai/wizard-headless)
 - [Configuration reference](/docs/dbt-ai/wizard-config)
-- [dbt command reference](/reference/dbt-commands) for `dbt run`, `dbt build`, and other dbt Core commands
+- [dbt command reference](/reference/dbt-commands) for `dbt run`, `dbt build`, and other dbt commands
