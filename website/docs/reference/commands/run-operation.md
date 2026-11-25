@@ -116,7 +116,9 @@ The macro can render a non-empty SQL string or return a non-empty SQL string or 
 
 Return an empty list with `{% do return([]) %}` to skip SQL execution. Empty or whitespace-only output, `none`, and unsupported types are errors for that node. Each node operation should be independent because operations on different nodes can run concurrently.
 
-Use `--exclude` to narrow the selection. Select tests explicitly, for example with `--select test_type:data`. By default, selecting a model or source doesn't also select its tests. You can use a [state selector](/reference/node-selection/methods#state) with `--state` pointing to a local directory containing `manifest.json`. `--per-node` requires a named macro and cannot be combined with `--sql`, `--defer`, `--defer-state`, or `--favor-state`.
+By default, selecting a model or source doesn't also select its tests. Select tests explicitly with a selector such as `--select test_type:data`, or choose an [indirect selection mode](/reference/node-selection/test-selection-examples#indirect-selection) such as `--indirect-selection=eager` to include associated tests.
+
+Use `--exclude` to narrow the selection. You can use a [state selector](/reference/node-selection/methods#state) with `--state` pointing to a local directory containing `manifest.json`. `--per-node` requires a named macro and cannot be combined with `--sql`, `--defer`, `--defer-state`, or `--favor-state`.
 
 dbt reports each macro operation by the selected node's unique ID in `run_results.json`, including operations on test nodes. If a node operation fails, dbt finishes the other operations and exits with an error. Add `--fail-fast` to skip operations that have yet to start while allowing active operations to finish.
 
