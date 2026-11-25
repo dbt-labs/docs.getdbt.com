@@ -148,8 +148,6 @@ Functions like `ai_classify` are recorded under `AI_FUNCTIONS`. Batch `ai_query`
 
 <TabItem value="bigquery" label="BigQuery">
 
-{/* TODO: the billing export query is untested on a BigQuery project. Confirm before publishing. */}
-
 BigQuery doesn't have a single view that reports AI function cost, so check usage in these places instead:
 
 - **Before you run:** use the `AI.COUNT_TOKENS` function to estimate how many input tokens a query will use.
@@ -242,42 +240,37 @@ The risk is that the `--full-refresh` flag is a blunt instrument, regenerating a
 ```
 
 This says: don't rebuild this incremental model, regardless of the `--full-refresh` flag. Think of it as a safety cover on a big red button – bumping the button does nothing. To rebuild on purpose, you lift the cover by removing the override:
+```shell
+dbt run -s reviews_classified --full-refresh --vars '{"refresh_review_tags": null}'
+```
+This table shows what happens in each scenario:
 
+<SimpleTable>
 
 | What you run | `is_incremental()` | What happens |
 | --- | --- | --- |
-| First ever run (no table yet) | `false` | The `AI_CLASSIFY` call runs on the reviews (a sample of 50 outside production) |
-| A normal `dbt run` | `true` | Only new reviews are tagged |
-| `dbt run-operation generate_new_source_rows --args '{count: 20}'` | n/a (not a model run) | 20 new reviews land in the raw reviews table, like a Fivetran sync would bring them. Nothing is tagged yet: the next `dbt run` tags only those 20 |
-| `dbt run --full-refresh` | `true` (table not dropped) | The table isn't rebuilt. Existing tags are kept |
-| `dbt run --full-refresh --vars '{"refresh_review_tags": true}'` | `false` (table dropped and rebuilt) | The table is rebuilt and every review is tagged again |
-| `dbt run --vars '{"refresh_review_tags": true}'` (no `--full-refresh`) | `false` (table dropped and rebuilt) | The table is rebuilt and every review is tagged again, even without `--full-refresh` |
+| First `dbt run` | `false` | All reviews are classified |
+| Subsequent `dbt run` | `true` | Only new reviews are classified |
+| `dbt run --full-refresh` | `true` | Only new reviews are classified |
+| `dbt run --full-refresh --vars '{"refresh_review_tags": null}'` | `false` | Table rebuilt, all reviews are classified |
+| `dbt run --vars '{"refresh_review_tags": true}'` | `false` | Table rebuilt without `--full-refresh`, all reviews are classified. |
 
-{/* TODO: the run-operation row is still untested. Confirm before publishing. */}
+</SimpleTable>
 
-To re-tag everything on purpose, set the variable to `true` and keep `--full-refresh` in the command too, so it reads as the rebuild it is:
-
-```shell
-dbt run \
-  -s reviews_classified \
-  --full-refresh \
-  --vars '{"refresh_review_tags": true}'
-```
-
-Running `--full-refresh` on its own doesn't rebuild the table: dbt doesn't drop it, so no `AI_CLASSIFY` calls are made on old reviews. Rebuilding takes a deliberate, typed-out decision, which is _exactly_ how spending money should work.
-
-:::caution
+:::caution Using the `full-refresh` config 
 The [`full_refresh` config](/reference/resource-configs/full_refresh) has three states. When set to true, it will force a refresh whether or not the `--full-refresh` flag is present. Passing `--vars '{"refresh_review_tags": null}'` as a YAML dictionary is safer because it evaluates to `none` and requires the `--full-refresh` flag to also be present.
 :::
 
 ## The four patterns at a glance
 
+<SimpleTable>
 | Rule | What it stops | dbt feature |
 | --- | --- | --- |
 | 1. Sample a handful of rows | Dev and CI runs paying for the full table | `env_var()` with a safe default |
 | 2. Check the price first | Finding out the cost after you've spent it | Your warehouse's usage view |
 | 3. Never pay twice | Re-tagging rows you already tagged | Incremental models |
 | 4. Prevent accidental full refreshes | Accidental full rebuilds that re-tag every row | `full_refresh` config set by a variable |
+</SimpleTable>
 
 <Lightbox src="/img/blog/2026-11-26-ai-function-guardrails/four-guardrail-patterns.png" width="100%" title="The four guardrails in order: sample a handful of rows, check the price first, never pay twice, and prevent accidental full refreshes" />
 
