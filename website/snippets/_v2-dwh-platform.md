@@ -24,6 +24,6 @@
     - MFA
   </Expandable>
 
-  <Expandable alt_header="ClickHouse" lifecycle="private_beta">
+  <Expandable alt_header="ClickHouse" lifecycle="beta">
     - Username / Password
   </Expandable>
