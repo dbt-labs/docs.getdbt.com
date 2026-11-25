@@ -110,7 +110,9 @@ The following macro runs a small read against each selected source table. Add it
 dbt run-operation probe_source --per-node --select source:snowplow --threads 4
 ```
 
-Declare `node` on the macro and pass any additional arguments with `--args`. dbt reserves `node` for the selected source. Return a SQL string or a list of SQL strings. dbt executes the SQL in the order you return it. Return an empty list with `{% do return([]) %}` to explicitly skip a source. A missing or invalid return is an error for that source. Each source operation should be independent because operations on different sources can run concurrently.
+Declare `node` on the macro and pass any additional arguments with `--args`. dbt reserves `node` for the selected source. The macro can render a non-empty SQL string, or return a non-empty SQL string or a list of non-empty SQL strings. dbt executes the SQL in the order you provide it. Keep statements that depend on the same session or transaction in one SQL string because adapters can release the session between strings.
+
+Return an empty list with `{% do return([]) %}` to explicitly skip a source. Empty or whitespace-only output, `none`, and unsupported types are errors for that source. Each source operation should be independent because operations on different sources can run concurrently.
 
 Use `--exclude` to narrow the selection. You can also use a [state selector](/reference/node-selection/methods#state) with `--state` pointing to a local directory containing `manifest.json`. `--per-node` requires a named macro and cannot be combined with `--sql`, `--defer`, `--defer-state`, or `--favor-state`.
 
