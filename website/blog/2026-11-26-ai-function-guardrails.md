@@ -186,10 +186,10 @@ Then do the math before committing to a full dataset run:
 (cost of the test run / rows tested) x total rows = estimated cost of the full run
 ```
 
-Your warehouse might report usage in dollars, credits, or another unit, so convert it to dollars using what your account pays. For example, if 50 rows cost $0.04, 60,000 rows will cost about $48. Then decide if it's worth it.
+Your warehouse might report usage in dollars, credits, or something else so make sure you convert it to dollars using what your account pays. So for example, if 50 rows cost $0.04, 60,000 rows will cost about $48. You can then decide if it's worth it.
 
 :::tip
-Add the estimated total cost to your pull request description. It helps reviewers decide whether the change is worth merging.
+Add the estimated total cost to your PR description since it can help reviewers decide whether the change is worth merging or not
 :::
 
 ## 3. Use incremental to avoid re-classifying existing rows
