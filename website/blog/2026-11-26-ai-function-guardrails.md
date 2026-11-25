@@ -67,15 +67,12 @@ from {{ ref('stg_reviews') }}
 
 dbt platform [automatically sets](/docs/build/environment-variables#special-environment-variables) `DBT_CLOUD_ENVIRONMENT_TYPE`. You can choose a different environment variable or filter on `target.name` – anything that differentiates one environment from another is fine. Specifying a default value `''` prevents the dbt invocation from failing if it's not set.
 
-:::caution Setting production environment to **Production**
-Your production environment must be set to the **Production** type in the dbt platform. A general deployment environment leaves this variable empty, so the cap stays on.
-:::
 
-## 2. Lock the rebuild
+## 2. Prevent accidental full refreshes
 
-A week later, the team adds a "refunds" topic and wants every review re-labeled with the new list. That's a choice they want to make on purpose. The risk is the `--full-refresh` flag, which rebuilds a table from scratch. It's easy to type out of habit, and on this model it would send every review to the AI function again and cost money.
+A week later, the team refines the list of topics: adding new themes and removing others. The incremental model will use these new rules on future records, but they also want to re-process the existing reviews with the `--full-refresh` flag.
 
-Normally, `reviews_classified` is an incremental model and only labels new reviews (dbt adds new rows and leaves old ones alone; pattern 3 shows how). To keep it that way, the team adds a lock with one line of config:
+The risk is that the `--full-refresh` flag is a blunt instrument, regenerating all models in its path. To protect the `reviews_classified` model from being inadvertently rebuilt, the team adds an extra layer of protection with one line of config:
 
 ```sql
 {{
@@ -87,9 +84,8 @@ Normally, `reviews_classified` is an incremental model and only labels new revie
 }}
 ```
 
-This says: only rebuild this table if someone sets the variable `refresh_review_tags` to `true`. If someone runs `--full-refresh` by accident, nothing is rebuilt. dbt keeps the table and only new reviews go to the AI function.
+This says: don't rebuild this incremental model, regardless of the `--full-refresh` flag. Think of it as a safety cover on a big red button – bumping the button does nothing. To rebuild on purpose, you lift the cover by removing the override:
 
-Think of it as a safety cover on a big red button: bumping the button does nothing. To rebuild on purpose, you lift the cover by setting the variable. This table shows what happens in each scenario:
 
 | What you run | `is_incremental()` | What happens |
 | --- | --- | --- |
@@ -114,7 +110,7 @@ dbt run \
 Running `--full-refresh` on its own doesn't rebuild the table: dbt doesn't drop it, so no `AI_CLASSIFY` calls are made on old reviews. Rebuilding takes a deliberate, typed-out decision, which is _exactly_ how spending money should work.
 
 :::caution
-The variable is what triggers the rebuild, so only set it for the run where you mean to re-tag everything. If `refresh_review_tags` stays set to `true` in a job or environment, every run rebuilds the table, even without `--full-refresh`.
+The [`full_refresh` config](/reference/resource-configs/full_refresh) has three states. When set to true, it will force a refresh whether or not the `--full-refresh` flag is present. Passing `--vars '{"refresh_review_tags": null}'` as a YAML dictionary is safer because it evaluates to `none` and requires the `--full-refresh` flag to also be present.
 :::
 
 ## 3. Use incremental to avoid re-classifying existing rows
