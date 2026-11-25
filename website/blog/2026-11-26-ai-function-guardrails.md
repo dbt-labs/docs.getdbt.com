@@ -13,7 +13,6 @@ date: 2026-11-26
 is_featured: false
 ---
 
-Managing AI functions in dbt can feel unwieldy or different per warehouse. But the expensive mistakes are the same everywhere: running a model on far more rows than you meant to, or running it more than once.
 
 Let's take GTA VI launch time at Jaffle Shop Games, an online game store. Orders are flying and customer reviews are pouring in, and it's getting hard to keep up!
 
