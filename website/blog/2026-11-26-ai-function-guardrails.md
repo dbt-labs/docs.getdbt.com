@@ -4,7 +4,7 @@ description: "AI functions in SQL are easy to write and equally easy to overspen
 slug: ai-function-guardrails
 image: /img/blog/2026-11-26-ai-function-guardrails/jaffle-games-shop-storefront.webp
 
-authors: [benoit_perigaud, doug_beatty, mirna_wong]
+authors: [benoit_perigaud, doug_beatty, mirna_wong, joel_labes]
 
 tags: [ai]
 hide_table_of_contents: false
