@@ -18,7 +18,7 @@ import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 Inbound Azure Private Link lets your services reach a single-tenant <Constant name="dbt_platform" /> instance privately over your access URL, without traffic traversing the public internet. You create a private endpoint in your Azure subscription that connects to the Private Link service <Constant name="dbt" /> publishes in front of your instance, then point your access URL at that endpoint with a private DNS zone.
 
 :::info Single-tenant only, provisioned by dbt Labs
-Ingress Private Link is available only for single-tenant deployments; multi-tenant ingress isn't currently supported (refer to the [Azure private connectivity matrix](/docs/platform/secure/private-connectivity/azure/azure-overview)).
+Ingress Private Link is available only for single-tenant deployments. Multi-tenant ingress isn't currently supported (refer to the [Azure private connectivity matrix](/docs/platform/secure/private-connectivity/azure/azure-overview)).
 
 dbt Labs provisions it for your instance. To scope it and receive your Private Link service details, contact your **dbt Labs account team or Solutions Architect**. If you don't have a single-tenant deployment yet, [contact our sales team](mailto:sales@getdbt.com).
 
