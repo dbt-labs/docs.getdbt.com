@@ -596,7 +596,7 @@ As with materialized views on most data platforms, there are limitations associa
 
 <VersionBlock firstVersion="1.13">
 
-- Dynamic table SQL has a [limited feature set](https://docs.snowflake.com/en/user-guide/dynamic-tables-tasks-create#query-constructs-not-currently-supported-in-dynamic-tables).
+- Dynamic table SQL has a [limited feature set](https://docs.snowflake.com/en/user-guide/dynamic-tables/supported-queries).
 - Unless you enable the [`snowflake_dynamic_table_create_or_alter`](/reference/global-configs/snowflake-changes#the-snowflake_dynamic_table_create_or_alter-flag) flag, dynamic table SQL changes require `dbt run --full-refresh` (`CREATE OR REPLACE`). Even with the flag enabled, dynamic Iceberg tables in externally managed catalogs and schema changes that `CREATE OR ALTER` does not support still require `--full-refresh`.
 - Dynamic tables cannot be downstream from: materialized views, external tables, streams.
 - Dynamic tables cannot reference a view that is downstream from another dynamic table.
@@ -605,7 +605,7 @@ As with materialized views on most data platforms, there are limitations associa
 
 <VersionBlock lastVersion="1.12">
 
-- Dynamic table SQL has a [limited feature set](https://docs.snowflake.com/en/user-guide/dynamic-tables-tasks-create#query-constructs-not-currently-supported-in-dynamic-tables).
+- Dynamic table SQL has a [limited feature set](https://docs.snowflake.com/en/user-guide/dynamic-tables/supported-queries).
 - Dynamic table SQL cannot be updated; the dynamic table must go through a `--full-refresh` (DROP/CREATE).
 - Dynamic tables cannot be downstream from: materialized views, external tables, streams.
 - Dynamic tables cannot reference a view that is downstream from another dynamic table.

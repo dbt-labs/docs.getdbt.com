@@ -58,7 +58,7 @@ flags:
 
 Available starting `dbt-snowflake` v1.13. The `snowflake_dynamic_table_create_or_alter` flag controls whether <Constant name="dbt" /> updates [Snowflake dynamic table](/reference/resource-configs/snowflake-configs#dynamic-tables) SQL definitions in place during `dbt run` without requiring `--full-refresh`.
 
-By default, <Constant name="dbt" /> only compares configuration settings on dynamic tables, so editing a model's SQL query without changing its configuration leaves the existing query running until you pass `--full-refresh`. When you enable this flag, <Constant name="dbt" /> runs Snowflake's [`CREATE OR ALTER DYNAMIC TABLE`](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table) (or [`CREATE OR ALTER DYNAMIC ICEBERG TABLE`](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-iceberg-table)) on every `dbt run`. As a result, SQL edits deploy automatically while keeping existing privileges, row access policies, and tags on the table.
+By default, <Constant name="dbt" /> only compares configuration settings on dynamic tables, so editing a model's SQL query without changing its configuration leaves the existing query running until you pass `--full-refresh`. When you enable this flag, <Constant name="dbt" /> runs Snowflake's [`CREATE OR ALTER DYNAMIC TABLE`](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table) (or [`CREATE OR ALTER DYNAMIC ICEBERG TABLE`](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table#create-or-alter-dynamic-iceberg-table)) on every `dbt run`. As a result, SQL edits deploy automatically while keeping existing privileges, row access policies, and tags on the table.
 
 - When set to `false` (default): <Constant name="dbt" /> only checks dynamic table configuration changes during `dbt run`. Deploying a SQL-only change requires `dbt run --full-refresh`.
 - When set to `true`: <Constant name="dbt" /> syncs native dynamic tables and [Snowflake-managed Iceberg](/docs/build/iceberg/adapters/snowflake-iceberg-support) dynamic tables with `CREATE OR ALTER` on every run. If nothing changed, Snowflake treats the statement as a no-op.
@@ -76,13 +76,15 @@ flags:
 
 :::caution Reinitialization in `INCREMENTAL` and `AUTO` refresh modes
 
-When [`refresh_mode`](/reference/resource-configs/snowflake-configs#refresh-mode) is `INCREMENTAL` or `AUTO`, editing a dynamic table's SQL query causes Snowflake to reinitialize the table (recomputing all rows and discarding existing incremental state). This differs from <Constant name="dbt" /> [incremental models](/docs/build/incremental-models), where SQL changes do not rebuild existing data unless you run `--full-refresh`.
+When [`refresh_mode`](/reference/resource-configs/snowflake-configs#refresh-mode) is `INCREMENTAL` or `AUTO`, editing a dynamic table's SQL query causes Snowflake to reinitialize the table (recomputing all rows and discarding existing incremental state). `CREATE OR ALTER` keeps the object (including privileges, policies, and tags), but the data and incremental state are discarded. This differs from <Constant name="dbt" /> [incremental models](/docs/build/incremental-models), where SQL changes do not rebuild existing data unless you run `--full-refresh`. Other definition changes can also trigger reinitialization. For the full list, refer to Snowflake's [What triggers reinitialization](https://docs.snowflake.com/en/user-guide/dynamic-tables/modify#what-triggers-reinitialization).
 
 Snowflake also compares stored query text character for character, including whitespace. If an `INCREMENTAL` or `AUTO` dynamic table was created by an earlier <Constant name="dbt" /> version that formatted the query with different indentation, the first run after enabling this flag may reinitialize the table once even if your model SQL has not changed.
 
 :::
 
-Keep these behaviors and limitations in mind when enabling the flag:
+### Behaviors and limitations
+
+Keep these behaviors and limitations in mind when enabling the flag. Snowflake also documents [limitations of `CREATE OR ALTER DYNAMIC TABLE`](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table#label-create-or-alter-dt-limitations):
 
 - **Iceberg dynamic tables:** Snowflake-managed Iceberg dynamic tables sync in place with `CREATE OR ALTER DYNAMIC ICEBERG TABLE`, as long as their external volume, base location, and Iceberg version stay the same. Changing those settings requires `dbt run --full-refresh`. Dynamic Iceberg tables in externally managed catalogs keep standard `CREATE OR REPLACE` behavior, and switching a model between a native dynamic table and an Iceberg dynamic table also rebuilds with `CREATE OR REPLACE`.
 - **Unsupported schema changes:** `CREATE OR ALTER` cannot apply every schema change in place, such as reordering columns, inserting a column into the middle of the column list, narrowing a data type, or making an incompatible type change. When Snowflake rejects a change, the run fails and <Constant name="dbt" /> includes a hint to rerun with `dbt run --full-refresh`.
