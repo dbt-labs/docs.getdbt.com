@@ -55,6 +55,8 @@ models:
 
 ## Definition
 
+<VersionBlock lastVersion="1.99">
+
 By default, dbt State reuses a node even if it was changed outside of dbt since the last run (for example, by a direct change to the table in your warehouse).
 
 Set `ignore_external_modifications: false` if you want dbt State to force a rebuild when it detects an external change. dbt State detects external changes by comparing the target's last-modified timestamp in your warehouse against what it recorded on the previous run.
@@ -63,6 +65,21 @@ Set `ignore_external_modifications: false` if you want dbt State to force a rebu
 |-------|----------|
 | `true` (default) | dbt State reuses a node even if it was modified outside of dbt. |
 | `false` | dbt State forces a rebuild when the target's last-modified time is newer than what dbt State recorded. |
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+By default, dbt State forces a rebuild when it detects that a node was changed outside of dbt since the last run (for example, by a direct change to the table in your warehouse).
+
+Set `ignore_external_modifications: true` if you want dbt State to reuse a node even when it detects an external change. dbt State detects external changes by comparing the target's last-modified timestamp in your warehouse against what it recorded on the previous run.
+
+| Value | Behavior |
+|-------|----------|
+| `true` | dbt State reuses a node even if it was modified outside of dbt. |
+| `false` (default) | dbt State forces a rebuild when the target's last-modified time is newer than what dbt State recorded. |
+
+</VersionBlock>
 
 If dbt State decides to clone a node from the deferred environment, it clones regardless of whether an external modification is detected.
 
