@@ -170,14 +170,6 @@ The export only contains data from when it was switched on.
 
 </TabItem>
 
-<TabItem value="redshift" label="Redshift">
-
-Redshift AI functions call Amazon Bedrock, and Bedrock bills for the usage, so check your Amazon Bedrock usage and billing reports. In AWS Cost and Usage Reports and Data Exports, Bedrock usage appears under a usage type that names the model and token type, for example `USE1-Claude4.6Sonnet-cache-read-input-token-count`. Refer to [Understanding your Amazon Bedrock Cost and Usage Report data](https://docs.aws.amazon.com/bedrock/latest/userguide/cost-mgmt-understanding-cur-data.html).
-
-We haven't confirmed whether Redshift calls can be told apart from other Bedrock usage in the same account. Refer to [Amazon Bedrock pricing](https://aws.amazon.com/bedrock/pricing/) and [Costs for using Amazon Redshift ML](https://docs.aws.amazon.com/redshift/latest/dg/cost.html).
-
-</TabItem>
-
 </Tabs>
 
 Then do the math before committing to a full dataset run:
