@@ -144,11 +144,11 @@ Functions like `ai_classify` are recorded under `AI_FUNCTIONS`. Batch `ai_query`
 
 BigQuery doesn't have a single view that reports AI function cost, so check usage in these places instead:
 
-- **Before you run:** use the `AI.COUNT_TOKENS` function to estimate how many input tokens a query will use.
-- **After your 50-row test run:** open the query in the Google Cloud console and check the **Job information** tab, which shows the tokens the query used.
-- **Across your project:** BigQuery has daily token quotas for AI functions (AI input tokens per day and AI output tokens per day). Check them under **IAM & Admin > Quotas & System Limits**, and set an alert. Refer to [Control costs with token quotas](https://docs.cloud.google.com/bigquery/docs/control-genai-costs).
+- **Before you run:** use `AI.COUNT_TOKENS` to estimate input tokens. It's free, and it doesn't count output tokens.
+- **After your 50-row test run:** open the query in the Google Cloud console and check the **Job information** tab for input and output token counts.
+- **Across your project:** BigQuery has daily token quotas for Gemini-based AI functions like `AI.CLASSIFY` (but not `AI.EMBED`). Check **AI input tokens per day** and **AI output tokens per day** under **IAM & Admin > Quotas & System Limits**, and set an alert. Refer to [Control costs with token quotas](https://docs.cloud.google.com/bigquery/docs/control-genai-costs).
 
-If your organization exports Cloud Billing data to BigQuery, you can also look for the cost there. Google says AI function token usage correlates with your Vertex AI billing, but we couldn't confirm which service BigQuery AI functions are billed under. So this query lists today's costs by service and SKU, and you can look for the token-based line:
+For the cost in dollars, Google bills AI function token usage under Vertex AI. If your organization exports Cloud Billing data to BigQuery, this query lists today's costs by service and SKU. Look for the token-based Vertex AI line:
 
 ```sql
 select
@@ -161,7 +161,7 @@ group by 1, 2
 order by 3 desc;
 ```
 
-The export only contains data from when it was switched on.
+Billing data can take up to 24 hours to show up, and the export only has data from when it was switched on.
 
 </TabItem>
 
