@@ -122,6 +122,146 @@ Use `--exclude` to narrow the selection. You can use a [state selector](/referen
 
 dbt reports each macro operation by the selected node's unique ID in `run_results.json`, including operations on test nodes. If a node operation fails, dbt finishes the other operations and exits with an error. Add `--fail-fast` to skip operations that have yet to start while allowing active operations to finish.
 
+### Package examples
+
+Use a project macro to adapt an existing package macro to the `node` argument. For macros that log a result or use `run_query()` to read rows, return `[]` after handling the output. dbt records these operations as skipped in `run_results.json` because they don't return SQL for dbt to execute.
+
+#### Stage Snowflake external tables
+
+Use the proposed `stage` macro from the `dbt-external-tables` package draft to create or refresh configured Snowflake external tables. Set up your external stages and target schemas first. Select sources that map to distinct external tables. [Snowflake package draft](https://github.com/dbt-labs/dbt-external-tables/pull/418)
+
+```bash
+dbt run-operation dbt_external_tables.stage --per-node \
+  --select source:snowplow --threads 8
+```
+
+#### Inspect query plans for selected models
+
+Pass `node.unique_id` to `get_execution_plan` to look up a plan from query history for each selected model. Set up query history for your adapter, tag the models `profile`, and run them before profiling. The wrapper logs each result with its node ID and marks the profiling query so the package can exclude it from future lookups. [dbt Query Profiler setup](https://github.com/dbt-labs/dbt-query-profiler#readme)
+
+<File name="macros/profile_selected.sql">
+
+```jinja
+{% macro profile_selected(node) %}
+  {% if node.resource_type != 'model' %}
+    {% do return([]) %}
+  {% endif %}
+
+  {% set sql %}
+    /* {{ dbt_query_profiler._self_identifier() }} */
+    {{ dbt_query_profiler.get_execution_plan(node_id=node.unique_id) }}
+  {% endset %}
+  {% set plan = run_query(sql) %}
+
+  {% set rows = [] %}
+  {% for row in plan.rows %}
+    {% do rows.append(row | list) %}
+  {% endfor %}
+  {% do log(tojson({'node_id': node.unique_id, 'columns': plan.column_names | list, 'rows': rows}), info=true) %}
+  {% do return([]) %}
+{% endmacro %}
+```
+
+</File>
+
+```bash
+dbt run-operation profile_selected --per-node \
+  --select 'tag:profile,resource_type:model' --threads 2
+```
+
+#### Apply Snowflake masking policies to selected tables
+
+This project macro uses `dbt_snow_mask` to read column policies from a selected table model. Set `config.meta.masking_policy` on each column to the policy name, such as `mask_email`. Create the single-column policies first in a shared schema and run with a role that can apply them. Tag the built table models `apply_masking`. [Snowflake masking package](https://hub.getdbt.com/entechlog/dbt_snow_mask/latest/)
+
+<File name="macros/apply_selected_masks.sql">
+
+```jinja
+{% macro apply_selected_masks(node, policy_namespace) %}
+  {% if node.resource_type != 'model' or node.config.materialized != 'table' %}
+    {% do return([]) %}
+  {% endif %}
+
+  {% set statements = [] %}
+  {% set columns = dbt_snow_mask.get_meta_objects(node.unique_id, 'masking_policy') %}
+  {% for column, policy, conditional_columns in columns %}
+    {% if conditional_columns | length > 0 %}
+      {% do exceptions.raise_compiler_error('This operation requires a policy without conditional columns') %}
+    {% endif %}
+    {% set column_name = adapter.quote(column) if node.columns.get(column, {}).get('quote', false) else column %}
+    {% set sql %}
+      alter table {{ this }} modify column {{ column_name }}
+        set masking policy {{ policy_namespace }}.{{ policy }}
+    {% endset %}
+    {% do statements.append(sql) %}
+  {% endfor %}
+  {% do return(statements) %}
+{% endmacro %}
+```
+
+</File>
+
+```bash
+dbt run-operation apply_selected_masks --per-node \
+  --select tag:apply_masking \
+  --args '{policy_namespace: SECURITY.POLICIES}' --threads 4
+```
+
+#### Audit migration row counts
+
+Use Audit Helper to compare each selected model against a same-named table in a baseline schema in the same database. Tag the migrated table models `migration_audit` and create a dedicated output schema. Use distinct model identifiers because each audit writes a report table named after the selected model. [Audit Helper package](https://hub.getdbt.com/dbt-labs/audit_helper/latest/)
+
+<File name="macros/audit_migration.sql">
+
+```jinja
+{% macro audit_migration(node, baseline_schema, audit_schema) %}
+  {% if this is none %}
+    {% do return([]) %}
+  {% endif %}
+
+  {% set baseline = this.incorporate(path={"schema": baseline_schema}) %}
+  {% set report = this.incorporate(path={"schema": audit_schema}) %}
+
+  {% set sql %}
+    create or replace table {{ report }} as
+    {{ audit_helper.compare_row_counts(baseline, this) }}
+  {% endset %}
+  {% do return(sql) %}
+{% endmacro %}
+```
+
+</File>
+
+```bash
+dbt run-operation audit_migration --per-node \
+  --select 'tag:migration_audit,config.materialized:table' \
+  --args '{baseline_schema: baseline, audit_schema: migration_audit}' --threads 2
+```
+
+Query a report table such as `migration_audit.orders` to see the row counts for the current and baseline relations.
+
+#### Generate YAML for selected models
+
+Pass one model name at a time to Codegen. Use selectors that identify built models with unambiguous names. Copy the YAML documents from the logs and combine their model entries if you want a single YAML file. [Codegen package](https://hub.getdbt.com/dbt-labs/codegen/latest/)
+
+<File name="macros/generate_selected_model_yaml.sql">
+
+```jinja
+{% macro generate_selected_model_yaml(node) %}
+  {% if node.resource_type != 'model' or this is none %}
+    {% do return([]) %}
+  {% endif %}
+  {% do codegen.generate_model_yaml(model_names=[node.name]) %}
+  {% do return([]) %}
+{% endmacro %}
+```
+
+</File>
+
+```bash
+dbt run-operation generate_selected_model_yaml --per-node \
+  --select 'tag:document,resource_type:model' --threads 2
+```
+
 </VersionBlock>
 
 ## Command line examples
