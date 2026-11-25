@@ -117,7 +117,6 @@ Usage in `cortex_ai_functions_usage_history` can take a few [minutes](https://do
 
 <TabItem value="databricks" label="Databricks">
 
-{/* TODO: untested on a Databricks workspace. Confirm before publishing. */}
 
 This query shows today's AI function usage:
 
