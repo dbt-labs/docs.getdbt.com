@@ -17,11 +17,11 @@ Managing AI functions in dbt can feel unwieldy or different per warehouse. But t
 
 Let's take GTA VI launch time at Jaffle Shop Games, an online game store. Orders are flying and customer reviews are pouring in, and it's getting hard to keep up!
 
-Someone on the Jaffle Shop Games data team has a good idea: use an AI function from the data platform to tag every review with a topic, so the team can see what customers are talking about. So they write the model, run it once to check it works, and then head out to play GTA for lunch. However, AI functions in SQL are _easy_ enough to write and equally easy to _overspend_ on:
+Someone on the Jaffle Shop Games data team has a good idea: categorize reviews into common themes,  so the team can see what customers are talking about. So they add an `AI_CLASSIFY()` function to the reviews model, run it once to check it works, and then head out to play GTA over lunch.
 
 Warehouse-provided SQL functions are easy to write – they feel just like normal SQL! But their cost structure makes it easy to overspend, especially if you re-process every record in dev, then CI, then every day once it reaches production.
 
-This post covers four patterns that set up guardrails when you use AI functions on your data, using plain dbt features you already have. It assumes your source table has a column recording when each row was loaded or last updated, such as `updated_at` or a timestamp added by your data loading tool (for example, `_fivetran_synced` in [Fivetran](https://www.fivetran.com/)). If it doesn't, you'll need additional logic inside your `is_incremental()` block to avoid reprocessing old rows. If your warehouse can track changes for you, such as [Snowflake streams](https://docs.snowflake.com/en/user-guide/streams-intro) or the [Databricks change data feed](https://www.databricks.com/blog/2021/06/09/how-to-simplify-cdc-with-delta-lakes-change-data-feed.html), you can use those instead. Refer to [Change data capture in dbt](/best-practices/how-we-handle-cdc/1-intro) for more options.
+This post covers four patterns for cost-effectively using AI functions on your data, powered by standard dbt features: sampling in dev and CI, estimating total cost before deploying, building incrementally, and protecting against full refreshes.
 
 <Lightbox src="/img/blog/2026-11-26-ai-function-guardrails/jaffle-shop-games-storefront.webp" width="85%" title="The Jaffle Shop Games storefront on a nice, sunny day!" />
 
@@ -36,30 +36,17 @@ AI functions (like Cortex's `AI_COMPLETE` and `AI_CLASSIFY`) are usually billed 
 At Jaffle Shop Games, customers write reviews in the store's review tool. Fivetran ingests them into the warehouse, where they land as raw data. From there, dbt takes over:
 
 1. A staging model, `stg_reviews`, tidies them up.
-2. A second model, `reviews_classified`, calls an AI function once for each review. You give the function a review and a list of topics, and it answers with the topic that fits best. For example, "My download code never arrived!" comes back as "download codes".
-3. dbt saves those answers in a table, so every review ends up with its topic next to it.
-
-That also means every call costs money.
+2. A second model, `reviews_classified`, calls an AI function once for each review. You give the function a review and a list of topics, and it answers with the topic that fits best. For example, "My download code never arrived!" comes back as "order problems".
+dbt then saves those answers in a table, so every review ends up with its topic next to it. That also means every call costs money.
 
 <Lightbox src="/img/blog/2026-11-26-ai-function-guardrails/reviews-flow.webp" width="100%" title="Reviews flow from the store's review tool into your warehouse, through stg_reviews and reviews_classified, and end up as a table with a topic next to each review" />
 
-The examples in this post use Snowflake Cortex functions (`AI_COMPLETE` and `AI_CLASSIFY`). Three of the four patterns are plain dbt, so they work on any warehouse with AI functions. Only the usage query in pattern 4 is warehouse-specific. Check your warehouse's AI function docs for what it supports:
+The examples in this post use Snowflake Cortex functions, but the underlying dbt patterns are consistent regardless of the platform you're using.
 
-- [Snowflake Cortex AI functions](https://docs.snowflake.com/en/user-guide/snowflake-cortex/aisql)
-- [Databricks AI functions](https://docs.databricks.com/en/large-language-models/ai-functions)
-- [BigQuery generative AI functions](https://docs.cloud.google.com/bigquery/docs/generative-ai-overview)
-- [Amazon Redshift ML with Amazon Bedrock](https://docs.aws.amazon.com/redshift/latest/dg/machine-learning-br.html)
-- [DuckDB community extensions, such as Flock](https://duckdb.org/community_extensions/extensions/flock.html)
-
-Although we got AI functions before GTA VI, these patterns help you manage the cost so you can get back to whatever you like doing (like playing GTA VI, but _definitely_ not during work hours 😇).
-
-<Lightbox src="/img/blog/2026-11-26-ai-function-guardrails/ai-bills-before-gta-vi.webp" width="85%" title="Neon highway signs reading: We got AI bills before GTA VI" />
 
 ## 1. Sample a handful of rows
 
-The data team at Jaffle Shop Games tests every change in development and CI, and each test was tagging the whole reviews table (which costs money!). So they changed the `reviews_classified` model: outside production, it sends only 50 random reviews to the AI function. In production, it still sends all of them.
-
-To do the same, add the `if` block to the end of any model that calls an AI function. Here's how it looks in `reviews_classified`:
+During development and CI, it's unnecessary to classify every single record on every single `dbt run`, when you just need to check that the system is working as expected. The data team at Jaffle Shop Games changed their `reviews_classified` model to only classify 50 random reviews outside of production environments. Here's how it looks now:
 
 ```sql
 select
@@ -78,8 +65,7 @@ from {{ ref('stg_reviews') }}
 {% endif %}
 ```
 
-- The dbt platform sets the [environment variable](/docs/build/environment-variables#special-environment-variables) `DBT_CLOUD_ENVIRONMENT_TYPE` to `prod` in production environments only. Everywhere else, including CI jobs and your laptop, the cap applies.
-- The empty default (`''`) matters. If the variable isn't set at all, the model stays capped. You have to prove you're in production to spend real money.
+dbt platform [automatically sets](/docs/build/environment-variables#special-environment-variables) `DBT_CLOUD_ENVIRONMENT_TYPE`. You can choose a different environment variable or filter on `target.name` – anything that differentiates one environment from another is fine. Specifying a default value `''` prevents the dbt invocation from failing if it's not set.
 
 :::caution Setting production environment to **Production**
 Your production environment must be set to the **Production** type in the dbt platform. A general deployment environment leaves this variable empty, so the cap stays on.
