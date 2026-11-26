@@ -82,7 +82,7 @@ Seeds are configured in your `dbt_project.yml`, check out the [seed configuratio
 ## Column type inference
 dbt infers each column's type from your CSV data when you don't set [`column_types`](/reference/resource-configs/column_types).
 
-dbt inferring differs between versions for dates and timestamps:
+Inference for dates and timestamps differs between versions:
 <SimpleTable>
 | Version | A value like `2022-10-01 00:00:00` loads as |
 | ------- | ------------------------------------------- |

@@ -485,7 +485,7 @@ seeds:
 ```
 
 :::tip Before you upgrade
-Set `column_types` on your seeds before you upgrade so their types don't change.
+If you need a seed column to stay text after you upgrade to v2, set `column_types` for that column and run `dbt seed --full-refresh`.
 :::
 
 #### Move standalone anchors under `anchors:` key
