@@ -78,7 +78,13 @@ seeds:
 </File>
 
 ## Recommendation
-Use this configuration only when required, i.e. when the type inference is not working as expected. Otherwise you can omit this configuration.
+Use this configuration when type inference doesn't give you the type you want. Otherwise, you can omit it.
+
+<VersionBlock firstVersion="2.0">
+
+If you need a seed column to stay text after you upgrade to v2, set `column_types` for that column and run `dbt seed --full-refresh`. Refer to [Column type inference](/docs/build/seeds#column-type-inference).
+
+</VersionBlock>
 
 ## Troubleshooting
 Note: The `column_types` configuration is case-sensitive, regardless of quoting configuration. If you specify a column as `Country_Name` in your Seed, you should reference it as `Country_Name`, and not `country_name`.  
