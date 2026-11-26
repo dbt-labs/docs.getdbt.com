@@ -74,6 +74,45 @@ In v1.11.0, this flag will stay set to `false` by default. Based on feedback abo
 Given feedback about lack of atomicity of the new materialization approach, we will not be flipping this flag to `true`.
 Instead, we will be investigating new ways to provide the same benefits while maintaining atomicity.
 
+### Set `use_materialization_v2` per model
+
+_Available in `dbt-databricks` 1.13.1 or higher._
+
+Set `use_materialization_v2` on a `table` or `incremental` model to override the project flag (`true` for the restructured path, `false` for the original path). Omit the config or set it to `null` to inherit the project flag. Views and seeds ignore it.
+
+This lets you trade off atomicity against create-time features per model: the original path replaces Delta tables atomically with a single `CREATE OR REPLACE TABLE ... AS SELECT`, while the restructured path creates the table before inserting rows &mdash; allowing column masks before data loads (see [Configuring columns](/reference/resource-configs/databricks-configs#configuring-columns)), at the cost of briefly exposing an empty table during direct rebuilds.
+
+Set the config in a model's `config()` block, in its properties YAML, or for a folder with `+use_materialization_v2` in `dbt_project.yml`. See [Config inheritance](/reference/define-configs#config-inheritance).
+
+Keep the original path as the project default and opt one folder into the restructured path:
+
+<File name='dbt_project.yml'>
+
+```yaml
+flags:
+  use_materialization_v2: false
+
+models:
+  my_project:
+    governed:
+      +use_materialization_v2: true
+```
+
+</File>
+
+Opt a specific model in that folder back out:
+
+<File name='models/governed/schema.yml'>
+
+```yaml
+models:
+  - name: customer_dashboard
+    config:
+      use_materialization_v2: false
+```
+
+</File>
+
 ### Changes to the Seed materialization
 
 Starting in `dbt-databricks` v1.12.7, seeds use a single materialization, so they behave the same whether `use_materialization_v2` is `true` or `false`. If your project overrides the `create_seed_v1` or `create_seed_v2` macros, or overrides `create_indexes` for seeds, those overrides are no longer called.
