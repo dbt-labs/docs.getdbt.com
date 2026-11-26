@@ -28,6 +28,14 @@ select 'hello_iceberg' as message
 
 That's it. This model is materialized as an Iceberg table, with all the default configurations for this adapter, and stored in the default (managed) catalog offered by this data platform. You can now connect to that catalog using another engine (such as DuckDB) to read this table. Congratulations, you're using Iceberg!
 
+<VersionBlock firstVersion="2.0">
+
+:::note Redshift
+On Amazon Redshift, `table_format` alone isn't enough: also set `external_volume`, and build the model in a Glue-backed external schema. Refer to [Amazon Redshift and Apache Iceberg](/docs/build/iceberg/adapters/redshift-iceberg-support).
+:::
+
+</VersionBlock>
+
 :::note
 
 Most open source query engines, including DuckDB and Apache Spark, can operate well with external catalogs, but they don't come with a "managed" catalog. Instead, their default behavior for materializing Iceberg tables is to write Parquet files and Iceberg metadata to the local filesystem (wherever the query engine is running).
@@ -110,6 +118,12 @@ catalogs:
 | ducklake          |             | duckdb                        |                                                                                               |
 | local_filesystem  |             | duckdb                        |                                                                                               |
 | iceberg_rest      |             | snowflake, duckdb             | In theory, this option can support any catalog that implements an Iceberg-compatible REST API |
+
+<VersionBlock firstVersion="2.0">
+
+In <Constant name="fusion_engine" />, `glue` catalogs also support `redshift`. Refer to [Amazon Redshift and Apache Iceberg](/docs/build/iceberg/adapters/redshift-iceberg-support#extensible-catalogsyml).
+
+</VersionBlock>
 
 #### Config inheritance
 

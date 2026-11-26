@@ -287,6 +287,14 @@ As with most data platforms, there are limitations associated with materialized 
 
 Find more information about materialized view limitations in Redshift's [docs](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-limitations).
 
+<VersionBlock firstVersion="2.0">
+
+## Iceberg tables
+
+In <Constant name="fusion_engine" />, you can materialize `table` and `incremental` models as Apache Iceberg tables, stored in Amazon S3 and registered in the AWS Glue Data Catalog. For setup and configs, refer to [Amazon Redshift and Apache Iceberg](/docs/build/iceberg/adapters/redshift-iceberg-support).
+
+</VersionBlock>
+
 ## Unit test limitations
 
 - Redshift doesn't support [unit tests](/docs/build/unit-tests) when the SQL in the common table expression (CTE) contains functions such as `LISTAGG`, `MEDIAN`, `PERCENTILE_CONT`, and so on. These functions must be executed against a user-created table. dbt combines given rows to be part of the CTE, which Redshift does not support.
