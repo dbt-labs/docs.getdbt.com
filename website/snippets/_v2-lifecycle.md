@@ -11,7 +11,7 @@ dbt v2 is available across adapters (data warehouse connectors). Track status by
 | Redshift | Generally available |
 | Apache Spark (CLI only)| Beta |
 | DuckDB (CLI only) | Generally available |
-| ClickHouse | Private beta |
+| ClickHouse | Beta |
 </SimpleTable>
 
 <small> _Note that adapter lifecycle may differ between the <Constant name="dbt_platform"/> and local development. An adapter can reach GA in the dbt platform before it reaches GA for local use._ </small>
