@@ -16,9 +16,13 @@ If both the flag and env var are provided, the flag takes precedence.
 
 #### Path resolution
 
-Relative `--state` and `--defer-state` paths resolve against your project directory, not against the directory you ran dbt from. The project directory is wherever dbt found `dbt_project.yml`, which you can point elsewhere with [`--project-dir`](/reference/dbt_project.yml) or <VersionBlock lastVersion="1.10">`DBT_PROJECT_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROJECT_DIR`</VersionBlock>.
+Relative `--state` and `--defer-state` paths resolve differently depending on your engine. An absolute path works the same way on both, so use one if you aren't sure.
 
-Without `--project-dir`, the two directories are the same and relative and absolute paths both work. With `--project-dir`, they aren't, and only absolute paths work:
+You can set the project directory with [`--project-dir`](/reference/dbt_project.yml) or the <VersionBlock lastVersion="1.10">`DBT_PROJECT_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROJECT_DIR`</VersionBlock> environment variable.
+
+<VersionBlock lastVersion="1.13">
+
+<Constant name="core" /> resolves relative paths against your project directory, not the directory you ran dbt from. The project directory is wherever dbt finds `dbt_project.yml`, or the location you set with `--project-dir`. When you set it, the two directories differ:
 
 ```shell
 # Looks for projects/data_warehouse/tmp/state/manifest.json
@@ -35,6 +39,28 @@ Encountered an error:
 Runtime Error
   Got a state selector method, but no comparison manifest
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+<Constant name="fusion" /> resolves relative `--state` paths against the directory you ran dbt from, even when you set `--project-dir`:
+
+```shell
+# Looks for ./tmp/state/manifest.json, relative to where you ran the command
+dbt ls --project-dir projects/data_warehouse --select "state:modified" --state tmp/state
+
+# Looks for /full/path/to/tmp/state/manifest.json
+dbt ls --project-dir projects/data_warehouse --select "state:modified" --state /full/path/to/tmp/state
+```
+
+When dbt finds no `manifest.json` at the resolved path, it names the missing file:
+
+```text
+[ManifestLoadFailed (dbt1150)]: Failed to load manifest.json from state path 'tmp/state'
+```
+
+</VersionBlock>
 
 #### Notes
 - The `--state` artifacts must be of schema versions that are compatible with the currently running dbt version.
