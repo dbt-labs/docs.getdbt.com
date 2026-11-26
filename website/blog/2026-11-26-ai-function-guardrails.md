@@ -3,7 +3,7 @@ title: "How to cost-effectively use warehouse AI functions in your dbt project"
 description: "AI functions in SQL are easy to write and equally easy to overspend on. Here are four strategies to keep the bill under control."
 slug: ai-function-guardrails
 image: /img/blog/2026-11-26-ai-function-guardrails/jaffle-games-shop-storefront.webp
-authors: [benoit_perigaud, doug_beatty, mirna_wong]
+authors: [benoit_perigaud, doug_beatty, mirna_wong, joel_labes]
 tags: [ai]
 hide_table_of_contents: false
 date: 2026-12-04
