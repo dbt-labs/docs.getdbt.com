@@ -84,7 +84,7 @@ dbt infers each column's type from your CSV data when you don't set [`column_typ
 
 Inference for dates and timestamps differs between versions:
 <SimpleTable>
-| Version | A value like `2022-10-01 00:00:00` loads as |
+| Version | A value like `2022-10-01 00:00:00.00` loads as |
 | ------- | ------------------------------------------- |
 | <Constant name="core_v1" /> | Text (`varchar`) |
 | v2 | A date or timestamp type |
