@@ -10,13 +10,18 @@ date: 2026-12-04
 is_featured: false
 ---
 
-It's GTA VI launch time at Jaffle Games Shop, an online game store. Orders are flying and customer reviews are pouring in, and it's getting hard to keep up!
-
-Someone on the Jaffle Games Shop data team has a good idea: categorize reviews into common themes, so the team can see what customers are talking about. So they call a `AI_CLASSIFY()` function in the reviews model, run it once to check it works, and then head out to play GTA over lunch.
-
 Warehouse-provided SQL functions are easy to write – they feel just like normal SQL! But their cost structure makes it easy to overspend, especially if you re-process every record in dev, then CI, then every day once it reaches production.
 
-This post covers four patterns for cost-effectively using AI functions on your data, powered by standard dbt features: sampling in dev and CI, estimating total cost before deploying, building incrementally, and protecting against full refreshes.
+For example, it's GTA VI launch time at Jaffle Games Shop, an online game store. Orders are flying and customer reviews are pouring in, and it's getting hard to keep up!
+
+Someone on the data team has a good idea: categorize reviews into common themes, so the team can see what customers are talking about. So they add a `AI_CLASSIFY()` function call to the reviews table. After they've finished iterating in dev, they open a PR to kick off a CI run, and head out to play GTA over lunch – blissfully unaware of the cost implications of this change.
+
+This post covers four patterns to make that work more cost-effective, powered by standard dbt features: 
+
+- Using sampling in dev and CI
+- Estimating total cost before deploying
+- Building incrementally
+- Protecting against full refreshes
 
 <Lightbox src="/img/blog/2026-11-26-ai-function-guardrails/jaffle-games-shop-storefront.webp" width="85%" title="The Jaffle Games Shop storefront on a nice, sunny day!" />
 
@@ -24,24 +29,22 @@ This post covers four patterns for cost-effectively using AI functions on your d
 
 ## Why AI functions get expensive
 
-Think of an AI function as an arcade machine that answers questions. Every question costs a coin, and a dbt model asks one question per row.
+Your normal intuition for what's expensive on a warehouse won't directly transfer to AI functions like Cortex's `AI_COMPLETE` and `AI_CLASSIFY`. They're billed by the token, which is a function of how much text you send and get back. Classifying 50k tweet-length reviews might take 4 million tokens (maybe $10-12), while the same number of support tickets could be 1-2 orders of magnitude higher. 
 
-AI functions (like Cortex's `AI_COMPLETE` and `AI_CLASSIFY`) are usually billed by the token, which is roughly the amount of text you send and get back. A table with tens of thousands of customer reviews adds up fast: a single run can cost hundreds of dollars. Dev runs, CI jobs, and full refreshes each pay that again.
+Those costs reflect a single run – the bill keeps ticking up as you iterate in development, then run CI checks, and finally deploy to a daily production build.
 
 At Jaffle Games Shop, customers write reviews in the store's review tool. Fivetran ingests them into the warehouse, where they land as raw data. From there, dbt takes over:
 
 1. A staging model, `stg_reviews`, tidies them up.
 2. A second model, `reviews_classified`, calls an AI function once for each review. You give the function a review and a list of topics, and it answers with the topic that fits best. For example, "My download code never arrived!" comes back as "order problems".
-dbt then saves those answers in a table, so every review ends up with its topic next to it. That also means every call costs money.
 
 <Lightbox src="/img/blog/2026-11-26-ai-function-guardrails/reviews-flow.webp" width="100%" title="The reviews DAG: raw.reviews flows into stg_reviews, which flows into reviews_classified" />
 
-The examples in this post use Snowflake Cortex functions, but the underlying dbt patterns are consistent regardless of the platform you're using.
-
+Note: the examples in this post use Snowflake Cortex functions, but the underlying dbt patterns are consistent regardless of the platform you're using.
 
 ## 1. Sample a handful of rows
 
-During development and CI, it's unnecessary to classify every single record on every single `dbt run`, when you just need to check that the system is working as expected. The data team at Jaffle Games Shop changed their `reviews_classified` model to only classify 50 random reviews outside of production environments. Here's how it looks now:
+During development and CI, it's unnecessary to classify every single record on every single `dbt run`, when you just need to check that the system is working as expected. The data team at Jaffle Games Shop changed their `reviews_classified` model to only classify 50 random reviews outside of production environments. Here's how they did it:
 
 ```sql
 select
@@ -49,12 +52,13 @@ select
     review_text,
     ai_classify(
         review_text,
-        ['delivery', 'download codes', 'price', 'gameplay', 'bugs']
-    ) as classification_raw
+        ['delivery', 'order problems', 'price', 'gameplay', 'bugs']
+    ) as classification,
+    _fivetran_synced
 
 from {{ ref('stg_reviews') }}
 
--- this is the guardrail: outside production, keep only 50 random reviews
+-- this is the guardrail: outside production, only classify 50 random reviews
 {% if env_var('DBT_CLOUD_ENVIRONMENT_TYPE', '') != 'prod' %}
     qualify row_number() over (order by random()) <= 50
 {% endif %}
@@ -64,9 +68,9 @@ dbt platform [automatically sets](/docs/build/environment-variables#special-envi
 
 ## 2. Check the price on a small sample first
 
-Before the first production run, the team wants to know what tagging the full reviews table will cost. Pattern 1 already gives them a 50-row sample run, so they use it to check what it spent.
+Before deploying to production, the team should sense-check the cost of tagging the full reviews table. The 50-row sample run provides concrete spend data that can be extrapolated.
 
-The following tabs some sql query examples using AI functions for some of the common warehouses used today. Make sure to double check the query and your warehouse's syntax:
+The following tabs provide example queries to fetch AI consumption for some common warehouses:
 
 <Tabs>
 
@@ -131,7 +135,7 @@ join system.billing.list_prices p
     and (p.price_end_time is null or u.usage_end_time < p.price_end_time)
 where u.billing_origin_product = 'AI_FUNCTIONS'
     and p.currency_code = 'USD'
-    and u.usage_date >= current_date()  -- filter to today
+    and u.usage_date >= current_date() - 2  -- look back 2 days, since records can take up to 12 hours to appear
 group by 1
 order by 3 desc;
 ```
@@ -156,7 +160,7 @@ select
     sku.description as sku,
     round(sum(cost) + sum(ifnull((select sum(c.amount) from unnest(credits) c), 0)), 4) as cost_after_credits
 from `<project>.<dataset>.gcp_billing_export_v1_<billing_account_id>`
-where usage_start_time >= timestamp(current_date())
+where usage_start_time >= timestamp(date_sub(current_date(), interval 2 day))  -- look back 2 days, since billing data can take up to 24 hours to appear
 group by 1, 2
 order by 3 desc;
 ```
@@ -175,15 +179,15 @@ Then do the math before committing to a full dataset run:
 
 Your warehouse might report usage in dollars, credits, or something else so make sure you convert it to dollars using what your account pays. So for example, if 50 rows cost $0.04, 60,000 rows will cost about $48. You can then decide if it's worth it.
 
-:::tip
+:::tip Share estimated cost in PR description
 Add the estimated total cost to your PR description since it can help reviewers decide whether the change is worth merging or not
 :::
 
 ## 3. Use incremental to avoid re-classifying existing rows
 
-New reviews arrive all day, but yesterday's reviews are already tagged. Tagging a review costs the same today as it did yesterday, so the team wants to tag each review once and keep the answer. For models that call `AI_CLASSIFY` on every row, make them incremental so already-classified rows are never touched again.
+New reviews arrive all day, but yesterday's reviews are already tagged. Re-classifying them would be a waste (and might lead to inconsistent results), so the team wants to tag each review once and keep the answer. Make these models incremental so that processed rows are never touched again.
 
-Here's the `reviews_classified` model as an incremental model, with pattern 1 included:
+Here's the `reviews_classified` model configured as an incremental model with sampling outside of prod:
 
 ```sql
 {{
@@ -195,23 +199,23 @@ Here's the `reviews_classified` model as an incremental model, with pattern 1 in
 
 select
     review_id,
+    review_text,
     ai_classify(
         review_text,
-        ['delivery', 'download codes', 'price', 'gameplay', 'bugs']
-    ) as classification_raw
+        ['delivery', 'order problems', 'price', 'gameplay', 'bugs']
+    ) as classification,
+    _fivetran_synced
 
 from {{ ref('stg_reviews') }}
 
 {% if is_incremental() %}
-    where review_id not in (select review_id from {{ this }})
+    where _fivetran_synced >= (select max(_fivetran_synced) from {{ this }})
 {% endif %}
 
 {% if env_var('DBT_CLOUD_ENVIRONMENT_TYPE', '') != 'prod' %}
     qualify row_number() over (order by random()) <= 50
 {% endif %}
 ```
-
-Each Fivetran sync brings in new reviews, and the model runs the AI function only on those. On GTA VI launch week, that's the difference between paying for 500 new reviews an hour and paying for every review since midnight, every hour. Without the incremental guard, every `dbt run` re-classifies the entire history.
 
 ## 4. Prevent accidental full refreshes
 
@@ -230,9 +234,11 @@ The risk is that the `--full-refresh` flag is a blunt instrument, regenerating a
 ```
 
 This says: don't rebuild this incremental model, regardless of the `--full-refresh` flag. Think of it as a safety cover on a big red button – bumping the button does nothing. To rebuild on purpose, you lift the cover by removing the override:
+
 ```shell
 dbt run -s reviews_classified --full-refresh --vars '{"refresh_review_tags": null}'
 ```
+
 This table shows what happens in each scenario:
 
 <SimpleTable>
@@ -251,29 +257,23 @@ This table shows what happens in each scenario:
 The [`full_refresh` config](/reference/resource-configs/full_refresh) has three states. When set to true, it will force a refresh whether or not the `--full-refresh` flag is present. Passing `--vars '{"refresh_review_tags": null}'` as a YAML dictionary is safer because it evaluates to `none` and requires the `--full-refresh` flag to also be present.
 :::
 
-## The four patterns at a glance
+## Summary
 
 <SimpleTable>
-| Rule | What it stops | How |
+| Rule | Why it matters | How to do it |
 | --- | --- | --- |
-| 1. Sample a handful of rows | Dev and CI runs paying for the full table | `env_var()` with a safe default |
-| 2. Check the price first | Finding out the cost after you've spent it | Your warehouse's usage view |
-| 3. Never pay twice | Re-tagging rows you already tagged | Incremental models |
-| 4. Prevent accidental full refreshes | Accidental full rebuilds that re-tag every row | `full_refresh` config set by a variable |
+| 1. Sample rows outside of prod | Reduces cost in lower environments | Filter on `env_var()` or `target.name` |
+| 2. Check the price first | Avoids sticker shock after deployment | Your warehouse's usage view |
+| 3. Use incremental models | Only process records once | Filter on modified date |
+| 4. Prevent accidental full refreshes | `--full-refresh` applies to all selected nodes | Add `full_refresh` config based on a variable |
 </SimpleTable>
-
-<Lightbox src="/img/blog/2026-11-26-ai-function-guardrails/four-guardrail-patterns.png" width="100%" title="The four guardrails in order: sample a handful of rows, check the price first, never pay twice, and prevent accidental full refreshes" />
 
 ## What's next
 
-Remember the arcade machine from earlier, where every question costs a coin and dbt asks one question per review? It now has a sign taped to it: "One coin per review. Please don't feed me twice." The four guardrails are the tape. Sampling keeps the number of coins down, the price check tells you how many coins a full run will take, and incremental models and protection from accidental full refreshes stop the same review being asked twice.
+These guardrails are the highest-leverage protections for basic scenarios. There are other situations worth considering: a row's change might be metadata other than the review, and changing the AI model or prompt used will invalidate earlier. 
 
-The sign covers the basics, and more scenarios need more. Rows can change after they've been processed, and changing your model or prompt makes earlier results out of date. [dbt-context-engineering](https://github.com/dbt-labs/dbt-context-engineering) has patterns for both, such as comparing a hash of each row's input and stamping each row with the model or prompt version. Check out those examples and share what worked (or didn't) in the [dbt Community Slack](https://www.getdbt.com/community).
+The [dbt-context-engineering](/blog/dbt-context-engineering) package includes macros to help with these more complex use cases, such as comparing a hash of each row's input and stamping each row with the model or prompt version. Check out those examples and share what worked (or didn't) in the [dbt Community Slack](https://www.getdbt.com/community).
 
-So the Jaffle Games Shop data team made it through the first rush of GTA VI launch week, with every review tagged and the AI function bill under control 👏. But launch week isn't over. The review topic list was written by hand, and launch-day reviews are full of things nobody predicted.
-
-<Lightbox src="/img/blog/2026-11-26-ai-function-guardrails/chuck-norris-meme.png" width="80%" title="Launch-day reviews were full of things nobody predicted" />
-
-In part 2 of this series, we'll let an AI function suggest the topics itself and show how to reuse these guardrails so it can't run twice on the same review.
+The Jaffle Games Shop data team made it through launch week with every review tagged and the AI bill under control 👏. But there's more to do. The reviews are full of things nobody predicted, and maintaining the list of themes by hand is brittle. In part 2 of this series, we'll let an AI function suggest the topics itself and show how to reuse these guardrails so it can't run twice on the same review.
 
 Launch week also brings a new mission: the support inbox is filling up and the team needs to know which tickets to answer first. That calls for a different kind of model, so in part 3 we'll sort the inbox with [Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev), a decision model, and the [`dbt-decisions`](https://github.com/dbt-labs/dbt-decisions) package.
