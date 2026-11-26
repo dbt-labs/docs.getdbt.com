@@ -464,7 +464,7 @@ In v2, it will not produce this extra column in the table resulting from `dbt se
 
 #### Seeds infer date and timestamp columns
 
-In v2, dbt infers a date or timestamp type. In <Constant name="core_v1" />, `dbt seed` loads dates and timestamps from your CSV as text. 
+In v2, dbt may infer a date or timestamp type for values that v1 left as text. For example, `2022-10-01 00:00:00.00` loads as text in <Constant name="core_v1" /> and as a timestamp in v2.
 
 This can also change values you already stored. If you reseed into a table with an existing `varchar` column, dbt can rewrite timestamp-like text in the process. For example, on Snowflake, `2022-10-01 00:00:00.00` becomes `2022-10-01T00:00:00`.
 
