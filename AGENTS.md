@@ -104,9 +104,10 @@ These rules are **mandatory** — incorrect branding is the most common docs err
 
 | Name | Usage | Notes |
 | --- | --- | --- |
-| **dbt** | Always lowercase | Generic references across all products |
-| **dbt Core** | Lowercase `dbt`, capital `C` | dbt versions ≤ 1.x |
-| **dbt Fusion engine** | Or just "Fusion" in docs | dbt versions ≥ 2.x |
+| **dbt** | Always lowercase | Default — Use for general features that don't need version gating (like for v1) or new default features going forward with v2 |
+| **dbt v1** | Always lowercase `dbt` | Formerly "dbt Core". dbt versions ≤ 1.x. Write `dbt v1` in a header or at the start of a sentence; use bare `v1` inline |
+| **dbt v2** | Always lowercase `dbt` | Formerly "Fusion" / "dbt Fusion engine" / "dbt Core 2.0". dbt versions ≥ 2.x. Write `dbt v2` in a header or at the start of a sentence; use bare `v2` inline |
+| **dbt OSS** | Hard-coded literal, no `<Constant>` | The Apache 2.0 open-source distribution of v2. Use instead of vague phrasings like "the open source layer/portions of v2". Not a synonym for dbt v2, which also covers the proprietary distribution |
 | **dbt platform** | Not "dbt Cloud" | The cloud-based platform (formerly dbt Cloud) |
 | **dbt Labs** | The company | When docs say "we," this is who "we" is |
 
@@ -120,9 +121,13 @@ All other features (models, environments, configs, settings) are common nouns.
 
 ```jsx
 <Constant name="dbt_platform" />   // → "dbt platform"
-<Constant name="fusion_engine" />  // → "dbt Fusion engine"
+<Constant name="fusion" />         // → "dbt v2"
+<Constant name="core" />           // → "dbt v1"
 <Constant name="studio_ide" />     // → "Studio IDE"
 ```
+
+Use the **specific** constant (`core` / `fusion`) when a reader needs to know which
+version a sentence refers to. Use `<Constant name="dbt" />` as the default and when the statement is product-agnostic.
 
 Refer to `website/constants.js` for constant names.
 
@@ -157,6 +162,21 @@ Full guide: `contributing/content-style-guide.md`
 | Cookbook | "How to [verb] [topic]" | "How to calculate ARR using metrics" |
 
 Full guide: `contributing/content-types.md`
+
+### Release notes
+
+dbt platform release notes live in one file: `website/docs/docs/dbt-versions/release-notes.md`. Don't create a new file for a release note.
+
+- Months are `##` headings (`## November 2026`), newest first.
+- Inside a month, notes are grouped by product area. Each area is a `####` heading with a month-qualified anchor, for example `#### Catalog {#catalog-november-2026}`.
+- Add the bullet under the matching area heading in the current month. If the month doesn't have that area yet, add the heading, keeping areas in the order they appear in `website/release-note-areas.json`.
+- Pick the area from `website/release-note-areas.json`. It lists every area with a one-line definition, plus the docs paths and product names that point to it. If nothing fits, use **dbt platform**.
+- If you can't tell which area fits, add the bullet directly under the month heading. The `File release notes by area` workflow (`.github/scripts/file_release_notes.py`) moves it under an area when the note has a docs link or product name, and otherwise asks in a pull request comment.
+- Under **dbt AI and agents**, Wizard notes go under a `##### Wizard` or `##### Wizard Desktop` sub-heading.
+- Start each bullet with `**New:**`, `**Enhancement:**`, `**Fix:**`, or `**Behavior change:**`.
+- Inside an area, keep notes in that order: New (including lifecycle labels such as Beta and Preview), Enhancement, Fix, then Behavior change. Put a new note first among the notes of its type.
+- Don't use `###` for areas. The RSS feed creates an item for every `##` and `###` heading in this file, so a new `###` heading notifies subscribers. `###` is only for event sections, such as summit announcements.
+- Don't rename or re-level existing `##` or `###` headings, for the same reason.
 
 ### Frontmatter
 
@@ -317,6 +337,7 @@ Terms defined in `website/docs/terms/hover-terms.md`.
 <Lifecycle status="preview" />
 <Lifecycle status="private_preview" />
 <Lifecycle status="beta" />
+<Lifecycle status="community_maintained" />
 ```
 Source for statuses: `website/src/components/lifeCycle/index.js`. GA is not used as a status — when a feature graduates to general availability, **remove the `<Lifecycle>` tag entirely** rather than looking for a "GA" value. If you're reviewing or updating an existing page, check whether a lingering Preview/Beta tag is actually still accurate.
 

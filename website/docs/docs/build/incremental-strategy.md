@@ -23,7 +23,7 @@ The [`microbatch` incremental strategy](/docs/build/incremental-microbatch) is i
 
 ### Supported incremental strategies by adapter
 
-This table shows the support of each incremental strategy across adapters available on Fusion or dbt's [Latest release track](/docs/dbt-versions/dbt-release-tracks). Some strategies may be unavailable if you're not on Latest and the feature hasn't been released to the Compatible track.
+This table shows the support of each incremental strategy across adapters available on <Constant name="fusion" /> or dbt's [**v1 Latest** release track](/docs/dbt-versions/dbt-release-tracks). Some strategies may be unavailable if you're not on **v1 Latest** and the feature hasn't been released to the **v1 Compatible** track.
 
 If you're interested in incremental strategies for additional adapters, check out the [adapter's individual configuration page](/reference/resource-configs) for more details.
 
@@ -42,6 +42,7 @@ Click the name of the adapter in the following table for more information about 
 | [dbt-athena](/reference/resource-configs/athena-configs#incremental-models)                         |     ✅    |    ✅   |     | ✅ | ✅  |
 | [dbt-teradata](/reference/resource-configs/teradata-configs#valid_history-incremental-materialization-strategy)  | ✅    |  ✅   |   ✅   |    |         ✅    |
 | [dbt-duckdb](/reference/resource-configs/duckdb-configs#incremental)  | ✅    |  ✅   |   ✅   |    |         ✅    |
+| [dbt-clickhouse](/reference/resource-configs/clickhouse-configs#incremental-models) | ✅ |  | ✅ | ✅ | |
 
 ### Configuring incremental strategy
 
@@ -179,6 +180,8 @@ select * from {{ ref("some_model") }}
 ```
 
 #### About built-in incremental strategies
+
+<Lightbox src="/img/docs/building-a-dbt-project/incremental-strategies-diagram.png" width="90%" alt="Three before-and-after tables showing how append, merge and delete+insert handle an updated row and a new row." title="How `append`, `merge` and `delete+insert` alter existing and new rows." />
 
 ##### `append`
 

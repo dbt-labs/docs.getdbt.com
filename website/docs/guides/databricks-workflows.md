@@ -7,7 +7,7 @@ hoverSnippet: Learn how to use Databricks workflows to run dbt jobs
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'databricks'
 hide_table_of_contents: true
-tags: ['Databricks', 'dbt Core','dbt platform','Orchestration']
+tags: ['Databricks', 'dbt platform', 'Orchestration']
 level: 'Intermediate'
 ---
 
@@ -83,7 +83,7 @@ def _trigger_job() -> int:
         url=f"https://{base_url}/api/v2/accounts/{account_id}/jobs/{job_id}/run/",
         headers={'Authorization': f"Token {api_key}"},
         json={
-            # Optionally pass a description that can be viewed within the <Constant name="dbt" /> API.
+            # Optionally pass a description that can be viewed within the dbt API.
             # See the API docs for additional parameters that can be passed in,
             # including `schema_override` 
             'cause': f"Triggered by Databricks Workflows.",

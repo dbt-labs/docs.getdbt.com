@@ -15,7 +15,7 @@ The <Constant name="semantic_layer" /> offers a seamless integration with Google
 
 ## Prerequisites
 
-- You have [configured the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher.
+- You have [configured the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher. If you haven't created metrics yet, start with the [Quickstart for the <Constant name="semantic_layer" />](/guides/sl-qs).
 - You need a Google account with access to Google Sheets and the ability to install Google add-ons.
 - You have a [<Constant name="dbt" /> Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer).
 - You have a [service token](/docs/dbt-apis/service-tokens) or a [personal access token](/docs/dbt-apis/user-tokens) to authenticate with from a <Constant name="dbt" /> account.
@@ -55,7 +55,7 @@ Private selections mean your inputs are only visible to you. Note that anyone ad
 <!-- this comment explains the following:
 1. uses the /snippets/_sl-excel-gsheets.md snippet file to render gsheets and excel content since they're similar
 2. removes the below content (tip and using saved queries header) so it's not duplicative. removing the below content fully a month or so after the launch.
-3. keep tje limited policy section in gsheets only and do not add to the /snippets/_sl-excel-gsheets.md snippet file.
+3. keep the limited policy section in gsheets only and do not add to the /snippets/_sl-excel-gsheets.md snippet file.
 
 ## Using saved selections
 

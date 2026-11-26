@@ -20,7 +20,7 @@ With <Constant name="catalog" />, you can view your project's [resources](/docs/
 
 </IntroText>
 
-Use <Constant name="catalog" /> to navigate and manage your projects within <Constant name="dbt" /> to help you and other data developers, analysts, and consumers discover and leverage your dbt resources. <Constant name="catalog" /> integrates with the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), [dbt <Constant name="insights" />](/docs/explore/dbt-insights), [<Constant name="orchestrator" />](/docs/deploy/deployments), and [<Constant name="canvas" />](/docs/platform/canvas) to help you develop or view your dbt resources.
+Use <Constant name="catalog" /> to navigate and manage your projects within <Constant name="dbt" /> to help you and other data developers, analysts, and consumers discover and leverage your dbt resources. <Constant name="catalog" /> integrates with the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) and [<Constant name="orchestrator" />](/docs/deploy/deployments) to help you develop or view your dbt resources.
 
 ## Prerequisites
 
@@ -34,18 +34,12 @@ import Generatemetadata from '/snippets/_generate-metadata.md';
 <Generatemetadata /> 
 
 :::tip
-If your organization works in both dbt Core and Cloud, you can unify these workflows by automatically uploading dbt Core artifacts into dbt Cloud and viewing them in <Constant name="catalog" /> for a more connected dbt experience. To learn more, visit [hybrid projects](/docs/deploy/hybrid-projects).
+If your organization works in both <Constant name="core" /> and Cloud, you can unify these workflows by automatically uploading <Constant name="core" /> artifacts into dbt Cloud and viewing them in <Constant name="catalog" /> for a more connected dbt experience. To learn more, visit [hybrid projects](/docs/deploy/hybrid-projects).
 :::
-
-### External metadata ingestion <Lifecycle status="preview" />
-
-Connect directly to your data warehouse with [external metadata ingestion](/docs/explore/external-metadata-ingestion), giving you visibility into tables, views, and other resources that aren't defined in dbt with <Constant name="catalog" />.
-
-We create dbt metadata and pull external metadata. <Constant name="catalog" /> uses the metadata provided by the [Discovery API](/docs/dbt-apis/discovery-api) to display details about the state of your project. The available metadata depends on which [deployment environment](/docs/deploy/deploy-environments) you’ve designated as production or staging in your dbt project.
 
 ## Catalog overview 
 
-:::info [Global navigation](/docs/explore/global-navigation) <Lifecycle status='self_service,managed,managed_plus' />
+:::info [Global navigation](/docs/explore/global-navigation)
 
 <Constant name="catalog" /> introduces the ability to widen your search by including dbt resources (models, seeds, snapshots, sources, exposures, and more) across your entire account. This broadens the results returned and gives you greater insight into all the assets across your dbt projects. Learn more in [Global navigation](/docs/explore/global-navigation) or in our [video overview](https://www.loom.com/share/ae93b3d241cd439fbe5f98f5e6872113?).
 
@@ -69,7 +63,6 @@ When using global navigation and searching across your projects, the following p
 
 - Your project access permissions determine which dbt projects appear in the left-hand menu of the global navigation.
 - In <Constant name="catalog" /> searches, we use soft access controls, you'll see all matching resources in search results, with clear indicators for items you don't have access to.
-- For external metadata, the global platform credential controls which resources metadata users can discover. See [External metadata ingestion](/docs/explore/external-metadata-ingestion) for more details.
 
 ### Availability by plan
 
@@ -77,7 +70,7 @@ When using global navigation and searching across your projects, the following p
 
 | Feature | Starter | Enterprise | Enterprise+ |
 |---------|:-------:|:----------:|:-----------:|
-| Core lineage & resource browsing | ✅ | ✅ | ✅ |
+| dbt lineage & resource browsing | ✅ | ✅ | ✅ |
 | [Global navigation](/docs/explore/global-navigation) | ✅ | ✅ | ✅ |
 | [Data health signals](/docs/explore/data-health-signals) | ✅ | ✅ | ✅ |
 | [Model performance](/docs/explore/model-performance) | ❌ | ✅ | ✅ |
@@ -87,7 +80,8 @@ When using global navigation and searching across your projects, the following p
 | [Model query history](/docs/explore/model-query-history) | ❌ | ✅ | ✅ |
 | [Downstream exposures](/docs/explore/view-downstream-exposures) | ❌ | ✅ | ✅ |
 | [Data health tile](/docs/explore/data-tile) | ❌ | ✅ | ✅ |
-| [External metadata ingestion](/docs/explore/external-metadata-ingestion) | ❌ | ✅ | ✅ |
+
+This table covers <Constant name="catalog" /> only. Refer to [Column-level lineage](/docs/explore/column-level-lineage) to learn how you can use this feature locally.
 
 import ExplorerCourse from '/snippets/_explorer-course-link.md';
 
@@ -239,7 +233,7 @@ From the sidebar, you can browse your project's resources, its file tree, and th
 
 ## Integrated tool access
 
-Users with a [developer license](/docs/platform/manage-access/about-user-access#license-based-access-control) or an analyst seat\* can open a resource directly from the <Constant name="catalog" /> in the <Constant name="studio_ide" /> to view its model files, in <Constant name="insights" /> to query it, or in <Constant name="canvas" /> for visual editing.
+Users with a [developer license](/docs/platform/manage-access/about-user-access#license-based-access-control) or an analyst seat\* can open a resource directly from the <Constant name="catalog" /> in the <Constant name="studio_ide" /> to view its model files.
 
 \* The [Analyst license type](/docs/platform/manage-access/about-user-access?version=1.12#licenses) is not available for new purchase.
 

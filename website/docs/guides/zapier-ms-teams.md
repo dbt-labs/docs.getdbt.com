@@ -28,7 +28,7 @@ When a <Constant name="dbt" /> job finishes running, the integration will:
  - Extract the results from the <Constant name="dbt" /> admin API, and
  - Post a summary to a Microsoft Teams channel.
 
-![Screenshot of a message in MS Teams showing a summary of a <Constant name="dbt" /> run which failed](/img/guides/orchestration/webhooks/zapier-ms-teams/ms-teams-ui.png)
+<Lightbox src="/img/guides/orchestration/webhooks/zapier-ms-teams/ms-teams-ui.png" title="Screenshot of a message in MS Teams showing a summary of a dbt run which failed" />
 
 ### Prerequisites
 
@@ -47,7 +47,7 @@ Use **Webhooks by Zapier** as the Trigger, and **Catch Raw Hook** as the Event. 
 
 Press **Continue**, then copy the webhook URL. 
 
-![Screenshot of the Zapier UI, showing the webhook URL ready to be copied](/img/guides/orchestration/webhooks/zapier-common/catch-raw-hook.png)
+<Lightbox src="/img/guides/orchestration/webhooks/zapier-common/catch-raw-hook.png" title="Screenshot of the Zapier UI, showing the webhook URL ready to be copied" />
 
 ### 3. Configure a new webhook in dbt
 
@@ -72,11 +72,11 @@ Select **Code by Zapier** as the App, and **Run Python** as the Event.
 
 In the **Set up action** area, add two items to **Input Data**: `raw_body` and `auth_header`. Map those to the `1. Raw Body` and `1. Headers Http Authorization` fields from the **Catch Raw Hook** step above.
 
-![Screenshot of the Zapier UI, showing the mappings of raw_body and auth_header](/img/guides/orchestration/webhooks/zapier-common/run-python.png)
+<Lightbox src="/img/guides/orchestration/webhooks/zapier-common/run-python.png" title="Screenshot of the Zapier UI, showing the mappings of raw_body and auth_header" />
 
 In the **Code** field, paste the following code, replacing `YOUR_SECRET_HERE` with the secret you created when setting up the Storage by Zapier integration. Remember that this is not your <Constant name="dbt" /> secret.
 
-The code below will validate the authenticity of the request, extract the run logs for the completed job from the Admin API, and then build a summary message that pulls out any error messages from the end-of-invocation logs created by <Constant name="core" />.
+The code below will validate the authenticity of the request, extract the run logs for the completed job from the Admin API, and then build a summary message that pulls out any error messages from the end-of-invocation logs created by dbt.
 
 ```python
 import hashlib
@@ -97,7 +97,7 @@ api_token = secret_store.get('DBT_CLOUD_SERVICE_TOKEN')
 signature = hmac.new(hook_secret.encode('utf-8'), raw_body.encode('utf-8'), hashlib.sha256).hexdigest()
 
 if signature != auth_header:
-  raise Exception("Calculated signature doesn't match contents of the Authorization header. This webhook may not have been sent from <Constant name="dbt" />.")
+  raise Exception("Calculated signature doesn't match contents of the Authorization header. This webhook may not have been sent from dbt.")
 
 full_body = json.loads(raw_body)
 hook_data = full_body['data'] 
@@ -165,7 +165,7 @@ Select **Microsoft Teams** as the App, and **Send Channel Message** as the Actio
 
 In the **Set up action** area, choose the team and channel. Set the **Message Text Format** to **markdown**, then put **2. Outcome Message** from the Run Python in Code by Zapier output into the **Message Text** field. 
 
-![Screenshot of the Zapier UI, showing the mappings of prior steps to an MS Teams message](/img/guides/orchestration/webhooks/zapier-ms-teams/ms-teams-zap-config.png)
+<Lightbox src="/img/guides/orchestration/webhooks/zapier-ms-teams/ms-teams-zap-config.png" title="Screenshot of the Zapier UI, showing the mappings of prior steps to an MS Teams message" />
 
 ## Test and deploy
 

@@ -3,7 +3,7 @@ title: "begin"
 id: "begin"
 sidebar_label: "begin"
 resource_types: [models]
-description: "dbt uses `begin` to determine when a microbatch incremental model should begin from. When defined on a micorbatch incremental model, `begin` is used as the lower time bound when the model is built for the first time or fully refreshed."
+description: "dbt uses `begin` to determine when a microbatch incremental model should begin from. When defined on a microbatch incremental model, `begin` is used as the lower time bound when the model is built for the first time or fully refreshed."
 datatype: string
 ---
 

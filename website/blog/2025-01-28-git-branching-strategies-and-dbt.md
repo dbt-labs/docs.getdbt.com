@@ -592,7 +592,7 @@ Here’s the additional setup steps in a nutshell (using the name `qa` for our m
     - Protect `qa` with branch protection rules
 - dbt Cloud
     - Development\: Switch your environment to use the **custom branch** option and specify `qa`. This will base developers now off of `qa` code.
-    - Continous Integration\: If you have an existing job for this, ensure the **custom branch** is changed to `qa`. This will change the CI job’s trigger to occur on pull requests to `qa`.
+    - Continuous Integration\: If you have an existing job for this, ensure the **custom branch** is changed to `qa`. This will change the CI job’s trigger to occur on pull requests to `qa`.
 
 **At this point, your developers will be following the indirect promotion workflow and you can continue working on things in the background.** You may still need to set up a database, database permissions, environments, deployment jobs, etc. Here is a short checklist to help you out! Refer back to our section on indirect promotion for many more details\:
 

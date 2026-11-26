@@ -1,0 +1,21 @@
+# Vale rule to LAND in the repo styles dir (e.g. styles/custom/Terminology.yml)
+# and register in .vale.ini for website/docs/** and website/snippets/**.
+# Ship in the same PR as the rename so the old terms can't regress.
+#
+# Mapping: Fusion / dbt Fusion engine -> dbt v2 ; dbt Core -> dbt v1.
+# NOTE: Vale can't do sentence-position trimming (dbt v1 vs v1) — it flags the
+# retired terms and suggests the specific-version replacement. Scope to docs +
+# snippets; EXCLUDE website/blog/** and release notes in .vale.ini (Vale skips
+# fenced code by default for .md).
+extends: substitution
+message: "Use the current naming: '%s' should be renamed (Fusion → dbt v2, dbt Core → dbt v1). See the Product Rename Strategy."
+level: error
+ignorecase: false
+swap:
+  'dbt Fusion engine': dbt v2
+  'dbt Fusion': dbt v2
+  '\bFusion engine\b': dbt v2
+  '\bFusion\b': dbt v2
+  'dbt Core 2\.0': dbt v2
+  '\bCore v2\b': dbt v2
+  'dbt Core': dbt v1

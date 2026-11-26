@@ -15,7 +15,7 @@ availability:
 
 # Available integrations
 
-There are a number of data applications that seamlessly integrate with the <Constant name="semantic_layer" />, powered by MetricFlow, from business intelligence tools to notebooks, spreadsheets, data catalogs, and more. These integrations allow you to query and unlock valuable insights from your data ecosystem.
+There are a number of data applications that seamlessly integrate with the <Constant name="semantic_layer" />, powered by MetricFlow, from business intelligence tools (like [dbt Charts](https://dbtcharts.com/)) to notebooks, spreadsheets, data catalogs, and more. These integrations allow you to query and unlock valuable insights from your data ecosystem.
 
 Use the [<Constant name="semantic_layer" /> APIs](/docs/dbt-apis/sl-api-overview) to simplify metric queries, optimize your development workflow, and reduce coding. This approach also ensures data governance and consistency for data consumers.
 
@@ -33,6 +33,7 @@ import AvailIntegrations from '/snippets/_sl-partner-links.md';
 
 ## Related docs
 
+- [Quickstart for the <Constant name="semantic_layer" />](/guides/sl-qs)
 - <span><a href="https://docs.getdbt.com/docs/dbt-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span> to learn how to integrate and query your metrics in downstream tools.
 - [<Constant name="semantic_layer" /> API query syntax](/docs/dbt-apis/sl-jdbc#querying-the-api-for-metric-metadata) 
 - [Hex <Constant name="semantic_layer" /> cells](https://learn.hex.tech/docs/explore-data/cells/data-cells/dbt-metrics-cells) to set up SQL cells in Hex.

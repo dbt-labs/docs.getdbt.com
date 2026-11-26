@@ -6,6 +6,7 @@ availability: all_users
 ---
 
 ## Related reference docs
+* [Jinja support by file type](/reference/jinja-file-support)
 * [Jinja Template Designer Documentation](https://jinja.palletsprojects.com/page/templates/) (external link)
 * [dbt Jinja context](/reference/dbt-jinja-functions-context-variables)
 * [Macro properties](/reference/macro-properties)
@@ -76,11 +77,11 @@ group by 1
 You can recognize Jinja based on the delimiters the language uses, which we refer to as "curlies":
 - **Expressions `{{ ... }}`**: Expressions are used when you want to output a string. You can use expressions to reference [variables](/reference/dbt-jinja-functions/var) and call [macros](/docs/build/jinja-macros#macros).
 - **Statements `{% ... %}`**: Statements don't output a string. They are used for control flow, for example, to set up `for` loops and `if` statements, to [set](https://jinja.palletsprojects.com/en/3.1.x/templates/#assignments) or [modify](https://jinja.palletsprojects.com/en/3.1.x/templates/#expression-statement) variables, or to define macros.
--  **Comments `{# ... #}`**: Jinja comments are used to prevent the text within the comment from executing or outputing a string. Don't use `--` for comment.
+-  **Comments `{# ... #}`**: Jinja comments are used to prevent the text within the comment from executing or outputting a string. Don't use `--` for comment.
 
 When used in a dbt model, your Jinja needs to compile to a valid query. To check what SQL your Jinja compiles to:
 * **Using <Constant name="dbt" />:** Click the compile button to see the compiled SQL in the Compiled SQL pane
-* **Using dbt Core:** Run `dbt compile` from the command line. Then open the compiled SQL file in the `target/compiled/{project name}/` directory. Use a split screen in your code editor to keep both files open at once.
+* **Using <Constant name="core" />:** Run `dbt compile` from the command line. Then open the compiled SQL file in the `target/compiled/{project name}/` directory. Use a split screen in your code editor to keep both files open at once.
 
 ### Macros
 [Macros](/docs/build/jinja-macros) in Jinja are pieces of code that can be reused multiple times – they are analogous to "functions" in other programming languages, and are extremely useful if you find yourself repeating code across multiple models. Macros are defined in `.sql` files, typically in your `macros` directory ([docs](/reference/project-configs/macro-paths)).
@@ -152,6 +153,7 @@ from my_table
 ```
 
 You can also qualify a macro in your own project by prefixing it with your [package name](/reference/dbt-jinja-functions/project_name) (this is mainly useful for package authors).
+
 
 ## FAQs
 

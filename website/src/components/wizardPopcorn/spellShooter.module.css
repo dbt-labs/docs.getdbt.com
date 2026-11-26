@@ -1,0 +1,141 @@
+/* SpellShooter — the 15-second parse-error shootout behind WizardPopcorn. */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  display: grid;
+  place-items: center;
+  background: rgba(10, 8, 18, 0.72);
+  backdrop-filter: blur(4px);
+}
+
+.panel {
+  position: relative;
+  border-radius: 12px;
+  background: #14101f;
+  border: 1px solid rgba(176, 163, 255, 0.35);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+  padding: 0.75rem;
+  outline: none;
+  max-width: calc(100vw - 2rem);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.15rem 0.25rem 0.6rem;
+}
+
+.title {
+  font-family: Menlo, ui-monospace, SFMono-Regular, Monaco, Consolas, monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: #d9c8ff;
+}
+
+.close {
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0 0.25rem;
+  font-size: 14px;
+  line-height: 1;
+  color: #8f87a8;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #ffffff;
+}
+
+.stage {
+  position: relative;
+  line-height: 0;
+}
+
+.canvas {
+  display: block;
+  border-radius: 8px;
+  max-width: 100%;
+  cursor: crosshair;
+}
+
+/* End-of-round card, laid over the frozen final frame. */
+.result {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 8px;
+  background: rgba(20, 16, 31, 0.88);
+  font-family: Menlo, ui-monospace, SFMono-Regular, Monaco, Consolas, monospace;
+  /* .stage zeroes line-height to kill the canvas's inline gap — restore it
+     here or the score and verdict lines stack on top of each other. */
+  line-height: 1.4;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.resultScore {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #c9bcff;
+  text-shadow: 0 0 14px rgba(139, 107, 255, 0.8);
+}
+
+.resultVerdict {
+  margin: 0;
+  font-size: 14px;
+  color: #9be8a8;
+}
+
+.resultActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+.again,
+.backToDocs {
+  appearance: none;
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  border: 1px solid rgba(176, 163, 255, 0.5);
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+  color: #d9c8ff;
+  cursor: pointer;
+}
+
+/* The replay button is the primary action, so it carries the fill. */
+.again {
+  border-color: rgba(176, 163, 255, 0.8);
+  background: rgba(176, 163, 255, 0.18);
+}
+
+.again:hover,
+.backToDocs:hover {
+  background: rgba(176, 163, 255, 0.3);
+}
+
+.backToDocs {
+  border-color: rgba(176, 163, 255, 0.3);
+  color: #a99fc4;
+}
+
+.hint {
+  margin: 0.6rem 0 0.15rem;
+  text-align: center;
+  font-family: Menlo, ui-monospace, SFMono-Regular, Monaco, Consolas, monospace;
+  font-size: 11px;
+  color: #8f87a8;
+}

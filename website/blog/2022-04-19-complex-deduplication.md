@@ -46,7 +46,7 @@ The combination of `entity_id` + [changing column(s)] you want to capture become
 | 1_submitted  | 1         | cool              | submitted        | 2022-03-03   |
 | 2_pending    | 2         | cool              | pending          | 2022-02-27   |
 
-Now the `entity_grain` clearly shows us which rows are duplicates! We only need to keep the most recent one, so row 2 above can be removed from the cleaned dataset, giving us the output below. In our full process below, we’ll make this concatenated key into a proper id, but this is funamentally what's happening under the hood.  
+Now the `entity_grain` clearly shows us which rows are duplicates! We only need to keep the most recent one, so row 2 above can be removed from the cleaned dataset, giving us the output below. In our full process below, we’ll make this concatenated key into a proper id, but this is fundamentally what's happening under the hood.  
 
 | entity_grain | entity_id | unimportant_value | important_status | updated_date |
 |--------------|-----------|-------------------|------------------|--------------|
@@ -175,6 +175,6 @@ To recap, we took the following steps to identify and eliminate partial duplicat
 
 These kinds of transformations not only help clean up your data, but they play a bigger part in crafting  your data sets into what you need to capture in order to generate real value *and* contribute to real understanding of datasets among your data consumers. Remember that these datasets work for **you** — you are skilled enough to mold these datasets into your vision, to reflect the questions you and your customers want to answer. Nobody puts Baby in a corner! Not even data.
 
-![Dirty dancing - nobody puts baby in a corner!](/img/blog/2022-04-19-complex-deduplication/dancing-baby.gif)
+<Lightbox src="/img/blog/2022-04-19-complex-deduplication/dancing-baby.gif" title="Dirty dancing - nobody puts baby in a corner!" />
 
 You don’t have to be pigeon-holed by the grain of the source data or the massive number of value changes captured by history tables. You decide what a clean dataset looks like, which columns are of value, and use those sweet, sweet analytics-engineering skills to build a model how you see fit. We’re all so proud of you! Carry on, friend.

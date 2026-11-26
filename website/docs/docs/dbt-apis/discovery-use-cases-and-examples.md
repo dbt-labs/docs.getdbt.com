@@ -162,10 +162,13 @@ plt.show()
 
 Plotting examples:
 
+<DocCarousel slidesPerView={1}>
+
 <Lightbox src="/img/docs/dbt-platform/discovery-api/plot-of-runelapsedtime.png" width="80%" title="The plot of runElapsedTime over time"/>
 
-
 <Lightbox src="/img/docs/dbt-platform/discovery-api/plot-of-executiontime.png" width="80%" title="The plot of executionTime over time"/>
+
+</DocCarousel>
 
 </details>
 

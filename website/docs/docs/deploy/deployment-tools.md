@@ -19,12 +19,17 @@ If your organization uses [Airflow](https://airflow.apache.org/), there are a nu
 
 Installing the [<Constant name="dbt" /> Provider](https://airflow.apache.org/docs/apache-airflow-providers-dbt-cloud/stable/index.html) to orchestrate <Constant name="dbt" /> jobs. This package contains multiple Hooks, Operators, and Sensors to complete various actions within <Constant name="dbt" />.
 
+<DocCarousel slidesPerView={1}>
+
 <Lightbox src="/img/docs/running-a-dbt-project/airflow_dbt_connector.png" title="Airflow DAG using DbtCloudRunJobOperator"/>
+
 <Lightbox src="/img/docs/running-a-dbt-project/dbt_cloud_airflow_trigger.png" title="dbt job triggered by Airflow"/>
+
+</DocCarousel>
 
 </TabItem>
 
-<TabItem value="airflowcore" label="dbt Core">
+<TabItem value="airflowcore" label="dbt v1">
 
 Invoking <Constant name="core" /> jobs through the [BashOperator](https://registry.astronomer.io/providers/apache-airflow/modules/bashoperator). In this case, be sure to install dbt into a virtual environment to avoid issues with conflicting dependencies between Airflow and dbt.
 
@@ -103,7 +108,7 @@ If your organization uses [Prefect](https://www.prefect.io/), the way you will r
 
 </TabItem>
 
-<TabItem value="prefect2core" label="dbt Core">
+<TabItem value="prefect2core" label="dbt v1">
 
 - Use the [trigger_dbt_cli_command](https://prefecthq.github.io/prefect-dbt/cli/commands/#prefect_dbt.cli.commands.trigger_dbt_cli_command) task. 
 - For details on both of these methods, see [prefect-dbt docs](https://prefecthq.github.io/prefect-dbt/).
@@ -124,7 +129,7 @@ If your organization uses [Prefect](https://www.prefect.io/), the way you will r
 
 </TabItem>
 
-<TabItem value="prefect1core" label="dbt Core">
+<TabItem value="prefect1core" label="dbt v1">
 
 - Use the [DbtShellTask](https://docs.prefect.io/api/latest/tasks/dbt.html#dbtshelltask) to schedule, execute, and monitor your dbt runs. 
 - Use the supported [ShellTask](https://docs.prefect.io/api/latest/tasks/shell.html#shelltask) to execute dbt commands through the shell.

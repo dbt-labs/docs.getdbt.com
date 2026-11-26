@@ -7,25 +7,74 @@ pagination_prev: null
 availability: all_users
 ---
 
-v2 is the current generation of dbt &mdash; installing or upgrading gives you <Constant name="fusion_engine"/>, the default experience. <Constant name="core_v2"/> is the Apache 2.0 foundation underneath Fusion. <Constant name="core_v1"/> (Python-based, open-source) remains on the 1.x series and follows semantic versioning; v2 uses the 2.x series. This page covers versioning for local dbt installations.
+dbt v2 is the current generation of dbt and uses the 2.x release series. dbt v1 is the Python-based generation and stays on the 1.x series. Both follow semantic versioning. This page covers versioning for local dbt installations.
+
+v2 ships in two distributions. Install dbt v2 for the full, recommended experience. If your organization has a strict requirement for an Apache 2.0 licensed runtime, install dbt OSS instead. For more information, refer to [dbt licensing](/docs/dbt-licensing).
 
 If you're using the <Constant name="dbt_platform" /> (including the <Constant name="platform_cli"/>), you don't need to manage dbt versions yourself. [Release tracks](/docs/dbt-versions/dbt-release-tracks) automatically keep you up to date and provide early access to new features.
 
-## dbt Fusion engine versioning
+## <Constant name="fusion_engine" /> versioning
 
-The <Constant name="fusion_engine"/> uses semantic versioning starting with version 2.0. To install or update <Constant name="fusion"/>, see [Install dbt](/docs/local/install-dbt?version=2).
+<Constant name="fusion_engine"/> uses semantic versioning starting with version 2.0. To install or update <Constant name="fusion"/>, see [Install dbt](/docs/local/install-dbt?version=2).
+
+### Latest release
+
+| dbt v2 | Initial release | Support level and end date |
+|:---:|:---:|:---:|
+| [**v2.0**](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) | Sept 14, 2026 | **Active support &mdash; Sept 13, 2027** |
 
 ### Semantic versioning
 
 <Constant name="fusion" /> follows [semantic versioning](https://semver.org/):
 
 - **Major versions** (for example, v2 to v3) may include breaking changes. Deprecated functionality will stop working.
-- **Minor versions** (for example, v2.0 to v2.1) add features and are backwards compatible. They will not break project code that relies on documented functionality.
+- **Minor versions** (for example, v2.0 to v2.1) add features and are backwards compatible. They will not break project code that relies on documented functionality. Any deliberate behavior change ships behind a [behavior change flag](/reference/global-configs/behavior-changes), and we give advanced notice before the default flag value flips.
 - **Patch versions** (for example, v2.0.0 to v2.0.1) include fixes only: bug fixes, security fixes, or installation fixes.
+
+### Types of changes
+
+Changes to the v2 engine fall into three categories:
+
+- **New features**: Net new capabilities, frequently with new YAML configs or flags. As these are new features that require additional configuration, they will not break existing projects.
+- **Non-breaking improvements**: Optimizations, feature improvements, bug fixes, or security patches that are not expected to break a deployment with automatic upgrades. They roll out continuously and are sometimes [backported](#backports) to previous minor versions.
+- **Behavior changes** are deliberate, but breaking, changes to existing behavior. They're released behind a [behavior change flag](/reference/global-configs/behavior-changes). The flag starts opt-in (default `false`), and later becomes the default so the new behavior applies to everyone.
+
+### Prerelease stages and the release cycle {#prerelease-stages}
+
+Each v2 minor version moves through three prerelease stages before it reaches GA and becomes stable:
+
+| Stage | What can change |
+|-------|-----------------|
+| **Alpha** | Any change is acceptable. New behavior change flags can be introduced, and existing flags can be flipped so the new behavior is the default. |
+| **Beta** | Most changes are acceptable. New behavior change flags can be introduced, but existing flags cannot be flipped to default behavior. |
+| **Release candidate (RC)** | Considered to be ready for GA, so this stage acts as a code freeze. Only small, non-breaking patches land. No new behavior change flags and no existing behavior change flags can be flipped to default behavior. |
+
+Each minor version starts at its first alpha (for example, `2.1.0a1`). Successive alpha releases build toward beta, then RC, and finally GA. When a minor version reaches GA, the first alpha of the next minor version opens, cut from the latest nightly build.
+
+Using 2.1 as an example:
+
+```txt
+2.1.0a1  → a2  → …   Bigger changes and behavior-default flips
+              ↓
+2.1.0b1  → b2  → …   More improvements; no default flips
+              ↓
+2.1.0rc1 → rc2 → …   Small, non-breaking patches
+              ↓
+2.1.0 GA             Stable release
+              └──────→ 2.2.0a1 opens immediately
+```
+
+Because default flag flips only occur during alpha, the behavior defaults of a minor version are settled by the time it reaches beta. This gives you time to test and prepare before GA. For the current prerelease, refer to [dbt releases](/docs/dbt/dbt-releases).
+
+### Backports {#backports}
+
+A backport is a patch made to a previous minor version of dbt. Backports are made only when explicitly requested or when a security patch is identified internally or externally. A backport contains only the fix, not other updates made to the newer minor version.
+
+For example, suppose a fix is first released in a prerelease of a minor version. If it's backported, it also ships as a new patch of the current minor version, which contains only that fix. For example, a fix released in 2.2.0b1 could be backported to the GA 2.1 release as a patch. 
 
 ### Release channels
 
-<Constant name="fusion" /> is distributed through release channels during the preview period:
+<Constant name="fusion" /> is distributed through release channels:
 
 | Channel | Description | Stability |
 |---------|-------------|-----------|
@@ -35,7 +84,7 @@ The <Constant name="fusion_engine"/> uses semantic versioning starting with vers
 
 Run `dbt system update` to get the latest stable release, or specify a channel with `dbt system update --version canary`.
 
-For current versions and release history, see [<Constant name="fusion"/> releases](/docs/fusion/fusion-releases).
+For current versions and release history, see [<Constant name="fusion"/> releases](/docs/dbt/dbt-releases).
 
 ### Checking your version
 
@@ -43,16 +92,16 @@ Run `dbt --version` to check your installed version:
 
 ```
 $ dbt --version
-dbt Fusion 2.0.0-preview.126
+dbt v2 2.0.0
 ```
 
 ### Further reading
 
-- [Install <Constant name="fusion"/>](/docs/local/install-dbt?version=2): Install or update the <Constant name="fusion_engine" />.
-- [<Constant name="fusion"/> releases](/docs/fusion/fusion-releases): View current versions and release history.
-- [Get started with <Constant name="fusion"/>](/docs/fusion/get-started-fusion): Learn about <Constant name="fusion" /> features and migration.
+- [Install <Constant name="fusion"/>](/docs/local/install-dbt?version=2): Install or update <Constant name="fusion_engine" />.
+- [<Constant name="fusion"/> releases](/docs/dbt/dbt-releases): View current versions and release history.
+- [Get started with <Constant name="fusion"/>](/docs/dbt/get-started-dbt): Learn about <Constant name="fusion" /> features and migration.
 
-## dbt Core versioning
+## <Constant name="core" /> versioning
 
 The <Constant name="core"/> engine uses semantic versioning for the 1.x release series. To install or update <Constant name="core"/>, see [Install dbt](/docs/local/install-dbt?version=1).
 
@@ -60,7 +109,7 @@ The <Constant name="core"/> engine uses semantic versioning for the 1.x release 
 
 <Snippet path="core-versions-table" />
 
-### How dbt Core uses semantic versioning
+### How <Constant name="core" /> uses semantic versioning {#how-dbt-v1-uses-semantic-versioning}
 
 dbt follows [semantic versioning](https://semver.org/):
 
@@ -109,6 +158,12 @@ Refer to [Supported data platforms](/docs/supported-data-platforms) for the full
 
 ## End-of-life versions
 
+:::info
+
+On <Constant name="legacy_deprecation_date" />, <Constant name="dbt" /> versions v1.3-v1.7 will be deprecated and removed from availability in <Constant name="dbt_platform" />. Upgrade any environments still on these versions to a supported version or a [release track](/docs/dbt-versions/dbt-release-tracks) before then.
+
+:::
+
 Once a dbt version reaches end-of-life (EOL), it no longer receives patches, including for known bugs. We recommend upgrading to a newer version in [<Constant name="dbt" />](/docs/dbt-versions/upgrade-dbt-platform-version), [<Constant name="fusion" />](/docs/local/install-dbt?version=2), or [<Constant name="core" />](/docs/local/install-dbt). All versions prior to v1.0 have been deprecated.
 
 ## Current version support
@@ -125,6 +180,6 @@ While a minor version is officially supported:
 
 Upgrade to new patch versions as soon as they're available. Upgrade to new minor versions when you're ready because you can only get some features and fixes on the latest minor version.
 
-dbt makes all versions available as prereleases before the final release. For minor versions, we aim to release one or more betas 4+ weeks before the final release so you can try new features and share feedback. Release candidates are available about two weeks before the final release for testing in production-like environments. Refer to the [`dbt-core` milestones](https://github.com/dbt-labs/dbt-core/milestones) for details.
+dbt makes all versions available as prereleases before the final release. For minor versions, we aim to release one or more betas 4+ weeks before the final release so you can try new features and share feedback. Release candidates are available about two weeks before the final release for testing in production-like environments. Refer to the [`dbt-labs/dbt` milestones](https://github.com/dbt-labs/dbt/milestones) for details.
 
 

@@ -40,7 +40,12 @@ There are 3 cases:
 1. The configuration variable does not exist
 
 :::info Accessing custom configurations in meta
-`config.get()` doesn't return values from `config.meta`. If a key exists only in `meta`, `config.get()` returns the default value and emits a warning. To access custom configurations stored under `meta`, use [`config.meta_get()`](#configmeta_get).
+`config.get()` behaves differently depending on how you access configurations under `meta`:
+
+- **Accessing a specific key under `meta`**: `config.get('my_key')` does not return values from `config.meta`. If the key exists only in `meta`, `config.get()` returns the default value and emits a warning. This applies to both <Constant name="core_v1" /> and <Constant name="core_v2" />.
+- **Accessing the `meta` dictionary**: `config.get('meta', default={})` returns the full `meta` dictionary in <Constant name="core_v2" />, but does not work in <Constant name="core_v1" />.
+
+To access custom configurations under `meta` consistently across both engines, use [`config.meta_get()`](#configmeta_get).
 :::
 
 Example usage:
@@ -80,7 +85,7 @@ Example usage:
 
 ## config.meta_get
 
-This functionality is available starting in <Constant name="core" /> v1.10 and in the <Constant name="fusion_engine" />.
+This functionality is available in <Constant name="dbt" /> v1.10 and up.
 
 __Args__:
 
@@ -115,7 +120,7 @@ models:
 
 ## config.meta_require
 
-This functionality is available starting in <Constant name="core" /> v1.10 and in the <Constant name="fusion_engine" />.
+This functionality is available in <Constant name="dbt" /> v1.10 and up.
 
 __Args__:
 

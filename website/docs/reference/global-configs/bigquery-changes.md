@@ -48,7 +48,7 @@ Runtime Error in source my_* (models/schema.yml)
   this source to use a query-based freshness check instead.
 ```
 
-To calculate freshness for wildcard tables, configure [`loaded_at_field`](/reference/resource-properties/freshness#loaded_at_field) on the source to use query-based freshness checks instead. 
+To calculate freshness for wildcard tables, configure [`loaded_at_field`](/reference/resource-configs/freshness) on the source to use query-based freshness checks instead. 
 
 Example configuration:
 
@@ -74,7 +74,7 @@ sources:
 
 ## The `bigquery_use_standard_sql_for_partitions` flag
 
-BigQuery is [deprecating legacy SQL starting June 1, 2026](https://docs.cloud.google.com/bigquery/docs/release-notes#February_25_2026). New Google Cloud Platform projects created after that date will not support legacy SQL. The `get_partitions_metadata()` macro currently uses legacy SQL with `$__PARTITIONS_SUMMARY__`, which will stop working after this deprecation.
+BigQuery has [deprecated legacy SQL](https://docs.cloud.google.com/bigquery/docs/release-notes#February_25_2026). The `get_partitions_metadata()` macro currently uses legacy SQL with `$__PARTITIONS_SUMMARY__`, and won't work on projects that don't have [legacy SQL support](https://docs.cloud.google.com/bigquery/docs/legacy-sql-feature-availability)
 
 The `bigquery_use_standard_sql_for_partitions` flag controls whether dbt uses standard SQL (`INFORMATION_SCHEMA.PARTITIONS`) instead of legacy SQL (`$__PARTITIONS_SUMMARY__`) when calling `get_partitions_metadata()`.
 

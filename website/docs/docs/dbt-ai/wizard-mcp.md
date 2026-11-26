@@ -1,7 +1,7 @@
 ---
-title: "Use MCP servers with the dbt Wizard CLI"
+title: "Use MCP servers with the dbt Wizard CLI and Desktop"
 id: "wizard-mcp"
-description: "Connect the dbt Wizard CLI to MCP servers to give it more tools and context."
+description: "Set up MCP servers in the dbt Wizard CLI, then use them in Wizard Desktop to give it more tools and context."
 sidebar_label: "Use MCP servers"
 tags: [AI, Wizard]
 availability: local_all
@@ -9,10 +9,12 @@ availability: local_all
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 
-# Use MCP servers with the <Constant name="wizard"/> CLI <Lifecycle status="beta"/>
+# Use MCP servers with the <Constant name="wizard"/> CLI and Desktop <Lifecycle status="beta"/>
 
 <IntroText>
 The Model Context Protocol (MCP) connects <Constant name="wizard" /> to external tools and context. Add an MCP server and <Constant name="wizard"/> can call its tools mid-session &mdash; query the dbt MCP server for governed project metadata, open a pull request through the GitHub MCP server, or pull in any other MCP-compatible service.
+
+Set servers up in the <Constant name="wizard" /> CLI, then use them in <Constant name="wizard" /> Desktop.
 </IntroText>
 
 <WizardFeedbackCallout />
@@ -49,8 +51,10 @@ Avoid defining the same MCP server name in more than one location unless you int
 
 The <Constant name="wizard"/> CLI lets you add, remove, authenticate, and customize MCP servers, including per-tool approvals, through the `config.toml` file.
 
-:::info MCP servers are a CLI feature
-You can configure MCP servers only in the <Constant name="wizard" /> CLI. You can't add your own MCP servers in the <Constant name="dbt_platform" /> (<Constant name="studio_ide" /> and the home app), but <Constant name="wizard" /> includes built-in dbt tools, such as [dbt Agent skills](https://github.com/dbt-labs/dbt-agent-skills) and product documentation fetching through the dbt MCP server.
+:::info Add MCP servers from the CLI
+You add MCP servers through the <Constant name="wizard" /> CLI, which <Constant name="wizard" /> Desktop shares. Adding servers from the **Connectors** page in Desktop **Settings** is coming soon. Until then, refer to [Connect MCP servers](/docs/dbt-ai/wizard-desktop-use#connect-mcp-servers) for the Desktop steps.
+
+You can't add your own MCP servers in <Constant name="dbt_platform" /> (<Constant name="studio_ide" /> and the home app), but <Constant name="wizard" /> includes built-in dbt tools, such as [dbt Agent skills](https://github.com/dbt-labs/dbt-agent-skills) and product documentation fetching through the dbt MCP server.
 :::
 
 ## Supported MCP server types
@@ -230,7 +234,7 @@ The self-hosted server reads its connection settings (such as `DBT_HOST`, `DBT_T
 </TabItem>
 <TabItem value="remote" label="Remote (dbt platform account)">
 
-Hosted on the dbt platform. Build the URL from your platform host (`https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/`, for example `https://cloud.getdbt.com/api/ai/v1/mcp/`), then authenticate:
+Hosted on dbt platform. Build the URL from your platform host (`https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/`, for example `https://cloud.getdbt.com/api/ai/v1/mcp/`), then authenticate:
 
 ```bash
 wizard mcp add dbt --url https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/
@@ -247,6 +251,23 @@ Then prompt <Constant name="wizard"/>:
 ```
 Use the dbt MCP server to find the most recent failed run for the
 nightly job and summarize the error.
+```
+
+### Fivetran Agent Context MCP server
+
+Connect <Constant name="wizard"/> to the [Fivetran Agent Context MCP server](https://fivetran.com/docs/context-layer/agent-context-mcp) which gives Wizard access to your organization's Fivetran context layer, so it can answer questions using your business definitions, metrics, and operational data. Add it with the following command:
+
+```bash
+wizard mcp add AgentContext \
+  --url "https://api.fivetran.ai/mcp"
+```
+Wizard then prompts you to authorize the connection. Follow the prompts to finish connecting.
+
+If your organization uses system keys, set your API key as an environment variable first, then include it in the command:
+
+```bash
+export FIVETRAN_AI_API_KEY=YOUR_API_KEY
+wizard mcp add AgentContext --url "https://api.fivetran.ai/mcp" --bearer-token-env-var FIVETRAN_AI_API_KEY
 ```
 
 ### GitHub MCP server for pull request review
@@ -285,3 +306,4 @@ new columns and confirm downstream refs still resolve.
 - [<Constant name="wizard" /> CLI config](/docs/dbt-ai/wizard-config): `config.toml` keys and precedence
 - [<Constant name="wizard" /> CLI command reference](/docs/dbt-ai/wizard-cli-reference): `wizard mcp` flags and subcommands
 - [How <Constant name="wizard" /> works](/docs/dbt-ai/wizard-how-it-works): Approvals and sandboxing
+- [Connect MCP servers in Wizard Desktop](/docs/dbt-ai/wizard-desktop-use#connect-mcp-servers): Use your servers in Desktop
