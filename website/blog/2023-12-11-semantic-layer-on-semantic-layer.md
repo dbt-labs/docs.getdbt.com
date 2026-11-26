@@ -47,7 +47,7 @@ What [is a semantic model](https://docs.getdbt.com/docs/build/semantic-models)? 
 
 Let’s dig into semantic models and metrics a bit more, and explain some of the data modeling decisions we made. First, we needed to decide what model to use as a base for our semantic model. We decide to use`fct_semantic_layer`queries as our base model because defining a semantic model on top of a normalized fact table gives us maximum flexibility to join to other tables. This increased the number of dimensions available, which means we  can answer more questions. 
 
-You may wonder: why not just build our metrics on top of raw tables and let MetricFlow figure out the rest? The reality is, that you will almost almost always need to do some form of data modeling to create the data set you want to build your metrics off of. MetricFlow’s job isn’t to do data modeling. The transformation step is done with dbt. 
+You may wonder: why not just build our metrics on top of raw tables and let MetricFlow figure out the rest? The reality is, that you will almost always need to do some form of data modeling to create the data set you want to build your metrics off of. MetricFlow’s job isn’t to do data modeling. The transformation step is done with dbt. 
 
 Next, we had to decide what we wanted to put into our semantic models. Semantic models contain [dimensions](https://docs.getdbt.com/docs/build/dimensions), [measures](https://docs.getdbt.com/docs/build/measures), and [entities](https://docs.getdbt.com/docs/build/entities). We took the following approach to add each of these components:
 

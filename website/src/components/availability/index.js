@@ -30,21 +30,38 @@ function normalizeAvailability(availability) {
   } = merged;
 
   const engineFacet = getEngineFacet(engine);
-  const accessFacets = getAccessFacets(access, { minPlan, plans }, surface);
-  const surfaceLabel = SURFACE_LABELS[surface];
+
+  // surface can be a single value or a list (for features that live on more than one
+  // surface, e.g. local development and the dbt platform). Dedupe by rendered label
+  // since local and local_development share the "Local development" chip.
+  const surfaceList = Array.isArray(surface) ? surface : (surface ? [surface] : []);
+  const seenSurfaceLabels = new Set();
+  const surfaceEntries = surfaceList.filter((item) => {
+    const label = SURFACE_LABELS[item];
+    if (!label || seenSurfaceLabels.has(label)) {
+      return false;
+    }
+    seenSurfaceLabels.add(label);
+    return true;
+  });
+
+  // Free access only renders alongside the platform surface, so treat a multi-surface
+  // feature that includes platform as platform for the access facet.
+  const accessSurface = surfaceList.includes('platform') ? 'platform' : surfaceList[0];
+  const accessFacets = getAccessFacets(access, { minPlan, plans }, accessSurface);
 
   const rows = [];
   if (engineFacet) {
     rows.push({ label: FIELD_LABELS.engine, value: engineFacet.facet, tooltip: engineFacet.tooltip });
   }
-  if (surfaceLabel) {
+  surfaceEntries.forEach((item) => {
     rows.push({
       label: FIELD_LABELS.surface,
-      value: surfaceLabel,
-      tooltip: SURFACE_TOOLTIPS[surface],
-      tooltipLink: SURFACE_TOOLTIP_LINKS[surface],
+      value: SURFACE_LABELS[item],
+      tooltip: SURFACE_TOOLTIPS[item],
+      tooltipLink: SURFACE_TOOLTIP_LINKS[item],
     });
-  }
+  });
   accessFacets.forEach(({ facet, tooltip, tooltipLink, label }) => {
     rows.push({ label: label ?? FIELD_LABELS.access, value: facet, tooltip, tooltipLink });
   });
@@ -53,7 +70,7 @@ function normalizeAvailability(availability) {
   // to my dbt version at all?") before surface/access even matter.
   const badgeFacets = [
     engineFacet?.facet,
-    surfaceLabel,
+    ...surfaceEntries.map((item) => SURFACE_LABELS[item]),
     ...accessFacets.map(({ facet }) => facet),
   ].filter(Boolean);
 

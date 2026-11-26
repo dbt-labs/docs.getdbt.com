@@ -17,22 +17,23 @@ Refer to [Function properties](/reference/function-properties) or [Function conf
 
 ## Prerequisites
 
-* Make sure you're using dbt platform's **Fusion Stable** or **Latest** [release track](/docs/dbt-versions/dbt-release-tracks) or <Constant name="core" /> v1.11+.
+* Make sure you're using dbt platform's **v2 Stable** or **v1 Latest** [release track](/docs/dbt-versions/dbt-release-tracks) or <Constant name="dbt" /> v1.11+.
 * Use one of the following adapters:
 
 	<Tabs>
 	
-	<TabItem value="core" label="dbt Core">
+	<TabItem value="core" label="dbt v1">
 	
 	- BigQuery
 	- Snowflake
 	- Redshift
 	- Postgres
 	- Databricks
+	- [Starburst/Trino](/reference/resource-configs/trino-configs#user-defined-functions) (`dbt-trino` v1.11+)
 	
 	</TabItem>
 	
-	<TabItem value ="fusion" label ="dbt Fusion engine">
+	<TabItem value ="fusion" label ="dbt v2">
 	
 	- BigQuery
 	- Snowflake
@@ -43,7 +44,7 @@ Refer to [Function properties](/reference/function-properties) or [Function conf
 	</Tabs>
 
 :::important UDF support
-JavaScript UDFs are supported in <Constant name="core" /> v1.12+ on Snowflake and BigQuery.
+JavaScript UDFs are supported in <Constant name="dbt" /> v1.12+ on Snowflake and BigQuery.
 
 Additional languages (for example, Java, Scala) aren't currently supported for UDFs.
 
@@ -52,7 +53,7 @@ See the [Limitations](#limitations) section below for the full list of currently
 
 ## Defining UDFs in dbt
 
-You can define SQL, Python, and JavaScript (available in <Constant name="core" /> v1.12+) UDFs in dbt. Python UDFs are supported in Snowflake, BigQuery, and Databricks ([Unity Catalog](https://docs.databricks.com/aws/en/data-governance/unity-catalog/) required). JavaScript UDFs are supported in Snowflake and BigQuery.
+You can define SQL, Python, and JavaScript (available in <Constant name="dbt" /> v1.12+) UDFs in dbt. Python UDFs are supported in Snowflake, BigQuery, and Databricks ([Unity Catalog](https://docs.databricks.com/aws/en/data-governance/unity-catalog/) required). JavaScript UDFs are supported in Snowflake and BigQuery.
 
 Follow these steps to define UDFs in dbt:
 
@@ -71,6 +72,9 @@ Follow these steps to define UDFs in dbt:
 
     # syntax for Redshift and Postgres
     SELECT REGEXP_INSTR(a_string, '^[0-9]+$')
+
+    # syntax for Starburst/Trino
+    CASE WHEN regexp_like(a_string, '^[0-9]+$') THEN 1 ELSE 0 END
 
     ```
 
@@ -146,6 +150,8 @@ Follow these steps to define UDFs in dbt:
           data_type: integer        # required
     ```
     </File>
+
+    For Starburst/Trino, set the argument's `data_type` to a valid engine [data type](https://trino.io/docs/current/language/types.html) (such as `varchar` instead of `string`) and omit `default_value`. On Starburst Galaxy, set the database and schema values as `database: galaxy` and `schema: functions`.
 
     </TabItem>
 
@@ -329,6 +335,20 @@ Follow these steps to define UDFs in dbt:
 
     </TabItem>
 
+    <TabItem value="Starburst/Trino">
+
+    ```sql
+    CREATE OR REPLACE FUNCTION galaxy.functions.is_positive_int(a_string VARCHAR)
+    RETURNS INTEGER
+    DETERMINISTIC
+    COMMENT 'My UDF that returns 1 if a string represents a naked positive integer (like "10", "+8" is not allowed).'
+    RETURN CASE WHEN regexp_like(a_string, '^[0-9]+$') THEN 1 ELSE 0 END;
+    ```
+
+    For more information, refer to [Starburst/Trino configurations](/reference/resource-configs/trino-configs#user-defined-functions).
+
+    </TabItem>
+
     </Tabs>
     </TabItem>
 
@@ -454,7 +474,7 @@ dbt detects all of these changes when using [`state:modified`](/reference/node-s
 
 ### Defining overloaded UDFs
 
-Use the [`overloads`](/reference/resource-properties/overloads) property (available in <Constant name="core" /> v1.12+) to define multiple argument signatures for the same function. This lets you call the same function name with different input types, without creating separate UDFs for each variant. `overloads` is supported for SQL UDFs in Snowflake and Postgres, and Python and JavaScript UDFs in Snowflake.
+Use the [`overloads`](/reference/resource-properties/overloads) property (available in <Constant name="dbt" /> v1.12+) to define multiple argument signatures for the same function. This lets you call the same function name with different input types, without creating separate UDFs for each variant. `overloads` is supported for SQL UDFs in Snowflake and Postgres, and Python and JavaScript UDFs in Snowflake.
 
 To define overloaded UDFs:
 

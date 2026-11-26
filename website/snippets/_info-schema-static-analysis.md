@@ -1,0 +1,1 @@
+To populate inferred model column types and column-level lineage, combine with [`--static-analysis strict`](/docs/build/about-static-analysis). Without it, `dbt.node_columns` contains only YAML-declared columns and `dbt.column_lineage` contains no lineage.

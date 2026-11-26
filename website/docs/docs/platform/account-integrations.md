@@ -22,6 +22,7 @@ To configure a <Constant name="git" /> account integration:
 4. <Constant name="dbt" /> [natively connects](/docs/platform/git/configure-git) to the following <Constant name="git" /> providers:
 
    - [GitHub](/docs/platform/git/connect-github)
+     - Enterprise and Enterprise+ accounts can use their [own GitHub application](/docs/platform/git/connect-github#custom-github-application) instead of the shared one.
    - [GitLab](/docs/platform/git/connect-gitlab)
    - [Azure DevOps](/docs/platform/git/connect-azure-devops) <Lifecycle status="managed,managed_plus" />
 

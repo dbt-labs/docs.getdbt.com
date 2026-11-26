@@ -8,7 +8,7 @@ availability:
   access: login_required
 ---
 
-# Connect BigQuery <ProductCard text="Fusion compatible" />
+# Connect BigQuery <ProductCard text="dbt v2 compatible" />
 
 To see which BigQuery functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [BigQuery function support](/reference/resource-configs/bigquery-function-support).
 
@@ -18,9 +18,9 @@ import BigQueryPerms from '/snippets/_bigquery-permissions.md';
 
 <BigQueryPerms />
 
-## Warehouse permissions for Fusion
+## Warehouse permissions for <Constant name="fusion" />
 
-import FusionBigQueryWarehousePerms from '/snippets/_fusion-warehouse-permissions-bigquery.md';
+import FusionBigQueryWarehousePerms from '/snippets/_v2-warehouse-permissions-bigquery.md';
 
 <FusionBigQueryWarehousePerms />
 
@@ -154,7 +154,7 @@ The `location` of BigQuery datasets can be set using the `location` setting in a
 
 <Expandable alt_header="Maximum bytes billed">
 
-When a `maximum_bytes_billed` value is configured for a BigQuery profile, that allows you to limit how much data your query can process. It’s a safeguard to prevent your query from accidentally processing more data than you expect, which could lead to higher costs. Queries executed by dbt will fail if they exceed the configured maximum bytes threshhold. This configuration should be supplied as an integer number of bytes.
+When a `maximum_bytes_billed` value is configured for a BigQuery profile, that allows you to limit how much data your query can process. It’s a safeguard to prevent your query from accidentally processing more data than you expect, which could lead to higher costs. Queries executed by dbt will fail if they exceed the configured maximum bytes threshold. This configuration should be supplied as an integer number of bytes.
 
 If your `maximum_bytes_billed` is 1000000000, you would enter that value in the `maximum_bytes_billed` field in <Constant name="dbt" />.
 
@@ -241,7 +241,7 @@ This region must match the location of your BigQuery dataset if you want to use 
 
 You can re-use connections across multiple projects with [global connections](/docs/platform/connect-data-platform/about-connections#migration-from-project-level-connections-to-account-level-connections). Connections are attached at the environment level (formerly project level), so you can use multiple connections inside of a single project (to handle dev, staging, production, and more).
 
-BigQuery connections in <Constant name="dbt" /> currently expect the credentials to be handled at the connection level (and only BigQuery connections). This was originally designed to facilitate creating a new connection by uploading a service account keyfile. This describes how to override credentials at the environment level, via [extended attributes](/docs/dbt-platform-environments#extended-attributes), _to allow project administrators to manage credentials independently_ of the account level connection details used for that environment.
+BigQuery connections in <Constant name="dbt" /> currently expect the credentials to be handled at the connection level (and only BigQuery connections). This was originally designed to facilitate creating a new connection by uploading a service account keyfile. This describes how to override those credentials with [extended attributes](/docs/dbt-platform-environments#extended-attributes), _so project administrators can manage credentials independently_ of the account-level connection details. Refer to [Extended attributes](/docs/dbt-platform-environments#extended-attributes) for where to configure them for deployment and development environments.
 
 For a project, you will first create an environment variable to store the secret `private_key` value. Then, you will use extended attributes to override the entire service account JSON (you can't only override the secret key due to a constraint of extended attributes).
 
@@ -272,7 +272,7 @@ For a project, you will first create an environment variable to store the secret
 
 2. **Extended attributes**
 
-    In the environment details, complete the [extended attributes](/docs/dbt-platform-environments#extended-attributes) block with the following payload (replacing `XXX` with your corresponding information):
+    Complete the [extended attributes](/docs/dbt-platform-environments#extended-attributes) block with the following payload (replacing `XXX` with your corresponding information). That page explains where to configure them for deployment and development environments:
 
     ```yaml
     keyfile_json:

@@ -26,7 +26,7 @@ So what makes strong collaboration possible between analytics engineers and back
 
 <!--truncate-->
 
-![A screenshot of the conversation that started the thread](/img/blog/2022-04-05-when-backend-devs-spark-joy/slack_thread_screenshot.png)
+<Lightbox src="/img/blog/2022-04-05-when-backend-devs-spark-joy/slack_thread_screenshot.png" title="A screenshot of the conversation that started the thread" />
 *A screenshot of the conversation that started the thread*
 
 ## When the pieces fall into place

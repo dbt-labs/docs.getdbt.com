@@ -32,8 +32,10 @@ Self-hosted development and agentic workflows (for example, running dbt commands
 
 Follow these steps to set up the remote MCP server.
 
-### 1. Enable AI features
-In <Constant name="dbt_platform"/>, ensure that you have [AI features](/docs/platform/enable-dbt-ai) turned on.
+### 1. Manage AI features (optional)
+AI features are enabled by default. Admins can [turn them off or back on anytime](/docs/platform/manage-dbt-ai).
+
+Remote MCP works without AI features enabled. Only `text_to_sql` requires them; when disabled, this tool is hidden and all other tools work as usual.
 
 ### 2. Get your credentials
 Obtain the following information from <Constant name="dbt_platform"/>:
@@ -53,6 +55,10 @@ Obtain the following information from <Constant name="dbt_platform"/>:
 </SimpleTable>
 
 <MCPRemoteOauthBetaCallout />
+
+:::tip Read-only users
+Read-only users can query metrics through remote MCP using a shared [analytics credential](/docs/platform/wizard-read-only-users#set-up-analytics-credentials) without having to log in to <Constant name="dbt_platform"/> to set up their own warehouse credentials. Refer to [Read-only users and warehouse credentials](/docs/dbt-ai/setup-remote-mcp#read-only-users-and-warehouse-credentials).
+:::
 
 ### 4. Get your MCP URL and IDs
 

@@ -8,6 +8,8 @@ availability:
   minPlan: starter
 ---
 
+import TokenExpiration from '/snippets/_token-expiration.md';
+
 # Service account tokens
 
 Service account tokens enable you to securely authenticate with the <Constant name="dbt" /> API by assigning each token a narrow set of permissions that more precisely manages access to the API. While similar to [personal access tokens](user-tokens), service account tokens belong to an account rather than a user.
@@ -28,8 +30,17 @@ You can generate service tokens if you have a Developer [license](/docs/platform
 2. On the left sidebar, click **Service Tokens**.
 3. Click the **+ Create service token** button to generate a new token.
     1. Enter a name for your token. 
-    2. Add the necessary [permissions](/docs/dbt-apis/service-tokens#permissions-for-service-account-tokens).
-4. Once the token is generated, you won't be able to view this token again so make sure to save it somewhere safe.
+    2. Choose an **Expiry**. The default is **No expiry**. Refer to [Set a token expiration](#set-a-token-expiration).
+    3. Add the necessary [permissions](/docs/dbt-apis/service-tokens#permissions-for-service-account-tokens).
+4. Click **Save**.
+5. Once the token is generated, you won't be able to view this token again so make sure to save it somewhere safe.
+
+## Set a token expiration
+
+<TokenExpiration
+  pageName="Service tokens"
+  newToken="a new token with the same permissions"
+/>
 
 ## Permissions for service account tokens
 

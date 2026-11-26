@@ -1,5 +1,5 @@
 ---
-title: "Connect AWS Glue to dbt Core"
+title: "Connect AWS Glue to dbt v1"
 sidebar_label: "AWS Glue"
 description: "Read this guide to learn about the AWS Glue warehouse setup in dbt."
 id: "glue-setup"
@@ -554,7 +554,7 @@ group by 1
 #### Iceberg
 
 **Usage notes:** The `merge` with Iceberg incremental strategy requires:
-- To attach the AmazonEC2ContainerRegistryReadOnly Manged policy to your execution role :
+- To attach the AmazonEC2ContainerRegistryReadOnly Managed policy to your execution role :
 - To add the following policy to your execution role to enable commit locking in a dynamodb table (more info [here](https://iceberg.apache.org/docs/latest/aws/#dynamodb-lock-manager)). Note that the DynamoDB table specified in the resource field of this policy should be the one that is mentioned in your dbt profiles (`--conf spark.sql.catalog.glue_catalog.lock.table=myGlueLockTable`). By default, this table is named `myGlueLockTable` and is created automatically (with On-Demand Pricing) when running a dbt-glue model with Incremental Materialization and Iceberg file format. If you want to name the table differently or to create your own table without letting Glue do it on your behalf, please provide the `iceberg_glue_commit_lock_table` parameter with your table name (eg. `MyDynamoDbTable`) in your dbt profile.
 ```yaml
 iceberg_glue_commit_lock_table: "MyDynamoDbTable"

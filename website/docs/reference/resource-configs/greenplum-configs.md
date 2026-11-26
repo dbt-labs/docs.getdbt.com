@@ -52,7 +52,7 @@ select ...
 
 ### Column orientation
 
-Greenpum supports two type of [orientation](https://gpdb.docs.pivotal.io/6-6/admin_guide/ddl/ddl-storage.html#topic39) row and column:
+Greenplum supports two type of [orientation](https://gpdb.docs.pivotal.io/6-6/admin_guide/ddl/ddl-storage.html#topic39) row and column:
 
 ```sql
 {{
@@ -69,7 +69,7 @@ select ...
 
 ### Compression
 
-Compression allows reducing read-write time. Greenplum suggest several [algorithms](https://gpdb.docs.pivotal.io/6-6/admin_guide/ddl/ddl-storage.html#topic40) algotihms to compress append-optimized tables:
+Compression allows reducing read-write time. Greenplum suggest several [algorithms](https://gpdb.docs.pivotal.io/6-6/admin_guide/ddl/ddl-storage.html#topic40) algorithms to compress append-optimized tables:
  - RLE_TYPE(only for column oriented table)
  - ZLIB
  - ZSTD 

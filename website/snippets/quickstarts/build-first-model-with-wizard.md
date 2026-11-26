@@ -1,0 +1,13 @@
+### Build it with AI using dbt Wizard
+
+Prefer not to write the SQL by hand? <Constant name="wizard" /> can build the same model for you, right in the <Constant name="studio_ide" /> or [home tab](/docs/platform/wizard-home?version=2&section=qs-build-with-ai), grounded in your project's actual schema and lineage. Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.
+
+1. Open <Constant name="wizard" /> from the <Constant name="studio_ide" />.
+
+<Lightbox src="/img/docs/dbt-platform/wizard-ide-refactor-lineage.png" width="95%" title="dbt Wizard refactoring a model and displaying the lineage inside the chat interface."/>
+
+2. Prompt it: "Create a customers model that joins orders and customers, and includes each customer's most recent order date and total number of orders."
+3. Review the SQL <Constant name="wizard" /> generates, then accept it to save the model.
+4. Type `dbt run` to build it.
+
+Either way, you end up with the same working model. Learn more about [dbt Wizard in dbt platform](/docs/dbt-ai/wizard-ide?section=qs-build-with-ai).
