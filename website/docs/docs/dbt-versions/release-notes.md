@@ -140,6 +140,7 @@ The full list lives in website/release-note-areas.json.
 - **Fix:** When an account had more than 1,000 groups, some of a user's assigned [groups](/docs/platform/manage-access/about-user-access#groups) were missing from the user details view. All assigned groups now appear checked. Saving with `POST /api/v3/accounts/{id}/assign-groups/` also keeps the full list of groups.
 - **Fix:** Creating or updating an [IP restriction](/docs/platform/secure/ip-restrictions) with a missing or invalid `type` now returns a 400 error (the request was invalid) and a message that describes the problem, instead of a 500 server error. A missing `name` is rejected with a 400 error too. Before this fix, dbt saved that missing name as the word None.
 - **Fix:** Accounts on the usage plan can now complete the upgrade to [Starter](/docs/platform/billing/plans-and-billing#starter-plan-billing) without the checkout spinning indefinitely. The purchase button stays available when a card is already on file.
+- **Fix:** [SCIM](/docs/platform/manage-access/scim) (System for Cross-domain Identity Management) now gives every user and group a unique UUID, with no overlap between the two. Previously, user and group IDs could overlap, which caused errors for some customers.
 - **Behavior change:** If an API request includes `?account_id=` and that value doesn't match the token or subdomain, the API now returns 403, 404, or 400. Invalid values (for example, it's not an integer, it's duplicated, or it conflicts with another value) return HTTP 400. Before, the parameter could be ignored.
 - **Behavior change:** API requests to a deleted account subdomain now return HTTP 404. Requests to a subdomain that matches two live accounts also return HTTP 404. Related auth checks return HTTP 403. Before, these cases could continue without a clear error.
 - **Behavior change:** `POST /api/v3/accounts/{account_id}/users/{user_id}/account-apikeys/` now returns HTTP 400 for `type` values of `SCIM`, `NATIVE_APP_USER_LINK`, or empty values. Accepted types are `CLOUD_CLI` and `GENERAL`. Validation errors now appear in the `data` field instead of `status.user_message`.
@@ -153,6 +154,7 @@ The full list lives in website/release-note-areas.json.
 #### Integrations {#integrations-november-2026}
 
 - **Beta:** Bringing your own [custom GitHub application](/docs/platform/git/connect-github#custom-github-application) is now in beta and available to all Enterprise and Enterprise+ accounts. You no longer need to contact your account manager for access. Use it to natively connect GitHub Enterprise Server or GitHub with EU data residency, instead of a git URL and SSH.
+- **Beta:** [ClickHouse](/docs/platform/connect-data-platform/connect-clickhouse?version=2.0) connections for dbt v2 on <Constant name="dbt_platform" /> are now in beta. Select **ClickHouse** as a warehouse connection option when managing a project in <Constant name="dbt_platform" />. 
 
 #### dbt v2 {#dbt-v2-november-2026}
 
