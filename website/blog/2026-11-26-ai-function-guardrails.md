@@ -179,7 +179,7 @@ Then do the math before committing to a full dataset run:
 
 Your warehouse might report usage in dollars, credits, or something else so make sure you convert it to dollars using what your account pays. So for example, if 50 rows cost $0.04, 60,000 rows will cost about $48. You can then decide if it's worth it.
 
-:::tip
+:::tip Share estimated cost in PR description
 Add the estimated total cost to your PR description since it can help reviewers decide whether the change is worth merging or not
 :::
 
