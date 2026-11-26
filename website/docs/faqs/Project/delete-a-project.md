@@ -9,7 +9,7 @@ To delete a project in <Constant name="dbt" />, you must be the account owner or
 
 1. From <Constant name="dbt" />, click on your account name in the left side menu and select **Account settings**.
 
-<Lightbox src="/img/docs/dbt-platform/Navigate-to-account-settings.png" title="Navigate to account settings" />
+<Lightbox src="/img/docs/dbt-platform/account-settings-menu.png" title="Open Account settings from the account menu in the left sidebar" />
 
 2. In **Account Settings**, select **Projects**. Click the project you want to delete from the **Projects** page.
 3. Click the edit icon in the lower right-hand corner of the **Project Details**. A **Delete** option appears on the left side of the same details view. 

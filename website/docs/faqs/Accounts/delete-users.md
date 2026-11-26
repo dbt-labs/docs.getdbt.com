@@ -10,7 +10,7 @@ To delete a user in <Constant name="dbt" />, you must be an account owner or hav
 
 1. From <Constant name="dbt" />, click on your account name in the left side menu and, select **Account settings**.
 
-<Lightbox src="/img/docs/dbt-platform/Navigate-to-account-settings.png" title="Navigate to account settings" />
+<Lightbox src="/img/docs/dbt-platform/account-settings-menu.png" title="Open Account settings from the account menu in the left sidebar" />
 
 2. In **Account settings**, select **Users** under **Teams**.
 3. Select the user you want to delete, then click **Edit**. 
@@ -21,9 +21,6 @@ To delete a user in <Constant name="dbt" />, you must be an account owner or hav
 import LicenseCount from '/snippets/_license-count.md';
 
 <LicenseCount/>
-
-
-<Lightbox src="/img/docs/dbt-platform/faq-account-settings-billing.png" width="85%" title="Navigate to Account settings -> Users to modify dbt users" />
 
 ## Related docs
 

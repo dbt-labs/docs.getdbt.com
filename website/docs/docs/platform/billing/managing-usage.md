@@ -6,7 +6,7 @@ sidebar_label: "Managing usage"
 availability: everywhere_usage
 ---
 
-From <Constant name="dbt" />, click on your account name in the left side menu and select **Account settings**. The **Billing** option will be on the left side menu under the **Settings** heading. Here, you can view individual available plans and the features provided for each. 
+From <Constant name="dbt" />, click your account name in the left side menu and select **Account settings**. Under **Settings**, select **Billing & Usage**, then open **Overview**. Here, you can view available plans and the features provided for each.
 
 ### Usage notifications 
 
