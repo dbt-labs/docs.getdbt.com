@@ -2,7 +2,7 @@
 title: "Project state in dbt"
 ---
 
-<Constant name="dbt" /> provides a stateful way of deploying dbt. Artifacts are accessible programmatically via the [Discovery API](/docs/dbt-apis/discovery-querying) in the metadata platform.
+<Constant name="dbt" /> provides a stateful way of deploying dbt. Artifacts are accessible programmatically through the [Discovery API](/docs/dbt-apis/discovery-querying) in the metadata platform.
 
 With the implementation of the `environment` endpoint in the Discovery API, we've introduced the idea of multiple states. The Discovery API provides a single API endpoint that returns the latest state of models, sources, and other nodes in the DAG. 
 
@@ -18,7 +18,9 @@ There are two states that can be queried in <Constant name="dbt" />:
 
 In a dbt project, the state of a node _definition_ represents the configuration, transformations, and dependencies defined in the SQL and YAML files. It captures how the node should be processed in relation to other nodes and tables in the data warehouse and may be produced by a `dbt build`, `run`, `parse`, or `compile`. It changes whenever the project code changes. 
 
-A node’s _applied state_ refers to the node’s actual state after it has been successfully executed in the DAG; for example, models are executed; thus, their state is applied to the data warehouse via `dbt run` or `dbt build`. It changes whenever a node is executed. This state represents the result of the transformations and the actual data stored in the database, which for models can be a table or a view based on the defined logic.
+A node’s _applied state_ refers to the node’s actual state after it has been successfully executed in the DAG; for example, models are executed; thus, their state is applied to the data warehouse using `dbt run` or `dbt build`. This state represents the result of the transformations and the actual data stored in the database, which for models can be a table or a view based on the defined logic. In the Discovery API, this is the `applied` field on `environment`.
+
+[Deploy jobs](/docs/deploy/deploy-jobs) and [merge jobs](/docs/deploy/merge-jobs) update the applied state. A deploy job can run on a schedule or when you start it. A [CI job](/docs/deploy/ci-jobs) can succeed without updating it, so you cannot use a CI run to confirm what is applied in the environment. <Constant name="catalog" /> shows this same applied state, so a CI run leaves <Constant name="catalog" /> on the latest deploy or merge run.
 
 The applied state includes execution info, which contains metadata about how the node arrived in the applied state. The fields within `executionInfo` track two related but distinct concepts:
 
