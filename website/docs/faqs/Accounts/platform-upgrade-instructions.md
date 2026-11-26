@@ -18,10 +18,12 @@ Before you begin:
 
 
 ## Select a plan 
-When your [14-day trial](https://www.getdbt.com/signup/) ends, or if your subscription payment is past due, you need to select a plan to continue using your account:
+When your [14-day trial](https://www.getdbt.com/signup/) ends, you need to select a plan to continue using your account:
 
 1. When you log in, a **Welcome back to dbt** message appears explaining that you've reached the end of your trial and need to select a plan to continue.
 2. Click **Choose a plan**. This opens the **Plans & Pricing** page, where you can review the available <Constant name="dbt" /> [plans](https://www.getdbt.com/pricing/) and their features.
+
+If your account is past due after a failed payment, refer to [How can I update my billing information?](/faqs/Accounts/change-billing) instead.
 
 To select a plan, review the following guidance per plan type:
 
