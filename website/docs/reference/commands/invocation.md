@@ -84,7 +84,7 @@ To reattach to a specific active invocation, copy its `ID` and pass it to the `-
 dbt reattach --id 6dcf4723-e057-48b5-946f-a4d87e1d117a
 ```
 
-If you omit `--id`, dbt reattaches to the most recent invocation.
+If you leave out the `--id`, dbt reattaches to the most recent invocation started from your machine for the current project.
 
 :::tip
 
