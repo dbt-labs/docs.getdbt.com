@@ -21,7 +21,7 @@ Here's what happens when your assistant calls it:
 
 1. The assistant writes a SQL query and calls `execute_sql`.
 2. The dbt MCP server forwards the request to <Constant name="dbt_platform" />, along with your token, development environment ID, and user ID.
-3. <Constant name="dbt_platform" /> compiles the SQL (including any Jinja, such as `ref()`) and runs it in your warehouse using your development credentials.
+3. <Constant name="dbt_platform" /> compiles the SQL (including any `ref()` calls) and runs it in your warehouse using your development credentials.
 4. The results come back to your assistant as a table.
 
 <Lightbox src="/img/docs/dbt-ai/mcp-execute-sql-flow.svg" title="The AI assistant calls execute_sql. The dbt MCP server forwards the request to dbt platform, which compiles the SQL, runs it in the warehouse with your development credentials, and returns the results to the assistant." />
@@ -36,15 +36,23 @@ No. `dbt show` runs through the <Constant name="dbt_platform" /> CLI tools and p
 
 <Expandable alt_header="Whose warehouse credentials does execute_sql use?">
 
-Your personal development credentials for the project's development environment. These are the same credentials you use in <Constant name="studio_ide" />. It doesn't use your production deployment credentials.
+Your personal development credentials for the project's development environment take priority. If you haven't configured personal credentials, eligible read-only users can use a shared analytics credential. It doesn't use your production deployment credentials.
 
-If you don't have development credentials, the query fails with a message that no warehouse credentials are configured. Ask a project admin to set them up.
+If no suitable credentials are configured, the query fails. Refer to [Read-only users and warehouse credentials](/docs/dbt-ai/setup-remote-mcp#read-only-users-and-warehouse-credentials) for setup details.
 
 </Expandable>
 
 <Expandable alt_header="Is execute_sql read-only?">
 
-No. `execute_sql` doesn't block write statements. What a query can do depends on the permissions of the warehouse credentials it runs with. If those credentials can create or drop tables, so can your assistant.
+Yes. `execute_sql` runs a single read-only `SELECT` query, and rejects anything else before it reaches your warehouse. It doesn't accept:
+
+- Statements that change data, objects, or permissions, such as `CREATE`, `DROP`, `INSERT`, `UPDATE`, `DELETE`, and `GRANT`.
+- More than one statement in a single call, even if each one is a `SELECT`.
+- Jinja other than literal `ref()` calls, such as `{{ ref('orders') }}`.
+
+Rejected queries return an error, for example `execute_sql accepts a single SELECT query only`.
+
+Use the least-privileged warehouse role for each user's development credentials. A `SELECT` statement can still call functions or read from views, and the permissions of the warehouse credentials running the query determine what those functions and views can do.
 
 To keep things safe:
 
@@ -99,6 +107,27 @@ Yes you can! Your AI tool can ask for results to show as a chart or table in the
 </Expandable>
 
 ## Troubleshooting
+
+<Expandable alt_header="Why can I connect to remote MCP but a tool call is denied?">
+
+Remote MCP checks permissions for the resource each tool targets. A successful connection or a visible tool doesn't guarantee access to every project, environment, job, or run.
+
+1. Confirm that the requested resource belongs to the account you connected to.
+2. Ask your admin to check the user or service token's [required permissions](/docs/dbt-ai/setup-remote-mcp#permissions) on that resource. PATs inherit their user's permissions.
+3. For OAuth, also check the scopes and projects approved during consent. Reconnect and update your consent if the required access wasn't included.
+4. For `execute_sql`, plain SQL still needs a development environment and warehouse credentials. SQL containing dbt Jinja also needs develop access; production deferral needs metadata read access.
+
+</Expandable>
+
+<Expandable alt_header="Why does remote MCP reject my project or environment selection?">
+
+Use positive numeric IDs rather than URLs. Check that your development and production environment headers select the correct environment types and belong to the same project. Tool arguments must agree with the configured target, except that an explicit `project_id` for `list_jobs` overrides its configured environment filter.
+
+If a call reports invalid tool arguments, check the tool's input schema, supply its required arguments, and remove unsupported arguments.
+
+If environment discovery reports that a project has more than 1,000 environments, configure the exact environment header for the tool you're using instead of relying on project-based discovery.
+
+</Expandable>
 
 <FAQ path="dbt-mcp/troubleshooting/uvx" />
 

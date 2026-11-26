@@ -19,10 +19,10 @@ dbt State makes dbt smarter about what to build. Instead of rebuilding every nod
 
 With dbt State, dbt first compares the logic and data of each node to previous builds across multiple environments on every run &mdash; whether orchestrated in the <Constant name="dbt_platform" />, through your own orchestrator, or in development. If the logic is the same and the data is still fresh, dbt reuses an existing object. It will either clone an existing node from elsewhere, or skip executing a model that already exists, rather than building it anew. Additionally, it will automatically defer to production state without the need to manually set the `--defer` or `--state` flags.
 
-dbt State can reuse all node types that create relations in the database (such as SQL models, snapshots, seeds) and data tests. Note that the following models are not eligible for reuse:
+dbt State can reuse all node types that create relations in the database (such as SQL models, snapshots, seeds) and data tests. Note the following exceptions:
 
 - **Python models**: dbt State builds Python models on every run, even if their code and upstream data have not changed.
-- **Models with custom materializations**: dbt State builds these models on every run because custom materializations may have side effects (for example, modifying table properties or writing to other schemas), and dbt State cannot safely determine whether skipping the run would produce the same result.
+- **Models with custom materializations**: dbt State can skip these models when it detects no upstream changes, but doesn't clone them. Custom materializations can have side effects that cloning wouldn't replicate.
 
 dbt State works with dbt (v1 and v2) and the <Constant name="dbt_platform" />, across all environments and orchestrators, making it a flexible approach regardless of how you run dbt. It requires authentication through a <Constant name="dbt_platform" /> account. For pricing details, refer to [dbt State usage and pricing](/docs/platform/billing/dbt-state-usage).
 
@@ -75,7 +75,7 @@ In self-managed deployments, you can also use dbt State with `state:*` selectors
 dbt State requires a <Constant name="dbt_platform" /> account for authentication, even if you run dbt locally or in a non-interactive environment.
 
 - **Existing <Constant name="dbt_platform" /> users**: Your dbt State credentials are the same as your platform credentials, and dbt State has access to your platform environments and jobs.
-- **New to <Constant name="dbt_platform" />**: Create an account from the [dbt platform sign-up page](http://us1.dbt.com/register?_dbtsrc=dbt-state). For dbt v2 and v1 users, you can start the account creation workflow from the CLI by running `dbt login` (v1.13/v2) or `dbt run`/`dbt build` (dbt v1.7–1.12), which opens the sign-up page where you can create a free account.
+- **New to <Constant name="dbt_platform" />**: Create an account from the [dbt platform sign-up page](http://us1.dbt.com/register?_dbtsrc=dbt-state). For dbt v2 and v1 users, you can start the account creation workflow from the CLI by running `dbt login` (v1.13/v2) or `dbt run`/`dbt build` (dbt v1.7–1.12), which opens the sign-up page where you can create an account. All [account plans](https://www.getdbt.com/pricing) are supported.
 
 For setup steps, refer to [Set up dbt State](/docs/deploy/dbt-state-setup).
 

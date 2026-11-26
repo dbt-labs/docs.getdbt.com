@@ -21,7 +21,6 @@ The details on this page are generally for admin tasks. If you're looking for wh
 
 - A [<Constant name="dbt_platform" /> account](https://www.getdbt.com/pricing) on Developer, Starter, Enterprise, or Enterprise+ plans
   - [Legacy team plans](/docs/platform/billing/plans-and-billing#legacy-plans) don't have access to <Constant name="wizard" /> and we recommend moving to a [Starter, Enterprise, or Enterprise+ plan](https://www.getdbt.com/pricing) to use it and other features.
-  - Certain features like [natural prompts in Canvas](/docs/platform/build-canvas-copilot) are only available on Enterprise and Enterprise+ plans.
 - <Constant name="dbt" /> admin permissions to change account settings and configure providers.
 - A development environment on a supported [release track](/docs/dbt-versions/dbt-release-tracks) to receive ongoing updates.
 
@@ -35,13 +34,11 @@ Eligible accounts, including new ones, have AI features on by default, so most u
 4. Turn **Enable account access to AI features** off to disable access or on to enable it.
 5. Click **Save**.
 
-Turning AI features off applies to the whole account, including <Constant name="wizard" /> and dbt Copilot. The [dbt Support Assistant](/docs/dbt-support?version=2#ask-dbt-support-assistant) is managed separately by dbt Labs (contact the [dbt Support team](mailto:support@dbtlabs.com) for more info).
+Turning AI features off applies to the whole account, including <Constant name="wizard" />. The [dbt Support Assistant](/docs/dbt-support?version=2#ask-dbt-support-assistant) is managed separately by dbt Labs (contact the [dbt Support team](mailto:support@dbtlabs.com) for more info).
 
 ## Supported AI providers
 
 <WizardSupportedProviders />
-
-dbt Copilot supports a smaller set of providers. Refer to [dbt Copilot](/docs/dbt-ai/copilot-overview#configure-ai-provider-for-dbt-copilot) for its providers and setup steps.
 
 ## Configure AI provider
 

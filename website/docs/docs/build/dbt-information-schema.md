@@ -29,7 +29,7 @@ For available tables and their descriptions, see [Information Schema tables](/re
 
 ## Generating the Information Schema
 
-Use `--generate-info-schema` with `dbt build`, `dbt run`, `dbt compile`, or `dbt parse`. By default, the `dbt.node_columns` table contains only YAML-declared columns for both models and sources.
+Use `--generate-info-schema` or `DBT_ENGINE_GENERATE_INFO_SCHEMA=true` with `dbt build`, `dbt run`, `dbt compile`, or `dbt parse`. By default, the `dbt.node_columns` table contains only YAML-declared columns for both models and sources.
 
 - To include inferred model column types and column-level lineage, add `--static-analysis strict`:
 
@@ -56,7 +56,7 @@ The Information Schema Parquet files live in a versioned subdirectory under your
 
 #### Overriding the output directory
 
-Use `--info-schema-dir` to write the Information Schema to a custom directory. The versioned subdirectory (`v1/`) is still appended under whatever directory you set.
+Use `--info-schema-dir` or `DBT_ENGINE_INFO_SCHEMA_DIR` to write the Information Schema to a custom directory. The versioned subdirectory (`v1/`) is still appended under whatever directory you set.
 
 ```shell
 dbt build --generate-info-schema --info-schema-dir /tmp/my_schema
@@ -95,7 +95,11 @@ models = pd.read_parquet("target/info_schema/v1/dbt.models.parquet")
 
 ## Using the Information Schema in checks
 
-[Checks](/docs/build/checks) are SQL queries that run against the dbt Information Schema to check your project quality. Use the [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) macro in your check to reference a view in the dbt Information Schema. You must set the version of the `info_schema` you want to use in `dbt_project.yml`. Currently, `1` is the only available version.
+[Checks](/docs/build/checks) are SQL queries that run against the dbt Information Schema to check your project quality.
+
+Use the [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) macro in your check to reference a view in the dbt Information Schema. Checks use a version of the Information Schema built during parsing, so you don't need to run `--generate-info-schema` before `dbt check`.
+
+Set the `info_schema` version in `dbt_project.yml`. Currently, `1` is the only available version.
 
 ```yaml
 info_schema:

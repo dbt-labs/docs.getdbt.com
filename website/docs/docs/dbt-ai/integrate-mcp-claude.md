@@ -13,6 +13,7 @@ import MCPRemoteServerUrl from '/snippets/_mcp-remote-server-url.md';
 import MCPRemoteTokenHeaders from '/snippets/_mcp-remote-token-headers.md';
 import MCPOauthPreflight from '/snippets/_mcp-oauth-preflight.md';
 import MCPCustomConnectorOauth from '/snippets/_mcp-custom-connector-oauth.md';
+import MCPRemoteReadOnlyCredentials from '/snippets/_mcp-remote-read-only-credentials.md';
 
 Claude is an AI assistant from Anthropic with two primary interfaces:
 - [Claude Desktop](#claude-desktop): A GUI with MCP support for file access and commands, plus basic coding features.
@@ -27,6 +28,7 @@ Both interfaces can connect to either:
 - You use Claude for AI or agentic work
 - For OAuth (self-hosted or remote), use your [access URL with a static subdomain](/docs/platform/about-platform/access-regions-ip-addresses).
   - Remote MCP OAuth is available for Starter, Enterprise, and Enterprise+ accounts.
+- <MCPRemoteReadOnlyCredentials />
 
 <StaticSubdomainRequired />
 

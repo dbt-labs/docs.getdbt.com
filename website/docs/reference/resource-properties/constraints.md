@@ -426,7 +426,7 @@ select
   struct(
     1 as id,
     'name' as name,
-    struct(2 as id, struct('test' as again, '2' as even_more) as another) as double_nested
+    struct(2 as id, struct('test' as again, 2 as even_more) as another) as double_nested
   ) as b
 ```
 
