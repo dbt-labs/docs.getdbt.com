@@ -9,13 +9,6 @@ dbt State decides whether to reuse a model by parsing the rendered SQL into a sy
 
 dbt State prioritizes safety and precision; if it can't guarantee skipping a node is safe, then it rebuilds the node to be sure. A few patterns that commonly cause overeager rebuilds are listed on this page, along with recommendations to increase reuse rate.
 
-The following patterns commonly cause unexpected rebuilds:
-
-- [Views with `select *`](#views-with-select)
-- [Non-deterministic Jinja templating](#non-deterministic-jinja-templating)
-- [Models with external sources in BigQuery](#models-with-external-sources-in-bigquery)
-- [Models with custom materializations](#models-with-custom-materializations)
-
 ## Views with `select *` {#views-with-select}
 
 dbt State reuses a model when its compiled SQL matches the stored hash. When a view uses `select *` directly on a `ref()` or `source()`, dbt can't determine the column list at parse time &mdash; the upstream model or source table might have gained or lost columns since the last run. To be safe, dbt State forces a rebuild.
@@ -88,7 +81,11 @@ To prevent external sources from always being considered stale, configure [`load
 
 ## Models with custom materializations
 
-Models using custom materializations are always built and are never reused. Custom materializations may have side effects (for example, modifying table properties or writing to other schemas), and dbt State cannot safely determine whether skipping the run would produce the same result.
+Models using custom materializations can be skipped as unchanged, but are ineligible to be cloned from another location. Custom materializations may have side effects (for example, modifying table properties or writing to other schemas), and dbt State cannot safely determine whether cloning the object would produce the same result.
+
+## Python models
+
+Python models are always rebuilt because dbt State only analyzes SQL models. The rebuild moves that model's last updated date forward, which triggers a rebuild in any downstream SQL models after their `lag_tolerance` is exceeded. To minimize the effects of this, reduce the number of models that depend on a Python table or set a higher `lag_tolerance` on its immediate children.
 
 ## How to diagnose
 
