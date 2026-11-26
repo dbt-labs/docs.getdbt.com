@@ -10,7 +10,7 @@ To delete a user in <Constant name="dbt" />, you must be an account owner or hav
 
 1. From <Constant name="dbt" />, click on your account name in the left side menu and, select **Account settings**.
 
-<Lightbox src="/img/docs/dbt-platform/account-settings-menu.png" title="Open Account settings from the account menu in the left sidebar" />
+<Lightbox src="/img/docs/dbt-platform/account-settings-menu.png" width="85%" title="Open Account settings from the account menu in the left sidebar" />
 
 2. Under **Settings**, select **Users**.
 3. Select the user you want to delete, then click **Edit**. 

@@ -11,9 +11,8 @@ Use **Billing & Usage** to monitor how your account is tracking against its usag
 To view available plans and their features:
 
 1. From <Constant name="dbt" />, click your account name in the left side menu and select **Account settings**.
-2. Under **Settings**, select **Billing & Usage**.
-3. Open **Overview**.
-4. Click **Select plan** to open the plans view and compare features for each plan.
+2. Under **Settings**, go to **Billing & Usage** > **Overview**.
+3. Click **Select plan** to open the plans view and compare features for each plan.
 
 ### Usage notifications 
 

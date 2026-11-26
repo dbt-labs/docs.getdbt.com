@@ -87,7 +87,7 @@ Inviting a user does not purchase a seat. If you don't have a free seat, buy one
 
 To add a user in <Constant name="dbt" />, you must be an account owner or have admin privileges. Purchase enough developer seats first, then invite the user. Inviting a user does not buy a seat.
 
-**Purchase developer seats**
+**Purchasing developer seats**
 
 1. From <Constant name="dbt" />, click your account name in the left side menu and select **Account settings**.
 
@@ -101,7 +101,7 @@ To add a user in <Constant name="dbt" />, you must be an account owner or have a
 7. Click **Update payment information** (or **Complete purchase** if you're finishing a trial or first purchase).
 8. If a **Confirm additional seats** modal appears, review the change and click **Add seats**.
 
-**Invite the user**
+**Inviting users**
 
 1. In **Account settings**, select **Users**.
 2. Click **Invite users**.
