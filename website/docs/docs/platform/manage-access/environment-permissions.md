@@ -36,7 +36,9 @@ Environment-level permissions give <Constant name="dbt" /> admins more flexibili
 
 ### Environment write permissions
 
-Environment write permissions grant access to create, edit, and delete runs and jobs within an environment. However, they don't grant users access to create or delete environments themselves. See [Enterprise permissions](/docs/platform/manage-access/enterprise-permissions) for more information about elevated permission sets. 
+Environment write permissions apply only to the permission sets listed below. These are the sets marked with an asterisk in the [project permission sets table](/docs/platform/manage-access/enterprise-permissions#project-access-for-project-permissions).
+
+For those sets, this setting grants group members create, edit, and delete permissions on jobs and runs in the environment types you choose. It doesn’t let them create or delete the environments themselves. Those actions require an elevated permission set, such as Admin or Job admin.
 
 Environment write permissions can be specified for the following roles:
 
@@ -44,9 +46,12 @@ Environment write permissions can be specified for the following roles:
 - Database admin
 - Developer<sup>*</sup>
 - Git admin
+- Job creator<sup>**</sup>
 - Team admin
 
 <sup>*</sup> In the [enterprise permissions](/docs/platform/manage-access/enterprise-permissions) table, the `Developer` role has read-only access to environment settings, but when added to a group, the **Environment write access** field defaults to `All environments`, which grants broader environment permissions than the table implies. The `Analyst`, `Database admin`, `Git admin`, and `Team admin` roles get **Read-only environment access** by default unless you specify different access under **Environment write access** for that group.
+
+<sup>**</sup> [Job creator](/docs/platform/manage-access/enterprise-permissions#job-creator) has read-only access to environments in the enterprise permissions table. Users can create, edit, and run jobs only in environment types where the group has **Environment write access**. Refer to [Set up environment-level permissions](/docs/platform/manage-access/environment-permissions-setup).
 
 
 Depending on your current group mappings, you may have to update roles to ensure users have the correct access level to environments. 

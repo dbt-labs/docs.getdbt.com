@@ -14,3 +14,27 @@
     padding: 0 0.3rem;
   }
 }
+
+/* dbt Custom: wrap "Edit this page" in a subtle button so it stands out
+ * from the TOC links instead of blending in at the bottom of the sidebar. */
+.editThisPage :global(.theme-edit-this-page) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-global-radius);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--ifm-color-emphasis-800);
+  transition: background var(--ifm-transition-fast) ease,
+    border-color var(--ifm-transition-fast) ease;
+}
+
+.editThisPage :global(.theme-edit-this-page:hover) {
+  text-decoration: none;
+  background: var(--ifm-color-emphasis-100);
+  border-color: var(--ifm-color-emphasis-400);
+  color: var(--ifm-color-primary);
+}

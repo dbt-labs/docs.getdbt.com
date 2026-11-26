@@ -243,7 +243,7 @@ A user-defined description used to document:
 - macros, and macro arguments
 - data tests, and data test columns
 - unit tests for models
-- groups (dbt Core v1.10+)
+- groups (<Constant name="dbt" /> v1.10+)
 
 These descriptions are used in the documentation website rendered by dbt (refer to [the documentation guide](/docs/build/documentation) or [<Constant name="catalog" />](/docs/explore/explore-projects)). 
 
@@ -301,7 +301,7 @@ models:
   - name: dim_customers
     description: >
       One record per customer. Note that a customer must have made a purchase to
-      be included in this <Term id="table" /> — customer accounts that were created but never
+      be included in this table — customer accounts that were created but never
       used have been filtered out.
 
     columns:
@@ -461,7 +461,7 @@ version: 2
 
 models:
   - name: customers
-    description: "!\[dbt Logo](https://raw.githubusercontent.com/dbt-labs/dbt-core/refs/heads/1.latest/docs/images/dbt-core.svg)"
+    description: "!\[dbt Logo](https://raw.githubusercontent.com/dbt-labs/dbt/refs/heads/1.latest/docs/images/dbt-core.svg)"
 
     columns:
       - name: customer_id

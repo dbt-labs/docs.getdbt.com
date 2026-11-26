@@ -10,6 +10,7 @@ availability:
 ---
 
 import ScimAssignGroupPermissions from '/snippets/_scim-assign-group-permissions.md';
+import ScimAdminGroupPrereq from '/snippets/_scim-admin-group-prereq.md';
 
 
 :::info SCIM available for Okta
@@ -22,6 +23,7 @@ System for Cross-Domain Identity Management (SCIM) [license mapping](/docs/platf
 - You must have [permissions](/docs/platform/manage-access/enterprise-permissions) to configure the account settings in <Constant name="dbt_platform" />.
 - Complete [setup SSO with Okta](/docs/platform/manage-access/set-up-sso-okta) before configuring SCIM settings.
 - Complete the [Set up SCIM](/docs/platform/manage-access/scim#set-up-dbt) to get your SCIM base URL and token.
+- <ScimAdminGroupPrereq />
 
 ## Set up Okta
 

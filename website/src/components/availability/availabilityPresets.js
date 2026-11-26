@@ -32,8 +32,8 @@ export const ENGINE_LABELS = {
 };
 
 export const ENGINE_TOOLTIPS = {
-  v1: 'Available in dbt Core 1.x',
-  v2: 'Available in v2 (including Fusion)',
+  v1: 'Available in v1',
+  v2: 'Available in v2',
 };
 
 export function getEngineFacet(engine) {
@@ -67,17 +67,18 @@ export const SURFACE_TOOLTIP_LINKS = {
 };
 
 export const PLAN_LABELS = {
+  developer: 'Developer',
   starter: 'Starter',
   enterprise: 'Enterprise',
   enterprise_plus: 'Enterprise+',
 };
 
 // Order matters: minPlan expands to this tier and everything after it ("and up").
-const PLAN_TIER_ORDER = ['starter', 'enterprise', 'enterprise_plus'];
+const PLAN_TIER_ORDER = ['developer', 'starter', 'enterprise', 'enterprise_plus'];
 
 const ACCESS_TOOLTIPS = {
   Free: 'No account needed.',
-  'Login required': 'Sign in with a dbt account. No paid dbt seat required.',
+  'Login required': 'Sign in with a dbt account. Supported across all dbt plans.',
   'Usage-based': 'Billed based on usage.',
 };
 
@@ -117,7 +118,7 @@ export function getAccessFacets(access, { minPlan, plans } = {}, surface) {
       return surface === 'platform' ? [] : [{ facet: 'Login required', tooltip: ACCESS_TOOLTIPS['Login required'], tooltipLink: { href: 'https://www.getdbt.com/pricing', text: 'dbt seat' } }];
     case 'usage_based':
       return [
-        ...(surface === 'platform' ? [] : [{ facet: 'Login required', tooltip: 'Sign in with a dbt account. No paid dbt seat required.', tooltipLink: { href: 'https://www.getdbt.com/pricing', text: 'dbt seat' } }]),
+        ...(surface === 'platform' ? [] : [{ facet: 'Login required', tooltip: 'Sign in with a dbt account. Supported across all dbt plans.', tooltipLink: { href: 'https://www.getdbt.com/pricing', text: 'dbt seat' } }]),
         { facet: 'Usage-based', tooltip: ACCESS_TOOLTIPS['Usage-based'], label: FIELD_LABELS.usage },
       ];
     case 'paid_plan': {
@@ -141,6 +142,11 @@ export const availabilityPresets = {
     description: 'dbt platform features available to all signed-in users.',
     surface: 'platform',
     access: 'login_required',
+  },
+  platform_usage: {
+    description: 'dbt platform features available to all signed-in users and billed on usage.',
+    surface: 'platform',
+    access: 'usage_based',
   },
   local_free: {
     description: 'Local CLI tools with no login required.',

@@ -17,7 +17,7 @@ Skills are reusable instructions that help <Constant name="wizard" /> follow you
 
 When you initialize <Constant name="wizard" /> in a project, it can also detect existing Claude Code skills in the current directory.
 
-For general project context (`AGENTS.md`, `CLAUDE.md`), refer to [Migrate to dbt Wizard](/docs/dbt-ai/wizard-migrate) — <Constant name="wizard" /> reads those instruction files out of the box.
+You don't need a skill for general project context. <Constant name="wizard" /> reads instruction files like `AGENTS.md` and `CLAUDE.md` out of the box. Refer to [Project context files](#project-context-files) for which file it uses.
 
 ## Locations and precedence
 
@@ -56,6 +56,59 @@ The following table summarizes where <Constant name="wizard" /> looks for skills
 </SimpleTable>
 
 Avoid duplicate skill names across locations. If you need to replace a built-in or imported skill, create the replacement in an intended project or user location and remove or rename the older copy.
+
+## Project context files
+
+Use skills for reusable workflows, and an instruction file for general project context, like conventions that apply to every session. <Constant name="wizard" /> reads common instruction files automatically, so if you already use Claude Code, you don't need to move anything over.
+
+In each directory, <Constant name="wizard" /> uses the first file in the following table that has content, and skips the rest:
+
+<SimpleTable>
+
+| Order | File | What Wizard does |
+| --- | --- | --- |
+| 1 | `AGENTS.override.md` | Checks this first for local override instructions |
+| 2 | `AGENTS.md` | Uses this as the primary project instruction file |
+| 3 | `CLAUDE.md` | Uses this as a fallback when the directory has no `AGENTS.md` |
+| 4 | `.claude/CLAUDE.md` | Uses this as another fallback instruction file |
+
+</SimpleTable>
+
+A few things to know:
+
+- If a directory has both `AGENTS.md` and `CLAUDE.md`, <Constant name="wizard" /> uses only `AGENTS.md`. An empty `AGENTS.md` doesn't count, so <Constant name="wizard" /> falls back to `CLAUDE.md`.
+- <Constant name="wizard" /> checks every directory from your project root (the directory that contains `.git`) down to your current working directory, and combines the files it finds for the session.
+- To create a starter `AGENTS.md`, run `/init` in a <Constant name="wizard" /> session.
+
+## Skills from dbt packages
+
+<VersionBlock lastVersion="1.99">
+
+From v2 and later, you can ship agent skills in a dbt package and install them with `dbt deps` into the directory your coding agent reads from. Your whole team picks up the same skills from a versioned dependency instead of managing them separately.
+
+For more information, refer to [upgrading to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2?version=2#agent-skills).
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+On dbt v2, a dbt package can ship skills, and `dbt deps` installs them into the directory your coding agent reads from.
+
+To opt in, set `ai_provider` to one of the [supported providers list](/docs/dbt-ai/package-skills?version=2#set-the-ai_provider-flag). If you use Wizard, set `ai_provider` to `wizard` in your root project:
+
+<File name='dbt_project.yml'>
+
+```yml
+flags:
+  ai_provider: wizard
+```
+
+</File>
+
+Use `wizard` whether you bring your own key or use managed AI.
+
+For the full setup, including how to ship skills in a package and disable ones you don't want, examples, and more &mdash; refer to [Installing agent skills from dbt packages](/docs/dbt-ai/package-skills).
+
+</VersionBlock>
 
 ## Create a skill
 
@@ -154,7 +207,7 @@ If a project skill and a global skill use the same name, the project skill takes
 
 <Constant name="wizard"/> ships with skills from [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills), maintained by dbt Labs and the community. These capture analytics engineering knowledge for common workflows and are always available. The agent loads the relevant skill automatically when your prompt matches its use case.
 
-The following skills are always available and refer to the [dbt Agent Skills repository](https://github.com/dbt-labs/dbt-agent-skills) for installation in other AI clients, contributing new skills, and the latest catalog.
+The following skills all ship bundled with <Constant name="wizard"/>. You don't call them directly as the agent loads whichever one best matches your prompt. Refer to the [dbt Agent Skills repository](https://github.com/dbt-labs/dbt-agent-skills) for installation in other AI clients, contributing new skills, and the latest catalog.
 
 <SimpleTable>
 
@@ -179,7 +232,7 @@ These skills are for migration projects rather than everyday sessions:
 
 | Skill | What it does |
 |-------|-------------|
-| `migrating-dbt-core-to-fusion` | Migrate dbt projects from dbt Core to the <Constant name="fusion_engine" /> |
+| `migrating-dbt-core-to-v2` | Migrate dbt projects from <Constant name="core" /> to <Constant name="fusion_engine" /> |
 | `migrating-dbt-project-across-platforms` | Migrate dbt projects across data platforms |
 </SimpleTable>
 
@@ -190,11 +243,12 @@ Built-in skills are updated with each <Constant name="wizard"/> release. Custom 
 - **Keep `SKILL.md` focused.** One skill per concern (style guide, testing conventions, deployment workflow). Smaller skills are loaded more reliably than large monolithic ones.
 - **Use `description` to control when <Constant name="wizard"/> activates the skill.** A precise description ("Use when creating or editing models in models/marts/") means the skill fires when relevant, not on every prompt.
 - **Start a new session after adding or editing a skill.** Skills are discovered at session start — mid-session changes aren't picked up until you start a new chat.
-- **Cross-project sharing isn't supported yet.** To reuse a skill in another repo, copy the skill files manually. CLI users can also use `~/.agents/skills/` for skills they want everywhere.
+- **Share skills across projects**: To share skills across projects in v2, [ship them in a dbt package](/docs/dbt-ai/package-skills?version=2) and install it with `dbt deps`. Refer to [Skills from dbt packages](/docs/dbt-ai/package-skills?version=2). For personal skills you want across all your local projects, use ~/.agents/skills/.
 
 ## Related docs
 
 - [<Constant name="wizard"/> in Studio IDE](/docs/dbt-ai/wizard-ide)
 - [Use skills in the <Constant name="dbt_platform" />](/docs/dbt-ai/wizard-platform-skills)
+- [Installing agent skills from dbt packages](/docs/dbt-ai/package-skills)
 - [How <Constant name="wizard"/> works](/docs/dbt-ai/wizard-how-it-works)
-- [<Constant name="wizard"/> CLI overview](/docs/dbt-ai/about-dbt-wizard-cli)
+- [<Constant name="wizard"/> CLI overview](/docs/dbt-ai/wizard-cli)

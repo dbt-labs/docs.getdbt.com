@@ -46,9 +46,13 @@ If you select a plan but have too many seats or projects for that plan (for exam
 3. Enter your payment information and seat purchases. Then click **Save**.
 4. This automatically unlocks your <Constant name="dbt" /> account, and you can now enjoy the benefits of the Starter plan. 🎉
 
+<DocCarousel slidesPerView={1}>
+
 <Lightbox src="/img/docs/dbt-platform/trial-team-flow.png"/>
 
 <Lightbox src="/img/docs/dbt-platform/trial-team-payments-flow.png"/>
+
+</DocCarousel>
 
 ### Enterprise plan
 

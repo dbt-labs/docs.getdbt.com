@@ -5,7 +5,7 @@ pagination_next: "reference/node-selection/configure-state"
 ---
 
 :::tip Looking for a managed state experience?
-If you want a managed experience for state with dbt to skip rerunning models that haven't changed, check out [dbt State](/docs/deploy/dbt-state-about).
+If you want a managed experience for state with dbt to skip rerunning models that haven't changed, check out [dbt State](/docs/deploy/dbt-state-about). In self-managed deployments with dbt State enabled, all [`state:*` selectors](/reference/node-selection/methods#state) can also use dbt State as their comparison source for per-node granularity without managing a `manifest.json`. Refer to [dbt State-powered `state:*` selectors](/docs/deploy/dbt-state-deferral#dbt-state-powered-state-selectors) for more information.
 :::
 
 :::info Why idempotence matters here
@@ -23,6 +23,8 @@ by comparing code in the current project against the state manifest.
 - The [`dbt clone` command](/reference/commands/clone), whereby dbt can clone nodes based on their location in the manifest provided to the `--state` flag.
 
 Together, the [`state`](/reference/node-selection/methods#state) selector and deferral enable ["slim CI"](/best-practices/best-practice-workflows#run-only-modified-models-to-test-changes-slim-ci). We expect to add more features in future releases that can leverage artifacts passed to the `--state` flag.
+
+<Lightbox src="/img/docs/reference/state-modified-diagram.png" width="85%" alt="A project graph where one edited model and its downstream models are highlighted, and all other models are greyed out." title="dbt compares your project to a production manifest, then builds only the changed models and everything downstream." />
 
 ## Related docs
 - [Configure state selection](/reference/node-selection/configure-state)

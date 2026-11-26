@@ -22,6 +22,16 @@ This is an advanced feature of dbt. Let us know if you need a hand! We're always
 
 :::
 
+<VersionBlock firstVersion="2.0" >
+
+:::info Custom materializations and static analysis
+
+Models that use a custom materialization follow the normal [`static_analysis`](/reference/resource-configs/static-analysis#custom-materializations) rules. If you use `strict` and your materialization changes the model's schema (for example, by adding, renaming, or retyping columns), set `static_analysis: off` on those models. Because `off` cascades, their downstream models lose static analysis too. Refer to [Custom materializations](/docs/build/about-static-analysis#custom-materializations) for details.
+
+:::
+
+</VersionBlock>
+
 ## Creating a materialization
 
 import CourseCallout from '/snippets/_materialization-video-callout.md';

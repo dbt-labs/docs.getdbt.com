@@ -267,12 +267,12 @@ sources:
               data_type: <type>
 ```
 
-`aws_key_id` and `aws_secret_key` are the credentails that allow Firebolt access to your S3 bucket. Learn
+`aws_key_id` and `aws_secret_key` are the credentials that allow Firebolt access to your S3 bucket. Learn
 how to set them up by following this [guide](https://docs.firebolt.io/godocs/Guides/loading-data/creating-access-keys-aws.html). If your bucket is public these parameters are not necessary.
 
 #### Running external tables
 
-The `stage_external_sources` macro is inherited from the [dbt-external-tables package](https://github.com/dbt-labs/dbt-external-tables#syntax) and is the primary point of entry when using thes package. It has two operational modes: standard and "full refresh."
+The `stage_external_sources` macro is inherited from the [dbt-external-tables package](https://github.com/dbt-labs/dbt-external-tables#syntax) and is the primary point of entry when using this package. It has two operational modes: standard and "full refresh."
 
 ```bash
 # iterate through all source nodes, create if missing, refresh metadata

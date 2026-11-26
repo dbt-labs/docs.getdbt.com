@@ -10,7 +10,7 @@ Unlike [pre-hooks and post-hooks](/reference/resource-configs/pre-hook-post-hook
 
 The primary function of `set_sql_header` is fairly limited. It's intended to: 
 - [Create UDFs](/reference/resource-configs/sql_header#create-a-bigquery-temporary-udf)
-- [Set script variables](https://cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language) (BigQuery) 
+- [Set script variables](/reference/resource-configs/sql_header#declare-a-bigquery-script-variable) (BigQuery) 
 - [Set temporary session parameters](/reference/resource-configs/sql_header#set-snowflake-session-parameters-for-a-particular-model) (Snowflake)
 
 :::
@@ -96,7 +96,7 @@ snapshots:
 
 <TabItem value="property-yaml">
 
-Setting `sql_header` in the `config` of a [generic data test](/docs/build/data-tests) is available starting in <Constant name="core" /> v1.12. Enable the [`require_sql_header_in_test_configs`](/reference/global-configs/behavior-flags/require_sql_header_in_test_configs) flag to use `sql_header` in `properties.yml` for generic data tests.
+Setting `sql_header` in the `config` of a [generic data test](/docs/build/data-tests) is available starting in <Constant name="dbt" /> v1.12. Enable the [`require_sql_header_in_test_configs`](/reference/global-configs/behavior-flags/require_sql_header_in_test_configs) flag to use `sql_header` in `properties.yml` for generic data tests.
 
 
 Here's an example of a model-level configuration:
@@ -213,4 +213,20 @@ select yes_no_to_boolean(yes_no) from {{ ref('other_model') }}
 
 </File>
 
+### Declare a BigQuery script variable
 
+Use `set_sql_header` to declare a variable before the model query, then reference it in the query. `DECLARE`, in BigQuery's [procedural language](https://cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language), takes a name, a type, and an optional `DEFAULT` value:
+
+<File name='models/my_model.sql'>
+
+```sql
+{% call set_sql_header(config) %}
+DECLARE cutoff_date DATE DEFAULT DATE '2024-01-01';
+{% endcall %}
+
+select order_id, order_date
+from {{ ref('orders') }}
+where order_date >= cutoff_date
+```
+
+</File>

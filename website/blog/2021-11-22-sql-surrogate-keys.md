@@ -57,7 +57,7 @@ While the process of creating a surrogate key is relatively well understood, you
 md5 ( concat ( coalesce(column1, '_this_used_to_be_null_'), coalesce(column2, '_this_used_to_be_null_') ) )
 ```
 You'll notice that instead of coalescing to a blank string, there is a long replacement string. It doesn't matter what this string is, as long as it's consistent across your project and doesn't appear in any of your data. When you coalesce to a blank string, you can't differentiate between `null` and `''` which sometimes has semantic meaning. Compare the results of these surrogate keys:
-![A table with two columns, comparing surrogate keys when nulls and blank strings are treated the same and differently.](/img/blog/2021-11-22-sql-surrogate-keys/surrogate_key_comparison.png)
+<Lightbox src="/img/blog/2021-11-22-sql-surrogate-keys/surrogate_key_comparison.png" title="A table with two columns, comparing surrogate keys when nulls and blank strings are treated the same and differently." />
 
 
 [Databricks](https://docs.databricks.com/sql/language-manual/functions/concat.html)’ concat function docs don’t specifically reference returning null for the concat if one column is null, but I believe that’s what’s meant by `The result type matches the argument types`.

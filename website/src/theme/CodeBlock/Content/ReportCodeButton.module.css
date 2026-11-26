@@ -1,0 +1,37 @@
+.reportWrap {
+  position: relative;
+  display: inline-flex;
+}
+
+/* Tooltip label, shown on hover/focus like Claude Code's "report incorrect code" */
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 0.4rem);
+  right: 0;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--ifm-global-radius);
+  background: #1b1b1d;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(2px);
+  transition: opacity var(--ifm-transition-fast) ease,
+    transform var(--ifm-transition-fast) ease;
+  z-index: 1;
+}
+
+/* Invert in dark mode so the label stays readable */
+:global(html[data-theme='dark']) .tooltip {
+  background: #e3e3e3;
+  color: #1b1b1d;
+}
+
+.reportWrap:hover .tooltip,
+.reportWrap:focus-within .tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}

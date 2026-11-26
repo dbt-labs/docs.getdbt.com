@@ -19,7 +19,7 @@ This guide will teach you how to refresh a Mode dashboard when a <Constant name=
  - Receive a webhook notification in Zapier
  - Trigger a refresh of a Mode report
 
-Although we are using the Mode API for a concrete example, the principles are readily transferrable to your [tool](https://learn.hex.tech/docs/develop-logic/hex-api/api-reference#operation/RunProject) [of](https://learn.microsoft.com/en-us/rest/api/power-bi/datasets/refresh-dataset) [choice](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref.htm#update_workbook_now). 
+Although we are using the Mode API for a concrete example, the principles are readily transferable to your [tool](https://learn.hex.tech/docs/develop-logic/hex-api/api-reference#operation/RunProject) [of](https://learn.microsoft.com/en-us/rest/api/power-bi/datasets/refresh-dataset) [choice](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref.htm#update_workbook_now). 
 
 ### Prerequisites
 
@@ -33,7 +33,7 @@ Use **Webhooks by Zapier** as the Trigger, and **Catch Raw Hook** as the Event. 
 
 Press **Continue**, then copy the webhook URL. 
 
-![Screenshot of the Zapier UI, showing the webhook URL ready to be copied](/img/guides/orchestration/webhooks/zapier-common/catch-raw-hook.png)
+<Lightbox src="/img/guides/orchestration/webhooks/zapier-common/catch-raw-hook.png" title="Screenshot of the Zapier UI, showing the webhook URL ready to be copied" />
 
 ## Configure a new webhook in dbt
 See [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subscription) for full instructions. Your event should be **Run completed**, and you need to change the **Jobs** list to only contain any jobs whose completion should trigger a report refresh.
@@ -60,7 +60,7 @@ If you haven't already got one, go to [https://zapier.com/app/connections/storag
 Choose **Run Python** as the Event. Run the following code: 
 ```python 
 store = StoreClient('abc123') #replace with your UUID secret
-store.set('DBT_WEBHOOK_KEY', 'abc123') #replace with your <Constant name="dbt" /> API token
+store.set('DBT_WEBHOOK_KEY', 'abc123') #replace with your dbt API token
 store.set('MODE_API_TOKEN', 'abc123') #replace with your Mode API Token
 store.set('MODE_API_SECRET', 'abc123') #replace with your Mode API Secret
 ```
@@ -71,7 +71,7 @@ Select **Code by Zapier** as the App, and **Run Python** as the Event.
 
 In the **Set up action** area, add two items to **Input Data**: `raw_body` and `auth_header`. Map those to the `1. Raw Body` and `1. Headers Http Authorization` fields from the **Catch Raw Hook** step above.
 
-![Screenshot of the Zapier UI, showing the mappings of raw_body and auth_header](/img/guides/orchestration/webhooks/zapier-common/run-python.png)
+<Lightbox src="/img/guides/orchestration/webhooks/zapier-common/run-python.png" title="Screenshot of the Zapier UI, showing the mappings of raw_body and auth_header" />
 
 In the **Code** field, paste the following code, replacing `YOUR_SECRET_HERE` in the StoreClient constructor with the secret you created when setting up the Storage by Zapier integration (not your <Constant name="dbt" /> secret), and setting the `account_username` and `report_token` variables to actual values.
 
@@ -99,7 +99,7 @@ password = secret_store.get('MODE_API_SECRET')
 signature = hmac.new(hook_secret.encode('utf-8'), raw_body.encode('utf-8'), hashlib.sha256).hexdigest()
 
 if signature != auth_header:
-  raise Exception("Calculated signature doesn't match contents of the Authorization header. This webhook may not have been sent from <Constant name="dbt" />.")
+  raise Exception("Calculated signature doesn't match contents of the Authorization header. This webhook may not have been sent from dbt.")
 
 full_body = json.loads(raw_body)
 hook_data = full_body['data'] 

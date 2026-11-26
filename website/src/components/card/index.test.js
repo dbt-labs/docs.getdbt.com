@@ -1,0 +1,99 @@
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import { usePluginData } from '@docusaurus/useGlobalData';
+import Card from './index';
+
+// Theme aliases aren't resolvable under jest; stub them.
+jest.mock('@docusaurus/Link', () => ({ to, children }) => <a href={to}>{children}</a>, {
+  virtual: true,
+});
+jest.mock('@docusaurus/useBaseUrl', () => (url) => url, { virtual: true });
+jest.mock('../../utils/get-icon-type', () => () => null);
+jest.mock('../borderBeam', () => () => null);
+jest.mock('../lifeCycle', () => () => null);
+
+describe('Card heading level', () => {
+  it('renders the title as an h4 by default', () => {
+    render(<Card title="About dbt" body="Body" link="/docs/introduction" />);
+    const heading = screen.getByRole('heading', { name: 'About dbt' });
+    expect(heading.tagName).toBe('H4');
+    expect(heading).toHaveClass('heading-4');
+  });
+
+  it('uses the requested level and keeps the heading-4 look', () => {
+    render(<Card title="About dbt" body="Body" link="/docs/introduction" headingLevel={3} />);
+    const heading = screen.getByRole('heading', { level: 3, name: 'About dbt' });
+    expect(heading).toHaveClass('heading-4');
+  });
+
+  it('applies the level to cards without a link', () => {
+    render(<Card title="No link" body="Body" headingLevel={3} />);
+    expect(screen.getByRole('heading', { level: 3, name: 'No link' })).toBeInTheDocument();
+  });
+});
+
+describe('Card adapter designation', () => {
+  const VersionContext = require('../../stores/VersionContext').default;
+  const renderAt = (version, props) =>
+    render(
+      <VersionContext.Provider value={{ version }}>
+        <Card title="Exasol" {...props} />
+      </VersionContext.Provider>
+    );
+
+  it('shows the designation tag in v2', () => {
+    renderAt('2.0', { v2Href: '/v2', designation: 'first-party' });
+    expect(screen.getByText('first-party')).toHaveClass('tag');
+  });
+
+  it('hides the designation tag in v1', () => {
+    renderAt('1.11', { v1Href: '/v1', designation: 'first-party' });
+    expect(screen.queryByText('first-party')).not.toBeInTheDocument();
+  });
+
+  it('keeps a designated card without a v2 link on the v2 page, with no links', () => {
+    renderAt('2.0', {
+      v1Href: '/v1',
+      designation: 'community-maintained',
+      body: 'A setup page for dbt v2 is not available yet.',
+    });
+    expect(screen.getByRole('heading', { name: 'Exasol' })).toBeInTheDocument();
+    expect(screen.getByText('community-maintained')).toBeInTheDocument();
+    expect(screen.getByText('A setup page for dbt v2 is not available yet.')).toBeInTheDocument();
+    expect(screen.queryByRole('link')).not.toBeInTheDocument();
+    expect(screen.queryByRole('list')).not.toBeInTheDocument();
+  });
+
+  it('hides the v2 note when the v1 install link is showing', () => {
+    renderAt('1.11', {
+      v1Href: '/v1',
+      designation: 'community-maintained',
+      body: 'A setup page for dbt v2 is not available yet.',
+    });
+    expect(screen.getByRole('link', { name: 'Install with dbt v1' })).toBeInTheDocument();
+    expect(screen.queryByText('A setup page for dbt v2 is not available yet.')).not.toBeInTheDocument();
+  });
+
+  it('still hides a v1-only card without a designation in v2', () => {
+    renderAt('2.0', { v1Href: '/v1' });
+    expect(screen.queryByRole('heading', { name: 'Exasol' })).not.toBeInTheDocument();
+  });
+
+  it('hides a v1-only platform link and pill on the v2 page', () => {
+    usePluginData.mockReturnValue({
+      versionedPages: [
+        { page: 'docs/platform/connect-data-platform/connect-apache-spark', lastVersion: '1.99' },
+      ],
+    });
+    renderAt('2.0', {
+      title: 'Apache Spark',
+      designation: 'first-party',
+      platformHref: '/docs/platform/connect-data-platform/connect-apache-spark',
+      v2Href: '/docs/local/connect-data-platform/spark-setup',
+    });
+    expect(screen.queryByRole('link', { name: 'Set up in the dbt platform' })).not.toBeInTheDocument();
+    expect(screen.queryByText('dbt platform')).not.toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Install with dbt v2' })).toBeInTheDocument();
+    usePluginData.mockReturnValue({ rawMarkdownData: {}, pathByIdMap: {} });
+  });
+});

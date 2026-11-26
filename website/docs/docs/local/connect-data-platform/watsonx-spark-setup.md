@@ -1,5 +1,5 @@
 ---
-title: "Connect IBM watsonx.data Spark to dbt Core"
+title: "Connect IBM watsonx.data Spark to dbt v1"
 sidebar_label: "IBM watsonx.data Spark"
 description: "Read this guide to learn about the IBM watsonx.data Spark setup in dbt."
 id: "watsonx-spark-setup"
@@ -39,7 +39,7 @@ Read the official documentation for using **watsonx.data** with `dbt-watsonx-spa
 Note: Installing an adapter doesn't install '<Constant name="core" />' automatically. This is because adapters and <Constant name="core" /> versions are decoupled to avoid overwriting <Constant name="core" /> installations. Use the following command for installation:
 
 ```sh
-python -m pip install <Constant name="core" /> dbt-watsonx-spark
+python -m pip install dbt-core dbt-watsonx-spark
 ```
 
 ## Configuring `dbt-watsonx-spark`
@@ -92,7 +92,7 @@ The following profile fields are required to configure watsonx.data Spark connec
 
 ### Schemas and catalogs
 
-When selecting the catalog, ensure the user has read and write access. This selection does not limit your ability to query into the schema spcified/created but also serves as the default location for materialized `tables`, `views`, and `incremental`.
+When selecting the catalog, ensure the user has read and write access. This selection does not limit your ability to query into the schema specified/created but also serves as the default location for materialized `tables`, `views`, and `incremental`.
 
 ### SSL verification
 

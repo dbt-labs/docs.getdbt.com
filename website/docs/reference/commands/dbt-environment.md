@@ -6,7 +6,7 @@ availability: platform_login
 ---
 
 :::info 
-The <Constant name="platform_cli" /> provides the `dbt environment` command for environment and connection details. If you're using <Constant name="fusion" /> or <Constant name="core" />, use `dbt debug` to inspect profile, target, and connection &mdash; or use `dbtf debug` if you have both Core/<Constant name="fusion" /> and platform CLIs and want to inspect <Constant name="fusion" />.
+The <Constant name="platform_cli" /> provides the `dbt environment` command for environment and connection details. If you're using <Constant name="fusion" /> or <Constant name="core" />, use `dbt debug` to inspect profile, target, and connection &mdash; or use `dbtf debug` if you have both <Constant name="core" />/<Constant name="fusion" /> and platform CLIs and want to inspect <Constant name="fusion" />.
 
 :::
 
@@ -38,7 +38,7 @@ Local Configuration:
   Active host name               cloud.getdbt.com
   dbt_cloud.yml file path        /Users/cesar/.dbt/dbt_cloud.yml
   dbt_project.yml file path      /Users/cesar/git/cloud-cli-test-project/dbt_project.yml
-  <Constant name="dbt" /> CLI version          0.35.7
+  dbt CLI version          0.35.7
   OS info                        darwin arm64
 
 Cloud Configuration:

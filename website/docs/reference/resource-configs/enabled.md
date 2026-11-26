@@ -19,6 +19,8 @@ default_value: true
     { label: 'Exposures', value: 'exposures', },
     { label: 'Semantic models', value: 'semantic models', },
     { label: 'Saved queries', value: 'saved queries', },
+    { label: 'Functions', value: 'functions', },
+    { label: 'Skills', value: 'skills', },
   ]
 }>
 <TabItem value="models">
@@ -49,6 +51,21 @@ select ...
 
 </File>
 
+<VersionBlock firstVersion="1.9">
+
+<File name='models/properties.yml'>
+
+```yaml
+models:
+  - name: <model_name>
+    [config](/reference/resource-properties/config):
+      enabled: true | false
+```
+
+</File>
+
+</VersionBlock>
+
 </TabItem>
 
 
@@ -64,6 +81,21 @@ seeds:
 ```
 
 </File>
+
+<VersionBlock firstVersion="1.9">
+
+<File name='seeds/properties.yml'>
+
+```yaml
+seeds:
+  - name: <seed_name>
+    [config](/reference/resource-properties/config):
+      enabled: true | false
+```
+
+</File>
+
+</VersionBlock>
 
 </TabItem>
 
@@ -82,7 +114,7 @@ snapshots:
 
 <VersionBlock firstVersion="1.9">
 
-<File name='snapshots/snapshot_name.yml'>
+<File name='snapshots/properties.yml'>
 
 ```yaml
 
@@ -156,6 +188,21 @@ select ...
 
 </File>
 
+<File name='models/properties.yml'>
+
+```yaml
+models:
+  - name: <model_name>
+    columns:
+      - name: <column_name>
+        data_tests:
+          - <test_name>:
+              [config](/reference/resource-properties/config):
+                enabled: true | false
+```
+
+</File>
+
 </TabItem>
 
 <TabItem value="unit tests">
@@ -173,7 +220,7 @@ select ...
 
 </File>
 
-<File name='models/<filename>.yml'>
+<File name='models/properties.yml'>
 
 ```yaml
 unit_tests:
@@ -223,7 +270,7 @@ sources:
 
 <TabItem value="analyses">
 
-<File name='analyses/<filename>.yml'>
+<File name='analyses/properties.yml'>
 
 ```yaml
 analyses:
@@ -262,7 +309,7 @@ metrics:
 
 </File>
 
-<File name='models/metrics.yml'>
+<File name='models/properties.yml'>
 
 ```yaml
 
@@ -288,7 +335,7 @@ exposures:
 
 </File>
 
-<File name='models/exposures.yml'>
+<File name='models/properties.yml'>
 
 ```yaml
 
@@ -315,7 +362,7 @@ semantic-models:
 </File>
 
 <VersionBlock lastVersion="1.11">
-<File name='models/semantic_models.yml'>
+<File name='models/properties.yml'>
 
 ```yaml
 semantic_models:
@@ -328,7 +375,7 @@ semantic_models:
 </VersionBlock>
 
 <VersionBlock firstVersion="1.12">
-<File name='models/file_name.yml'>
+<File name='models/properties.yml'>
 
 ```yaml
 models:
@@ -354,7 +401,7 @@ saved-queries:
 
 </File>
 
-<File name='models/semantic_models.yml'>
+<File name='models/properties.yml'>
 
 ```yaml
 saved_queries:
@@ -364,6 +411,64 @@ saved_queries:
 ```
 
 </File>
+
+</TabItem>
+
+<TabItem value="functions">
+
+<File name='dbt_project.yml'>
+
+```yaml
+functions:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)enabled: true | false
+```
+
+</File>
+
+<File name='functions/properties.yml'>
+
+```yaml
+functions:
+  - name: [<function-name>]
+    [config](/reference/resource-properties/config):
+      enabled: true | false
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="skills">
+
+<VersionBlock firstVersion="2.0">
+
+<File name='dbt_project.yml'>
+
+```yaml
+skills:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)enabled: true | false
+```
+
+</File>
+
+For [agent skills](/docs/dbt-ai/package-skills), the resource path is the package that ships the skill, followed by the skill's name:
+
+<File name='dbt_project.yml'>
+
+```yaml
+skills:
+  demo_skills:
+    naming-conventions:
+      +enabled: false
+```
+
+</File>
+
+A package's own `skills` config sets the defaults for the skills it ships, and your root project's `skills` config overrides it. Disabling a skill is how you resolve two packages that ship skills with the same name.
+
+</VersionBlock>
 
 </TabItem>
 
@@ -403,7 +508,7 @@ models:
 
 ### Disable Semantic Layer resources from a package
 
-Some packages may define <Constant name="semantic_layer" /> resources (semantic models, metrics, saved queries) using an older specification that isn’t compatible with the <Constant name="fusion_engine" />. 
+Some packages may define <Constant name="semantic_layer" /> resources (semantic models, metrics, saved queries) using an older specification that isn’t compatible with <Constant name="fusion_engine" />. 
 
 To use these packages with <Constant name="fusion" /> while keeping your own semantic layer definitions, disable the package’s semantic layer resources in the relevant YAML file.
 

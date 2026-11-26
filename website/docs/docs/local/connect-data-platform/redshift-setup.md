@@ -18,19 +18,23 @@ meta:
 availability: local_free
 ---
 
+import RedshiftBrowserIdc from '/snippets/_redshift-browser-identity-center.md';
+import RedshiftIdentifierCase from '/snippets/_redshift-identifier-case.md';
+
 <VersionBlock firstVersion="2.0">
 
-# Connect Redshift to <Constant name="fusion" /> <Lifecycle status='preview' />
+# Connect Redshift to <Constant name="fusion" />
 
 You can configure the Redshift adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type.
 
 The Redshift adapter for <Constant name="fusion" /> supports the following [authentication methods](#supported-authentication-types):
 - Password
 - IAM profile
+- IAM Identity Center (browser)
 
 ## Warehouse permissions
 
-import FusionRedshiftWarehousePerms from '/snippets/_fusion-warehouse-permissions-redshift.md';
+import FusionRedshiftWarehousePerms from '/snippets/_v2-warehouse-permissions-redshift.md';
 
 <FusionRedshiftWarehousePerms />
 
@@ -82,7 +86,7 @@ default:
 
 <TabItem value="IAM profile">
 
-Specify the IAM profile to use to connect your Fusion sessions. You will need to provide the following information:
+Specify the IAM profile to use to connect your v2 sessions. You will need to provide the following information:
 - **IAM Profile:** The profile name
 - **Cluster ID:** The unique identifier for your AWS cluster
 - **Region:** Your AWS region (for example, us-east-1)
@@ -113,7 +117,17 @@ default:
 
 </File>
 </TabItem>
+
+<TabItem value="IAM Identity Center (browser)">
+
+<RedshiftBrowserIdc />
+
+</TabItem>
 </Tabs>
+
+## Identifier case
+
+<RedshiftIdentifierCase />
 
 ## More information
 
@@ -123,9 +137,9 @@ Find Redshift-specific configuration information in the [Redshift adapter refere
 
 <VersionBlock lastVersion="1.99">
 
-# Connect Redshift to dbt Core
+# Connect Redshift to <Constant name="core" />
 
-<ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/redshift-setup?version=2" /> connection also available.
+<ProductCard text="dbt v2 compatible" url="/docs/local/connect-data-platform/redshift-setup?version=2" /> connection also available.
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 import RedshiftDatasharing from '/snippets/_redshift-datasharing.md';
@@ -147,7 +161,7 @@ import RedshiftDatasharing from '/snippets/_redshift-datasharing.md';
 | `autocreate`  | false | Optional, default `False`. Creates user if they do not exist |
 | `db_groups`  | ['ANALYSTS'] | Optional. A list of existing database group names that the DbUser joins for the current session |
 | `ra3_node`  | true | Optional, default `False`. Enables cross-database sources. Kept for backward compatibility; use `datasharing` for new projects instead. |
-| `datasharing` <Lifecycle status="beta" /> | true | Optional, default `False`. Enables cross-database and cross-cluster access for [Redshift Datasharing](https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html). Available in `dbt-redshift` v1.11.0rc1 and later. |
+| `datasharing` | true | Optional, default `False`. Enables cross-database and cross-cluster access for [Redshift Datasharing](https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html). Available in `dbt-redshift` v1.11.0rc1 and later. |
 | `autocommit`  | true | Optional, default `True`. Enables autocommit after each statement |
 | `retries`  | 1 | Number of retries (on each statement) |
 | `retry_all`  | true | Allows dbt to retry all statements in a query|
@@ -167,6 +181,7 @@ The authentication methods that <Constant name="core" /> supports on Redshift ar
 
 - `Database` &mdash; Password-based authentication (default, will be used if `method` is not provided)
 - `IAM User` &mdash; IAM User authentication via AWS Profile
+- `IAM Identity Center` &mdash; Browser-based sign-in through AWS IAM Identity Center
 
 Click on one of these authentication methods for further details on how to configure your connection profile. Each tab also includes an example `profiles.yml` configuration file for you to review.
 
@@ -174,7 +189,8 @@ Click on one of these authentication methods for further details on how to confi
   defaultValue="database"
   values={[
     {label: 'Database', value: 'database'},
-    {label: 'IAM User via AWS Profile (Core)', value: 'iam-user-profile'}]
+    {label: 'IAM User via AWS Profile', value: 'iam-user-profile'},
+    {label: 'IAM Identity Center (browser)', value: 'browser-identity-center'}]
 }>
 
 <TabItem value="database">
@@ -233,7 +249,7 @@ If you receive the "You must specify a region" error when using IAM Authenticati
 | ------------- | ------- | ------------ |
 | `method` |IAM| use IAM to authenticate via IAM User authentication |
 | `iam_profile` | analyst | dbt will use the specified profile from your ~/.aws/config file |
-| `cluster_id` | cluster_id| Required for IAM authentication only for provisoned cluster, not for Serverless |
+| `cluster_id` | cluster_id| Required for IAM authentication only for provisioned cluster, not for Serverless |
 | `user`   | username | User querying the database, ignored for Serverless (but field still required) |
 | `region`  | us-east-1 | Region of your Redshift instance | 
 
@@ -282,10 +298,20 @@ When the `iam_profile` configuration is set, dbt will use the specified profile 
 
 </TabItem>
 
+<TabItem value="browser-identity-center">
+
+<RedshiftBrowserIdc />
+
+</TabItem>
+
 
 </Tabs>
 
 ## Redshift notes
+
+### Identifier case
+
+<RedshiftIdentifierCase />
 
 ### `sslmode` change
 
@@ -341,7 +367,7 @@ profile-to-my-RS-target:
 
 To run certain macros with autocommit, load the profile with autocommit using the `--profile` flag. For more context, please refer to this [PR](https://github.com/dbt-labs/dbt-redshift/pull/475/files).
 
-### `datasharing` <Lifecycle status="beta" />
+### `datasharing`
 
 <RedshiftDatasharing />
 

@@ -21,3 +21,28 @@ describe('vercel.json response headers', () => {
     expect(vary.value).toBe('Accept, Accept-Encoding');
   });
 });
+
+describe('vercel.json markdown 404 rewrite', () => {
+  const rewrite = (vercelConfig.rewrites || []).find(
+    (r) => r.destination === '/api/markdown-not-found',
+  );
+
+  it('routes markdown requests for missing paths to the markdown 404 function', () => {
+    expect(rewrite).toBeDefined();
+    // Vercel checks the filesystem before rewrites, so a catch-all source
+    // only fires for paths with no matching page or file.
+    expect(rewrite.source).toBe('/(.*)');
+    expect(fs.existsSync(path.join(__dirname, '..', '..', 'api', 'markdown-not-found.js'))).toBe(true);
+  });
+
+  it('only applies when the client asks for text/markdown', () => {
+    expect(rewrite.has).toHaveLength(1);
+    const [condition] = rewrite.has;
+    expect(condition.type).toBe('header');
+    expect(condition.key).toBe('accept');
+    const matcher = new RegExp(`^${condition.value}$`);
+    expect(matcher.test('text/markdown')).toBe(true);
+    expect(matcher.test('text/markdown, text/html;q=0.9')).toBe(true);
+    expect(matcher.test('text/html,application/xhtml+xml,*/*;q=0.8')).toBe(false);
+  });
+});

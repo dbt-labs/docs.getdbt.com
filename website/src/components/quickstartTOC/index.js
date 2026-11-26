@@ -166,9 +166,11 @@ function QuickstartTOC() {
     const activeItems = document.querySelectorAll(`.${style.active}`);
 
     // Add query param for the active step
+    // Read the live URL rather than the router's captured location: the version
+    // picker updates ?version= via replaceState, so queryParams can be stale.
     history.replace({
       search: queryString.stringify({
-        ...queryParams,
+        ...queryString.parse(window.location.search),
         step: activeStep,
       }),
     });

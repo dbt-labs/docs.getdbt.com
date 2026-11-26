@@ -28,7 +28,7 @@ First, here’s our opinions on where specific tests should go:
 
 ## Where should tests go in your pipeline?
 
-![A horizontal, multicolored diagram that shows examples of where tests ought to be placed in a data pipeline.](/img/blog/2024-11-27-test-smarter-part-2/testing_pipeline.png)
+<Lightbox src="/img/blog/2024-11-27-test-smarter-part-2/testing_pipeline.png" title="A horizontal, multicolored diagram that shows examples of where tests ought to be placed in a data pipeline." />
 
 This diagram above outlines where you might put specific data tests in your pipeline. Let’s expand on it and discuss where each type of data quality issue should be tested. 
 
@@ -90,7 +90,7 @@ Marts layer testing will follow the same hygiene-or-anomaly pattern as staging a
 - Unit tests: validate especially complex transformation logic. For example:
     - Calculating dates in a way that feeds into forecasting.
     - Customer segmentation logic, especially logic that has a lot of CASE-WHEN statements.
-- Primary key tests: focus on where where your mart's granularity has changed from its staging/intermediate inputs.
+- Primary key tests: focus on where your mart's granularity has changed from its staging/intermediate inputs.
     - Similar to the intermediate models above, you may also want to add primary key tests to models whose grain hasn’t changed, but have been enriched with other data. Primary key tests here communicate your intent.
 - Business focused anomaly tests: focus on *new* calculated fields, such as:
     - Singular tests on high-priority, high-impact tables where you have a specific problem you want forewarning about.

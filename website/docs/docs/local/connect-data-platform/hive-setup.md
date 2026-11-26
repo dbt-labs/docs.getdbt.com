@@ -1,5 +1,5 @@
 ---
-title: "Connect Cloudera Hive to dbt Core"
+title: "Connect Cloudera Hive to dbt v1"
 sidebar_label: "Cloudera Hive"
 description: "Read this guide to learn about the Cloudera Hive warehouse setup in dbt."
 id: "hive-setup"

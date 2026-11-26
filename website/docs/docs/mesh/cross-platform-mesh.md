@@ -94,7 +94,7 @@ with monthly_revenue as (
 
 This works for [both ways of resolving cross-project references](/docs/mesh/govern/project-dependencies):
 
-1. `package` dependencies (supported in dbt Core + dbt platform)
+1. `package` dependencies (supported in <Constant name="core" /> + dbt platform)
 2. `project` dependencies (dbt platform Enterprise; refer to the [advantages of this approach](/docs/mesh/govern/project-dependencies#advantages))
 
 **For `package` dependencies:**

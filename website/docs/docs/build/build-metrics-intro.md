@@ -5,8 +5,8 @@ description: "Learn about MetricFlow and build your metrics with semantic models
 sidebar_label: Build your metrics
 tags: [Metrics, Semantic Layer, Governance]
 hide_table_of_contents: true
-pagination_next: "guides/sl-qs"
-pagination_prev: null
+pagination_prev: "guides/sl-qs"
+pagination_next: "docs/build/latest-metrics-spec"
 availability: all_users
 ---
 
@@ -64,12 +64,6 @@ MetricFlow allows you to:
     title="Advanced topics"
     body="Learn about advanced topics for dbt Semantic Layer and MetricFlow, such as data modeling workflows, and more."
     link="/docs/build/advanced-topics"
-    icon="dbt-bit"/>
-
-  <Card
-    title="About the dbt Semantic Layer"
-    body="Introducing the dbt Semantic Layer, the universal process that allows data teams to centrally define and query metrics"
-    link="/docs/use-dbt-semantic-layer/dbt-sl"
     icon="dbt-bit"/>
 
   <Card

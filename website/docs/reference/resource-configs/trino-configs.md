@@ -14,7 +14,7 @@ With a Starburst Enterprise, Starburst Galaxy, or Trino cluster, you can [set se
 
 The standard way to define session properties is with the `session_properties` field of your `profiles.yml`. This ensures that all dbt connections use these settings by default.
 
-However, to temporaily adjust these session properties for a specific dbt model or group of models, you can use a [dbt hook](/reference/resource-configs/pre-hook-post-hook) to set session properties on a specific dbt model. For example:
+However, to temporarily adjust these session properties for a specific dbt model or group of models, you can use a [dbt hook](/reference/resource-configs/pre-hook-post-hook) to set session properties on a specific dbt model. For example:
 
 ```sql
 {{
@@ -384,7 +384,114 @@ The `starburst_metadata_failure_strategy` controls how dbt handles errors from t
 - `continue_on_error` (default) &mdash; Logs a warning and continues the run.
 - `fail_fast` &mdash; Aborts the run.
 
+In `dbt-trino` v1.11.0 and later, column names are matched case-insensitively, including quoted names. dbt warns about missing columns and skips their descriptions for both SQL comments and Data Discovery synchronization.
+
+## User-defined functions
+
+Starting v1.11, `dbt-trino` supports scalar SQL [user-defined functions (UDFs)](/docs/build/udfs).
+
+### Function location
+
+On Trino and Starburst Enterprise, use a catalog whose connector supports stored functions, such as Hive or Memory. For connector requirements, refer to Trino's [CREATE FUNCTION documentation](https://trino.io/docs/current/sql/create-function.html).
+
+Starburst Galaxy stores all functions in the built-in `galaxy.functions` schema. Set `database: galaxy` and `schema: functions` in your function configuration; dbt uses this schema without adding the target schema prefix. Because all projects in your account share this schema, use distinct function names across projects.
+
+### Function volatility
+
+Trino defaults to `DETERMINISTIC`. Set `volatility: non-deterministic` to generate `NOT DETERMINISTIC`. The `stable` value is ignored with a warning.
+
+Trino checks that the declared volatility matches the function body. For example, a body that calls `random()` requires `volatility: non-deterministic`. For more information, refer to Trino's [function characteristics](https://trino.io/docs/current/udf/function.html#description).
+
+### Considerations
+
+- Python, JavaScript, aggregate, and table functions aren't supported.
+- The SQL body must be a single expression, without `SELECT` statements or subqueries. The adapter adds `RETURN`.
+- Use [Trino data types](https://trino.io/docs/current/language/types.html) for arguments and returns, such as `double` or `real` instead of `float`.
+- Argument `default_value`, function `grants`, and `persist_docs` aren't supported. Setting `grants` logs a warning. The function's `description` becomes its `COMMENT`.
+- Changing an argument's type leaves the old signature in place. Remove it manually with [DROP FUNCTION](https://trino.io/docs/current/sql/drop-function.html).
+
 ## Model contracts
 
 The `dbt-trino` adapter supports [model contracts](/docs/mesh/govern/model-contracts). Currently, only [constraints](/reference/resource-properties/constraints) with `type` as `not_null` are supported.
 Before using `not_null` constraints in your model, make sure the underlying connector supports `not null`, to avoid running into errors.
+
+## Query routing
+
+
+A Trino router picks the cluster that runs each statement from the request headers, so setting `client_tags` and `http_headers` lets a single dbt run send individual models to different clusters. For example, a large incremental model can run on a fault-tolerant cluster while the rest of the project stays on the default one.
+
+With [Starburst Galaxy](https://docs.starburst.io/starburst-galaxy/working-with-data/query-routing/user-role-based-routing.html), the routing decision is made from the client tags and the user's role.
+
+Use the following configs to set the request headers:
+
+- `client_tags` &mdash; A list of strings sent to Trino in the `X-Trino-Client-Tags` header. Trino routers use these tags to select the cluster that runs each statement. Tag values can't contain commas.
+- `http_headers` &mdash; HTTP headers sent alongside requests to Trino, specified as a YAML dictionary of header names and values. You can use custom headers for routers that support them, but you can't override reserved headers or set `X-Trino-Client-Tags` here. Refer to [Limitations](#limitations) for details.
+
+### Connection-level routing
+
+Set `client_tags` and `http_headers` in your connection profile to apply them to every statement dbt runs.
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+my_project:
+  target: dev
+  outputs:
+    dev:
+      type: trino
+      host: mycluster.mydomain.com
+      database: my_catalog
+      schema: my_schema
+      port: 443
+      client_tags:
+        - analytics
+      http_headers:
+        X-Trino-Client-Info: dbt-trino
+```
+
+</File>
+
+### Model-level routing
+
+_Available in `dbt-trino` v1.10.4 and later_
+
+Set `client_tags` and `http_headers` on a model to override the profile's values for the statements that model runs.
+
+<File name='models/<model_name>.sql'>
+
+```sql
+{{
+  config(
+    materialized = 'table',
+    client_tags = ['fault-tolerant']
+  )
+}}
+```
+
+</File>
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  my_project:
+    heavy_models:
+      +client_tags: ['fault-tolerant']
+```
+
+</File>
+
+### Precedence and merging
+
+The two configs interact with the profile's values differently:
+
+- `client_tags` &mdash; A model's tags *replace* the profile's tags entirely. They aren't added to them.
+- `http_headers` &mdash; A model's headers *merge with* the profile's headers. If both define the same header, the model's value takes precedence. Any headers the model doesn't define are inherited from the profile.
+
+### Limitations
+
+- If your tags don't match any routing rule and the router has no default rule configured, the query is rejected. Ensure your profile's `client_tags` match at least one routing rule.
+- Statements that dbt runs outside of a model context use the profile's `client_tags` and `http_headers`. For example, startup bookkeeping, such as listing schemas, creating schemas, and populating the relation cache, runs before models execute and doesn't use a model's values.
+- Tests are separate nodes with their own config &mdash; they don't inherit the routing config of the model they test. To route a test to the same cluster as its model, set `client_tags` or `http_headers` on the test directly, either in the test's `config` block or path-scoped under `data_tests:` in `dbt_project.yml`.
+- You can't set `X-Trino-Client-Tags` through `http_headers` because Trino builds that header itself from `client_tags`.
+- You can't override headers managed by the Trino Python client through `http_headers`. For header descriptions, refer to Trino's [client request headers](https://trino.io/docs/current/develop/client-protocol.html#client-request-headers). For the reserved-header list enforced by `dbt-trino`, refer to `RESERVED_HTTP_HEADERS` in the adapter's [connection implementation](https://github.com/starburstdata/dbt-trino/blob/master/dbt/adapters/trino/connections.py).

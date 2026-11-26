@@ -5,7 +5,7 @@ description: "Recommended workflows for using dbt Wizard CLI on a real dbt proje
 hoverSnippet: Learn recommended workflows for using dbt Wizard CLI on your dbt project
 ---
 
-<Constant name="wizard" /> is an AI agent that works from your project's dbt metadata &mdash; models, lineage, tests, and metrics &mdash; instead of guessing from code alone. You can run it locally from your CLI or <Constant name="dbt_platform" />. Refer to [dbt Wizard overview](/docs/platform/wizard-overview) for what it is and [Use Wizard locally](/docs/dbt-ai/wizard-quickstart) to set it up.
+<Constant name="wizard" /> is an AI agent that works from your project's dbt metadata &mdash; models, lineage, tests, and metrics &mdash; instead of guessing from code alone. You can run it locally from your CLI or <Constant name="dbt_platform" />. Refer to [dbt Wizard overview](/docs/platform/wizard-overview) for what it is and how to [Get started](/docs/platform/wizard-overview#get-started) to set it up.
 
 This guide collects the workflows we recommend once Wizard is running on a real project: mapping an unfamiliar codebase, validating a change before you ship it, adding tests, debugging a failed job, developing against production state, building Semantic Layer definitions, and extending Wizard with plugins and hooks.
 
@@ -21,7 +21,12 @@ These workflows apply to the <Constant name="wizard" /> CLI and <Constant name="
 
 For local workflows, make sure the <Constant name="wizard" /> CLI is installed, configured, and connected to a dbt project with an up-to-date `target/manifest.json`. 
 
-- To set up the CLI, chekc out [Use Wizard locally](/docs/dbt-ai/wizard-quickstart)
+- Check out [Install dbt Wizard CLI](/docs/dbt-ai/wizard-cli) for setup instructions
 - For options such as deferral and approval policies, check out the [Wizard CLI config reference](/docs/dbt-ai/wizard-config) 
 - To use Wizard in the <Constant name="dbt_platform" />, check out [Use Wizard in dbt platform](/docs/platform/wizard-platform)
 
+## Use one chat per task
+
+Start a new <Constant name="wizard" /> chat for each discrete unit of work, such as building one model, debugging one job failure, or validating a change. A focused conversation keeps the context relevant to the task so <Constant name="wizard" /> doesn't carry over assumptions from unrelated work. Go back to an existing chat only when you're continuing that same task.
+
+The workflows in this guide follow that pattern: each one is a self-contained task you can run in its own chat. For how to start, resume, and manage sessions on each surface, refer to [Sessions and conversations](/docs/dbt-ai/wizard-how-it-works#sessions-and-conversations) for the <Constant name="dbt_platform" /> and [Sessions](/docs/dbt-ai/wizard-how-it-works#sessions) for the CLI and Wizard Desktop.

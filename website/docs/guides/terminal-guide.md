@@ -45,7 +45,7 @@ Search for "Terminal" in the Start menu. Windows Terminal supports Command Promp
 In VS Code, press `` Ctrl+` `` to open a terminal panel directly in your editor.
 
 :::tip Using dbt on Windows?
-<Constant name="core" /> runs natively on Windows via PowerShell. For the best experience, consider using [WSL (Windows Subsystem for Linux)](https://learn.microsoft.com/en-us/windows/wsl/install).
+dbt runs natively on Windows via PowerShell. For the best experience, consider using [WSL (Windows Subsystem for Linux)](https://learn.microsoft.com/en-us/windows/wsl/install).
 :::
 
 </TabItem>
@@ -103,7 +103,7 @@ dbt --version
 ```
 You should see output similar to the following:
 ```bash
-dbt-fusion 2.0.0-preview.45
+dbt-fusion 2.0.1
 ```
 </ConfettiTrigger>
 .... and that's it! Congrats, you're ready to start using dbt in the terminal! 🎉
@@ -111,7 +111,7 @@ dbt-fusion 2.0.0-preview.45
 ## Common issues
 
 **`command not found`**
-The tool isn't installed or isn't on your PATH. Double-check the install instructions for [<Constant name="core" />](/docs/local/install-dbt) or [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-quickstart).
+The tool isn't installed or isn't on your PATH. Double-check the install instructions for [<Constant name="core" />](/docs/local/install-dbt) or [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli).
 
 **`Permission denied`**
 You may need to run the command with elevated permissions, or check that the file is executable.
@@ -120,7 +120,7 @@ You may need to run the command with elevated permissions, or check that the fil
 Make sure you pressed **Enter** after the command.
 
 ## Next steps
-- [<Constant name="wizard" /> quickstart](/docs/dbt-ai/wizard-quickstart) — use the <Constant name="wizard" /> CLI in your terminal
+- [Install the <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli) — use the <Constant name="wizard" /> CLI in your terminal
 - [Install dbt](/docs/local/install-dbt) — set up <Constant name="fusion_engine" /> or <Constant name="core" /> locally
 - [dbt commands reference](/reference/dbt-commands) — all available dbt CLI commands
 

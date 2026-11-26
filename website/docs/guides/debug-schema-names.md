@@ -7,7 +7,7 @@ hoverSnippet: Learn how to debug schema names in dbt.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['dbt Core','Troubleshooting']
+tags: ['Troubleshooting']
 level: 'Advanced'
 ---
 
@@ -54,7 +54,7 @@ If your `generate_schema_name` macro looks like so:
     {{ generate_schema_name_for_env(custom_schema_name, node) }}
 {%- endmacro %}
 ```
-Your project is switching out the `generate_schema_name` macro for another macro, `generate_schema_name_for_env`. Similar to the above example, this is a macro which is defined in dbt's global project, [here](https://github.com/dbt-labs/dbt-core/blob/main/crates/dbt-loader/src/dbt_macro_assets/dbt-adapters/macros/get_custom_name/get_custom_schema.sql).
+Your project is switching out the `generate_schema_name` macro for another macro, `generate_schema_name_for_env`. Similar to the above example, this is a macro which is defined in dbt's global project, [here](https://github.com/dbt-labs/dbt/blob/main/crates/dbt-loader/src/dbt_macro_assets/dbt-adapters/macros/get_custom_name/get_custom_schema.sql).
 
 ```sql
 {% macro generate_schema_name_for_env(custom_schema_name, node) -%}

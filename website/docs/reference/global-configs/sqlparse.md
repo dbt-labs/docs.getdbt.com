@@ -46,7 +46,7 @@ You can use `--sqlparse` with the following commands:
 - [`dbt test`](/reference/commands/test)
 - [`dbt seed`](/reference/commands/seed)
 - [`dbt snapshot`](/reference/commands/snapshot)
-- [`dbt source freshness`](/reference/commands/source#dbt-source-freshness)
+- [`dbt source freshness`](/reference/commands/source#freshness)
 - [`dbt docs generate`](/reference/commands/cmd-docs#dbt-docs-generate)
 - [`dbt show`](/reference/commands/show)
 

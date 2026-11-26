@@ -14,6 +14,13 @@ name: Close linked docs-internal PR
 #      logs why — the writer still closes it manually, same as before this
 #      workflow existed. It never guesses when it isn't sure.
 #
+# Guardrails (to avoid false closes):
+#   - Skip automation PRs (release-notes label, or branch starting with
+#     automation/). Those are not promotions from docs-internal.
+#   - File-match fallback ignores high-churn shared paths (e.g. release-notes.md)
+#     and requires at least two remaining files so a single shared file can't
+#     close an unrelated PR (e.g. a mega branch).
+#
 # Why we have it: replaces the manual "close with comment" step writers
 # previously had to remember after promoting a private doc to public. See
 # the docs-internal/private-docs-repo-sync process doc for the full workflow.
@@ -41,6 +48,26 @@ jobs:
             const owner = 'dbt-labs';
             const publicPr = context.payload.pull_request;
             const body = publicPr.body || '';
+            const headRef = publicPr.head?.ref || '';
+            const labels = (publicPr.labels || []).map(l => l.name);
+
+            // Automation PRs (e.g. ST → MT release notes sync) are not
+            // promotions from docs-internal. Never auto-close against them.
+            const isAutomationPr =
+              labels.includes('release-notes') ||
+              headRef.startsWith('automation/');
+            if (isAutomationPr) {
+              console.log(`Skipping: merged PR #${publicPr.number} looks like automation (label release-notes and/or branch ${headRef}).`);
+              return;
+            }
+
+            // Paths that many unrelated PRs touch. Matching on these alone
+            // caused a false close of the Summit mega branch when an MT sync
+            // PR merged (both only changed release-notes.md).
+            const IGNORED_MATCH_PATHS = new Set([
+              'website/docs/docs/dbt-versions/release-notes.md',
+              'website/docs/docs/dbt-versions/dbt-platform-release-notes-gen.md',
+            ]);
 
             let internalPrNumber = null;
 
@@ -64,10 +91,17 @@ jobs:
                 pull_number: publicPr.number,
                 per_page: 100,
               });
-              const publicPaths = new Set(publicFiles.map(f => f.filename));
+              const publicPaths = new Set(
+                publicFiles
+                  .map(f => f.filename)
+                  .filter(p => !IGNORED_MATCH_PATHS.has(p))
+              );
 
               if (publicPaths.size === 0) {
-                console.log('Merged PR has no changed files, nothing to match on, skipping');
+                console.log('Merged PR has no matchable changed files after ignoring high-churn paths, skipping file-match fallback');
+              } else if (publicPaths.size < 2) {
+                // A single remaining file is too weak a signal (easy collision).
+                console.log(`Merged PR has only one matchable file (${[...publicPaths].join(', ')}) — too weak to auto-close, leaving for manual cleanup`);
               } else {
                 const { data: openInternalPrs } = await github.rest.pulls.list({
                   owner,
@@ -85,7 +119,11 @@ jobs:
                     pull_number: pr.number,
                     per_page: 100,
                   });
-                  const internalPaths = new Set(internalFiles.map(f => f.filename));
+                  const internalPaths = new Set(
+                    internalFiles
+                      .map(f => f.filename)
+                      .filter(p => !IGNORED_MATCH_PATHS.has(p))
+                  );
 
                   const sameFiles =
                     internalPaths.size === publicPaths.size &&

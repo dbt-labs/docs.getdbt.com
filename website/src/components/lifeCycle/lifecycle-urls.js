@@ -7,6 +7,7 @@ export const LEGACY = 'Legacy';
 
 const PRODUCT_LIFECYCLE_URL = 'https://docs.getdbt.com/docs/dbt-versions/product-lifecycles';
 const PLAN_URL = 'https://www.getdbt.com/pricing';
+const ADAPTER_DESIGNATIONS_URL = 'https://docs.getdbt.com/docs/community-adapters?version=2#adapter-designations';
 
 export const STATUS_URLS = {
   [MANAGED_PLUS]: PLAN_URL,
@@ -16,8 +17,13 @@ export const STATUS_URLS = {
   [LEGACY]: PRODUCT_LIFECYCLE_URL,
   beta: PRODUCT_LIFECYCLE_URL,
   preview: PRODUCT_LIFECYCLE_URL,
+  public_preview: PRODUCT_LIFECYCLE_URL,
   ga: PRODUCT_LIFECYCLE_URL,
   private: PRODUCT_LIFECYCLE_URL,
   private_beta: PRODUCT_LIFECYCLE_URL,
   private_preview: PRODUCT_LIFECYCLE_URL,
+  eol: PRODUCT_LIFECYCLE_URL,
+  deprecated: PRODUCT_LIFECYCLE_URL,
+  retired: PRODUCT_LIFECYCLE_URL,
+  community_maintained: ADAPTER_DESIGNATIONS_URL,
 };
