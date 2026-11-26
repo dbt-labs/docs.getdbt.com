@@ -22,7 +22,7 @@ With dbt State, dbt first compares the logic and data of each node to previous b
 dbt State can reuse all node types that create relations in the database (such as SQL models, snapshots, seeds) and data tests. Note the following exceptions:
 
 - **Python models**: dbt State builds Python models on every run, even if their code and upstream data have not changed.
-- **Models with custom materializations**: dbt State can skip custom materialization models when no upstream changes are detected, but does not clone them. Custom materializations can have side effects that cloning would not replicate, so only skipping is supported.
+- **Models with custom materializations**: dbt State can skip these models when it detects no upstream changes, but doesn't clone them. Custom materializations can have side effects that cloning wouldn't replicate.
 
 dbt State works with dbt (v1 and v2) and the <Constant name="dbt_platform" />, across all environments and orchestrators, making it a flexible approach regardless of how you run dbt. It requires authentication through a <Constant name="dbt_platform" /> account. For pricing details, refer to [dbt State usage and pricing](/docs/platform/billing/dbt-state-usage).
 
