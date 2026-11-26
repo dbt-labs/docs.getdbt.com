@@ -8,6 +8,7 @@ pagination_prev: null
 ---
 
 import FusionReleases from '/src/components/fusionReleases';
+import V2ReleaseChannels from '/snippets/_v2-release-channels.md';
 
 # Self-hosted dbt releases
 
@@ -21,11 +22,7 @@ Each of the versions on this page links to the matching section in the [v2 chang
 
 dbt v2 is distributed through three release channels:
 
-| Channel | Description | Stability |
-|---------|-------------|-----------|
-| `latest` | The known `good` stable version | ✅ Recommended for production |
-| `canary` | The latest version to be officially released | ⚠️ Most recent stable version but still undergoing thorough testing |
-| `dev` | The latest development build | ❌ May be unstable; may not have passed all internal tests |
+<V2ReleaseChannels />
 
 ### Version formats
 
@@ -39,7 +36,7 @@ For cadence, plan availability, and API values, refer to [release tracks](/docs/
 
 :::tip Live data below is for local CLI channels
 
-The **Current versions** cards and full release list below pull the public v2 manifest used for _local_ installs (`dev`, `canary`, `latest`). You should use [release tracks](/docs/dbt-versions/dbt-release-tracks) for <Constant name="dbt_platform" /> planning.
+The **Current versions** cards and full release list below pull the public v2 manifest used for _local_ installs (`nightly`, `preview`, `stable`). You should use [release tracks](/docs/dbt-versions/dbt-release-tracks) for <Constant name="dbt_platform" /> planning.
 
 :::
 
@@ -49,7 +46,7 @@ The **Current versions** cards and full release list below pull the public v2 ma
 
 The following commands apply only to _local_ installations of dbt. They don't affect which v2 build your <Constant name="dbt_platform" /> environments use. Instead, you can set a [release track](https://github.com/docs/dbt-versions/dbt-release-tracks#dbt-v2-release-tracks) per environment in <Constant name="dbt_platform" />.
 
-Running the system update command without a version flag installs the `latest` stable release:
+Running the system update command without a version flag installs the `stable` release:
 
 ```shell
 dbt system update
@@ -58,8 +55,8 @@ dbt system update
 To install a specific channel or version, pass the `--version` flag:
 
 ```shell
-dbt system update --version canary    # Install the canary release
-dbt system update --version dev       # Install the dev release
+dbt system update --version preview    # Install the preview release
+dbt system update --version nightly   # Install the nightly release
 dbt system update --version 2.0.0     # Install a specific version
 ```
 
