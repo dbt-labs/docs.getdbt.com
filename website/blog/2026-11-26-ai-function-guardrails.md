@@ -12,7 +12,7 @@ is_featured: false
 
 Warehouse-provided SQL functions are easy to write – they feel just like normal SQL! But their cost structure makes it easy to overspend, especially if you re-process every record in dev, then CI, then every day once it reaches production.
 
-For example, it's GTA VI launch time at Jaffle Games Shop, an online game store. Orders are flying and customer reviews are pouring in, and it's getting hard to keep up!
+For example, Jaffle Games Shop, an online game store, is swamped after the GTA VI launch. Orders are flying and customer reviews are pouring in, and it's getting hard to keep up!
 
 Someone on the data team has a good idea: categorize reviews into common themes, so the team can see what customers are talking about. So they add a `AI_CLASSIFY()` function call to the reviews table. After they've finished iterating in dev, they open a PR to kick off a CI run, and head out to play GTA over lunch – blissfully unaware of the cost implications of this change.
 
