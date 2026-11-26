@@ -1,3 +1,4 @@
+<SimpleTable>
 | Channel | Description | Stability |
 |---------|-------------|-----------|
 | `stable` | The latest generally available (GA) release | ✅ Recommended for most users. |
