@@ -81,7 +81,7 @@ To prevent external sources from always being considered stale, configure [`load
 
 ## Models with custom materializations
 
-Models using custom materializations can be skipped as unchanged, but are ineligible to be cloned from another location. Custom materializations may have side effects (for example, modifying table properties or writing to other schemas), and dbt State cannot safely determine whether cloning the object would produce the same result.
+Models using custom materializations can be skipped as unchanged, but cannot be cloned from another location. Custom materializations may have side effects (for example, modifying table properties or writing to other schemas), and dbt State cannot safely determine whether cloning the object would produce the same result.
 
 ## Python models
 

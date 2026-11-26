@@ -132,7 +132,7 @@ Before putting dbt State into production, test it in a development environment. 
 
 <TabItem value="self-hosted" label="Self-hosted">
 
-Install (for dbt v1.7-1.12) or enable (dbt v1.13 and v2.0+) [dbt State locally](/docs/deploy/dbt-state-setup). Then activate your dbt State trial by creating a new dbt platform account. The easiest way to enter this flow is to invoke a dbt command like `dbt run` (dbt v1.7-1.12) or `dbt login` (dbt v1.13+), which will trigger an authentication prompt.
+Install (dbt v1.7-1.12) or enable (dbt v1.13 and v2.0+) [dbt State locally](/docs/deploy/dbt-state-setup). Then, activate your dbt State trial by creating a new dbt platform account. The easiest way to enter this flow is to invoke a dbt command like `dbt run` (dbt v1.7-1.12) or `dbt login` (dbt v1.13+), which will trigger an authentication prompt.
 
 :::tip Remember
 dbt State isn't a seat-based product and doesn't require a subscription to the rest of the dbt platform's features.
@@ -173,9 +173,9 @@ If you need to prevent models from being cloned into a given environment, set th
 
 dbt State is conservative, and will prioritize accuracy over reuse rate when a model's eligibility is ambiguous. If your reuse rate is lower than you'd expect, here are some common causes and the ways to resolve them ([this FAQ page](/faqs/State/views-rebuilt) has more in-depth explanations).
 
-- **Views that `select *`.** If the expected columns from an upstream table aren't enumerated in the query, views will be rebuilt to protect against schema drift causing a failing query. Fix this by listing the column names.
+- **Views with `select *`.** If the expected columns from an upstream table aren't enumerated in the query, views will be rebuilt to protect against schema drift causing a failing query. Fix this by listing the column names.
 - **Non-deterministic Jinja.** Jinja variables like `{{ invocation_id }}` will prevent reuse unless `compare_unrendered_code` is set to true. We recommend you change this setting to true, with these exceptions:
-  - If you use Jinja variables to change the logic in your model (such as adding or removing a `limit 0` for dry run purposes), `compare_unrendered_code` should stay false to capture those logic changes
+  - If you use Jinja variables to change the logic in your model (such as adding or removing a `limit 0` for dry run purposes), `compare_unrendered_code` should stay false to capture those logic changes.
   - If you use `evaluate_volatile_sql`, the volatile SQL will only be checked if there is also a change to the raw model file, because the unrendered code is checked and excluded first.
 - **Inaccurate or missing freshness data.** External sources such as files stored in S3 or as Google Sheets do not provide native freshness metadata, so you need to specify `loaded_at_field` or `loaded_at_query` for best results.
 - **Unnecessarily short `lag_tolerance`.** Increasing lag tolerance is the most effective way to reduce build rates. The default is 45 minutes, but we recommend specifying a [different option in development and production](/reference/resource-configs/lag-tolerance#use-different-tolerances-per-environment) instead of keeping the same default everywhere.
