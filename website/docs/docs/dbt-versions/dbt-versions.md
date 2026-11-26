@@ -74,13 +74,11 @@ For example, suppose a fix is first released in a prerelease of a minor version.
 
 ### Release channels
 
+import V2ReleaseChannels from '/snippets/_v2-release-channels.md';
+
 <Constant name="fusion" /> is distributed through release channels:
 
-| Channel | Description | Stability |
-|---------|-------------|-----------|
-| `stable` | The latest generally available (GA) release | ✅ Recommended for most users. |
-| `preview` | The latest prerelease (alpha, beta, or release candidate) of the next minor version | ⚠️ Passed release testing, but behavior can still change before GA. Refer to [Prerelease stages](#prerelease-stages). |
-| `nightly` | The latest nightly build from the main branch | ❌ For testing upcoming changes only. Not covered by prerelease or regression testing. |
+<V2ReleaseChannels />
 
 Run `dbt system update` to get the latest stable release, or specify a channel with `dbt system update --version preview`.
 

@@ -38,6 +38,9 @@ function ReleaseCandidateLabel({ version }) {
 }
 
 const CHANNEL_LABELS = {
+  stable: "Stable",
+  preview: "Preview",
+  nightly: "Nightly",
   dev: "Dev",
   canary: "Canary",
   latest: "Latest",
@@ -84,7 +87,7 @@ function compareVersions(a, b) {
 }
 
 // Public channels to display in "Current versions" section
-const PUBLIC_CHANNELS = ["dev", "canary", "latest"];
+const PUBLIC_CHANNELS = ["stable", "preview", "nightly"];
 
 function VersionCards({ versions }) {
   if (!versions) return null;

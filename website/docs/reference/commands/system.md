@@ -5,6 +5,8 @@ id: "system"
 description: "Use dbt system to update or uninstall dbt v2 using the CLI, or pre-install supported ADBC adapter drivers."
 ---
 
+import V2ReleaseChannels from '/snippets/_v2-release-channels.md';
+
 # About dbt system command
 
 `dbt system` provides commands for managing your dbt installation. v2 is a single compiled binary with no dependencies on other libraries. Once installed, `dbt system` lets you update, uninstall, and manage drivers directly without pip, brew, or a Python environment. 
@@ -39,16 +41,12 @@ dbt system update [flags]
 
 | Flag | Description |
 |---|---|
-| `--version VERSION` | Update to a specific version (for example, `2.0.1`) or a named channel (`canary`, `dev`). Defaults to the latest stable release. |
+| `--version VERSION` | Update to a specific version (for example, `2.0.1`) or a named channel (`stable`, `preview`, `nightly`). Defaults to the `stable` release. |
 | `--package PACKAGE` | Which package to update. Accepts `dbt` or `all`. Defaults to `dbt`. |
 
 ### Version channels
 
-| Channel | Description |
-|---|---|
-| _(none)_ | Latest stable release |
-| `canary` | Most recent preview build (under active testing and may be pulled back) |
-| `dev` | Development build (may be unstable) |
+<V2ReleaseChannels />
 
 ### Examples
 
@@ -64,10 +62,10 @@ Update to a specific version:
 dbt system update --version 2.0.1
 ```
 
-Update to the canary channel:
+Update to the preview channel:
 
 ```shell
-dbt system update --version canary
+dbt system update --version preview
 ```
 
 ## dbt system uninstall
