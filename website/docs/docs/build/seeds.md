@@ -92,7 +92,7 @@ dbt inferring differs between versions for dates and timestamps:
 If a model parses a seed's date column as text, for example with `to_date(col, 'format')`, it can fail on v2. Remove the text parsing, or set `column_types` to keep the column as text and run `dbt seed --full-refresh`. Refer to [Upgrading to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2#seeds-infer-date-and-timestamp-columns) for an example.
 
 :::tip
-Set `column_types` explicitly on seeds before you upgrade to v2, so your column types don't change.
+If you need a seed column to stay text after you upgrade to v2, set `column_types` for that column and run `dbt seed --full-refresh`.
 :::
 
 </VersionBlock>
