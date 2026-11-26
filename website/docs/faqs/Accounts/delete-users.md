@@ -14,7 +14,7 @@ To delete a user in <Constant name="dbt" />, you must be an account owner or hav
 
 2. Under **Settings**, select **Users**.
 3. Select the user you want to delete, then click **Edit**. 
-4. Click **Delete** in the bottom left. Click **Confirm Delete** to immediately delete the user without additional password prompts. This action cannot be undone. However, you can re-invite the user with the same information if the deletion was made in error. 
+4. Click **Delete** in the upper right. Click **Confirm Delete** to immediately delete the user without additional password prompts. This action cannot be undone. However, you can re-invite the user with the same information if the deletion was made in error.
 
 <Lightbox src="/img/docs/dbt-platform/delete_user.png" width="85%" title="Deleting a user" />
 
