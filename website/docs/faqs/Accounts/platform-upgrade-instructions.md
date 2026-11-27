@@ -77,11 +77,9 @@ For commonly asked billings questions, refer to the <Constant name="dbt" /> [pri
 <details>
   <summary>How does billing work?</summary>
 
-  Developer plans are free and include one developer seat and a monthly models-built allotment.
-
-  Starter plans are billed monthly on the credit card used to sign up, based on <a href="/docs/platform/billing">developer seat count and usage</a>. You'll also receive a monthly receipt at the billing email on file.
-
-  Enterprise-tier plan customers are billed annually based on the number of developer seats, as well as any additional services and features in your chosen plan.
+  - Developer plans are free and include one developer seat and a monthly models-built allotment.
+  - Starter plans are billed monthly on the credit card used to sign up, based on <a href="/docs/platform/billing">developer seat count and usage</a>. You'll also receive a monthly receipt at the billing email on file.
+  - Enterprise-tier plan customers are billed annually based on the number of developer seats, as well as any additional services and features in your chosen plan.
 
   On Starter plans, account owners can view and manage payment details in <b>Account settings</b>:
 
@@ -89,7 +87,7 @@ For commonly asked billings questions, refer to the <Constant name="dbt" /> [pri
   2. Under <b>Settings</b>, select <b>Billing &amp; Usage</b> (or <b>Billing</b>, if that's what you see).
   3. Open <b>Overview</b> if it appears, then open the <b>Billing details</b> tab.
 
-  On Enterprise-tier plans, the <b>Billing details</b> tab may not be available. Contact your account team for billing questions.
+  On Enterprise-tier plans, billing is managed by your account team. Contact them for billing questions.
 
 </details>
 <details>
@@ -126,6 +124,6 @@ For commonly asked billings questions, refer to the <Constant name="dbt" /> [pri
   3. Open <b>Overview</b> if it appears, then open the <b>Billing details</b> tab.
   4. Under <b>Payment information</b>, click <b>Edit</b> next to your card details, update your information, and save. We'll try again at the next billing run.
 
-  On Enterprise-tier plans, the <b>Billing details</b> tab may not be available. Contact your account team for help with payment issues.
+  On Enterprise-tier plans, billing is managed by your account team. Contact them for help with payment issues.
 
 </details>
