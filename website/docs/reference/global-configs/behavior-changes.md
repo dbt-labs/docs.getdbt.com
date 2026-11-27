@@ -64,6 +64,7 @@ The following flags are specific to <Constant name="fusion" /> and have no equiv
 
 | Flag | Adapter | Default | Introduced | Becomes default |
 |---|---|---|---|---|
+| [use_v2_empty_sql_rewrite](/reference/global-configs/behavior-flags/use_v2_empty_sql_rewrite) | All v2 adapters except ClickHouse | `false` | TBD | Not yet set |
 | [require_resource_names_without_plus_prefix](/reference/global-configs/behavior-flags/require_resource_names_without_plus_prefix) | All | `false` | 2.0.0-preview.208 | Not yet set |
 | [use_catalogs_v2](/docs/build/iceberg/catalogs-yml?version=2#new-spec-recommended) | All | `true` | 2.0.0-preview.174 | 2.0.0 |
 | bigquery_noop_alter_relation_comment | BigQuery | `false` | 2.0.0-preview.124 | Not yet set |

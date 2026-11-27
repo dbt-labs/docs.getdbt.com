@@ -11,11 +11,36 @@ availability: all_users
 
 :::note
 
-The `--empty` flag is not currently available for Python models. If the flag is used with a Python model, it will be ignored.
+The `--empty` flag is not currently available for Python models. If you use the flag with a Python model, dbt ignores it.
 
 :::
 
-During dbt development, you might want to validate that your models are semantically correct without the time-consuming cost of building the entire model in the data warehouse. The [`run`](/reference/commands/run), [`build`](/reference/commands/build), [`snapshot`](/reference/commands/snapshot), and [`compile`](/reference/commands/compile) commands support the `--empty` flag. Starting in <Constant name="dbt" /> v1.12, [`seed`](/reference/commands/seed) also supports the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
+During dbt development, you might want to validate that your models are semantically correct without the time-consuming cost of building the entire model in the data warehouse. The [`run`](/reference/commands/run), [`build`](/reference/commands/build), [`snapshot`](/reference/commands/snapshot), and [`compile`](/reference/commands/compile) commands support the `--empty` flag. Starting in <Constant name="dbt" /> v1.12, [`seed`](/reference/commands/seed) also supports the `--empty` flag for building schema-only dry runs. 
+
+The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
+
+<VersionBlock firstVersion="2.1">
+
+### Implicit table aliases
+
+If your model references columns using the relation name (for example, `my_table.col_a`) without writing an explicit alias after the `ref()`, the default `--empty` behavior can cause a runtime error. This is because `--empty` wraps every `ref()`, `source()`, and `{{ this }}` in an anonymous subquery, which drops the implicit alias.
+
+For example:
+
+```sql
+select
+  orders.order_id
+from {{ ref('orders') }}
+```
+
+You can resolve this by enabling the [`use_v2_empty_sql_rewrite`](/reference/global-configs/behavior-flags/use_v2_empty_sql_rewrite) behavior flag in `dbt_project.yml`:
+
+```yaml
+flags:
+  use_v2_empty_sql_rewrite: true
+```
+
+</VersionBlock>
 
 ### Examples
 
@@ -32,4 +57,5 @@ dbt run --select path/to/your_model --empty
 ```
 
 dbt will build and execute the SQL, resulting in an empty schema in the data warehouse.
+
 

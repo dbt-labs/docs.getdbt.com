@@ -1728,6 +1728,7 @@ const sidebarSettings = {
                     "reference/global-configs/behavior-flags/skip_nodes_if_on_run_start_fails",
                     "reference/global-configs/behavior-flags/source_freshness_run_project_hooks",
                     "reference/global-configs/behavior-flags/state_modified_compare_more_unrendered_values",
+                    "reference/global-configs/behavior-flags/use_v2_empty_sql_rewrite",
                     "reference/global-configs/behavior-flags/validate_macro_args",
                   ],
                 },
