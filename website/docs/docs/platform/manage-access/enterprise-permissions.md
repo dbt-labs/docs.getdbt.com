@@ -290,12 +290,12 @@ Notable features:
 - Can access <Constant name="catalog" />
 
 </Expandable>
-<Expandable alt_header="Security admin">
+<Expandable alt_header="Security Admin">
 
-Security admins have limited access to the security settings and policies for the <Constant name="dbt" /> account. This is intended for members of a security team who need to ensure compliance with security standards and oversee the implementation of best security practices across the account. The [IT license-type](/docs/platform/manage-access/seats-and-users#licenses) includes this permission set by default, except read access to webhooks. 
+Security Admins have limited access to the security settings and policies for the <Constant name="dbt" /> account. This is intended for members of a security team who need to ensure compliance with security standards and oversee the implementation of best security practices across the account. The [IT license-type](/docs/platform/manage-access/seats-and-users#licenses) includes this permission set by default, except read access to webhooks. 
 
 Notable features:
-- Security admin is an account-level set. 
+- Security Admin is an account-level set. 
 - Can create and edit users and groups and assign licenses.
 - Can create and edit authentication and SSO settings. 
 - Can create and edit IP restrictions, view service tokens, and manage user access controls. 
