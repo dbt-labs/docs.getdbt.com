@@ -347,7 +347,7 @@ Don't try to edit your own user, as this isn't allowed for security reasons. You
 
 Each <Constant name="dbt" /> plan has a base number of Developer and Read-Only licenses. You can add or remove licenses by modifying the number of users in your account settings. 
   - If you're on an Enterprise or Enterprise+ plan and have the correct [permissions](/docs/platform/manage-access/enterprise-permissions), you can add or remove developers by adjusting your developer user seat count in **Account settings** -> **Users**.
-  - If you're on a Starter plan and have the correct [permissions](/docs/platform/manage-access/self-service-permissions), you can add or remove developers by making two changes: invite or delete users in **Account settings** > **Users**, and change your billable seat count on **Billing details** in **Account settings** (under **Billing & Usage** > **Overview**, or **Billing** if that's what you see).
+  - If you're on a Starter plan and have the correct [permissions](/docs/platform/manage-access/self-service-permissions), you can add or remove developers by making two changes: invite or delete users in **Account settings** > **Users**, and change your billable seat count on **Billing details** in **Account settings** (under **Billing & Usage**, labeled **Billing** on some accounts, then **Overview** if it appears).
 
 For detailed steps, refer to [Users and licenses](/docs/platform/manage-access/seats-and-users#licenses).
 

@@ -6,12 +6,12 @@ sidebar_label: "Managing usage"
 availability: everywhere_usage
 ---
 
-Use **Billing & Usage** (or **Billing**, if that's what you see) to monitor how your account is tracking against its usage on your current plan.
+Use **Billing & Usage** (labeled **Billing** on some accounts) to monitor how your account is tracking against its usage on your current plan.
 
 To view your plan's usage and included features:
 
 1. From <Constant name="dbt" />, click your account name in the left side menu and select **Account settings**.
-2. Under **Settings**, select **Billing & Usage** (or **Billing**, if that's what you see).
+2. Under **Settings**, select **Billing & Usage** (labeled **Billing** on some accounts).
 3. Open **Overview** if it appears.
 
 ### Usage notifications 
