@@ -371,6 +371,7 @@ When querying for data, _either_ a `groupBy` _or_ a `metrics` selection is requi
 
 - [Create query](#create-metric-query)
 - [Fetch query result](#fetch-query-result)
+- [Cancel a query](#cancel-a-query)
 
 #### Create query
 
@@ -443,7 +444,51 @@ mutation {
   }
 }
 ```
-3. Keep querying 2. at an appropriate interval until status is `FAILED` or `SUCCESSFUL`
+3. Keep querying 2. at an appropriate interval until the query reaches a [final status](#query-statuses): `SUCCESSFUL`, `FAILED`, or `CANCELED`
+
+#### Query statuses
+
+A query moves through these statuses:
+
+| Status | Final? | Description |
+| --- | --- | --- |
+| `PENDING` | No | The query is created and waiting to start. |
+| `RUNNING` | No | The query is running. |
+| `COMPILED` | No | The query's SQL is compiled and ready to run against your data platform. |
+| `SUCCESSFUL` | Yes | The query finished and results are available. |
+| `FAILED` | Yes | The query failed. Check the `error` field for details. |
+| `CANCELED` | Yes | The query was canceled with [`cancelQuery`](#cancel-a-query). |
+| `LOG_ONLY` | No | Used internally for logging. |
+
+Stop polling when the status is `SUCCESSFUL`, `FAILED`, or `CANCELED`.
+
+#### Cancel a query
+
+Use the `cancelQuery` mutation to cancel a query that hasn't finished.
+
+```graphql
+cancelQuery(
+  environmentId: BigInt!
+  queryId: String!
+): CancelQueryResult
+```
+
+- `environmentId` is the environment the query was created in.
+- `queryId` is the ID returned by `createQuery`.
+- The mutation returns the `queryId` of the canceled query.
+
+```graphql
+mutation {
+  cancelQuery(
+    environmentId: 123456
+    queryId: "QueryID_12345678"
+  ) {
+    queryId  # => Returns 'QueryID_12345678'
+  }
+}
+```
+
+You can cancel a query only while its status is `PENDING`, `RUNNING`, or `COMPILED`. If the query already has a final status, the mutation returns an error.
 
 ### Output format and pagination
 
@@ -499,7 +544,7 @@ while True:
     json={"query": query_result_request},
     headers=headers,
   )
-  if gql_response.json()["data"]["status"] in ["FAILED", "SUCCESSFUL"]:
+  if gql_response.json()["data"]["query"]["status"] in ["FAILED", "SUCCESSFUL", "CANCELED"]:
     break
   # Set an appropriate interval between polling requests
   time.sleep(1)
