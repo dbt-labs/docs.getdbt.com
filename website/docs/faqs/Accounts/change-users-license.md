@@ -10,13 +10,13 @@ To change the license type for a user from `developer` to `read-only` or `IT` in
 
 1. From <Constant name="dbt" />, click on your account name in the left side menu and, select **Account settings**.
 
-<Lightbox src="/img/docs/dbt-platform/Navigate-to-account-settings.png" title="Navigate to account settings" />
+<Lightbox src="/img/docs/dbt-platform/account-settings-menu.png" width="85%" title="Open Account settings from the account menu in the left sidebar" />
 
-2. In **Account Settings**, select **Users** under **Teams**.
-3. Select the user you want to remove and click **Edit** in the bottom of their profile.
-4. For the **License** option, choose **Read-only** or **IT** (from **Developer**), and click **Save**.
+2. Under **Settings**, select **Users**.
+3. Select the user you want to modify and click **Edit** in the upper right.
+4. In the **License** field, select **Read-only** or **IT** (from **Developer**), and click **Save**.
 
-<Lightbox src="/img/docs/dbt-platform/change_user_to_read_only_20221023.gif" title="Change user's license type" />
+<Lightbox src="/img/docs/dbt-platform/change-user-license-details.png" width="85%" title="Change the license type on the User details page" />
 
 import LicenseOverrideNote from '/snippets/_license-override-note.md';
 
