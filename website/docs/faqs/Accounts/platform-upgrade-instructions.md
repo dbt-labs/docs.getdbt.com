@@ -77,13 +77,13 @@ For commonly asked billings questions, refer to the <Constant name="dbt" /> [pri
 <details>
   <summary>How does billing work?</summary>
 
-  Developer plans are free and include one developer seat and a monthly models-built allotment. You can add a payment card without being charged for the plan itself. You're only billed if you enable a consumption add-on.
+  Developer plans are free and include one developer seat and a monthly models-built allotment.
 
   Starter plans are billed monthly on the credit card used to sign up, based on <a href="/docs/platform/billing">developer seat count and usage</a>. You'll also receive a monthly receipt at the billing email on file.
 
   Enterprise-tier plan customers are billed annually based on the number of developer seats, as well as any additional services and features in your chosen plan.
 
-  On Developer and Starter plans, account owners can view and manage payment details in <b>Account settings</b>:
+  On Starter plans, account owners can view and manage payment details in <b>Account settings</b>:
 
   1. Click your account name in the left sidebar and select <b>Account settings</b>.
   2. Under <b>Settings</b>, select <b>Billing &amp; Usage</b> (or <b>Billing</b>, if that's what you see).
@@ -119,7 +119,7 @@ For commonly asked billings questions, refer to the <Constant name="dbt" /> [pri
   
   This means we were unable to charge the credit card you have on file, or you have not provided an updated card for payment. If you're a current account owner with a card on file, contact your credit card issuer to inquire as to why your card was declined or update the credit card on your account.
 
-  On Developer and Starter plans, your Account Owner can update payment details:
+  On Starter plans, your Account Owner can update payment details:
 
   1. Click your account name in the left sidebar and select <b>Account settings</b>.
   2. Under <b>Settings</b>, select <b>Billing &amp; Usage</b> (or <b>Billing</b>, if that's what you see).
