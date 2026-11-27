@@ -9,16 +9,12 @@ availability:
   minPlan: enterprise_plus
 ---
 
-import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
-
-# Configuring AWS PrivateLink for single-tenant ingress <Lifecycle status="beta"/>
-
-<SetUpPages features={'/snippets/_available-tiers-enterprise-plus.md'}/>
+# Configuring AWS PrivateLink for single-tenant ingress
 
 Inbound AWS PrivateLink lets your services reach a single-tenant <Constant name="dbt_platform" /> instance privately over your access URL, without traffic traversing the public internet. You create an interface VPC endpoint in your AWS account that connects to the PrivateLink endpoint service <Constant name="dbt" /> publishes in front of your instance.
 
 :::info Single-tenant only, provisioned by dbt Labs
-Ingress PrivateLink is available only for single-tenant deployments; multi-tenant ingress isn't currently supported (refer to the [AWS private connectivity matrix](/docs/platform/secure/private-connectivity/aws/aws-overview)).
+Ingress PrivateLink is available only for single-tenant deployments — the Virtual Private tier; multi-tenant (Enterprise+) deployments aren't currently supported (refer to the [AWS private connectivity matrix](/docs/platform/secure/private-connectivity/aws/aws-overview)).
 
 dbt Labs provisions it for your instance. To scope it and receive your endpoint service name, contact your **dbt Labs account team or Solutions Architect**. If you don't have a single-tenant deployment yet, [contact our sales team](mailto:sales@getdbt.com).
 :::
