@@ -5,8 +5,8 @@ After you delete a developer user (or switch them to Read-Only), you may see a *
 To change the seat count yourself from billing:
 
 1. Click your account name in the left sidebar and select **Account settings**.
-2. Under **Settings**, select **Billing & Usage**.
-3. Select **Overview**, then open the **Billing details** tab.
+2. Under **Settings**, select **Billing & Usage** (or **Billing**, if that's what you see).
+3. Open **Overview** if it appears, then open the **Billing details** tab.
 4. Under **Payment information**, go to the **Seat purchases** section.
 5. From the **Number of developer seats** dropdown, select the lower seat count. Options below the number of seats in use are unavailable, so delete or reassign users first if needed.
 6. Click **Update payment information**.

@@ -93,8 +93,8 @@ To add a user in <Constant name="dbt" />, you must be an account owner or have a
 
 <Lightbox src="/img/docs/dbt-platform/account-settings-menu.png" width="75%" title="Open Account settings from the account menu in the left sidebar" />
 
-2. Under **Settings**, select **Billing & Usage**.
-3. Select **Overview**, then open the **Billing details** tab.
+2. Under **Settings**, select **Billing & Usage** (or **Billing**, if that's what you see).
+3. Open **Overview** if it appears, then open the **Billing details** tab.
 4. Under **Payment information**, go to the **Seat purchases** section.
 5. From the **Number of developer seats** dropdown, select how many seats you want (up to five on Starter). Options below the number of seats already in use are unavailable.
 6. Fill in your payment details, including the billing address, if prompted. You can't save changes if required fields are blank.

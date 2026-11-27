@@ -86,8 +86,8 @@ For commonly asked billings questions, refer to the <Constant name="dbt" /> [pri
   On Developer and Starter plans, account owners can view and manage payment details in <b>Account settings</b>:
 
   1. Click your account name in the left sidebar and select <b>Account settings</b>.
-  2. Under <b>Settings</b>, go to <b>Billing &amp; Usage</b> &gt; <b>Overview</b>.
-  3. Open the <b>Billing details</b> tab.
+  2. Under <b>Settings</b>, select <b>Billing &amp; Usage</b> (or <b>Billing</b>, if that's what you see).
+  3. Open <b>Overview</b> if it appears, then open the <b>Billing details</b> tab.
 
   On Enterprise-tier plans, the <b>Billing details</b> tab may not be available. Contact your account team for billing questions.
 
@@ -122,8 +122,8 @@ For commonly asked billings questions, refer to the <Constant name="dbt" /> [pri
   On Developer and Starter plans, your Account Owner can update payment details:
 
   1. Click your account name in the left sidebar and select <b>Account settings</b>.
-  2. Under <b>Settings</b>, go to <b>Billing &amp; Usage</b> &gt; <b>Overview</b>.
-  3. Open the <b>Billing details</b> tab.
+  2. Under <b>Settings</b>, select <b>Billing &amp; Usage</b> (or <b>Billing</b>, if that's what you see).
+  3. Open <b>Overview</b> if it appears, then open the <b>Billing details</b> tab.
   4. Under <b>Payment information</b>, click <b>Edit</b> next to your card details, update your information, and save. We'll try again at the next billing run.
 
   On Enterprise-tier plans, the <b>Billing details</b> tab may not be available. Contact your account team for help with payment issues.
