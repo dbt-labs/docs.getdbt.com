@@ -106,7 +106,16 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [
 1. Create a new project in <Constant name="dbt" />. Navigate to **Account settings** (by clicking on your account name in the left side menu), and click **+ New Project**.
 2. Enter a project name and click **Continue**.
 3. Choose **Fabric** as your connection and click **Next**.
-4. In the **Configure your environment** section, enter the **Settings** for your new project:
+
+<VersionBlock lastVersion="1.99">
+
+Choose how you want to connect:
+
+<Tabs>
+
+<TabItem value="service-principal" label="Service principal" default>
+
+4. In the **Configure your environment** section, enter the **Settings** for your new project:
     - **Server** &mdash; Use the service principal's **host** value for the Fabric test endpoint. 
     - **Port** &mdash; 1433 (which is the default).
     - **Database** &mdash; Use the service principal's **database** value for the Fabric test endpoint. 
@@ -116,7 +125,53 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [
     - **Client ID** &mdash; Use the service principal’s **application (client) ID** as the value.
     - **Client secret** &mdash; Use the service principal’s **client secret** (not the  **client secret id**) as the value.
 6. Click **Test connection**. This verifies that <Constant name="dbt" /> can access your Microsoft Fabric account.
-7. Click **Next** when the test succeeds. If it failed, you might need to check your Microsoft service principal. Ensure that the principal has `CONNECT` privileges to the database in the warehouse. 
+7. Click **Next** when the test succeeds. If it failed, you might need to check your Microsoft service principal. Ensure that the principal has `CONNECT` privileges to the database in the warehouse. 
+
+</TabItem>
+
+<TabItem value="oauth" label="Microsoft Entra ID OAuth">
+_Available on Enterprise and Enterprise+ plans_
+
+Sign in with your own Microsoft Entra account instead of a service principal. You get multi-factor authentication (MFA), and queries run with your own Fabric permissions. 
+
+Before you start, an admin needs to [set up the Microsoft Entra ID OAuth integration](/docs/platform/connect-data-platform/connect-microsoft-fabric?version=1.12#microsoft-entra-id-oauth) in your <Constant name="dbt" /> account. This is a one-time step. You also need access to the Fabric workspace and warehouse with your own Entra account.
+
+4. In the **Configure your environment** section, enter the **Settings** for your new project:
+    - **Server**: Use the **SQL connection string** of your Fabric warehouse.
+    - **Port**: 1433 (which is the default).
+    - **Database**: Use the name of your Fabric warehouse.
+    - **OAuth method**: Select the Entra ID integration your admin created.
+5. Enter the **User credentials** for your new project:
+    - **Authentication**: Choose **External OAuth** from the dropdown.
+    - **Schema**: Enter the schema where your dbt models are built.
+6. Follow the prompt to sign in with your Microsoft account and approve the access request. <Constant name="dbt" /> checks the connection for you after you link your account, so **Test connection** isn't available.
+7. Click **Next** when the connection check succeeds.
+
+:::note OAuth in development environments only
+OAuth works in development environments only. When you set up deployment jobs later, you need a service principal.
+:::
+
+</TabItem>
+
+</Tabs>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.99">
+
+4. In the **Configure your environment** section, enter the **Settings** for your new project:
+    - **Server** &mdash; Use the service principal's **host** value for the Fabric test endpoint. 
+    - **Port** &mdash; 1433 (which is the default).
+    - **Database** &mdash; Use the service principal's **database** value for the Fabric test endpoint. 
+5. Enter the **User credentials** for your new project:
+    - **Authentication** &mdash; Choose **Service Principal** from the dropdown.
+    - **Tenant ID** &mdash; Use the service principal’s **Directory (tenant) id** as the value.
+    - **Client ID** &mdash; Use the service principal’s **application (client) ID** as the value.
+    - **Client secret** &mdash; Use the service principal’s **client secret** (not the  **client secret id**) as the value.
+6. Click **Test connection**. This verifies that <Constant name="dbt" /> can access your Microsoft Fabric account.
+7. Click **Next** when the test succeeds. If it failed, you might need to check your Microsoft service principal. Ensure that the principal has `CONNECT` privileges to the database in the warehouse. 
+
+</VersionBlock>
 
 ## Set up a dbt managed repository 
 <Snippet path="tutorial-managed-repo" />
