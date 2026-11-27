@@ -27,13 +27,17 @@ Release notes are grouped by date for single-tenant environments.
 
 <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](https://docs.getdbt.com/feeds/release-notes-st-rss.xml), [Atom](https://docs.getdbt.com/feeds/release-notes-st-atom.xml), or [JSON Feed](https://docs.getdbt.com/feeds/release-notes-st-rss.json).</span>
 
-## November 25, 2026
+## November 27, 2026
 
 ### New
 
 #### Catalog
 
 - **`columnCount` on applied-state nodes in the Discovery API**: The [Discovery API](/docs/dbt-apis/discovery-api) now exposes a `columnCount` field on applied-state models, sources, seeds, and snapshots. It returns the number of catalog columns, `null` if the node has no catalog entry, and `0` if there are no columns. Refer to the [models object schema](/docs/dbt-apis/discovery-schema-environment-applied-models) for the full field list.
+
+## November 25, 2026
+
+### New
 
 #### Studio IDE
 
