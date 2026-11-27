@@ -33,7 +33,7 @@ Release notes are grouped by date for single-tenant environments.
 
 #### Catalog
 
-- **`columnCount` on applied-state nodes in the Discovery API**: The [Discovery API](/docs/dbt-apis/discovery-api) now exposes a `columnCount` field on applied-state models, sources, seeds, and snapshots. It returns the number of catalog columns, `null` if the node has no catalog entry, and `0` if there are no columns. Refer to the [models object schema](/docs/dbt-apis/discovery-schema-environment-applied-models) for the full field list.
+- **`columnCount` on applied-state nodes in the Discovery API**: The [Discovery API](/docs/dbt-apis/discovery-api) now exposes a `columnCount` field on applied-state models, sources, seeds, and snapshots. It returns the number of catalog columns: `null` if the node has no catalog entry, and `0` if there are no columns. Refer to the [models object schema](/docs/dbt-apis/discovery-schema-environment-applied-models) for the full field list.
 
 ## November 25, 2026
 

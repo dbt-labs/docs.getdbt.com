@@ -119,7 +119,7 @@ The full list lives in website/release-note-areas.json.
 
 #### Catalog {#catalog-november-2026}
 
-- **New:** The [Discovery API](/docs/dbt-apis/discovery-api) now exposes a `columnCount` field on applied-state models, sources, seeds, and snapshots. It returns the number of catalog columns, `null` if the node has no catalog entry, and `0` if there are no columns. Refer to the [models object schema](/docs/dbt-apis/discovery-schema-environment-applied-models) for the full field list.
+- **New:** The [Discovery API](/docs/dbt-apis/discovery-api) now exposes a `columnCount` field on applied-state models, sources, seeds, and snapshots. It returns the number of catalog columns: `null` if the node has no catalog entry, and `0` if there are no columns. Refer to the [models object schema](/docs/dbt-apis/discovery-schema-environment-applied-models) for the full field list.
 - **Enhancement:** The [**Marts**](/docs/explore/explore-projects#catalog-overview) table on the Catalog project landing page now shows 20 rows per page by default, up from 5. The page size dropdown includes a **20 Rows** option, so you move through the list with fewer page turns.
 - **Fix:** <Constant name="catalog" /> no longer crashes when an [`accepted_values` data test](/reference/resource-properties/data-tests#accepted_values) uses a Jinja expression, such as `{{ var('x') }}`. The test [details page](/docs/explore/explore-projects#view-resource-details), lineage drawer, and **Columns** tab tooltip now display the raw Jinja text instead.
 - **Fix:** In the [Discovery API](/docs/dbt-apis/discovery-api), a model's parents used to leave out models that live in another project ([Mesh](/docs/mesh/about-mesh)). Those parent models are included now. Lineage already listed these parents.
