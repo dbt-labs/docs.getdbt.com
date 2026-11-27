@@ -48,7 +48,7 @@ Some puzzles will for example use the ability in dbt v2 to compile and verify SQ
 
 Each day will tell you exactly what to do, but in a nutshell, you will need:
 
-- dbt v2 installed on version 2.0.12 or later ([how to install it](https://docs.getdbt.com/docs/fusion/install-fusion-cli)) — check it with `dbt --version`
+- dbt v2 installed on version 2.0.12 or later ([how to install it](/docs/local/install-dbt?version=2)) — check it with `dbt --version`
 - `git` installed so you can get the new challenges (or download each day's zip from its page)
 - an IDE where you can see your code and run commands. We recommend VS Code with [the dbt extension](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt) installed, or Cursor with [the same extension](https://open-vsx.org/extension/dbtLabsInc/dbt), but you can also use Zed, nvim etc…
 - Python, for MetricFlow and dbt charts in the second week (we recommend [installing uv](https://docs.astral.sh/uv/getting-started/installation/) for that)
