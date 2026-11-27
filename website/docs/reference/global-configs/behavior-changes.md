@@ -88,6 +88,7 @@ This table outlines which version of the dbt adapter contains the behavior chang
 | [bigquery_reject_wildcard_metadata_source_freshness](/reference/global-configs/bigquery-changes#the-bigquery_reject_wildcard_metadata_source_freshness-flag) | BigQuery 1.12.0 | - | - |
 | [bigquery_use_standard_sql_for_partitions](/reference/global-configs/bigquery-changes#the-bigquery_use_standard_sql_for_partitions-flag) | BigQuery 1.12.0 | 1.12.0 | - |
 | [snowflake_default_transient_dynamic_tables](/reference/global-configs/snowflake-changes#the-snowflake_default_transient_dynamic_tables-flag) | Snowflake 1.12.0 | - | - |
+| [snowflake_dynamic_table_create_or_alter](/reference/global-configs/snowflake-changes#the-snowflake_dynamic_table_create_or_alter-flag) | Snowflake 1.13.0 | - | - |
 
 ## FAQs
 
