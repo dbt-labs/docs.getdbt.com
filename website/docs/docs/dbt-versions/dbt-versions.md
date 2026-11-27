@@ -74,15 +74,13 @@ For example, suppose a fix is first released in a prerelease of a minor version.
 
 ### Release channels
 
+import V2ReleaseChannels from '/snippets/_v2-release-channels.md';
+
 <Constant name="fusion" /> is distributed through release channels:
 
-| Channel | Description | Stability |
-|---------|-------------|-----------|
-| `latest` | The stable, "known good" version | ✅ Recommended for most users |
-| `canary` | The latest officially released version | ⚠️ Most recent stable version but still undergoing thorough testing |
-| `dev` | The latest development build | ❌ May not have passed all tests |
+<V2ReleaseChannels />
 
-Run `dbt system update` to get the latest stable release, or specify a channel with `dbt system update --version canary`.
+Run `dbt system update` to get the latest stable release, or specify a channel with `dbt system update --version preview`.
 
 For current versions and release history, see [<Constant name="fusion"/> releases](/docs/dbt/dbt-releases).
 
