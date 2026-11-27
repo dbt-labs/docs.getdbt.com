@@ -41,11 +41,13 @@ Key:
 | Project (create)         | W             | -             | -                   | -                    | -                       | -                    | W               | -              | -      |
 | Public models            | R             | R             | -                   | -                    | -                       | -                    | R               | R              | R      |
 | Service tokens           | W             | -             | -                   | -                    | -                       | -                    | -               | R              | R      |
-| Webhooks                 | W             | -             | -                   | -                    | -                       | -                    | -               | -              | -      |
+| Webhooks<sup>***</sup>   | W             | -             | -                   | -                    | -                       | W                    | -               | R              | R      |
 
 <sup>*</sup>Permission sets with write (**W**) access to Account settings can modify account-level settings. The **Notification Manager** permission set has dedicated write access to **Job notifications** (Slack, Microsoft Teams, and email) without requiring full Account settings access.
 
 <sup>**</sup>**Cost Insights Admin** can edit [platform metadata credentials](/docs/explore/set-up-cost-insights#configure-platform-metadata-credentials) and [Cost Insights](/docs/explore/set-up-cost-insights) settings in **Connection settings**, even though **Connections** is read-only (**R**) for this permission set.
+
+<sup>***</sup>Read (**R**) access to **Webhooks** lets you view webhook subscriptions. Testing a webhook and viewing its deliveries require write (**W**) access.
 
 ::::note Credentials access
 Users can access the **Credentials** page under **Your profile** when they have `develop_access` or `user_credential_write` on at least one project.

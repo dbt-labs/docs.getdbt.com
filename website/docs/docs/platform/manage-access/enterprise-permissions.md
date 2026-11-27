@@ -63,6 +63,7 @@ Notable features:
 - Account Viewer is an account-level set.
 - Read-only access to all settings, projects, environments, and runs.
 - Read-only access to audit logs, including sensitive account-level information.
+- Read-only access to [webhook](/docs/deploy/webhooks) subscriptions. Can't test webhooks or view their deliveries.
 - No access to the IDE. 
 - Can access <Constant name="catalog" />
 
@@ -273,6 +274,7 @@ Notable features:
 - Read-only access to members (to populate the recipient picker).
 - Read-only access to Slack and Microsoft Teams OAuth configuration status (for viewing the Slack and Microsoft Teams integration connection).
 - Connecting or disconnecting the Slack or Microsoft Teams integration remains Account Admin-only.
+- Can create, edit, delete, and test [webhooks](/docs/deploy/webhooks), and view their deliveries.
 - No access to other account settings, jobs, runs, or environments.
 
 </Expandable>
@@ -288,15 +290,16 @@ Notable features:
 - Can access <Constant name="catalog" />
 
 </Expandable>
-<Expandable alt_header="Security admin">
+<Expandable alt_header="Security Admin">
 
-Security admins have limited access to the security settings and policies for the <Constant name="dbt" /> account. This is intended for members of a security team who need to ensure compliance with security standards and oversee the implementation of best security practices across the account. The [IT license-type](/docs/platform/manage-access/seats-and-users#licenses) includes this permission set by default. 
+Security Admins have limited access to the security settings and policies for the <Constant name="dbt" /> account. This is intended for members of a security team who need to ensure compliance with security standards and oversee the implementation of best security practices across the account. The [IT license-type](/docs/platform/manage-access/seats-and-users#licenses) includes this permission set by default, except read access to webhooks. 
 
 Notable features:
-- Security admin is an account-level set. 
+- Security Admin is an account-level set. 
 - Can create and edit users and groups and assign licenses.
 - Can create and edit authentication and SSO settings. 
 - Can create and edit IP restrictions, view service tokens, and manage user access controls. 
+- Read-only access to [webhook](/docs/deploy/webhooks) subscriptions. Can't test webhooks or view their deliveries.
 - No access to jobs, runs, environments, or the IDE.
   
 </Expandable>
